@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?android:actionBarSize"
+    android:background="@color/bg_white"
+    app:contentInsetLeft="0dp"
+    app:contentInsetStart="0dp">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/act_home_btn_scan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@color/colorTransparency"
+            android:button="@null"
+            android:drawableTop="@drawable/act_home_scan_de"
+            android:text="@string/act_home_top_scan"
+            android:textColor="@color/tv_hint"
+            android:textSize="@dimen/act_top_font"/>
+
+        <EditText
+            android:id="@+id/frag_home_et_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30px"
+            android:layout_weight="8"
+            android:background="@drawable/search_bg"
+            android:drawableLeft="@drawable/act_home_search_de"
+            android:hint="搜索关键字"
+            android:singleLine="true"
+            android:textColor="@color/tv_name"
+            android:textColorHint="@color/tv_hint"
+            android:textSize="50px"/>
+
+        <Button
+            android:id="@+id/act_home_btn_msg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="30px"
+            android:layout_weight="1"
+            android:background="@color/colorTransparency"
+            android:button="@null"
+            android:drawableTop="@drawable/act_home_msg_de"
+            android:text="@string/act_home_top_msg"
+            android:textColor="@color/tv_hint"
+            android:textSize="@dimen/act_top_font"/>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</android.support.v7.widget.Toolbar>

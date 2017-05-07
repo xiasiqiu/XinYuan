@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:background="@color/colorBottom"
+              android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/act_home_btn_home"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:background="@color/colorTransparency"
+        android:drawableTop="@drawable/selector_act_home_btn_home"
+        android:gravity="center"
+        android:text="@string/act_home_bottom_shouye"
+        android:textColor="@drawable/selector_act_home_btn_text_color" />
+
+    <Button
+        android:id="@+id/act_home_btn_category"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:background="@color/colorTransparency"
+        android:drawableTop="@drawable/selector_act_home_btn_category"
+        android:gravity="center"
+        android:text="@string/act_home_bottom_fenlei"
+        android:textColor="@drawable/selector_act_home_btn_text_color" />
+
+
+
+    <Button
+        android:id="@+id/act_home_btn_shopcar"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:background="@color/colorTransparency"
+        android:clickable="true"
+        android:drawableTop="@drawable/selector_act_home_btn_shop_car"
+        android:text="@string/act_home_bottom_gouwuche"
+        android:textColor="@drawable/selector_act_home_btn_text_color" />
+
+    <Button
+        android:id="@+id/act_home_btn_mine"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:background="@color/colorTransparency"
+        android:drawableTop="@drawable/selector_act_home_btn_my"
+        android:gravity="center"
+        android:text="@string/act_home_bottom_gerenzhongxin"
+        android:textColor="@drawable/selector_act_home_btn_text_color" />
+</LinearLayout>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">XYShop</string>
+    <string name="act_home_bottom_shouye">首页</string>
+    <string name="act_home_bottom_fenlei">分类</string>
+    <string name="act_home_bottom_gouwuche">购物车</string>
+    <string name="act_home_bottom_gerenzhongxin">个人中心</string>
+
+
+    <string name="act_home_top_scan">扫一扫</string>
+    <string name="act_home_top_msg">消息</string>
+    <string name="title_activity_good_details">GoodDetailsActivity</string>
+</resources>

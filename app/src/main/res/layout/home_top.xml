@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_white"
+    android:orientation="vertical">
+
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="600px"/>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/home_menu_1"
+            android:layout_width="match_parent"
+            android:layout_height="280px"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:id="@+id/home_menu_2"
+            android:layout_width="match_parent"
+            android:layout_height="280px"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:id="@+id/home_menu_3"
+            android:layout_width="match_parent"
+            android:layout_height="280px"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:id="@+id/home_menu_4"
+            android:layout_width="match_parent"
+            android:layout_height="280px"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:id="@+id/home_menu_5"
+            android:layout_width="match_parent"
+            android:layout_height="280px"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"/>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+
+</com.zhy.autolayout.AutoLinearLayout>
