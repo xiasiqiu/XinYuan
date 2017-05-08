@@ -32,7 +32,7 @@ public class GlideImageLoader extends ImageLoader {
 	}
 
 	public static void setImage(Context context, Object path, ImageView imageView) {
-		Glide.with(context).load(path).diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder((int) R.drawable.nc_icon_null).error((int) R.drawable.nc_icon_null).into(imageView);
+		Glide.with(context).load(path).crossFade().diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder((int) R.drawable.nc_icon_null).error((int) R.drawable.nc_icon_null).into(imageView);
 
 	}
 

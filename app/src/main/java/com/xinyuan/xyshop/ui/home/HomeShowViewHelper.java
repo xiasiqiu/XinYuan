@@ -79,6 +79,10 @@ public class HomeShowViewHelper {
         addViewHolder.setImage(im3, itemList.get(2).getImageUrl());
         addViewHolder.setImage(im4, itemList.get(3).getImageUrl());
         addViewHolder.setImage(im5, itemList.get(4).getImageUrl());
+
+
+
+
         OnImageViewClick(addViewHolder.getView(R.id.home_menu_1), itemList.get(0).getType(), itemList.get(1).getData(), false);
         OnImageViewClick(addViewHolder.getView(R.id.home_menu_2), itemList.get(1).getType(), itemList.get(2).getData(), false);
         OnImageViewClick(addViewHolder.getView(R.id.home_menu_3), itemList.get(2).getType(), itemList.get(3).getData(), false);

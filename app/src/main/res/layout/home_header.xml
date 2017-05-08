@@ -13,7 +13,9 @@
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="10px"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:orientation="horizontal">
 
         <Button
@@ -21,6 +23,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_marginTop="10px"
             android:layout_weight="1"
             android:background="@color/colorTransparency"
             android:button="@null"
@@ -34,7 +37,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="30px"
+            android:layout_marginLeft="20px"
             android:layout_weight="8"
             android:background="@drawable/search_bg"
             android:drawableLeft="@drawable/act_home_search_de"
@@ -49,7 +52,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="30px"
+            android:layout_marginTop="10px"
             android:layout_weight="1"
             android:background="@color/colorTransparency"
             android:button="@null"

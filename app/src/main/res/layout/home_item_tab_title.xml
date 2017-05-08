@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/bg_gray"
+    android:background="@color/bg_white"
     android:orientation="vertical">
 
 
@@ -12,6 +12,7 @@
         android:layout_width="350px"
         android:layout_height="120px"
         android:layout_gravity="center_horizontal"
+        android:background="@color/bg_white"
         android:scaleType="centerCrop"/>
 
 </com.zhy.autolayout.AutoLinearLayout>

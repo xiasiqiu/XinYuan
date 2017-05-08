@@ -20,21 +20,21 @@
         <ImageView
             android:id="@+id/home_menu_1"
             android:layout_width="match_parent"
-            android:layout_height="280px"
+            android:layout_height="300px"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"/>
 
         <ImageView
             android:id="@+id/home_menu_2"
             android:layout_width="match_parent"
-            android:layout_height="280px"
+            android:layout_height="300px"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"/>
 
         <ImageView
             android:id="@+id/home_menu_3"
             android:layout_width="match_parent"
-            android:layout_height="280px"
+            android:layout_height="300px"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
             />
@@ -42,14 +42,14 @@
         <ImageView
             android:id="@+id/home_menu_4"
             android:layout_width="match_parent"
-            android:layout_height="280px"
+            android:layout_height="300px"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"/>
 
         <ImageView
             android:id="@+id/home_menu_5"
             android:layout_width="match_parent"
-            android:layout_height="280px"
+            android:layout_height="300px"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"/>
 
