@@ -5,6 +5,7 @@ import com.lzy.okgo.convert.Converter;
 import com.xinyuan.xyshop.entity.LzyResponse;
 import com.xinyuan.xyshop.entity.SimpleResponse;
 import com.xinyuan.xyshop.util.Convert;
+import com.youth.xframe.utils.log.XLog;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -77,6 +78,7 @@ public class JsonConvert<T> implements Converter<T> {
 		//这里我们既然都已经拿到了泛型的真实类型，即对应的 class ，那么当然可以开始解析数据了，我们采用 Gson 解析
 		//以下代码是根据泛型解析数据，返回对象，返回的对象自动以参数的形式传递到 onSuccess 中，可以直接使用
 		JsonReader jsonReader = new JsonReader(response.body().charStream());
+
 		if (typeArgument == Void.class) {
 			//无数据类型,表示没有data数据的情况（以  new DialogCallback<LzyResponse<Void>>(this)  以这种形式传递的泛型)
 			SimpleResponse simpleResponse = Convert.fromJson(jsonReader, SimpleResponse.class);
@@ -85,12 +87,14 @@ public class JsonConvert<T> implements Converter<T> {
 			return (T) simpleResponse.toLzyResponse();
 		} else if (rawType == LzyResponse.class) {
 			//有数据类型，表示有data
+			XLog.v(jsonReader.toString());
+
 			LzyResponse lzyResponse = Convert.fromJson(jsonReader, type);
 			response.close();
 			int code = lzyResponse.code;
 			//这里的0是以下意思
 			//一般来说服务器会和客户端约定一个数表示成功，其余的表示失败，这里根据实际情况修改
-			if (code == 0) {
+			if (code == 200) {
 				//noinspection unchecked
 				return (T) lzyResponse;
 			} else if (code == 104) {

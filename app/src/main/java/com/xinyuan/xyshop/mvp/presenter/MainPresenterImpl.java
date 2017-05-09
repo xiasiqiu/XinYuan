@@ -1,4 +1,4 @@
-package com.xinyuan.xyshop.ui.home;
+package com.xinyuan.xyshop.mvp.presenter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -7,7 +7,9 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.xinyuan.xyshop.adapter.ActHomePagerAdapter;
+import com.xinyuan.xyshop.mvp.contract.MainContract;
 import com.xinyuan.xyshop.ui.catrgory.CatrgoryFragment;
+import com.xinyuan.xyshop.ui.home.HomeFragment;
 import com.xinyuan.xyshop.ui.mine.MineFragment;
 import com.xinyuan.xyshop.ui.shopcar.ShopCarFragment;
 
@@ -18,13 +20,13 @@ import java.util.List;
  * Created by fx on 2017/5/2 0002.
  */
 
-public class HomePresenterImpl implements IHomeContract.IHomePresenter {
-	private final IHomeContract.IHomeView view;
+public class MainPresenterImpl implements MainContract.IMainPresenter {
+	private final MainContract.IMainView view;
 	private FragmentPagerAdapter pagerAdapter;
 	//声明一个集合用于存放Fragment
 	private List<Fragment> fragments;
 
-	public HomePresenterImpl(IHomeContract.IHomeView view) {
+	public MainPresenterImpl(MainContract.IMainView view) {
 		this.view = view;
 		view.setPresenter(this);
 	}

@@ -9,10 +9,9 @@
 
     <ImageView
         android:id="@+id/home_tab_title"
-        android:layout_width="match_parent"
-        android:layout_height="180px"
-        android:layout_margin="5px"
+        android:layout_width="1400px"
+        android:layout_height="160px"
         android:layout_gravity="center_horizontal"
-        android:scaleType="centerCrop"/>
+        android:scaleType="fitXY"/>
 
 </com.zhy.autolayout.AutoLinearLayout>

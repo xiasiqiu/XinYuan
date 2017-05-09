@@ -12,9 +12,9 @@
 
     <color name="bg_white">#ffffff</color>
     <color name="bg_gray">#F7F7F7</color>
-    <color name="tv_name">#1E1E1E</color>
-    <color name="tv_hint">#A2A2A2</color>
-    <color name="tv_price">#EE1111</color>
+    <color name="tv_name">#232323</color>
+    <color name="tv_hint">#9F9F9F</color>
+    <color name="tv_price">#FE2E31</color>
     <color name="search_bg">#F8F8FF</color>
 
     <!--背景颜色-->
@@ -43,6 +43,7 @@
     <color name="colorFont">#5f646e</color>
     <!--透明的颜色-->
     <color name="colorTransparency">#0000</color>
+    <color name="colorTransparency_H">#1A000000</color>
     <!--顶部搜索框内的字体颜色-->
     <color name="colorTopFont">#d42d00</color>
 

@@ -12,10 +12,8 @@
         android:bottom="10dp"
         />
     <!-- 边框的宽度和颜色颜色 -->
-    <stroke
-        android:width="5px"
-        android:color="#F8F8FF" />
+
 
     <!-- 背景色 -->
-    <solid android:color="#F8F8FF"></solid>
+    <solid android:color="#B3FFFFFF"></solid>
 </shape>

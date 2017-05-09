@@ -1,4 +1,4 @@
-package com.xinyuan.xyshop.ui.home;
+package com.xinyuan.xyshop.mvp.contract;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -10,8 +10,8 @@ import com.xinyuan.xyshop.base.BaseView;
  * Created by fx on 2017/5/2 0002.
  */
 
-public class IHomeContract {
-	public interface IHomeView extends BaseView<IHomePresenter> {
+public class MainContract {
+	public interface IMainView extends BaseView<IMainPresenter> {
 
 		/**
 		 * 获取显示内容的Viewpager
@@ -28,7 +28,7 @@ public class IHomeContract {
 		FragmentManager getManager();
 	}
 
-	public interface IHomePresenter extends BasePresenter<IHomeView> {
+	public interface IMainPresenter extends BasePresenter<IMainView> {
 
 	}
 }

@@ -12,6 +12,7 @@ public interface BasePresenter<T extends BaseView> {
 	 * 初始化操作
 	 */
 	void initData();
+
 }
 
 

@@ -4,21 +4,27 @@
              android:layout_height="match_parent">
 
 
-    <include layout="@layout/home_header"/>
-
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/home_swipeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
         android:orientation="vertical">
 
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/home_list"
+        <com.youth.xframe.widget.loadingview.XLoadingView
+            android:id="@+id/home_loadingView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/home_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </com.youth.xframe.widget.loadingview.XLoadingView>
+
+
     </android.support.v4.widget.SwipeRefreshLayout>
 
+    <include layout="@layout/home_header"/>
 
 </FrameLayout>

@@ -7,15 +7,15 @@ import android.view.View;
 import android.widget.Button;
 
 import com.xinyuan.xyshop.base.BaseActivity;
-import com.xinyuan.xyshop.ui.home.HomePresenterImpl;
-import com.xinyuan.xyshop.ui.home.IHomeContract;
+import com.xinyuan.xyshop.mvp.contract.MainContract;
+import com.xinyuan.xyshop.mvp.presenter.MainPresenterImpl;
 import com.xinyuan.xyshop.widget.NotSlipViewPager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity implements IHomeContract.IHomeView {
+public class MainActivity extends BaseActivity implements MainContract.IMainView {
 
 	@BindView(R.id.nvp_home_content)
 	NotSlipViewPager mActHomeVpContent;
@@ -37,7 +37,7 @@ public class MainActivity extends BaseActivity implements IHomeContract.IHomeVie
 
 	private FragmentManager manager;
 	//声明一个Presenter 对象，用于相关逻辑的处理
-	private IHomeContract.IHomePresenter presenter;
+	private MainContract.IMainPresenter presenter;
 
 
 	@Override
@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity implements IHomeContract.IHomeVie
 	@Override
 	public void initView() {
 		ButterKnife.bind(this);
-		new HomePresenterImpl(this);
+		new MainPresenterImpl(this);
 		btnID = new int[]{R.id.act_home_btn_home, R.id.act_home_btn_category, R.id.act_home_btn_shopcar, R.id.act_home_btn_mine};
 		btns = new Button[]{bt_home, bt_category, bt_shopcar, bt_mine};
 		//默认第一个按钮被选中
@@ -64,9 +64,15 @@ public class MainActivity extends BaseActivity implements IHomeContract.IHomeVie
 
 
 	@Override
-	public void setPresenter(IHomeContract.IHomePresenter presenter) {
+	public void setPresenter(MainContract.IMainPresenter presenter) {
 		this.presenter = presenter;
 	}
+
+	@Override
+	public void showState(int Sate) {
+
+	}
+
 
 	@Override
 	public ViewPager getmActHomeVpContent() {

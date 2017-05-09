@@ -10,4 +10,6 @@
     <string name="act_home_top_msg">消息</string>
     <string name="title_activity_good_details">GoodDetailsActivity</string>
     <string name="title_activity_loading_view">LoadingViewActivity</string>
+    <string name="title_activity_guide">GuideActivity</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
 </resources>

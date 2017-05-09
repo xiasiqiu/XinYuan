@@ -10,7 +10,7 @@
     <com.youth.banner.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="720px"/>
+        android:layout_height="1024px"/>
 
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
@@ -58,7 +58,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="5px"
+        android:layout_height="2.5px"
         android:background="@color/colorLine"/>
 
     <com.zhy.autolayout.AutoLinearLayout
@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="20px"
-            android:layout_weight="2.5"
+            android:layout_weight="2.1"
             android:text="最新动态："
             android:textColor="@color/tv_name"
             android:textSize="15sp"/>
