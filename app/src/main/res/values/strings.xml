@@ -9,4 +9,5 @@
     <string name="act_home_top_scan">扫一扫</string>
     <string name="act_home_top_msg">消息</string>
     <string name="title_activity_good_details">GoodDetailsActivity</string>
+    <string name="title_activity_loading_view">LoadingViewActivity</string>
 </resources>

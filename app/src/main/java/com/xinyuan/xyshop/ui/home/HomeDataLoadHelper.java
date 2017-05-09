@@ -35,6 +35,7 @@ public class HomeDataLoadHelper {
 	public static List<ItemData> banner;
 	public static List<ItemData> menu;
 	public static List<ItemData> adList;
+	public static List<ItemData> noticeList;
 	public static List<ItemData> tab_title_List;
 	public static List<ItemData> tabList;
 	public static List<ItemData> categoryList;
@@ -42,6 +43,7 @@ public class HomeDataLoadHelper {
 
 
 	public static List<ApiSpecialItem> ADList;
+	public static List<ApiSpecialItem> NOTICEList;
 	public static List<ApiSpecialItem> TAB_TitleList;
 	public static List<ApiSpecialItem> TABList;
 	public static List<ApiSpecialItem> CATRGORYList;
@@ -52,6 +54,7 @@ public class HomeDataLoadHelper {
 	public HomeDataLoadHelper(Context context) {
 		//application = (MyShopApplication) context.getApplicationContext();
 		ADList = new ArrayList<>();
+		NOTICEList = new ArrayList<>();
 		TAB_TitleList = new ArrayList<>();
 		TABList = new ArrayList<>();
 		CATRGORYList = new ArrayList<>();
@@ -96,7 +99,7 @@ public class HomeDataLoadHelper {
 			} else if (apiSpecialItem.getItemType().equals("tab")) {
 				TABList.add(apiSpecialItem);
 				List<ItemData> list = getItemDataList(apiSpecialItem.getItemData());
-                homeMultipleItemlist.add(new HomeMultipleItem(HomeMultipleItem.TAB, HomeMultipleItem.TAB_SPAN_SIZE));
+				homeMultipleItemlist.add(new HomeMultipleItem(HomeMultipleItem.TAB, HomeMultipleItem.TAB_SPAN_SIZE));
 			} else if (apiSpecialItem.getItemType().equals("category")) {
 				CATRGORYList.add(apiSpecialItem);
 				homeMultipleItemlist.add(new HomeMultipleItem(HomeMultipleItem.CATEGORY, HomeMultipleItem.CATEGORY_SPAN_SIZE));
@@ -107,66 +110,66 @@ public class HomeDataLoadHelper {
 				for (ItemGoods goods : goodsList) {
 					homeMultipleItemlist.add(new HomeMultipleItem(HomeMultipleItem.GOODS, HomeMultipleItem.GOODS_SPAN_SIZE));
 				}
+			} else if (apiSpecialItem.getItemType().equals("notice")) {
+				noticeList = getItemDataList(apiSpecialItem.getItemData());
+
 			}
 		}
-		rxBus.post("dataload","数据加载ok");
+		rxBus.post("dataload", "数据加载ok");
 	}
-
-
 
 
 	public static List<ItemData> getItemData(List<ApiSpecialItem> list) {
-       List<String>jsons=new ArrayList<>();
-		for(ApiSpecialItem item:list){
-          jsons.add(item.getItemData());
-        }
-        List<List<ItemData>>datas=new ArrayList<>();
-        for(String json:jsons){
-           datas.add(getItemDataList(json));
-        }
-        List<ItemData>list1=new ArrayList<>();
-        for(int i=0;i<datas.size();i++){
-            for(int j=0;j<datas.get(i).size();j++){
-                list1.add(datas.get(i).get(j));
-            }
-        }
-        return list1;
+		List<String> jsons = new ArrayList<>();
+		for (ApiSpecialItem item : list) {
+			jsons.add(item.getItemData());
+		}
+		List<List<ItemData>> datas = new ArrayList<>();
+		for (String json : jsons) {
+			datas.add(getItemDataList(json));
+		}
+		List<ItemData> list1 = new ArrayList<>();
+		for (int i = 0; i < datas.size(); i++) {
+			for (int j = 0; j < datas.get(i).size(); j++) {
+				list1.add(datas.get(i).get(j));
+			}
+		}
+		return list1;
 	}
 
-    public static List<ItemData> getItemDataList(String json) {
-        return (List) JsonUtil.toBean(json, new TypeToken<List<ItemData>>() {
-        }.getType());
-    }
+	public static List<ItemData> getItemDataList(String json) {
+		return (List) JsonUtil.toBean(json, new TypeToken<List<ItemData>>() {
+		}.getType());
+	}
 
 
-    public static List<ItemGoods> getItemGoodsList(String json) {
-        return (List) JsonUtil.toBean(json, new TypeToken<List<ItemGoods>>() {
-        }.getType());
-    }
+	public static List<ItemGoods> getItemGoodsList(String json) {
+		return (List) JsonUtil.toBean(json, new TypeToken<List<ItemGoods>>() {
+		}.getType());
+	}
+
 	public static List<ItemData> getItemADList() {
 		return getItemData(ADList);
 	}
 
 
-    public static List<ItemData> getItemTabTitleList() {
-        return getItemData(TAB_TitleList);
+	public static List<ItemData> getItemTabTitleList() {
+		return getItemData(TAB_TitleList);
 
-    }
-
-
-    public static List<List<ItemData>> getTabList() {
-        List<List<ItemData>> list = new ArrayList<List<ItemData>>();
-        for (ApiSpecialItem apiSpecialItem : TABList) {
-            list.add(getItemDataList(apiSpecialItem.getItemData()));
-        }
-        return list;
-    }
-	public static List<ItemGoods> getItemGoodsList() {
-		return goodsList;
 	}
 
 
+	public static List<List<ItemData>> getTabList() {
+		List<List<ItemData>> list = new ArrayList<List<ItemData>>();
+		for (ApiSpecialItem apiSpecialItem : TABList) {
+			list.add(getItemDataList(apiSpecialItem.getItemData()));
+		}
+		return list;
+	}
 
+	public static List<ItemGoods> getItemGoodsList() {
+		return goodsList;
+	}
 
 
 	public static List<ItemData> getCategoryList() {
@@ -181,6 +184,10 @@ public class HomeDataLoadHelper {
 		return menu;
 	}
 
+	public static List<ItemData> getNotice() {
+		return noticeList;
+	}
+
 
 	public static List<HomeMultipleItem> getHomeMultipleItemlist() {
 		return homeMultipleItemlist;
@@ -192,8 +199,6 @@ public class HomeDataLoadHelper {
 		}.getType());
 
 	}
-
-
 
 
 }

@@ -8,12 +8,14 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
 
 public class HomeMultipleItem implements MultiItemEntity {
 	public static final int AD = 1;
-	public static final int TAB_TITLE = 2;
-	public static final int TAB = 3;
-	public static final int CATEGORY = 4;
-	public static final int GOODS = 5;
+	public static final int NOTICE = 2;
+	public static final int TAB_TITLE = 3;
+	public static final int TAB = 4;
+	public static final int CATEGORY = 5;
+	public static final int GOODS = 6;
 
 	public static final int AD_SPAN_SIZE = 4;
+	public static final int NOTICE_SPAN_SIZE = 4;
 	public static final int TAB_TITLE_SPAN_SIZE = 4;
 	public static final int TAB_SPAN_SIZE = 4;
 	public static final int CATEGORY_SPAN_SIZE = 4;

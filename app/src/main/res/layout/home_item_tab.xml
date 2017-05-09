@@ -7,7 +7,7 @@
 
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="400px"
+        android:layout_height="450px"
         android:orientation="horizontal">
 
         <ImageView
@@ -40,7 +40,7 @@
 
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="400px"
+        android:layout_height="450px"
         android:orientation="horizontal">
 
         <ImageView

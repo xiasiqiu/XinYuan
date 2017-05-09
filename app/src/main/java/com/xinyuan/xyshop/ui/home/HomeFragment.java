@@ -21,7 +21,6 @@ import com.xinyuan.xyshop.common.RxBus;
 import com.xinyuan.xyshop.common.RxBusResult;
 import com.xinyuan.xyshop.entity.HomeMultipleItem;
 import com.xinyuan.xyshop.entity.ItemData;
-import com.youth.xframe.utils.log.XLog;
 
 import java.util.List;
 
@@ -78,29 +77,34 @@ public class HomeFragment extends BaseFragment {
 
 	@Override
 	protected void initData(@Nullable Bundle savedInstanceState) {
-		context = this.getContext();
+
+		context = getActivity();
 		homeShowViewHelper = new HomeShowViewHelper(context, mRecyclerView);
 		dataLoadHelper = new HomeDataLoadHelper(context);
-		HomeDataLoadHelper.getHomeData(this.getContext(), homeShowViewHelper);
+		HomeDataLoadHelper.getHomeData(getActivity(), homeShowViewHelper);
 		rxBus.toObserverableOnMainThread("dataload", new RxBusResult() {
 			@Override
 			public void onRxBusResult(Object o) {
 				addHead();
 			}
 		});
+
 	}
 
 
 	public void addHead() {
 
-
 		List<ItemData> bannerList = HomeDataLoadHelper.getBanner();
 		List<ItemData> menuList = HomeDataLoadHelper.getMenu();
+		List<ItemData> noteicList = HomeDataLoadHelper.getNotice();
 		View headView = getActivity().getLayoutInflater().inflate(R.layout.home_top, (ViewGroup) mRecyclerView.getParent(), false);
 
 
 		homeShowViewHelper.showBanner(bannerList, headView);
 		homeShowViewHelper.showHomeMenu(menuList, headView);
+
+		homeShowViewHelper.showNotice(noteicList, headView);
+
 		multipleItems = HomeDataLoadHelper.getHomeMultipleItemlist();
 		homeMultipleItemAdapter = new HomeMultipleItemAdapter(this.getContext(), multipleItems);
 
@@ -155,6 +159,8 @@ public class HomeFragment extends BaseFragment {
 
 			}
 		});
+
+
 	}
 
 	private int mDistanceY = 0;

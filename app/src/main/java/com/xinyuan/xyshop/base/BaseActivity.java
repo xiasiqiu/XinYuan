@@ -1,11 +1,15 @@
 package com.xinyuan.xyshop.base;
 
+import android.Manifest;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Window;
 
 import com.xinyuan.xyshop.R;
 import com.youth.xframe.base.XActivity;
+import com.youth.xframe.utils.permission.XPermission;
 import com.youth.xframe.utils.statusbar.XStatusBar;
 
 /**
@@ -18,6 +22,7 @@ public abstract class BaseActivity extends XActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
 	}
 
 	@Override
