@@ -1,7 +1,5 @@
 package com.xinyuan.xyshop.mvp.presenter;
 
-import com.google.gson.reflect.TypeToken;
-import com.xinyuan.xyshop.adapter.HomeMultipleItemAdapter;
 import com.xinyuan.xyshop.common.DataTrans;
 import com.xinyuan.xyshop.entity.ApiSpecialItem;
 import com.xinyuan.xyshop.entity.HomeMultipleItem;
@@ -10,7 +8,6 @@ import com.xinyuan.xyshop.entity.ItemGoods;
 import com.xinyuan.xyshop.entity.LzyResponse;
 import com.xinyuan.xyshop.http.ApiServer;
 import com.xinyuan.xyshop.mvp.contract.HomeContract;
-import com.xinyuan.xyshop.util.JsonUtil;
 import com.youth.xframe.utils.log.XLog;
 
 import java.util.ArrayList;
@@ -56,7 +53,6 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 				.doOnSubscribe(new Action0() {
 					@Override
 					public void call() {
-						XLog.v("加载中");
 						view.showState(0);
 
 					}
@@ -73,7 +69,7 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 				.subscribe(new Action1<List<ApiSpecialItem>>() {
 					@Override
 					public void call(List<ApiSpecialItem> apiSpecialItemList) {
-						XLog.v("请求成功");
+						XLog.v("首页请求成功");
 						dataClean(apiSpecialItemList);
 
 					}
@@ -81,7 +77,7 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 					@Override
 					public void call(Throwable throwable) {
 						throwable.printStackTrace();
-						XLog.v("请求失败");
+						XLog.v("首页请求失败");
 						view.showState(2);
 					}
 				});
@@ -89,7 +85,6 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 
 
 	private void dataClean(List<ApiSpecialItem> lists) {
-		XLog.list(lists);
 		HOMEMultipleItemlist = new ArrayList<>();
 		ADList = new ArrayList<>();
 		NOTICEList = new ArrayList<>();

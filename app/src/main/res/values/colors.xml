@@ -5,18 +5,14 @@
     <color name="colorAccent">#0091ea</color>
 
 
-
-
-
-
-
     <color name="bg_white">#ffffff</color>
     <color name="bg_gray">#eeeeee</color>
     <color name="tv_name">#333333</color>
     <color name="tv_hint">#666666</color>
     <color name="tv_price">#FE2E31</color>
     <color name="search_bg">#F8F8FF</color>
-
+    <color name="boder">#ffe3e3e3</color>
+    <color name="bg_light">#fffcfcfc</color>
     <!--背景颜色-->
     <color name="colorBackground">#eeeeee</color>
     <!--顶部颜色-->

@@ -5,14 +5,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.MotionEvent;
 import android.view.View;
-
 import com.xinyuan.xyshop.adapter.ActHomePagerAdapter;
 import com.xinyuan.xyshop.mvp.contract.MainContract;
-import com.xinyuan.xyshop.ui.catrgory.CatrgoryFragment;
+import com.xinyuan.xyshop.ui.catrgory.CategoryFragment;
 import com.xinyuan.xyshop.ui.home.HomeFragment;
 import com.xinyuan.xyshop.ui.mine.MineFragment;
 import com.xinyuan.xyshop.ui.shopcar.ShopCarFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +35,7 @@ public class MainPresenterImpl implements MainContract.IMainPresenter {
 		ViewPager viewPagerContent = view.getmActHomeVpContent();
 		fragments = new ArrayList<>();
 		fragments.add(new HomeFragment());
-		fragments.add(new CatrgoryFragment());
+		fragments.add(new CategoryFragment() );
 		fragments.add(new ShopCarFragment());
 		fragments.add(new MineFragment());
 		pagerAdapter = new ActHomePagerAdapter(view.getManager(), fragments);

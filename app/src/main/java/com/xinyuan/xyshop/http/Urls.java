@@ -6,7 +6,7 @@ package com.xinyuan.xyshop.http;
 
 public class Urls {
 	public static final String API_INDEX="http://tututo.me/mallapi.json";
-
+	public static final String URL_GOODS_CATEGORY = "https://java.bizpower.com/api/category/list";
 
 
 }

@@ -11,7 +11,7 @@
 
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?android:actionBarSize"
         android:background="@color/bg_white"
         android:focusable="true"
         android:focusableInTouchMode="true"
