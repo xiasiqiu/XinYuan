@@ -16,6 +16,7 @@ import com.xinyuan.xyshop.entity.ItemGoods;
 import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
 import com.xinyuan.xyshop.ui.goods.GoodDetailsActivity;
 import com.xinyuan.xyshop.util.GlideImageLoader;
+import com.youth.xframe.utils.log.XLog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,6 +65,7 @@ public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMulti
 
 		goodsList = HomePresenterImpl.getItemGoodsList();
 		tabTitleList = HomePresenterImpl.getItemTabTitleList();
+		XLog.list(tabTitleList);
 		categoryList = HomePresenterImpl.getCategoryList();
 		tablist = HomePresenterImpl.getTabList();
 		adList = HomePresenterImpl.getItemADList();

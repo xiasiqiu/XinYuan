@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.sunfusheng.marqueeview.MarqueeView;
+import com.trello.rxlifecycle.FragmentEvent;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.HomeMultipleItemAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
@@ -27,6 +29,7 @@ import com.xinyuan.xyshop.entity.ItemGoods;
 import com.xinyuan.xyshop.mvp.contract.HomeContract;
 import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
 import com.xinyuan.xyshop.util.GlideImageLoader;
+import com.xinyuan.xyshop.util.Image;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -93,6 +96,12 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	}
 
+	@Override
+	@CallSuper
+	public void onResume() {
+		super.onResume();
+		mDistanceY=0;
+	}
 
 	@Override
 	public void setPresenter(HomeContract.HomePresenter presenter) {
@@ -253,29 +262,19 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 				//toolbar的高度
 				int toolbarHeight = mToolbar.getBottom();
 
+
 				if (mDistanceY < 10) {
 					mToolbar.setBackgroundResource(R.color.colorTransparency);
-					mScan.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.act_home_scan), null, null);
-					mMsg.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.act_home_msg), null, null);
-					mScan.setTextColor(getResources().getColor(R.color.bg_white));
-					mMsg.setTextColor(getResources().getColor(R.color.bg_white));
 
 				} else if (mDistanceY <= toolbarHeight) {
 
 					float scale = (float) mDistanceY / toolbarHeight;
 					float alpha = scale * 255;
 					mToolbar.setBackgroundColor(Color.argb((int) alpha, 6, 111, 0));
-					mScan.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.act_home_scan), null, null);
-					mMsg.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.act_home_msg), null, null);
-					mScan.setTextColor(getResources().getColor(R.color.bg_white));
-					mMsg.setTextColor(getResources().getColor(R.color.bg_white));
 
 				} else {
 					mToolbar.setBackgroundResource(R.color.colorPrimary);
-					mScan.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.act_home_scan), null, null);
-					mMsg.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.act_home_msg), null, null);
-					mScan.setTextColor(getResources().getColor(R.color.bg_white));
-					mMsg.setTextColor(getResources().getColor(R.color.bg_white));
+
 
 				}
 
@@ -292,6 +291,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
+				HomePresenterImpl.clearList();
 				presenter.initData();
 				data = HomePresenterImpl.getHomeMultipleItemlist();
 				homeMultipleItemAdapter.setNewData(data);
@@ -299,8 +299,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 				mCurrentCounter = PAGE_SIZE;
 				mSwipeRefreshLayout.setRefreshing(false);
 				homeMultipleItemAdapter.setEnableLoadMore(true);
+
 			}
 		}, delayMillis);
+
 	}
 
 
@@ -308,6 +310,11 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	private boolean isErr;
 	private boolean mLoadMoreEndGone = false;
 	private int mCurrentCounter = 0;
+
+
+
+
+
 //
 //	@Override
 //	public void onLoadMoreRequested() {

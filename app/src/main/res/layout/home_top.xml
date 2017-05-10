@@ -10,60 +10,68 @@
     <com.youth.banner.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="1024px"/>
+        android:layout_height="850px"/>
 
-    <com.zhy.autolayout.AutoLinearLayout
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10px"
-        android:orientation="horizontal">
+        android:layout_height="355px"
+        android:gravity="center_vertical">
 
         <ImageView
             android:id="@+id/home_menu_1"
-            android:layout_width="match_parent"
-            android:layout_height="350px"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"/>
+            android:layout_width="170px"
+            android:layout_height="255px"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="40px"
+
+            android:scaleType="fitXY"/>
 
         <ImageView
             android:id="@+id/home_menu_2"
-            android:layout_width="match_parent"
-            android:layout_height="350px"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"/>
+            android:layout_width="170px"
+            android:layout_height="255px"
+            android:layout_marginLeft="121px"
+            android:layout_toRightOf="@id/home_menu_1"
+
+            android:scaleType="fitXY"/>
 
         <ImageView
             android:id="@+id/home_menu_3"
-            android:layout_width="match_parent"
-            android:layout_height="350px"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
+            android:layout_width="170px"
+            android:layout_height="255px"
+            android:layout_centerHorizontal="true"
+
+            android:scaleType="fitXY"
             />
 
         <ImageView
             android:id="@+id/home_menu_4"
-            android:layout_width="match_parent"
-            android:layout_height="350px"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"/>
+            android:layout_width="170px"
+            android:layout_height="255px"
+            android:layout_marginLeft="121px"
+            android:layout_toRightOf="@id/home_menu_3"
+
+            android:scaleType="fitXY"/>
 
         <ImageView
             android:id="@+id/home_menu_5"
-            android:layout_width="match_parent"
-            android:layout_height="350px"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"/>
+            android:layout_width="170px"
+            android:layout_height="255px"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="40px"
 
-    </com.zhy.autolayout.AutoLinearLayout>
+            android:scaleType="fitXY"/>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2.5px"
+        android:layout_height="3px"
         android:background="@color/colorLine"/>
 
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="180px"
+        android:layout_height="145px"
         android:orientation="horizontal">
 
         <TextView
@@ -72,39 +80,39 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="20px"
-            android:layout_weight="2.1"
-            android:text="最新动态："
+            android:layout_weight="2.2"
+            android:text="最新动态:"
             android:textColor="@color/tv_name"
-            android:textSize="15sp"/>
+            android:textSize="55px"/>
 
         <com.sunfusheng.marqueeview.MarqueeView
             android:id="@+id/marqueeView"
             android:layout_width="0dp"
             android:layout_height="80px"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="10px"
-            android:layout_weight="7"
+            android:layout_weight="9"
             app:mvAnimDuration="1000"
             app:mvInterval="3000"
             app:mvTextColor="@color/tv_hint"
-            app:mvTextSize="15sp"/>
+            app:mvTextSize="48px"/>
 
         <View
-            android:layout_width="5px"
-            android:layout_height="50px"
+            android:layout_width="2.5px"
+            android:layout_height="45px"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="20px"
+            android:layout_marginRight="40px"
+            android:layout_marginLeft="40px"
             android:background="@color/colorLine"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="10px"
+            android:layout_marginRight="20px"
             android:layout_weight="1"
             android:text="更多"
             android:textColor="@color/tv_name"
-            android:textSize="15sp"/>
+            android:textSize="50px"/>
     </com.zhy.autolayout.AutoLinearLayout>
 
 

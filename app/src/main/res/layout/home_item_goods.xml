@@ -37,7 +37,7 @@
             android:fontFamily="sans-serif-condensed"
             android:text="零度智控DOBBY跟拍口袋无人机 智能高清便携 礼盒版"
             android:textColor="@color/tv_name"
-            android:textSize="30px"/>
+            android:textSize="45px"/>
 
         <TextView
             android:id="@+id/tv_goods_price"
@@ -46,6 +46,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:text="$55.3"
+            android:textSize="42px"
             android:textColor="@color/tv_price"/>
 
         <TextView
@@ -55,6 +56,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:text="23334人购买"
+            android:textSize="42px"
             android:textColor="@color/tv_hint"/>
     </com.zhy.autolayout.AutoRelativeLayout>
 

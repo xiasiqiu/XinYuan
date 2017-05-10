@@ -11,9 +11,9 @@
 
 
     <color name="bg_white">#ffffff</color>
-    <color name="bg_gray">#F7F7F7</color>
-    <color name="tv_name">#232323</color>
-    <color name="tv_hint">#9F9F9F</color>
+    <color name="bg_gray">#eeeeee</color>
+    <color name="tv_name">#333333</color>
+    <color name="tv_hint">#666666</color>
     <color name="tv_price">#FE2E31</color>
     <color name="search_bg">#F8F8FF</color>
 

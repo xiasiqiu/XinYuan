@@ -32,7 +32,6 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 
 
 	private static List<HomeMultipleItem> HOMEMultipleItemlist;
-	private static List<ApiSpecialItem> DATAList;
 	private static List<ApiSpecialItem> ADList;
 	private static List<ApiSpecialItem> NOTICEList;
 	private static List<ApiSpecialItem> TAB_TitleList;
@@ -90,7 +89,7 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 
 
 	private void dataClean(List<ApiSpecialItem> lists) {
-
+		XLog.list(lists);
 		HOMEMultipleItemlist = new ArrayList<>();
 		ADList = new ArrayList<>();
 		NOTICEList = new ArrayList<>();
@@ -185,5 +184,13 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 		return DataTrans.getItemData(CATRGORYList);
 	}
 
+	public static void clearList() {
+
+		banner.clear();
+		menu.clear();
+		noticeList.clear();
+		goodsList.clear();
+
+	}
 
 }
