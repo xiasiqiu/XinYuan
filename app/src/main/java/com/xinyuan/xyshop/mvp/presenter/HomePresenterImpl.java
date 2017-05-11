@@ -40,6 +40,7 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 	public static List<ItemData> noticeList;
 	public static List<ItemGoods> goodsList;
 
+	public static List<ApiSpecialItem> dataList;
 
 	public HomePresenterImpl(HomeContract.HomeView view) {
 		this.view = view;
@@ -85,13 +86,18 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 
 
 	private void dataClean(List<ApiSpecialItem> lists) {
+
+
+		dataList = new ArrayList<>();
+
+
 		HOMEMultipleItemlist = new ArrayList<>();
 		ADList = new ArrayList<>();
 		NOTICEList = new ArrayList<>();
 		TAB_TitleList = new ArrayList<>();
 		TABList = new ArrayList<>();
 		CATRGORYList = new ArrayList<>();
-
+		XLog.list(lists);
 
 		for (ApiSpecialItem apiSpecialItem : lists) {
 			if (apiSpecialItem.getItemType().equals("banner")) {
@@ -102,19 +108,24 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 				menu = DataTrans.getItemDataList(apiSpecialItem.getItemData());
 			} else if (apiSpecialItem.getItemType().equals("ad")) {
 				ADList.add(apiSpecialItem);
+				dataList.add(apiSpecialItem);
 				HOMEMultipleItemlist.add(new HomeMultipleItem(HomeMultipleItem.AD, HomeMultipleItem.AD_SPAN_SIZE));
 			} else if (apiSpecialItem.getItemType().equals("tab_title")) {
 				TAB_TitleList.add(apiSpecialItem);
 				HOMEMultipleItemlist.add(new HomeMultipleItem(HomeMultipleItem.TAB_TITLE, HomeMultipleItem.TAB_TITLE_SPAN_SIZE));
+				dataList.add(apiSpecialItem);
 			} else if (apiSpecialItem.getItemType().equals("tab")) {
 				TABList.add(apiSpecialItem);
 				List<ItemData> list = DataTrans.getItemDataList(apiSpecialItem.getItemData());
+				dataList.add(apiSpecialItem);
 				HOMEMultipleItemlist.add(new HomeMultipleItem(HomeMultipleItem.TAB, HomeMultipleItem.TAB_SPAN_SIZE));
 			} else if (apiSpecialItem.getItemType().equals("category")) {
 				CATRGORYList.add(apiSpecialItem);
+				dataList.add(apiSpecialItem);
 				HOMEMultipleItemlist.add(new HomeMultipleItem(HomeMultipleItem.CATEGORY, HomeMultipleItem.CATEGORY_SPAN_SIZE));
 			} else if (apiSpecialItem.getItemType().equals("goodslist")) {
 				goodsList = DataTrans.getItemGoodsList(apiSpecialItem.getItemData());
+				dataList.add(apiSpecialItem);
 				for (ItemGoods goods : goodsList) {
 					HOMEMultipleItemlist.add(new HomeMultipleItem(HomeMultipleItem.GOODS, HomeMultipleItem.GOODS_SPAN_SIZE));
 				}
@@ -124,6 +135,8 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 			}
 		}
 
+		XLog.list(getTabList());
+		XLog.list(getItemTabTitleList());
 		view.addHead(getHomeMultipleItemlist());
 		view.showBanner(banner);
 		view.showMenu(menu);
@@ -155,6 +168,10 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 		return DataTrans.getItemData(ADList);
 	}
 
+	public static List<ApiSpecialItem> getApiDataList() {
+
+		return dataList;
+	}
 
 	public static List<ItemData> getItemTabTitleList() {
 		return DataTrans.getItemData(TAB_TitleList);
@@ -180,7 +197,7 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 	}
 
 	public static void clearList() {
-
+		XLog.v("删除首页列表数据");
 		banner.clear();
 		menu.clear();
 		noticeList.clear();

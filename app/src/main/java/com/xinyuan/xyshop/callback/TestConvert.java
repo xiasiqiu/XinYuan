@@ -6,7 +6,7 @@ import com.xinyuan.xyshop.entity.BaseData;
 import com.xinyuan.xyshop.entity.CatrgoryResponse;
 import com.xinyuan.xyshop.entity.GoodCategory;
 import com.xinyuan.xyshop.util.JsonUtil;
-import com.youth.xframe.utils.log.XLog;
+
 
 import java.util.List;
 
@@ -30,7 +30,6 @@ public class TestConvert<T> implements Converter<T> {
         if (baseData != null) {
             this.code = baseData.getCode();
             if (baseData.getCode() == 200) {
-                XLog.v(baseData.getDatas().toString());
                 CatrgoryResponse catrgoryResponse = new CatrgoryResponse();
                 catrgoryResponse.setCode(baseData.getCode());
 
@@ -38,7 +37,7 @@ public class TestConvert<T> implements Converter<T> {
                 }.getType());
 
                 catrgoryResponse.setDatas(goodsCategoryList);
-                XLog.list(goodsCategoryList);
+
                 return (T) catrgoryResponse;
             } else if (baseData.getCode() == 400) {
                 throw new IllegalStateException("用户授权信息无效");

@@ -126,18 +126,17 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	@Override
 	public void showState(int Sate) {
-		XLog.v("state:" + Sate);
 		switch (Sate) {
 			case 0:
-				XLog.v("加载状态中");
+				XLog.v("首页数据加载状态中");
 				xLoadingView.showLoading();
 				break;
 			case 1:
-				XLog.v("加载完毕");
+				XLog.v("首页数据加载完毕");
 				xLoadingView.showContent();
 				break;
 			case 2:
-				XLog.v("加载失败");
+				XLog.v("首页数据加载失败");
 				xLoadingView.showError();
 				break;
 
@@ -173,7 +172,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 		homeMultipleItemAdapter.addHeaderView(headView);
 
-		homeMultipleItemAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
 
 		mRecyclerView.setAdapter(homeMultipleItemAdapter);
 	}

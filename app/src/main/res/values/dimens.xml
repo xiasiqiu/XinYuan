@@ -3,4 +3,10 @@
     <dimen name="act_top_font">10sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="tv_line">2dp</dimen>
+
+    <dimen name="tv_buttom_size">36px</dimen>
+    <dimen name="tv_name_size">2dp</dimen>
+    <dimen name="tv_hint_size">2dp</dimen>
+
+
 </resources>

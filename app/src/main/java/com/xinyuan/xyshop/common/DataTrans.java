@@ -33,6 +33,14 @@ public class DataTrans {
 	}
 
 
+	public static List<ItemData> getItemData(ApiSpecialItem item) {
+
+		return getItemDataList(item.getItemData());
+
+
+	}
+
+
 	public static ItemData getItemData(String json) {
 		return JsonUtil.toBean(json, new TypeToken<ItemData>() {
 		}.getType());

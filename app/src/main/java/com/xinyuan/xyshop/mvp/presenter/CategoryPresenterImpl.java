@@ -40,12 +40,12 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
 
     @Override
     public void initData() {
-        XLog.v("分类页面开始加载数据");
+
         Subscription subscription = ApiServer.getCategoryList("aaa", "bbb")
                 .doOnSubscribe(new Action0() {
                     @Override
                     public void call() {
-                        XLog.v("分类加载中");
+
                         mCategoryView.showState(0);
 
                     }
@@ -62,7 +62,7 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
                 .subscribe(new Action1<List<GoodCategory>>() {
                     @Override
                     public void call(List<GoodCategory> goodCategoryList) {
-                        XLog.v("分类请求成功");
+
                         XLog.list(goodCategoryList);
                         cleanData(goodCategoryList);
 
@@ -71,7 +71,7 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
                     @Override
                     public void call(Throwable throwable) {
                         throwable.printStackTrace();
-                        XLog.v("分类请求失败");
+
                         mCategoryView.showState(2);
                     }
                 });
@@ -116,10 +116,9 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
         if (sharedPreferences.getInt("promotion", 0) < 0) {
             editor.remove("promotion");
             editor.apply();
-            XLog.v("PromotionListActivity");
 
         } else {
-            XLog.v("SearchGoodsShowActivity");
+
 
         }
 //        if (isBrand) {
