@@ -19,7 +19,6 @@ import com.xinyuan.xyshop.ui.goods.GoodDetailsActivity;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.youth.xframe.utils.log.XLog;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -29,10 +28,6 @@ import java.util.List;
 
 public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMultipleItem, BaseViewHolder> {
 	private Context context;
-	public static List<ApiSpecialItem> ADMultipleItemlist;
-	public static List<ApiSpecialItem> TAB_TITLE_MultipleItemlist;
-	public static List<ApiSpecialItem> TAB_MultipleItemlist;
-	public static List<ApiSpecialItem> CATEGORY_MultipleItemlist;
 
 
 	public static List<ItemGoods> goodsList;
@@ -42,7 +37,7 @@ public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMulti
 	public static List<ItemData> adList;
 
 	public static List<ApiSpecialItem> dataList;
-
+	private List<ItemGoods> goodlist;
 
 	/**
 	 * Same as QuickAdapter#QuickAdapter(Context,int) but with
@@ -58,16 +53,8 @@ public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMulti
 		addItemType(HomeMultipleItem.CATEGORY, R.layout.home_item_category);
 		addItemType(HomeMultipleItem.GOODS, R.layout.home_item_goods);
 		this.context = context;
-
-
-
 		dataList = HomePresenterImpl.getApiDataList();
-		goodsList = HomePresenterImpl.getItemGoodsList();
-		tabTitleList = HomePresenterImpl.getItemTabTitleList();
-		categoryList = HomePresenterImpl.getCategoryList();
-		tablist = HomePresenterImpl.getTabList();
-		adList = HomePresenterImpl.getItemADList();
-
+		goodlist = DataTrans.getItemGoodsList(dataList.get(11).getItemData());
 
 	}
 
@@ -78,28 +65,20 @@ public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMulti
 		switch (item.getItemType()) {
 			case HomeMultipleItem.AD:
 
-
-				List<ItemData> list = DataTrans.getItemData(dataList.get(helper.getPosition()-1));
-
+				List<ItemData> adlist = DataTrans.getItemData(dataList.get(helper.getPosition() - 1));
 				ImageView ad_view = helper.getView(R.id.home_ad_img);
-				GlideImageLoader.setImage(context, list.get(0).getImageUrl(), ad_view);
-
-
-				XLog.v("位置"+helper.getPosition()+"数据："+list.toString());
-
+				GlideImageLoader.setImage(context, adlist.get(0).getImageUrl(), ad_view);
+				OnImageViewClick(ad_view, adlist.get(0).getType(), adlist.get(0).getData(), false);
 				break;
 
 			case HomeMultipleItem.TAB_TITLE:
-				if (tab_title_num == tabTitleList.size()) {
-					tab_title_num = 0;
-				}
-				ImageView tab_title_view = helper.getView(R.id.home_tab_title);
-				GlideImageLoader.setImage(context, tabTitleList.get(tab_title_num).getImageUrl(), tab_title_view);
-				OnImageViewClick(tab_title_view, tabTitleList.get(tab_title_num).getType(), tabTitleList.get(tab_title_num).getData(), false);
-				tab_title_num++;
 
+				List<ItemData> title_list = DataTrans.getItemData(dataList.get(helper.getPosition() - 1));
+				ImageView tab_title_view = helper.getView(R.id.home_tab_title);
+				GlideImageLoader.setImage(context, title_list.get(0).getImageUrl(), tab_title_view);
 				break;
 			case HomeMultipleItem.TAB:
+
 
 				ImageView tab_view1 = helper.getView(R.id.home_tab_img1);
 				ImageView tab_view2 = helper.getView(R.id.home_tab_img2);
@@ -107,29 +86,39 @@ public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMulti
 				ImageView tab_view4 = helper.getView(R.id.home_tab_img4);
 				ImageView tab_view5 = helper.getView(R.id.home_tab_img5);
 				ImageView tab_view6 = helper.getView(R.id.home_tab_img6);
-				List<ItemData> tabitemlist = tablist.get(tab_num);
 
+				List<ItemData> tablist = DataTrans.getItemData(dataList.get(helper.getPosition() - 1));
+				GlideImageLoader.setImage(context, tablist.get(0).getImageUrl(), tab_view1);
+				GlideImageLoader.setImage(context, tablist.get(1).getImageUrl(), tab_view2);
+				GlideImageLoader.setImage(context, tablist.get(2).getImageUrl(), tab_view3);
+				GlideImageLoader.setImage(context, tablist.get(3).getImageUrl(), tab_view4);
+				GlideImageLoader.setImage(context, tablist.get(4).getImageUrl(), tab_view5);
+				GlideImageLoader.setImage(context, tablist.get(5).getImageUrl(), tab_view6);
 
 				break;
 			case HomeMultipleItem.CATEGORY:
 
-				ImageView catrgory_view = helper.getView(R.id.home_catrgory_img);
-				GlideImageLoader.setImage(context, categoryList.get(category_num).getImageUrl(), catrgory_view);
-				OnImageViewClick(catrgory_view, categoryList.get(category_num).getType(), categoryList.get(category_num).getData(), false);
 
+				List<ItemData> catrgorylist = DataTrans.getItemData(dataList.get(helper.getPosition() - 1));
+
+				ImageView catrgory_view = helper.getView(R.id.home_catrgory_img);
+
+				GlideImageLoader.setImage(context, catrgorylist.get(0).getImageUrl(), catrgory_view);
+
+
+				OnImageViewClick(catrgory_view, catrgorylist.get(0).getType(), catrgorylist.get(0).getData(), false);
 
 
 				break;
 			case HomeMultipleItem.GOODS:
-				if (goods_num == goodsList.size()) {
-					goods_num = 0;
-				}
+
+
 				ImageView goods_view = helper.getView(R.id.home_goods_img);
 				TextView goods_name = helper.getView(R.id.home_goods_name);
-				GlideImageLoader.setImage(context, goodsList.get(goods_num).getImageUrl(), goods_view);
-				goods_name.setText(goodsList.get(goods_num).getGoodsName());
-				OnGoodsViewClick(goods_view, goodsList.get(goods_num));
-				goods_num++;
+				GlideImageLoader.setImage(context, goodlist.get(helper.getPosition() - 12).getImageUrl(), goods_view);
+				goods_name.setText(goodlist.get(helper.getPosition() - 12).getGoodsName());
+
+
 				break;
 
 		}

@@ -15,28 +15,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.sunfusheng.marqueeview.MarqueeView;
-import com.trello.rxlifecycle.FragmentEvent;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.HomeMultipleItemAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.entity.HomeMultipleItem;
 import com.xinyuan.xyshop.entity.ItemData;
-import com.xinyuan.xyshop.entity.ItemGoods;
 import com.xinyuan.xyshop.mvp.contract.HomeContract;
 import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
 import com.xinyuan.xyshop.util.GlideImageLoader;
-import com.xinyuan.xyshop.util.Image;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.xframe.utils.log.XLog;
-import com.youth.xframe.widget.XToast;
 import com.youth.xframe.widget.loadingview.XLoadingView;
 
 import java.util.ArrayList;
@@ -216,11 +210,18 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		ImageView im4 = (ImageView) headView.findViewById(R.id.home_menu_4);
 		ImageView im5 = (ImageView) headView.findViewById(R.id.home_menu_5);
 
-		GlideImageLoader.setImage(context, itemList.get(0).getImageUrl(), im1);
-		GlideImageLoader.setImage(context, itemList.get(1).getImageUrl(), im2);
-		GlideImageLoader.setImage(context, itemList.get(2).getImageUrl(), im3);
-		GlideImageLoader.setImage(context, itemList.get(3).getImageUrl(), im4);
-		GlideImageLoader.setImage(context, itemList.get(4).getImageUrl(), im5);
+//		GlideImageLoader.setImage(context, getResources().getDrawable(R.drawable.home_menu1), im1);
+//		GlideImageLoader.setImage(context, getResources().getDrawable(R.drawable.home_menu2), im2);
+//		GlideImageLoader.setImage(context, getResources().getDrawable(R.drawable.home_menu3), im3);
+//		GlideImageLoader.setImage(context, getResources().getDrawable(R.drawable.home_menu4), im4);
+//		GlideImageLoader.setImage(context, getResources().getDrawable(R.drawable.home_menu5), im5);
+
+
+//		GlideImageLoader.setImage(context, itemList.get(0).getImageUrl(), im1);
+//		GlideImageLoader.setImage(context, itemList.get(1).getImageUrl(), im2);
+//		GlideImageLoader.setImage(context, itemList.get(2).getImageUrl(), im3);
+//		GlideImageLoader.setImage(context, itemList.get(3).getImageUrl(), im4);
+//		GlideImageLoader.setImage(context, itemList.get(4).getImageUrl(), im5);
 
 
 		OnImageViewClick(im1, itemList.get(0).getType(), itemList.get(0).getData(), false);

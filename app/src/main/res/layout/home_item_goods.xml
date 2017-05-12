@@ -3,15 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="710px"
-    android:layout_margin="5px"
+    android:layout_height="280dp"
+    android:layout_margin="2dp"
     android:background="@color/bg_white"
     android:orientation="vertical">
 
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="540px">
+        android:layout_height="520px">
 
         <ImageView
             android:id="@+id/home_goods_img"
@@ -24,7 +24,7 @@
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="65dp"
         android:layout_margin="20px">
 
         <TextView
@@ -33,10 +33,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:ellipsize="end"
             android:fontFamily="sans-serif-condensed"
+            android:maxLines="2"
             android:text="零度智控DOBBY跟拍口袋无人机 智能高清便携 礼盒版"
             android:textColor="@color/tv_name"
-            android:textSize="40px"/>
+            android:textSize="15sp"/>
 
         <TextView
             android:id="@+id/tv_goods_price"
@@ -45,8 +47,8 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:text="$55.3"
-            android:textSize="38px"
-            android:textColor="@color/tv_price"/>
+            android:textColor="@color/tv_price"
+            android:textSize="13sp"/>
 
         <TextView
             android:id="@+id/tv_goods_buynum"
@@ -56,8 +58,8 @@
             android:layout_marginLeft="30px"
             android:layout_toRightOf="@+id/tv_goods_price"
             android:text="23334人购买"
-            android:textSize="34px"
-            android:textColor="@color/tv_hint"/>
+            android:textColor="@color/tv_hint"
+            android:textSize="12sp"/>
     </com.zhy.autolayout.AutoRelativeLayout>
 
 </com.zhy.autolayout.AutoLinearLayout>

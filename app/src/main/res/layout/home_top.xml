@@ -23,6 +23,7 @@
             android:layout_height="185px"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="50px"
+            android:background="@drawable/home_menu5"
             android:scaleType="fitXY"/>
 
         <ImageView
@@ -31,6 +32,7 @@
             android:layout_height="185px"
             android:layout_marginLeft="80px"
             android:layout_toRightOf="@id/home_menu_1"
+            android:background="@drawable/home_menu4"
             android:scaleType="fitXY"/>
 
         <ImageView
@@ -38,6 +40,7 @@
             android:layout_width="132px"
             android:layout_height="185px"
             android:layout_centerHorizontal="true"
+            android:background="@drawable/home_menu3"
             android:scaleType="fitXY"/>
 
         <ImageView
@@ -46,6 +49,7 @@
             android:layout_height="185px"
             android:layout_marginLeft="80px"
             android:layout_toRightOf="@id/home_menu_3"
+            android:background="@drawable/home_menu2"
             android:scaleType="fitXY"/>
 
         <ImageView
@@ -53,6 +57,7 @@
             android:layout_width="132px"
             android:layout_height="185px"
             android:layout_alignParentRight="true"
+            android:background="@drawable/home_menu1"
             android:layout_marginRight="50px"
             android:scaleType="fitXY"/>
 
@@ -83,6 +88,7 @@
             android:id="@+id/marqueeView"
             android:layout_width="0dp"
             android:layout_height="55px"
+            android:layout_marginBottom="2px"
             android:layout_gravity="center_vertical"
             android:layout_weight="9"
             app:mvAnimDuration="1000"

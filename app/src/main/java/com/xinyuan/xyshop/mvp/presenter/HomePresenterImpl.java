@@ -1,13 +1,18 @@
 package com.xinyuan.xyshop.mvp.presenter;
 
+import com.google.gson.reflect.TypeToken;
+import com.lzy.okgo.OkGo;
 import com.xinyuan.xyshop.common.DataTrans;
+import com.xinyuan.xyshop.entity.ApiResponse;
 import com.xinyuan.xyshop.entity.ApiSpecialItem;
 import com.xinyuan.xyshop.entity.HomeMultipleItem;
 import com.xinyuan.xyshop.entity.ItemData;
 import com.xinyuan.xyshop.entity.ItemGoods;
 import com.xinyuan.xyshop.entity.LzyResponse;
 import com.xinyuan.xyshop.http.ApiServer;
+import com.xinyuan.xyshop.http.Urls;
 import com.xinyuan.xyshop.mvp.contract.HomeContract;
+import com.xinyuan.xyshop.util.JsonUtil;
 import com.youth.xframe.utils.log.XLog;
 
 import java.util.ArrayList;
@@ -50,30 +55,33 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 
 	@Override
 	public void initData() {
-		Subscription subscription = ApiServer.getApiSpecialList("aaa", "bbb")
+		Subscription subscription = ApiServer.getApiData(Urls.API_INDEX)
 				.doOnSubscribe(new Action0() {
 					@Override
 					public void call() {
 						view.showState(0);
-
+						XLog.v("首页请求中");
 					}
 				})
-				.map(new Func1<LzyResponse<List<ApiSpecialItem>>, List<ApiSpecialItem>>() {
+				.map(new Func1<ApiResponse, String>() {
+
 
 					@Override
-					public List<ApiSpecialItem> call(LzyResponse<List<ApiSpecialItem>> listLzyResponse) {
-
-						return listLzyResponse.itemList;
+					public String call(ApiResponse apiResponse) {
+						XLog.v("首页请求操作");
+						return apiResponse.datas;
 					}
 				})
 				.observeOn(AndroidSchedulers.mainThread())
-				.subscribe(new Action1<List<ApiSpecialItem>>() {
+				.subscribe(new Action1<String>() {
 					@Override
-					public void call(List<ApiSpecialItem> apiSpecialItemList) {
-						XLog.v("首页请求成功");
-						dataClean(apiSpecialItemList);
+					public void call(String apidatas) {
+						XLog.v("首页请求成功"+apidatas.toString());
+						dataClean(apidatas);
 
 					}
+
+
 				}, new Action1<Throwable>() {
 					@Override
 					public void call(Throwable throwable) {
@@ -85,12 +93,15 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 	}
 
 
-	private void dataClean(List<ApiSpecialItem> lists) {
+	private void dataClean(String datas) {
+
+
+		List<ApiSpecialItem> lists = JsonUtil.toBean(datas, "itemList", new TypeToken<List<ApiSpecialItem>>() {
+
+		}.getType());
 
 
 		dataList = new ArrayList<>();
-
-
 		HOMEMultipleItemlist = new ArrayList<>();
 		ADList = new ArrayList<>();
 		NOTICEList = new ArrayList<>();
@@ -135,8 +146,7 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 			}
 		}
 
-		XLog.list(getTabList());
-		XLog.list(getItemTabTitleList());
+
 		view.addHead(getHomeMultipleItemlist());
 		view.showBanner(banner);
 		view.showMenu(menu);
@@ -204,5 +214,6 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 		goodsList.clear();
 
 	}
+
 
 }

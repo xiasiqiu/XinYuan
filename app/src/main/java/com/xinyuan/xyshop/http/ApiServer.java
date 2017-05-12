@@ -4,7 +4,9 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okrx.RxAdapter;
 import com.xinyuan.xyshop.callback.JsonConvert;
 import com.xinyuan.xyshop.callback.TestConvert;
+import com.xinyuan.xyshop.entity.ApiResponse;
 import com.xinyuan.xyshop.entity.ApiSpecialItem;
+import com.xinyuan.xyshop.entity.Brand;
 import com.xinyuan.xyshop.entity.CatrgoryResponse;
 import com.xinyuan.xyshop.entity.GoodCategory;
 import com.xinyuan.xyshop.entity.LzyResponse;
@@ -20,321 +22,29 @@ import rx.Observable;
 public class ApiServer {
 
 
-    public static Observable<LzyResponse<List<ApiSpecialItem>>> getApiSpecialList(String header, String param) {
-        return OkGo.get(Urls.API_INDEX)
-                .getCall(new JsonConvert<LzyResponse<List<ApiSpecialItem>>>() {
-                }, RxAdapter.<LzyResponse<List<ApiSpecialItem>>>create());
+	public static Observable<LzyResponse<List<ApiSpecialItem>>> getApiSpecialList(String header, String param) {
+		return OkGo.get(Urls.API_INDEX)
+				.getCall(new JsonConvert<LzyResponse<List<ApiSpecialItem>>>() {
+				}, RxAdapter.<LzyResponse<List<ApiSpecialItem>>>create());
 
-    }
+	}
 
-    public static Observable<CatrgoryResponse<List<GoodCategory>>> getCategoryList(String header, String param) {
-        return OkGo.get(Urls.URL_GOODS_CATEGORY)
-                .getCall(new TestConvert<CatrgoryResponse<List<GoodCategory>>>() {
-                }, RxAdapter.<CatrgoryResponse<List<GoodCategory>>>create());
+	public static Observable<CatrgoryResponse<List<GoodCategory>>> getCategoryList(String header, String param) {
+		return OkGo.get(Urls.URL_GOODS_CATEGORY)
+				.getCall(new TestConvert<CatrgoryResponse<List<GoodCategory>>>() {
+				}, RxAdapter.<CatrgoryResponse<List<GoodCategory>>>create());
 
-    }
+	}
 
 
+	public static Observable<ApiResponse<String>> getApiData(String url) {
 
+		return OkGo.get(url)
+				.getCall(new JsonConvert<ApiResponse<String>>() {
+				}, RxAdapter.<ApiResponse<String>>create());
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	}
 
 
 }
