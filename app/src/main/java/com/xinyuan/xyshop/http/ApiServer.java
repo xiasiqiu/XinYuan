@@ -2,14 +2,12 @@ package com.xinyuan.xyshop.http;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okrx.RxAdapter;
+import com.xinyuan.xyshop.bean.CatrgoryResponse;
+import com.xinyuan.xyshop.bean.LzyResponse;
 import com.xinyuan.xyshop.callback.JsonConvert;
 import com.xinyuan.xyshop.callback.TestConvert;
-import com.xinyuan.xyshop.entity.ApiResponse;
 import com.xinyuan.xyshop.entity.ApiSpecialItem;
-import com.xinyuan.xyshop.entity.Brand;
-import com.xinyuan.xyshop.entity.CatrgoryResponse;
 import com.xinyuan.xyshop.entity.GoodCategory;
-import com.xinyuan.xyshop.entity.LzyResponse;
 
 import java.util.List;
 
@@ -35,16 +33,4 @@ public class ApiServer {
 				}, RxAdapter.<CatrgoryResponse<List<GoodCategory>>>create());
 
 	}
-
-
-	public static Observable<ApiResponse<String>> getApiData(String url) {
-
-		return OkGo.get(url)
-				.getCall(new JsonConvert<ApiResponse<String>>() {
-				}, RxAdapter.<ApiResponse<String>>create());
-
-
-	}
-
-
 }

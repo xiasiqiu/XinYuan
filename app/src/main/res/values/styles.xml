@@ -22,6 +22,10 @@
     <style name="blurActionbarStyle" parent="Widget.AppCompat.Light.ActionBar.Solid">
         <item name="background">@android:color/transparent</item>
     </style>
-
+    <style name="Line">
+        <item name="android:background">@color/boder</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1.0dip</item>
+    </style>
 
 </resources>

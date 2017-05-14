@@ -1,4 +1,4 @@
-package com.xinyuan.xyshop.entity;
+package com.xinyuan.xyshop.bean;
 
 import java.io.Serializable;
 

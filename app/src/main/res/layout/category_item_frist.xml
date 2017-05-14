@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/llView"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:layout_marginTop="50px"
               android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvGoodsClassId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tv_category_first"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20px"
+        android:textColor="@color/tv_hint"
         android:textSize="36px"/>
+
+    <View
+        android:id="@+id/tvLine"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_margin="10px"
+        android:layout_marginTop="50px"
+        android:layout_height="5px"
+        android:background="@color/colorLine"/>
 
 </LinearLayout>

@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.sunfusheng.marqueeview.MarqueeView;
 import com.xinyuan.xyshop.R;
@@ -30,7 +31,6 @@ import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
-import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.loadingview.XLoadingView;
 
 import java.util.ArrayList;
@@ -122,15 +122,15 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	public void showState(int Sate) {
 		switch (Sate) {
 			case 0:
-				XLog.v("首页数据加载状态中");
+
 				xLoadingView.showLoading();
 				break;
 			case 1:
-				XLog.v("首页数据加载完毕");
+
 				xLoadingView.showContent();
 				break;
 			case 2:
-				XLog.v("首页数据加载失败");
+
 				xLoadingView.showError();
 				break;
 

@@ -20,6 +20,9 @@ public class CategoryContract {
 
         void OnImageViewClick(View view, final String type, final String data, boolean isAD);
 
+        void showFrist(GoodCategory classItem, int m);
+        void getData();
+
 
     }
 

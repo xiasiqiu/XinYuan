@@ -1,13 +1,11 @@
 package com.xinyuan.xyshop.callback;
 
 
-import android.util.Log;
-
 import com.google.gson.stream.JsonReader;
 import com.lzy.okgo.callback.AbsCallback;
 import com.lzy.okgo.request.BaseRequest;
-import com.xinyuan.xyshop.entity.LzyResponse;
-import com.xinyuan.xyshop.entity.SimpleResponse;
+import com.xinyuan.xyshop.bean.LzyResponse;
+import com.xinyuan.xyshop.bean.SimpleResponse;
 import com.xinyuan.xyshop.util.Convert;
 
 

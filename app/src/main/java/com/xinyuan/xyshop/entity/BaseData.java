@@ -1,5 +1,7 @@
 package com.xinyuan.xyshop.entity;
 
+import java.io.Serializable;
+
 /**
  * Title:
  * Description:
@@ -7,7 +9,7 @@ package com.xinyuan.xyshop.entity;
  * 作者：fx on 2017/5/11 00:01
  */
 
-public class BaseData {
+public class BaseData <T> implements Serializable{
     private int code;
     private String datas;
 

@@ -12,8 +12,12 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data android:name="design_width" android:value="1080"/>
-        <meta-data android:name="design_height" android:value="1920"/>
+        <meta-data
+            android:name="design_width"
+            android:value="1080"/>
+        <meta-data
+            android:name="design_height"
+            android:value="1920"/>
         <meta-data
             android:name="com.xinyuan.xyshop.util.GlideConfiguration"
             android:value="GlideModule"/>
@@ -35,12 +39,14 @@
         <activity
             android:name=".ui.welcome.GuideActivity"
             android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
         <activity
             android:name=".ui.welcome.WelcomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
-
+        </activity>
+        <activity android:name=".ui.goods.PromotionListActivity">
+        </activity>
+        <activity android:name=".ui.goods.SearchGoodsShowActivity">
         </activity>
     </application>
 

@@ -4,12 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
-import com.xinyuan.xyshop.entity.CatrgoryResponse;
+import com.xinyuan.xyshop.bean.CatrgoryResponse;
 import com.xinyuan.xyshop.entity.GoodCategory;
-import com.xinyuan.xyshop.entity.GoodCategoryList;
 import com.xinyuan.xyshop.http.ApiServer;
 import com.xinyuan.xyshop.mvp.contract.CategoryContract;
-import com.xinyuan.xyshop.mvp.contract.HomeContract;
+import com.xinyuan.xyshop.ui.goods.PromotionListActivity;
+import com.xinyuan.xyshop.ui.goods.SearchGoodsShowActivity;
 import com.youth.xframe.utils.log.XLog;
 
 import java.util.ArrayList;
@@ -29,11 +29,10 @@ import rx.functions.Func1;
  */
 
 public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter {
-
 	private CategoryContract.CategoryView mCategoryView;
-	public static List<GoodCategory> goodsCategoryList_one;
-	public static List<GoodCategory> goodsCategoryList_three;
-	public static List<GoodCategory> goodsCategoryList_two;
+	public static List<GoodCategory> goodsCategoryList_one = new ArrayList();
+	public static List<GoodCategory> goodsCategoryList_three = new ArrayList();
+	public static List<GoodCategory> goodsCategoryList_two = new ArrayList();
 
 	public CategoryPresenterImpl(CategoryContract.CategoryView view) {
 		this.mCategoryView = view;
@@ -41,14 +40,14 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
 
 	}
 
-
 	@Override
 	public void initData() {
+		XLog.v("分类页面开始加载数据");
 		Subscription subscription = ApiServer.getCategoryList("aaa", "bbb")
 				.doOnSubscribe(new Action0() {
 					@Override
 					public void call() {
-
+						XLog.v("分类加载中");
 						mCategoryView.showState(0);
 
 					}
@@ -65,8 +64,8 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
 				.subscribe(new Action1<List<GoodCategory>>() {
 					@Override
 					public void call(List<GoodCategory> goodCategoryList) {
-
-
+						XLog.v("分类请求成功");
+						XLog.list(goodCategoryList);
 						cleanData(goodCategoryList);
 
 					}
@@ -74,15 +73,13 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
 					@Override
 					public void call(Throwable throwable) {
 						throwable.printStackTrace();
-
+						XLog.v("分类请求失败");
 						mCategoryView.showState(2);
 					}
 				});
-
 	}
 
 	private void cleanData(List<GoodCategory> goodsCategoryList) {
-
 		goodsCategoryList_one = new ArrayList();
 		goodsCategoryList_three = new ArrayList();
 		goodsCategoryList_two = new ArrayList();
@@ -107,17 +104,44 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
 		}
 
 
+		goodsCategoryList_one.add(0, new GoodCategory(0, "品牌推荐", "https://java.bizpower.com/wap/images/degault.png"));
 
-
-
-
-
-
-
-
-
-
-
-
+		mCategoryView.getData();
+		for (int m = 0; m < goodsCategoryList_one.size(); m++) {
+			mCategoryView.showFrist(goodsCategoryList_one.get(m),m);
+		}
 	}
+
+	public static void jump(Context context, int cat, boolean isBrand) {
+		Intent i;
+		SharedPreferences sharedPreferences = context.getSharedPreferences("promotion", 0);
+		SharedPreferences.Editor editor = sharedPreferences.edit();
+		if (sharedPreferences.getInt("promotion", 0) < 0) {
+			editor.remove("promotion");
+			editor.apply();
+		i = new Intent(context, PromotionListActivity.class);
+		} else {
+			i = new Intent(context, SearchGoodsShowActivity.class);
+		}
+		if (isBrand) {
+			i.putExtra("keyword", " ");
+			i.putExtra("brandId", cat);
+			i.putExtra("brand", cat);
+		} else {
+			i.putExtra("cat", cat);
+		}
+		context.startActivity(i);
+	}
+
+
+	public static List<GoodCategory>getGoodsCategoryList_one(){
+		return goodsCategoryList_one;
+	}
+	public static List<GoodCategory>getGoodsCategoryList_two(){
+		return goodsCategoryList_two;
+	}
+	public static List<GoodCategory>getGoodsCategoryList_three(){
+		return goodsCategoryList_three;
+	}
+
 }

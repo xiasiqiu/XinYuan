@@ -1,4 +1,6 @@
-package com.xinyuan.xyshop.entity;
+package com.xinyuan.xyshop.bean;
+
+import com.xinyuan.xyshop.entity.GoodCategory;
 
 import java.io.Serializable;
 import java.util.List;
