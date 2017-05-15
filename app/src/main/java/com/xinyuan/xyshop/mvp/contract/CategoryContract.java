@@ -16,7 +16,7 @@ import com.xinyuan.xyshop.entity.GoodCategory;
 public class CategoryContract {
     public interface CategoryView extends BaseView<CategoryPresenter> {
 
-        void addGoodsClass(GoodCategory classItem, int m);
+
 
         void OnImageViewClick(View view, final String type, final String data, boolean isAD);
 

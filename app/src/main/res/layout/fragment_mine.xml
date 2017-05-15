@@ -85,7 +85,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="30px"
                 android:background="@null"
-                android:hint="手机/会员名/邮箱"
+                android:hint="请输入密码"
                 android:textColor="@color/tv_name"
                 android:textColorHint="@color/tv_hint"
                 android:textSize="42px"/>

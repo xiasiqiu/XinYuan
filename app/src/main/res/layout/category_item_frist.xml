@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/llView"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:layout_marginTop="50px"
-              android:orientation="vertical">
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llView"
+    android:layout_width="220px"
+    android:layout_height="220px"
+    android:layout_marginTop="20px"
+    android:background="@color/bg_white"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvGoodsClassId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:visibility="gone"/>
-
-    <TextView
-        android:id="@+id/tv_category_first"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20px"
-        android:textColor="@color/tv_hint"
-        android:textSize="36px"/>
-
-    <View
-        android:id="@+id/tvLine"
-        android:layout_gravity="center_horizontal"
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
-        android:layout_margin="10px"
-        android:layout_marginTop="50px"
-        android:layout_height="5px"
-        android:background="@color/colorLine"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="25px"
+        android:layout_marginBottom="50px"
+        android:layout_margin="20px">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tvGoodsClassId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_category_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/tv_hint"
+            android:text="热门分类"
+            android:textSize="42px"/>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+
+
+</com.zhy.autolayout.AutoRelativeLayout>

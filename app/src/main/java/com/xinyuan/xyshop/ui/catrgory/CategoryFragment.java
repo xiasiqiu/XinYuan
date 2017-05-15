@@ -14,6 +14,7 @@ import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.GoodsCategoryAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.common.AddViewHolder;
+import com.xinyuan.xyshop.entity.Brand;
 import com.xinyuan.xyshop.entity.GoodCategory;
 import com.xinyuan.xyshop.mvp.contract.CategoryContract;
 import com.xinyuan.xyshop.mvp.presenter.CategoryPresenterImpl;
@@ -77,16 +78,19 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 		this.presenter = presenter;
 	}
 
+
 	@Override
 	public void showState(int Sate) {
 
 	}
 
 
-	@Override
-	public void addGoodsClass(GoodCategory classItem, int m) {
 
+	public void showBrand(List<Brand>list){
+
+	
 	}
+
 
 	@Override
 	public void OnImageViewClick(View view, String type, String data, boolean isAD) {
@@ -221,10 +225,10 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 
 
 	private void setCurrentGoodsClass(AddViewHolder holder, String url) {
-		holder.setTextColor(R.id.tv_category_first, R.color.colorPrimary).setBackgroundColor(R.id.tvLine, R.color.colorPrimary).setDimensionPixelSize(R.id.tvLine, R.dimen.tv_name_size);
+		holder.setTextColor(R.id.tv_category_first, R.color.colorPrimary).setBackgroundColor(R.id.llView, R.color.bg_gray);
 	}
 	private void resetCurrentGoodsClass(AddViewHolder holder, String url) {
-		holder.setTextColor(R.id.tv_category_first, R.color.tv_hint).setBackgroundColor(R.id.tvLine, R.color.colorLine).setDimensionPixelSize(R.id.tvLine, R.dimen.tv_name_size);
+		holder.setTextColor(R.id.tv_category_first, R.color.tv_hint).setBackgroundColor(R.id.llView, R.color.bg_white);
 	}
 
 }

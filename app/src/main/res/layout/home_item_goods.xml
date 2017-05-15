@@ -3,15 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="900px"
-    android:layout_margin="10px"
+    android:layout_height="wrap_content"
+    android:layout_margin="5px"
     android:background="@color/bg_white"
     android:orientation="vertical">
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="400px"
-        android:layout_margin="25px">
+        android:layout_height="550px">
 
         <ImageView
             android:id="@+id/home_goods_img"
@@ -24,8 +23,9 @@
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="300px"
-        android:padding="20px">
+        android:layout_height="200px"
+        android:layout_marginLeft="30px"
+        android:background="@color/bg_white">
 
         <TextView
             android:id="@+id/home_goods_name"
@@ -33,30 +33,33 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="30px"
             android:fontFamily="sans-serif-condensed"
             android:text="零度智控DOBBY跟拍口袋无人机 智能高清便携 礼盒版"
             android:textColor="@color/tv_name"
-            android:textSize="45px"/>
+            android:textSize="36px"/>
 
         <TextView
             android:id="@+id/tv_goods_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="30px"
             android:text="$55.3"
-            android:textSize="42px"
-            android:textColor="@color/tv_price"/>
+            android:textColor="@color/tv_price"
+            android:textSize="34px"/>
 
         <TextView
             android:id="@+id/tv_goods_buynum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/tv_goods_price"
+            android:layout_alignTop="@+id/tv_goods_price"
+            android:layout_marginLeft="50px"
+            android:layout_toRightOf="@+id/tv_goods_price"
             android:text="23334人购买"
-            android:textSize="42px"
-            android:textColor="@color/tv_hint"/>
+            android:textColor="@color/tv_hint"
+            android:textSize="30px"/>
     </com.zhy.autolayout.AutoRelativeLayout>
 
 </com.zhy.autolayout.AutoLinearLayout>
