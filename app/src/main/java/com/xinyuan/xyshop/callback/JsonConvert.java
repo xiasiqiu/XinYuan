@@ -2,10 +2,10 @@ package com.xinyuan.xyshop.callback;
 
 import com.google.gson.stream.JsonReader;
 import com.lzy.okgo.convert.Converter;
-import com.xinyuan.xyshop.bean.CatrgoryResponse;
 import com.xinyuan.xyshop.bean.LzyResponse;
 import com.xinyuan.xyshop.bean.SimpleResponse;
 import com.xinyuan.xyshop.util.Convert;
+import com.xinyuan.xyshop.util.JsonUtil;
 import com.youth.xframe.utils.log.XLog;
 
 import java.lang.reflect.ParameterizedType;
@@ -46,18 +46,33 @@ public class JsonConvert<T> implements Converter<T> {
 			response.close();
 			return (T) simpleResponse.toLzyResponse();
 		} else if (rawType == LzyResponse.class) {
-			LzyResponse lzyResponse = Convert.fromJson(jsonReader, type);
-			response.close();
-			int code = lzyResponse.code;
-			return codeResponse(code, (T) lzyResponse);
-		} else if (rawType == CatrgoryResponse.class) {
 
-			//有数据类型，表示有data
-			CatrgoryResponse catrgoryResponse = Convert.fromJson(jsonReader, type);
+			LzyResponse lzyResponse = JsonUtil.getBaseData(response.body().string());
+
 			response.close();
-			int code = catrgoryResponse.code;
-			XLog.v("分類來了"+catrgoryResponse.toString());
-			return codeResponse(code, (T) catrgoryResponse);
+
+			XLog.v("json数据"+lzyResponse.getDatas().toString());
+			int code = lzyResponse.code;
+			//这里的0是以下意思
+			//一般来说服务器会和客户端约定一个数表示成功，其余的表示失败，这里根据实际情况修改
+			if (code == 200) {
+				//noinspection unchecked
+				return (T) lzyResponse;
+			} else if (code == 104) {
+				//比如：用户授权信息无效，在此实现相应的逻辑，弹出对话或者跳转到其他页面等,该抛出错误，会在onError中回调。
+				throw new IllegalStateException("用户授权信息无效");
+			} else if (code == 105) {
+				//比如：用户收取信息已过期，在此实现相应的逻辑，弹出对话或者跳转到其他页面等,该抛出错误，会在onError中回调。
+				throw new IllegalStateException("用户收取信息已过期");
+			} else if (code == 106) {
+				//比如：用户账户被禁用，在此实现相应的逻辑，弹出对话或者跳转到其他页面等,该抛出错误，会在onError中回调。
+				throw new IllegalStateException("用户账户被禁用");
+			} else if (code == 300) {
+				//比如：其他乱七八糟的等，在此实现相应的逻辑，弹出对话或者跳转到其他页面等,该抛出错误，会在onError中回调。
+				throw new IllegalStateException("其他乱七八糟的等");
+			} else {
+				throw new IllegalStateException("错误代码：" + code);
+			}
 
 		} else {
 			response.close();
@@ -66,24 +81,5 @@ public class JsonConvert<T> implements Converter<T> {
 
 	}
 
-	private T codeResponse(int code,T bean) {
-		if (code == 200) {
-			//noinspection unchecked
-			return (T) bean;
-		} else if (code == 104) {
-			//比如：用户授权信息无效，在此实现相应的逻辑，弹出对话或者跳转到其他页面等,该抛出错误，会在onError中回调。
-			throw new IllegalStateException("用户授权信息无效");
-		} else if (code == 105) {
-			//比如：用户收取信息已过期，在此实现相应的逻辑，弹出对话或者跳转到其他页面等,该抛出错误，会在onError中回调。
-			throw new IllegalStateException("用户收取信息已过期");
-		} else if (code == 106) {
-			//比如：用户账户被禁用，在此实现相应的逻辑，弹出对话或者跳转到其他页面等,该抛出错误，会在onError中回调。
-			throw new IllegalStateException("用户账户被禁用");
-		} else if (code == 300) {
-			//比如：其他乱七八糟的等，在此实现相应的逻辑，弹出对话或者跳转到其他页面等,该抛出错误，会在onError中回调。
-			throw new IllegalStateException("其他乱七八糟的等");
-		} else {
-			throw new IllegalStateException("错误代码：" + code);
-		}
-	}
+
 }

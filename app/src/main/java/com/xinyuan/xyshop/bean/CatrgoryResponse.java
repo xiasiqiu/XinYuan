@@ -14,7 +14,7 @@ public class CatrgoryResponse<T> implements Serializable {
     private static final long serialVersionUID = 5213230387175982834L;
 
     public int code;
-    public List<GoodCategory> itemList;
+    public String datas;
 
     public int getCode() {
         return code;
@@ -24,19 +24,19 @@ public class CatrgoryResponse<T> implements Serializable {
         this.code = code;
     }
 
-    public List<GoodCategory> getItemList() {
-        return itemList;
+    public String getDatas() {
+        return datas;
     }
 
-    public void setDatas(List<GoodCategory> datas) {
-        this.itemList = datas;
+    public void setDatas(String datas) {
+        this.datas = datas;
     }
 
     @Override
     public String toString() {
-        return "LzyResponse{" +
+        return "CatrgoryResponse{" +
                 "code=" + code +
-                ", datas=" + itemList +
+                ", datas='" + datas + '\'' +
                 '}';
     }
 }

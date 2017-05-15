@@ -14,7 +14,7 @@ public class LzyResponse<T> implements Serializable {
 	private static final long serialVersionUID = 5213230387175987834L;
 
 	public int code;
-	public List<ApiSpecialItem> itemList;
+	public T datas;
 
 	public int getCode() {
 		return code;
@@ -24,19 +24,23 @@ public class LzyResponse<T> implements Serializable {
 		this.code = code;
 	}
 
-	public List<ApiSpecialItem> getItemList() {
-		return itemList;
+	public T getDatas() {
+		return datas;
 	}
 
-	public void setDatas(List<ApiSpecialItem> datas) {
-		this.itemList = datas;
+	public void setDatas(T datas) {
+		this.datas = datas;
 	}
 
 	@Override
 	public String toString() {
 		return "LzyResponse{" +
 				"code=" + code +
-				", datas=" + itemList +
+				", datas=" + datas +
 				'}';
 	}
+
+
+
+
 }

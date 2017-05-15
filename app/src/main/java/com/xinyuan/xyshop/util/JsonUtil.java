@@ -1,7 +1,7 @@
 package com.xinyuan.xyshop.util;
 
 import com.google.gson.Gson;
-import com.xinyuan.xyshop.entity.BaseData;
+import com.xinyuan.xyshop.bean.LzyResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -75,10 +75,10 @@ public class JsonUtil {
 		return error;
 	}
 
-	public static BaseData getBaseData(String json) {
+	public static LzyResponse getBaseData(String json) {
 		try {
 			JSONObject object = new JSONObject(json);
-			BaseData baseData = new BaseData();
+			LzyResponse baseData = new LzyResponse();
 			baseData.setCode(object.optInt("code"));
 			baseData.setDatas(object.optString("datas"));
 			return baseData;

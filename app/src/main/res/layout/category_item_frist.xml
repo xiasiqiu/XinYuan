@@ -2,18 +2,14 @@
 <com.zhy.autolayout.AutoRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/llView"
-    android:layout_width="220px"
-    android:layout_height="220px"
-    android:layout_marginTop="20px"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@color/bg_white"
     android:orientation="vertical">
 
     <com.zhy.autolayout.AutoRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="25px"
-        android:layout_marginBottom="50px"
-        android:layout_margin="20px">
+        android:layout_width="240px"
+        android:layout_height="150px">
 
         <TextView
             android:id="@+id/tvGoodsClassId"
@@ -27,9 +23,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textColor="@color/tv_hint"
+            android:textColor="@color/tv_normal"
             android:text="热门分类"
-            android:textSize="42px"/>
+            android:textSize="40px"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/bg_gray"/>
 
     </com.zhy.autolayout.AutoRelativeLayout>
 

@@ -21,7 +21,6 @@
             android:layout_height="6.0dip"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10.0dip"
             android:layout_marginRight="10.0dip"
             android:src="@drawable/nc_sharp_dot2"/>
 
@@ -31,8 +30,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20.0dip"
-            android:textColor="@color/colorFont"/>
+          android:layout_marginLeft="30px"
+            android:textSize="38px"
+            android:textColor="@color/tv_normal"/>
 
         <ImageView
             android:id="@+id/btnGoodsClass"

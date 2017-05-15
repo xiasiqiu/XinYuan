@@ -28,7 +28,7 @@
             android:drawableTop="@drawable/act_home_scan"
             android:text="@string/act_home_top_scan"
             android:textColor="@color/bg_white"
-            android:textSize="@dimen/act_top_font"/>
+            android:textSize="32px"/>
 
         <EditText
             android:id="@+id/frag_home_et_search"
@@ -56,7 +56,7 @@
             android:drawableTop="@drawable/act_home_msg"
             android:text="@string/act_home_top_msg"
             android:textColor="@color/bg_white"
-            android:textSize="@dimen/act_top_font"/>
+            android:textSize="32px"/>
 
     </com.zhy.autolayout.AutoLinearLayout>
 </android.support.v7.widget.Toolbar>

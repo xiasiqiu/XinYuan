@@ -4,7 +4,10 @@ import android.view.View;
 
 import com.xinyuan.xyshop.base.BasePresenter;
 import com.xinyuan.xyshop.base.BaseView;
+import com.xinyuan.xyshop.entity.Brand;
 import com.xinyuan.xyshop.entity.GoodCategory;
+
+import java.util.List;
 
 /**
  * Title:
@@ -24,10 +27,10 @@ public class CategoryContract {
         void getData();
 
 
+
     }
 
     public interface CategoryPresenter extends BasePresenter<CategoryView> {
-
 
     }
 }

@@ -23,7 +23,7 @@
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200px"
+        android:layout_height="220px"
         android:layout_marginLeft="30px"
         android:background="@color/bg_white">
 
@@ -34,20 +34,22 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30px"
+            android:maxLines="2"
+            android:ellipsize="end"
             android:fontFamily="sans-serif-condensed"
             android:text="零度智控DOBBY跟拍口袋无人机 智能高清便携 礼盒版"
             android:textColor="@color/tv_name"
-            android:textSize="36px"/>
+            android:textSize="38px"/>
 
         <TextView
             android:id="@+id/tv_goods_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="30px"
+            android:layout_marginBottom="20px"
             android:text="$55.3"
             android:textColor="@color/tv_price"
-            android:textSize="34px"/>
+            android:textSize="36px"/>
 
         <TextView
             android:id="@+id/tv_goods_buynum"
@@ -59,7 +61,7 @@
             android:layout_toRightOf="@+id/tv_goods_price"
             android:text="23334人购买"
             android:textColor="@color/tv_hint"
-            android:textSize="30px"/>
+            android:textSize="32px"/>
     </com.zhy.autolayout.AutoRelativeLayout>
 
 </com.zhy.autolayout.AutoLinearLayout>

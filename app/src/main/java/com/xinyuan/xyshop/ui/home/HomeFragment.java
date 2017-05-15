@@ -60,6 +60,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	private View headView;
 
 
+
 	private Context context;
 	private HomeContract.HomePresenter presenter;
 	private HomeMultipleItemAdapter homeMultipleItemAdapter;
@@ -144,7 +145,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 		mSwipeRefreshLayout.setOnRefreshListener(this);
 
-		mSwipeRefreshLayout.setColorSchemeColors(Color.rgb(47, 223, 189));
+		mSwipeRefreshLayout.setColorSchemeColors(Color.rgb(29,160,57));
 
 		headView = getActivity().getLayoutInflater().inflate(R.layout.home_top, (ViewGroup) mRecyclerView.getParent(), false);
 

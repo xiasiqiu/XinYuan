@@ -7,10 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
 import com.xinyuan.xyshop.R;
+import com.xinyuan.xyshop.adapter.BrandGridViewAdapter;
 import com.xinyuan.xyshop.adapter.GoodsCategoryAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.common.AddViewHolder;
@@ -18,7 +20,10 @@ import com.xinyuan.xyshop.entity.Brand;
 import com.xinyuan.xyshop.entity.GoodCategory;
 import com.xinyuan.xyshop.mvp.contract.CategoryContract;
 import com.xinyuan.xyshop.mvp.presenter.CategoryPresenterImpl;
+import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.SystemBarHelper;
+import com.youth.xframe.utils.log.XLog;
+import com.youth.xframe.widget.loadingview.XLoadingView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,12 +51,18 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 	@BindView(R.id.svGoodsClassRoot)
 	ScrollView svGoodsClassRoot;
 
-	@BindView(R.id.gvBrand)
-	GridView gvBrand;
+
 	@BindView(R.id.svGoodsClass)
 	ScrollView svGoodsClass;
 	@BindView(R.id.llGoodsClass)
 	LinearLayout llGoodsClass;
+	@BindView(R.id.cagetory_img)
+	ImageView categroy_img;
+
+
+	@BindView(R.id.category_loadingView)
+	XLoadingView xLoadingView;
+
 	@Override
 	protected void lazyLoad() {
 
@@ -71,6 +82,7 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 	@Override
 	protected void initData(@Nullable Bundle savedInstanceState) {
 		presenter.initData();
+
 	}
 
 	@Override
@@ -81,14 +93,21 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 
 	@Override
 	public void showState(int Sate) {
+		switch (Sate) {
+			case 0:
 
-	}
+				xLoadingView.showLoading();
+				break;
+			case 1:
 
+				xLoadingView.showContent();
+				break;
+			case 2:
 
+				xLoadingView.showError();
+				break;
 
-	public void showBrand(List<Brand>list){
-
-	
+		}
 	}
 
 
@@ -100,24 +119,35 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 	@Override
 	public void showFrist(GoodCategory classItem, int m) {
 		AddViewHolder holder = new AddViewHolder(getActivity(), R.layout.category_item_frist);
-		holder.setText(R.id.tvGoodsClassId, String.valueOf(classItem.getCategoryId())).setText(R.id.tv_category_first,classItem.getCategoryName());
+		XLog.v(classItem.toString());
+		holder.setText(R.id.tvGoodsClassId, String.valueOf(classItem.getCategoryId())).setText(R.id.tv_category_first, classItem.getCategoryName());
 		if (m == 0) {
+
 			setCurrentGoodsClass(holder, classItem.getAppImageUrl());
 			this.currentGoodsClassView = holder;
 			this.currentItem = m;
+			String goodsClassId = holder.getText(R.id.tvGoodsClassId);
+
+			CategoryFragment.this.showGoodsClass(goodsClassId);
+			GlideImageLoader.setImage(getContext(), classItem.getAppImageUrl(), categroy_img);
 		}
 		this.llGoodsClassRoot.addView(holder.getCustomView());
 		setItemClick(holder, classItem, m);
+
+		showState(1);
 	}
 
 	@Override
 	public void getData() {
-		goodsCategoryList_one=CategoryPresenterImpl.getGoodsCategoryList_one();
-		goodsCategoryList_two=CategoryPresenterImpl.getGoodsCategoryList_two();
-		goodsCategoryList_three=CategoryPresenterImpl.getGoodsCategoryList_three();
+		goodsCategoryList_one = CategoryPresenterImpl.getGoodsCategoryList_one();
+		goodsCategoryList_two = CategoryPresenterImpl.getGoodsCategoryList_two();
+		goodsCategoryList_three = CategoryPresenterImpl.getGoodsCategoryList_three();
 	}
 
-	private void setItemClick(final AddViewHolder holder, final GoodCategory classItem, final int m){
+
+
+
+	private void setItemClick(final AddViewHolder holder, final GoodCategory classItem, final int m) {
 		holder.setOnClickListener(R.id.llView, new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -126,22 +156,18 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 					CategoryFragment.this.resetCurrentGoodsClass(CategoryFragment.this.currentGoodsClassView, ((GoodCategory) CategoryFragment.this.goodsCategoryList_one.get(CategoryFragment.this.currentItem)).getAppImageUrl());
 					CategoryFragment.this.currentItem = m;
 					CategoryFragment.this.currentGoodsClassView = holder;
-					CategoryFragment.this.svGoodsClassRoot.smoothScrollTo(0, v.getTop());
+
 					String goodsClassId = holder.getText(R.id.tvGoodsClassId);
-					if (goodsClassId.equals("0")) {
-						CategoryFragment.this.gvBrand.setVisibility(View.VISIBLE);
-						CategoryFragment.this.svGoodsClass.setVisibility(View.GONE);
-						return;
-					}
+
 					CategoryFragment.this.showGoodsClass(goodsClassId);
+					GlideImageLoader.setImage(getContext(), classItem.getAppImageUrl(), categroy_img);
 				}
 			}
 		});
 
 	}
 
-	private void showGoodsClass(String classId){
-		this.gvBrand.setVisibility(View.GONE);
+	private void showGoodsClass(String classId) {
 		this.svGoodsClass.setVisibility(View.VISIBLE);
 		this.svGoodsClass.scrollTo(0, 0);
 		this.llGoodsClass.removeAllViews();
@@ -155,6 +181,7 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 
 	private void showRightView(final GoodCategory goodsCategory, int position) {
 		AddViewHolder holder = new AddViewHolder(getActivity(), R.layout.category_item_class);
+
 		GridView gvGoodsClass = (GridView) holder.getCustomView().findViewById(R.id.gvGoodsClass);
 		if (position == 0) {
 			holder.setVisible(R.id.tvLine, false);
@@ -217,16 +244,10 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 	}
 
 
-
-
-
-
-
-
-
 	private void setCurrentGoodsClass(AddViewHolder holder, String url) {
 		holder.setTextColor(R.id.tv_category_first, R.color.colorPrimary).setBackgroundColor(R.id.llView, R.color.bg_gray);
 	}
+
 	private void resetCurrentGoodsClass(AddViewHolder holder, String url) {
 		holder.setTextColor(R.id.tv_category_first, R.color.tv_hint).setBackgroundColor(R.id.llView, R.color.bg_white);
 	}

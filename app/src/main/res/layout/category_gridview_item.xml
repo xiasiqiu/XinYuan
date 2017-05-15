@@ -2,18 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
-              android:layout_margin="5.0dip"
+              android:layout_margin="10px"
+              android:layout_marginTop="30px"
               android:background="@color/bg_white"
               android:gravity="center"
               android:orientation="vertical"
               android:padding="5.0dip">
 
+
+
+    <ImageView
+        android:id="@+id/tvGoodsClassImage"
+        android:layout_width="150px"
+        android:layout_height="120px"
+        android:scaleType="fitXY"/>
+
     <TextView
         android:id="@+id/tvGoodsClassName"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10.0dip"
+        android:layout_margin="20px"
         android:singleLine="true"
-        android:textColor="@color/tv_name"
-        android:textSize="40px"/>
+        android:textColor="@color/tv_hint"
+        android:textSize="36px"/>
 </LinearLayout>

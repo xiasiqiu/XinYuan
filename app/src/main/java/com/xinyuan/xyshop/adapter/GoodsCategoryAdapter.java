@@ -25,6 +25,7 @@ public class GoodsCategoryAdapter extends CommonAdapter<GoodCategory> {
 
 
         holder.setText(R.id.tvGoodsClassName, goodsCategory.getCategoryName());
+        holder.setImage(R.id.tvGoodsClassImage,goodsCategory.getAppImageUrl());
         holder.getConvertView().setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Log.d("Catogory", "onClick: cat = " + goodsCategory.getCategoryId());
