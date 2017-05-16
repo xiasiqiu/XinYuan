@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="act_top_font">10sp</dimen>
+    <dimen name="act_top_font">38px</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="tv_line">2dp</dimen>
 

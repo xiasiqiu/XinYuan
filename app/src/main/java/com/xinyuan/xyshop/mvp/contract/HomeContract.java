@@ -34,6 +34,5 @@ public class HomeContract {
 	public interface HomePresenter extends BasePresenter<HomeView> {
 
 
-
 	}
 }

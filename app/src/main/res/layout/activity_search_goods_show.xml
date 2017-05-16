@@ -1,10 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.xinyuan.xyshop.ui.goods.SearchGoodsShowActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_white"
+              android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <include layout="@layout/search_header"></include>
+
+    <TextView style="@style/Line"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20px"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_white"
+            android:text="热门搜索"
+            android:textColor="@color/tv_name"
+            android:textSize="40px"/>
+
+        <com.xinyuan.xyshop.widget.TagFlowLayout
+            android:id="@+id/tag_flow_keyword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:alignContent="flex_start"
+            app:alignItems="center"
+            app:defaultDrawable="@drawable/bg_flow_unselect"
+            app:defaultTextColor="@color/colorPrimary"
+            app:dividerDrawable="@drawable/bg_flow_divider"
+            app:flexDirection="row"
+            app:flexWrap="wrap"
+            app:justifyContent="flex_start"
+            app:mode="MULTI"
+            app:selectDrawable="@drawable/bg_flow_selected"
+            app:selectTextColor="@android:color/white"
+            app:showDivider="beginning|middle|end"/>
+
+        <TextView
+            android:id="@+id/tvHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="历史记录"
+            android:textColor="@color/tv_name"
+            android:textSize="40px"/>
+
+        <com.xinyuan.xyshop.widget.TagFlowLayout
+            android:id="@+id/tag_flow_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:alignContent="flex_start"
+            app:alignItems="center"
+            app:defaultDrawable="@drawable/bg_flow_unselect"
+            app:defaultTextColor="@color/colorPrimary"
+            app:dividerDrawable="@drawable/bg_flow_divider"
+            app:flexDirection="row"
+            app:flexWrap="wrap"
+            app:justifyContent="flex_start"
+            app:mode="MULTI"
+            app:selectDrawable="@drawable/bg_flow_selected"
+            app:selectTextColor="@android:color/white"
+            app:showDivider="beginning|middle|end"/>
+
+        <Button
+            android:id="@+id/btnClearHistory"
+            style="@style/CornerButtonNormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="300px"
+            android:text="清空历史"/>
+    </LinearLayout>
+</LinearLayout>

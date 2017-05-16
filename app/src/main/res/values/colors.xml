@@ -7,9 +7,8 @@
 
     <color name="bg_white">#ffffff</color>
     <color name="bg_gray">#eeeeee</color>
-    <color name="tv_name">#333333</color>
-    <color name="tv_normal">#444444</color>
-    <color name="tv_hint">#666666</color>
+    <color name="tv_hint">#7c7c7c</color>
+    <color name="tv_name">#444444</color>
     <color name="tv_brand">#000044</color>
     <color name="tv_price">#FE2E31</color>
     <color name="search_bg">#F8F8FF</color>

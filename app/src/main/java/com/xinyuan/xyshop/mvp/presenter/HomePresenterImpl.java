@@ -68,7 +68,7 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 						List<ApiSpecialItem> list = (List) JsonUtil.toBean(response.getDatas(), "itemList", new TypeToken<List<ApiSpecialItem>>() {
 						}.getType());
 
-						XLog.list(list);
+
 
 						return list;
 					}
@@ -145,9 +145,9 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 
 		view.addHead(getHomeMultipleItemlist());
 		view.showBanner(banner);
-		view.showMenu(menu);
 		view.showNotice(noticeList);
 		view.showList();
+		view.showMenu(menu);
 
 	}
 

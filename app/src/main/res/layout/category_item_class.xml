@@ -32,7 +32,7 @@
             android:layout_centerVertical="true"
           android:layout_marginLeft="30px"
             android:textSize="38px"
-            android:textColor="@color/tv_normal"/>
+            android:textColor="@color/tv_name"/>
 
         <ImageView
             android:id="@+id/btnGoodsClass"

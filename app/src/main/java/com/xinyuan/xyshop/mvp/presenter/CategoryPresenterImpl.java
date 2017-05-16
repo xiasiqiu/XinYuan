@@ -65,7 +65,7 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
 						List<GoodCategory> list = (List) JsonUtil.toBean(response.getDatas(), "categoryList", new TypeToken<List<GoodCategory>>() {
 						}.getType());
 
-						XLog.list(list);
+
 
 						return list;
 					}
@@ -75,7 +75,6 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
 					@Override
 					public void call(List<GoodCategory> goodCategoryList) {
 						XLog.v("分类请求成功");
-						XLog.list(goodCategoryList);
 						cleanData(goodCategoryList);
 
 					}

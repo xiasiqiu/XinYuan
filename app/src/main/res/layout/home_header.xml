@@ -34,16 +34,16 @@
             android:id="@+id/frag_home_et_search"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:padding="20px"
             android:layout_marginTop="20px"
+            android:layout_weight="6"
             android:background="@drawable/search_bg"
             android:drawableLeft="@drawable/act_home_search"
             android:hint="搜索关键字"
+            android:padding="20px"
             android:singleLine="true"
-            android:textColor="@color/tv_name"
+            android:textColor="@color/tv_hint"
             android:textColorHint="@color/tv_hint"
-            android:textSize="40px"/>
+            android:textSize="38px"/>
 
         <Button
             android:id="@+id/act_home_btn_msg"

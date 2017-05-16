@@ -119,7 +119,7 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 	@Override
 	public void showFrist(GoodCategory classItem, int m) {
 		AddViewHolder holder = new AddViewHolder(getActivity(), R.layout.category_item_frist);
-		XLog.v(classItem.toString());
+
 		holder.setText(R.id.tvGoodsClassId, String.valueOf(classItem.getCategoryId())).setText(R.id.tv_category_first, classItem.getCategoryName());
 		if (m == 0) {
 
