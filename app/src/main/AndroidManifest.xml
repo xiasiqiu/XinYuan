@@ -50,6 +50,10 @@
             android:name=".ui.goods.SearchGoodsShowActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".ui.goods.SearchGoodsActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

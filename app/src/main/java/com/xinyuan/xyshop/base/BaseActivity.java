@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 
+import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.youth.xframe.base.ICallback;
 import com.youth.xframe.base.XActivity;
@@ -25,7 +26,7 @@ import com.zhy.autolayout.AutoLayoutActivity;
 
 public abstract class BaseActivity extends AutoLayoutActivity implements ICallback {
 
-
+	protected MyShopApplication application;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
@@ -36,6 +37,7 @@ public abstract class BaseActivity extends AutoLayoutActivity implements ICallba
 		initData(savedInstanceState);
 		initView();
 		super.onCreate(savedInstanceState);
+		this.application = MyShopApplication.getInstance();
 
 	}
 

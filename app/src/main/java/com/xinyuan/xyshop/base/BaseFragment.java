@@ -1,5 +1,6 @@
 package com.xinyuan.xyshop.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import com.trello.rxlifecycle.FragmentEvent;
 import com.trello.rxlifecycle.FragmentLifecycleProvider;
 import com.trello.rxlifecycle.RxLifecycle;
 import com.trello.rxlifecycle.components.RxFragment;
+import com.xinyuan.xyshop.MyShopApplication;
 
 import rx.Observable;
 import rx.subjects.BehaviorSubject;
@@ -32,7 +34,8 @@ public abstract class BaseFragment extends Fragment implements FragmentLifecycle
 	 * Fragment当前状态是否可见
 	 */
 	protected boolean isVisible;
-
+	protected MyShopApplication application;
+	protected Context context;
 
 	@Nullable
 	@Override
@@ -43,7 +46,8 @@ public abstract class BaseFragment extends Fragment implements FragmentLifecycle
 		if (contentView != null) {
 			return contentView;
 		}
-
+		this.application = MyShopApplication.getInstance();
+		this.context = getActivity();
 		return super.onCreateView(inflater, container, savedInstanceState);
 	}
 

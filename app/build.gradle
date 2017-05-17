@@ -44,7 +44,7 @@ dependencies {
     compile 'com.trello:rxlifecycle:0.4.0'
     compile 'com.trello:rxlifecycle-components:0.4.0'
     compile 'com.github.paolorotolo:appintro:1.1.0'
+    compile 'com.google.android:flexbox:0.2.6'
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
-    compile 'com.google.android:flexbox:0.2.6'
 }

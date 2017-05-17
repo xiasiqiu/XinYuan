@@ -6,50 +6,106 @@
     android:id="@+id/category_toolbar"
     android:layout_width="match_parent"
     android:layout_height="?android:actionBarSize"
+    android:background="@color/colorPrimary"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp">
 
-    <com.zhy.autolayout.AutoLinearLayout
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
-        android:background="@color/bg_gray"
+        android:background="@color/bg_white"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/search_btn_back"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40px"
             android:src="@drawable/icon_back"/>
 
-        <EditText
-            android:id="@+id/category_et_search"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20px"
-            android:layout_weight="10"
-            android:background="@drawable/catrgory_search_bg"
-            android:drawableLeft="@drawable/act_home_search_de"
-            android:hint="搜索关键字"
-            android:singleLine="true"
-            android:textColor="@color/tv_hint"
-            android:textColorHint="@color/tv_hint"
-            android:textSize="42px"/>
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="850px"
+            android:layout_height="80px"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_bg_normal"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/category_btn_msg"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30px"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:text="@string/act_search_search"
-            android:textColor="@color/tv_hint"
-            android:textSize="@dimen/act_top_font"/>
 
-    </com.zhy.autolayout.AutoLinearLayout>
+            <TextView
+                android:id="@+id/search_sort_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="25px"
+                android:text="商品"
+                android:textSize="40px"/>
+
+            <ImageView
+                android:id="@+id/search_sort_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10px"
+                android:layout_toRightOf="@+id/search_sort_name"
+                android:background="@drawable/goodshow_down_bg"/>
+
+            <View
+                android:layout_width="3px"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10px"
+                android:layout_toRightOf="@+id/search_sort_img"
+                android:background="@color/bg_gray"/>
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="615px"
+                android:layout_height="80px"
+                android:layout_marginLeft="10px"
+                android:layout_toRightOf="@+id/search_sort_img">
+
+                <EditText
+                    android:id="@+id/search_et"
+                    android:layout_width="550px"
+                    android:layout_height="80px"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:background="@null"
+                    android:hint="搜索关键字"
+                    android:padding="20px"
+                    android:paddingLeft="10px"
+                    android:singleLine="true"
+                    android:textColor="@color/tv_name"
+                    android:textColorHint="@color/tv_hint"
+                    android:textSize="36px"/>
+
+                <ImageView
+                    android:id="@+id/seach_btn_delete"
+                    android:layout_width="72px"
+                    android:layout_height="72px"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10px"
+                    android:padding="10px"
+                    android:src="@drawable/icon_close"
+                    />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <ImageView
+                android:id="@+id/search_btn_search"
+                android:layout_width="85px"
+                android:layout_height="80px"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_bg_gray"
+                android:padding="10px"
+                android:src="@drawable/act_home_search_de"/>
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+
 </android.support.v7.widget.Toolbar>

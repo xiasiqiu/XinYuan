@@ -37,6 +37,7 @@ import com.xinyuan.xyshop.entity.Menu;
 import com.xinyuan.xyshop.http.Urls;
 import com.xinyuan.xyshop.mvp.contract.HomeContract;
 import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
+import com.xinyuan.xyshop.ui.goods.SearchGoodsActivity;
 import com.xinyuan.xyshop.ui.goods.SearchGoodsShowActivity;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.JsonUtil;
@@ -127,7 +128,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 			public boolean onTouch(View view, MotionEvent motionEvent) {
 				if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
 
-					Intent intent = new Intent(getActivity(), SearchGoodsShowActivity.class);
+					Intent intent = new Intent(getActivity(), SearchGoodsActivity.class);
 					intent.putExtra("keyword", keyWord);
 					intent.putExtra("showWord", showWord);
 					startActivity(intent);
@@ -353,15 +354,18 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 				if (mDistanceY < 10) {
 					mToolbar.setBackgroundResource(R.color.colorTransparency);
+					et_search.setHintTextColor(getResources().getColor(R.color.tv_hint));
 
 				} else if (mDistanceY <= toolbarHeight) {
 
 					float scale = (float) mDistanceY / toolbarHeight;
 					float alpha = scale * 255;
 					mToolbar.setBackgroundColor(Color.argb((int) alpha, 29, 160, 57));
+					et_search.setHintTextColor(getResources().getColor(R.color.tv_hint));
 
 				} else {
 					mToolbar.setBackgroundResource(R.color.colorPrimary);
+					et_search.setHintTextColor(getResources().getColor(R.color.tv_hint));
 
 
 				}

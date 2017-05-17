@@ -1,78 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/bg_white"
               android:orientation="vertical">
 
-    <include layout="@layout/search_header"></include>
-
-    <TextView style="@style/Line"/>
+    <include layout="@layout/goods_show_header"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20px"
+        android:background="@color/bg_gray"
         android:orientation="vertical">
 
-        <TextView
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="5px"
+            android:background="@color/colorLine"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110px"
             android:background="@color/bg_white"
-            android:text="热门搜索"
-            android:textColor="@color/tv_name"
-            android:textSize="40px"/>
+            android:orientation="horizontal">
 
-        <com.xinyuan.xyshop.widget.TagFlowLayout
-            android:id="@+id/tag_flow_keyword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:alignContent="flex_start"
-            app:alignItems="center"
-            app:defaultDrawable="@drawable/bg_flow_unselect"
-            app:defaultTextColor="@color/colorPrimary"
-            app:dividerDrawable="@drawable/bg_flow_divider"
-            app:flexDirection="row"
-            app:flexWrap="wrap"
-            app:justifyContent="flex_start"
-            app:mode="MULTI"
-            app:selectDrawable="@drawable/bg_flow_selected"
-            app:selectTextColor="@android:color/white"
-            app:showDivider="beginning|middle|end"/>
+            <LinearLayout
+                android:id="@+id/llSort"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvHistory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="历史记录"
-            android:textColor="@color/tv_name"
-            android:textSize="40px"/>
+                <TextView
+                    android:id="@+id/btnSort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="综合排序"
+                    android:textColor="@drawable/text_btn_color"
+                    android:textSize="40px"/>
 
-        <com.xinyuan.xyshop.widget.TagFlowLayout
-            android:id="@+id/tag_flow_history"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:alignContent="flex_start"
-            app:alignItems="center"
-            app:defaultDrawable="@drawable/bg_flow_unselect"
-            app:defaultTextColor="@color/colorPrimary"
-            app:dividerDrawable="@drawable/bg_flow_divider"
-            app:flexDirection="row"
-            app:flexWrap="wrap"
-            app:justifyContent="flex_start"
-            app:mode="MULTI"
-            app:selectDrawable="@drawable/bg_flow_selected"
-            app:selectTextColor="@android:color/white"
-            app:showDivider="beginning|middle|end"/>
+                <ImageView
+                    android:id="@+id/ivSort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:background="@drawable/goodshow_down_bg"/>
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/btnClearHistory"
-            style="@style/CornerButtonNormal"
+            <TextView
+                android:id="@+id/btnSale"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:button="@null"
+                android:gravity="center"
+                android:text="销量优先"
+                android:textColor="@drawable/text_btn_color"
+                android:textSize="40px"/>
+
+
+            <LinearLayout
+                android:id="@+id/llScreen"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btnScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="筛选"
+                    android:textColor="@drawable/text_btn_color"
+                    android:textSize="40px"/>
+
+                <ImageView
+                    android:id="@+id/ivScreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:background="@drawable/goodshow_down_bg"/>
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/flListType"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="2">
+
+                <ImageView
+                    android:id="@+id/btnListType"
+                    android:layout_width="50px"
+                    android:layout_height="50px"
+                    android:layout_gravity="center"
+                    android:background="@color/bg_white"
+                    android:src="@drawable/btn_goods_list_type"/>
+            </FrameLayout>
+        </LinearLayout>
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="300px"
-            android:text="清空历史"/>
+            android:layout_height="1px"
+            android:background="@color/colorLine"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvGoods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_gray"/>
+
+
     </LinearLayout>
 </LinearLayout>

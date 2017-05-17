@@ -6,10 +6,11 @@
     android:id="@+id/category_toolbar"
     android:layout_width="match_parent"
     android:layout_height="?android:actionBarSize"
+    android:background="@color/colorPrimary"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp">
 
-    <com.zhy.autolayout.AutoLinearLayout
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
         android:background="@color/bg_white"
@@ -19,44 +20,59 @@
 
         <Button
             android:id="@+id/category_btn_scan"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginTop="10px"
-            android:layout_marginLeft="10px"
-            android:layout_weight="1"
-            android:background="@color/colorTransparency"
+            android:layout_width="70px"
+            android:layout_height="70px"
+            android:layout_marginLeft="14dp"
+            android:background="@drawable/act_home_scan_de"
             android:button="@null"
-            android:drawableTop="@drawable/act_home_scan_de"
-            android:text="@string/act_home_top_scan"
-            android:textColor="@color/tv_hint"
-            android:textSize="@dimen/act_top_font"/>
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="14dp"/>
 
-        <EditText
-            android:id="@+id/category_et_search"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20px"
-            android:padding="20px"
-            android:layout_weight="6"
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="680px"
+            android:layout_height="80px"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
             android:background="@drawable/btn_bg_normal"
-            android:drawableLeft="@drawable/act_home_search_de"
-            android:focusableInTouchMode="false"
-            android:hint="搜索关键字"
-            android:singleLine="true"
-            android:textColor="@color/tv_name"
-            android:textColorHint="@color/tv_hint"
-            android:textSize="42px"/>
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/category_et_search"
+                android:layout_width="600px"
+                android:layout_height="80px"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:focusableInTouchMode="false"
+                android:hint="搜索关键字"
+                android:padding="20px"
+                android:paddingLeft="10px"
+                android:singleLine="true"
+                android:textColor="@color/tv_name"
+                android:textColorHint="@color/tv_hint"
+                android:textSize="36px"/>
+
+            <ImageView
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:background="@drawable/btn_bg_gray"
+                android:padding="10px"
+                android:src="@drawable/act_home_search_de"
+                />
+
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
 
         <Button
             android:id="@+id/category_btn_msg"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginTop="10px"
-            android:layout_marginRight="10px"
-            android:layout_weight="1"
+            android:layout_width="79px"
+            android:layout_height="80px"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="40px"
             android:background="@color/colorTransparency"
             android:button="@null"
             android:drawableTop="@drawable/act_home_msg_de"
@@ -64,5 +80,5 @@
             android:textColor="@color/tv_hint"
             android:textSize="@dimen/act_top_font"/>
 
-    </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
 </android.support.v7.widget.Toolbar>

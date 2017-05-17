@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="wrap_content"
+                                     android:background="@color/bg_white"
+                                     android:layout_margin="5px"
+                                     android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/ivGoodPic"
+        android:layout_width="match_parent"
+        android:layout_height="535px"
+        android:scaleType="fitXY"/>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="30px"
+        android:paddingTop="60px">
+
+        <TextView
+            android:id="@+id/tv_goods_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:text="only纯棉卡通印花宽松t恤"
+            android:textColor="@color/tv_name"
+            android:textSize="38px"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60px"
+            android:layout_marginTop="30px"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_goods_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="$599"
+                android:textColor="@color/tv_price"
+                android:textSize="40px"/>
+
+            <TextView
+                android:id="@+id/tv_goods_sellnum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:lines="1"
+                android:text="月销售:2333件"
+                android:textColor="@color/tv_hint"
+                android:textSize="32px"/>
+
+
+        </LinearLayout>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>
