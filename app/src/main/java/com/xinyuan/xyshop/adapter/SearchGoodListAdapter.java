@@ -26,6 +26,7 @@ public class SearchGoodListAdapter extends BaseQuickAdapter<GoodsVo, BaseViewHol
 
 	@Override
 	protected void convert(BaseViewHolder helper, GoodsVo item) {
+
 	if(isList){
 		ImageView goodsImg = helper.getView(R.id.ivGoodPic);
 		TextView tv_goods_name = helper.getView(R.id.tv_goods_name);

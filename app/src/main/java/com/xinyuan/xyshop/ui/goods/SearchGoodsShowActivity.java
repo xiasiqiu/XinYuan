@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.xinyuan.xyshop.MyShopApplication;
@@ -22,6 +23,7 @@ import com.xinyuan.xyshop.entity.GoodsVo;
 import com.xinyuan.xyshop.entity.PageEntity;
 import com.xinyuan.xyshop.entity.SearchGoodsList;
 import com.xinyuan.xyshop.entity.SelectFilter;
+import com.xinyuan.xyshop.ui.goods.fragment.GoodsDetailFragment;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.JsonUtil;
 import com.youth.xframe.utils.log.XLog;
@@ -119,6 +121,14 @@ public class SearchGoodsShowActivity extends BaseActivity {
 			this.adapter = new SearchGoodListAdapter(R.layout.recyclerview_searchgood_grid_item, goodses, isList);
 			this.rvGoods.setAdapter(adapter);
 		}
+
+
+		adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+			@Override
+			public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+				CommUtil.gotoActivity(SearchGoodsShowActivity.this, GoodDetailsActivity.class, false, null);
+			}
+		});
 
 	}
 

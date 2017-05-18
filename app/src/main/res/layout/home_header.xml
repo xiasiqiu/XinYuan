@@ -6,7 +6,6 @@
     android:id="@+id/home_toolbar"
     android:layout_width="match_parent"
     android:layout_height="?android:actionBarSize"
-    android:background="@color/colorPrimary"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp">
 
@@ -17,14 +16,13 @@
         android:focusableInTouchMode="true"
         android:orientation="horizontal">
 
-        <Button
+        <ImageView
             android:id="@+id/act_home_btn_scan"
             android:layout_width="70px"
             android:layout_height="70px"
             android:layout_centerVertical="true"
             android:layout_marginLeft="40px"
-            android:background="@drawable/act_home_scan"
-            android:button="@null"/>
+            android:background="@drawable/act_home_scan"/>
 
         <EditText
             android:id="@+id/frag_home_et_search"
@@ -41,18 +39,14 @@
             android:textColorHint="@color/tv_hint"
             android:textSize="36px"/>
 
-        <Button
+        <ImageView
             android:id="@+id/act_home_btn_msg"
             android:layout_width="79px"
             android:layout_height="80px"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="40px"
-            android:background="@color/colorTransparency"
-            android:button="@null"
-            android:drawableTop="@drawable/act_home_msg"
-            android:textColor="@color/bg_white"
-            android:textSize="32px"/>
+            android:background="@drawable/act_home_msg"/>
 
     </com.zhy.autolayout.AutoRelativeLayout>
 </android.support.v7.widget.Toolbar>

@@ -19,7 +19,7 @@
 
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="315px"
             android:layout_margin="30px"
             android:layout_marginRight="200px"
             android:orientation="vertical">
@@ -28,14 +28,16 @@
                 android:id="@+id/tv_goods_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lines="2"
-                android:text="XXXXXX产品"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-condensed"
+                android:maxLines="2"
+                android:text="零度智控DOBBY跟拍口袋无人机 智能高清便携 ssssssssssssssssssss礼盒版"
                 android:textColor="@color/tv_name"
                 android:textSize="38px"/>
 
             <TextView
                 android:id="@+id/tv_goods_postage"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20px"
                 android:lines="1"
@@ -45,18 +47,18 @@
 
             <TextView
                 android:id="@+id/tv_goods_price"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50px"
+                android:layout_marginTop="30px"
                 android:lines="1"
-                android:text="XXXXXX产品"
+                android:text="$77"
                 android:textColor="@color/tv_price"
                 android:textSize="40px"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="35px"
+                android:layout_marginTop="30px"
                 android:orientation="horizontal">
 
 
@@ -73,7 +75,7 @@
                     android:id="@+id/tv_goods_talk"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50px"
+                    android:layout_marginLeft="40px"
                     android:lines="1"
                     android:text="评论:2666条"
                     android:textColor="@color/tv_hint"

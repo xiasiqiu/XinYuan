@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.youth.xframe.XFrame;
 import com.youth.xframe.base.XApplication;
+import com.youth.xframe.cache.XCache;
+import com.zhy.autolayout.config.AutoLayoutConifg;
 
 import java.util.ArrayList;
 
@@ -19,9 +21,11 @@ public class MyShopApplication extends XApplication {
 	public Context context;
 	private ArrayList<String> searchKeyList = new ArrayList();
 
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		AutoLayoutConifg.getInstance().useDeviceSize();
 		XFrame.init(this);
 		XFrame.initXLog()
 				.setTag("XYShop")//设置全局tag

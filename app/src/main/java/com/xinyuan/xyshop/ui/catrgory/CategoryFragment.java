@@ -249,7 +249,7 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 	}
 
 	private void resetCurrentGoodsClass(AddViewHolder holder, String url) {
-		holder.setTextColor(R.id.tv_category_first, R.color.tv_hint).setBackgroundColor(R.id.llView, R.color.bg_white);
+		holder.setTextColor(R.id.tv_category_first, R.color.tv_name).setBackgroundColor(R.id.llView, R.color.bg_white);
 	}
 
 }

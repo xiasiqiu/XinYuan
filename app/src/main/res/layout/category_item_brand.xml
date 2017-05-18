@@ -29,7 +29,6 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:singleLine="true"
-            android:text="XXXX"
             android:textColor="@color/tv_brand"
             />
 

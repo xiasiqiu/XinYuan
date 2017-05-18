@@ -39,6 +39,7 @@ import com.xinyuan.xyshop.mvp.contract.HomeContract;
 import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
 import com.xinyuan.xyshop.ui.goods.SearchGoodsActivity;
 import com.xinyuan.xyshop.ui.goods.SearchGoodsShowActivity;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.JsonUtil;
 import com.xinyuan.xyshop.util.SystemBarHelper;
@@ -74,8 +75,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	XLoadingView xLoadingView;
 	private EditText et_search;
 	private Toolbar mToolbar;
-	private Button mScan;
-	private Button mMsg;
+	private ImageView mScan;
+	private ImageView mMsg;
 	private View headView;
 	private Context context;
 
@@ -119,8 +120,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	public View initLayout(LayoutInflater inflater, ViewGroup container, boolean b) {
 		View rootView = inflater.inflate(R.layout.fragment_home, null);
 		mToolbar = (Toolbar) rootView.findViewById(R.id.home_toolbar);
-		mScan = (Button) rootView.findViewById(R.id.act_home_btn_scan);
-		mMsg = (Button) rootView.findViewById(R.id.act_home_btn_msg);
+		mScan = (ImageView) rootView.findViewById(R.id.act_home_btn_scan);
+		mMsg = (ImageView) rootView.findViewById(R.id.act_home_btn_msg);
 		et_search = (EditText) rootView.findViewById(R.id.frag_home_et_search);
 		et_search.setOnTouchListener(new View.OnTouchListener() {
 
@@ -273,7 +274,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	}
 
 	@Override
-	public void showMenu(List<ItemData> itemList) {
+	public void showMenu(final List<ItemData> itemList) {
 		menuListView = (RecyclerView) headView.findViewById(R.id.menu_list);
 		XLog.list(itemList);
 		int menucount = 10;
@@ -298,20 +299,26 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		menuListView.setAdapter(expandableItemAdapter);
 		expandableItemAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
 		menuListView.setLayoutManager(manager);
+		expandableItemAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+			@Override
+			public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+				OnImageViewClick(view, itemList.get(position).getType(), itemList.get(position).getData(), false);
+			}
+		});
 
-//		ImageView im1 = (ImageView) headView.findViewById(R.id.home_menu_1);
-//		ImageView im2 = (ImageView) headView.findViewById(R.id.home_menu_2);
-//		ImageView im3 = (ImageView) headView.findViewById(R.id.home_menu_3);
-//		ImageView im4 = (ImageView) headView.findViewById(R.id.home_menu_4);
-//		ImageView im5 = (ImageView) headView.findViewById(R.id.home_menu_5);
-//
-//
-//		OnImageViewClick(im1, itemList.get(0).getType(), itemList.get(0).getData(), false);
-//		OnImageViewClick(im2, itemList.get(1).getType(), itemList.get(1).getData(), false);
-//		OnImageViewClick(im3, itemList.get(2).getType(), itemList.get(2).getData(), false);
-//		OnImageViewClick(im4, itemList.get(3).getType(), itemList.get(3).getData(), false);
-//		OnImageViewClick(im4, itemList.get(4).getType(), itemList.get(4).getData(), false);
 	}
+
+
+	@Override
+	public void OnImageViewClick(View view, final String type, final String data, boolean isAD) {
+
+		if (type.equals("brand")) {
+
+
+		}
+
+	}
+
 
 	@Override
 	public void showNotice(List<ItemData> itemList) {
@@ -328,13 +335,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		XLog.list(name);
 		marquee_name.startWithList(name);
 		marquee_content.startWithList(content);
-	}
-
-
-	@Override
-	public void OnImageViewClick(View view, final String type,
-	                             final String data, boolean isAD) {
-
 	}
 
 

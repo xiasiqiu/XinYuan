@@ -1,62 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                     android:layout_width="match_parent"
-                                     android:layout_height="wrap_content"
-                                     android:background="@color/bg_white"
-                                     android:layout_margin="5px"
-                                     android:orientation="vertical">
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5px"
+    android:background="@color/bg_white"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/ivGoodPic"
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="535px"
-        android:scaleType="fitXY"/>
+        android:layout_height="550px">
 
-    <com.zhy.autolayout.AutoLinearLayout
+        <ImageView
+            android:id="@+id/ivGoodPic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingLeft="30px"
-        android:paddingTop="60px">
+        android:layout_height="220px"
+        android:layout_marginLeft="30px"
+        android:background="@color/bg_white">
 
         <TextView
             android:id="@+id/tv_goods_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30px"
             android:lines="2"
-            android:text="only纯棉卡通印花宽松t恤"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-condensed"
+            android:text="零度智控DOBBY跟拍口袋无人机 智能高清便携 礼盒版"
             android:textColor="@color/tv_name"
             android:textSize="38px"/>
 
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/tv_goods_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="60px"
-            android:layout_marginTop="30px"
-            android:orientation="horizontal">
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20px"
+            android:text="$55.3"
+            android:textColor="@color/tv_price"
+            android:textSize="40px"/>
 
-            <TextView
-                android:id="@+id/tv_goods_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lines="1"
-                android:text="$599"
-                android:textColor="@color/tv_price"
-                android:textSize="40px"/>
+        <TextView
+            android:id="@+id/tv_goods_sellnum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tv_goods_price"
+            android:layout_alignTop="@+id/tv_goods_price"
+            android:layout_marginLeft="50px"
+            android:layout_toRightOf="@+id/tv_goods_price"
+            android:paddingTop="5px"
+            android:text="23334人购买"
+            android:textColor="@color/tv_hint"
+            android:textSize="32px"/>
+    </com.zhy.autolayout.AutoRelativeLayout>
 
-            <TextView
-                android:id="@+id/tv_goods_sellnum"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30px"
-                android:lines="1"
-                android:text="月销售:2333件"
-                android:textColor="@color/tv_hint"
-                android:textSize="32px"/>
-
-
-        </LinearLayout>
-
-    </com.zhy.autolayout.AutoLinearLayout>
 </com.zhy.autolayout.AutoLinearLayout>

@@ -19,6 +19,9 @@ import com.youth.xframe.common.XActivityStack;
 import com.youth.xframe.utils.permission.XPermission;
 import com.youth.xframe.utils.statusbar.XStatusBar;
 import com.zhy.autolayout.AutoLayoutActivity;
+import com.zhy.autolayout.utils.AutoUtils;
+
+import butterknife.BindView;
 
 /**
  * Created by fx on 2017/5/2 0002.

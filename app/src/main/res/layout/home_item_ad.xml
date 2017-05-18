@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<com.xinyuan.xyshop.widget.AutoCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_marginLeft="15px"
-    android:layout_marginRight="15px"
+    android:layout_marginLeft="20px"
+    android:layout_marginRight="20px"
     android:layout_marginTop="20px"
     android:foreground="?android:attr/selectableItemBackground"
-    card_view:cardBackgroundColor="@color/colorBackground"
     card_view:cardCornerRadius="5dp"
     card_view:cardElevation="2dp"
     card_view:cardUseCompatPadding="true">
 
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="295px">
+        android:layout_height="300px">
 
 
         <ImageView
@@ -30,4 +29,4 @@
     </com.zhy.autolayout.AutoLinearLayout>
 
 
-</android.support.v7.widget.CardView>
+</com.xinyuan.xyshop.widget.AutoCardView>

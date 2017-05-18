@@ -15,6 +15,7 @@ import com.trello.rxlifecycle.RxLifecycle;
 import com.trello.rxlifecycle.components.RxFragment;
 import com.xinyuan.xyshop.MyShopApplication;
 
+import butterknife.ButterKnife;
 import rx.Observable;
 import rx.subjects.BehaviorSubject;
 
@@ -48,6 +49,7 @@ public abstract class BaseFragment extends Fragment implements FragmentLifecycle
 		}
 		this.application = MyShopApplication.getInstance();
 		this.context = getActivity();
+		ButterKnife.bind(this, contentView);
 		return super.onCreateView(inflater, container, savedInstanceState);
 	}
 

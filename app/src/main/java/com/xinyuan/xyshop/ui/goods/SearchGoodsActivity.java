@@ -15,13 +15,18 @@ import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.StringTagAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
+import com.xinyuan.xyshop.bean.LzyResponse;
+import com.xinyuan.xyshop.callback.JsonCallback;
 import com.xinyuan.xyshop.common.AddViewHolder;
+import com.xinyuan.xyshop.entity.History;
 import com.xinyuan.xyshop.entity.SearchHot;
 import com.xinyuan.xyshop.http.Urls;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.JsonUtil;
+import com.xinyuan.xyshop.widget.OnFlexboxSubscribeListener;
 import com.xinyuan.xyshop.widget.TagFlowLayout;
 import com.xinyuan.xyshop.widget.dialog.SearchSortDialog;
+import com.youth.xframe.cache.XCache;
 import com.youth.xframe.utils.log.XLog;
 import com.zhy.autolayout.AutoLinearLayout;
 
@@ -46,25 +51,25 @@ public class SearchGoodsActivity extends BaseActivity {
 	TextView search_sort_name;
 	@BindView(R.id.search_et)
 	EditText search_et;
+	@BindView(R.id.search_btn_back)
+	ImageView search_btn_back;
 	@BindView(R.id.seach_btn_delete)
 	ImageView search_btn_delete;
 	@BindView(R.id.search_btn_search)
 	ImageView search_btn_search;
 
 
-
 	private SearchSortDialog sortDialog;
-	private Context context;
-
-	private String showWord;
-	private String keyWord;
-
+	public static String showWord;
+	public static String keyWord;
 	private List<String> hotSearchs;
-	private List<String> hothistory = new ArrayList<>();
+
+	private static List<String> hothistory = new ArrayList<>();
 	private StringTagAdapter adapter;
 
 
 	private MyShopApplication application;
+
 
 	@Override
 	public int getLayoutId() {
@@ -83,10 +88,10 @@ public class SearchGoodsActivity extends BaseActivity {
 	@Override
 	public void initView() {
 		ButterKnife.bind(this);
+
 		search_et.setHint(keyWord);
-		this.context = this;
 		this.application = MyShopApplication.getInstance();
-		sortDialog = new SearchSortDialog(this.context, this.search_sort_name, this.search_sort_name);
+		sortDialog = new SearchSortDialog(this, this.search_sort_name, this.search_sort_name);
 		search_et.addTextChangedListener(new TextWatcher() {
 			@Override
 			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -111,7 +116,7 @@ public class SearchGoodsActivity extends BaseActivity {
 			}
 		});
 		getKeyData();
-		//getHistoryDatas();
+		getHistoryDatas();
 	}
 
 
@@ -120,6 +125,12 @@ public class SearchGoodsActivity extends BaseActivity {
 		adapter = new StringTagAdapter(this, hotSearchs);
 		XLog.list(hotSearchs);
 		tab_keyword.setAdapter(adapter);
+		adapter.setOnSubscribeListener(new OnFlexboxSubscribeListener<String>() {
+			@Override
+			public void onSubscribe(List<String> selectedItem) {
+
+			}
+		});
 
 	}
 
@@ -129,27 +140,32 @@ public class SearchGoodsActivity extends BaseActivity {
 				.execute(new StringCallback() {
 					@Override
 					public void onSuccess(String s, Call call, Response response) {
-
 						SearchHot searchHot = JsonUtil.toBean(s, SearchHot.class);
-
 						SearchHot.KeyHot keyHot = searchHot.getDatas();
 						hotSearchs = keyHot.getKeywordList();
 						hothistory = keyHot.getHistorySearchList();
 						showHot(hotSearchs);
+
+
 					}
 				});
-
 
 	}
 
 	private void getHistoryDatas() {
-		if (this.application.getSearchKeyList() != null || this.application.getSearchKeyList().size() != 0) {
-			this.hothistory = this.application.getSearchKeyList();
-			Collections.reverse(this.hothistory);
-			XLog.list(hothistory);
-			showHistoty(this.hothistory);
-		}
+		try {
+			hothistory = MyShopApplication.getInstance().getSearchKeyList();
 
+			if (hothistory != null || hothistory.size() != 0) {
+				Collections.reverse(this.hothistory);
+				XLog.list(hothistory);
+				showHistoty(this.hothistory);
+				XLog.v("显示历史词" + hothistory.toString());
+				showHistoty(hothistory);
+			}
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -163,7 +179,7 @@ public class SearchGoodsActivity extends BaseActivity {
 	}
 
 
-	@OnClick({R.id.search_sort_img, R.id.seach_btn_delete, R.id.search_btn_search})
+	@OnClick({R.id.search_sort_img, R.id.seach_btn_delete, R.id.search_btn_search, R.id.btnClearHistory,R.id.search_btn_back})
 	public void onClick(View view) {
 		switch (view.getId()) {
 			case R.id.search_sort_img:
@@ -182,36 +198,42 @@ public class SearchGoodsActivity extends BaseActivity {
 				if (CommUtil.getText(this.search_sort_name).equals("商品")) {
 					if (key.equals("")) {
 						key = this.keyWord;
+						saveKeyword(keyWord);
 					} else {
 						saveKeyword(key);
 					}
 					params = new HashMap();
 					params.put("keyword", key);
-					hothistory.add(key);
+
 					CommUtil.gotoActivity(this, SearchGoodsShowActivity.class, false, params);
 					return;
 				}
 				params = new HashMap();
 				params.put("keyword", key);
 				//CommUtil.gotoActivity(this, SearchStoresShowActivity.class, false, params);
+				return;
+			case R.id.search_btn_back:
+				finish();
+				return;
 		}
 
 	}
 
-	private void saveKeyword(String text) {
+	public static void saveKeyword(String text) {
 		if (!text.trim().equals("")) {
-			Collections.reverse(this.hothistory);
-			if (this.hothistory.contains(text)) {
-				this.application.getSearchKeyList().remove(text);
+			Collections.reverse(hothistory);
+			if (hothistory.contains(text)) {
+				MyShopApplication.getInstance().getSearchKeyList().remove(text);
 			}
-			//this.application.getSearchKeyList().add(text);
+			MyShopApplication.getInstance().getSearchKeyList().add(text);
+
 		}
 
 	}
 
 	protected void onResume() {
 		super.onResume();
-		//getHistoryDatas();
+		getHistoryDatas();
 	}
 
 }

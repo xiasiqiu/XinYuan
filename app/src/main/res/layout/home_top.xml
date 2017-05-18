@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/bg_white"
     android:orientation="vertical">
 
     <com.youth.banner.Banner
@@ -16,7 +15,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/menu_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"/>
 
 
     <View
@@ -27,6 +27,7 @@
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="105px"
+        android:background="@color/bg_white"
         android:orientation="horizontal">
 
         <TextView

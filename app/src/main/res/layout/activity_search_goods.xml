@@ -32,15 +32,13 @@
             android:layout_marginTop="20px"
             app:alignContent="flex_start"
             app:alignItems="center"
-            app:defaultDrawable="@drawable/bg_flow_unselect"
-            app:defaultTextColor="@color/colorPrimary"
+            app:defaultDrawable="@drawable/bg_flow"
+            app:defaultTextColor="@drawable/text_bg"
             app:dividerDrawable="@drawable/bg_flow_divider"
             app:flexDirection="row"
             app:flexWrap="wrap"
             app:justifyContent="flex_start"
-            app:mode="MULTI"
-            app:selectDrawable="@drawable/bg_flow_selected"
-            app:selectTextColor="@android:color/white"
+            app:mode="SINGLE"
             app:showDivider="beginning|middle|end"/>
 
         <TextView
@@ -74,11 +72,11 @@
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="100px"
-            android:background="@drawable/btn_bg_normal"
             android:layout_margin="100px"
+            android:background="@drawable/btn_bg_normal"
             android:button="@null"
-            android:textSize="38px"
-            android:textColor="@color/tv_hint"
-            android:text="清空历史"/>
+            android:text="清空历史"
+            android:textColor="@color/tv_name"
+            android:textSize="38px"/>
     </LinearLayout>
 </LinearLayout>

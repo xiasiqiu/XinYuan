@@ -13,7 +13,7 @@
         android:id="@+id/rlGoodClass"
         android:layout_width="fill_parent"
         android:layout_height="36.0dip"
-        android:background="@color/bg_gray">
+        android:background="@color/normal_bg">
 
         <ImageView
             android:id="@+id/tvGoodsClassDot"
