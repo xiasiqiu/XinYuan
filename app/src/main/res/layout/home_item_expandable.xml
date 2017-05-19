@@ -21,7 +21,7 @@
         android:layout_marginBottom="40px"
         android:layout_marginTop="20px"
         android:textColor="@color/tv_name"
-        android:textSize="36px"
+        android:textSize="@dimen/tv_light"
         />
 
 

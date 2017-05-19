@@ -43,7 +43,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25px"
                 android:text="商品"
-                android:textSize="40px"/>
+                android:textSize="@dimen/tv_Regular"/>
 
             <ImageView
                 android:id="@+id/search_sort_img"
@@ -80,7 +80,7 @@
                     android:singleLine="true"
                     android:textColor="@color/tv_name"
                     android:textColorHint="@color/tv_hint"
-                    android:textSize="36px"/>
+                    android:textSize="@dimen/tv_light"/>
 
                 <ImageView
                     android:id="@+id/seach_btn_delete"
@@ -91,7 +91,7 @@
                     android:layout_marginRight="10px"
                     android:padding="10px"
                     android:src="@drawable/icon_close"
-                    />
+                    android:visibility="gone" />
             </com.zhy.autolayout.AutoRelativeLayout>
 
             <ImageView

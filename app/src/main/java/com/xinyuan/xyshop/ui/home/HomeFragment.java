@@ -15,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -24,12 +23,12 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.sunfusheng.marqueeview.MarqueeView;
+import com.trello.rxlifecycle.android.ActivityEvent;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.ExpandableItemAdapter;
 import com.xinyuan.xyshop.adapter.HomeMultipleItemAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.bean.ExpandItem;
-import com.xinyuan.xyshop.bean.LzyResponse;
 import com.xinyuan.xyshop.entity.HomeMultipleItem;
 import com.xinyuan.xyshop.entity.ItemData;
 import com.xinyuan.xyshop.entity.KeyWord;
@@ -38,8 +37,6 @@ import com.xinyuan.xyshop.http.Urls;
 import com.xinyuan.xyshop.mvp.contract.HomeContract;
 import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
 import com.xinyuan.xyshop.ui.goods.SearchGoodsActivity;
-import com.xinyuan.xyshop.ui.goods.SearchGoodsShowActivity;
-import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.JsonUtil;
 import com.xinyuan.xyshop.util.SystemBarHelper;
@@ -47,6 +44,7 @@ import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
+import com.youth.xframe.common.XActivityStack;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.loadingview.XLoadingView;
 
@@ -73,110 +71,63 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	SwipeRefreshLayout mSwipeRefreshLayout;
 	@BindView(R.id.home_loadingView)
 	XLoadingView xLoadingView;
-	private EditText et_search;
-	private Toolbar mToolbar;
-	private ImageView mScan;
-	private ImageView mMsg;
-	private View headView;
-	private Context context;
 
+	@BindView(R.id.home_toolbar)
+	Toolbar mToolbar;
+	@BindView(R.id.act_home_btn_scan)
+	ImageView mScan;
+	@BindView(R.id.act_home_btn_msg)
+	ImageView mMsg;
+	@BindView(R.id.frag_home_et_search)
+	EditText et_search;
+	private View headView;
 
 	private HomeContract.HomePresenter presenter;
 	private HomeMultipleItemAdapter homeMultipleItemAdapter;
+
 	private int mDistanceY = 0;
 	private static final int TOTAL_COUNTER = 30;
 	private static final int PAGE_SIZE = 6;
-
 	private static String keyWord = "";
 	private static String showWord = "";
+	private int delayMillis = 1000;
+	private boolean isErr;
+	private boolean mLoadMoreEndGone = false;
+	private int mCurrentCounter = 0;
+
+	private List<HomeMultipleItem> data;
 
 	@Override
-	protected void lazyLoad() {
-
-	}
-
-
-	private void getKeyWords() {
-
-		OkGo.get(Urls.URL_SEARCH_HOT)
-				.execute(new StringCallback() {
-					@Override
-					public void onSuccess(String s, Call call, Response response) {
-						KeyWord keyWords = JsonUtil.toBean(s, KeyWord.class);
-
-						KeyWord.Key key = keyWords.getKey();
-						keyWord = key.getKeywordValue();
-						showWord = key.getKeywordName();
-						XLog.v("Search:" + s + "keyWord:" + keyWord + "showWord:" + showWord);
-						et_search.setHint(showWord);
-					}
-				});
-
-
-	}
-
-
-	@Override
-	public View initLayout(LayoutInflater inflater, ViewGroup container, boolean b) {
-		View rootView = inflater.inflate(R.layout.fragment_home, null);
-		mToolbar = (Toolbar) rootView.findViewById(R.id.home_toolbar);
-		mScan = (ImageView) rootView.findViewById(R.id.act_home_btn_scan);
-		mMsg = (ImageView) rootView.findViewById(R.id.act_home_btn_msg);
-		et_search = (EditText) rootView.findViewById(R.id.frag_home_et_search);
-		et_search.setOnTouchListener(new View.OnTouchListener() {
-
-			@Override
-			public boolean onTouch(View view, MotionEvent motionEvent) {
-				if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-
-					Intent intent = new Intent(getActivity(), SearchGoodsActivity.class);
-					intent.putExtra("keyword", keyWord);
-					intent.putExtra("showWord", showWord);
-					startActivity(intent);
-
-
-				}
-
-				return false;
-
-			}
-
-		});
-
-
-		SystemBarHelper.immersiveStatusBar(
-
-				getActivity(), 0);
-		SystemBarHelper.setHeightAndPadding(
-
-				getActivity(), mToolbar);
-		new
-
-				HomePresenterImpl(this);
-
-		context =
-
-				getActivity();
-		ButterKnife.bind(this, rootView);
-		return rootView;
-
+	public int getLayoutId() {
+		return R.layout.fragment_home;
 	}
 
 	@Override
-	@CallSuper
-	public void onResume() {
-		super.onResume();
-		mDistanceY = 0;
+	public void initView() {
+		SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
+		SystemBarHelper.setHeightAndPadding(getActivity(), mToolbar);
+
 	}
 
+	/**
+	 * 设置Presenter
+	 *
+	 * @param presenter
+	 */
 	@Override
 	public void setPresenter(HomeContract.HomePresenter presenter) {
 		this.presenter = presenter;
 
 	}
 
+	/**
+	 * Prenenter加载首页数据
+	 *
+	 * @param savedInstanceState
+	 */
 	@Override
-	protected void initData(@Nullable Bundle savedInstanceState) {
+	public void initData(@Nullable Bundle savedInstanceState) {
+		new HomePresenterImpl(this);
 		presenter.initData();
 		xLoadingView.setOnRetryClickListener(new View.OnClickListener() {
 			@Override
@@ -187,8 +138,14 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 			}
 		});
 
-
 	}
+
+
+	/**
+	 * 加载状态监听
+	 *
+	 * @param Sate
+	 */
 
 	@Override
 	public void showState(int Sate) {
@@ -210,21 +167,20 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	}
 
+	/**
+	 * RecyclerView加载头部View
+	 *
+	 * @param list
+	 */
 	@Override
 	public void addHead(final List<HomeMultipleItem> list) {
 
-
 		mSwipeRefreshLayout.setOnRefreshListener(this);
-
 		mSwipeRefreshLayout.setColorSchemeColors(Color.rgb(29, 160, 57));
-
 		headView = getActivity().getLayoutInflater().inflate(R.layout.home_top, (ViewGroup) mRecyclerView.getParent(), false);
-
 		final GridLayoutManager manager = new GridLayoutManager(context, 4);
 		mRecyclerView.setLayoutManager(manager);
-
 		homeMultipleItemAdapter = new HomeMultipleItemAdapter(this.getContext(), list);
-
 		homeMultipleItemAdapter.setSpanSizeLookup(new BaseQuickAdapter.SpanSizeLookup() {
 			@Override
 			public int getSpanSize(GridLayoutManager gridLayoutManager, int position) {
@@ -234,15 +190,16 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		});
 
 		//homeMultipleItemAdapter.setOnLoadMoreListener(this, mRecyclerView);
-
-
 		homeMultipleItemAdapter.addHeaderView(headView);
-
-
 		mRecyclerView.setAdapter(homeMultipleItemAdapter);
 	}
 
 
+	/**
+	 * 显示首页banner
+	 *
+	 * @param itemList
+	 */
 	@Override
 	public void showBanner(final List<ItemData> itemList) {
 		ArrayList<String> images = new ArrayList<>();
@@ -273,29 +230,28 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	}
 
+	/**
+	 * 显示首页菜单
+	 *
+	 * @param itemList
+	 */
 	@Override
 	public void showMenu(final List<ItemData> itemList) {
 		menuListView = (RecyclerView) headView.findViewById(R.id.menu_list);
 		XLog.list(itemList);
 		int menucount = 10;
 		ArrayList<MultiItemEntity> res = new ArrayList<>();
-
 		res.add(new ExpandItem(itemList.get(0).getImageUrl(), itemList.get(0).getData()));
 		res.add(new ExpandItem(itemList.get(1).getImageUrl(), itemList.get(1).getData()));
 		res.add(new ExpandItem(itemList.get(2).getImageUrl(), itemList.get(2).getData()));
 		res.add(new ExpandItem(itemList.get(3).getImageUrl(), itemList.get(3).getData()));
-
 		ExpandItem more = new ExpandItem(itemList.get(4).getImageUrl(), itemList.get(4).getData());
 		for (int i = 5; i < menucount; i++) {
 			more.addSubItem(new Menu(itemList.get(i).getImageUrl(), itemList.get(i).getData()));
 		}
-
 		res.add(more);
-
-
 		ExpandableItemAdapter expandableItemAdapter = new ExpandableItemAdapter(res, itemList);
 		final GridLayoutManager manager = new GridLayoutManager(getActivity(), 5);
-
 		menuListView.setAdapter(expandableItemAdapter);
 		expandableItemAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
 		menuListView.setLayoutManager(manager);
@@ -309,17 +265,11 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	}
 
 
-	@Override
-	public void OnImageViewClick(View view, final String type, final String data, boolean isAD) {
-
-		if (type.equals("brand")) {
-
-
-		}
-
-	}
-
-
+	/**
+	 * 显示首页公告
+	 *
+	 * @param itemList
+	 */
 	@Override
 	public void showNotice(List<ItemData> itemList) {
 		List<String> name = new ArrayList<>();
@@ -338,11 +288,11 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	}
 
 
+	/**
+	 * 显示首页列表页面
+	 */
 	@Override
 	public void showList() {
-		getKeyWords();
-		showState(1);
-
 		mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
 			@Override
 			public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -373,10 +323,67 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 			}
 		});
+		showState(1);
 	}
 
-	List<HomeMultipleItem> data;
 
+	/**
+	 * 设置搜索栏关键词加载
+	 *
+	 * @param keyWord
+	 * @param showWord
+	 */
+	@Override
+	public void setKeyWord(String keyWord, String showWord) {
+		this.showWord = showWord;
+		this.keyWord = keyWord;
+		et_search.setHint(keyWord);
+		setSearchListener();
+
+	}
+
+	/**
+	 * 首页点击操作监听
+	 *
+	 * @param view
+	 * @param type
+	 * @param data
+	 * @param isAD
+	 */
+	@Override
+	public void OnImageViewClick(View view, final String type, final String data, boolean isAD) {
+
+		if (type.equals("brand")) {
+
+
+		}
+
+	}
+
+
+	/**
+	 * 搜素栏监听
+	 */
+	@Override
+	public void setSearchListener() {
+		et_search.setOnTouchListener(new View.OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View view, MotionEvent motionEvent) {
+				if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+					Intent intent = new Intent(getActivity(), SearchGoodsActivity.class);
+					intent.putExtra("keyword", keyWord);
+					intent.putExtra("showWord", showWord);
+					startActivity(intent);
+				}
+				return false;
+			}
+		});
+	}
+
+	/**
+	 * 刷新监听
+	 */
 	@Override
 	public void onRefresh() {
 		homeMultipleItemAdapter.setEnableLoadMore(false);
@@ -398,17 +405,21 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	}
 
 
-	private int delayMillis = 1000;
-	private boolean isErr;
-	private boolean mLoadMoreEndGone = false;
-	private int mCurrentCounter = 0;
-
+	/**
+	 * 加载更多
+	 */
 	@Override
 	public void onLoadMoreRequested() {
 
 	}
 
 
+	@Override
+	@CallSuper
+	public void onResume() {
+		super.onResume();
+		mDistanceY = 0;
+	}
 //
 //	@Override
 //	public void onLoadMoreRequested() {
@@ -430,4 +441,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 //		mSwipeRefreshLayout.setEnabled(true);
 //
 //	}
+
+
 }

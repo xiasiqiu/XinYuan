@@ -19,6 +19,7 @@
         android:drawablePadding="18px"
         android:padding="10dp"
         android:text="商品"
+        android:textSize="@dimen/tv_Normal"
         android:textColor="@color/bg_white"/>
 
     <TextView
@@ -31,5 +32,6 @@
         android:drawablePadding="18px"
         android:padding="30px"
         android:text="店铺"
+        android:textSize="@dimen/tv_Normal"
         android:textColor="@color/bg_white"/>
 </com.zhy.autolayout.AutoRelativeLayout>

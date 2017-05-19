@@ -18,21 +18,21 @@ import butterknife.ButterKnife;
 public class ShopCarFragment extends BaseFragment {
 
 
-	@Override
-	protected void lazyLoad() {
 
-	}
 
 	@Override
-	public View initLayout(LayoutInflater inflater, ViewGroup container, boolean b) {
-		View rootView = inflater.inflate(R.layout.fragment_shopcar, null);
-		ButterKnife.bind(this, rootView);
-		return rootView;
+	public int getLayoutId() {
+		return R.layout.fragment_shopcar;
 	}
 
 	@Override
 	public void initData(Bundle savedInstanceState) {
 
+	}
+
+	@Override
+	public void initView() {
+		ButterKnife.bind(this, getView());
 	}
 
 

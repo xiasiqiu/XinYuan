@@ -1,7 +1,6 @@
 package com.xinyuan.xyshop.ui.goods;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,12 +17,10 @@ import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.SearchGoodListAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
-import com.xinyuan.xyshop.callback.DialogCallback;
 import com.xinyuan.xyshop.entity.GoodsVo;
 import com.xinyuan.xyshop.entity.PageEntity;
 import com.xinyuan.xyshop.entity.SearchGoodsList;
 import com.xinyuan.xyshop.entity.SelectFilter;
-import com.xinyuan.xyshop.ui.goods.fragment.GoodsDetailFragment;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.JsonUtil;
 import com.youth.xframe.utils.log.XLog;
@@ -80,7 +77,7 @@ public class SearchGoodsShowActivity extends BaseActivity {
 
 	@Override
 	public int getLayoutId() {
-		return R.layout.activity_search_goods_show;
+		return R.layout.activity_search_goodshow;
 	}
 
 
@@ -112,13 +109,13 @@ public class SearchGoodsShowActivity extends BaseActivity {
 			layoutManager.setOrientation(1);
 			this.rvGoods.setLayoutManager(layoutManager);
 			this.manager = layoutManager;
-			this.adapter = new SearchGoodListAdapter(R.layout.recyclerview_searchgood_list_item, goodses, isList);
+			this.adapter = new SearchGoodListAdapter(R.layout.searchgood_item_list, goodses, isList);
 			this.rvGoods.setAdapter(adapter);
 		} else {
 			GridLayoutManager layoutManager2 = new GridLayoutManager(this.context, 2, 1, false);
 			this.rvGoods.setLayoutManager(layoutManager2);
 			this.manager = layoutManager2;
-			this.adapter = new SearchGoodListAdapter(R.layout.recyclerview_searchgood_grid_item, goodses, isList);
+			this.adapter = new SearchGoodListAdapter(R.layout.searchgood_item_grid, goodses, isList);
 			this.rvGoods.setAdapter(adapter);
 		}
 

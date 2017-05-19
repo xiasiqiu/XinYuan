@@ -16,6 +16,6 @@
         android:layout_height="4px"
         android:background="@color/colorLine"/>
     <!--底部区域-->
-    <include layout="@layout/activity_home_bottom"/>
+    <include layout="@layout/activity_main_bottom"/>
 </LinearLayout>
 

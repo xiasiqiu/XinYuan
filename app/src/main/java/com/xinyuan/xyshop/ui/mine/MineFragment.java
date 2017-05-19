@@ -20,23 +20,25 @@ import butterknife.ButterKnife;
 public class MineFragment extends BaseFragment {
 
 	private Toolbar toolbar;
+
+
+
 	@Override
-	protected void lazyLoad() {
+	public int getLayoutId() {
+		return R.layout.fragment_mine;
+	}
+
+	@Override
+	public void initData(@Nullable Bundle savedInstanceState) {
 
 	}
 
 	@Override
-	public View initLayout(LayoutInflater inflater, ViewGroup container, boolean b) {
-		View rootView = inflater.inflate(R.layout.fragment_mine, null);
-		toolbar= (Toolbar) rootView.findViewById(R.id.mine_toolbar);
+	public void initView() {
+		ButterKnife.bind(this, getView());
+		toolbar= (Toolbar) getView().findViewById(R.id.mine_toolbar);
 		SystemBarHelper.immersiveStatusBar(getActivity(),0);
 		SystemBarHelper.setHeightAndPadding(getActivity(), toolbar);
-		ButterKnife.bind(this, rootView);
-		return rootView;
-	}
-
-	@Override
-	protected void initData(@Nullable Bundle savedInstanceState) {
 
 	}
 }

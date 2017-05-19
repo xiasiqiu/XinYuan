@@ -3,19 +3,25 @@ package com.xinyuan.xyshop.base;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
+import android.support.annotation.CheckResult;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.trello.rxlifecycle.FragmentEvent;
-import com.trello.rxlifecycle.FragmentLifecycleProvider;
+import com.trello.rxlifecycle.LifecycleProvider;
+import com.trello.rxlifecycle.LifecycleTransformer;
 import com.trello.rxlifecycle.RxLifecycle;
-import com.trello.rxlifecycle.components.RxFragment;
+import com.trello.rxlifecycle.android.FragmentEvent;
+import com.trello.rxlifecycle.android.RxLifecycleAndroid;
 import com.xinyuan.xyshop.MyShopApplication;
+import com.youth.xframe.base.ICallback;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import rx.Observable;
 import rx.subjects.BehaviorSubject;
 
@@ -24,7 +30,7 @@ import rx.subjects.BehaviorSubject;
  * Created by fx on 2017/5/2 0002.
  */
 
-public abstract class BaseFragment extends Fragment implements FragmentLifecycleProvider {
+public abstract class BaseFragment extends Fragment implements ICallback, LifecycleProvider<FragmentEvent> {
 
 
 	private final BehaviorSubject<FragmentEvent> lifecycleSubject = BehaviorSubject.create();
@@ -37,49 +43,33 @@ public abstract class BaseFragment extends Fragment implements FragmentLifecycle
 	protected boolean isVisible;
 	protected MyShopApplication application;
 	protected Context context;
-
+	Unbinder mUnbinder;
 	@Nullable
 	@Override
-	public final View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		if (contentView == null) {//判断回收池是否为空
-			contentView = initLayout(inflater, container, false);
-		}
-		if (contentView != null) {
-			return contentView;
-		}
+	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
 		this.application = MyShopApplication.getInstance();
 		this.context = getActivity();
-		ButterKnife.bind(this, contentView);
-		return super.onCreateView(inflater, container, savedInstanceState);
+		if (contentView == null) {
+			contentView = inflater.inflate(getLayoutId(), container, false);
+			mUnbinder=ButterKnife.bind(this,contentView);
+			return contentView;
+		} else {
+
+			return contentView;
+
+		}
+
 	}
+
 
 	@Override
 	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		//初始化数据
 		initData(savedInstanceState);
+		initView();
 	}
 
-	/**
-	 * 可见
-	 */
-	protected void onVisible() {
-		lazyLoad();
-	}
-
-
-	/**
-	 * 不可见
-	 */
-	protected void onInvisible() {
-
-	}
-
-	/**
-	 * 延迟加载
-	 * 子类必须重写此方法
-	 */
-	protected abstract void lazyLoad();
 
 	@Override
 	public final void onDestroyView() {
@@ -89,80 +79,65 @@ public abstract class BaseFragment extends Fragment implements FragmentLifecycle
 		super.onDestroyView();
 	}
 
-	/**
-	 * 初始化Fragment的布局,当要创建视图时调用
-	 *
-	 * @param inflater  布局填充器
-	 * @param container ViewGroup
-	 * @param b         标记
-	 * @return view 返回视图
-	 */
-	public abstract View initLayout(LayoutInflater inflater, ViewGroup container, boolean b);
-
-	/**
-	 * 初始化数据,当ViewCreate被创建是调用此方法
-	 */
-	protected abstract void initData(@Nullable Bundle savedInstanceState);
 
 	@Override
+	@NonNull
+	@CheckResult
 	public final Observable<FragmentEvent> lifecycle() {
 		return lifecycleSubject.asObservable();
 	}
 
 	@Override
-	public final <T> Observable.Transformer<T, T> bindUntilEvent(FragmentEvent event) {
-		return RxLifecycle.bindUntilFragmentEvent(lifecycleSubject, event);
+	@NonNull
+	@CheckResult
+	public final <T> LifecycleTransformer<T> bindUntilEvent(@NonNull FragmentEvent event) {
+		return RxLifecycle.bindUntilEvent(lifecycleSubject, event);
 	}
 
 	@Override
-	public final <T> Observable.Transformer<T, T> bindToLifecycle() {
-		return RxLifecycle.bindFragment(lifecycleSubject);
+	@NonNull
+	@CheckResult
+	public final <T> LifecycleTransformer<T> bindToLifecycle() {
+		return RxLifecycleAndroid.bindFragment(lifecycleSubject);
 	}
 
 	@Override
-	@CallSuper
 	public void onAttach(android.app.Activity activity) {
 		super.onAttach(activity);
 		lifecycleSubject.onNext(FragmentEvent.ATTACH);
 	}
 
 	@Override
-	@CallSuper
-	public void onCreate(Bundle savedInstanceState) {
+	public void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		lifecycleSubject.onNext(FragmentEvent.CREATE);
 	}
 
 	@Override
-	@CallSuper
-	public void onViewCreated(View view, Bundle savedInstanceState) {
+	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 		lifecycleSubject.onNext(FragmentEvent.CREATE_VIEW);
 	}
 
 	@Override
-	@CallSuper
 	public void onStart() {
 		super.onStart();
 		lifecycleSubject.onNext(FragmentEvent.START);
 	}
 
 	@Override
-	@CallSuper
 	public void onResume() {
 		super.onResume();
 		lifecycleSubject.onNext(FragmentEvent.RESUME);
 	}
 
 	@Override
-	@CallSuper
 	public void onPause() {
 		lifecycleSubject.onNext(FragmentEvent.PAUSE);
 		super.onPause();
 	}
 
 	@Override
-	@CallSuper
 	public void onStop() {
 		lifecycleSubject.onNext(FragmentEvent.STOP);
 		super.onStop();
@@ -170,14 +145,13 @@ public abstract class BaseFragment extends Fragment implements FragmentLifecycle
 
 
 	@Override
-	@CallSuper
 	public void onDestroy() {
 		lifecycleSubject.onNext(FragmentEvent.DESTROY);
+		mUnbinder.unbind();
 		super.onDestroy();
 	}
 
 	@Override
-	@CallSuper
 	public void onDetach() {
 		lifecycleSubject.onNext(FragmentEvent.DETACH);
 		super.onDetach();

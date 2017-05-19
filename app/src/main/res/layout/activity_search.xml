@@ -7,7 +7,7 @@
               android:background="@color/bg_white"
               android:orientation="vertical">
 
-    <include layout="@layout/search_header"></include>
+    <include layout="@layout/activity_search_header"></include>
 
     <TextView style="@style/Line"/>
 
@@ -23,7 +23,7 @@
             android:background="@color/bg_white"
             android:text="热门搜索"
             android:textColor="@color/tv_name"
-            android:textSize="40px"/>
+            android:textSize="@dimen/tv_Regular"/>
 
         <com.xinyuan.xyshop.widget.TagFlowLayout
             android:id="@+id/tag_flow_keyword"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:text="历史记录"
             android:textColor="@color/tv_name"
-            android:textSize="40px"/>
+            android:textSize="@dimen/tv_Regular"/>
 
         <com.xinyuan.xyshop.widget.TagFlowLayout
             android:id="@+id/tag_flow_history"
@@ -77,6 +77,6 @@
             android:button="@null"
             android:text="清空历史"
             android:textColor="@color/tv_name"
-            android:textSize="38px"/>
+            android:textSize="@dimen/tv_Normal"/>
     </LinearLayout>
 </LinearLayout>

@@ -9,8 +9,10 @@
     <string name="act_home_top_scan">扫一扫</string>
     <string name="act_home_top_msg">消息</string>
     <string name="act_search_search">搜索</string>
-    <string name="title_activity_good_details">GoodDetailsActivity</string>
-    <string name="title_activity_loading_view">LoadingViewActivity</string>
-    <string name="title_activity_guide">GuideActivity</string>
-    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="search_search_hint">搜索关键字</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>

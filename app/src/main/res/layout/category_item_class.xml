@@ -12,16 +12,16 @@
     <RelativeLayout
         android:id="@+id/rlGoodClass"
         android:layout_width="fill_parent"
-        android:layout_height="36.0dip"
+        android:layout_height="85px"
         android:background="@color/normal_bg">
 
         <ImageView
             android:id="@+id/tvGoodsClassDot"
-            android:layout_width="6.0dip"
-            android:layout_height="6.0dip"
+            android:layout_width="18px"
+            android:layout_height="18px"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10.0dip"
+            android:layout_marginRight="30px"
             android:src="@drawable/nc_sharp_dot2"/>
 
         <TextView
@@ -30,18 +30,19 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-          android:layout_marginLeft="30px"
-            android:textSize="38px"
+            android:layout_marginLeft="30px"
+            android:textSize="@dimen/tv_Normal"
             android:textColor="@color/tv_name"/>
 
         <ImageView
             android:id="@+id/btnGoodsClass"
-            android:layout_width="36.0dip"
-            android:layout_height="36.0dip"
+            android:layout_width="92px"
+            android:layout_height="92px"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="5.0dip"
             android:layout_marginRight="5.0dip"
-            android:background="@drawable/nc_icon_more"/>
+            android:src="@drawable/nc_icon_more"/>
     </RelativeLayout>
 
     <com.xinyuan.xyshop.widget.MyGridView
@@ -52,5 +53,5 @@
         android:isScrollContainer="false"
         android:listSelector="#00000000"
         android:numColumns="3"
-        android:verticalSpacing="5.0dip"/>
+        android:verticalSpacing="15px"/>
 </LinearLayout>

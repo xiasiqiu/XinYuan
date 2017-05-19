@@ -31,7 +31,7 @@ public class SearchSortDialog extends PopupWindow {
 	}
 
 	public void initmPopupWindowView() {
-		View customView = LayoutInflater.from(this.context).inflate(R.layout.search_sort_dialog, null);
+		View customView = LayoutInflater.from(this.context).inflate(R.layout.activity_search_sort_dialog, null);
 		this.popupWindow = new PopupWindow(customView, -2, -2);
 		this.popupWindow.setBackgroundDrawable(new BitmapDrawable(this.context.getResources(), (Bitmap) null));
 		this.popupWindow.setOutsideTouchable(true);

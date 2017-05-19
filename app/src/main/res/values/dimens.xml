@@ -14,4 +14,23 @@
     <dimen name="textSize_sidebar_padding">20sp</dimen>
     <dimen name="radius_sidebar">20dp</dimen>
     <dimen name="ball_radius_sidebar">24dp</dimen>
+
+
+
+
+
+    <dimen name="tv_heavy">45px</dimen>
+    <dimen name="tv_Blod">42px</dimen>
+    <dimen name="tv_Regular">40px</dimen>
+    <dimen name="tv_Normal">38px</dimen>
+    <dimen name="tv_light">36px</dimen>
+    <dimen name="tv_small">32px</dimen>
+
+
+
+
+
+
+
+
 </resources>

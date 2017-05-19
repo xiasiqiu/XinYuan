@@ -14,19 +14,20 @@ import com.xinyuan.xyshop.base.BaseFragment;
  */
 
 public class GoodsCommentFragment extends BaseFragment {
+
+
 	@Override
-	protected void lazyLoad() {
+	public int getLayoutId() {
+		return R.layout.fragment_good_comment;
+	}
+
+	@Override
+	public void initData(@Nullable Bundle savedInstanceState) {
 
 	}
 
 	@Override
-	public View initLayout(LayoutInflater inflater, ViewGroup container, boolean b) {
-		View rootView = inflater.inflate(R.layout.fragment_good_comment, null);
-		return rootView;
-	}
-
-	@Override
-	protected void initData(@Nullable Bundle savedInstanceState) {
+	public void initView() {
 
 	}
 }

@@ -1,13 +1,7 @@
 package com.xinyuan.xyshop.ui.goods;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerTabStrip;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.TextView;
 
 import com.gxz.PagerSlidingTabStrip;
@@ -19,7 +13,6 @@ import com.xinyuan.xyshop.ui.goods.fragment.GoodsDetailFragment;
 import com.xinyuan.xyshop.ui.goods.fragment.GoodsInfoFragment;
 import com.xinyuan.xyshop.ui.goods.fragment.GoodsRecommFragment;
 import com.xinyuan.xyshop.widget.NoScrollViewPager;
-import com.xinyuan.xyshop.widget.NotSlipViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +24,9 @@ public class GoodDetailsActivity extends BaseActivity {
 
 
 	@BindView(R.id.psts_tabs)
-	PagerSlidingTabStrip psts_tabs;
+	 public PagerSlidingTabStrip psts_tabs;
 	@BindView(R.id.vp_content)
-	NoScrollViewPager vp_content;
+	public NoScrollViewPager vp_content;
 	@BindView(R.id.tv_title)
 	public TextView tv_title;
 	private List<Fragment> fragmentList = new ArrayList<>();
@@ -45,7 +38,7 @@ public class GoodDetailsActivity extends BaseActivity {
 
 	@Override
 	public int getLayoutId() {
-		return R.layout.activity_good_details;
+		return R.layout.activity_gooddetails;
 	}
 
 	@Override

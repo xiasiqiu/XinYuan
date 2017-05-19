@@ -33,13 +33,12 @@ public class MainActivity extends BaseActivity implements MainContract.IMainView
 	 * 定义一个button数组，用于改变颜色
 	 */
 	private Button btns[];
+
 	private int btnID[];
 
 	private FragmentManager manager;
 	//声明一个Presenter 对象，用于相关逻辑的处理
 	private MainContract.IMainPresenter presenter;
-
-
 	@Override
 	public int getLayoutId() {
 		return R.layout.activity_main;
@@ -56,12 +55,10 @@ public class MainActivity extends BaseActivity implements MainContract.IMainView
 		presenter.initData();
 
 	}
-
 	@Override
 	public void initData(Bundle savedInstanceState) {
 
 	}
-
 
 	@Override
 	public void setPresenter(MainContract.IMainPresenter presenter) {
@@ -72,7 +69,6 @@ public class MainActivity extends BaseActivity implements MainContract.IMainView
 	public void showState(int Sate) {
 
 	}
-
 
 	@Override
 	public ViewPager getmActHomeVpContent() {

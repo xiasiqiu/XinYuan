@@ -29,10 +29,12 @@ public class HomeContract {
 
 		void OnImageViewClick(View view, final String type, final String data, boolean isAD);
 
+		void setKeyWord(String keyWord ,String showWord );
+		void setSearchListener();
 	}
 
 	public interface HomePresenter extends BasePresenter<HomeView> {
 
-
+	void getkeyWord();
 	}
 }

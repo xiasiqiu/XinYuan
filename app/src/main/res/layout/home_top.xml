@@ -38,7 +38,7 @@
             android:layout_marginLeft="20px"
             android:text="最新动态:"
             android:textColor="@color/tv_name"
-            android:textSize="40px"/>
+            android:textSize="@dimen/tv_Regular"/>
 
         <com.sunfusheng.marqueeview.MarqueeView
             android:id="@+id/marquee_name"
@@ -50,7 +50,7 @@
             app:mvAnimDuration="1000"
             app:mvInterval="3000"
             app:mvTextColor="@color/colorPrimary"
-            app:mvTextSize="12sp"/>
+            app:mvTextSize="@dimen/tv_light"/>
 
         <com.sunfusheng.marqueeview.MarqueeView
             android:id="@+id/marquee_content"
@@ -63,7 +63,7 @@
             app:mvInterval="3000"
             app:mvSingleLine="true"
             app:mvTextColor="@color/tv_hint"
-            app:mvTextSize="12sp"/>
+            app:mvTextSize="@dimen/tv_light"/>
 
         <View
             android:layout_width="3px"
@@ -83,7 +83,7 @@
             android:layout_marginRight="20px"
             android:text="更多"
             android:textColor="@color/tv_name"
-            android:textSize="38px"/>
+            android:textSize="@dimen/tv_Normal"/>
     </com.zhy.autolayout.AutoRelativeLayout>
 
 

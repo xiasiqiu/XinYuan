@@ -16,8 +16,11 @@ import com.xinyuan.xyshop.entity.ItemData;
 import com.xinyuan.xyshop.entity.ItemGoods;
 import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
 import com.xinyuan.xyshop.ui.goods.GoodDetailsActivity;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.youth.xframe.utils.log.XLog;
+import com.zhy.autolayout.AutoLinearLayout;
+import com.zhy.autolayout.AutoRelativeLayout;
 
 import java.util.List;
 
@@ -112,12 +115,18 @@ public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMulti
 				break;
 			case HomeMultipleItem.GOODS:
 
-
+				AutoLinearLayout autoRelativeLayout = helper.getView(R.id.home_rl_goods);
 				ImageView goods_view = helper.getView(R.id.home_goods_img);
 				TextView goods_name = helper.getView(R.id.home_goods_name);
 				GlideImageLoader.setImage(context, goodlist.get(helper.getPosition() - 12).getImageUrl(), goods_view);
 				goods_name.setText(goodlist.get(helper.getPosition() - 12).getGoodsName());
-
+				autoRelativeLayout.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						Intent intent=new Intent(context,GoodDetailsActivity.class);
+						context.startActivity(intent);
+					}
+				});
 
 				break;
 

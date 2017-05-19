@@ -6,7 +6,7 @@ package com.xinyuan.xyshop.base;
 
 public interface BasePresenter<T extends BaseView> {
 
-	String TAG = "myTag";
+	
 
 	/**
 	 * 初始化操作

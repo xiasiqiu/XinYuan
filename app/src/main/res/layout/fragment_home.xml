@@ -26,6 +26,6 @@
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
-    <include layout="@layout/home_header"/>
 
+    <include layout="@layout/fragment_home_header"/>
 </FrameLayout>

@@ -1,6 +1,5 @@
 package com.xinyuan.xyshop.ui.goods;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,10 +14,6 @@ import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.StringTagAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
-import com.xinyuan.xyshop.bean.LzyResponse;
-import com.xinyuan.xyshop.callback.JsonCallback;
-import com.xinyuan.xyshop.common.AddViewHolder;
-import com.xinyuan.xyshop.entity.History;
 import com.xinyuan.xyshop.entity.SearchHot;
 import com.xinyuan.xyshop.http.Urls;
 import com.xinyuan.xyshop.util.CommUtil;
@@ -26,9 +21,7 @@ import com.xinyuan.xyshop.util.JsonUtil;
 import com.xinyuan.xyshop.widget.OnFlexboxSubscribeListener;
 import com.xinyuan.xyshop.widget.TagFlowLayout;
 import com.xinyuan.xyshop.widget.dialog.SearchSortDialog;
-import com.youth.xframe.cache.XCache;
 import com.youth.xframe.utils.log.XLog;
-import com.zhy.autolayout.AutoLinearLayout;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -73,7 +66,7 @@ public class SearchGoodsActivity extends BaseActivity {
 
 	@Override
 	public int getLayoutId() {
-		return R.layout.activity_search_goods;
+		return R.layout.activity_search;
 	}
 
 	@Override

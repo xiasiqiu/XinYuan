@@ -3,26 +3,21 @@ package com.xinyuan.xyshop.ui.catrgory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
 import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.adapter.BrandGridViewAdapter;
 import com.xinyuan.xyshop.adapter.GoodsCategoryAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.common.AddViewHolder;
-import com.xinyuan.xyshop.entity.Brand;
 import com.xinyuan.xyshop.entity.GoodCategory;
 import com.xinyuan.xyshop.mvp.contract.CategoryContract;
 import com.xinyuan.xyshop.mvp.presenter.CategoryPresenterImpl;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.SystemBarHelper;
-import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.loadingview.XLoadingView;
 
 import java.util.ArrayList;
@@ -37,8 +32,6 @@ import butterknife.ButterKnife;
 
 public class CategoryFragment extends BaseFragment implements CategoryContract.CategoryView {
 
-	private Toolbar toolbar;
-
 	private CategoryContract.CategoryPresenter presenter;
 	private AddViewHolder currentGoodsClassView;
 	private int currentItem = 0;
@@ -50,40 +43,41 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 	LinearLayout llGoodsClassRoot;
 	@BindView(R.id.svGoodsClassRoot)
 	ScrollView svGoodsClassRoot;
-
-
 	@BindView(R.id.svGoodsClass)
 	ScrollView svGoodsClass;
 	@BindView(R.id.llGoodsClass)
 	LinearLayout llGoodsClass;
 	@BindView(R.id.cagetory_img)
 	ImageView categroy_img;
-
-
 	@BindView(R.id.category_loadingView)
 	XLoadingView xLoadingView;
+	@BindView(R.id.category_toolbar)
+	Toolbar toolbar;
+
+	@BindView(R.id.category_btn_msg)
+	ImageView btn_msg;
+	@BindView(R.id.category_btn_scan)
+	ImageView btn_scan;
 
 	@Override
-	protected void lazyLoad() {
-
+	public int getLayoutId() {
+		return R.layout.fragment_category;
 	}
 
 	@Override
-	public View initLayout(LayoutInflater inflater, ViewGroup container, boolean b) {
-		View rootView = inflater.inflate(R.layout.fragment_category, null);
-		ButterKnife.bind(this, rootView);
-		toolbar = (Toolbar) rootView.findViewById(R.id.category_toolbar);
+	public void initView() {
 		SystemBarHelper.immersiveStatusBar(getActivity(), 0);
 		SystemBarHelper.setHeightAndPadding(getActivity(), toolbar);
-		new CategoryPresenterImpl(this);
-		return rootView;
 	}
 
+
 	@Override
-	protected void initData(@Nullable Bundle savedInstanceState) {
+	public void initData(@Nullable Bundle savedInstanceState) {
+		new CategoryPresenterImpl(this);
 		presenter.initData();
 
 	}
+
 
 	@Override
 	public void setPresenter(CategoryContract.CategoryPresenter presenter) {
@@ -95,7 +89,6 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 	public void showState(int Sate) {
 		switch (Sate) {
 			case 0:
-
 				xLoadingView.showLoading();
 				break;
 			case 1:
@@ -110,33 +103,6 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 		}
 	}
 
-
-	@Override
-	public void OnImageViewClick(View view, String type, String data, boolean isAD) {
-
-	}
-
-	@Override
-	public void showFrist(GoodCategory classItem, int m) {
-		AddViewHolder holder = new AddViewHolder(getActivity(), R.layout.category_item_frist);
-
-		holder.setText(R.id.tvGoodsClassId, String.valueOf(classItem.getCategoryId())).setText(R.id.tv_category_first, classItem.getCategoryName());
-		if (m == 0) {
-
-			setCurrentGoodsClass(holder, classItem.getAppImageUrl());
-			this.currentGoodsClassView = holder;
-			this.currentItem = m;
-			String goodsClassId = holder.getText(R.id.tvGoodsClassId);
-
-			CategoryFragment.this.showGoodsClass(goodsClassId);
-			GlideImageLoader.setImage(getContext(), classItem.getAppImageUrl(), categroy_img);
-		}
-		this.llGoodsClassRoot.addView(holder.getCustomView());
-		setItemClick(holder, classItem, m);
-
-		showState(1);
-	}
-
 	@Override
 	public void getData() {
 		goodsCategoryList_one = CategoryPresenterImpl.getGoodsCategoryList_one();
@@ -144,7 +110,22 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 		goodsCategoryList_three = CategoryPresenterImpl.getGoodsCategoryList_three();
 	}
 
-
+	@Override
+	public void showFrist(GoodCategory classItem, int m) {
+		AddViewHolder holder = new AddViewHolder(getActivity(), R.layout.category_item_frist);
+		holder.setText(R.id.tvGoodsClassId, String.valueOf(classItem.getCategoryId())).setText(R.id.tv_category_first, classItem.getCategoryName());
+		if (m == 0) {
+			setCurrentGoodsClass(holder, classItem.getAppImageUrl());
+			this.currentGoodsClassView = holder;
+			this.currentItem = m;
+			String goodsClassId = holder.getText(R.id.tvGoodsClassId);
+			CategoryFragment.this.showGoodsClass(goodsClassId);
+			GlideImageLoader.setImage(getContext(), classItem.getAppImageUrl(), categroy_img);
+		}
+		this.llGoodsClassRoot.addView(holder.getCustomView());
+		setItemClick(holder, classItem, m);
+		showState(1);
+	}
 
 
 	private void setItemClick(final AddViewHolder holder, final GoodCategory classItem, final int m) {
@@ -250,6 +231,11 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 
 	private void resetCurrentGoodsClass(AddViewHolder holder, String url) {
 		holder.setTextColor(R.id.tv_category_first, R.color.tv_name).setBackgroundColor(R.id.llView, R.color.bg_white);
+	}
+
+	@Override
+	public void OnImageViewClick(View view, String type, String data, boolean isAD) {
+
 	}
 
 }

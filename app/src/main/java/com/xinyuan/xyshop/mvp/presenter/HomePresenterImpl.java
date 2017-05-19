@@ -1,12 +1,16 @@
 package com.xinyuan.xyshop.mvp.presenter;
 
 import com.google.gson.reflect.TypeToken;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.callback.StringCallback;
 import com.xinyuan.xyshop.bean.LzyResponse;
+import com.xinyuan.xyshop.callback.JsonCallback;
 import com.xinyuan.xyshop.common.DataTrans;
 import com.xinyuan.xyshop.entity.ApiSpecialItem;
 import com.xinyuan.xyshop.entity.HomeMultipleItem;
 import com.xinyuan.xyshop.entity.ItemData;
 import com.xinyuan.xyshop.entity.ItemGoods;
+import com.xinyuan.xyshop.entity.KeyWord;
 import com.xinyuan.xyshop.http.ApiServer;
 import com.xinyuan.xyshop.http.Urls;
 import com.xinyuan.xyshop.mvp.contract.HomeContract;
@@ -16,6 +20,8 @@ import com.youth.xframe.utils.log.XLog;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Call;
+import okhttp3.Response;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action0;
@@ -67,7 +73,6 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 					public List<ApiSpecialItem> call(LzyResponse<String> response) {
 						List<ApiSpecialItem> list = (List) JsonUtil.toBean(response.getDatas(), "itemList", new TypeToken<List<ApiSpecialItem>>() {
 						}.getType());
-
 
 
 						return list;
@@ -148,7 +153,7 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 		view.showNotice(noticeList);
 		view.showList();
 		view.showMenu(menu);
-
+		getkeyWord();
 	}
 
 	public static List<ItemGoods> moreGoodsList() {
@@ -203,11 +208,26 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 	}
 
 	public static void clearList() {
-		XLog.v("删除首页列表数据");
 		banner.clear();
 		menu.clear();
 		noticeList.clear();
 		goodsList.clear();
+
+	}
+
+	@Override
+	public void getkeyWord() {
+
+		OkGo.get(Urls.URL_SEARCH_HOT)
+				.execute(new StringCallback() {
+					@Override
+					public void onSuccess(String s, Call call, Response response) {
+						KeyWord keyWords = JsonUtil.toBean(s, KeyWord.class);
+						KeyWord.Key key = keyWords.getKey();
+						view.setKeyWord(key.getKeywordValue(),key.getKeywordName());
+
+					}
+				});
 
 	}
 
