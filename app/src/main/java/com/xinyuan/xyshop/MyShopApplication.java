@@ -31,15 +31,10 @@ public class MyShopApplication extends XApplication {
 		super.onCreate();
 		AutoLayoutConifg.getInstance().useDeviceSize();
 		XFrame.init(this);
-		XFrame.initXLog()
-				.setTag("XYShop")//设置全局tag
-				.setShowThreadInfo(true)//是否开启线程信息显示，默认true
-				.setDebug(true);//是否显示日志，默认true，发布时最好关闭
 		TAG = this.getClass().getSimpleName();
 		instance = MyShopApplication.this;
 		OkGo.init(this);
 		OkGo.getInstance()
-				.debug("OKGO", Level.INFO, true)
 				.setCacheMode(CacheMode.FIRST_CACHE_THEN_REQUEST)
 				.setCacheTime(CacheEntity.CACHE_NEVER_EXPIRE)
 				.setRetryCount(3);

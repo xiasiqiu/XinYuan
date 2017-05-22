@@ -11,10 +11,13 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 
@@ -37,6 +40,7 @@ import com.xinyuan.xyshop.http.Urls;
 import com.xinyuan.xyshop.mvp.contract.HomeContract;
 import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
 import com.xinyuan.xyshop.ui.goods.SearchGoodsActivity;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.JsonUtil;
 import com.xinyuan.xyshop.util.SystemBarHelper;
@@ -96,7 +100,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	private int mCurrentCounter = 0;
 
 	private List<HomeMultipleItem> data;
-
+	private static int num=1;
 	@Override
 	public int getLayoutId() {
 		return R.layout.fragment_home;
@@ -104,9 +108,14 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	@Override
 	public void initView() {
-		SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
-		SystemBarHelper.setHeightAndPadding(getActivity(), mToolbar);
+		if(num==1){
+			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
+			SystemBarHelper.setHeightAndPadding(getActivity(), mToolbar);
 
+
+		}
+		XLog.v("首页切换"+num);
+		num++;
 	}
 
 	/**
@@ -238,7 +247,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	@Override
 	public void showMenu(final List<ItemData> itemList) {
 		menuListView = (RecyclerView) headView.findViewById(R.id.menu_list);
-		XLog.list(itemList);
 		int menucount = 10;
 		ArrayList<MultiItemEntity> res = new ArrayList<>();
 		res.add(new ExpandItem(itemList.get(0).getImageUrl(), itemList.get(0).getData()));
@@ -258,6 +266,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		expandableItemAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
 			@Override
 			public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+
+
 				OnImageViewClick(view, itemList.get(position).getType(), itemList.get(position).getData(), false);
 			}
 		});
@@ -281,8 +291,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 		MarqueeView marquee_name = (MarqueeView) headView.findViewById(R.id.marquee_name);
 		MarqueeView marquee_content = (MarqueeView) headView.findViewById(R.id.marquee_content);
-		XLog.list(itemList);
-		XLog.list(name);
+
+
 		marquee_name.startWithList(name);
 		marquee_content.startWithList(content);
 	}
@@ -354,7 +364,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	public void OnImageViewClick(View view, final String type, final String data, boolean isAD) {
 
 		if (type.equals("brand")) {
-
+			XLog.v("ssssssssssssss");
+			CommUtil.gotoActivity(getActivity(), BrandActivity.class, false, null);
 
 		}
 
@@ -418,7 +429,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	@CallSuper
 	public void onResume() {
 		super.onResume();
-		mDistanceY = 0;
+
 	}
 //
 //	@Override

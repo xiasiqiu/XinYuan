@@ -2,6 +2,7 @@ package com.xinyuan.xyshop.ui.goods.fragment;
 
 import android.os.Bundle;
 
+import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseFragment;
 
 /**
@@ -11,7 +12,7 @@ import com.xinyuan.xyshop.base.BaseFragment;
 public class GoodsConfigFragment extends BaseFragment {
 	@Override
 	public int getLayoutId() {
-		return 0;
+		return R.layout.fragment_good_config;
 	}
 
 	@Override

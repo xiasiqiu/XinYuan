@@ -6,15 +6,5 @@
 
     <include layout="@layout/fragment_good_itemtab"/>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-
-        <ImageView
-            android:id="@+id/good_detail_img"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="center"/>
-    </ScrollView>
 </LinearLayout>

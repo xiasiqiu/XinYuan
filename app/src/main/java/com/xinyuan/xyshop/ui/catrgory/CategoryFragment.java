@@ -18,6 +18,7 @@ import com.xinyuan.xyshop.mvp.contract.CategoryContract;
 import com.xinyuan.xyshop.mvp.presenter.CategoryPresenterImpl;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.SystemBarHelper;
+import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.loadingview.XLoadingView;
 
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 	ImageView btn_msg;
 	@BindView(R.id.category_btn_scan)
 	ImageView btn_scan;
-
+	private static int num=1;
 	@Override
 	public int getLayoutId() {
 		return R.layout.fragment_category;
@@ -66,8 +67,14 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 
 	@Override
 	public void initView() {
-		SystemBarHelper.immersiveStatusBar(getActivity(), 0);
-		SystemBarHelper.setHeightAndPadding(getActivity(), toolbar);
+		if(num==1){
+			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
+			SystemBarHelper.setHeightAndPadding(getActivity(), toolbar);
+
+
+		}
+		XLog.v("分类页面切换"+num);
+		num++;
 	}
 
 

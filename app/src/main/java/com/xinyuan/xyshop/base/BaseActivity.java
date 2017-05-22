@@ -59,7 +59,7 @@ public abstract class BaseActivity extends AutoLayoutActivity implements ICallba
 
 	@Override
 	public void setContentView(int layoutResID) {
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.setContentView(layoutResID);
 
 		//setStatusBar();

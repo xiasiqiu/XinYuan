@@ -2,6 +2,7 @@ package com.xinyuan.xyshop.ui.goods;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.widget.TextView;
 
 import com.gxz.PagerSlidingTabStrip;
@@ -24,12 +25,13 @@ public class GoodDetailsActivity extends BaseActivity {
 
 
 	@BindView(R.id.psts_tabs)
-	 public PagerSlidingTabStrip psts_tabs;
+	public PagerSlidingTabStrip psts_tabs;
 	@BindView(R.id.vp_content)
 	public NoScrollViewPager vp_content;
 	@BindView(R.id.tv_title)
 	public TextView tv_title;
 	private List<Fragment> fragmentList = new ArrayList<>();
+
 	private GoodsInfoFragment goodsInfoFragment;
 	private GoodsDetailFragment goodsDetailFragment;
 	private GoodsCommentFragment goodsCommentFragment;
@@ -38,7 +40,7 @@ public class GoodDetailsActivity extends BaseActivity {
 
 	@Override
 	public int getLayoutId() {
-		return R.layout.activity_gooddetails;
+		return R.layout.activity_good_details;
 	}
 
 	@Override
@@ -58,4 +60,8 @@ public class GoodDetailsActivity extends BaseActivity {
 		vp_content.setOffscreenPageLimit(4);
 		psts_tabs.setViewPager(vp_content);
 	}
+
+
+
+
 }

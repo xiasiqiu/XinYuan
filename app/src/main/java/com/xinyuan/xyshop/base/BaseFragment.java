@@ -158,4 +158,5 @@ public abstract class BaseFragment extends Fragment implements ICallback, Lifecy
 	}
 
 
+
 }

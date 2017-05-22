@@ -15,22 +15,23 @@
 
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
-            android:layout_height="44dp"
+            android:layout_height="?attr/actionBarSize"
             android:orientation="horizontal">
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:id="@+id/ll_back"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:paddingLeft="15dp">
+                android:paddingLeft="30px">
 
                 <ImageView
                     android:id="@+id/iv_back"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
+                    android:layout_width="30px"
+                    android:layout_height="50px"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/icon_back"/>
             </com.zhy.autolayout.AutoLinearLayout>
+
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="0dp"
@@ -42,18 +43,18 @@
                 <com.gxz.PagerSlidingTabStrip
                     android:id="@+id/psts_tabs"
                     android:layout_width="wrap_content"
-                    android:layout_height="32dp"
+                    android:layout_height="95px"
                     android:layout_gravity="center"
                     android:textColor="@color/tv_name"
-                    android:textSize="15sp"
+                    android:textSize="48px"
                     app:pstsDividerColor="@android:color/transparent"
                     app:pstsDividerPaddingTopBottom="0dp"
                     app:pstsIndicatorColor="@color/colorPrimary"
-                    app:pstsIndicatorHeight="2dp"
+                    app:pstsIndicatorHeight="6px"
                     app:pstsScaleZoomMax="0.0"
                     app:pstsShouldExpand="false"
                     app:pstsSmoothScrollWhenClickTab="false"
-                    app:pstsTabPaddingLeftRight="12dp"
+                    app:pstsTabPaddingLeftRight="36px"
                     app:pstsTextAllCaps="false"
                     app:pstsTextSelectedColor="@color/colorPrimary"
                     app:pstsUnderlineHeight="0dp"/>
@@ -63,11 +64,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="图文详情"
-                    android:textColor="#ffffff"
-                    android:textSize="15sp"
+                    android:textColor="@color/tv_name"
+                    android:textSize="@dimen/tv_Regular"
                     android:visibility="gone"/>
+
             </com.zhy.autolayout.AutoLinearLayout>
+
+            <ImageView
+                android:id="@+id/detail_btn_msg"
+                android:layout_width="79px"
+                android:layout_height="80px"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="35px"
+                android:background="@drawable/act_home_msg_de"/>
         </com.zhy.autolayout.AutoLinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/bg_gray"/>
     </com.zhy.autolayout.AutoLinearLayout>
 
     <com.xinyuan.xyshop.widget.NoScrollViewPager

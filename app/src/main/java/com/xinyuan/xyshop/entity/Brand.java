@@ -19,6 +19,11 @@ public class Brand implements Serializable {
 	private int showType;
 	private int storeId = 0;
 
+	public Brand(String brandInitial, int showType) {
+		this.brandInitial = brandInitial;
+		this.showType = showType;
+	}
+
 	public int getApplyState() {
 		return applyState;
 	}

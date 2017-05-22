@@ -33,7 +33,9 @@
                             android:id="@+id/goodinfo_banner"
                             android:layout_width="match_parent"
                             android:layout_height="925px"
-                            android:background="@drawable/test_good_banner"/>
+                            app:indicator_drawable_selected="@drawable/banner_shape"
+                            app:indicator_height="32px"
+                            app:indicator_width="32px"/>
 
                         <ImageView
                             android:id="@+id/goodinfo_share"
@@ -258,8 +260,9 @@
 
                         <Button
                             android:id="@+id/iv_good_store"
-                            android:layout_width="185px"
-                            android:layout_height="50px"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="190px"
+                            android:layout_height="60px"
                             android:layout_marginLeft="30px"
                             android:layout_marginTop="120px"
                             android:layout_toRightOf="@+id/iv_good_store_img"
@@ -356,10 +359,24 @@
                             android:textColor="#222222"
                             android:textSize="14dp"/>
                     </LinearLayout>
+
+
                 </LinearLayout>
             </ScrollView>
 
             <include layout="@layout/fragment_good_itemtab"/>
         </com.xinyuan.xyshop.widget.SlideDetailsLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_up_slide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="30dp"
+            android:src="@drawable/go_top"
+            app:backgroundTint="#ffffff"
+            app:borderWidth="0dp"
+            app:fabSize="mini"
+            app:rippleColor="#ffffff"/>
     </android.support.design.widget.CoordinatorLayout>
 </LinearLayout>

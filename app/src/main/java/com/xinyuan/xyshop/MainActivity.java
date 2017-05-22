@@ -39,6 +39,7 @@ public class MainActivity extends BaseActivity implements MainContract.IMainView
 	private FragmentManager manager;
 	//声明一个Presenter 对象，用于相关逻辑的处理
 	private MainContract.IMainPresenter presenter;
+
 	@Override
 	public int getLayoutId() {
 		return R.layout.activity_main;
@@ -55,6 +56,7 @@ public class MainActivity extends BaseActivity implements MainContract.IMainView
 		presenter.initData();
 
 	}
+
 	@Override
 	public void initData(Bundle savedInstanceState) {
 
@@ -116,4 +118,5 @@ public class MainActivity extends BaseActivity implements MainContract.IMainView
 		}
 
 	}
+
 }

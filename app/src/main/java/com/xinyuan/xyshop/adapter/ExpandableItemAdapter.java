@@ -1,5 +1,6 @@
 package com.xinyuan.xyshop.adapter;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,6 +12,8 @@ import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.bean.ExpandItem;
 import com.xinyuan.xyshop.entity.ItemData;
 import com.xinyuan.xyshop.entity.Menu;
+import com.xinyuan.xyshop.ui.home.BrandActivity;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 
 import java.util.ArrayList;
@@ -57,8 +60,15 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
 						} else {
 
 							expand(pos);
+							if(pos==0){
+								Intent intent=new Intent(mContext,BrandActivity.class);
+								mContext.startActivity(intent);
+							}
+
 
 						}
+
+
 					}
 				});
 				break;
@@ -73,6 +83,8 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
 					public void onClick(View v) {
 						int pos = holder.getAdapterPosition();
 						Log.d(TAG, "menu 0 item pos: " + pos);
+						Intent intent=new Intent(mContext,BrandActivity.class);
+						mContext.startActivity(intent);
 					}
 				});
 				break;
