@@ -116,25 +116,25 @@ public class GoodsDetailFragment extends BaseFragment {
 				nowIndex = 0;
 				nowFragment = goodsDetailWebFragment;
 				tv_goods_detail.setTextColor(getResources().getColor(R.color.colorPrimary));
-				tv_goods_config.setTextColor(getResources().getColor(R.color.tv_name));
-				tv_goods_service.setTextColor(getResources().getColor(R.color.tv_name));
+				tv_goods_config.setTextColor(getResources().getColor(R.color.tv_hint));
+				tv_goods_service.setTextColor(getResources().getColor(R.color.tv_hint));
 				break;
 			case R.id.ll_goods_config:
 				//规格参数tab
 				switchFragment(nowFragment, goodsConfigFragment);
 				nowIndex = 1;
 				nowFragment = goodsConfigFragment;
-				tv_goods_detail.setTextColor(getResources().getColor(R.color.tv_name));
+				tv_goods_detail.setTextColor(getResources().getColor(R.color.tv_hint));
 				tv_goods_config.setTextColor(getResources().getColor(R.color.colorPrimary));
-				tv_goods_service.setTextColor(getResources().getColor(R.color.tv_name));
+				tv_goods_service.setTextColor(getResources().getColor(R.color.tv_hint));
 				break;
 			case R.id.ll_goods_service:
 				//规格参数tab
 				switchFragment(nowFragment, goodsServiceFragment);
 				nowIndex = 2;
 				nowFragment = goodsServiceFragment;
-				tv_goods_detail.setTextColor(getResources().getColor(R.color.tv_name));
-				tv_goods_config.setTextColor(getResources().getColor(R.color.tv_name));
+				tv_goods_detail.setTextColor(getResources().getColor(R.color.tv_hint));
+				tv_goods_config.setTextColor(getResources().getColor(R.color.tv_hint));
 				tv_goods_service.setTextColor(getResources().getColor(R.color.colorPrimary));
 				break;
 			default:

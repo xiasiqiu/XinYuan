@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent"
+                                     android:orientation="vertical">
 
     <include layout="@layout/activity_search_goodshow_header"/>
 
-    <LinearLayout
+    <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/bg_gray"
@@ -17,13 +17,13 @@
             android:layout_height="5px"
             android:background="@color/colorLine"/>
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="110px"
             android:background="@color/bg_white"
             android:orientation="horizontal">
 
-            <LinearLayout
+            <com.zhy.autolayout.AutoLinearLayout
                 android:id="@+id/llSort"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
                     android:background="@drawable/goodshow_down_bg"/>
-            </LinearLayout>
+            </com.zhy.autolayout.AutoLinearLayout>
 
             <TextView
                 android:id="@+id/btnSale"
@@ -59,7 +59,7 @@
                 android:textSize="@dimen/tv_Regular"/>
 
 
-            <LinearLayout
+            <com.zhy.autolayout.AutoLinearLayout
                 android:id="@+id/llScreen"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
                     android:background="@drawable/goodshow_down_bg"/>
-            </LinearLayout>
+            </com.zhy.autolayout.AutoLinearLayout>
 
             <FrameLayout
                 android:id="@+id/flListType"
@@ -98,19 +98,32 @@
                     android:background="@color/bg_white"
                     android:src="@drawable/btn_goods_list_type"/>
             </FrameLayout>
-        </LinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:background="@color/colorLine"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvGoods"
+        <android.support.v4.widget.DrawerLayout
+            android:id="@+id/search_drawer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/bg_gray"/>
+            android:layout_height="match_parent">
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvGoods"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bg_gray"/>
 
-    </LinearLayout>
-</LinearLayout>
+            <LinearLayout
+                android:id="@+id/nav_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:fitsSystemWindows="true"
+                android:orientation="vertical"/>
+        </android.support.v4.widget.DrawerLayout>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

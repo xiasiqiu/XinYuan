@@ -46,7 +46,7 @@
                     android:layout_height="95px"
                     android:layout_gravity="center"
                     android:textColor="@color/tv_name"
-                    android:textSize="48px"
+                    android:textSize="52px"
                     app:pstsDividerColor="@android:color/transparent"
                     app:pstsDividerPaddingTopBottom="0dp"
                     app:pstsIndicatorColor="@color/colorPrimary"

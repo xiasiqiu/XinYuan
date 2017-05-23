@@ -10,6 +10,7 @@ public class ItemData implements Serializable {
 	private String data;
 	private String imageUrl;
 	private String type;
+	private String image;
 
 	public String getImageUrl() {
 		return this.imageUrl;

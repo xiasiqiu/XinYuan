@@ -234,21 +234,21 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 				switchFragment(nowFragment, goodsInfoWebFragment);
 				nowFragment = goodsDetailFragment;
 				tv_goods_detail.setTextColor(getResources().getColor(R.color.colorPrimary));
-				tv_goods_config.setTextColor(getResources().getColor(R.color.tv_name));
-				tv_goods_service.setTextColor(getResources().getColor(R.color.tv_name));
+				tv_goods_config.setTextColor(getResources().getColor(R.color.tv_hint));
+				tv_goods_service.setTextColor(getResources().getColor(R.color.tv_hint));
 				break;
 			case R.id.ll_goods_config:
 				switchFragment(nowFragment, goodsConfigFragment);
 				nowFragment = goodsConfigFragment;
-				tv_goods_detail.setTextColor(getResources().getColor(R.color.tv_name));
+				tv_goods_detail.setTextColor(getResources().getColor(R.color.tv_hint));
 				tv_goods_config.setTextColor(getResources().getColor(R.color.colorPrimary));
-				tv_goods_service.setTextColor(getResources().getColor(R.color.tv_name));
+				tv_goods_service.setTextColor(getResources().getColor(R.color.tv_hint));
 				break;
 			case R.id.ll_goods_service:
 				switchFragment(nowFragment, goodsServiceFragment);
 				nowFragment = goodsServiceFragment;
-				tv_goods_detail.setTextColor(getResources().getColor(R.color.tv_name));
-				tv_goods_config.setTextColor(getResources().getColor(R.color.tv_name));
+				tv_goods_detail.setTextColor(getResources().getColor(R.color.tv_hint));
+				tv_goods_config.setTextColor(getResources().getColor(R.color.tv_hint));
 				tv_goods_service.setTextColor(getResources().getColor(R.color.colorPrimary));
 				break;
 			case R.id.fab_up_slide:

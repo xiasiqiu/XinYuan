@@ -10,6 +10,7 @@ public class Urls {
 	public static final String URL_BRAND = "https://tututo.me/brand.json";//品牌数据
 	public static final String URL_SEARCH_HOT = "https://java.bizpower.com/api/search/hot/keyword";//搜索热词数据
 	public static final String URL_SEARCH_DEFAULT = "https://java.bizpower.com/api/search/default/keyword";//搜索热词数据
+	public static final String URL_SEARCH_SHOUJI = "https://tututo.me/search.json";//模拟手机数据
 
 
 

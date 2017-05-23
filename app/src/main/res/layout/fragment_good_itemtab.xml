@@ -27,8 +27,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="商品详情"
-                android:textColor="#222222"
-                android:textSize="15sp"/>
+                android:textColor="@color/tv_hint"
+                android:textSize="@dimen/tv_Normal"/>
         </LinearLayout>
 
         <View
@@ -51,7 +51,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="规格参数"
-                android:textColor="#222222"/>
+                android:textSize="@dimen/tv_Normal"
+                android:textColor="@color/tv_hint"/>
         </LinearLayout>
 
         <View
@@ -74,8 +75,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="售后保障"
-                android:textColor="#222222"
-                android:textSize="15sp"/>
+                android:textColor="@color/tv_hint"
+                android:textSize="@dimen/tv_Normal"/>
         </LinearLayout>
     </LinearLayout>
 

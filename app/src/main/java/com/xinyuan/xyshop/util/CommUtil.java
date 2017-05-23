@@ -3,6 +3,7 @@ package com.xinyuan.xyshop.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.DisplayMetrics;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -54,5 +55,13 @@ public class CommUtil {
 			}
 		}
 		return true;
+	}
+
+	public static int getScreenWeight(Context context) {
+		if (context == null) {
+			return 0;
+		}
+		DisplayMetrics dm = new DisplayMetrics();
+		return context.getApplicationContext().getResources().getDisplayMetrics().widthPixels;
 	}
 }

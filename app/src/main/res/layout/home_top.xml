@@ -9,7 +9,11 @@
     <com.youth.banner.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="850px"/>
+        app:indicator_drawable_selected="@drawable/banner_shape"
+        android:layout_height="850px"
+        app:indicator_height="24px"
+        app:indicator_width="24px"
+        app:indicator_margin="20px"/>
 
 
     <android.support.v7.widget.RecyclerView

@@ -1,51 +1,55 @@
-package com.xinyuan.xyshop.widget.dialog;
+package com.xinyuan.xyshop.ui.goods;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.adapter.ExpandableItemAdapter;
-import com.xinyuan.xyshop.adapter.SearchGoodListAdapter;
 import com.xinyuan.xyshop.adapter.SelectDialogAdapter;
 import com.xinyuan.xyshop.bean.ExpandItem;
 import com.xinyuan.xyshop.entity.Menu;
 import com.xinyuan.xyshop.entity.SelectFilterTest;
-import com.xinyuan.xyshop.util.CommUtil;
 import com.youth.xframe.utils.log.XLog;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-public class SearchGoodSelectDialog extends Dialog {
+/**
+ * Created by Administrator on 2017/5/23.
+ */
+
+public class RightSearchPly extends RelativeLayout {
+
 	@BindView(R.id.search_goods_filter)
 	RecyclerView RV_filter;
-	private Context context;
+
+
 	private static SelectFilterTest selectFilterTests;
 	private List<SelectFilterTest.FilterKey> filterKeyList;
 
-	public SearchGoodSelectDialog(Context context) {
-		super(context);
-		this.context = context;
+	private Context mCtx;
 
+	public RightSearchPly(Context context, SelectFilterTest selectFilterTest) {
+		super(context);
+		mCtx = context;
+		selectFilterTests = selectFilterTest;
+		XLog.v(selectFilterTests.toString());
+		inflateView();
 	}
 
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_search_good_select);
-		ButterKnife.bind((Dialog) this);
-		getWindow().setLayout((CommUtil.getScreenWeight(context) / 5) * 4, -1);
-		getWindow().setWindowAnimations(R.style.AnimationFade);
-		getWindow().setGravity(5);
+
+	private void inflateView() {
+		View.inflate(getContext(), R.layout.activity_search_good_select, this);
+		ButterKnife.bind(this);
 		if (selectFilterTests != null) {
 			filterKeyList = selectFilterTests.getKeyList();
 		}
@@ -71,14 +75,27 @@ public class SearchGoodSelectDialog extends Dialog {
 		RV_filter.setAdapter(selectDialogAdapter);
 		selectDialogAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
 		RV_filter.setLayoutManager(manager);
-
+		selectDialogAdapter.expandAll();
 
 	}
 
-	public static void setFilter(SelectFilterTest selectFilterTest) {
-		selectFilterTests = selectFilterTest;
-		XLog.v(selectFilterTests.toString());
+	private PopupWindow mMenuPop;
+
+	private void dismissMenuPop() {
+		if (mMenuPop != null) {
+			mMenuPop.dismiss();
+			mMenuPop = null;
+		}
+
 	}
 
+	private CloseMenuCallBack menuCallBack;
 
+	public interface CloseMenuCallBack {
+		void setupCloseMean();
+	}
+
+	public void setCloseMenuCallBack(CloseMenuCallBack menuCallBack) {
+		this.menuCallBack = menuCallBack;
+	}
 }

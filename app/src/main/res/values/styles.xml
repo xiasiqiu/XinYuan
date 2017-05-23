@@ -30,6 +30,10 @@
     </style>
 
 
+    <style name="AnimationFade">
+        <item name="android:inAnimation">@anim/popwin_top_in</item>
+        <item name="android:outAnimation">@anim/popwin_top_out</item>
+    </style>
 
 
 

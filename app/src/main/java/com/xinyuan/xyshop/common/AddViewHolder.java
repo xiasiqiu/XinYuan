@@ -82,7 +82,7 @@ public class AddViewHolder {
 
     public AddViewHolder setImageRed(int viewId, String url) {
         final ImageView view = (ImageView) getView(viewId);
-        Glide.with(this.context).load(url).placeholder((int) R.drawable.nc_icon_null).error((int) R.drawable.nc_mine_bg).centerCrop().into(new SimpleTarget<GlideDrawable>() {
+        Glide.with(this.context).load(url).placeholder((int) R.drawable.icon_null).error((int) R.drawable.nc_mine_bg).centerCrop().into(new SimpleTarget<GlideDrawable>() {
             public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
                 view.setImageBitmap(AddViewHolder.this.red(AddViewHolder.drawableToBitmap(resource)));
             }
@@ -101,7 +101,7 @@ public class AddViewHolder {
 
     public AddViewHolder setImageGrey(int viewId, String url) {
         final ImageView view = (ImageView) getView(viewId);
-        Glide.with(this.context).load(url).placeholder((int) R.drawable.nc_icon_null).error((int) R.drawable.nc_mine_bg).centerCrop().into(new SimpleTarget<GlideDrawable>() {
+        Glide.with(this.context).load(url).placeholder((int) R.drawable.icon_null).error((int) R.drawable.nc_mine_bg).centerCrop().into(new SimpleTarget<GlideDrawable>() {
             public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
                 view.setImageBitmap(AddViewHolder.grey(AddViewHolder.drawableToBitmap(resource)));
             }
@@ -135,7 +135,7 @@ public class AddViewHolder {
     }
 
     public void setImageLocal(ImageView view, String url) {
-        Glide.with(this.context).load(url).placeholder((int) R.drawable.nc_icon_null).error((int) R.drawable.nc_mine_bg).centerCrop().into(view);
+        Glide.with(this.context).load(url).placeholder((int) R.drawable.icon_null).error((int) R.drawable.nc_mine_bg).centerCrop().into(view);
     }
 
     public AddViewHolder setImageDrawbleToBitmap(int viewId, int res) {
