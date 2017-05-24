@@ -35,16 +35,17 @@
                             android:layout_height="925px"
                             app:indicator_drawable_selected="@drawable/banner_shape"
                             app:indicator_height="24px"
-                            app:indicator_width="24px"
-                            app:indicator_margin="20px"/>
+                            app:indicator_margin="20px"
+                            app:indicator_width="24px"/>
 
                         <ImageView
                             android:id="@+id/goodinfo_share"
                             android:layout_width="60px"
                             android:layout_height="60px"
                             android:layout_alignParentRight="true"
+                            android:layout_marginTop="835px"
                             android:layout_marginRight="60px"
-                            android:layout_marginTop="780px"
+
                             android:src="@drawable/icon_share"/>
 
                     </RelativeLayout>

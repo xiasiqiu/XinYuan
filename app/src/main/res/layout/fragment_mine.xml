@@ -6,7 +6,7 @@
 
     <include layout="@layout/fragment_mine_header"/>
 
-    <LinearLayout
+    <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/bg_white"
@@ -186,7 +186,7 @@
         </RelativeLayout>
 
 
-    </LinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
 
 
 </com.zhy.autolayout.AutoLinearLayout>

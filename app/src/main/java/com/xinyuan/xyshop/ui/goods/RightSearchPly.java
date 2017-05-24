@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
@@ -22,6 +23,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Administrator on 2017/5/23.
@@ -32,6 +34,10 @@ public class RightSearchPly extends RelativeLayout {
 	@BindView(R.id.search_goods_filter)
 	RecyclerView RV_filter;
 
+	@BindView(R.id.btn_ok)
+	Button btn_ok;
+	@BindView(R.id.btn_cancel)
+	Button btn_cancel;
 
 	private static SelectFilterTest selectFilterTests;
 	private List<SelectFilterTest.FilterKey> filterKeyList;
@@ -42,7 +48,6 @@ public class RightSearchPly extends RelativeLayout {
 		super(context);
 		mCtx = context;
 		selectFilterTests = selectFilterTest;
-		XLog.v(selectFilterTests.toString());
 		inflateView();
 	}
 
@@ -63,7 +68,7 @@ public class RightSearchPly extends RelativeLayout {
 			}
 			res.add(expandItem);
 		}
-		XLog.list(res);
+
 		final SelectDialogAdapter selectDialogAdapter = new SelectDialogAdapter(res, filterKeyList);
 		final GridLayoutManager manager = new GridLayoutManager(getContext(), 3);
 		manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
@@ -97,5 +102,17 @@ public class RightSearchPly extends RelativeLayout {
 
 	public void setCloseMenuCallBack(CloseMenuCallBack menuCallBack) {
 		this.menuCallBack = menuCallBack;
+	}
+
+	@OnClick({R.id.btn_cancel, R.id.btn_ok})
+	public void onClick(View view) {
+		switch (view.getId()) {
+			case R.id.btn_ok:
+				XLog.list(SelectDialogAdapter.getKeyList());
+				break;
+			case R.id.btn_cancel:
+				inflateView();
+				break;
+		}
 	}
 }

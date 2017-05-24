@@ -10,11 +10,10 @@
         android:id="@+id/tv_search_item"
         android:layout_width="280px"
         android:layout_height="80px"
-        android:layout_margin="5px"
+        android:layout_margin="15px"
         android:background="@drawable/bg_flow"
-        android:padding="5px"
         android:gravity="center"
-        android:textColor="@color/tv_hint"
+        android:padding="5px"
         android:textSize="@dimen/tv_small"/>
 
 </com.zhy.autolayout.AutoLinearLayout>

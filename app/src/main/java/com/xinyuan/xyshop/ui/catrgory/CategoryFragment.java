@@ -36,9 +36,9 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 	private CategoryContract.CategoryPresenter presenter;
 	private AddViewHolder currentGoodsClassView;
 	private int currentItem = 0;
-	public static List<GoodCategory> goodsCategoryList_one = new ArrayList();
-	public static List<GoodCategory> goodsCategoryList_three = new ArrayList();
-	public static List<GoodCategory> goodsCategoryList_two = new ArrayList();
+	public static List<GoodCategory> goodsCategoryList_one;
+	public static List<GoodCategory> goodsCategoryList_three;
+	public static List<GoodCategory> goodsCategoryList_two;
 
 	@BindView(R.id.llGoodsClassRoot)
 	LinearLayout llGoodsClassRoot;
@@ -59,7 +59,8 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 	ImageView btn_msg;
 	@BindView(R.id.category_btn_scan)
 	ImageView btn_scan;
-	private static int num=1;
+	private static boolean VIEW_INIT = true;
+
 	@Override
 	public int getLayoutId() {
 		return R.layout.fragment_category;
@@ -67,21 +68,22 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 
 	@Override
 	public void initView() {
-		if(num==1){
+		if (VIEW_INIT) {
 			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
 			SystemBarHelper.setHeightAndPadding(getActivity(), toolbar);
-
-
 		}
-		XLog.v("分类页面切换"+num);
-		num++;
+		XLog.v("分类页面切换" + VIEW_INIT);
+		VIEW_INIT = false;
 	}
 
 
 	@Override
 	public void initData(@Nullable Bundle savedInstanceState) {
-		new CategoryPresenterImpl(this);
-		presenter.initData();
+		if (VIEW_INIT) {
+			new CategoryPresenterImpl(this);
+			presenter.initData();
+		}
+
 
 	}
 
@@ -112,6 +114,9 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 
 	@Override
 	public void getData() {
+		goodsCategoryList_one = new ArrayList<>();
+		goodsCategoryList_two = new ArrayList<>();
+		goodsCategoryList_three = new ArrayList<>();
 		goodsCategoryList_one = CategoryPresenterImpl.getGoodsCategoryList_one();
 		goodsCategoryList_two = CategoryPresenterImpl.getGoodsCategoryList_two();
 		goodsCategoryList_three = CategoryPresenterImpl.getGoodsCategoryList_three();

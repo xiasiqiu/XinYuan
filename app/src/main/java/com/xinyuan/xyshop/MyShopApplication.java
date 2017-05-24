@@ -19,6 +19,7 @@ import java.util.logging.Level;
 
 public class MyShopApplication extends XApplication {
 	private static MyShopApplication instance;
+	private static String keyWord;
 
 	//一个标记
 	public static String TAG;
@@ -55,4 +56,11 @@ public class MyShopApplication extends XApplication {
 		return instance;
 	}
 
+	public static String getKeyWord() {
+		return keyWord;
+	}
+
+	public static void setKeyWord(String keyWord) {
+		MyShopApplication.keyWord = keyWord;
+	}
 }

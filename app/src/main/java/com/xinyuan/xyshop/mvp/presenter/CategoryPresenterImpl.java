@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import com.google.gson.reflect.TypeToken;
+import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.bean.LzyResponse;
 import com.xinyuan.xyshop.entity.ApiSpecialItem;
 import com.xinyuan.xyshop.entity.Brand;
@@ -35,9 +36,9 @@ import rx.functions.Func1;
 
 public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter {
 	private CategoryContract.CategoryView mCategoryView;
-	public static List<GoodCategory> goodsCategoryList_one = new ArrayList();
-	public static List<GoodCategory> goodsCategoryList_three = new ArrayList();
-	public static List<GoodCategory> goodsCategoryList_two = new ArrayList();
+	public static List<GoodCategory> goodsCategoryList_one;
+	public static List<GoodCategory> goodsCategoryList_three;
+	public static List<GoodCategory> goodsCategoryList_two;
 
 	public CategoryPresenterImpl(CategoryContract.CategoryView view) {
 		this.mCategoryView = view;
@@ -66,7 +67,6 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
 						}.getType());
 
 
-
 						return list;
 					}
 				})
@@ -89,6 +89,7 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
 	}
 
 	private void cleanData(List<GoodCategory> goodsCategoryList) {
+
 		goodsCategoryList_one = new ArrayList();
 		goodsCategoryList_three = new ArrayList();
 		goodsCategoryList_two = new ArrayList();
@@ -113,8 +114,6 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
 		}
 
 
-
-
 		mCategoryView.getData();
 
 		for (int m = 0; m < goodsCategoryList_one.size(); m++) {
@@ -135,7 +134,7 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
 			i = new Intent(context, SearchGoodsShowActivity.class);
 		}
 		if (isBrand) {
-			i.putExtra("keyword", " ");
+			i.putExtra("keyword", MyShopApplication.getKeyWord());
 			i.putExtra("brandId", cat);
 			i.putExtra("brand", cat);
 		} else {

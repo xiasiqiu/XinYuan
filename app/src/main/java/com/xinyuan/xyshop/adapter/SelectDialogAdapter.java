@@ -24,7 +24,7 @@ public class SelectDialogAdapter extends BaseMultiItemQuickAdapter<MultiItemEnti
 
 	public static final int TYPE_LEVEL_1 = 0;
 	public static final int TYPE_ITEM = 1;
-	private List<SelectFilterTest.FilterKey> list=new ArrayList<>();
+	private List<SelectFilterTest.FilterKey> list = new ArrayList<>();
 
 	/**
 	 * Same as QuickAdapter#QuickAdapter(Context,int) but with
@@ -41,12 +41,12 @@ public class SelectDialogAdapter extends BaseMultiItemQuickAdapter<MultiItemEnti
 	}
 
 	@Override
-	protected void convert(final BaseViewHolder helper, MultiItemEntity item) {
-		XLog.v("加载布局");
+	protected void convert(final BaseViewHolder helper, final MultiItemEntity item) {
+
 		switch (helper.getItemViewType()) {
 
 			case TYPE_LEVEL_1:
-				XLog.v("TYPE1");
+
 				final ExpandItem lv1 = (ExpandItem) item;
 				helper.setText(R.id.title, lv1.title)
 						.setImageResource(R.id.img_search_filter, lv1.isExpanded() ? R.drawable.arrow_b : R.drawable.arrow_r);
@@ -54,7 +54,7 @@ public class SelectDialogAdapter extends BaseMultiItemQuickAdapter<MultiItemEnti
 					@Override
 					public void onClick(View v) {
 						int pos = helper.getAdapterPosition();
-						Log.d(TAG, "Level 1 item pos: " + pos);
+
 						if (lv1.isExpanded()) {
 							collapse(pos, false);
 						} else {
@@ -64,17 +64,38 @@ public class SelectDialogAdapter extends BaseMultiItemQuickAdapter<MultiItemEnti
 				});
 				break;
 			case TYPE_ITEM:
-				XLog.v("TYPE2");
+
 				final Menu menu = (Menu) item;
 				helper.setText(R.id.tv_search_item, menu.getTitle());
+
 				helper.itemView.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
 						XLog.v(menu.getTitle());
+						if (keyList.contains(((Menu) item).getTitle())) {
+							keyList.remove(((Menu) item).getTitle());
+							helper.itemView.setSelected(false);
+							helper.setTextColor(R.id.tv_search_item, mContext.getResources().getColor(R.color.tv_hint));
+						} else {
+							keyList.add(((Menu) item).getTitle());
+							helper.itemView.setSelected(true);
+							helper.setTextColor(R.id.tv_search_item, mContext.getResources().getColor(R.color.bg_white));
+						}
+
+
 					}
 				});
+
 				break;
 
 		}
+	}
+
+	private static List<String> keyList = new ArrayList<>();
+
+
+	public static List<String> getKeyList() {
+
+		return keyList;
 	}
 }

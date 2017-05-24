@@ -27,6 +27,7 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.sunfusheng.marqueeview.MarqueeView;
 import com.trello.rxlifecycle.android.ActivityEvent;
+import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.ExpandableItemAdapter;
 import com.xinyuan.xyshop.adapter.HomeMultipleItemAdapter;
@@ -66,7 +67,8 @@ import okhttp3.Response;
 
 public class HomeFragment extends BaseFragment implements HomeContract.HomeView, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
 
-
+	public static final String INTENT_STRING_TABNAME = "intent_String_tabname";
+	public static final String INTENT_INT_INDEX = "intent_int_index";
 	@BindView(R.id.home_list)
 	RecyclerView mRecyclerView;
 
@@ -100,7 +102,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	private int mCurrentCounter = 0;
 
 	private List<HomeMultipleItem> data;
-	private static int num=1;
+	private static boolean VIEW_INIT = true;
+
 	@Override
 	public int getLayoutId() {
 		return R.layout.fragment_home;
@@ -108,14 +111,13 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	@Override
 	public void initView() {
-		if(num==1){
+		if (VIEW_INIT) {
 			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
 			SystemBarHelper.setHeightAndPadding(getActivity(), mToolbar);
-
-
 		}
-		XLog.v("首页切换"+num);
-		num++;
+
+		XLog.v("首页切换" + VIEW_INIT);
+		VIEW_INIT = false;
 	}
 
 	/**
@@ -125,7 +127,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	 */
 	@Override
 	public void setPresenter(HomeContract.HomePresenter presenter) {
-		this.presenter = presenter;
+		if (VIEW_INIT) {
+			this.presenter = presenter;
+		}
+
 
 	}
 
@@ -160,7 +165,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	public void showState(int Sate) {
 		switch (Sate) {
 			case 0:
-
 				xLoadingView.showLoading();
 				break;
 			case 1:
@@ -347,6 +351,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	public void setKeyWord(String keyWord, String showWord) {
 		this.showWord = showWord;
 		this.keyWord = keyWord;
+		MyShopApplication.setKeyWord(keyWord);
 		et_search.setHint(keyWord);
 		setSearchListener();
 
@@ -429,6 +434,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	@CallSuper
 	public void onResume() {
 		super.onResume();
+		mDistanceY = 0;
 
 	}
 //

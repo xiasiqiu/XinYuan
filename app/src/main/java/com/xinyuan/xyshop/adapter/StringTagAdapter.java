@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
+import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.ui.goods.SearchGoodsActivity;
 import com.xinyuan.xyshop.ui.goods.SearchGoodsShowActivity;
 import com.xinyuan.xyshop.util.CommUtil;
@@ -68,7 +69,7 @@ public class StringTagAdapter extends SearchTagAdapter<StringTagView, String> {
 	protected StringTagView addTag(final String item) {
 		StringTagView tagView = new StringTagView(getContext());
 		tagView.setPadding(30, 20, 30, 20);
-		TextView textView = tagView.getTextView();
+		final TextView textView = tagView.getTextView();
 		textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
 		textView.setGravity(Gravity.CENTER);
 		tagView.setItemDefaultDrawable(itemDefaultDrawable);

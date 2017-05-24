@@ -51,4 +51,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'cc.solart:turbo-recyclerview-helper:1.0.3-beta'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.yanzhenjie:fragment:1.0.1'
 }

@@ -4,126 +4,129 @@
                                      android:layout_height="match_parent"
                                      android:orientation="vertical">
 
-    <include layout="@layout/activity_search_goodshow_header"/>
 
-    <com.zhy.autolayout.AutoLinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/bg_gray"
-        android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="5px"
-            android:background="@color/colorLine"/>
+        <include layout="@layout/activity_search_goodshow_header"/>
 
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
-            android:layout_height="110px"
-            android:background="@color/bg_white"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:background="@color/bg_gray"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5px"
+                android:background="@color/colorLine"/>
 
             <com.zhy.autolayout.AutoLinearLayout
-                android:id="@+id/llSort"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="110px"
+                android:background="@color/bg_white"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/btnSort"
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/llSort"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="综合排序"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/btnSort"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="综合排序"
+                        android:textColor="@drawable/text_btn_color"
+                        android:textSize="@dimen/tv_Regular"/>
+
+                    <ImageView
+                        android:id="@+id/ivSort"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:background="@drawable/goodshow_down_bg"/>
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <TextView
+                    android:id="@+id/btnSale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="销量优先"
                     android:textColor="@drawable/text_btn_color"
                     android:textSize="@dimen/tv_Regular"/>
 
-                <ImageView
-                    android:id="@+id/ivSort"
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/llScreen"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:background="@drawable/goodshow_down_bg"/>
-            </com.zhy.autolayout.AutoLinearLayout>
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/btnSale"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:button="@null"
-                android:gravity="center"
-                android:text="销量优先"
-                android:textColor="@drawable/text_btn_color"
-                android:textSize="@dimen/tv_Regular"/>
+                    <TextView
+                        android:id="@+id/btnScreen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="筛选"
+                        android:textColor="@drawable/text_btn_color"
+                        android:textSize="@dimen/tv_Regular"/>
 
+                    <ImageView
+                        android:id="@+id/ivScreen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:background="@drawable/goodshow_down_bg"/>
+                </com.zhy.autolayout.AutoLinearLayout>
 
-            <com.zhy.autolayout.AutoLinearLayout
-                android:id="@+id/llScreen"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/btnScreen"
+                <FrameLayout
+                    android:id="@+id/flListType"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="筛选"
-                    android:textColor="@drawable/text_btn_color"
-                    android:textSize="@dimen/tv_Regular"/>
-
-                <ImageView
-                    android:id="@+id/ivScreen"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:background="@drawable/goodshow_down_bg"/>
-            </com.zhy.autolayout.AutoLinearLayout>
-
-            <FrameLayout
-                android:id="@+id/flListType"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="2">
-
-                <ImageView
-                    android:id="@+id/btnListType"
-                    android:layout_width="50px"
-                    android:layout_height="50px"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:background="@color/bg_white"
-                    android:src="@drawable/btn_goods_list_type"/>
-            </FrameLayout>
+                    android:layout_weight="2">
+
+                    <ImageView
+                        android:id="@+id/btnListType"
+                        android:layout_width="50px"
+                        android:layout_height="50px"
+                        android:layout_gravity="center"
+                        android:background="@color/bg_white"
+                        android:src="@drawable/btn_goods_list_type"/>
+                </FrameLayout>
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/colorLine"/>
+
+            <android.support.v4.widget.DrawerLayout
+                android:id="@+id/search_drawer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvGoodList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/bg_gray"/>
+
+                <LinearLayout
+                    android:id="@+id/nav_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:fitsSystemWindows="true"
+                    android:orientation="vertical"/>
+            </android.support.v4.widget.DrawerLayout>
+
         </com.zhy.autolayout.AutoLinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/colorLine"/>
-
-        <android.support.v4.widget.DrawerLayout
-            android:id="@+id/search_drawer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvGoods"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/bg_gray"/>
-
-            <LinearLayout
-                android:id="@+id/nav_view"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="end"
-                android:fitsSystemWindows="true"
-                android:orientation="vertical"/>
-        </android.support.v4.widget.DrawerLayout>
-
-    </com.zhy.autolayout.AutoLinearLayout>
 </com.zhy.autolayout.AutoLinearLayout>
