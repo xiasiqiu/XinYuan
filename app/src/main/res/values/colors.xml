@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#1da039</color>
-    <color name="colorPrimaryDark">#1da039</color>
+    <color name="colorPrimaryDark">#00762a</color>
     <color name="colorAccent">#0091ea</color>
 
     <color name="normal_bg">#f4f4f4</color>
@@ -51,6 +51,7 @@
     <!--透明的颜色-->
     <color name="colorTransparency">#0000</color>
     <color name="colorTransparency_H">#1A000000</color>
+    <color name="colorTransparency_B">#5A000000</color>
     <!--顶部搜索框内的字体颜色-->
     <color name="colorTopFont">#d42d00</color>
 

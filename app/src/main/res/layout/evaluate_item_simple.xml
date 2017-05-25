@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                       xmlns:app="http://schemas.android.com/apk/res-auto"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:background="@color/bg_white"
+                                       android:padding="30px">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/llStar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20px"
+        android:background="@drawable/evaluate_star"
+        android:orientation="horizontal"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/customer_image"
+        android:layout_width="100px"
+        android:layout_height="100px"
+
+        android:src="@drawable/touxiang"/>
+
+    <TextView
+        android:id="@+id/customerName"
+        style="@style/evaluate_text_style"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="20px"
+        android:layout_toRightOf="@+id/customer_image"
+        android:text="JJSR"
+        android:textColor="@color/tv_name"
+        android:textSize="@dimen/tv_small"/>
+
+    <TextView
+        android:id="@+id/evaluateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/customerName"
+        android:layout_marginTop="70px"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="凑合，面料比较软，不太挺阔，凑合,红红火火恍恍惚惚吼吼所所所所所所所所少时诵诗书所所所"
+        android:textColor="@color/tv_name"
+        android:textSize="@dimen/tv_Normal"/>
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/evaluateImages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/evaluateText"
+        android:layout_marginTop="10.0dip"
+        app:alignContent="flex_start"
+        app:flexWrap="wrap"/>
+
+    <TextView
+        android:id="@+id/goodSpec"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/evaluateImages"
+        android:layout_marginBottom="30px"
+        android:layout_marginTop="20px"
+        android:text="颜色：K02黄色；尺码:M"
+        android:textColor="@color/tv_hint"
+        android:textSize="@dimen/tv_small"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/goodSpec"
+        android:background="@color/colorLine"/>
+</com.zhy.autolayout.AutoRelativeLayout>

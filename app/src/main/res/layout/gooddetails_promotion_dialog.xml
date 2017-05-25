@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent"
+                                     android:background="@color/bg_white"
+                                     android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="促销信息"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_Regular"/>
+
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30px"
+            android:src="@drawable/icon_close"/>
+
+    </RelativeLayout>
+
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="800px"
+        android:layout_margin="30px"
+        android:layout_marginTop="50px">
+
+
+        <TextView
+            android:id="@+id/tvGoods_prom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="单笔订单两件7折，三件6折"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_Normal"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="60px"
+            android:background="@color/colorLine"/>
+
+        <TextView
+            android:id="@+id/tvGoods_prom2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70px"
+            android:text="单笔订单满600减50，满1000减200"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_Normal"/>
+
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoLinearLayout>

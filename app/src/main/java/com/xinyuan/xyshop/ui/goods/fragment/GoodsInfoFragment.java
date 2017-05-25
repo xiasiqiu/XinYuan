@@ -9,8 +9,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Slide;
+import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -18,17 +21,30 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.google.android.flexbox.FlexboxLayout;
 import com.xinyuan.xyshop.R;
+import com.xinyuan.xyshop.adapter.SimpleEvaluateAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
+import com.xinyuan.xyshop.common.AddViewHolder;
+import com.xinyuan.xyshop.entity.BuyData;
+import com.xinyuan.xyshop.entity.GoodDetailVo;
+import com.xinyuan.xyshop.entity.Goods;
+import com.xinyuan.xyshop.entity.GoodsEvaluate;
+import com.xinyuan.xyshop.entity.PreGoods;
 import com.xinyuan.xyshop.ui.goods.GoodDetailsActivity;
+import com.xinyuan.xyshop.util.FullyLinearLayoutManager;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.widget.SlideDetailsLayout;
+import com.xinyuan.xyshop.widget.dialog.GoodDetailsPromotionDialog;
+import com.xinyuan.xyshop.widget.dialog.GoodDetailsSpecDialog;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
+import com.youth.xframe.utils.log.XLog;
 import com.zhy.autolayout.AutoRelativeLayout;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -183,7 +199,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 						sv_goods_info.smoothScrollTo(0, 0);
 						sv_switch.smoothClose(true);
 						return true;
-					}else {
+					} else {
 						getActivity().onBackPressed();
 					}
 
@@ -214,7 +230,26 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 				.setDelayTime(3000)
 				.setIndicatorGravity(BannerConfig.CENTER)
 				.start();
+
+		List<GoodsEvaluate> data = new ArrayList<>();
+		for (int i = 0; i < 3; i++) {
+			data.add(new GoodsEvaluate());
+		}
+		XLog.list(data);
+
+
+		this.simpleEvaluateAdapter = new SimpleEvaluateAdapter(R.layout.evaluate_item_simple, data);
+
+
+		FullyLinearLayoutManager linearLayoutManager = new FullyLinearLayoutManager(context);
+		rvEvaluate.setNestedScrollingEnabled(false);
+		//设置布局管理器
+		rvEvaluate.setLayoutManager(linearLayoutManager);
+		this.rvEvaluate.setAdapter(this.simpleEvaluateAdapter);
+		this.simpleEvaluateAdapter.notifyDataSetChanged();
 	}
+
+	SimpleEvaluateAdapter simpleEvaluateAdapter;
 
 	@Override
 	public void onAttach(Context context) {
@@ -277,14 +312,14 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	@Override
 	public void onStatucChanged(SlideDetailsLayout.Status status) {
 		if (status == SlideDetailsLayout.Status.OPEN) {
-			this.status=status;
+			this.status = status;
 			//当前为图文详情页
 			fab_up_slide.show();
 			activity.vp_content.setNoScroll(true);
 			activity.tv_title.setVisibility(View.VISIBLE);
 			activity.psts_tabs.setVisibility(View.GONE);
 		} else {
-			this.status=status;
+			this.status = status;
 			//当前为商品详情页
 			fab_up_slide.hide();
 			activity.vp_content.setNoScroll(false);
@@ -293,5 +328,44 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		}
 	}
 
+	@OnClick(R.id.ll_current_goods)
+	public void onSpecChooseClick() {
+
+		showSelectSpecDialog();
+
+	}
+
+	@OnClick(R.id.llGoodDiscount)
+	public void onPromChooseClick() {
+
+		showSelectPromoDialog();
+
+	}
+
+	private HashMap<Integer, BuyData> buydatas;
+	private GoodDetailVo goodDetail;
+	private Goods selectedGoods;
+	private HashMap<Integer, PreGoods> preGoodsMap;
+	private int allGoodsNum;
+
+	private void showSelectSpecDialog() {
+		GoodDetailsSpecDialog dialog = new GoodDetailsSpecDialog(this.context, goodDetail, preGoodsMap, selectedGoods, allGoodsNum);
+		Window dialogWindow = dialog.getWindow();
+		dialogWindow.setGravity(Gravity.BOTTOM);
+		dialog.show();
+		DisplayMetrics dm = new DisplayMetrics();
+		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+		dialogWindow.setLayout(dm.widthPixels, dialogWindow.getAttributes().height);
+	}
+
+	private void showSelectPromoDialog() {
+		GoodDetailsPromotionDialog dialog = new GoodDetailsPromotionDialog(this.context, goodDetail, preGoodsMap, selectedGoods, allGoodsNum);
+		Window dialogWindow = dialog.getWindow();
+		dialogWindow.setGravity(Gravity.BOTTOM);
+		dialog.show();
+		DisplayMetrics dm = new DisplayMetrics();
+		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+		dialogWindow.setLayout(dm.widthPixels, dialogWindow.getAttributes().height);
+	}
 
 }

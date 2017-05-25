@@ -3,11 +3,15 @@ package com.xinyuan.xyshop.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.xinyuan.xyshop.common.Constants;
+
+import java.io.File;
 import java.util.Map;
 
 /**
@@ -15,7 +19,7 @@ import java.util.Map;
  */
 
 public class CommUtil {
-
+	public static File logDir;
 	public static int dip2px(Context context, float dipValue) {
 		float scale = context.getResources().getDisplayMetrics().density;
 		return (int) (dipValue * scale + 0.5f);
@@ -55,6 +59,22 @@ public class CommUtil {
 			}
 		}
 		return true;
+	}
+	public static  void createDir() {
+		if ("mounted".equals(Environment.getExternalStorageState())) {
+			File rootDir = new File(Constants.APP_DIR);
+			if (!rootDir.exists()) {
+				rootDir.mkdirs();
+			}
+			File cacheDir = new File(Constants.CACHE_DIR);
+			if (!cacheDir.exists()) {
+				cacheDir.mkdirs();
+			}
+			logDir = new File(Constants.LOG_DIR);
+			if (!logDir.exists()) {
+				logDir.mkdirs();
+			}
+		}
 	}
 
 	public static int getScreenWeight(Context context) {

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent"
+                                     android:background="@color/bg_white"
+                                     android:orientation="vertical">
+
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="30px">
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30px"
+            android:src="@drawable/icon_close"/>
+
+        <ImageView
+            android:id="@+id/ivSelectedGoodsImg"
+            android:layout_width="245px"
+            android:layout_height="245px"
+            android:layout_marginTop="20px"
+            android:background="@drawable/test_select_goodsimg"/>
+
+        <TextView
+            android:id="@+id/tvGoodsName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30px"
+            android:layout_marginTop="20px"
+            android:layout_toRightOf="@+id/ivSelectedGoodsImg"
+            android:text="only纯棉卡通印花宽松t恤"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_Normal"/>
+
+        <TextView
+            android:id="@+id/tvSelectedPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30px"
+            android:layout_marginTop="90px"
+            android:layout_toRightOf="@+id/ivSelectedGoodsImg"
+            android:text="$599"
+            android:textColor="@color/tv_price"
+            android:textSize="@dimen/tv_Regular"/>
+
+        <TextView
+            android:id="@+id/tvSelectedType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30px"
+            android:layout_marginTop="200px"
+            android:layout_toRightOf="@+id/ivSelectedGoodsImg"
+            android:text="已选：“XS”“K02黄色”"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_light"/>
+
+        <TextView
+            android:id="@+id/tvSkuStorage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="200px"
+            android:text="库存815件"
+            android:textColor="@color/tv_hint"
+            android:textSize="@dimen/tv_small"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/tvSkuStorage"
+            android:layout_marginTop="80px"
+            android:background="@color/colorLine"/>
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请选择尺码"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_Normal"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_spec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60px"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/rv_spec"
+            android:layout_marginTop="60px"
+            android:background="@color/colorLine"/>
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="购买数量"/>
+
+        <TextView
+            android:id="@+id/tvAllNumPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="70px"
+            android:layout_toLeftOf="@+id/llNum"
+            android:text="12"
+            android:textColor="@color/tv_price"
+            android:textSize="@dimen/tv_light"/>
+
+        <include
+            android:id="@+id/llNum"
+            layout="@layout/app_common_add_and_minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="135px"
+        android:layout_gravity="bottom"
+        android:background="@color/bg_white"
+        android:paddingTop="5px">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1px"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:text="加入购物车"
+            android:textColor="@color/bg_white"
+            android:textSize="@dimen/tv_Regular"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1px"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="立即购买"
+            android:textColor="@color/bg_white"
+            android:textSize="@dimen/tv_Regular"/>
+
+
+    </LinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

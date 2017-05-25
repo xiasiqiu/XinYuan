@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                     xmlns:app="http://schemas.android.com/apk/res-auto"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent"
+                                     android:orientation="vertical">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -43,8 +43,8 @@
                             android:layout_width="60px"
                             android:layout_height="60px"
                             android:layout_alignParentRight="true"
-                            android:layout_marginTop="835px"
                             android:layout_marginRight="60px"
+                            android:layout_marginTop="835px"
 
                             android:src="@drawable/icon_share"/>
 
@@ -232,11 +232,16 @@
 
                     </RelativeLayout>
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/rvEvaluate"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5px"/>
+                        android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rvEvaluate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5px"/>
+                    </RelativeLayout>
 
                     <com.zhy.autolayout.AutoRelativeLayout
                         android:layout_width="match_parent"
@@ -369,16 +374,52 @@
             <include layout="@layout/fragment_good_itemtab"/>
         </com.xinyuan.xyshop.widget.SlideDetailsLayout>
 
+
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_up_slide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_margin="30dp"
+            android:layout_marginBottom="200px"
+            android:layout_marginRight="50px"
             android:src="@drawable/go_top"
             app:backgroundTint="#ffffff"
             app:borderWidth="0dp"
             app:fabSize="mini"
             app:rippleColor="#ffffff"/>
+
     </android.support.design.widget.CoordinatorLayout>
-</LinearLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="137px"
+        android:layout_gravity="bottom"
+        android:background="@color/bg_white">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/colorLine"/>
+
+        <Button
+            android:layout_width="538px"
+            android:layout_height="135px"
+            android:background="@color/colorPrimaryDark"
+            android:layout_alignParentBottom="true"
+            android:text="加入购物车"
+            android:textColor="@color/bg_white"
+            android:textSize="@dimen/tv_Regular"/>
+
+        <Button
+            android:layout_width="538px"
+            android:layout_height="135px"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            android:text="立即购买"
+            android:textColor="@color/bg_white"
+            android:textSize="@dimen/tv_Regular"/>
+
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoLinearLayout>
