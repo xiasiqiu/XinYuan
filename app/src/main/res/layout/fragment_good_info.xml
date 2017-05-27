@@ -95,7 +95,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="邮费：包邮"
                                 android:textColor="@color/tv_hint"
-                                android:textSize="40px"/>
+                                android:textSize="@dimen/tv_light"/>
 
                             <TextView
                                 android:id="@+id/tv_goods_sellnum"
@@ -390,36 +390,5 @@
 
     </android.support.design.widget.CoordinatorLayout>
 
-    <com.zhy.autolayout.AutoRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="137px"
-        android:layout_gravity="bottom"
-        android:background="@color/bg_white">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/colorLine"/>
-
-        <Button
-            android:layout_width="538px"
-            android:layout_height="135px"
-            android:background="@color/colorPrimaryDark"
-            android:layout_alignParentBottom="true"
-            android:text="加入购物车"
-            android:textColor="@color/bg_white"
-            android:textSize="@dimen/tv_Regular"/>
-
-        <Button
-            android:layout_width="538px"
-            android:layout_height="135px"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:background="@color/colorPrimary"
-            android:text="立即购买"
-            android:textColor="@color/bg_white"
-            android:textSize="@dimen/tv_Regular"/>
-
-
-    </com.zhy.autolayout.AutoRelativeLayout>
 </com.zhy.autolayout.AutoLinearLayout>

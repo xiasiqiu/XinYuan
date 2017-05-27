@@ -29,6 +29,8 @@ public class MainActivity extends BaseActivity implements MainContract.IMainView
 	@BindView(R.id.act_home_btn_mine)
 	Button bt_mine;
 
+
+
 	/**
 	 * 定义一个button数组，用于改变颜色
 	 */

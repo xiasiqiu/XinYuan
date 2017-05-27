@@ -25,7 +25,7 @@
             android:layout_width="810px"
             android:layout_height="110px"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="175px"
+            android:layout_marginTop="100px"
             android:background="@drawable/button__n_bg"
             android:orientation="horizontal">
 
@@ -49,7 +49,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="30px"
                 android:background="@null"
-                android:hint="手机/会员名/邮箱"
+                android:hint="@string/mine_input_name"
                 android:textColor="@color/tv_name"
                 android:textColorHint="@color/tv_hint"
                 android:textSize="42px"/>
@@ -84,7 +84,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="30px"
                 android:background="@null"
-                android:hint="请输入密码"
+                android:hint="@string/mine_input_pass"
                 android:textColor="@color/tv_name"
                 android:textColorHint="@color/tv_hint"
                 android:textSize="42px"/>
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="5px"
-                android:text="快捷登录"
+                android:text="@string/login_fast"
                 android:textColor="@color/colorPrimary"
                 android:textSize="40px"/>
 
@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="right"
-                android:text="忘记密码?"
+                android:text="@string/forget_pass"
                 android:textColor="@color/colorPrimary"
                 android:textSize="40px"/>
 
@@ -126,7 +126,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="65px"
             android:background="@drawable/button_bg"
-            android:text="登录"
+            android:text="@string/bt_login"
             android:textColor="@color/bg_white"
             android:textSize="45px"/>
 
@@ -134,7 +134,7 @@
             android:layout_width="810px"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="120px">
+            android:layout_marginTop="80px">
 
             <View
                 android:layout_width="230px"
@@ -147,7 +147,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="或用以下账号登录"
+                android:text="@string/login_fast_hint"
                 android:textSize="40px"/>
 
             <View

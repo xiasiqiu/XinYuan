@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:background="@color/bg_white">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorLine"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35px"
+        android:layout_marginTop="30px"
+        android:text="[促销]满19：00得赠品，赠完为止"
+        android:textSize="@dimen/tv_small"/>
+
+
+    <CheckBox
+        android:id="@+id/good_checkbox"
+        android:layout_width="50px"
+        android:layout_height="50px"
+        android:layout_marginLeft="35px"
+        android:layout_marginTop="170px"
+        android:background="@drawable/checkbox_selector"
+        android:button="@null"/>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/ll_good_img"
+        android:layout_width="220px"
+        android:layout_height="220px"
+        android:layout_marginLeft="10px"
+        android:layout_marginTop="100px"
+        android:layout_toRightOf="@+id/good_checkbox"
+        android:background="@drawable/img_border"
+        android:padding="10px">
+
+        <ImageView
+            android:id="@+id/good_img"
+            android:layout_width="215px"
+            android:layout_height="215px"
+            android:background="@drawable/test_select_goodsimg"/>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <TextView
+        android:id="@+id/tv_good_name"
+        style="@style/NormalTextView"
+        android:layout_marginLeft="10px"
+        android:layout_marginTop="110px"
+        android:layout_toRightOf="@+id/ll_good_img"
+        android:text="荣耀8 4GB+32GB 全网通4G手机 魅海蓝"/>
+
+    <TextView
+        android:id="@+id/tv_good_spec"
+        style="@style/SmallHintTextView"
+        android:layout_below="@+id/tv_good_name"
+        android:layout_marginLeft="10px"
+        android:layout_marginTop="35px"
+        android:layout_toRightOf="@+id/ll_good_img"
+        android:text="重量:0.473kg   颜色：魅海蓝   版本：全网通（4G）"/>
+
+    <TextView
+        android:id="@+id/tv_good_price"
+        style="@style/GoodsPriceTextView"
+        android:layout_below="@+id/tv_good_spec"
+        android:layout_marginLeft="10px"
+        android:layout_marginTop="35px"
+        android:layout_marginBottom="45px"
+        android:layout_toRightOf="@+id/ll_good_img"
+        android:text="￥：2099.00"/>
+
+    <include
+        android:id="@+id/llNum"
+        layout="@layout/app_common_add_and_minus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ll_good_img"
+        android:layout_alignEnd="@+id/tv_good_spec"
+        android:layout_alignRight="@+id/tv_good_spec"/>
+
+
+</com.zhy.autolayout.AutoRelativeLayout>

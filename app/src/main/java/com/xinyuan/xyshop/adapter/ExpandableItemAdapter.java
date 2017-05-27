@@ -57,6 +57,7 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
 						if (expandItem.isExpanded()) {
 							collapse(pos);
 
+
 						} else {
 
 							expand(pos);

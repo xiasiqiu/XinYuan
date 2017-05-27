@@ -10,9 +10,47 @@
     <string name="act_home_top_msg">消息</string>
     <string name="act_search_search">搜索</string>
     <string name="search_search_hint">搜索关键字</string>
+    <string name="hot_search">热门搜索</string>
+    <string name="search_history">搜索历史</string>
+    <string name="search_clear_history">清空历史</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="new_notice">最新动态</string>
+    <string name="more">更多</string>
+    <string name="recom_brand">精选品牌</string>
+    <string name="shop_car">购物车</string>
+    <string name="shop_car_notice">登陆后可同步电脑与手机购物车中的商品</string>
+
+
+    <string name="com_sort">综合排序</string>
+    <string name="hon_sort">信用排序</string>
+    <string name="price_up">价格从低到高</string>
+    <string name="price_down">价格从高到低</string>
+    <string name="sell_sort">销量优先</string>
+    <string name="select_sort">筛选</string>
+    <string name="bt_rest">重置</string>
+    <string name="bt_ok">确定</string>
+
+
+    <string name="good_detail_title">图文详情</string>
+    <string name="good_detail">商品详情</string>
+    <string name="goods">商品</string>
+    <string name="packup">收起</string>
+    <string name="all_ave">全部评论</string>
+    <string name="good_ave">好评</string>
+    <string name="med_ave">中评</string>
+    <string name="bad_ave">差评</string>
+    <string name="pic_ave">晒图</string>
+    <string name="good_detail_config">规格参数</string>
+    <string name="good_detail_service">售后服务</string>
+
+
+    <string name="mine_input_name">手机/会员名/邮箱</string>
+    <string name="mine_input_pass">请输入密码</string>
+    <string name="login_fast">快捷登录</string>
+    <string name="forget_pass">忘记密码</string>
+    <string name="bt_login">登录</string>
+    <string name="login_fast_hint">用以下账号登录</string>
 
 
 </resources>

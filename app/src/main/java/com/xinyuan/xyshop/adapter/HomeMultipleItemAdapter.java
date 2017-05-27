@@ -119,15 +119,21 @@ public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMulti
 				ImageView goods_view = helper.getView(R.id.home_goods_img);
 				TextView goods_name = helper.getView(R.id.home_goods_name);
 				GlideImageLoader.setImage(context, goodlist.get(helper.getPosition() - 12).getImageUrl(), goods_view);
+
 				goods_name.setText(goodlist.get(helper.getPosition() - 12).getGoodsName());
+
 				autoRelativeLayout.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-						Intent intent=new Intent(context,GoodDetailsActivity.class);
+						Intent intent = new Intent(context, GoodDetailsActivity.class);
 						context.startActivity(intent);
 					}
 				});
 
+				TextView goods_price = helper.getView(R.id.tv_goods_price);
+				goods_price.setText("$"+String.valueOf((int)goodlist.get(helper.getPosition() - 12).getAppPriceMin()));
+				TextView goods_buynum = helper.getView(R.id.tv_goods_buynum);
+				goods_buynum.setText("月销量"+String.valueOf((int)goodlist.get(helper.getPosition() - 12).getCommonId()));
 				break;
 
 		}

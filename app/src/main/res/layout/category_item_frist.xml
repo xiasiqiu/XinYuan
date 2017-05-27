@@ -24,7 +24,6 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:textColor="@color/tv_name"
-            android:text="热门分类"
             android:textSize="@dimen/tv_Regular"/>
         <View
             android:layout_width="match_parent"

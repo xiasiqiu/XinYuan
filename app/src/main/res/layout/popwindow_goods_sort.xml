@@ -14,7 +14,7 @@
         android:drawableLeft="@drawable/text_btn_check_mark"
         android:drawablePadding="20px"
         android:gravity="left"
-        android:text="综合排序"
+        android:text="@string/com_sort"
         android:textColor="@drawable/text_btn_color"
         android:textSize="36px"/>
 
@@ -33,7 +33,7 @@
         android:background="@color/bg_white"
         android:drawableLeft="@drawable/text_btn_check_mark"
         android:drawablePadding="20px"
-        android:text="信用"
+        android:text="@string/hon_sort"
         android:textColor="@drawable/text_btn_color"
         android:textSize="36px"/>
 
@@ -52,7 +52,7 @@
         android:background="@color/bg_white"
         android:drawableLeft="@drawable/text_btn_check_mark"
         android:drawablePadding="20px"
-        android:text="价格由低到高"
+        android:text="@string/price_up"
         android:textColor="@drawable/text_btn_color"
         android:textSize="36px"/>
 
@@ -71,7 +71,7 @@
         android:background="@color/bg_white"
         android:drawableLeft="@drawable/text_btn_check_mark"
         android:drawablePadding="20px"
-        android:text="价格由高到低"
+        android:text="@string/price_down"
         android:textColor="@drawable/text_btn_color"
         android:textSize="36px"/>
 

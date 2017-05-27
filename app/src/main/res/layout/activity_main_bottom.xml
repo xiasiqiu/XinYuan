@@ -2,6 +2,7 @@
                                      android:layout_width="match_parent"
                                      android:layout_height="160px"
                                      android:background="@color/bg_white"
+                                     android:elevation="5dp"
                                      android:orientation="horizontal">
 
     <Button

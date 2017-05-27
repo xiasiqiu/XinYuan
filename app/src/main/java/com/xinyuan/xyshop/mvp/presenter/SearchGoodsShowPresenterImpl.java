@@ -47,7 +47,8 @@ public class SearchGoodsShowPresenterImpl implements GoodSearchShowContract.Good
 
 
 	@Override
-	public void initData(String keyword, int brandId, int cat, String sort, String selectValue, int page) {
+	public void initData(String keyword, int brandId, int cat, String sort, String selectValue, final int page) {
+		XLog.v("传送过来的sort：" + sort);
 		String url = "https://java.bizpower.com/api/search?page=" + page + "&pageSize=" + 10;
 		if (CommUtil.isNotEmpty(keyword)) {
 			url = url + "&keyword=" + keyword;
@@ -64,7 +65,9 @@ public class SearchGoodsShowPresenterImpl implements GoodSearchShowContract.Good
 		if (cat != -1) {
 			url = url + "&cat=" + cat;
 		}
-		XLog.v("loadGoods: url = " + url + keyword);
+		XLog.v("此次请求的地址为loadGoods: url = " + url);
+
+
 		if (keyword.equals("手机")) {
 			OkGo.get(Urls.URL_SEARCH_SHOUJI)
 					.execute(new StringCallback() {
@@ -78,8 +81,14 @@ public class SearchGoodsShowPresenterImpl implements GoodSearchShowContract.Good
 							XLog.list(keyList);
 							pageEntity = data.getPageEntity();
 							List<GoodsVo> goodsVoList = data.getGoodsList();
-							showView.showGoodList(goodsVoList,selectFilterTest);
+							showView.showGoodList(goodsVoList, selectFilterTest,pageEntity);
 
+						}
+
+
+						@Override
+						public void onError(Call call, Response response, Exception e) {
+							showView.showState(2);
 						}
 					});
 		} else {
@@ -90,12 +99,12 @@ public class SearchGoodsShowPresenterImpl implements GoodSearchShowContract.Good
 						public void onSuccess(String s, Call call, Response response) {
 
 							searchGoodsList = JsonUtil.toBean(s, SearchGoodsList.class);
-							XLog.v("datas" + searchGoodsList);
+
 							SearchGoodsList.SearchGoodsData data = searchGoodsList.getDatas();
 							pageEntity = data.getPageEntity();
 							selectFilter = data.getSelectFilter();
 							List<GoodsVo> goodsVoList = data.getGoodsList();
-							showView.showGoodList(goodsVoList,selectFilterTest);
+							showView.showGoodList(goodsVoList, selectFilterTest,pageEntity);
 
 						}
 					});

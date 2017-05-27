@@ -21,6 +21,7 @@ import com.xinyuan.xyshop.util.LetterComparator;
 import com.xinyuan.xyshop.util.PinnedHeaderDecoration;
 import com.xinyuan.xyshop.widget.WaveSideBarView;
 import com.youth.xframe.utils.log.XLog;
+import com.youth.xframe.widget.loadingview.XLoadingView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,7 +43,8 @@ public class BrandActivity extends BaseActivity {
 	private List<Brand> adData;
 
 	BrandAdapter brandAdapter;
-
+	@BindView(R.id.brand_loadingView)
+	XLoadingView xLoadingView;
 
 	@Override
 	public int getLayoutId() {
@@ -58,7 +60,7 @@ public class BrandActivity extends BaseActivity {
 	@Override
 	public void initView() {
 		ButterKnife.bind(this);
-
+		xLoadingView.showLoading();
 		rv_brand.setLayoutManager(new GridLayoutManager(this, 4));
 
 		OkGo.get(Urls.URL_BRAND)
@@ -68,69 +70,79 @@ public class BrandActivity extends BaseActivity {
 						BrandList brands = JsonUtil.toBean(s, BrandList.class);
 						inRV(brands);
 					}
+
+					@Override
+					public void onError(Call call, Response response, Exception e) {
+						xLoadingView.showError();
+					}
 				});
 
 	}
 
 	private void inRV(BrandList list) {
-		listData = list.getDatas().getBrandList();
-		adData = list.getDatas().getAdList();
+		if (list.equals("")) {
+			xLoadingView.showEmpty();
 
-		List<MySection> lists = new ArrayList<>();
+		} else {
+			listData = list.getDatas().getBrandList();
+			adData = list.getDatas().getAdList();
 
-		List<Brand> brands = new ArrayList<>();
-		List<Brand> AllData = new ArrayList<>();
+			List<MySection> lists = new ArrayList<>();
 
-		String a = "";
+			List<Brand> brands = new ArrayList<>();
+			List<Brand> AllData = new ArrayList<>();
 
-		Collections.sort(listData, new LetterComparator());
-		for (Brand b : listData) {
-			if (!a.equals(b.getBrandInitial())) {
-				brands.add(new Brand(b.getBrandInitial(), 0));
-			}
+			String a = "";
 
-			a = b.getBrandInitial();
-
-		}
-
-		AllData.addAll(brands);
-		AllData.addAll(listData);
-		Collections.sort(AllData, new LetterComparator());
-
-		AllData.addAll(0, adData);
-		for (Brand bran : AllData) {
-			if (bran.getShowType() == 1) {
-
-				lists.add(new MySection(bran));
-			} else {
-				lists.add(new MySection(true, bran.getBrandInitial(), false));
-			}
-
-		}
-
-
-
-		lists.add(0, new MySection(true, "品牌推荐#", false));
-
-		brandAdapter = new BrandAdapter(R.layout.brand_item, R.layout.brand_item_pinned_header, lists);
-		rv_brand.setAdapter(brandAdapter);
-
-		mSideBarView.setOnTouchLetterChangeListener(new WaveSideBarView.OnTouchLetterChangeListener() {
-			@Override
-			public void onLetterChange(String letter) {
-
-
-				int pos = brandAdapter.getLetterPosition(letter);
-				if (pos != -1) {
-					rv_brand.scrollToPosition(pos);
-					LinearLayoutManager mLayoutManager =
-							(LinearLayoutManager) rv_brand.getLayoutManager();
-					mLayoutManager.scrollToPositionWithOffset(pos, 0);
+			Collections.sort(listData, new LetterComparator());
+			for (Brand b : listData) {
+				if (!a.equals(b.getBrandInitial())) {
+					brands.add(new Brand(b.getBrandInitial(), 0));
 				}
+
+				a = b.getBrandInitial();
+
 			}
-		});
+
+			AllData.addAll(brands);
+			AllData.addAll(listData);
+			Collections.sort(AllData, new LetterComparator());
+
+			AllData.addAll(0, adData);
+			for (Brand bran : AllData) {
+				if (bran.getShowType() == 1) {
+
+					lists.add(new MySection(bran));
+				} else {
+					lists.add(new MySection(true, bran.getBrandInitial(), false));
+				}
+
+			}
 
 
+			lists.add(0, new MySection(true, "品牌推荐#", false));
+
+			brandAdapter = new BrandAdapter(R.layout.brand_item, R.layout.brand_item_pinned_header, lists);
+			rv_brand.setAdapter(brandAdapter);
+
+			mSideBarView.setOnTouchLetterChangeListener(new WaveSideBarView.OnTouchLetterChangeListener() {
+				@Override
+				public void onLetterChange(String letter) {
+
+
+					int pos = brandAdapter.getLetterPosition(letter);
+					if (pos != -1) {
+						rv_brand.scrollToPosition(pos);
+						LinearLayoutManager mLayoutManager =
+								(LinearLayoutManager) rv_brand.getLayoutManager();
+						mLayoutManager.scrollToPositionWithOffset(pos, 0);
+					}
+				}
+			});
+			xLoadingView.showContent();
+
+
+		}
 	}
 
 

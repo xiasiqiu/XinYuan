@@ -8,24 +8,30 @@
 
     <include layout="@layout/activity_brand_header"/>
 
-    <com.zhy.autolayout.AutoRelativeLayout
+    <com.youth.xframe.widget.loadingview.XLoadingView
+        android:id="@+id/brand_loadingView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_brand"
+        <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10px"
-            android:layout_marginTop="30px"
-            android:layout_marginRight="90px"
-            />
+            android:layout_marginTop="?attr/actionBarSize">
 
-        <com.xinyuan.xyshop.widget.WaveSideBarView
-            android:id="@+id/side_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="?attr/actionBarSize"/>
-    </com.zhy.autolayout.AutoRelativeLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_brand"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10px"
+                android:layout_marginRight="90px"
+                android:layout_marginTop="30px"
+                />
+
+            <com.xinyuan.xyshop.widget.WaveSideBarView
+                android:id="@+id/side_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.youth.xframe.widget.loadingview.XLoadingView>
 </com.zhy.autolayout.AutoRelativeLayout>

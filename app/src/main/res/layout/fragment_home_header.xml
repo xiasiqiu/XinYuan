@@ -32,7 +32,7 @@
             android:layout_centerInParent="true"
             android:background="@drawable/search_bg"
             android:drawableLeft="@drawable/act_home_search_de"
-            android:hint="搜索关键字"
+            android:hint="@string/search_search_hint"
             android:padding="20px"
             android:singleLine="true"
             android:textColor="@color/tv_hint"
@@ -47,6 +47,13 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="40px"
             android:background="@drawable/act_home_msg"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="25px"
+            android:layout_height="25px"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20px"
+            android:layout_marginTop="30px"
+            android:src="@color/tv_price"/>
 
     </com.zhy.autolayout.AutoRelativeLayout>
 </android.support.v7.widget.Toolbar>

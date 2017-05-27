@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/bg_white"
-            android:text="热门搜索"
+            android:text="@string/hot_search"
             android:textColor="@color/tv_name"
             android:textSize="@dimen/tv_Regular"/>
 
@@ -45,7 +45,7 @@
             android:id="@+id/tvHistory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="历史记录"
+            android:text="@string/search_history"
             android:textColor="@color/tv_name"
             android:textSize="@dimen/tv_Regular"/>
 
@@ -75,7 +75,7 @@
             android:layout_margin="100px"
             android:background="@drawable/btn_bg_normal"
             android:button="@null"
-            android:text="清空历史"
+            android:text="@string/search_clear_history"
             android:textColor="@color/tv_name"
             android:textSize="@dimen/tv_Normal"/>
     </LinearLayout>

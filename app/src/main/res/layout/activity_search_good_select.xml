@@ -27,7 +27,7 @@
             android:layout_marginRight="10px"
             android:layout_weight="5"
             android:background="@drawable/btn_bg_black"
-            android:text="重置"
+            android:text="@string/bt_rest"
             android:textColor="@color/bg_white"
             android:textSize="@dimen/tv_Regular"/>
 
@@ -39,7 +39,7 @@
             android:layout_marginRight="10px"
             android:layout_weight="5"
             android:background="@drawable/bg_flow_selected"
-            android:text="确定"
+            android:text="@string/bt_ok"
             android:textColor="@color/bg_white"
             android:textSize="@dimen/tv_Regular"/>
 

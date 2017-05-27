@@ -43,27 +43,27 @@
                 <com.gxz.PagerSlidingTabStrip
                     android:id="@+id/psts_tabs"
                     android:layout_width="wrap_content"
-                    android:layout_height="95px"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:textColor="@color/tv_name"
                     android:textSize="15sp"
                     app:pstsDividerColor="@android:color/transparent"
-                    app:pstsDividerPaddingTopBottom="0dp"
+                    app:pstsDividerPaddingTopBottom="10px"
                     app:pstsIndicatorColor="@color/colorPrimary"
-                    app:pstsIndicatorHeight="6px"
+                    app:pstsIndicatorHeight="10px"
                     app:pstsScaleZoomMax="0.0"
                     app:pstsShouldExpand="false"
                     app:pstsSmoothScrollWhenClickTab="false"
                     app:pstsTabPaddingLeftRight="36px"
                     app:pstsTextAllCaps="false"
                     app:pstsTextSelectedColor="@color/colorPrimary"
-                    app:pstsUnderlineHeight="0dp"/>
+                    app:pstsUnderlineHeight="1px"/>
 
                 <TextView
                     android:id="@+id/tv_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="图文详情"
+                    android:text="@string/good_detail_title"
                     android:textColor="@color/tv_name"
                     android:textSize="@dimen/tv_Regular"
                     android:visibility="gone"/>
@@ -81,7 +81,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1px"
+            android:layout_height="5px"
             android:background="@color/bg_gray"/>
     </com.zhy.autolayout.AutoLinearLayout>
 
@@ -90,4 +90,86 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="135px"
+        android:layout_gravity="bottom"
+        android:background="@color/bg_white"
+        android:elevation="10dp"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:layout_width="157px"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/bg_white"
+            android:drawableTop="@drawable/ic_store_service"
+            android:padding="15px"
+            android:text="客服"
+            android:textColor="@color/tv_hint"
+            android:textSize="@dimen/tv_small"/>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/colorLine"/>
+
+        <Button
+            android:layout_width="157px"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/bg_white"
+            android:drawableTop="@drawable/ic_store"
+            android:padding="15px"
+
+            android:text="店铺"
+            android:textColor="@color/tv_hint"
+            android:textSize="@dimen/tv_small"/>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/colorLine"/>
+
+        <Button
+            android:layout_width="157px"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/bg_white"
+            android:drawableTop="@drawable/ic_store_fav"
+            android:padding="15px"
+            android:text="收藏"
+            android:textColor="@color/tv_hint"
+            android:textSize="@dimen/tv_small"/>
+
+        <View
+            android:layout_width="2px"
+            android:layout_height="match_parent"
+            android:background="@color/bg_gray"/>
+
+        <Button
+            android:layout_width="300px"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/colorPrimaryDark"
+            android:text="加入购物车"
+            android:textColor="@color/bg_white"
+            android:textSize="@dimen/tv_Regular"/>
+
+        <View
+            android:layout_width="3px"
+            android:layout_height="match_parent"
+            android:background="@color/bg_white"/>
+
+        <Button
+            android:layout_width="300px"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/colorPrimary"
+            android:text="立即购买"
+            android:textColor="@color/bg_white"
+            android:textSize="@dimen/tv_Regular"/>
+    </com.zhy.autolayout.AutoLinearLayout>
 </com.zhy.autolayout.AutoLinearLayout>

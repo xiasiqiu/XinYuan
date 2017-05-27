@@ -12,6 +12,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,6 +24,7 @@ import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.jauker.widget.BadgeView;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.sunfusheng.marqueeview.MarqueeView;
@@ -118,6 +120,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 		XLog.v("首页切换" + VIEW_INIT);
 		VIEW_INIT = false;
+
+
 	}
 
 	/**
@@ -264,8 +268,9 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		res.add(more);
 		ExpandableItemAdapter expandableItemAdapter = new ExpandableItemAdapter(res, itemList);
 		final GridLayoutManager manager = new GridLayoutManager(getActivity(), 5);
+
 		menuListView.setAdapter(expandableItemAdapter);
-		expandableItemAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
+
 		menuListView.setLayoutManager(manager);
 		expandableItemAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
 			@Override
@@ -434,7 +439,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	@CallSuper
 	public void onResume() {
 		super.onResume();
-		mDistanceY = 0;
+		XLog.v("来啦");
+
 
 	}
 //

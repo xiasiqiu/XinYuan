@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/category_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?android:actionBarSize"
+    android:background="@color/colorPrimary"
+    app:contentInsetLeft="0dp"
+    app:contentInsetStart="0dp">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:background="@color/bg_white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/car_btn_scan"
+            android:layout_width="70px"
+            android:layout_height="70px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50px"
+            android:src="@drawable/act_home_scan_de"/>
+
+        <TextView
+            android:id="@+id/toolbartitle"
+            style="@style/RegularTextView"
+            android:layout_centerInParent="true"
+            android:text="@string/shop_car"
+            />
+
+
+        <TextView
+            android:id="@+id/toolbar_edit"
+            style="@style/NormalTextView"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="50px"
+            android:text="编辑"
+            />
+
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+
+</android.support.v7.widget.Toolbar>

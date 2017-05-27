@@ -9,11 +9,11 @@
     <com.youth.banner.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        app:indicator_drawable_selected="@drawable/banner_shape"
         android:layout_height="850px"
+        app:indicator_drawable_selected="@drawable/banner_shape"
         app:indicator_height="24px"
-        app:indicator_width="24px"
-        app:indicator_margin="20px"/>
+        app:indicator_margin="20px"
+        app:indicator_width="24px"/>
 
 
     <android.support.v7.widget.RecyclerView
@@ -36,21 +36,19 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/RegularTextView"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20px"
-            android:text="最新动态:"
-            android:textColor="@color/tv_name"
-            android:textSize="@dimen/tv_Regular"/>
+            android:text="@string/new_notice"
+           />
 
         <com.sunfusheng.marqueeview.MarqueeView
             android:id="@+id/marquee_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/textView"
             android:layout_marginLeft="20px"
+            android:layout_toRightOf="@+id/textView"
             app:mvAnimDuration="1000"
             app:mvInterval="3000"
             app:mvTextColor="@color/colorPrimary"
@@ -80,14 +78,11 @@
 
         <TextView
             android:id="@+id/home_notice_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/NormalTextView"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20px"
-            android:text="更多"
-            android:textColor="@color/tv_name"
-            android:textSize="@dimen/tv_Normal"/>
+            android:text="@string/more"/>
     </com.zhy.autolayout.AutoRelativeLayout>
 
 

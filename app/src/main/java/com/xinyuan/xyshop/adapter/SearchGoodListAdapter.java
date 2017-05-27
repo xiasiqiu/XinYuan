@@ -22,6 +22,7 @@ public class SearchGoodListAdapter extends BaseQuickAdapter<GoodsVo, BaseViewHol
 
 	public SearchGoodListAdapter(@LayoutRes int layoutResId, @Nullable List<GoodsVo> data,Boolean isList) {
 		super(layoutResId, data);
+		this.isList=isList;
 	}
 
 	@Override

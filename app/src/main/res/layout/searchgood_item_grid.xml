@@ -4,13 +4,13 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5px"
+    android:layout_margin="2px"
     android:background="@color/bg_white"
     android:orientation="vertical">
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="550px">
+        android:layout_height="540px">
 
         <ImageView
             android:id="@+id/ivGoodPic"
@@ -23,46 +23,33 @@
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="220px"
-        android:layout_marginLeft="30px"
+        android:layout_height="200px"
+        android:layout_marginLeft="10px"
         android:background="@color/bg_white">
 
         <TextView
             android:id="@+id/tv_goods_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/GoodsNameTextView"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30px"
-            android:lines="2"
-            android:ellipsize="end"
-            android:fontFamily="sans-serif-condensed"
-            android:text="零度智控DOBBY跟拍口袋无人机 智能高清便携 礼盒版"
-            android:textColor="@color/tv_name"
-            android:textSize="38px"/>
+            android:layout_marginTop="30px"/>
 
         <TextView
             android:id="@+id/tv_goods_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/GoodsPriceTextView"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="20px"
-            android:text="$55.3"
-            android:textColor="@color/tv_price"
-            android:textSize="40px"/>
+            android:layout_marginBottom="30px"
+            />
 
         <TextView
             android:id="@+id/tv_goods_sellnum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/tv_goods_price"
-            android:layout_alignTop="@+id/tv_goods_price"
+            style="@style/SmallHintTextView"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="33px"
             android:layout_marginLeft="50px"
             android:layout_toRightOf="@+id/tv_goods_price"
-            android:paddingTop="5px"
-            android:text="23334人购买"
-            android:textColor="@color/tv_hint"
-            android:textSize="32px"/>
+
+            />
     </com.zhy.autolayout.AutoRelativeLayout>
 
 </com.zhy.autolayout.AutoLinearLayout>

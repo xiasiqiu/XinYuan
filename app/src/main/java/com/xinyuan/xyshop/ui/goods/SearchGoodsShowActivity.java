@@ -2,15 +2,17 @@ package com.xinyuan.xyshop.ui.goods;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,29 +23,19 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.lzy.okgo.OkGo;
-import com.lzy.okgo.callback.StringCallback;
-import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.SearchGoodListAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
-import com.xinyuan.xyshop.entity.GoodCategory;
 import com.xinyuan.xyshop.entity.GoodsVo;
 import com.xinyuan.xyshop.entity.PageEntity;
-import com.xinyuan.xyshop.entity.SearchGoodsList;
-import com.xinyuan.xyshop.entity.SearchGoodsListTest;
-import com.xinyuan.xyshop.entity.SelectFilter;
 import com.xinyuan.xyshop.entity.SelectFilterTest;
-import com.xinyuan.xyshop.http.Urls;
 import com.xinyuan.xyshop.mvp.contract.GoodSearchShowContract;
-import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
 import com.xinyuan.xyshop.mvp.presenter.SearchGoodsShowPresenterImpl;
 import com.xinyuan.xyshop.util.CommUtil;
-import com.xinyuan.xyshop.util.JsonUtil;
-import com.xinyuan.xyshop.widget.dialog.SearchGoodSelectDialog;
+import com.youth.xframe.adapter.XRecyclerViewAdapter;
 import com.youth.xframe.utils.log.XLog;
+import com.youth.xframe.widget.XToast;
 import com.youth.xframe.widget.loadingview.XLoadingView;
-import com.zhy.autolayout.AutoLayoutActivity;
 import com.zhy.autolayout.AutoLinearLayout;
 
 import java.util.ArrayList;
@@ -52,10 +44,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import okhttp3.Call;
-import okhttp3.Response;
 
-public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchShowContract.GoodSearchShowView {
+public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchShowContract.GoodSearchShowView, BaseQuickAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
 
 
 	@BindView(R.id.rvGoodList)
@@ -87,6 +77,11 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 	@BindView(R.id.nav_view)
 	LinearLayout nav_view;//筛选界面_layout
 
+	@BindView(R.id.search_loadingView)
+	XLoadingView xLoadingView;
+	@BindView(R.id.swipeLayout)
+	SwipeRefreshLayout mSwipeRefreshLayout;
+
 
 	private TextView btnSortDefault;
 	private TextView btnSortHon;
@@ -100,8 +95,10 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 	private int cat = -1;
 	private String sort = "";
 	private String selectValue = "";
-	private List<GoodsVo> goodses = new ArrayList();
+	private List<GoodsVo> goodses;
 	private SearchGoodListAdapter adapter;
+	private PageEntity pageEntity;
+
 	private Context context;
 	private boolean isList;
 	private LinearLayoutManager manager;
@@ -133,6 +130,17 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 		this.cat = getIntent().getIntExtra("cat", -1);
 		goodshow_et_search.setHint(keyword);
 		this.isList = true;
+		xLoadingView.setOnRetryClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				XToast.success("重新加载");
+				xLoadingView.showLoading();
+			}
+		});
+		mSwipeRefreshLayout.setOnRefreshListener(SearchGoodsShowActivity.this);
+		mSwipeRefreshLayout.setColorSchemeColors(Color.rgb(47, 223, 189));
+
+
 	}
 
 	@Override
@@ -144,14 +152,16 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 	public void showState(int Sate) {
 		switch (Sate) {
 			case 0:
-				//xLoadingView.showLoading();
+				xLoadingView.showLoading();
 				break;
 			case 1:
-
-				//xLoadingView.showContent();
+				xLoadingView.showContent();
 				break;
 			case 2:
-				//xLoadingView.showError();
+				xLoadingView.showError();
+				break;
+			case 3:
+				xLoadingView.showEmpty();
 				break;
 
 		}
@@ -165,6 +175,7 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 			this.rvGoods.setLayoutManager(layoutManager);
 			this.manager = layoutManager;
 			this.adapter = new SearchGoodListAdapter(R.layout.searchgood_item_list, goodses, isList);
+			this.adapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_RIGHT);
 			this.rvGoods.setAdapter(adapter);
 		} else {
 			GridLayoutManager layoutManager2 = new GridLayoutManager(this.context, 2, 1, false);
@@ -182,34 +193,72 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 			}
 		});
 
+
+		adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+			@Override
+			public void onLoadMoreRequested() {
+
+				rvGoods.postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						mSwipeRefreshLayout.setEnabled(false);
+						XLog.v("有没有剩下的数据" + pageEntity.toString());
+						if (pageEntity.isHasMore()) {
+							page = SearchGoodsShowActivity.this.page + 1;
+							presenter.initData(keyword, brandId, cat, sort, selectValue, page);
+							return;
+						} else {
+							adapter.loadMoreEnd(false);
+						}
+					}
+
+				}, 1000);
+			}
+		}, rvGoods);
 	}
 
+	private List<GoodsVo> newData;
+
 	@Override
-	public void showGoodList(List<GoodsVo> goodsVoList, SelectFilterTest selectFilterTest) {
-		showListView();
-		Log.v("shenme","执行到这儿了？？？？？？？");
-		if (goodsVoList != null) {
-			goodses.addAll(goodsVoList);
-		}
-		if (goodses.size() > 0) {
-			rvGoods.setVisibility(View.VISIBLE);
-			adapter.setNewData(goodses);
-			adapter.notifyDataSetChanged();
+	public void showGoodList(List<GoodsVo> goodsVoList, SelectFilterTest selectFilterTest, PageEntity pageEntity) {
+		if (page > 1) {
+			this.pageEntity=pageEntity;
+			adapter.addData(goodsVoList);
+			adapter.loadMoreComplete();
+		} else {
+			goodses = new ArrayList<>();
+			this.pageEntity = pageEntity;
+			showListView();
+			mSwipeRefreshLayout.setRefreshing(false);
+			adapter.setEnableLoadMore(true);
+			Log.v("shenme", "执行到这儿了？？？？？？？");
+			if (goodsVoList != null) {
+				goodses = goodsVoList;
+			}
+
+			if (goodses.size() > 0) {
+				rvGoods.setVisibility(View.VISIBLE);
+				adapter.setNewData(goodses);
+				adapter.notifyDataSetChanged();
+				showState(1);
+				this.selectFilterTests = new SelectFilterTest();
+				selectFilterTests = selectFilterTest;
+			} else {
+				showState(3);
+			}
+
+			adapter.setAutoLoadMoreSize(3);
+
 		}
 
-		showState(1);
-		this.selectFilterTests = new SelectFilterTest();
-		selectFilterTests = selectFilterTest;
-
-		menuHeaderView = new RightSearchPly(SearchGoodsShowActivity.this, selectFilterTests);
-		nav_view.addView(menuHeaderView);
-		drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, Gravity.RIGHT);
+//		menuHeaderView = new RightSearchPly(SearchGoodsShowActivity.this, selectFilterTests);
+//		nav_view.addView(menuHeaderView);
+//		drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, Gravity.RIGHT);
 	}
 
 
 	public void showSortPopWindow(View view) {
-		this.btnListType.setSelected(true);
-		sortSelected(true, false, "", false);
+		sortSelected(true, false, false);
 		if (this.popSort == null) {
 			View viewPopSort = LayoutInflater.from(this).inflate(R.layout.popwindow_goods_sort, null);
 			this.popSort = new PopupWindow(viewPopSort, -50, -50, true);
@@ -238,9 +287,8 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 					SearchGoodsShowActivity.this.btnSortPriceL.setSelected(false);
 					SearchGoodsShowActivity.this.btnSortPriceU.setSelected(false);
 					SearchGoodsShowActivity.this.btnSort.setText("综合排序");
-					SearchGoodsShowActivity.this.sortSelected(true, false, "", false);
-					SearchGoodsShowActivity.this.sort = "";
-					SearchGoodsShowActivity.this.page = 1;
+					SearchGoodsShowActivity.this.sort = "comment_desc";
+					page = 1;
 					presenter.initData(keyword, brandId, cat, sort, selectValue, page);
 					SearchGoodsShowActivity.this.popSort.dismiss();
 				}
@@ -258,7 +306,6 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 					SearchGoodsShowActivity.this.btnSortPriceL.setSelected(false);
 					SearchGoodsShowActivity.this.btnSortPriceU.setSelected(false);
 					SearchGoodsShowActivity.this.btnSort.setText("信用排序");
-					SearchGoodsShowActivity.this.sortSelected(true, false, "", false);
 					SearchGoodsShowActivity.this.sort = "";
 					SearchGoodsShowActivity.this.page = 1;
 					presenter.initData(keyword, brandId, cat, sort, selectValue, page);
@@ -278,7 +325,7 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 					SearchGoodsShowActivity.this.btnSortPriceL.setSelected(true);
 					SearchGoodsShowActivity.this.btnSortPriceU.setSelected(false);
 					SearchGoodsShowActivity.this.btnSort.setText("价格从低到高");
-					SearchGoodsShowActivity.this.sortSelected(true, false, "price_desc", false);
+					sort = "price_asc";
 					SearchGoodsShowActivity.this.page = 1;
 					presenter.initData(keyword, brandId, cat, sort, selectValue, page);
 					SearchGoodsShowActivity.this.popSort.dismiss();
@@ -297,7 +344,7 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 					SearchGoodsShowActivity.this.btnSortPriceL.setSelected(false);
 					SearchGoodsShowActivity.this.btnSortPriceU.setSelected(true);
 					SearchGoodsShowActivity.this.btnSort.setText("价格从高到低");
-					SearchGoodsShowActivity.this.sortSelected(true, false, "price_asc", false);
+					sort = "price_desc";
 					SearchGoodsShowActivity.this.page = 1;
 					presenter.initData(keyword, brandId, cat, sort, selectValue, page);
 					SearchGoodsShowActivity.this.popSort.dismiss();
@@ -311,7 +358,7 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 	}
 
 
-	@OnClick({R.id.btnListType, R.id.llSort, R.id.llScreen,})
+	@OnClick({R.id.btnListType, R.id.llSort, R.id.llScreen, R.id.btnSale})
 	public void onClick(View view) {
 		boolean z = true;
 		switch (view.getId()) {
@@ -325,13 +372,16 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 				this.currentItemPosition = this.manager.findFirstVisibleItemPosition();
 				showListView();
 				this.adapter.setNewData(this.goodses);
-				this.rvGoods.smoothScrollToPosition(this.currentItemPosition + 3);
+				this.rvGoods.smoothScrollToPosition(this.currentItemPosition);
 				this.adapter.notifyDataSetChanged();
 				return;
 			case R.id.llSort:
-				sortSelected(true, false, "", false);
+				sortSelected(true, false, false);
 				showSortPopWindow(view);
-				this.sort = this.btnSortDefault.isSelected() ? "" : "comment_desc";
+				return;
+			case R.id.btnSale:
+				sortSelected(false, true, false);
+				this.sort = "sale_desc";
 				this.page = 1;
 				presenter.initData(keyword, brandId, cat, sort, selectValue, page);
 				return;
@@ -339,21 +389,19 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 				XLog.v("点击了筛选");
 
 
-				if(drawer.isDrawerVisible(GravityCompat.END)){
-					closeMenu();
-				}else {
-					openMenu();
-				}
+//				if(drawer.isDrawerVisible(GravityCompat.END)){
+//					closeMenu();
+//				}else {
+//					openMenu();
+//				}
 
 
-				sortSelected(false, false, "", true);
+				sortSelected(false, false, true);
 
 				return;
 		}
 	}
 
-
-	private static boolean showing = false;
 
 	public void closeMenu() {
 		drawer.closeDrawer(GravityCompat.END);
@@ -363,18 +411,34 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 		drawer.openDrawer(GravityCompat.END);
 	}
 
-	private void sortSelected(boolean sortFlag, boolean sale, String price, boolean screen) {
+	private void sortSelected(boolean sortFlag, boolean sale, boolean screen) {
 		this.btnSort.setSelected(sortFlag);
 		this.ivSort.setSelected(sortFlag);
-		this.btnSale.setSelected(sale);
+
+		btnSale.setSelected(sale);
+
 		this.btnScreen.setSelected(screen);
 		this.ivScreen.setSelected(screen);
-		if (price.equals("")) {
 
-		} else {
-			this.sort = price;
-		}
 
+	}
+
+	@Override
+	public void onRefresh() {
+		XLog.v("刷新了" + pageEntity.toString());
+		adapter.setEnableLoadMore(false);
+		new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				presenter.initData(keyword, brandId, cat, sort, selectValue, page);
+			}
+		}, 1000);
+
+	}
+
+
+	@Override
+	public void onLoadMoreRequested() {
 
 	}
 }

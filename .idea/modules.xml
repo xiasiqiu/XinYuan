@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/XYShop.iml" filepath="$PROJECT_DIR$/XYShop.iml" />
       <module fileurl="file://$PROJECT_DIR$/XinYuan.iml" filepath="$PROJECT_DIR$/XinYuan.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xframe/xframe.iml" filepath="$PROJECT_DIR$/xframe/xframe.iml" />
     </modules>
   </component>
 </project>

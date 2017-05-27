@@ -15,13 +15,11 @@
 
     <TextView
         android:id="@+id/home_menu_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/LightTextView"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="40px"
         android:layout_marginTop="20px"
-        android:textColor="@color/tv_name"
-        android:textSize="@dimen/tv_light"
+
         />
 
 

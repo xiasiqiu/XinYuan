@@ -2,6 +2,7 @@ package com.xinyuan.xyshop.ui.goods;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.widget.TextView;
 
@@ -59,9 +60,9 @@ public class GoodDetailsActivity extends BaseActivity {
 				fragmentList, new String[]{"商品", "详情", "评价", "推荐"}));
 		vp_content.setOffscreenPageLimit(4);
 		psts_tabs.setViewPager(vp_content);
+
+
 	}
-
-
 
 
 }

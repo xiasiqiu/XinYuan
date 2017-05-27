@@ -258,7 +258,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	}
 
 
-	@OnClick({R.id.ll_goods_config, R.id.ll_goods_service, R.id.ll_goods_detail, R.id.fab_up_slide})
+	@OnClick({R.id.ll_goods_config, R.id.ll_goods_service, R.id.ll_goods_detail, R.id.fab_up_slide,R.id.ll_comment})
 	public void onClick(View view) {
 		switch (view.getId()) {
 
@@ -291,6 +291,8 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 				sv_switch.smoothClose(true);
 
 				break;
+			case R.id.ll_comment:
+
 			default:
 				break;
 		}

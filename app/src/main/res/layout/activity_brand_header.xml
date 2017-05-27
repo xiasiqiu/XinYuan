@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="精选品牌"
+            android:text="@string/recom_brand"
             android:textSize="40px"/>
 
         <ImageView
@@ -42,6 +42,16 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="40px"
             android:background="@drawable/act_home_msg_de"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="25px"
+            android:layout_height="25px"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20px"
+            android:layout_marginTop="30px"
+            android:src="@color/tv_price"/>
+
+
     </com.zhy.autolayout.AutoRelativeLayout>
 
 
