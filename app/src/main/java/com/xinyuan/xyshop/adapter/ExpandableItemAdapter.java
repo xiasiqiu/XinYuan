@@ -78,7 +78,6 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
 				holder.setText(R.id.home_menu_title, menuList.get(holder.getPosition()).getData());
 				GlideImageLoader.setImage(mContext, menuList.get(holder.getPosition()).getImageUrl(), (ImageView) holder.getView(R.id.home_menu_img));
 
-
 				holder.itemView.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {

@@ -11,6 +11,7 @@ import com.xinyuan.xyshop.ui.catrgory.CategoryFragment;
 import com.xinyuan.xyshop.ui.home.HomeFragment;
 import com.xinyuan.xyshop.ui.mine.MineFragment;
 import com.xinyuan.xyshop.ui.shopcar.ShopCarFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 

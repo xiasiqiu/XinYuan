@@ -17,8 +17,7 @@
             android:id="@+id/home_goods_img"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            android:src="@drawable/test_good_img"/>
+            android:scaleType="fitXY"/>
 
     </com.zhy.autolayout.AutoRelativeLayout>
 
@@ -27,7 +26,8 @@
         android:layout_width="match_parent"
         android:layout_height="220px"
         android:layout_marginLeft="10px"
-        android:background="@color/bg_white">
+        android:background="@color/bg_white"
+        android:paddingBottom="10px">
 
         <TextView
             android:id="@+id/home_goods_name"
@@ -35,7 +35,8 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30px"
-            android:text="only纯棉卡通印花宽松黑色刺绣T恤"
+            android:letterSpacing="0.01"
+            android:lineSpacingExtra="10px"
             />
 
 
@@ -43,19 +44,14 @@
             android:id="@+id/tv_goods_price"
             style="@style/GoodsPriceTextView"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="30px"
-            android:text="￥599.00"
-
             />
 
         <TextView
             android:id="@+id/tv_goods_buynum"
             style="@style/SmallHintTextView"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="33px"
             android:layout_marginLeft="50px"
             android:layout_toRightOf="@+id/tv_goods_price"
-            android:text="月销售：299件"
             />
     </com.zhy.autolayout.AutoRelativeLayout>
 

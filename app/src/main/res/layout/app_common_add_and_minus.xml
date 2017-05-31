@@ -17,26 +17,27 @@
             android:layout_height="70px"
             android:background="@drawable/left_round_btn"
             android:text="—"
-            android:textSize="@dimen/tv_small"
-            android:textColor="@color/tv_name"/>
 
-        <TextView
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_small"/>
+
+        <EditText
             android:id="@+id/tvAppCommonCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20px"
             android:layout_marginRight="20px"
-            android:text="1"
+            android:background="@null"
             android:textColor="@color/tv_name"/>
 
         <Button
             android:id="@+id/btnAppCommonAdd"
             android:layout_width="70px"
             android:layout_height="70px"
-            android:textSize="@dimen/tv_small"
             android:background="@drawable/right_round_edittext"
             android:text="+"
-            android:textColor="@color/tv_name"/>
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_small"/>
     </LinearLayout>
 
 </com.zhy.autolayout.AutoLinearLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="match_parent"
+                                       android:orientation="vertical">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="530px"
+        android:src="@drawable/test_store_bg"/>
+
+    <include layout="@layout/activity_store_header"/>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="400px"
+        android:paddingLeft="35px">
+
+
+        <ImageView
+            android:layout_width="110px"
+            android:layout_height="110px"
+            android:src="@drawable/test_good_store"/>
+
+        <View
+            android:layout_width="2px"
+            android:layout_height="85px"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="380px"
+            android:background="@color/bg_white"/>
+
+        <TextView
+            style="@style/LightTextView"
+            android:layout_marginLeft="130px"
+            android:text="梅子熟了 文艺复古清新女装"
+            android:textColor="@color/bg_white"/>
+
+        <TextView
+            style="@style/LightTextView"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="250px"
+            android:text="247.6万"
+            android:textColor="@color/bg_white"/>
+
+        <TextView
+            style="@style/LightTextView"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="250px"
+            android:layout_marginTop="50px"
+            android:text="粉丝数"
+            android:textColor="@color/bg_white"/>
+
+        <Button
+            android:layout_width="180px"
+            android:layout_height="70px"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30px"
+            android:background="@drawable/bg_flow_selected"
+            android:text="关注"
+            android:textColor="@color/bg_white"/>
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

@@ -12,7 +12,6 @@ import com.xinyuan.xyshop.entity.Menu;
 public class ExpandItem extends AbstractExpandableItem<Menu> implements MultiItemEntity {
 	public String imgUrl;
 	public String title;
-
 	public ExpandItem(String imgUrl, String title) {
 		this.imgUrl = title;
 		this.title = title;

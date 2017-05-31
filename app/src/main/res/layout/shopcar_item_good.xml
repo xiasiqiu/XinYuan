@@ -66,9 +66,9 @@
         android:id="@+id/tv_good_price"
         style="@style/GoodsPriceTextView"
         android:layout_below="@+id/tv_good_spec"
+        android:layout_marginBottom="45px"
         android:layout_marginLeft="10px"
         android:layout_marginTop="35px"
-        android:layout_marginBottom="45px"
         android:layout_toRightOf="@+id/ll_good_img"
         android:text="￥：2099.00"/>
 

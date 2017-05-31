@@ -34,6 +34,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20px"
                 android:lines="1"
+                android:letterSpacing="0.1"
+                android:lineSpacingExtra="20px"
                 android:text="包邮"
                 android:textColor="@color/tv_price"
                 android:textSize="36px"/>
