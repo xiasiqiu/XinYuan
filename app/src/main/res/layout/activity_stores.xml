@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent"
+                                                 android:background="@color/bg_gray"
+                                                 android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapse_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="825px"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_collapseMode="parallax"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="700px"
+                android:background="@drawable/test_store_bg"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"/>
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/rl_store_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="150px"
+                android:paddingLeft="35px">
+
+
+                <ImageView
+                    android:layout_width="110px"
+                    android:layout_height="110px"
+                    android:src="@drawable/test_good_store"/>
+
+                <View
+                    android:layout_width="2px"
+                    android:layout_height="85px"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="400px"
+                    android:background="@color/bg_white"/>
+
+                <TextView
+                    style="@style/LightTextView"
+                    android:layout_marginLeft="130px"
+                    android:text="梅子熟了 文艺复古清新女装"
+                    android:textColor="@color/bg_white"/>
+
+                <TextView
+                    style="@style/LightTextView"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="250px"
+                    android:text="247.6万"
+                    android:textColor="@color/bg_white"/>
+
+                <TextView
+                    style="@style/LightTextView"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="250px"
+                    android:layout_marginTop="50px"
+                    android:text="粉丝数"
+                    android:textColor="@color/bg_white"/>
+
+                <Button
+                    android:layout_width="180px"
+                    android:layout_height="70px"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="30px"
+                    android:background="@drawable/bg_flow_selected"
+                    android:text="关注"
+                    android:textColor="@color/bg_white"/>
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/store_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?android:actionBarSize"
+                android:layout_gravity="top"
+                android:background="@color/colorTransparency"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                app:layout_collapseMode="parallax">
+
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorTransparency"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:orientation="horizontal">
+
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:layout_width="770px"
+                        android:layout_height="90px"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/btn_bg_normal"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/goodshow_et_search"
+                            android:layout_width="690px"
+                            android:layout_height="90px"
+                            android:layout_centerVertical="true"
+                            android:background="@null"
+                            android:focusableInTouchMode="false"
+                            android:hint="@string/search_search_hint"
+                            android:padding="20px"
+                            android:paddingLeft="10px"
+                            android:singleLine="true"
+                            android:textColor="@color/tv_name"
+                            android:textColorHint="@color/tv_hint"
+                            android:textSize="@dimen/tv_Normal"/>
+
+                        <ImageView
+                            android:layout_width="80px"
+                            android:layout_height="90px"
+                            android:background="@drawable/btn_bg_gray"
+                            android:src="@drawable/act_home_search_de"
+                            />
+
+
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+
+                    <ImageView
+                        android:id="@+id/goodshow_btn_msg"
+                        android:layout_width="79px"
+                        android:layout_height="79px"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20px"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/act_home_msg"/>
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="25px"
+                        android:layout_height="25px"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10px"
+                        android:layout_marginTop="25px"
+                        android:src="@color/tv_price"/>
+
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+            </android.support.v7.widget.Toolbar>
+
+
+            <com.gxz.PagerSlidingTabStrip
+                android:id="@+id/store__tabs"
+                android:layout_width="match_parent"
+                android:layout_height="125px"
+                android:layout_below="@id/rl_store_name"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="20px"
+                android:background="@color/bg_white"
+                android:textColor="@color/tv_name"
+                android:textSize="16sp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:pstsDividerColor="@color/colorLine"
+                app:pstsDividerPaddingTopBottom="10px"
+                app:pstsIndicatorColor="@color/colorPrimary"
+                app:pstsIndicatorHeight="5px"
+                app:pstsScaleZoomMax="0.0"
+                app:pstsShouldExpand="true"
+                app:pstsSmoothScrollWhenClickTab="false"
+                app:pstsTextAllCaps="false"
+                app:pstsTextSelectedColor="@color/colorPrimary"
+                app:pstsUnderlineHeight="1px"/>
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/store__tabs"
+        android:layout_marginTop="20px"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,6 +1,8 @@
 package com.xinyuan.xyshop.ui.shopcar;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.xinyuan.xyshop.R;
@@ -23,11 +26,14 @@ import com.xinyuan.xyshop.entity.GoodsVo;
 import com.xinyuan.xyshop.entity.ShopCarGoodsItem;
 import com.xinyuan.xyshop.entity.ShopCarStoreItem;
 import com.xinyuan.xyshop.entity.StoreInfo;
+import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.youth.xframe.utils.log.XLog;
+import com.youth.xframe.widget.XToast;
 import com.zhy.autolayout.AutoRelativeLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -85,10 +91,12 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 
 	}
 
-	@Override
-	public void initView() {
+	ArrayList<MultiItemEntity> res;
 
-		ArrayList<MultiItemEntity> res = new ArrayList<>();
+
+	private ArrayList<MultiItemEntity> initdatas() {
+
+		res = new ArrayList<>();
 		for (int i = 0; i < 3; i++) {
 			groups.add(new StoreInfo(i + "", "天猫店铺" + (i + 1) + "号店"));
 			ShopCarStoreItem more = new ShopCarStoreItem();
@@ -105,10 +113,23 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 			}
 			children.put(groups.get(i).getId(), products);// 将组元素的一个唯一值，这里取Id，作为子元素List的Key
 			res.add(more);
+
 		}
+		XLog.v(children.toString());
+		return res;
+	}
 
+	private static boolean VIEW_INIT = true;
+	@Override
+	public void initView() {
+		if (VIEW_INIT) {
+			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
+			SystemBarHelper.setHeightAndPadding(getActivity(), toolbar);
+		}
+		XLog.v("购物车页面切换" + VIEW_INIT);
+		VIEW_INIT = false;
 
-		adapter = new ShopCarAdapter(groups, children, res);
+		adapter = new ShopCarAdapter(groups, children, initdatas());
 		adapter.setCheckInterface(this);
 		adapter.setModifyCountInterface(this);
 		adapter.setmListener(this);
@@ -167,8 +188,9 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 
 	private int flag = 0;
 
-	@OnClick({R.id.good_checkbox, R.id.toolbar_edit})
+	@OnClick({R.id.good_checkbox, R.id.toolbar_edit, R.id.bt_sell, R.id.btn_shopcar_delete})
 	public void OnClick(View view) {
+		AlertDialog alert;
 		switch (view.getId()) {
 			case R.id.good_checkbox:
 				doCheckAll();
@@ -188,7 +210,86 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 				}
 				flag = (flag + 1) % 2;//其余得到循环执行上面2个不同的功能
 				break;
+			case R.id.bt_sell:
+				if (totalCount == 0) {
+					XToast.error("请选择要支付的商品", Toast.LENGTH_SHORT);
+					return;
+				}
+				alert = new AlertDialog.Builder(context).create();
+				alert.setTitle("操作提示");
+				alert.setMessage("总计:\n" + totalCount + "种商品\n" + totalPrice + "元" + "\n" + "商品：" + choseGoods.toString());
+				alert.setButton(DialogInterface.BUTTON_NEGATIVE, "取消",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								return;
+							}
+						});
+				alert.setButton(DialogInterface.BUTTON_POSITIVE, "确定",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								return;
+							}
+						});
+				alert.show();
+				break;
+
+			case R.id.btn_shopcar_delete:
+				if (totalCount == 0) {
+					Toast.makeText(context, "请选择要移除的商品", Toast.LENGTH_LONG).show();
+					return;
+				}
+				alert = new AlertDialog.Builder(context).create();
+				alert.setTitle("操作提示");
+				alert.setMessage("您确定要将这些商品从购物车中移除吗？");
+				alert.setButton(DialogInterface.BUTTON_NEGATIVE, "取消",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								return;
+							}
+						});
+				alert.setButton(DialogInterface.BUTTON_POSITIVE, "确定",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								doDelete();
+							}
+						});
+				alert.show();
+				break;
+
 		}
+
+	}
+
+	/**
+	 * 删除操作<br>
+	 * 1.不要边遍历边删除，容易出现数组越界的情况<br>
+	 * 2.现将要删除的对象放进相应的列表容器中，待遍历完后，以removeAll的方式进行删除
+	 */
+	protected void doDelete() {
+		List<StoreInfo> toBeDeleteGroups = new ArrayList<StoreInfo>();// 待删除的组元素列表
+
+		for (int i = 0; i < groups.size(); i++) {
+			StoreInfo group = groups.get(i);
+			if (group.isChoosed()) {
+				toBeDeleteGroups.add(group);
+			}
+			List<GoodsInfo> toBeDeleteProducts = new ArrayList<GoodsInfo>();// 待删除的子元素列表
+			List<GoodsInfo> childs = children.get(group.getId());
+			for (int j = 0; j < childs.size(); j++) {
+				if (childs.get(j).isChoosed()) {
+					toBeDeleteProducts.add(childs.get(j));
+				}
+			}
+			childs.removeAll(toBeDeleteProducts);
+		}
+		groups.removeAll(toBeDeleteGroups);
+		res.clear();
+		setCartNum();
+		adapter.notifyDataSetChanged();
 
 	}
 
@@ -245,6 +346,8 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 		calculate();
 	}
 
+	List<GoodsInfo> choseGoods;
+
 	/**
 	 * 统计操作<br>
 	 * 1.先清空全局计数器<br>
@@ -252,6 +355,7 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 	 * 3.给底部的textView进行数据填充
 	 */
 	private void calculate() {
+		choseGoods = new ArrayList<>();
 		totalCount = 0;
 		totalPrice = 0.00;
 		for (int i = 0; i < groups.size(); i++) {
@@ -260,6 +364,7 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 			for (int j = 0; j < childs.size(); j++) {
 				GoodsInfo product = childs.get(j);
 				if (product.isChoosed()) {
+					choseGoods.add(product);
 					totalCount++;
 					totalPrice += product.getPrice() * product.getCount();
 				}
@@ -267,11 +372,12 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 		}
 
 		all_price.setText("￥" + totalPrice);
-
+		bt_sell.setText("去结算(" + totalCount + ")");
 		//计算购物车的金额为0时候清空购物车的视图
 		if (totalCount == 0) {
 			setCartNum();
 		} else {
+			bt_sell.setText("去结算(" + totalCount + ")");
 
 		}
 	}
@@ -287,11 +393,6 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 		return true;
 	}
 
-	@Override
-	public void onResume() {
-		super.onResume();
-		setCartNum();
-	}
 
 	/**
 	 * 设置购物车产品数量
@@ -308,12 +409,34 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 		}
 
 		if (count == 0) {
-			XLog.v("购物车空");
+			clearCart();
 		} else {
 			XLog.v("购物车数量" + count);
 		}
 	}
 
+	@BindView(R.id.rl_bottom)
+	AutoRelativeLayout rl_bottom;
+	@BindView(R.id.layout_cart_empty)
+	LinearLayout cart_empty;
+
+	private void clearCart() {
+
+		rl_bottom.setVisibility(View.GONE);
+		rv_Car.setVisibility(View.GONE);
+		cart_empty.setVisibility(View.VISIBLE);
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		setCartNum();
+	}
+
+
+	/**
+	 * 底部推荐产品
+	 */
 	private void getFooterView() {
 
 		View view = getActivity().getLayoutInflater().inflate(R.layout.shopcar_item_recome_title, (ViewGroup) rv_Car.getParent(), false);

@@ -1,6 +1,7 @@
 package com.xinyuan.xyshop.ui.goods.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +15,7 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -32,6 +34,7 @@ import com.xinyuan.xyshop.entity.Goods;
 import com.xinyuan.xyshop.entity.GoodsEvaluate;
 import com.xinyuan.xyshop.entity.PreGoods;
 import com.xinyuan.xyshop.ui.goods.GoodDetailsActivity;
+import com.xinyuan.xyshop.ui.goods.StoreActivity;
 import com.xinyuan.xyshop.util.FullyLinearLayoutManager;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.widget.SlideDetailsLayout;
@@ -94,6 +97,8 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	@BindView(R.id.rvEvaluate)
 	RecyclerView rvEvaluate;
 
+	@BindView(R.id.iv_good_store)
+	Button bt_store;
 
 	@BindView(R.id.fab_up_slide)
 	FloatingActionButton fab_up_slide;
@@ -258,7 +263,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	}
 
 
-	@OnClick({R.id.ll_goods_config, R.id.ll_goods_service, R.id.ll_goods_detail, R.id.fab_up_slide,R.id.ll_comment})
+	@OnClick({R.id.ll_goods_config, R.id.ll_goods_service, R.id.ll_goods_detail, R.id.fab_up_slide, R.id.ll_comment, R.id.iv_good_store})
 	public void onClick(View view) {
 		switch (view.getId()) {
 
@@ -292,7 +297,11 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 				break;
 			case R.id.ll_comment:
-
+				break;
+			case R.id.iv_good_store:
+				Intent intent = new Intent(getActivity(), StoreActivity.class);
+				startActivity(intent);
+				break;
 			default:
 				break;
 		}

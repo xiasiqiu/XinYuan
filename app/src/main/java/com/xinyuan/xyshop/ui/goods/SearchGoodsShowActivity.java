@@ -69,8 +69,7 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 	@BindView(R.id.btnScreen)
 	TextView btnScreen; //筛选_筛选TextView
 
-	@BindView(R.id.goodshow_et_search)
-	EditText goodshow_et_search; //搜索栏
+
 
 	@BindView(R.id.search_drawer)
 	DrawerLayout drawer;  //筛选界面_drawer
@@ -128,7 +127,6 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 		this.keyword = getIntent().getStringExtra("keyword");
 		this.brandId = getIntent().getIntExtra("brandId", -1);
 		this.cat = getIntent().getIntExtra("cat", -1);
-		goodshow_et_search.setHint(keyword);
 		this.isList = true;
 		xLoadingView.setOnRetryClickListener(new View.OnClickListener() {
 			@Override
@@ -175,7 +173,7 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 			this.rvGoods.setLayoutManager(layoutManager);
 			this.manager = layoutManager;
 			this.adapter = new SearchGoodListAdapter(R.layout.searchgood_item_list, goodses, isList);
-			this.adapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_RIGHT);
+			this.adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
 			this.rvGoods.setAdapter(adapter);
 		} else {
 			GridLayoutManager layoutManager2 = new GridLayoutManager(this.context, 2, 1, false);

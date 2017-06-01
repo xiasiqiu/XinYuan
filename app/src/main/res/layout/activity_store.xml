@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                       xmlns:app="http://schemas.android.com/apk/res-auto"
                                        android:layout_width="match_parent"
                                        android:layout_height="match_parent"
+                                       android:background="@color/bg_gray"
                                        android:orientation="vertical">
 
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="530px"
-        android:src="@drawable/test_store_bg"/>
+        android:src="@drawable/test_store_bg"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <include layout="@layout/activity_store_header"/>
 
     <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/rl_store_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="400px"
@@ -63,4 +69,34 @@
             android:text="关注"
             android:textColor="@color/bg_white"/>
     </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.gxz.PagerSlidingTabStrip
+        android:id="@+id/store__tabs"
+        android:layout_width="match_parent"
+        android:layout_height="125px"
+        android:layout_below="@id/rl_store_name"
+        android:layout_gravity="center"
+        android:layout_marginTop="20px"
+        android:background="@color/bg_white"
+        android:textColor="@color/tv_name"
+        android:textSize="15sp"
+        app:pstsDividerColor="@android:color/transparent"
+        app:pstsDividerPaddingTopBottom="10px"
+        app:pstsIndicatorColor="@color/colorPrimary"
+        app:pstsIndicatorHeight="10px"
+        app:pstsScaleZoomMax="0.0"
+        app:pstsShouldExpand="false"
+        app:pstsSmoothScrollWhenClickTab="false"
+        app:pstsTabPaddingLeftRight="36px"
+        app:pstsTextAllCaps="false"
+        app:pstsTextSelectedColor="@color/colorPrimary"
+        app:pstsUnderlineHeight="1px"/>
+
+    <com.xinyuan.xyshop.widget.NoScrollViewPager
+        android:id="@+id/vp_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/store__tabs"
+        android:layout_marginTop="20px"
+        android:layout_weight="1"/>
 </com.zhy.autolayout.AutoRelativeLayout>

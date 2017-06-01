@@ -17,7 +17,7 @@
             android:layout_width="256px"
             android:layout_height="256px"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50px"
+            android:layout_marginTop="30px"
             android:background="@drawable/mine_logo"/>
 
 
@@ -25,7 +25,7 @@
             android:layout_width="810px"
             android:layout_height="110px"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="100px"
+            android:layout_marginTop="80px"
             android:background="@drawable/button__n_bg"
             android:orientation="horizontal">
 
@@ -163,7 +163,7 @@
             android:layout_width="775px"
             android:layout_height="123px"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="105px"
+            android:layout_marginTop="80px"
             android:orientation="horizontal">
 
             <ImageView

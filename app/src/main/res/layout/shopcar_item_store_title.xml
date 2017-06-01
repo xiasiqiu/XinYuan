@@ -38,6 +38,16 @@
             android:text="鑫园共享"/>
 
         <TextView
+            android:id="@+id/tv_goods_spe"
+            style="@style/SmallTextView"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_flow_selected"
+            android:text="虚拟兑换"
+            android:textColor="@color/bg_white"
+            android:visibility="gone"/>
+
+        <TextView
             android:id="@+id/tv_disCount"
             style="@style/SmallTextView"
             android:layout_alignParentRight="true"

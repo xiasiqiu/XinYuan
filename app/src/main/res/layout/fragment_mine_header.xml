@@ -6,6 +6,7 @@
     android:id="@+id/mine_toolbar"
     android:layout_width="match_parent"
     android:layout_height="?android:actionBarSize"
+    android:background="@color/colorPrimary"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp">
 

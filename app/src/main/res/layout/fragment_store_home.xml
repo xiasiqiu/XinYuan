@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                     xmlns:app="http://schemas.android.com/apk/res-auto"
+                                     android:layout_width="match_parent"
+                                     android:layout_height="match_parent"
+                                     android:orientation="vertical">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_white"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="310px"
+                android:src="@drawable/test_store_ad"/>
+
+            <TextView
+                style="@style/RegularTextView"
+                android:layout_marginLeft="30px"
+                android:layout_marginTop="40px"
+                android:text="店铺排行榜"/>
+
+
+            <com.gxz.PagerSlidingTabStrip
+                android:id="@+id/store__home_tabs"
+                android:layout_width="match_parent"
+                android:layout_height="100px"
+                android:layout_below="@id/rl_store_name"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="20px"
+                android:layout_marginLeft="30px"
+                android:layout_marginRight="30px"
+                android:background="@color/bg_white"
+                android:textColor="@color/tv_name"
+                android:textSize="12sp"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:pstsDividerColor="@android:color/transparent"
+                app:pstsDividerPaddingTopBottom="10px"
+                app:pstsIndicatorColor="@color/colorPrimary"
+                app:pstsIndicatorHeight="5px"
+                app:pstsScaleZoomMax="0.0"
+                app:pstsShouldExpand="true"
+                app:pstsSmoothScrollWhenClickTab="false"
+                app:pstsTextAllCaps="false"
+                app:pstsTextSelectedColor="@color/colorPrimary"
+                app:pstsUnderlineHeight="1px"/>
+
+            <com.xinyuan.xyshop.widget.NoScrollViewPager
+                android:id="@+id/vp_content"
+                android:layout_width="match_parent"
+                android:layout_height="585px"
+                android:layout_below="@id/store__tabs"
+                android:layout_marginTop="20px"
+                android:layout_weight="1"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30px"
+                android:background="@color/bg_gray"/>
+
+            <TextView
+                style="@style/RegularTextView"
+                android:layout_marginLeft="30px"
+                android:layout_marginTop="60px"
+                android:text="店主推荐"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_store_home"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </com.zhy.autolayout.AutoLinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</com.zhy.autolayout.AutoLinearLayout>

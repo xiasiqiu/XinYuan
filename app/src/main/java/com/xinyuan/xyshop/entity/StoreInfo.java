@@ -9,7 +9,6 @@ public class StoreInfo {
 	public String name;
 	public boolean isChoosed;
 	public boolean isEdtor;
-
 	public StoreInfo(String id, String name) {
 		Id = id;
 		this.name = name;

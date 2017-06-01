@@ -37,6 +37,13 @@
 
     </com.zhy.autolayout.AutoRelativeLayout>
 
+    <include
+        android:id="@+id/layout_cart_empty"
+        layout="@layout/cart_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_shopcar"
         android:layout_width="match_parent"
@@ -45,6 +52,7 @@
 
 
     <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/rl_bottom"
         android:layout_width="match_parent"
         android:layout_height="135px"
         android:background="@color/bg_white"
@@ -58,36 +66,6 @@
             android:layout_centerVertical="true"
             android:background="@drawable/checkbox_selector"
             android:button="@null"/>
-
-        <LinearLayout
-            android:id="@+id/ll_shopcar_edite_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:orientation="horizontal"
-            android:padding="5px"
-            android:visibility="gone">
-
-            <Button
-                android:id="@+id/btn_shopcar_share"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginRight="20px"
-                android:layout_weight="1"
-                android:background="@color/colorPrimaryDark"
-                android:text="分享"
-                android:textColor="@color/bg_white"/>
-
-            <Button
-                android:id="@+id/btn_shopcar_delete"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@color/colorPrimary"
-                android:text="删除"
-                android:textColor="@color/bg_white"/>
-
-        </LinearLayout>
 
         <RelativeLayout
             android:id="@+id/rl_shopcar_pay_layout"
@@ -131,7 +109,39 @@
                 android:text="去结算"
                 android:textColor="@color/bg_white"
                 android:textSize="@dimen/tv_light"/>
+
+
         </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_shopcar_edite_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal"
+            android:padding="5px"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/btn_shopcar_share"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20px"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryDark"
+                android:text="分享"
+                android:textColor="@color/bg_white"/>
+
+            <Button
+                android:id="@+id/btn_shopcar_delete"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:text="删除"
+                android:textColor="@color/bg_white"/>
+
+        </LinearLayout>
 
         <TextView
             style="@style/LightTextView"
