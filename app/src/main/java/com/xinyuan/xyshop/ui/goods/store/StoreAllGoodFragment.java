@@ -208,7 +208,7 @@ public class StoreAllGoodFragment extends BaseFragment implements GoodSearchShow
 			this.rvGoods.setLayoutManager(layoutManager);
 			this.manager = layoutManager;
 			this.adapter = new SearchGoodListAdapter(R.layout.searchgood_item_list, goodses, isList);
-			this.adapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_RIGHT);
+			this.adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
 			this.rvGoods.setAdapter(adapter);
 		} else {
 			GridLayoutManager layoutManager2 = new GridLayoutManager(this.context, 2, 1, false);

@@ -28,6 +28,8 @@ import rx.subjects.BehaviorSubject;
 
 import com.trello.rxlifecycle.LifecycleProvider;
 
+import org.greenrobot.eventbus.EventBus;
+
 /**
  * Created by fx on 2017/5/2 0002.
  */
@@ -49,8 +51,10 @@ public abstract class BaseActivity extends AutoLayoutActivity implements ICallba
 			setContentView(getLayoutId());
 		}
 		initData(savedInstanceState);
+		ButterKnife.bind(this);
 		initView();
 		super.onCreate(savedInstanceState);
+
 		lifecycleSubject.onNext(ActivityEvent.CREATE);
 		this.application = MyShopApplication.getInstance();
 		mUnbinder = ButterKnife.bind(this);
@@ -97,6 +101,7 @@ public abstract class BaseActivity extends AutoLayoutActivity implements ICallba
 	protected void onDestroy() {
 		lifecycleSubject.onNext(ActivityEvent.DESTROY);
 		mUnbinder.unbind();
+		EventBus.getDefault().unregister(this);//反注册
 		XActivityStack.getInstance().finishActivity();
 		super.onDestroy();
 

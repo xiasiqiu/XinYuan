@@ -16,6 +16,10 @@ import com.xinyuan.xyshop.ui.goods.fragment.GoodsInfoFragment;
 import com.xinyuan.xyshop.ui.goods.fragment.GoodsRecommFragment;
 import com.xinyuan.xyshop.widget.NoScrollViewPager;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +55,8 @@ public class GoodDetailsActivity extends BaseActivity {
 
 	@Override
 	public void initView() {
-		ButterKnife.bind(this);
+		EventBus.getDefault().register(this);
+
 		fragmentList.add(goodsInfoFragment = new GoodsInfoFragment());
 		fragmentList.add(goodsDetailFragment = new GoodsDetailFragment());
 		fragmentList.add(goodsCommentFragment = new GoodsCommentFragment());
@@ -63,6 +68,18 @@ public class GoodDetailsActivity extends BaseActivity {
 
 
 	}
+
+	@Subscribe(threadMode = ThreadMode.MAIN)
+	//第2步:注册一个在后台线程执行的方法,用于接收事件
+	public void onUserEvent(GoodBusBean goodBusBean) {//参数必须是ClassEvent类型, 否则不会调用此方法
+		if (goodBusBean.getFlag().equals(GoodBusBean.GoodEvaluate)) {
+			vp_content.setCurrentItem(2);
+		}
+
+
+	}
+
+
 
 
 }

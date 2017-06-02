@@ -2,32 +2,27 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                  xmlns:app="http://schemas.android.com/apk/res-auto"
                                                  android:layout_width="match_parent"
-                                                 android:layout_height="match_parent"
-                                                 android:background="@color/bg_gray"
-                                                 android:fitsSystemWindows="true">
+                                                 android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:theme="@style/AppTheme.AppBarOverlay">
 
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapse_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="825px"
-            android:fitsSystemWindows="true"
+            android:layout_height="wrap_content"
             app:contentScrim="?attr/colorPrimary"
-            app:layout_collapseMode="parallax"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="700px"
+                android:layout_height="220dp"
                 android:background="@drawable/test_store_bg"
-                android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
+                app:layout_collapseParallaxMultiplier="0.5"
                 app:layout_collapseMode="parallax"/>
 
             <com.zhy.autolayout.AutoRelativeLayout
@@ -35,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_marginBottom="150px"
+                android:layout_marginBottom="60dp"
                 android:paddingLeft="35px">
 
 
@@ -87,13 +82,17 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/store_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?android:actionBarSize"
-                android:layout_gravity="top"
-                android:background="@color/colorTransparency"
-                app:contentInsetLeft="0dp"
-                app:contentInsetStart="0dp"
-                app:layout_collapseMode="parallax">
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginBottom="55dp"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
 
+                <ImageView
+                    android:id="@+id/goodshow_btn_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="50px"
+                    android:src="@drawable/icon_back_w"/>
 
                 <com.zhy.autolayout.AutoRelativeLayout
                     android:layout_width="match_parent"
@@ -143,7 +142,7 @@
                         android:layout_height="79px"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="20px"
+                        android:layout_marginRight="40px"
                         android:scaleType="fitXY"
                         android:src="@drawable/act_home_msg"/>
 
@@ -151,7 +150,7 @@
                         android:layout_width="25px"
                         android:layout_height="25px"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="10px"
+                        android:layout_marginRight="30px"
                         android:layout_marginTop="25px"
                         android:src="@color/tv_price"/>
 
@@ -159,28 +158,27 @@
 
             </android.support.v7.widget.Toolbar>
 
-
             <com.gxz.PagerSlidingTabStrip
                 android:id="@+id/store__tabs"
                 android:layout_width="match_parent"
-                android:layout_height="125px"
+                android:layout_height="50dp"
                 android:layout_below="@id/rl_store_name"
                 android:layout_gravity="bottom"
-                android:layout_marginTop="20px"
                 android:background="@color/bg_white"
                 android:textColor="@color/tv_name"
-                android:textSize="16sp"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:textSize="14sp"
                 app:pstsDividerColor="@color/colorLine"
-                app:pstsDividerPaddingTopBottom="10px"
+                app:pstsDividerPaddingTopBottom="30px"
                 app:pstsIndicatorColor="@color/colorPrimary"
                 app:pstsIndicatorHeight="5px"
                 app:pstsScaleZoomMax="0.0"
                 app:pstsShouldExpand="true"
                 app:pstsSmoothScrollWhenClickTab="false"
+                app:pstsTabPaddingLeftRight="10px"
                 app:pstsTextAllCaps="false"
                 app:pstsTextSelectedColor="@color/colorPrimary"
                 app:pstsUnderlineHeight="1px"/>
+
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>

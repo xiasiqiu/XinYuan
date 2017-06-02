@@ -33,6 +33,7 @@ import com.xinyuan.xyshop.entity.GoodDetailVo;
 import com.xinyuan.xyshop.entity.Goods;
 import com.xinyuan.xyshop.entity.GoodsEvaluate;
 import com.xinyuan.xyshop.entity.PreGoods;
+import com.xinyuan.xyshop.ui.goods.GoodBusBean;
 import com.xinyuan.xyshop.ui.goods.GoodDetailsActivity;
 import com.xinyuan.xyshop.ui.goods.StoreActivity;
 import com.xinyuan.xyshop.util.FullyLinearLayoutManager;
@@ -45,6 +46,10 @@ import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.xframe.utils.log.XLog;
 import com.zhy.autolayout.AutoRelativeLayout;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -194,6 +199,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	@Override
 	public void initView() {
+		EventBus.getDefault().register(this);
 		getView().setFocusable(true);
 		getView().setFocusableInTouchMode(true);
 		getView().setOnKeyListener(new View.OnKeyListener() {
@@ -254,6 +260,14 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		this.simpleEvaluateAdapter.notifyDataSetChanged();
 	}
 
+
+
+	@Subscribe(threadMode = ThreadMode.MAIN) //第2步:注册一个在后台线程执行的方法,用于接收事件
+	public void onUserEvent(GoodBusBean event) {//参数必须是ClassEvent类型, 否则不会调用此方法
+	}
+
+
+
 	SimpleEvaluateAdapter simpleEvaluateAdapter;
 
 	@Override
@@ -297,6 +311,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 				break;
 			case R.id.ll_comment:
+				EventBus.getDefault().post(new GoodBusBean(GoodBusBean.GoodEvaluate));
 				break;
 			case R.id.iv_good_store:
 				Intent intent = new Intent(getActivity(), StoreActivity.class);

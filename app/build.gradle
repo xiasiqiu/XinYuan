@@ -52,5 +52,6 @@ dependencies {
     compile 'cc.solart:turbo-recyclerview-helper:1.0.3-beta'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'org.greenrobot:eventbus:3.0.0'
     compile files('lib/badgeview.jar')
 }

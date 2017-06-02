@@ -153,7 +153,7 @@
             android:layout_width="300px"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorPrimary"
             android:text="加入购物车"
             android:textColor="@color/bg_white"
             android:textSize="@dimen/tv_Regular"/>
@@ -167,7 +167,7 @@
             android:layout_width="300px"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryDark"
             android:text="立即购买"
             android:textColor="@color/bg_white"
             android:textSize="@dimen/tv_Regular"/>

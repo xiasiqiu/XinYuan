@@ -60,15 +60,16 @@ public class StoreActivity extends BaseActivity {
 	@Override
 	public void initView() {
 		ButterKnife.bind(this);
-		SystemBarHelper.immersiveStatusBar(this, 0); //设置状态栏透明
-		SystemBarHelper.setHeightAndPadding(this, store_toolbar);
+
 
 
 
 		setSupportActionBar(store_toolbar);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 		collapsingToolbar.setTitleEnabled(false);
 
+		SystemBarHelper.immersiveStatusBar(this); //设置状态栏透明
+		SystemBarHelper.setHeightAndPadding(this, store_toolbar);
 
 		fragmentList.add(homeFragment = new StoreHomeFragment());
 		fragmentList.add(allGoodFragment = new StoreAllGoodFragment());

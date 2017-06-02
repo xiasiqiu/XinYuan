@@ -19,6 +19,8 @@ import com.trello.rxlifecycle.android.RxLifecycleAndroid;
 import com.xinyuan.xyshop.MyShopApplication;
 import com.youth.xframe.base.ICallback;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -49,6 +51,7 @@ public abstract class BaseFragment extends Fragment implements ICallback, Lifecy
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 		this.application = MyShopApplication.getInstance();
+
 		this.context = getActivity();
 		if (contentView == null) {
 			contentView = inflater.inflate(getLayoutId(), container, false);

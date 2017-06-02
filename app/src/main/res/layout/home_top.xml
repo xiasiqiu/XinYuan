@@ -40,7 +40,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="20px"
             android:text="@string/new_notice"
-           />
+            />
 
         <com.sunfusheng.marqueeview.MarqueeView
             android:id="@+id/marquee_name"
@@ -52,7 +52,7 @@
             app:mvAnimDuration="1000"
             app:mvInterval="3000"
             app:mvTextColor="@color/colorPrimary"
-            app:mvTextSize="@dimen/tv_light"/>
+            app:mvTextSize="13sp"/>
 
         <com.sunfusheng.marqueeview.MarqueeView
             android:id="@+id/marquee_content"
@@ -65,7 +65,7 @@
             app:mvInterval="3000"
             app:mvSingleLine="true"
             app:mvTextColor="@color/tv_hint"
-            app:mvTextSize="@dimen/tv_light"/>
+            app:mvTextSize="13sp"/>
 
         <View
             android:layout_width="3px"

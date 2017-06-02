@@ -41,7 +41,7 @@ public class MyShopApplication extends XApplication {
 		instance = MyShopApplication.this;
 		OkGo.init(this);
 		OkGo.getInstance()
-				.setCacheMode(CacheMode.FIRST_CACHE_THEN_REQUEST)
+				.setCacheMode(CacheMode.NO_CACHE)
 				.setCacheTime(CacheEntity.CACHE_NEVER_EXPIRE)
 				.setRetryCount(3);
 		this.sysInitSharedPreferences = getSharedPreferences(Constants.SYSTEM_INIT_FILE_NAME, 0);

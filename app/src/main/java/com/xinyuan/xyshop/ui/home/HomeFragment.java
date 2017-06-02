@@ -11,6 +11,9 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -54,6 +57,7 @@ import com.youth.banner.listener.OnBannerListener;
 import com.youth.xframe.common.XActivityStack;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.loadingview.XLoadingView;
+import com.zhy.autolayout.AutoRelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,6 +86,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	@BindView(R.id.home_toolbar)
 	Toolbar mToolbar;
+	@BindView(R.id.home_header_rl)
+	AutoRelativeLayout darkView;
 	@BindView(R.id.act_home_btn_scan)
 	ImageView mScan;
 	@BindView(R.id.act_home_btn_msg)
@@ -120,7 +126,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 		XLog.v("首页切换" + VIEW_INIT);
 		VIEW_INIT = false;
-
+		mDistanceY = 0;
 
 	}
 
@@ -134,8 +140,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		if (VIEW_INIT) {
 			this.presenter = presenter;
 		}
-
-
 	}
 
 	/**
@@ -245,6 +249,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		});
 
 
+
 	}
 
 	/**
@@ -257,15 +262,20 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		menuListView = (RecyclerView) headView.findViewById(R.id.menu_list);
 		int menucount = 10;
 		ArrayList<MultiItemEntity> res = new ArrayList<>();
-		res.add(new ExpandItem(itemList.get(0).getImageUrl(), itemList.get(0).getData()));
-		res.add(new ExpandItem(itemList.get(1).getImageUrl(), itemList.get(1).getData()));
-		res.add(new ExpandItem(itemList.get(2).getImageUrl(), itemList.get(2).getData()));
-		res.add(new ExpandItem(itemList.get(3).getImageUrl(), itemList.get(3).getData()));
-		ExpandItem more = new ExpandItem(itemList.get(4).getImageUrl(), itemList.get(4).getData());
-		for (int i = 5; i < menucount; i++) {
-			more.addSubItem(new Menu(itemList.get(i).getImageUrl(), itemList.get(i).getData()));
+
+		XLog.list(itemList);
+		for (int i = 0; i < 5; i++) {
+			ExpandItem expandItem = new ExpandItem(itemList.get(i).getImageUrl(), itemList.get(i).getData());
+			if (i == 4) {
+				for (int j = 5; j < itemList.size(); j++) {
+					expandItem.addSubItem(new Menu(itemList.get(j).getImageUrl(), itemList.get(j).getData()));
+				}
+			}
+
+			res.add(expandItem);
 		}
-		res.add(more);
+		XLog.list(res);
+
 		ExpandableItemAdapter expandableItemAdapter = new ExpandableItemAdapter(res, itemList);
 		final GridLayoutManager manager = new GridLayoutManager(getActivity(), 5);
 
@@ -275,7 +285,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		expandableItemAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
 			@Override
 			public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-
 
 				OnImageViewClick(view, itemList.get(position).getType(), itemList.get(position).getData(), false);
 			}
@@ -293,10 +302,16 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	public void showNotice(List<ItemData> itemList) {
 		List<String> name = new ArrayList<>();
 		List<String> content = new ArrayList<>();
+
 		for (ItemData itemData : itemList) {
 			name.add(itemData.getData());
 			content.add(itemData.getImageUrl());
+			SpannableStringBuilder style = new SpannableStringBuilder(content.toString());
+			style.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimary)), 10, 21, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			//style.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimary)), 10, 21, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
 		}
+
 
 		MarqueeView marquee_name = (MarqueeView) headView.findViewById(R.id.marquee_name);
 		MarqueeView marquee_content = (MarqueeView) headView.findViewById(R.id.marquee_content);
@@ -323,18 +338,22 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 				if (mDistanceY < 10) {
 					mToolbar.setBackgroundResource(R.color.colorTransparency);
+					darkView.setBackgroundResource(R.color.colorTransparency);
 					et_search.setHintTextColor(getResources().getColor(R.color.tv_hint));
 
 				} else if (mDistanceY <= toolbarHeight) {
 
 					float scale = (float) mDistanceY / toolbarHeight;
 					float alpha = scale * 255;
-					mToolbar.setBackgroundColor(Color.argb((int) alpha, 29, 160, 57));
-					et_search.setHintTextColor(getResources().getColor(R.color.tv_hint));
+					mToolbar.setBackgroundColor(Color.argb((int) alpha, 0, 118, 42));
+					darkView.setBackgroundColor(Color.argb((int) alpha, 29, 160, 57));
+					et_search.setHintTextColor(getResources().getColor(R.color.bg_gray));
+
 
 				} else {
-					mToolbar.setBackgroundResource(R.color.colorPrimary);
-					et_search.setHintTextColor(getResources().getColor(R.color.tv_hint));
+					mToolbar.setBackgroundResource(R.color.colorPrimaryDark);
+					darkView.setBackgroundResource(R.color.colorPrimary);
+					et_search.setHintTextColor(getResources().getColor(R.color.bg_white));
 
 
 				}
@@ -374,9 +393,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	public void OnImageViewClick(View view, final String type, final String data, boolean isAD) {
 
 		if (type.equals("brand")) {
-			XLog.v("ssssssssssssss");
 			CommUtil.gotoActivity(getActivity(), BrandActivity.class, false, null);
-
 		}
 
 	}
@@ -434,36 +451,13 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	}
 
-
 	@Override
 	@CallSuper
 	public void onResume() {
 		super.onResume();
-		XLog.v("来啦");
-
+		mRecyclerView.scrollToPosition(0);
+		initView();
 
 	}
-//
-//	@Override
-//	public void onLoadMoreRequested() {
-//		mSwipeRefreshLayout.setEnabled(false);
-//		if (homeMultipleItemAdapter.getData().size() < PAGE_SIZE) {
-//			homeMultipleItemAdapter.loadMoreEnd(true);
-//		} else {
-//
-//			homeMultipleItemAdapter.goodsList = HomePresenterImpl.moreGoodsList();
-//			List<HomeMultipleItem> list = new ArrayList<>();
-//			for (ItemGoods item : HomePresenterImpl.moreGoodsList()) {
-//				list.add(new HomeMultipleItem(HomeMultipleItem.GOODS, HomeMultipleItem.GOODS_SPAN_SIZE));
-//			}
-//			homeMultipleItemAdapter.addData(list);
-//			mCurrentCounter = homeMultipleItemAdapter.getData().size();
-//			homeMultipleItemAdapter.loadMoreComplete();
-//
-//		}
-//		mSwipeRefreshLayout.setEnabled(true);
-//
-//	}
-
 
 }

@@ -21,6 +21,7 @@ import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.youth.xframe.utils.log.XLog;
 import com.zhy.autolayout.AutoLinearLayout;
 import com.zhy.autolayout.AutoRelativeLayout;
+import com.zhy.autolayout.utils.AutoUtils;
 
 import java.util.List;
 
@@ -57,13 +58,15 @@ public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMulti
 		addItemType(HomeMultipleItem.GOODS, R.layout.home_item_goods);
 		this.context = context;
 		dataList = HomePresenterImpl.getApiDataList();
-		goodlist = DataTrans.getItemGoodsList(dataList.get(11).getItemData());
+		goodlist = DataTrans.getItemGoodsList(dataList.get(13).getItemData());
+		XLog.list(goodsList);
 
 	}
 
 	@Override
 	protected void convert(BaseViewHolder helper, HomeMultipleItem item) {
 
+		AutoUtils.autoSize(helper.getConvertView());
 
 		switch (item.getItemType()) {
 			case HomeMultipleItem.AD:
@@ -78,6 +81,7 @@ public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMulti
 
 				List<ItemData> title_list = DataTrans.getItemData(dataList.get(helper.getPosition() - 1));
 				ImageView tab_title_view = helper.getView(R.id.home_tab_title);
+				XLog.v("title"+title_list.get(0).getImageUrl());
 				GlideImageLoader.setImage(context, title_list.get(0).getImageUrl(), tab_title_view);
 				break;
 			case HomeMultipleItem.TAB:
@@ -111,17 +115,16 @@ public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMulti
 
 				OnImageViewClick(catrgory_view, catrgorylist.get(0).getType(), catrgorylist.get(0).getData(), false);
 
-
+				XLog.v("CATEGORYPosition" + helper.getLayoutPosition() + "-----" + helper.getPosition());
 				break;
 			case HomeMultipleItem.GOODS:
+				XLog.v("Position" + "-----" + helper.getPosition());
 
 				AutoLinearLayout autoRelativeLayout = helper.getView(R.id.home_rl_goods);
 				ImageView goods_view = helper.getView(R.id.home_goods_img);
 				TextView goods_name = helper.getView(R.id.home_goods_name);
-				GlideImageLoader.setImage(context, goodlist.get(helper.getPosition() - 12).getImageUrl(), goods_view);
-
-				goods_name.setText(goodlist.get(helper.getPosition() - 12).getGoodsName());
-
+				GlideImageLoader.setImage(context, goodlist.get(helper.getPosition() - 14).getImageUrl(), goods_view);
+				goods_name.setText(goodlist.get(helper.getPosition() - 14).getGoodsName());
 				autoRelativeLayout.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
@@ -131,9 +134,9 @@ public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMulti
 				});
 
 				TextView goods_price = helper.getView(R.id.tv_goods_price);
-				goods_price.setText("$"+String.valueOf((int)goodlist.get(helper.getPosition() - 12).getAppPriceMin()));
+				goods_price.setText("$" + String.valueOf((int) goodlist.get(helper.getPosition() - 14).getAppPriceMin()));
 				TextView goods_buynum = helper.getView(R.id.tv_goods_buynum);
-				goods_buynum.setText("月销量"+String.valueOf((int)goodlist.get(helper.getPosition() - 12).getCommonId()));
+				goods_buynum.setText("月销量" + String.valueOf((int) goodlist.get(helper.getPosition() - 14).getCommonId()));
 				break;
 
 		}

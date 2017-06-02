@@ -147,13 +147,14 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 			}
 		}
 
-
+		XLog.list(lists);
 		view.addHead(getHomeMultipleItemlist());
 		view.showBanner(banner);
 		view.showNotice(noticeList);
 		view.showList();
 		view.showMenu(menu);
 		getkeyWord();
+
 	}
 
 	public static List<ItemGoods> moreGoodsList() {
