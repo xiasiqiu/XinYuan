@@ -22,8 +22,8 @@
                 android:layout_height="220dp"
                 android:background="@drawable/test_store_bg"
                 android:scaleType="centerCrop"
-                app:layout_collapseParallaxMultiplier="0.5"
-                app:layout_collapseMode="parallax"/>
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.5"/>
 
             <com.zhy.autolayout.AutoRelativeLayout
                 android:id="@+id/rl_store_name"

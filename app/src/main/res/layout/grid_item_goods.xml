@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_rl_goods"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2px"
+    android:background="@color/bg_white"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="540px">
+
+        <ImageView
+            android:id="@+id/home_goods_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="220px"
+        android:layout_marginLeft="10px"
+        android:background="@color/bg_white"
+        android:paddingBottom="10px">
+
+        <TextView
+            android:id="@+id/home_goods_name"
+            style="@style/GoodsNameTextView"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30px"
+            android:letterSpacing="0.01"
+            android:lineSpacingExtra="10px"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_goods_price"
+            style="@style/GoodsPriceTextView"
+            android:layout_alignParentBottom="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_goods_buynum"
+            style="@style/SmallHintTextView"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="50px"
+            android:layout_toRightOf="@+id/tv_goods_price"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+</com.zhy.autolayout.AutoLinearLayout>

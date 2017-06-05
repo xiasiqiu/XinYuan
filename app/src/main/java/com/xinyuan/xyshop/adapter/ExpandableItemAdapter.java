@@ -12,6 +12,7 @@ import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.bean.ExpandItem;
 import com.xinyuan.xyshop.entity.ItemData;
 import com.xinyuan.xyshop.entity.Menu;
+import com.xinyuan.xyshop.model.HomeModel;
 import com.xinyuan.xyshop.ui.home.BrandActivity;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
@@ -27,10 +28,10 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
 
 	public static final int TYPE_LEVEL_0 = 0;
 	public static final int TYPE_MENU = 1;
-	private List<ItemData> menuList = new ArrayList<>();
+	private List<HomeModel.HomeModule.HomeModuleData> menuList = new ArrayList<>();
 
 
-	public ExpandableItemAdapter(List<MultiItemEntity> data, List<ItemData> menuList) {
+	public ExpandableItemAdapter(List<MultiItemEntity> data, List<HomeModel.HomeModule.HomeModuleData> menuList) {
 		super(data);
 		addItemType(TYPE_LEVEL_0, R.layout.home_item_expandable);
 		addItemType(TYPE_MENU, R.layout.home_item_expandable);

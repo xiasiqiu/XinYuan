@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:layout_margin="30px">
+
+    <ImageView
+        android:id="@+id/store_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:src="@drawable/test_good_store"/>
+
+    <TextView
+        android:id="@+id/tv_store_name"
+        style="@style/NormalTextView"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="40px"
+        android:layout_toRightOf="@id/store_img"
+        android:text="梅子熟了"/>
+
+    <TextView
+        style="@style/LightTextView"
+        android:layout_below="@id/tv_store_name"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="50px"
+        android:layout_toRightOf="@id/store_img"
+        android:text="亲，我们这边已经发货了哦，你那边注意查···"
+        android:textColor="@color/tv_hint"/>
+
+    <TextView
+        style="@style/LightTextView"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="40px"
+        android:text="2017/03/24"
+        android:textColor="@color/tv_hint"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="255px"
+        android:background="@color/colorLine"/>
+
+</com.zhy.autolayout.AutoRelativeLayout>

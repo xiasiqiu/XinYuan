@@ -46,12 +46,8 @@ public class JsonConvert<T> implements Converter<T> {
 			response.close();
 			return (T) simpleResponse.toLzyResponse();
 		} else if (rawType == LzyResponse.class) {
-
-			LzyResponse lzyResponse = JsonUtil.getBaseData(response.body().string());
-
+			LzyResponse lzyResponse = Convert.fromJson(jsonReader, type);
 			response.close();
-
-
 			int code = lzyResponse.code;
 			//这里的0是以下意思
 			//一般来说服务器会和客户端约定一个数表示成功，其余的表示失败，这里根据实际情况修改

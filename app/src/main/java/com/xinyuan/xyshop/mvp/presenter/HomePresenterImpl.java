@@ -1,22 +1,17 @@
 package com.xinyuan.xyshop.mvp.presenter;
 
-import com.google.gson.reflect.TypeToken;
+
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.xinyuan.xyshop.bean.LzyResponse;
-import com.xinyuan.xyshop.callback.JsonCallback;
-import com.xinyuan.xyshop.common.DataTrans;
-import com.xinyuan.xyshop.entity.ApiSpecialItem;
 import com.xinyuan.xyshop.entity.HomeMultipleItem;
-import com.xinyuan.xyshop.entity.ItemData;
-import com.xinyuan.xyshop.entity.ItemGoods;
 import com.xinyuan.xyshop.entity.KeyWord;
 import com.xinyuan.xyshop.http.ApiServer;
 import com.xinyuan.xyshop.http.Urls;
+import com.xinyuan.xyshop.model.HomeModel;
 import com.xinyuan.xyshop.mvp.contract.HomeContract;
 import com.xinyuan.xyshop.util.JsonUtil;
 import com.youth.xframe.utils.log.XLog;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,20 +31,21 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 
 	private HomeContract.HomeView view;
 
+	private static List<HomeMultipleItem> HomeMultipleList;
 
-	private static List<HomeMultipleItem> HOMEMultipleItemlist;
-	private static List<ApiSpecialItem> ADList;
-	private static List<ApiSpecialItem> NOTICEList;
-	private static List<ApiSpecialItem> TAB_TitleList;
-	private static List<ApiSpecialItem> TABList;
-	private static List<ApiSpecialItem> CATRGORYList;
+	private static List<HomeModel.HomeGood> goodList;
+	private static List<HomeModel.HomeModule> moduleList;
 
-	public static List<ItemData> banner;
-	public static List<ItemData> menu;
-	public static List<ItemData> noticeList;
-	public static List<ItemGoods> goodsList;
+	private static List<HomeModel.HomeModule.HomeModuleData> bannerList;
+	private static List<HomeModel.HomeModule.HomeModuleData> menuList;
+	private static List<HomeModel.HomeModule.HomeModuleData> noticeList;
+	private static List<HomeModel.HomeModule.HomeModuleData> adList;
+	private static List<HomeModel.HomeModule.HomeModuleData> tabTitleList;
+	private static List<HomeModel.HomeModule.HomeModuleData> tabList;
+	private static List<HomeModel.HomeModule.HomeModuleData> categoryList;
 
-	public static List<ApiSpecialItem> dataList;
+
+	private static List<HomeModel.HomeModule.HomeModuleData> ModuleDataList;
 
 	public HomePresenterImpl(HomeContract.HomeView view) {
 		this.view = view;
@@ -59,34 +55,32 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 
 	@Override
 	public void initData() {
-		Subscription subscription = ApiServer.getApiSpecialList(Urls.API_INDEX)
+		Subscription subscription = ApiServer.getHomeIndex(Urls.API_INDEX)
 				.doOnSubscribe(new Action0() {
 					@Override
 					public void call() {
 						view.showState(0);
-
 					}
 				})
-				.map(new Func1<LzyResponse<String>, List<ApiSpecialItem>>() {
+				.map(new Func1<LzyResponse<HomeModel>, HomeModel>() {
 
 					@Override
-					public List<ApiSpecialItem> call(LzyResponse<String> response) {
-						List<ApiSpecialItem> list = (List) JsonUtil.toBean(response.getDatas(), "itemList", new TypeToken<List<ApiSpecialItem>>() {
-						}.getType());
-
-
-						return list;
+					public HomeModel call(LzyResponse<HomeModel> homeModelLzyResponse) {
+						return homeModelLzyResponse.getDatas();
 					}
 				})
 				.observeOn(AndroidSchedulers.mainThread())
-				.subscribe(new Action1<List<ApiSpecialItem>>() {
+				.subscribe(new Action1<HomeModel>() {
 					@Override
-					public void call(List<ApiSpecialItem> apiSpecialItemList) {
-
-						dataClean(apiSpecialItemList);
-
+					public void call(HomeModel homeModel) {
+						moduleList = new ArrayList<>();
+						moduleList = homeModel.getModuleList();
+						goodList = new ArrayList<>();
+						goodList = homeModel.getGoodList();
+						showModule(moduleList);
 					}
 				}, new Action1<Throwable>() {
+
 					@Override
 					public void call(Throwable throwable) {
 						throwable.printStackTrace();
@@ -97,139 +91,84 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 	}
 
 
-	private void dataClean(List<ApiSpecialItem> lists) {
+	private void showModule(List<HomeModel.HomeModule> list) {
+
+		HomeMultipleList = new ArrayList<>();
+		bannerList = new ArrayList<>();
+		menuList = new ArrayList<>();
+		noticeList = new ArrayList<>();
+		adList = new ArrayList<>();
+		tabTitleList = new ArrayList<>();
+		tabList = new ArrayList<>();
+		categoryList = new ArrayList<>();
 
 
-		dataList = new ArrayList<>();
-
-
-		HOMEMultipleItemlist = new ArrayList<>();
-		ADList = new ArrayList<>();
-		NOTICEList = new ArrayList<>();
-		TAB_TitleList = new ArrayList<>();
-		TABList = new ArrayList<>();
-		CATRGORYList = new ArrayList<>();
-
-
-		for (ApiSpecialItem apiSpecialItem : lists) {
-			if (apiSpecialItem.getItemType().equals("banner")) {
-				if (apiSpecialItem.getItemType() != null && !apiSpecialItem.getItemType().equals("[]") && !apiSpecialItem.getItemType().equals("")) {
-					banner = DataTrans.getItemDataList(apiSpecialItem.getItemData());
-				}
-			} else if (apiSpecialItem.getItemType().equals("homemenu")) {
-				menu = DataTrans.getItemDataList(apiSpecialItem.getItemData());
-			} else if (apiSpecialItem.getItemType().equals("ad")) {
-				ADList.add(apiSpecialItem);
-				dataList.add(apiSpecialItem);
-				HOMEMultipleItemlist.add(new HomeMultipleItem(HomeMultipleItem.AD, HomeMultipleItem.AD_SPAN_SIZE));
-			} else if (apiSpecialItem.getItemType().equals("tab_title")) {
-				TAB_TitleList.add(apiSpecialItem);
-				HOMEMultipleItemlist.add(new HomeMultipleItem(HomeMultipleItem.TAB_TITLE, HomeMultipleItem.TAB_TITLE_SPAN_SIZE));
-				dataList.add(apiSpecialItem);
-			} else if (apiSpecialItem.getItemType().equals("tab")) {
-				TABList.add(apiSpecialItem);
-				List<ItemData> list = DataTrans.getItemDataList(apiSpecialItem.getItemData());
-				dataList.add(apiSpecialItem);
-				HOMEMultipleItemlist.add(new HomeMultipleItem(HomeMultipleItem.TAB, HomeMultipleItem.TAB_SPAN_SIZE));
-			} else if (apiSpecialItem.getItemType().equals("category")) {
-				CATRGORYList.add(apiSpecialItem);
-				dataList.add(apiSpecialItem);
-				HOMEMultipleItemlist.add(new HomeMultipleItem(HomeMultipleItem.CATEGORY, HomeMultipleItem.CATEGORY_SPAN_SIZE));
-			} else if (apiSpecialItem.getItemType().equals("goodslist")) {
-				goodsList = DataTrans.getItemGoodsList(apiSpecialItem.getItemData());
-				dataList.add(apiSpecialItem);
-				for (ItemGoods goods : goodsList) {
-					HOMEMultipleItemlist.add(new HomeMultipleItem(HomeMultipleItem.GOODS, HomeMultipleItem.GOODS_SPAN_SIZE));
-				}
-			} else if (apiSpecialItem.getItemType().equals("notice")) {
-				noticeList = DataTrans.getItemDataList(apiSpecialItem.getItemData());
-
+		for (HomeModel.HomeModule homeModule : list) {
+			if (homeModule.getItemType() == null && homeModule.getItemType().equals("[]") && homeModule.getItemType().equals("")) {
+				return;
 			}
-		}
+			if (homeModule.getItemType().equals("banner")) {
+				bannerList = homeModule.getDataList();
+			} else if (homeModule.getItemType().equals("homemenu")) {
+				menuList = homeModule.getDataList();
+			} else if (homeModule.getItemType().equals("notice")) {
+				noticeList.addAll(homeModule.getDataList());
+			} else if (homeModule.getItemType().equals("ad")) {
+				adList.addAll(homeModule.getDataList());
+				HomeMultipleList.add(new HomeMultipleItem(HomeMultipleItem.AD, HomeMultipleItem.AD_SPAN_SIZE));
+			} else if (homeModule.getItemType().equals("tab_title")) {
+				tabTitleList.addAll(homeModule.getDataList());
+				HomeMultipleList.add(new HomeMultipleItem(HomeMultipleItem.TAB_TITLE, HomeMultipleItem.TAB_TITLE_SPAN_SIZE));
+			} else if (homeModule.getItemType().equals("tab")) {
+				tabList.addAll(homeModule.getDataList());
+				HomeMultipleList.add(new HomeMultipleItem(HomeMultipleItem.TAB, HomeMultipleItem.TAB_SPAN_SIZE));
+			} else if (homeModule.getItemType().equals("category")) {
+				categoryList.addAll(homeModule.getDataList());
+				HomeMultipleList.add(new HomeMultipleItem(HomeMultipleItem.CATEGORY, HomeMultipleItem.CATEGORY_SPAN_SIZE));
+			}
 
-		XLog.list(lists);
-		view.addHead(getHomeMultipleItemlist());
-		view.showBanner(banner);
+		}
+		showView();
+
+		XLog.list(adList);
+		XLog.list(categoryList);
+
+	}
+
+
+	public void showView() {
+
+		view.addHead(HomeMultipleList);
+		view.showBanner(bannerList);
+		view.showMenu(menuList);
 		view.showNotice(noticeList);
+		view.showGoods(goodList);
 		view.showList();
-		view.showMenu(menu);
 		getkeyWord();
 
-	}
-
-	public static List<ItemGoods> moreGoodsList() {
-		List<ItemGoods> list = new ArrayList<>();
-
-		for (ItemGoods itemGoods : goodsList) {
-			list.add(itemGoods);
-		}
-		for (ItemGoods itemGoods : goodsList) {
-			list.add(itemGoods);
-		}
-		return list;
-
-	}
-
-
-	public static List<HomeMultipleItem> getHomeMultipleItemlist() {
-		return HOMEMultipleItemlist;
-	}
-
-
-	public static List<ItemData> getItemADList() {
-		return DataTrans.getItemData(ADList);
-	}
-
-	public static List<ApiSpecialItem> getApiDataList() {
-
-		return dataList;
-	}
-
-	public static List<ItemData> getItemTabTitleList() {
-		return DataTrans.getItemData(TAB_TitleList);
-
-	}
-
-
-	public static List<List<ItemData>> getTabList() {
-		List<List<ItemData>> list = new ArrayList<List<ItemData>>();
-		for (ApiSpecialItem apiSpecialItem : TABList) {
-			list.add(DataTrans.getItemDataList(apiSpecialItem.getItemData()));
-		}
-		return list;
-	}
-
-	public static List<ItemGoods> getItemGoodsList() {
-		return goodsList;
-	}
-
-
-	public static List<ItemData> getCategoryList() {
-		return DataTrans.getItemData(CATRGORYList);
-	}
-
-	public static void clearList() {
-		banner.clear();
-		menu.clear();
-		noticeList.clear();
-		goodsList.clear();
 
 	}
 
 	@Override
 	public void getkeyWord() {
-
 		OkGo.get(Urls.URL_SEARCH_HOT)
 				.execute(new StringCallback() {
 					@Override
 					public void onSuccess(String s, Call call, Response response) {
 						KeyWord keyWords = JsonUtil.toBean(s, KeyWord.class);
 						KeyWord.Key key = keyWords.getKey();
-						view.setKeyWord(key.getKeywordValue(),key.getKeywordName());
+						view.setKeyWord(key.getKeywordValue(), key.getKeywordName());
 
 					}
 				});
 
 	}
 
+	public static List<HomeMultipleItem> getHomeMultipleList() {
+		return HomeMultipleList;
+	}
+
+	public static List<HomeModel.HomeModule> getModuleList() {
+		return moduleList;
+	}
 }

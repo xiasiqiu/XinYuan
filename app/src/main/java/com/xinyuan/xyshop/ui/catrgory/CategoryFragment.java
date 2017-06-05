@@ -13,7 +13,6 @@ import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.GoodsCategoryAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.common.AddViewHolder;
-import com.xinyuan.xyshop.entity.GoodCategory;
 import com.xinyuan.xyshop.mvp.contract.CategoryContract;
 import com.xinyuan.xyshop.mvp.presenter.CategoryPresenterImpl;
 import com.xinyuan.xyshop.util.GlideImageLoader;
@@ -25,7 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
+
+import com.xinyuan.xyshop.model.CategoryModel.CategoryData;
 
 /**
  * Created by fx on 2017/5/2 0002.
@@ -36,9 +36,9 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 	private CategoryContract.CategoryPresenter presenter;
 	private AddViewHolder currentGoodsClassView;
 	private int currentItem = 0;
-	public static List<GoodCategory> goodsCategoryList_one;
-	public static List<GoodCategory> goodsCategoryList_three;
-	public static List<GoodCategory> goodsCategoryList_two;
+	public static List<CategoryData> goodsCategoryList_one;
+	public static List<CategoryData> goodsCategoryList_three;
+	public static List<CategoryData> goodsCategoryList_two;
 
 	@BindView(R.id.llGoodsClassRoot)
 	LinearLayout llGoodsClassRoot;
@@ -123,16 +123,16 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 	}
 
 	@Override
-	public void showFrist(GoodCategory classItem, int m) {
+	public void showFrist(CategoryData classItem, int m) {
 		AddViewHolder holder = new AddViewHolder(getActivity(), R.layout.category_item_frist);
 		holder.setText(R.id.tvGoodsClassId, String.valueOf(classItem.getCategoryId())).setText(R.id.tv_category_first, classItem.getCategoryName());
 		if (m == 0) {
-			setCurrentGoodsClass(holder, classItem.getAppImageUrl());
+			setCurrentGoodsClass(holder, classItem.getCategoryImageUrl());
 			this.currentGoodsClassView = holder;
 			this.currentItem = m;
 			String goodsClassId = holder.getText(R.id.tvGoodsClassId);
 			CategoryFragment.this.showGoodsClass(goodsClassId);
-			GlideImageLoader.setImage(getContext(), classItem.getAppImageUrl(), categroy_img);
+			GlideImageLoader.setImage(getContext(), classItem.getCategoryImageUrl(), categroy_img);
 		}
 		this.llGoodsClassRoot.addView(holder.getCustomView());
 		setItemClick(holder, classItem, m);
@@ -140,20 +140,20 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 	}
 
 
-	private void setItemClick(final AddViewHolder holder, final GoodCategory classItem, final int m) {
+	private void setItemClick(final AddViewHolder holder, final CategoryData classItem, final int m) {
 		holder.setOnClickListener(R.id.llView, new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				if (m != CategoryFragment.this.currentItem) {
-					CategoryFragment.this.setCurrentGoodsClass(holder, classItem.getAppImageUrl());
-					CategoryFragment.this.resetCurrentGoodsClass(CategoryFragment.this.currentGoodsClassView, ((GoodCategory) CategoryFragment.this.goodsCategoryList_one.get(CategoryFragment.this.currentItem)).getAppImageUrl());
+					CategoryFragment.this.setCurrentGoodsClass(holder, classItem.getCategoryImageUrl());
+					CategoryFragment.this.resetCurrentGoodsClass(CategoryFragment.this.currentGoodsClassView, ((CategoryData) CategoryFragment.this.goodsCategoryList_one.get(CategoryFragment.this.currentItem)).getCategoryImageUrl());
 					CategoryFragment.this.currentItem = m;
 					CategoryFragment.this.currentGoodsClassView = holder;
 
 					String goodsClassId = holder.getText(R.id.tvGoodsClassId);
 
 					CategoryFragment.this.showGoodsClass(goodsClassId);
-					GlideImageLoader.setImage(getContext(), classItem.getAppImageUrl(), categroy_img);
+					GlideImageLoader.setImage(getContext(), classItem.getCategoryImageUrl(), categroy_img);
 				}
 			}
 		});
@@ -165,14 +165,14 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 		this.svGoodsClass.scrollTo(0, 0);
 		this.llGoodsClass.removeAllViews();
 		for (int i = 0; i < this.goodsCategoryList_two.size(); i++) {
-			if (((GoodCategory) this.goodsCategoryList_two.get(i)).getParentId() == Integer.valueOf(classId).intValue()) {
-				showRightView((GoodCategory) this.goodsCategoryList_two.get(i), i);
+			if (((CategoryData) this.goodsCategoryList_two.get(i)).getParentId() == Integer.valueOf(classId).intValue()) {
+				showRightView((CategoryData) this.goodsCategoryList_two.get(i), i);
 			}
 		}
 	}
 
 
-	private void showRightView(final GoodCategory goodsCategory, int position) {
+	private void showRightView(final CategoryData goodsCategory, int position) {
 		AddViewHolder holder = new AddViewHolder(getActivity(), R.layout.category_item_class);
 
 		GridView gvGoodsClass = (GridView) holder.getCustomView().findViewById(R.id.gvGoodsClass);
@@ -214,14 +214,14 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 		holder.setText(R.id.tvGoodsClassName, goodsCategory.getCategoryName());
 		holder.setOnClickListener(R.id.rlGoodClass, new View.OnClickListener() {
 			public void onClick(View view) {
-				CategoryPresenterImpl.jump(CategoryFragment.this.getActivity(), goodsCategory.getCategoryId(), false);
+				CategoryPresenterImpl.jump(CategoryFragment.this.getActivity(), goodsCategory.getCategoryName(), false);
 			}
 		});
 		String id = String.valueOf(goodsCategory.getCategoryId());
-		List<GoodCategory> categories = new ArrayList();
-		List<List<GoodCategory>> goodCatrList = new ArrayList();
+		List<CategoryData> categories = new ArrayList();
+		List<List<CategoryData>> goodCatrList = new ArrayList();
 		for (int j = 0; j < this.goodsCategoryList_three.size(); j++) {
-			if (((GoodCategory) this.goodsCategoryList_three.get(j)).getParentId() == Integer.valueOf(id).intValue()) {
+			if (((CategoryData) this.goodsCategoryList_three.get(j)).getParentId() == Integer.valueOf(id).intValue()) {
 				categories.add(this.goodsCategoryList_three.get(j));
 			}
 		}

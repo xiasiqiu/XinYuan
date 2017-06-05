@@ -22,7 +22,7 @@ public class BrandGridViewAdapter extends CommonAdapter<Brand> {
 		holder.setImage((int) R.id.ivBrandPic, brand.getBrandImageSrc());
 		holder.setOnClickListener(R.id.llBrandItem, new View.OnClickListener() {
 			public void onClick(View view) {
-				int brandId = brand.getBrandId();
+				String brandId = brand.getBrandName();
 				CategoryPresenterImpl.jump(BrandGridViewAdapter.this.mContext, brandId, true);
 			}
 		});

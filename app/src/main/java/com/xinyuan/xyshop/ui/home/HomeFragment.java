@@ -35,7 +35,9 @@ import com.trello.rxlifecycle.android.ActivityEvent;
 import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.ExpandableItemAdapter;
+import com.xinyuan.xyshop.adapter.HomeGoodsAdapter;
 import com.xinyuan.xyshop.adapter.HomeMultipleItemAdapter;
+import com.xinyuan.xyshop.adapter.SearchGoodListAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.bean.ExpandItem;
 import com.xinyuan.xyshop.entity.HomeMultipleItem;
@@ -43,9 +45,11 @@ import com.xinyuan.xyshop.entity.ItemData;
 import com.xinyuan.xyshop.entity.KeyWord;
 import com.xinyuan.xyshop.entity.Menu;
 import com.xinyuan.xyshop.http.Urls;
+import com.xinyuan.xyshop.model.HomeModel;
 import com.xinyuan.xyshop.mvp.contract.HomeContract;
 import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
 import com.xinyuan.xyshop.ui.goods.SearchGoodsActivity;
+import com.xinyuan.xyshop.ui.mine.MsgActivity;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.JsonUtil;
@@ -71,7 +75,7 @@ import okhttp3.Response;
  * Created by fx on 2017/5/9 0009.
  */
 
-public class HomeFragment extends BaseFragment implements HomeContract.HomeView, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
+public class HomeFragment extends BaseFragment implements HomeContract.HomeView, SwipeRefreshLayout.OnRefreshListener {
 
 	public static final String INTENT_STRING_TABNAME = "intent_String_tabname";
 	public static final String INTENT_INT_INDEX = "intent_int_index";
@@ -137,9 +141,9 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	 */
 	@Override
 	public void setPresenter(HomeContract.HomePresenter presenter) {
-		if (VIEW_INIT) {
-			this.presenter = presenter;
-		}
+
+		this.presenter = presenter;
+
 	}
 
 	/**
@@ -180,7 +184,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 				xLoadingView.showContent();
 				break;
 			case 2:
-
 				xLoadingView.showError();
 				break;
 
@@ -209,8 +212,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 				return list.get(position).getSpanSize();
 			}
 		});
-
-		//homeMultipleItemAdapter.setOnLoadMoreListener(this, mRecyclerView);
 		homeMultipleItemAdapter.addHeaderView(headView);
 		mRecyclerView.setAdapter(homeMultipleItemAdapter);
 	}
@@ -222,9 +223,9 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	 * @param itemList
 	 */
 	@Override
-	public void showBanner(final List<ItemData> itemList) {
+	public void showBanner(final List<HomeModel.HomeModule.HomeModuleData> itemList) {
 		ArrayList<String> images = new ArrayList<>();
-		for (ItemData itemData : itemList) {
+		for (HomeModel.HomeModule.HomeModuleData itemData : itemList) {
 			images.add(itemData.getImageUrl());
 		}
 
@@ -242,12 +243,18 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 			public void OnBannerClick(int position) {
 				if (itemList != null) {
 
-					ItemData itemData = itemList.get(position);
+					HomeModel.HomeModule.HomeModuleData itemData = itemList.get(position);
 					OnImageViewClick(banner, itemData.getType(), itemData.getData(), true);
 				}
 			}
 		});
-
+		mMsg.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(getActivity(), MsgActivity.class);
+				startActivity(intent);
+			}
+		});
 
 
 	}
@@ -258,7 +265,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	 * @param itemList
 	 */
 	@Override
-	public void showMenu(final List<ItemData> itemList) {
+	public void showMenu(final List<HomeModel.HomeModule.HomeModuleData> itemList) {
 		menuListView = (RecyclerView) headView.findViewById(R.id.menu_list);
 		int menucount = 10;
 		ArrayList<MultiItemEntity> res = new ArrayList<>();
@@ -299,11 +306,11 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	 * @param itemList
 	 */
 	@Override
-	public void showNotice(List<ItemData> itemList) {
+	public void showNotice(List<HomeModel.HomeModule.HomeModuleData> itemList) {
 		List<String> name = new ArrayList<>();
 		List<String> content = new ArrayList<>();
 
-		for (ItemData itemData : itemList) {
+		for (HomeModel.HomeModule.HomeModuleData itemData : itemList) {
 			name.add(itemData.getData());
 			content.add(itemData.getImageUrl());
 			SpannableStringBuilder style = new SpannableStringBuilder(content.toString());
@@ -319,6 +326,21 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 		marquee_name.startWithList(name);
 		marquee_content.startWithList(content);
+	}
+
+	@Override
+	public void showGoods(List<HomeModel.HomeGood> goodList) {
+
+		View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_home_footer, (ViewGroup) mRecyclerView.getParent(), false);
+		RecyclerView rv_goods = (RecyclerView) view.findViewById(R.id.rv_home_goods);
+		HomeGoodsAdapter adapters = new HomeGoodsAdapter(R.layout.searchgood_item_grid, goodList);
+		GridLayoutManager layoutManager2 = new GridLayoutManager(this.context, 2, 1, false);
+		rv_goods.setLayoutManager(layoutManager2);
+		rv_goods.setAdapter(adapters);
+
+		homeMultipleItemAdapter.addFooterView(view, 0);
+
+
 	}
 
 
@@ -354,11 +376,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 					mToolbar.setBackgroundResource(R.color.colorPrimaryDark);
 					darkView.setBackgroundResource(R.color.colorPrimary);
 					et_search.setHintTextColor(getResources().getColor(R.color.bg_white));
-
-
 				}
-
-
 			}
 		});
 		showState(1);
@@ -377,6 +395,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		this.keyWord = keyWord;
 		MyShopApplication.setKeyWord(keyWord);
 		et_search.setHint(keyWord);
+		MyShopApplication.setKeyWord(keyWord);
 		setSearchListener();
 
 	}
@@ -428,9 +447,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		new Handler().postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				HomePresenterImpl.clearList();
 				presenter.initData();
-				data = HomePresenterImpl.getHomeMultipleItemlist();
+				data = HomePresenterImpl.getHomeMultipleList();
 				homeMultipleItemAdapter.setNewData(data);
 				isErr = false;
 				mCurrentCounter = PAGE_SIZE;
@@ -442,14 +460,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	}
 
-
-	/**
-	 * 加载更多
-	 */
-	@Override
-	public void onLoadMoreRequested() {
-
-	}
 
 	@Override
 	@CallSuper

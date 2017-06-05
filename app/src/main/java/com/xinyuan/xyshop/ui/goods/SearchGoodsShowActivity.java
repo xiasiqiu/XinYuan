@@ -1,6 +1,7 @@
 package com.xinyuan.xyshop.ui.goods;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -23,6 +24,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.SearchGoodListAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
@@ -70,7 +72,6 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 	TextView btnScreen; //筛选_筛选TextView
 
 
-
 	@BindView(R.id.search_drawer)
 	DrawerLayout drawer;  //筛选界面_drawer
 	@BindView(R.id.nav_view)
@@ -90,8 +91,9 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 
 	private int page = 1;
 	private String keyword;
-	private int brandId = -1;
+	private String brandName;
 	private int cat = -1;
+	private int brandId = -1;
 	private String sort = "";
 	private String selectValue = "";
 	private List<GoodsVo> goodses;
@@ -114,8 +116,14 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 	@Override
 	public void initData(Bundle savedInstanceState) {
 		new SearchGoodsShowPresenterImpl(this);
+		Intent intent = getIntent();
+		brandName = intent.getStringExtra("keyword");
+		if (!brandName.equals("")) {
+			keyword = brandName;
+		} else {
+			keyword = MyShopApplication.getKeyWord();
+		}
 
-		keyword = getIntent().getStringExtra("keyword");
 		presenter.initData(keyword, brandId, cat, sort, selectValue, page);
 	}
 
@@ -220,7 +228,7 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 	@Override
 	public void showGoodList(List<GoodsVo> goodsVoList, SelectFilterTest selectFilterTest, PageEntity pageEntity) {
 		if (page > 1) {
-			this.pageEntity=pageEntity;
+			this.pageEntity = pageEntity;
 			adapter.addData(goodsVoList);
 			adapter.loadMoreComplete();
 		} else {

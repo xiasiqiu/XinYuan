@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class Goods implements Serializable {
+	private static final long serialVersionUID = 151410478088851639L;
 	private BigDecimal appPrice0 = new BigDecimal(0);
 	private BigDecimal appPrice1 = new BigDecimal(0);
 	private BigDecimal appPrice2 = new BigDecimal(0);

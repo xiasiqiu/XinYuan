@@ -12,6 +12,7 @@ import com.xinyuan.xyshop.entity.Brand;
 import com.xinyuan.xyshop.entity.GoodCategory;
 import com.xinyuan.xyshop.http.ApiServer;
 import com.xinyuan.xyshop.http.Urls;
+import com.xinyuan.xyshop.model.CategoryModel;
 import com.xinyuan.xyshop.mvp.contract.CategoryContract;
 import com.xinyuan.xyshop.ui.goods.PromotionListActivity;
 import com.xinyuan.xyshop.ui.goods.SearchGoodsShowActivity;
@@ -27,6 +28,8 @@ import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.functions.Func1;
 
+import com.xinyuan.xyshop.model.CategoryModel.CategoryData;
+
 /**
  * Title:
  * Description:
@@ -36,9 +39,9 @@ import rx.functions.Func1;
 
 public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter {
 	private CategoryContract.CategoryView mCategoryView;
-	public static List<GoodCategory> goodsCategoryList_one;
-	public static List<GoodCategory> goodsCategoryList_three;
-	public static List<GoodCategory> goodsCategoryList_two;
+	public static List<CategoryData> goodsCategoryList_one;
+	public static List<CategoryData> goodsCategoryList_three;
+	public static List<CategoryData> goodsCategoryList_two;
 
 	public CategoryPresenterImpl(CategoryContract.CategoryView view) {
 		this.mCategoryView = view;
@@ -49,7 +52,7 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
 	@Override
 	public void initData() {
 		XLog.v("分类页面开始加载数据");
-		Subscription subscription = ApiServer.getApiSpecialList(Urls.URL_GOODS_CATEGORY)
+		Subscription subscription = ApiServer.getCategory(Urls.URL_GOODS_CATEGORY)
 				.doOnSubscribe(new Action0() {
 					@Override
 					public void call() {
@@ -57,25 +60,23 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
 						mCategoryView.showState(0);
 
 					}
-				})
-				.map(new Func1<LzyResponse<String>, List<GoodCategory>>() {
+				}).map(new Func1<LzyResponse<CategoryModel>, CategoryModel>() {
+
 
 					@Override
-					public List<GoodCategory> call(LzyResponse<String> response) {
+					public CategoryModel call(LzyResponse<CategoryModel> Response) {
 
-						List<GoodCategory> list = (List) JsonUtil.toBean(response.getDatas(), "categoryList", new TypeToken<List<GoodCategory>>() {
-						}.getType());
-
-
-						return list;
+						return Response.getDatas();
 					}
 				})
 				.observeOn(AndroidSchedulers.mainThread())
-				.subscribe(new Action1<List<GoodCategory>>() {
+				.subscribe(new Action1<CategoryModel>() {
 					@Override
-					public void call(List<GoodCategory> goodCategoryList) {
-						XLog.v("分类请求成功");
-						cleanData(goodCategoryList);
+					public void call(CategoryModel categoryModel) {
+
+						List<CategoryModel.CategoryData> goodsCategoryList = new ArrayList<CategoryModel.CategoryData>();
+						goodsCategoryList = categoryModel.getDatas();
+						cleanData(goodsCategoryList);
 
 					}
 				}, new Action1<Throwable>() {
@@ -88,26 +89,27 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
 				});
 	}
 
-	private void cleanData(List<GoodCategory> goodsCategoryList) {
+	private void cleanData(List<CategoryData> goodsCategoryList) {
 
 		goodsCategoryList_one = new ArrayList();
 		goodsCategoryList_three = new ArrayList();
 		goodsCategoryList_two = new ArrayList();
 
 		for (int i = 0; i < goodsCategoryList.size(); i++) {
+
 			goodsCategoryList_one.add(goodsCategoryList.get(i));
 		}
 
 		for (int k = 0; k < goodsCategoryList_one.size(); k++) {
 			int m;
-			List<GoodCategory> goodsCategories = goodsCategoryList_one.get(k).getCategoryList();
+			List<CategoryData> goodsCategories = goodsCategoryList_one.get(k).getCategoryList();
 			for (m = 0; m < goodsCategories.size(); m++) {
 				goodsCategoryList_two.add(goodsCategories.get(m));
 			}
 		}
 
 		for (int j = 0; j < goodsCategoryList_two.size(); j++) {
-			List<GoodCategory> goodsCategoryList1 = goodsCategoryList_two.get(j).getCategoryList();
+			List<CategoryData> goodsCategoryList1 = goodsCategoryList_two.get(j).getCategoryList();
 			for (int g = 0; g < goodsCategoryList1.size(); g++) {
 				goodsCategoryList_three.add(goodsCategoryList1.get(g));
 			}
@@ -122,7 +124,7 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
 
 	}
 
-	public static void jump(Context context, int cat, boolean isBrand) {
+	public static void jump(Context context, String name, boolean isBrand) {
 		Intent i;
 		SharedPreferences sharedPreferences = context.getSharedPreferences("promotion", 0);
 		SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -133,26 +135,22 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
 		} else {
 			i = new Intent(context, SearchGoodsShowActivity.class);
 		}
-		if (isBrand) {
-			i.putExtra("keyword", MyShopApplication.getKeyWord());
-			i.putExtra("brandId", cat);
-			i.putExtra("brand", cat);
-		} else {
-			i.putExtra("cat", cat);
-		}
+
+		i.putExtra("keyword", name);
+
 		context.startActivity(i);
 	}
 
 
-	public static List<GoodCategory> getGoodsCategoryList_one() {
+	public static List<CategoryData> getGoodsCategoryList_one() {
 		return goodsCategoryList_one;
 	}
 
-	public static List<GoodCategory> getGoodsCategoryList_two() {
+	public static List<CategoryData> getGoodsCategoryList_two() {
 		return goodsCategoryList_two;
 	}
 
-	public static List<GoodCategory> getGoodsCategoryList_three() {
+	public static List<CategoryData> getGoodsCategoryList_three() {
 		return goodsCategoryList_three;
 	}
 
