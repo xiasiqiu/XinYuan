@@ -6,10 +6,14 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.widget.TextView;
 
+import com.flyco.tablayout.CommonTabLayout;
+import com.flyco.tablayout.SlidingTabLayout;
+import com.flyco.tablayout.listener.CustomTabEntity;
 import com.gxz.PagerSlidingTabStrip;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.ItemTitlePagerAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
+import com.xinyuan.xyshop.entity.TabEntity;
 import com.xinyuan.xyshop.ui.goods.fragment.GoodsCommentFragment;
 import com.xinyuan.xyshop.ui.goods.fragment.GoodsDetailFragment;
 import com.xinyuan.xyshop.ui.goods.fragment.GoodsInfoFragment;
@@ -29,19 +33,21 @@ import butterknife.ButterKnife;
 public class GoodDetailsActivity extends BaseActivity {
 
 
-	@BindView(R.id.psts_tabs)
-	public PagerSlidingTabStrip psts_tabs;
+	@BindView(R.id.tl_main)
+	public SlidingTabLayout mTlMain;
 	@BindView(R.id.vp_content)
 	public NoScrollViewPager vp_content;
 	@BindView(R.id.tv_title)
 	public TextView tv_title;
-	private List<Fragment> fragmentList = new ArrayList<>();
+	private ArrayList<Fragment> fragmentList = new ArrayList<>();
 
 	private GoodsInfoFragment goodsInfoFragment;
 	private GoodsDetailFragment goodsDetailFragment;
 	private GoodsCommentFragment goodsCommentFragment;
 	private GoodsRecommFragment goodsRecommFragment;
 
+	private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
+	private String[] mTitles = {"商品", "详情", "评价", "推荐"};
 
 	@Override
 	public int getLayoutId() {
@@ -56,16 +62,20 @@ public class GoodDetailsActivity extends BaseActivity {
 	@Override
 	public void initView() {
 		EventBus.getDefault().register(this);
+		for (int i = 0; i < mTitles.length; i++) {
+			mTabEntities.add(new TabEntity(mTitles[i]));
+		}
 
 		fragmentList.add(goodsInfoFragment = new GoodsInfoFragment());
 		fragmentList.add(goodsDetailFragment = new GoodsDetailFragment());
 		fragmentList.add(goodsCommentFragment = new GoodsCommentFragment());
 		fragmentList.add(goodsRecommFragment = new GoodsRecommFragment());
+
 		vp_content.setAdapter(new ItemTitlePagerAdapter(getSupportFragmentManager(),
 				fragmentList, new String[]{"商品", "详情", "评价", "推荐"}));
 		vp_content.setOffscreenPageLimit(4);
-		psts_tabs.setViewPager(vp_content);
 
+		mTlMain.setViewPager(vp_content);
 
 	}
 
@@ -78,8 +88,6 @@ public class GoodDetailsActivity extends BaseActivity {
 
 
 	}
-
-
 
 
 }

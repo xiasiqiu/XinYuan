@@ -206,7 +206,7 @@
                         android:id="@+id/ll_comment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5px"
+                        android:layout_marginTop="20px"
                         android:background="@color/bg_white"
                         android:clickable="true"
                         android:gravity="center_vertical"

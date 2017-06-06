@@ -10,50 +10,48 @@
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp">
 
-    <com.zhy.autolayout.AutoRelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
         android:background="@color/bg_white"
         android:focusable="true"
         android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/brand_btn_back"
             android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="40px"
             android:src="@drawable/icon_back"/>
 
-        <com.gxz.PagerSlidingTabStrip
-            android:id="@+id/msg__tabs"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"
-            android:background="@color/bg_white"
-            android:textColor="@color/tv_name"
-            android:textSize="14sp"
-            app:pstsDividerColor="@color/colorLine"
-            app:pstsDividerPaddingTopBottom="30px"
-            app:pstsIndicatorColor="@color/colorPrimary"
-            app:pstsIndicatorHeight="5px"
-            app:pstsScaleZoomMax="0.0"
-            app:pstsShouldExpand="true"
-            app:pstsSmoothScrollWhenClickTab="false"
-            app:pstsTabPaddingLeftRight="10px"
-            app:pstsTextAllCaps="false"
-            app:pstsTextSelectedColor="@color/colorPrimary"
-            app:pstsUnderlineHeight="1px"/>
+
+        <com.flyco.tablayout.SegmentTabLayout
+            android:id="@+id/stab_msg"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="6"
+            app:tl_bar_color="#ffffff"
+            app:tl_indicator_anim_enable="true"
+            app:tl_indicator_color="@color/colorPrimary"
+            app:tl_indicator_corner_radius="2dp"
+            app:tl_textBold="SELECT"/>
 
         <TextView
             style="@style/RegularTextView"
+            android:layout_weight="1"
+            android:gravity="center"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="30px"
             android:text="编辑"/>
 
-    </com.zhy.autolayout.AutoRelativeLayout>
+    </LinearLayout>
 
 
 </android.support.v7.widget.Toolbar>

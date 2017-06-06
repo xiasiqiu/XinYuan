@@ -1,5 +1,6 @@
 package com.xinyuan.xyshop.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -14,6 +15,8 @@ import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.entity.GoodCategory;
 import com.xinyuan.xyshop.model.HomeModel;
 import com.xinyuan.xyshop.mvp.presenter.CategoryPresenterImpl;
+import com.xinyuan.xyshop.ui.goods.GoodDetailsActivity;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.ViewHolder;
 
@@ -40,6 +43,12 @@ public class HomeGoodsAdapter extends BaseQuickAdapter<HomeModel.HomeGood, BaseV
 		tv_goods_price.setText("￥" + String.valueOf(item.getAppPriceMin()));
 		TextView tv_goods_sellnum = helper.getView(R.id.tv_goods_sellnum);
 		tv_goods_sellnum.setText("月销量:" + item.getSellnum() + "件");
+		goodsImg.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				CommUtil.gotoActivity((Activity) mContext, GoodDetailsActivity.class, false, null);
+			}
+		});
 	}
 
 

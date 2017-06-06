@@ -343,14 +343,14 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 			fab_up_slide.show();
 			activity.vp_content.setNoScroll(true);
 			activity.tv_title.setVisibility(View.VISIBLE);
-			activity.psts_tabs.setVisibility(View.GONE);
+			activity.mTlMain.setVisibility(View.GONE);
 		} else {
 			this.status = status;
 			//当前为商品详情页
 			fab_up_slide.hide();
 			activity.vp_content.setNoScroll(false);
 			activity.tv_title.setVisibility(View.GONE);
-			activity.psts_tabs.setVisibility(View.VISIBLE);
+			activity.mTlMain.setVisibility(View.VISIBLE);
 		}
 	}
 

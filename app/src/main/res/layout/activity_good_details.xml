@@ -18,19 +18,12 @@
             android:layout_height="?attr/actionBarSize"
             android:orientation="horizontal">
 
-            <com.zhy.autolayout.AutoLinearLayout
-                android:id="@+id/ll_back"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingLeft="30px">
-
-                <ImageView
-                    android:id="@+id/iv_back"
-                    android:layout_width="30px"
-                    android:layout_height="50px"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/icon_back"/>
-            </com.zhy.autolayout.AutoLinearLayout>
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/icon_back"/>
 
 
             <com.zhy.autolayout.AutoLinearLayout
@@ -40,24 +33,25 @@
                 android:gravity="center">
 
                 <!-- 商品、详情、评价切换的控件 -->
-                <com.gxz.PagerSlidingTabStrip
-                    android:id="@+id/psts_tabs"
+
+
+                <com.flyco.tablayout.SlidingTabLayout
+                    android:id="@+id/tl_main"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:textColor="@color/tv_name"
-                    android:textSize="15sp"
-                    app:pstsDividerColor="@android:color/transparent"
-                    app:pstsDividerPaddingTopBottom="10px"
-                    app:pstsIndicatorColor="@color/colorPrimary"
-                    app:pstsIndicatorHeight="10px"
-                    app:pstsScaleZoomMax="0.0"
-                    app:pstsShouldExpand="false"
-                    app:pstsSmoothScrollWhenClickTab="false"
-                    app:pstsTabPaddingLeftRight="36px"
-                    app:pstsTextAllCaps="false"
-                    app:pstsTextSelectedColor="@color/colorPrimary"
-                    app:pstsUnderlineHeight="1px"/>
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_marginLeft="50px"
+                    android:layout_marginRight="50px"
+                    android:background="@color/bg_white"
+                    app:tl_divider_width="1px"
+                    app:tl_indicator_color="@color/colorPrimary"
+                    app:tl_indicator_width_equal_title="true"
+                    app:tl_tab_padding="30px"
+                    app:tl_textSelectColor="@color/colorPrimary"
+                    app:tl_textUnselectColor="@color/tv_name"
+                    app:tl_textsize="15dp"
+                    app:tl_underline_gravity="BOTTOM"
+                    />
 
                 <TextView
                     android:id="@+id/tv_title"
@@ -72,8 +66,8 @@
 
             <ImageView
                 android:id="@+id/detail_btn_msg"
-                android:layout_width="79px"
-                android:layout_height="80px"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="35px"
                 android:background="@drawable/act_home_msg_de"/>

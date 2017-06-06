@@ -38,7 +38,7 @@
                 android:layout_marginRight="30px"
                 android:background="@color/bg_white"
                 android:textColor="@color/tv_name"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:pstsDividerColor="@android:color/transparent"
                 app:pstsDividerPaddingTopBottom="10px"

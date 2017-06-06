@@ -15,6 +15,8 @@ import com.youth.banner.loader.ImageLoader;
 public class GlideImageLoader extends ImageLoader {
 
 
+	private static final long serialVersionUID = -8887196687198312416L;
+
 	@Override
 	public void displayImage(Context context, Object path, ImageView imageView) {
 		/**

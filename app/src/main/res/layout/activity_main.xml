@@ -4,12 +4,12 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <com.xinyuan.xyshop.widget.NotSlipViewPager
-        android:id="@+id/nvp_home_content"
+    <FrameLayout
+        android:id="@+id/main_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
-
+        android:layout_weight="9"
+        android:background="#EEE"/>
 
 
     <!--底部区域-->

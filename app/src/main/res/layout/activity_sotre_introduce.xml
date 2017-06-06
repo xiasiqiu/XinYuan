@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/store_introduce_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="48.0dip"
+        android:background="@color/bg_white">
+
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorTransparency"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/goodshow_btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_back"/>
+
+            <TextView
+                style="@style/RegularTextView"
+                android:layout_centerInParent="true"
+                android:text="店铺介绍"
+                android:textSize="@dimen/tv_Blod"/>
+
+            <ImageView
+                android:id="@+id/goodshow_btn_msg"
+                android:layout_width="79px"
+                android:layout_height="79px"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="40px"
+                android:scaleType="fitXY"
+                android:src="@drawable/act_home_msg_de"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="25px"
+                android:layout_height="25px"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30px"
+                android:layout_marginTop="20px"
+                android:src="@color/tv_price"/>
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_store_name"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+
+        <ImageView
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:src="@drawable/test_good_store"/>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="50dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="30dp"
+            android:layout_toLeftOf="@+id/tv_store_fans"
+            android:background="@color/colorLine"/>
+
+        <TextView
+            style="@style/LightTextView"
+            android:layout_marginLeft="80dp"
+            android:text="梅子熟了 文艺复古清新女装"/>
+
+        <TextView
+            style="@style/LightTextView"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="40dp"
+            android:text="类型:服饰鞋帽"/>
+
+        <TextView
+            style="@style/LightTextView"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_toLeftOf="@+id/bt_store_fav"
+            android:text="247.6万"
+            android:textColor="@color/tv_hint"/>
+
+        <TextView
+            android:id="@+id/tv_store_fans"
+            style="@style/LightTextView"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/bt_store_fav"
+            android:text="粉丝数"
+            android:textColor="@color/tv_hint"/>
+
+        <Button
+            android:id="@+id/bt_store_fav"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_flow_selected"
+            android:text="+ 关注"
+            android:textColor="@color/bg_white"/>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+
+            android:text="描述相符"/>
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_marginLeft="50dp"
+            android:text="4.4  与同行业低于4%"
+            android:textColor="@color/tv_price"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorLine"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+
+            android:text="服务态度"/>
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_marginLeft="50dp"
+            android:text="4.8  与同行业高于2%"
+            android:textColor="@color/tv_price"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorLine"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+
+            android:text="物流服务"/>
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_marginLeft="50dp"
+            android:text="4.8  与同行业高于2%"
+            android:textColor="@color/tv_price"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:text="店铺名称"/>
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_marginLeft="50dp"
+            android:text="梅子熟了 文艺复古清新女装"
+            android:textColor="@color/tv_hint"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorLine"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:text="店铺地址"/>
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_marginLeft="50dp"
+            android:text="四川省成都市"
+            android:textColor="@color/tv_hint"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorLine"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:text="注册时间"/>
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_marginLeft="50dp"
+            android:text="2016-06-11"
+            android:textColor="@color/tv_hint"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:text="联系电话"/>
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_marginLeft="50dp"
+            android:text="18425783259"
+            android:textColor="@color/tv_hint"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorLine"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:text="工作时间"/>
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_marginLeft="50dp"
+            android:text="18425783259"
+            android:textColor="@color/tv_hint"/>
+    </LinearLayout>
+</LinearLayout>

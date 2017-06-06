@@ -47,17 +47,18 @@ public abstract class BaseActivity extends AutoLayoutActivity implements ICallba
 	protected void onCreate(Bundle savedInstanceState) {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		XActivityStack.getInstance().addActivity(this);
+		super.onCreate(savedInstanceState);
 		if (getLayoutId() > 0) {
 			setContentView(getLayoutId());
 		}
-		initData(savedInstanceState);
-		ButterKnife.bind(this);
-		initView();
-		super.onCreate(savedInstanceState);
-
-		lifecycleSubject.onNext(ActivityEvent.CREATE);
 		this.application = MyShopApplication.getInstance();
+		ButterKnife.bind(this);
 		mUnbinder = ButterKnife.bind(this);
+		initView();
+		initData(savedInstanceState);
+		lifecycleSubject.onNext(ActivityEvent.CREATE);
+
+
 
 	}
 

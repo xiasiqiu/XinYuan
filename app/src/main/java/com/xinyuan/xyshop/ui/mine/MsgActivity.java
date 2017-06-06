@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 
+import com.flyco.tablayout.SegmentTabLayout;
+import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.gxz.PagerSlidingTabStrip;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.ItemTitlePagerAdapter;
@@ -27,13 +29,14 @@ import butterknife.ButterKnife;
 
 public class MsgActivity extends BaseActivity {
 
-	@BindView(R.id.msg__tabs)
-	PagerSlidingTabStrip psts_tabs;
+	@BindView(R.id.stab_msg)
+	SegmentTabLayout psts_tabs;
 	@BindView(R.id.vp_content)
 	ViewPager viewPager;
-	private List<Fragment> fragmentList = new ArrayList<>();
+	private ArrayList<Fragment> fragmentList = new ArrayList<>();
 	@BindView(R.id.msg_toolbar)
 	Toolbar msg_toolbar;
+
 
 	private StoreMsgFragment storeMsgFragment;
 	private MallMsgFragment mallMsgFragment;
@@ -54,12 +57,43 @@ public class MsgActivity extends BaseActivity {
 
 		SystemBarHelper.immersiveStatusBar(this); //设置状态栏透明
 		SystemBarHelper.setHeightAndPadding(this, msg_toolbar);
+
 		fragmentList.add(storeMsgFragment = new StoreMsgFragment());
 		fragmentList.add(mallMsgFragment = new MallMsgFragment());
 
 		viewPager.setAdapter(new ItemTitlePagerAdapter(getSupportFragmentManager(),
 				fragmentList, new String[]{"客服消息", "系统通知"}));
+		psts_tabs.setTabData(new String[]{"客服消息", "系统通知"});
+		psts_tabs.setOnTabSelectListener(new OnTabSelectListener() {
+			@Override
+			public void onTabSelect(int position) {
+				viewPager.setCurrentItem(position);
+			}
+
+			@Override
+			public void onTabReselect(int position) {
+				viewPager.setCurrentItem(position);
+			}
+		});
+		viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+			@Override
+			public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+			}
+
+			@Override
+			public void onPageSelected(int position) {
+				psts_tabs.setCurrentTab(position);
+			}
+
+			@Override
+			public void onPageScrollStateChanged(int state) {
+
+			}
+		});
+		viewPager.setCurrentItem(1);
+
 		viewPager.setOffscreenPageLimit(2);
-		psts_tabs.setViewPager(viewPager);
+
 	}
 }

@@ -166,7 +166,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="20px"
+        android:layout_height="10px"
         android:layout_marginTop="20px"
         android:layout_below="@+id/ll_evaluate_show"
         android:background="@color/bg_gray"/>
