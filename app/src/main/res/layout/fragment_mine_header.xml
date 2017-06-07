@@ -24,7 +24,7 @@
             android:layout_height="55px"
             android:layout_centerVertical="true"
             android:layout_marginLeft="30px"
-            android:background="@drawable/nc_icon_back"/>
+            android:background="@drawable/icon_back"/>
 
         <TextView
             android:layout_width="wrap_content"

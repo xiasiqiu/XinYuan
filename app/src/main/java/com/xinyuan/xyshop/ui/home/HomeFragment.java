@@ -24,6 +24,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
@@ -270,7 +271,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		int menucount = 10;
 		ArrayList<MultiItemEntity> res = new ArrayList<>();
 
-		XLog.list(itemList);
+
 		for (int i = 0; i < 5; i++) {
 			ExpandItem expandItem = new ExpandItem(itemList.get(i).getImageUrl(), itemList.get(i).getData());
 			if (i == 4) {
@@ -281,7 +282,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 			res.add(expandItem);
 		}
-		XLog.list(res);
+
 
 		ExpandableItemAdapter expandableItemAdapter = new ExpandableItemAdapter(res, itemList);
 		final GridLayoutManager manager = new GridLayoutManager(getActivity(), 5);
@@ -329,15 +330,28 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	}
 
 	@Override
-	public void showGoods(List<HomeModel.HomeGood> goodList) {
+	public void showGoods(HomeModel.GoodModule goodModule) {
 
 		View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_home_footer, (ViewGroup) mRecyclerView.getParent(), false);
 		RecyclerView rv_goods = (RecyclerView) view.findViewById(R.id.rv_home_goods);
+
+		ImageView iv_ca_title = (ImageView) view.findViewById(R.id.iv_tab_title);
+		TextView tv_ca_title_cn = (TextView) view.findViewById(R.id.tv_tab_title_cn);
+		TextView tv_ca_title_en = (TextView) view.findViewById(R.id.tv_tab_title_en);
+
+		List<HomeModel.GoodModule.HomeGood> goodList = new ArrayList<>();
+		goodList = goodModule.getGoodList();
+
+
 		HomeGoodsAdapter adapters = new HomeGoodsAdapter(R.layout.searchgood_item_grid, goodList);
 		GridLayoutManager layoutManager2 = new GridLayoutManager(this.context, 2, 1, false);
 		rv_goods.setLayoutManager(layoutManager2);
 		rv_goods.setAdapter(adapters);
 
+		GlideImageLoader.setImage(context, goodModule.getGoodInfo().getItemtitleImage(), iv_ca_title);
+		tv_ca_title_cn.setText(goodModule.getGoodInfo().getItemtitleCN());
+		tv_ca_title_en.setText(goodModule.getGoodInfo().getItemtitleEN());
+		tv_ca_title_cn.setTextColor(Color.parseColor(goodModule.getGoodInfo().getItemtitleColor()));
 		homeMultipleItemAdapter.addFooterView(view, 0);
 
 

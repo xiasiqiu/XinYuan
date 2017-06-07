@@ -32,20 +32,19 @@
                         <com.youth.banner.Banner
                             android:id="@+id/goodinfo_banner"
                             android:layout_width="match_parent"
-                            android:layout_height="925px"
+                            android:layout_height="305dp"
                             app:indicator_drawable_selected="@drawable/banner_shape"
-                            app:indicator_height="24px"
-                            app:indicator_margin="20px"
-                            app:indicator_width="24px"/>
+                            app:indicator_height="8dp"
+                            app:indicator_margin="8dp"
+                            app:indicator_width="8dp"/>
 
                         <ImageView
                             android:id="@+id/goodinfo_share"
-                            android:layout_width="60px"
-                            android:layout_height="60px"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:layout_alignParentRight="true"
-                            android:layout_marginRight="60px"
-                            android:layout_marginTop="835px"
-
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="270dp"
                             android:src="@drawable/icon_share"/>
 
                     </RelativeLayout>
@@ -138,7 +137,7 @@
                         android:id="@+id/llGoodDiscount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5px"
+                        android:layout_marginTop="2dp"
                         android:background="@color/bg_white"
                         android:padding="30px">
 
@@ -171,7 +170,7 @@
                         android:id="@+id/ll_current_goods"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5px"
+                        android:layout_marginTop="2dp"
                         android:background="@color/bg_white"
                         android:padding="30px">
 
@@ -206,11 +205,11 @@
                         android:id="@+id/ll_comment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20px"
+                        android:layout_marginTop="2dp"
                         android:background="@color/bg_white"
                         android:clickable="true"
                         android:gravity="center_vertical"
-                        android:padding="30px">
+                        android:padding="10dp">
 
 
                         <TextView
@@ -240,7 +239,7 @@
                             android:id="@+id/rvEvaluate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5px"/>
+                            android:layout_marginTop="1dp"/>
                     </RelativeLayout>
 
                     <com.zhy.autolayout.AutoRelativeLayout

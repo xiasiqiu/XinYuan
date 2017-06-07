@@ -26,7 +26,7 @@ public class HomeContract {
 
 		void showNotice(List<HomeModel.HomeModule.HomeModuleData> itemList);
 
-		void showGoods(List<HomeModel.HomeGood> goodList);
+		void showGoods(HomeModel.GoodModule goodList);
 
 		void showList();
 

@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.flyco.tablayout.SlidingTabLayout;
 import com.gxz.PagerSlidingTabStrip;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -35,7 +36,7 @@ import okhttp3.Response;
 public class StoreHomeFragment extends BaseFragment {
 
 	@BindView(R.id.store__home_tabs)
-	PagerSlidingTabStrip homeTab;
+	SlidingTabLayout homeTab;
 
 	@BindView(R.id.vp_content)
 	NoScrollViewPager vp_content;

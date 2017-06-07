@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/home_item_tab_title"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_home_goods"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-</com.zhy.autolayout.AutoFrameLayout>
+</LinearLayout>

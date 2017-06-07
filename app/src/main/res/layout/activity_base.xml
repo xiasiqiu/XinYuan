@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:background="@color/bg_white"
         android:padding="6dp"
-        android:src="@drawable/nc_icon_back"/>
+        android:src="@drawable/icon_back"/>
 
 
     <TextView

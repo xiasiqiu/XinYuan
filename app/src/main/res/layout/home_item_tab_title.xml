@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoRelativeLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="40dp"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="6dp"
     android:background="@color/bg_white"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical">
 
-    <ImageView
-        android:id="@+id/home_tab_title"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"/>
 
-</com.zhy.autolayout.AutoRelativeLayout>
+        <ImageView
+            android:id="@+id/iv_tab_title"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"
+            android:scaleType="fitXY"/>
+
+
+        <TextView
+            android:id="@+id/tv_tab_title_cn"
+            style="@style/RegularTextView"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_tab_title_en"
+            style="@style/RegularTextView"
+            android:layout_marginLeft="10dp"/>
+    </LinearLayout>
+
+</RelativeLayout>

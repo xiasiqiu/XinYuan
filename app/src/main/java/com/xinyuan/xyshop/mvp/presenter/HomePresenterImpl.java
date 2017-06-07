@@ -12,6 +12,7 @@ import com.xinyuan.xyshop.model.HomeModel;
 import com.xinyuan.xyshop.mvp.contract.HomeContract;
 import com.xinyuan.xyshop.util.JsonUtil;
 import com.youth.xframe.utils.log.XLog;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +34,8 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 
 	private static List<HomeMultipleItem> HomeMultipleList;
 
-	private static List<HomeModel.HomeGood> goodList;
+
+	private static HomeModel.GoodModule goodModule;
 	private static List<HomeModel.HomeModule> moduleList;
 
 	private static List<HomeModel.HomeModule.HomeModuleData> bannerList;
@@ -75,8 +77,7 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 					public void call(HomeModel homeModel) {
 						moduleList = new ArrayList<>();
 						moduleList = homeModel.getModuleList();
-						goodList = new ArrayList<>();
-						goodList = homeModel.getGoodList();
+						goodModule = homeModel.getGoodModule();
 						showModule(moduleList);
 					}
 				}, new Action1<Throwable>() {
@@ -130,8 +131,6 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 		}
 		showView();
 
-		XLog.list(adList);
-		XLog.list(categoryList);
 
 	}
 
@@ -142,7 +141,7 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 		view.showBanner(bannerList);
 		view.showMenu(menuList);
 		view.showNotice(noticeList);
-		view.showGoods(goodList);
+		view.showGoods(goodModule);
 		view.showList();
 		getkeyWord();
 

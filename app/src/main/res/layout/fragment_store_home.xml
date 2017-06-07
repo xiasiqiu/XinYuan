@@ -20,60 +20,60 @@
                 android:layout_height="310px"
                 android:src="@drawable/test_store_ad"/>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="@color/bg_gray"/>
+
             <TextView
                 style="@style/RegularTextView"
-                android:layout_marginLeft="30px"
-                android:layout_marginTop="40px"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:text="店铺排行榜"/>
 
 
-            <com.gxz.PagerSlidingTabStrip
+            <com.flyco.tablayout.SlidingTabLayout
                 android:id="@+id/store__home_tabs"
                 android:layout_width="match_parent"
-                android:layout_height="100px"
-                android:layout_below="@id/rl_store_name"
-                android:layout_gravity="bottom"
-                android:layout_marginTop="20px"
-                android:layout_marginLeft="30px"
-                android:layout_marginRight="30px"
+                android:layout_height="35dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="3dp"
                 android:background="@color/bg_white"
-                android:textColor="@color/tv_name"
-                android:textSize="13sp"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                app:pstsDividerColor="@android:color/transparent"
-                app:pstsDividerPaddingTopBottom="10px"
-                app:pstsIndicatorColor="@color/colorPrimary"
-                app:pstsIndicatorHeight="5px"
-                app:pstsScaleZoomMax="0.0"
-                app:pstsShouldExpand="true"
-                app:pstsSmoothScrollWhenClickTab="false"
-                app:pstsTextAllCaps="false"
-                app:pstsTextSelectedColor="@color/colorPrimary"
-                app:pstsUnderlineHeight="1px"/>
+                app:tl_indicator_color="@color/colorPrimaryDark"
+                app:tl_indicator_width_equal_title="true"
+                app:tl_tab_space_equal="true"
+                app:tl_textSelectColor="@color/colorPrimaryDark"
+                app:tl_textUnselectColor="@color/tv_name"
+                app:tl_textsize="@dimen/tv_Normal"
+                app:tl_underline_color="@color/colorLine"
+                app:tl_underline_gravity="BOTTOM"
+                app:tl_underline_height="1px"/>
 
             <com.xinyuan.xyshop.widget.NoScrollViewPager
                 android:id="@+id/vp_content"
                 android:layout_width="match_parent"
-                android:layout_height="585px"
+                android:layout_height="220dp"
                 android:layout_below="@id/store__tabs"
-                android:layout_marginTop="20px"
                 android:layout_weight="1"/>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="30px"
+                android:layout_height="3dp"
                 android:background="@color/bg_gray"/>
 
             <TextView
                 style="@style/RegularTextView"
                 android:layout_marginLeft="30px"
-                android:layout_marginTop="60px"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:text="店主推荐"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_store_home"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:background="@color/bg_gray"/>
 
         </com.zhy.autolayout.AutoLinearLayout>
     </android.support.v4.widget.NestedScrollView>

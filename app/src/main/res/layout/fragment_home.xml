@@ -19,7 +19,7 @@
                 android:id="@+id/home_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/normal_bg"/>
+                android:background="@color/bg_gray"/>
 
 
         </android.support.v4.widget.SwipeRefreshLayout>

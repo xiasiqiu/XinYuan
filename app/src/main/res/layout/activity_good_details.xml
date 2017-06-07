@@ -38,16 +38,17 @@
                 <com.flyco.tablayout.SlidingTabLayout
                     android:id="@+id/tl_main"
                     android:layout_width="wrap_content"
-                    android:layout_height="45dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_marginLeft="50px"
                     android:layout_marginRight="50px"
                     android:background="@color/bg_white"
                     app:tl_divider_width="1px"
-                    app:tl_indicator_color="@color/colorPrimary"
+                    app:tl_indicator_color="@color/colorPrimaryDark"
+                    app:tl_indicator_height="4dp"
                     app:tl_indicator_width_equal_title="true"
                     app:tl_tab_padding="30px"
-                    app:tl_textSelectColor="@color/colorPrimary"
+                    app:tl_textSelectColor="@color/colorPrimaryDark"
                     app:tl_textUnselectColor="@color/tv_name"
                     app:tl_textsize="15dp"
                     app:tl_underline_gravity="BOTTOM"
@@ -73,16 +74,14 @@
                 android:background="@drawable/act_home_msg_de"/>
         </com.zhy.autolayout.AutoLinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="5px"
-            android:background="@color/bg_gray"/>
+
     </com.zhy.autolayout.AutoLinearLayout>
 
     <com.xinyuan.xyshop.widget.NoScrollViewPager
         android:id="@+id/vp_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/bg_gray"
         android:layout_weight="1"/>
 
     <com.zhy.autolayout.AutoLinearLayout

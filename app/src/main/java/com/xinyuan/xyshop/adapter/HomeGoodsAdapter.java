@@ -26,14 +26,14 @@ import java.util.List;
  * Created by Administrator on 2017/6/5.
  */
 
-public class HomeGoodsAdapter extends BaseQuickAdapter<HomeModel.HomeGood, BaseViewHolder> {
+public class HomeGoodsAdapter extends BaseQuickAdapter<HomeModel.GoodModule.HomeGood, BaseViewHolder> {
 
-	public HomeGoodsAdapter(@LayoutRes int layoutResId, @Nullable List<HomeModel.HomeGood> data) {
+	public HomeGoodsAdapter(@LayoutRes int layoutResId, @Nullable List<HomeModel.GoodModule.HomeGood> data) {
 		super(layoutResId, data);
 	}
 
 	@Override
-	protected void convert(BaseViewHolder helper, HomeModel.HomeGood item) {
+	protected void convert(BaseViewHolder helper, HomeModel.GoodModule.HomeGood item) {
 
 		ImageView goodsImg = helper.getView(R.id.ivGoodPic);
 		GlideImageLoader.setImage(mContext, item.getImageUrl(), goodsImg);

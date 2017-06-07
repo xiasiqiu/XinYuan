@@ -5,10 +5,10 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-
+    <include layout="@layout/home_item_tab_title"/>
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="550px"
+        android:layout_height="150dp"
         android:orientation="horizontal">
 
         <ImageView

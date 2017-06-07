@@ -1,60 +1,58 @@
-<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                     android:layout_width="match_parent"
-                                     android:layout_height="160px"
-                                     android:background="@color/bg_white"
-                                     android:elevation="5dp"
-                                     android:orientation="horizontal">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:background="@color/bg_white"
+              android:elevation="10dp"
+              android:gravity="center_vertical"
+              android:orientation="horizontal">
 
     <Button
         android:id="@+id/act_home_btn_home"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginTop="25px"
         android:layout_weight="1"
         android:background="@null"
         android:drawableTop="@drawable/selector_act_home_btn_home"
-        android:gravity="center"
+        android:paddingTop="5dp"
         android:text="@string/act_home_bottom_index"
-        android:textSize="36px"
-        android:textColor="@drawable/selector_act_home_btn_text_color"/>
+        android:textColor="@drawable/selector_act_home_btn_text_color"
+        android:textSize="@dimen/tv_Normal"/>
 
     <Button
         android:id="@+id/act_home_btn_category"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginTop="28px"
         android:layout_weight="1"
         android:background="@null"
         android:drawableTop="@drawable/selector_act_home_btn_category"
-        android:gravity="center"
+        android:paddingTop="5dp"
         android:text="@string/act_home_bottom_category"
-        android:textSize="36px"
-        android:textColor="@drawable/selector_act_home_btn_text_color"/>
+        android:textColor="@drawable/selector_act_home_btn_text_color"
+        android:textSize="@dimen/tv_Normal"/>
 
 
     <Button
         android:id="@+id/act_home_btn_shopcar"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginTop="20px"
         android:layout_weight="1"
         android:background="@null"
         android:clickable="true"
         android:drawableTop="@drawable/selector_act_home_btn_shop_car"
+        android:paddingTop="5dp"
         android:text="@string/act_home_bottom_cart"
-        android:textSize="36px"
-        android:textColor="@drawable/selector_act_home_btn_text_color"/>
+        android:textColor="@drawable/selector_act_home_btn_text_color"
+        android:textSize="@dimen/tv_Normal"/>
 
     <Button
         android:id="@+id/act_home_btn_mine"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginTop="20px"
         android:layout_weight="1"
         android:background="@null"
         android:drawableTop="@drawable/selector_act_home_btn_my"
-        android:gravity="center"
+        android:paddingTop="5dp"
         android:text="@string/act_home_bottom_mine"
-        android:textSize="36px"
-        android:textColor="@drawable/selector_act_home_btn_text_color"/>
-</com.zhy.autolayout.AutoLinearLayout>
+        android:textColor="@drawable/selector_act_home_btn_text_color"
+        android:textSize="@dimen/tv_Normal"/>
+</LinearLayout>
