@@ -55,7 +55,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/bg_white"
                         android:orientation="vertical"
-                        android:padding="30px">
+                        android:padding="10dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -68,24 +68,24 @@
                                 android:layout_height="wrap_content"
                                 android:text="￥799"
                                 android:textColor="@color/tv_price"
-                                android:textSize="40px"/>
+                                android:textSize="@dimen/tv_Regular"/>
 
                             <TextView
                                 android:id="@+id/tv_old_price"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="50px"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
                                 android:gravity="center_vertical"
                                 android:text="￥799"
                                 android:textColor="@color/tv_name"
-                                android:textSize="32px"/>
+                                android:textSize="@dimen/tv_small"/>
 
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="30px">
+                            android:layout_marginTop="10dp">
 
 
                             <TextView
@@ -100,32 +100,32 @@
                                 android:id="@+id/tv_goods_sellnum"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="50px"
+                                android:layout_marginLeft="18dp"
                                 android:gravity="center_vertical"
                                 android:text="月销量：143笔"
                                 android:textColor="@color/tv_hint"
-                                android:textSize="36px"/>
+                                android:textSize="@dimen/tv_Normal"/>
 
                             <TextView
                                 android:id="@+id/tv_goods_talk"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="50px"
+                                android:layout_marginLeft="18dp"
                                 android:gravity="center_vertical"
                                 android:text="评论：82条"
                                 android:textColor="@color/tv_hint"
-                                android:textSize="36px"/>
+                                android:textSize="@dimen/tv_Normal"/>
                         </LinearLayout>
                         <!-- 商品保障图 -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="30px">
+                            android:layout_marginTop="10dp">
 
                             <ImageView
                                 android:id="@+id/iv_ensure"
-                                android:layout_width="700px"
-                                android:layout_height="30px"
+                                android:layout_width="230dp"
+                                android:layout_height="10dp"
                                 android:scaleType="fitXY"
                                 android:src="@drawable/item_goods_ensure"/>
 
@@ -139,7 +139,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:background="@color/bg_white"
-                        android:padding="30px">
+                        android:padding="10dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -152,7 +152,7 @@
                             android:id="@+id/tvGoodDiscount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="125px"
+                            android:layout_marginLeft="42dp"
                             android:text="满2件8折；满3件7折 。 "
                             android:textColor="@color/tv_name"
                             android:textSize="@dimen/tv_Normal"/>
@@ -172,7 +172,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
                         android:background="@color/bg_white"
-                        android:padding="30px">
+                        android:padding="10dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -185,7 +185,7 @@
                             android:id="@+id/tv_current_goods"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="125px"
+                            android:layout_marginLeft="42dp"
                             android:text="尺码 颜色"
                             android:textColor="@color/tv_name"
                             android:textSize="@dimen/tv_Normal"/>
@@ -246,31 +246,32 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/bg_white"
-                        android:padding="30px">
+                        android:padding="10dp">
 
                         <ImageView
                             android:id="@+id/iv_good_store_img"
-                            android:layout_width="180px"
-                            android:layout_height="175px"
+                            android:layout_width="60dp"
+                            android:layout_height="55dp"
                             android:src="@drawable/test_good_store"/>
 
                         <TextView
                             android:id="@+id/tv_good_store_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="30px"
+                            android:layout_marginLeft="10dp"
                             android:layout_toRightOf="@+id/iv_good_store_img"
                             android:text="梅子熟了 文艺复古清新女装"
+                            android:textSize="@dimen/tv_Normal"
                             android:textColor="@color/tv_name"/>
 
 
                         <Button
                             android:id="@+id/iv_good_store"
                             style="?android:attr/borderlessButtonStyle"
-                            android:layout_width="190px"
-                            android:layout_height="60px"
-                            android:layout_marginLeft="30px"
-                            android:layout_marginTop="120px"
+                            android:layout_width="65dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="40dp"
                             android:layout_toRightOf="@+id/iv_good_store_img"
                             android:background="@drawable/good_bt_store"
                             android:button="@null"
@@ -280,14 +281,14 @@
 
                         <View
                             android:layout_width="2px"
-                            android:layout_height="175px"
-                            android:layout_marginLeft="800px"
+                            android:layout_height="55dp"
+                            android:layout_marginLeft="230dp"
                             android:background="@color/colorLine"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="830px"
+                            android:layout_marginLeft="240dp"
                             android:text="宝贝描述"
                             android:textColor="@color/tv_hint"
                             android:textSize="@dimen/tv_small"/>
@@ -295,8 +296,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="830px"
-                            android:layout_marginTop="75px"
+                            android:layout_marginLeft="240dp"
+                            android:layout_marginTop="25dp"
                             android:text="卖家服务"
                             android:textColor="@color/tv_hint"
                             android:textSize="@dimen/tv_small"/>
@@ -304,8 +305,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="830px"
-                            android:layout_marginTop="138px"
+                            android:layout_marginLeft="240dp"
+                            android:layout_marginTop="45dp"
                             android:text="物流服务"
                             android:textColor="@color/tv_hint"
                             android:textSize="@dimen/tv_small"/>
@@ -314,7 +315,7 @@
                             android:id="@+id/tvStoreDescPoint"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="975px"
+                            android:layout_marginLeft="285dp"
                             android:text="4.8"
                             android:textColor="@color/tv_price"
                             android:textSize="@dimen/tv_small"/>
@@ -323,8 +324,8 @@
                             android:id="@+id/tvStoreServicePoint"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="975px"
-                            android:layout_marginTop="75px"
+                            android:layout_marginLeft="285dp"
+                            android:layout_marginTop="25dp"
                             android:text="4.8"
                             android:textColor="@color/tv_price"
                             android:textSize="@dimen/tv_small"/>
@@ -333,8 +334,8 @@
                             android:id="@+id/tvStoreDeliveryPoint"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="975px"
-                            android:layout_marginTop="138px"
+                            android:layout_marginLeft="285dp"
+                            android:layout_marginTop="45dp"
                             android:text="4.8"
                             android:textColor="@color/tv_price"
                             android:textSize="@dimen/tv_small"/>
@@ -345,7 +346,7 @@
                     <LinearLayout
                         android:id="@+id/ll_pull_up"
                         android:layout_width="match_parent"
-                        android:layout_height="44dp"
+                        android:layout_height="30dp"
                         android:layout_marginTop="10dp"
                         android:background="@color/bg_white"
                         android:clickable="true"
@@ -363,7 +364,7 @@
                             android:layout_marginLeft="6dp"
                             android:text="上拉查看图文详情"
                             android:textColor="#222222"
-                            android:textSize="14dp"/>
+                            android:textSize="@dimen/tv_Normal"/>
                     </LinearLayout>
 
 
