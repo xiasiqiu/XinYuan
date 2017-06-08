@@ -4,7 +4,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <include layout="@layout/home_item_tab_title"/>
+    <include layout="@layout/fragment_home_item_tab_title"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_home_goods"

@@ -9,25 +9,22 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
-import android.transition.Slide;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.google.android.flexbox.FlexboxLayout;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.SimpleEvaluateAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
-import com.xinyuan.xyshop.common.AddViewHolder;
 import com.xinyuan.xyshop.entity.BuyData;
 import com.xinyuan.xyshop.entity.GoodDetailVo;
 import com.xinyuan.xyshop.entity.Goods;
@@ -45,7 +42,6 @@ import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.xframe.utils.log.XLog;
-import com.zhy.autolayout.AutoRelativeLayout;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -93,11 +89,11 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 
 	@BindView(R.id.llGoodDiscount)
-	AutoRelativeLayout ll_discount;
+	RelativeLayout ll_discount;
 	@BindView(R.id.ll_current_goods)
-	AutoRelativeLayout ll_current;
+	RelativeLayout ll_current;
 	@BindView(R.id.ll_comment)
-	AutoRelativeLayout ll_comment;
+	RelativeLayout ll_comment;
 
 	@BindView(R.id.rvEvaluate)
 	RecyclerView rvEvaluate;
@@ -249,7 +245,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		XLog.list(data);
 
 
-		this.simpleEvaluateAdapter = new SimpleEvaluateAdapter(R.layout.evaluate_item_simple, data);
+		this.simpleEvaluateAdapter = new SimpleEvaluateAdapter(R.layout.fragment_good_item_evaluate, data);
 
 
 		FullyLinearLayoutManager linearLayoutManager = new FullyLinearLayoutManager(context);
@@ -261,11 +257,9 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	}
 
 
-
 	@Subscribe(threadMode = ThreadMode.MAIN) //第2步:注册一个在后台线程执行的方法,用于接收事件
 	public void onUserEvent(GoodBusBean event) {//参数必须是ClassEvent类型, 否则不会调用此方法
 	}
-
 
 
 	SimpleEvaluateAdapter simpleEvaluateAdapter;

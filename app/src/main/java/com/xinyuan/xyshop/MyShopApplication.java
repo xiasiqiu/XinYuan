@@ -9,8 +9,7 @@ import com.lzy.okgo.cache.CacheMode;
 import com.xinyuan.xyshop.common.Constants;
 import com.youth.xframe.XFrame;
 import com.youth.xframe.base.XApplication;
-import com.youth.xframe.cache.XCache;
-import com.zhy.autolayout.config.AutoLayoutConifg;
+
 
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -35,7 +34,6 @@ public class MyShopApplication extends XApplication {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		AutoLayoutConifg.getInstance().useDeviceSize();
 		XFrame.init(this);
 		TAG = this.getClass().getSimpleName();
 		instance = MyShopApplication.this;

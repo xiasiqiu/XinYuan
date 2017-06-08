@@ -14,7 +14,7 @@ import com.xinyuan.xyshop.util.ViewHolder;
 
 public class BrandGridViewAdapter extends CommonAdapter<Brand> {
 	public BrandGridViewAdapter(Context context) {
-		super(context, R.layout.category_item_brand);
+		super(context, R.layout.fragment_category_item_brand);
 	}
 
 	public void convert(ViewHolder holder, final Brand brand) {

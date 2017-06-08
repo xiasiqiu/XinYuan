@@ -124,7 +124,7 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 
 	@Override
 	public void showFrist(CategoryData classItem, int m) {
-		AddViewHolder holder = new AddViewHolder(getActivity(), R.layout.category_item_frist);
+		AddViewHolder holder = new AddViewHolder(getActivity(), R.layout.fragment_category_item_frist);
 		holder.setText(R.id.tvGoodsClassId, String.valueOf(classItem.getCategoryId())).setText(R.id.tv_category_first, classItem.getCategoryName());
 		if (m == 0) {
 			setCurrentGoodsClass(holder, classItem.getCategoryImageUrl());
@@ -173,7 +173,7 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 
 
 	private void showRightView(final CategoryData goodsCategory, int position) {
-		AddViewHolder holder = new AddViewHolder(getActivity(), R.layout.category_item_class);
+		AddViewHolder holder = new AddViewHolder(getActivity(), R.layout.fragment_category_item_class);
 
 		GridView gvGoodsClass = (GridView) holder.getCustomView().findViewById(R.id.gvGoodsClass);
 		if (position == 0) {

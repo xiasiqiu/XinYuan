@@ -18,6 +18,7 @@ import com.trello.rxlifecycle.android.FragmentEvent;
 import com.trello.rxlifecycle.android.RxLifecycleAndroid;
 import com.xinyuan.xyshop.MyShopApplication;
 import com.youth.xframe.base.ICallback;
+import com.youth.xframe.utils.log.XLog;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -152,6 +153,8 @@ public abstract class BaseFragment extends Fragment implements ICallback, Lifecy
 		lifecycleSubject.onNext(FragmentEvent.DESTROY);
 		mUnbinder.unbind();
 		super.onDestroy();
+		XLog.d("-----------------------Acitivty已经销毁了------------------");
+
 	}
 
 	@Override

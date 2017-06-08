@@ -17,7 +17,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -34,11 +33,10 @@ import com.xinyuan.xyshop.entity.SelectFilterTest;
 import com.xinyuan.xyshop.mvp.contract.GoodSearchShowContract;
 import com.xinyuan.xyshop.mvp.presenter.SearchGoodsShowPresenterImpl;
 import com.xinyuan.xyshop.util.CommUtil;
-import com.youth.xframe.adapter.XRecyclerViewAdapter;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.XToast;
 import com.youth.xframe.widget.loadingview.XLoadingView;
-import com.zhy.autolayout.AutoLinearLayout;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +63,7 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 	TextView btnSale; //筛选_销量优先
 
 	@BindView(R.id.llScreen)
-	AutoLinearLayout llScreen; //筛选_筛选layout
+	LinearLayout llScreen; //筛选_筛选layout
 	@BindView(R.id.ivScreen)
 	ImageView ivScreen; //筛选_筛选ImageView
 	@BindView(R.id.btnScreen)
@@ -180,14 +178,14 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 			layoutManager.setOrientation(1);
 			this.rvGoods.setLayoutManager(layoutManager);
 			this.manager = layoutManager;
-			this.adapter = new SearchGoodListAdapter(R.layout.searchgood_item_list, goodses, isList);
+			this.adapter = new SearchGoodListAdapter(R.layout.item_good_list, goodses, isList);
 			this.adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
 			this.rvGoods.setAdapter(adapter);
 		} else {
 			GridLayoutManager layoutManager2 = new GridLayoutManager(this.context, 2, 1, false);
 			this.rvGoods.setLayoutManager(layoutManager2);
 			this.manager = layoutManager2;
-			this.adapter = new SearchGoodListAdapter(R.layout.searchgood_item_grid, goodses, isList);
+			this.adapter = new SearchGoodListAdapter(R.layout.activity_searchgood_item_grid, goodses, isList);
 			this.rvGoods.setAdapter(adapter);
 		}
 
@@ -266,7 +264,7 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 	public void showSortPopWindow(View view) {
 		sortSelected(true, false, false);
 		if (this.popSort == null) {
-			View viewPopSort = LayoutInflater.from(this).inflate(R.layout.popwindow_goods_sort, null);
+			View viewPopSort = LayoutInflater.from(this).inflate(R.layout.item_good_sort_popwindow, null);
 			this.popSort = new PopupWindow(viewPopSort, -50, -50, true);
 			this.popSort.setTouchable(true);
 			this.popSort.setOutsideTouchable(true);

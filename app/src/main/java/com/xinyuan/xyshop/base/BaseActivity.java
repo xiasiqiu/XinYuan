@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.Window;
 
@@ -17,10 +18,9 @@ import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.youth.xframe.base.ICallback;
 import com.youth.xframe.common.XActivityStack;
+import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.utils.permission.XPermission;
 import com.youth.xframe.utils.statusbar.XStatusBar;
-import com.zhy.autolayout.AutoLayoutActivity;
-
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import rx.Observable;
@@ -34,7 +34,7 @@ import org.greenrobot.eventbus.EventBus;
  * Created by fx on 2017/5/2 0002.
  */
 
-public abstract class BaseActivity extends AutoLayoutActivity implements ICallback, LifecycleProvider<ActivityEvent> {
+public abstract class BaseActivity extends AppCompatActivity implements ICallback, LifecycleProvider<ActivityEvent> {
 
 
 	private final BehaviorSubject<ActivityEvent> lifecycleSubject = BehaviorSubject.create();
@@ -105,6 +105,8 @@ public abstract class BaseActivity extends AutoLayoutActivity implements ICallba
 		EventBus.getDefault().unregister(this);//反注册
 		XActivityStack.getInstance().finishActivity();
 		super.onDestroy();
+		XLog.d("-----------------------Acitivty已经销毁了------------------");
+
 
 
 	}

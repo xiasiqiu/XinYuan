@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                      android:layout_width="match_parent"
                                      android:layout_height="match_parent"
                                      android:layout_marginBottom="10px"
                                      android:layout_marginTop="10px"
                                      android:orientation="vertical" >
 
-    <com.zhy.autolayout.AutoLinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/bg_white"
@@ -27,7 +27,7 @@
             android:text="recommendation"
             android:textColor="@color/tv_hint"
             android:textSize="@dimen/tv_Regular"/>
-    </com.zhy.autolayout.AutoLinearLayout>
+    </LinearLayout>
 
 
     <android.support.v7.widget.RecyclerView
@@ -36,4 +36,4 @@
         android:layout_height="match_parent"/>
 
 
-</com.zhy.autolayout.AutoLinearLayout>
+</LinearLayout>

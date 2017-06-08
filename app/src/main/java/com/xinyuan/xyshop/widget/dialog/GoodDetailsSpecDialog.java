@@ -3,7 +3,6 @@ package com.xinyuan.xyshop.widget.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -62,7 +61,7 @@ public class GoodDetailsSpecDialog extends Dialog {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.gooddetails_spec_dialog);
+		setContentView(R.layout.fragment_good_dialog_spec);
 		ButterKnife.bind((Dialog) this);
 
 		ArrayList<MultiItemEntity> res = new ArrayList<>();

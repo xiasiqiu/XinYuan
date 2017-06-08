@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/llBrandItem"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8px"
+        android:layout_marginTop="20px"
+        android:background="@color/bg_white"
+        android:padding="10px">
+
+        <ImageView
+            android:id="@+id/ivBrandPic"
+            android:layout_width="235px"
+            android:layout_height="128px"
+            android:layout_centerInParent="true"
+            android:adjustViewBounds="true"
+            android:clickable="false"
+            android:focusable="false"
+            android:scaleType="fitXY"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

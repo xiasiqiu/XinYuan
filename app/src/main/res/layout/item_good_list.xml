@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="2px"
+              android:background="@color/bg_white"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivGoodPic"
+            android:layout_width="105dp"
+            android:layout_height="105dp"
+            android:layout_margin="10dp"
+            android:scaleType="fitXY"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="105dp"
+            android:layout_margin="10dp"
+            android:layout_marginRight="66dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_goods_name"
+                style="@style/GoodsNameTextView"/>
+
+            <TextView
+                android:id="@+id/tv_goods_postage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:letterSpacing="0.1"
+                android:lineSpacingExtra="6dp"
+                android:lines="1"
+                android:text="包邮"
+                android:textColor="@color/tv_price"
+                android:textSize="36px"/>
+
+            <TextView
+                android:id="@+id/tv_goods_price"
+                style="@style/GoodsPriceTextView"
+                android:layout_marginTop="10dp"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/tv_goods_sellnum"
+                    style="@style/SmallHintTextView"/>
+
+                <TextView
+                    android:id="@+id/tv_goods_talk"
+                    style="@style/SmallHintTextView"
+                    android:layout_marginLeft="13dp"
+                    />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorLine"/>
+</LinearLayout>

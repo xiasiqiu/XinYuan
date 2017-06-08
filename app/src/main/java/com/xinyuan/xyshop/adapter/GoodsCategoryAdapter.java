@@ -1,7 +1,6 @@
 package com.xinyuan.xyshop.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 
 import com.xinyuan.xyshop.R;
@@ -19,7 +18,7 @@ import com.youth.xframe.utils.log.XLog;
 
 public class GoodsCategoryAdapter extends CommonAdapter<CategoryData> {
 	public GoodsCategoryAdapter(Context context) {
-		super(context, R.layout.category_gridview_item);
+		super(context, R.layout.fragment_category_item_gridview);
 	}
 
 	public void convert(ViewHolder holder, final CategoryData goodsCategory) {

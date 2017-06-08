@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                        android:layout_width="match_parent"
                                        android:layout_height="665px"
                                        android:padding="30px">
 
-    <com.zhy.autolayout.AutoRelativeLayout
+    <RelativeLayout
         android:id="@+id/iv_store_co_1"
         android:layout_width="360px"
         android:layout_height="605px">
@@ -24,9 +24,9 @@
             android:textColor="@color/bg_white"
             android:textSize="@dimen/tv_light"/>
 
-    </com.zhy.autolayout.AutoRelativeLayout>
+    </RelativeLayout>
 
-    <com.zhy.autolayout.AutoRelativeLayout
+    <RelativeLayout
         android:id="@+id/iv_store_co_2"
         android:layout_width="630px"
         android:layout_height="260px"
@@ -48,9 +48,9 @@
             android:textSize="@dimen/tv_light"/>
 
 
-    </com.zhy.autolayout.AutoRelativeLayout>
+    </RelativeLayout>
 
-    <com.zhy.autolayout.AutoRelativeLayout
+    <RelativeLayout
         android:id="@+id/iv_store_co_3"
         android:layout_width="300px"
         android:layout_height="300px"
@@ -74,9 +74,9 @@
             android:textSize="@dimen/tv_light"/>
 
 
-    </com.zhy.autolayout.AutoRelativeLayout>
+    </RelativeLayout>
 
-    <com.zhy.autolayout.AutoRelativeLayout
+    <RelativeLayout
         android:id="@+id/iv_store_co_4"
         android:layout_width="300px"
         android:layout_height="300px"
@@ -101,5 +101,5 @@
             android:textSize="@dimen/tv_light"/>
 
 
-    </com.zhy.autolayout.AutoRelativeLayout>
-</com.zhy.autolayout.AutoRelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

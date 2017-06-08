@@ -40,7 +40,7 @@ public class GoodsDetailWebFragment extends Fragment {
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setBuiltInZoomControls(true);
         webSettings.setLoadsImagesAutomatically(true);
-        webSettings.setRenderPriority(WebSettings.RenderPriority.HIGH);
+        webSettings.setRenderPriority(WebSettings.RenderPriority.NORMAL);
         webSettings.setBlockNetworkImage(true);
         webSettings.setUseWideViewPort(true);
         webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);

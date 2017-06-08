@@ -10,7 +10,7 @@
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp">
 
-    <com.zhy.autolayout.AutoRelativeLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
         android:background="@color/bg_white"
@@ -45,7 +45,7 @@
             />
 
 
-    </com.zhy.autolayout.AutoRelativeLayout>
+    </RelativeLayout>
 
 
 </android.support.v7.widget.Toolbar>

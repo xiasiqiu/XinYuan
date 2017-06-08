@@ -13,7 +13,7 @@
         android:background="@color/bg_white">
 
 
-        <com.zhy.autolayout.AutoRelativeLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorTransparency"
@@ -52,7 +52,7 @@
                 android:layout_marginTop="20px"
                 android:src="@color/tv_price"/>
 
-        </com.zhy.autolayout.AutoRelativeLayout>
+        </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>
 

@@ -41,7 +41,6 @@ dependencies {
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.15'
     compile 'com.youth.banner:banner:1.4.9'
     compile 'com.sunfusheng:marqueeview:1.1.0'
-    compile 'com.zhy:autolayout:1.4.5'
     compile 'com.trello:rxlifecycle:1.0'
     compile 'com.trello:rxlifecycle-components:1.0'
     compile 'com.github.paolorotolo:appintro:1.1.0'

@@ -3,7 +3,6 @@ package com.xinyuan.xyshop.widget.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 
 import com.xinyuan.xyshop.R;
@@ -46,7 +45,7 @@ public class GoodDetailsPromotionDialog extends Dialog {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.gooddetails_promotion_dialog);
+		setContentView(R.layout.fragment_good_dialog_promotion);
 		ButterKnife.bind((Dialog) this);
 	}
 

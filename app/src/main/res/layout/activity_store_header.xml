@@ -11,7 +11,7 @@
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp">
 
-    <com.zhy.autolayout.AutoRelativeLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize"
         android:background="@color/colorTransparency"
@@ -27,7 +27,7 @@
             android:layout_marginLeft="50px"
             android:src="@drawable/icon_back_w"/>
 
-        <com.zhy.autolayout.AutoLinearLayout
+        <LinearLayout
             android:layout_width="770px"
             android:layout_height="90px"
             android:layout_centerInParent="true"
@@ -59,7 +59,7 @@
                 />
 
 
-        </com.zhy.autolayout.AutoLinearLayout>
+        </LinearLayout>
 
 
         <ImageView
@@ -80,5 +80,5 @@
             android:layout_marginTop="25px"
             android:src="@color/tv_price"/>
 
-    </com.zhy.autolayout.AutoRelativeLayout>
+    </RelativeLayout>
 </android.support.v7.widget.Toolbar>

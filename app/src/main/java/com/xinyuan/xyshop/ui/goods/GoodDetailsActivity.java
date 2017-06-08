@@ -73,8 +73,7 @@ public class GoodDetailsActivity extends BaseActivity {
 
 		vp_content.setAdapter(new ItemTitlePagerAdapter(getSupportFragmentManager(),
 				fragmentList, new String[]{"商品", "详情", "评价", "推荐"}));
-		vp_content.setOffscreenPageLimit(4);
-
+		vp_content.setOffscreenPageLimit(1);
 		mTlMain.setViewPager(vp_content);
 
 	}

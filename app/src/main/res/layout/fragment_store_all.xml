@@ -4,19 +4,19 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <com.zhy.autolayout.AutoLinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/bg_gray"
         android:orientation="vertical">
 
-        <com.zhy.autolayout.AutoLinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="110px"
             android:background="@color/bg_white"
             android:orientation="horizontal">
 
-            <com.zhy.autolayout.AutoLinearLayout
+            <LinearLayout
                 android:id="@+id/llSort"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
                     android:background="@drawable/goodshow_down_bg"/>
-            </com.zhy.autolayout.AutoLinearLayout>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/btnSale"
@@ -52,7 +52,7 @@
                 android:textSize="@dimen/tv_Normal"/>
 
 
-            <com.zhy.autolayout.AutoLinearLayout
+            <LinearLayout
                 android:id="@+id/llScreen"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
                     android:background="@drawable/goodshow_down_bg"/>
-            </com.zhy.autolayout.AutoLinearLayout>
+            </LinearLayout>
 
             <FrameLayout
                 android:id="@+id/flListType"
@@ -91,7 +91,7 @@
                     android:background="@color/bg_white"
                     android:src="@drawable/btn_goods_list_type"/>
             </FrameLayout>
-        </com.zhy.autolayout.AutoLinearLayout>
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
@@ -135,5 +135,5 @@
 
         </com.youth.xframe.widget.loadingview.XLoadingView>
 
-    </com.zhy.autolayout.AutoLinearLayout>
+    </LinearLayout>
 </LinearLayout>

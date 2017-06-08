@@ -29,11 +29,9 @@ import com.xinyuan.xyshop.entity.StoreInfo;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.XToast;
-import com.zhy.autolayout.AutoRelativeLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -53,7 +51,7 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 	@BindView(R.id.rv_shopcar)
 	RecyclerView rv_Car;
 	@BindView(R.id.rl_car_login_notice)
-	AutoRelativeLayout rl_car_login_notice;
+	RelativeLayout rl_car_login_notice;
 	private static int num = 1;
 	ShopCarAdapter adapter;
 	@BindView(R.id.good_checkbox)
@@ -120,6 +118,7 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 	}
 
 	private static boolean VIEW_INIT = true;
+
 	@Override
 	public void initView() {
 		if (VIEW_INIT) {
@@ -416,7 +415,7 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 	}
 
 	@BindView(R.id.rl_bottom)
-	AutoRelativeLayout rl_bottom;
+	RelativeLayout rl_bottom;
 	@BindView(R.id.layout_cart_empty)
 	LinearLayout cart_empty;
 
@@ -451,8 +450,8 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 			goodsVo.setGoodsSaleNum(122);
 			list.add(goodsVo);
 		}
-		XLog.list(list);
-		SearchGoodListAdapter adapters = new SearchGoodListAdapter(R.layout.searchgood_item_grid, list, false);
+
+		SearchGoodListAdapter adapters = new SearchGoodListAdapter(R.layout.activity_searchgood_item_grid, list, false);
 		GridLayoutManager layoutManager2 = new GridLayoutManager(this.context, 2, 1, false);
 		rv_recomm.setLayoutManager(layoutManager2);
 		rv_recomm.setAdapter(adapters);

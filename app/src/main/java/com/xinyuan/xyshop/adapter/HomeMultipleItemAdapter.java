@@ -13,8 +13,7 @@ import com.xinyuan.xyshop.entity.HomeMultipleItem;
 import com.xinyuan.xyshop.model.HomeModel;
 import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
 import com.xinyuan.xyshop.util.GlideImageLoader;
-import com.youth.xframe.utils.log.XLog;
-import com.zhy.autolayout.utils.AutoUtils;
+
 
 import java.util.List;
 
@@ -30,9 +29,9 @@ public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMulti
 
 	public HomeMultipleItemAdapter(Context context, List data) {
 		super(data);
-		addItemType(HomeMultipleItem.AD, R.layout.home_item_ad);
-		addItemType(HomeMultipleItem.TAB, R.layout.home_item_tab);
-		addItemType(HomeMultipleItem.CATEGORY, R.layout.home_item_category);
+		addItemType(HomeMultipleItem.AD, R.layout.fragment_home_item_ad);
+		addItemType(HomeMultipleItem.TAB, R.layout.fragment_home_item_tab);
+		addItemType(HomeMultipleItem.CATEGORY, R.layout.fragment_home_item_category);
 		this.context = context;
 		dataList = HomePresenterImpl.getModuleList();
 
@@ -41,7 +40,7 @@ public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMulti
 	@Override
 	protected void convert(BaseViewHolder helper, HomeMultipleItem item) {
 
-		AutoUtils.autoSize(helper.getConvertView());
+
 
 		switch (item.getItemType()) {
 			case HomeMultipleItem.AD:

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.LinearLayout;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -18,9 +17,7 @@ import com.xinyuan.xyshop.entity.MySection;
 import com.xinyuan.xyshop.http.Urls;
 import com.xinyuan.xyshop.util.JsonUtil;
 import com.xinyuan.xyshop.util.LetterComparator;
-import com.xinyuan.xyshop.util.PinnedHeaderDecoration;
 import com.xinyuan.xyshop.widget.WaveSideBarView;
-import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.loadingview.XLoadingView;
 
 import java.util.ArrayList;
@@ -122,7 +119,7 @@ public class BrandActivity extends BaseActivity {
 
 			lists.add(0, new MySection(true, "品牌推荐#", false));
 
-			brandAdapter = new BrandAdapter(R.layout.brand_item, R.layout.brand_item_pinned_header, lists);
+			brandAdapter = new BrandAdapter(R.layout.activity_brand_item, R.layout.activity_brand_item_header, lists);
 			rv_brand.setAdapter(brandAdapter);
 
 			mSideBarView.setOnTouchLetterChangeListener(new WaveSideBarView.OnTouchLetterChangeListener() {

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/bg_white"
+              android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:background="@color/bg_gray"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="6dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="6dp">
+
+
+        <CheckBox
+            android:id="@+id/store_checkbox"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+
+            android:layout_centerVertical="true"
+            android:background="@drawable/checkbox_selector"
+            android:button="@null"/>
+
+        <TextView
+            android:id="@+id/tv_store_name"
+            style="@style/LightTextView"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@+id/store_checkbox"
+            android:text="鑫园共享"/>
+
+        <TextView
+            android:id="@+id/tv_goods_spe"
+            style="@style/SmallTextView"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_flow_selected"
+            android:text="虚拟兑换"
+            android:textColor="@color/bg_white"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_disCount"
+            style="@style/LightTextView"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="包邮费"/>
+    </RelativeLayout>
+</LinearLayout>

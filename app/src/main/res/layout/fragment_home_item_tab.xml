@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <include layout="@layout/fragment_home_item_tab_title"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/home_tab_img1"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:layout_weight="0.463"
+            android:scaleType="fitXY"/>
+
+
+        <ImageView
+            android:id="@+id/home_tab_img2"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:layout_weight="0.264"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/home_tab_img3"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="0.264"
+            android:scaleType="fitXY"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/home_tab_img4"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:layout_weight="0.463"
+            android:scaleType="fitXY"/>
+
+
+        <ImageView
+            android:id="@+id/home_tab_img5"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:layout_weight="0.265"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/home_tab_img6"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="0.264"
+            android:scaleType="fitXY"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

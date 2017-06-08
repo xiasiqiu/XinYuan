@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/bg_white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="240px"
+        android:layout_height="150px">
+
+        <TextView
+            android:id="@+id/tvGoodsClassId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_category_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_Regular"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/normal_bg"/>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

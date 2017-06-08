@@ -1,6 +1,5 @@
 package com.xinyuan.xyshop.ui.home;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,38 +13,26 @@ import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
-import com.jauker.widget.BadgeView;
-import com.lzy.okgo.OkGo;
-import com.lzy.okgo.callback.StringCallback;
 import com.sunfusheng.marqueeview.MarqueeView;
-import com.trello.rxlifecycle.android.ActivityEvent;
 import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.ExpandableItemAdapter;
 import com.xinyuan.xyshop.adapter.HomeGoodsAdapter;
 import com.xinyuan.xyshop.adapter.HomeMultipleItemAdapter;
-import com.xinyuan.xyshop.adapter.SearchGoodListAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.bean.ExpandItem;
 import com.xinyuan.xyshop.entity.HomeMultipleItem;
-import com.xinyuan.xyshop.entity.ItemData;
-import com.xinyuan.xyshop.entity.KeyWord;
 import com.xinyuan.xyshop.entity.Menu;
-import com.xinyuan.xyshop.http.Urls;
 import com.xinyuan.xyshop.model.HomeModel;
 import com.xinyuan.xyshop.mvp.contract.HomeContract;
 import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
@@ -53,24 +40,18 @@ import com.xinyuan.xyshop.ui.goods.SearchGoodsActivity;
 import com.xinyuan.xyshop.ui.mine.MsgActivity;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
-import com.xinyuan.xyshop.util.JsonUtil;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
-import com.youth.xframe.common.XActivityStack;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.loadingview.XLoadingView;
-import com.zhy.autolayout.AutoRelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import okhttp3.Call;
-import okhttp3.Response;
 
 /**
  * Created by fx on 2017/5/9 0009.
@@ -92,7 +73,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	@BindView(R.id.home_toolbar)
 	Toolbar mToolbar;
 	@BindView(R.id.home_header_rl)
-	AutoRelativeLayout darkView;
+	RelativeLayout darkView;
 	@BindView(R.id.act_home_btn_scan)
 	ImageView mScan;
 	@BindView(R.id.act_home_btn_msg)
@@ -202,7 +183,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 		mSwipeRefreshLayout.setOnRefreshListener(this);
 		mSwipeRefreshLayout.setColorSchemeColors(Color.rgb(29, 160, 57));
-		headView = getActivity().getLayoutInflater().inflate(R.layout.home_top, (ViewGroup) mRecyclerView.getParent(), false);
+		headView = getActivity().getLayoutInflater().inflate(R.layout.fragment_home_top, (ViewGroup) mRecyclerView.getParent(), false);
 		final GridLayoutManager manager = new GridLayoutManager(context, 4);
 		mRecyclerView.setLayoutManager(manager);
 		homeMultipleItemAdapter = new HomeMultipleItemAdapter(this.getContext(), list);
@@ -343,7 +324,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		goodList = goodModule.getGoodList();
 
 
-		HomeGoodsAdapter adapters = new HomeGoodsAdapter(R.layout.searchgood_item_grid, goodList);
+		HomeGoodsAdapter adapters = new HomeGoodsAdapter(R.layout.activity_searchgood_item_grid, goodList);
 		GridLayoutManager layoutManager2 = new GridLayoutManager(this.context, 2, 1, false);
 		rv_goods.setLayoutManager(layoutManager2);
 		rv_goods.setAdapter(adapters);

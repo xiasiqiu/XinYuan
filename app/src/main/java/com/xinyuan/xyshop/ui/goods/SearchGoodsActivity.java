@@ -20,7 +20,6 @@ import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.JsonUtil;
 import com.xinyuan.xyshop.widget.OnFlexboxSubscribeListener;
 import com.xinyuan.xyshop.widget.TagFlowLayout;
-import com.xinyuan.xyshop.widget.dialog.SearchSortDialog;
 import com.youth.xframe.utils.log.XLog;
 
 import java.util.ArrayList;
@@ -40,8 +39,6 @@ public class SearchGoodsActivity extends BaseActivity {
 	TagFlowLayout tab_keyword;
 	@BindView(R.id.tag_flow_history)
 	TagFlowLayout tab_history;
-	@BindView(R.id.search_sort_name)
-	TextView search_sort_name;
 	@BindView(R.id.search_et)
 	EditText search_et;
 	@BindView(R.id.search_btn_back)
@@ -52,7 +49,7 @@ public class SearchGoodsActivity extends BaseActivity {
 	ImageView search_btn_search;
 
 
-	private SearchSortDialog sortDialog;
+
 	public static String showWord;
 	public static String keyWord;
 	private List<String> hotSearchs;
@@ -84,7 +81,6 @@ public class SearchGoodsActivity extends BaseActivity {
 
 		search_et.setHint(keyWord);
 		this.application = MyShopApplication.getInstance();
-		sortDialog = new SearchSortDialog(this, this.search_sort_name, this.search_sort_name);
 		search_et.addTextChangedListener(new TextWatcher() {
 			@Override
 			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -101,9 +97,6 @@ public class SearchGoodsActivity extends BaseActivity {
 				if (CommUtil.isEmpty(editable)) {
 					search_btn_delete.setVisibility(View.GONE);
 					return;
-				}
-				if (CommUtil.getText(search_sort_name).equals("商品")) {
-
 				}
 				search_btn_delete.setVisibility(View.VISIBLE);
 			}
@@ -172,12 +165,9 @@ public class SearchGoodsActivity extends BaseActivity {
 	}
 
 
-	@OnClick({R.id.search_sort_img, R.id.seach_btn_delete, R.id.search_btn_search, R.id.btnClearHistory,R.id.search_btn_back})
+	@OnClick({ R.id.seach_btn_delete, R.id.search_btn_search, R.id.btnClearHistory,R.id.search_btn_back})
 	public void onClick(View view) {
 		switch (view.getId()) {
-			case R.id.search_sort_img:
-				this.sortDialog.show();
-				return;
 			case R.id.seach_btn_delete:
 				this.search_et.setText("");
 				return;
@@ -188,19 +178,6 @@ public class SearchGoodsActivity extends BaseActivity {
 			case R.id.search_btn_search:
 				String key = CommUtil.getText(this.search_et);
 				HashMap<String, String> params;
-				if (CommUtil.getText(this.search_sort_name).equals("商品")) {
-					if (key.equals("")) {
-						key = this.keyWord;
-						saveKeyword(keyWord);
-					} else {
-						saveKeyword(key);
-					}
-					params = new HashMap();
-					params.put("keyword", key);
-
-					CommUtil.gotoActivity(this, SearchGoodsShowActivity.class, false, params);
-					return;
-				}
 				params = new HashMap();
 				params.put("keyword", key);
 				//CommUtil.gotoActivity(this, SearchStoresShowActivity.class, false, params);

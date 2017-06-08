@@ -2,12 +2,10 @@ package com.xinyuan.xyshop.ui.goods.store;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.flyco.tablayout.SlidingTabLayout;
-import com.gxz.PagerSlidingTabStrip;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.xinyuan.xyshop.R;
@@ -17,7 +15,6 @@ import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.entity.GoodsVo;
 import com.xinyuan.xyshop.entity.SearchGoodsList;
 import com.xinyuan.xyshop.util.JsonUtil;
-import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.xinyuan.xyshop.widget.NoScrollViewPager;
 import com.xinyuan.xyshop.widget.XYGridLayoutManager;
 import com.youth.xframe.utils.log.XLog;
@@ -96,7 +93,7 @@ public class StoreHomeFragment extends BaseFragment {
 	}
 
 	private void initlIST(List<GoodsVo> goodses) {
-		adapter = new SearchGoodListAdapter(R.layout.searchgood_item_grid, goodses, false);
+		adapter = new SearchGoodListAdapter(R.layout.activity_searchgood_item_grid, goodses, false);
 		rv_store_home.setAdapter(adapter);
 	}
 }

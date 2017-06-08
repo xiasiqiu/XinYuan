@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoLinearLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -7,14 +7,14 @@
     android:orientation="vertical">
 
 
-    <include layout="@layout/category_header"/>
+    <include layout="@layout/fragment_category_header"/>
 
     <com.youth.xframe.widget.loadingview.XLoadingView
         android:id="@+id/category_loadingView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <com.zhy.autolayout.AutoLinearLayout
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_marginTop="5px"
@@ -29,7 +29,7 @@
             android:overScrollMode="never"
             android:scrollbars="none">
 
-            <com.zhy.autolayout.AutoLinearLayout
+            <LinearLayout
                 android:id="@+id/llGoodsClassRoot"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
             android:overScrollMode="never"
             android:scrollbars="none">
 
-            <com.zhy.autolayout.AutoLinearLayout
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -63,14 +63,14 @@
                     android:background="@color/bg_white"
                     android:scaleType="fitXY"
                     android:layout_gravity="center_horizontal"/>
-                <com.zhy.autolayout.AutoLinearLayout
+                <LinearLayout
                     android:id="@+id/llGoodsClass"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"/>
-            </com.zhy.autolayout.AutoLinearLayout>
+            </LinearLayout>
         </ScrollView>
       </LinearLayout>
-    </com.zhy.autolayout.AutoLinearLayout>
+    </LinearLayout>
     </com.youth.xframe.widget.loadingview.XLoadingView>
-</com.zhy.autolayout.AutoLinearLayout>
+</LinearLayout>

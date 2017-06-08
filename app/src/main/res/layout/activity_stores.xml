@@ -2,6 +2,7 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                  xmlns:app="http://schemas.android.com/apk/res-auto"
                                                  android:layout_width="match_parent"
+                                                 android:background="@color/bg_gray"
                                                  android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
@@ -165,6 +166,7 @@
                 android:layout_height="41.0dip"
                 android:layout_gravity="bottom"
                 android:background="@color/bg_white"
+                android:elevation="6dp"
                 app:tl_divider_color="@color/colorLine"
                 app:tl_divider_padding="10.0dip"
                 app:tl_divider_width="1px"
@@ -187,6 +189,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/store__tabs"
         android:layout_marginTop="6dp"
+        android:background="@color/bg_gray"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <LinearLayout
@@ -194,7 +197,7 @@
         android:layout_height="45.0dip"
         android:layout_gravity="bottom"
         android:background="@color/bg_white"
-        android:elevation="10.0dip">
+        android:translationZ="10dp">
 
         <TextView
             android:id="@+id/tv_store_introduce"

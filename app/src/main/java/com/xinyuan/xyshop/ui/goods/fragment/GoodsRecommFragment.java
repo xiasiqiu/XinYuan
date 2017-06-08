@@ -5,9 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -16,9 +13,6 @@ import com.xinyuan.xyshop.adapter.SearchGoodListAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.entity.GoodsVo;
 import com.xinyuan.xyshop.entity.SearchGoodsList;
-import com.xinyuan.xyshop.entity.SearchGoodsListTest;
-import com.xinyuan.xyshop.http.Urls;
-import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.JsonUtil;
 import com.youth.xframe.utils.log.XLog;
 
@@ -76,7 +70,7 @@ public class GoodsRecommFragment extends BaseFragment {
 	}
 
 	private void initlIST(List<GoodsVo> goodses) {
-		adapter = new SearchGoodListAdapter(R.layout.searchgood_item_grid, goodses, false);
+		adapter = new SearchGoodListAdapter(R.layout.activity_searchgood_item_grid, goodses, false);
 		rv_recomm.setAdapter(adapter);
 	}
 }

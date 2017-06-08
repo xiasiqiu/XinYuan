@@ -39,7 +39,7 @@ public class XYToolbar extends Toolbar {
 	public XYToolbar(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 
-		view = LayoutInflater.from(getContext()).inflate(R.layout.header_common, null);
+		view = LayoutInflater.from(getContext()).inflate(R.layout.item_header_common, null);
 
 		iv_header_left = (ImageView) view.findViewById(R.id.iv_header_left);
 		rl_search = (RelativeLayout) view.findViewById(R.id.rl_search);

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_white"
+                android:paddingTop="10dp">
+
+    <RelativeLayout
+        android:id="@+id/llStar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/evaluate_star"
+        android:orientation="horizontal"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/customer_image"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="9dp"
+        android:src="@drawable/touxiang"/>
+
+    <TextView
+        android:id="@+id/customerName"
+        style="@style/evaluate_text_style"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/customer_image"
+        android:text="JJSRWE"
+        android:textColor="@color/tv_name"
+        android:textSize="@dimen/tv_Normal"/>
+
+    <TextView
+        android:id="@+id/evaluatetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/customerName"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/customer_image"
+        android:text="2017-05-12"
+        android:textColor="@color/tv_hint"
+        android:textSize="@dimen/tv_light"/>
+
+    <TextView
+        android:id="@+id/goodSpec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/customerName"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/evaluatetime"
+        android:text="颜色：K02黄色；尺码:M"
+        android:textColor="@color/tv_hint"
+        android:textSize="@dimen/tv_light"/>
+
+
+    <TextView
+        android:id="@+id/evaluateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/customerName"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:ellipsize="end"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="5dp"
+        android:maxLines="2"
+        android:text="裙裙非常漂亮，素静的花色，飘逸的下摆和绑带，很有感觉，很喜欢。背部胸部还有下摆是有内衬的，不会透。"
+        android:textColor="@color/tv_name"
+        android:textSize="@dimen/tv_Normal"/>
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/evaluateImages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/evaluateText"
+        android:layout_marginTop="10dp"
+        app:alignContent="flex_start"
+        app:flexWrap="wrap"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/evaluateImages"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorLine"/>
+
+    <LinearLayout
+        android:id="@+id/ll_evaluate_late"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/evaluateImages"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            style="@style/LightTextView"
+            android:text="用户2天后追评"
+            android:textColor="@color/tv_price"/>
+
+        <TextView
+            android:id="@+id/evaluateTextzhui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/customerName"
+            android:layout_marginTop="6dp"
+            android:ellipsize="end"
+            android:letterSpacing="0.01"
+            android:lineSpacingExtra="5dp"
+            android:maxLines="2"
+            android:text="凑合，面料比较软，不太挺阔，凑合,红红火火恍恍惚惚吼吼所所所所所所所所少时诵诗书所所所"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_Normal"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_evaluate_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_evaluate_late"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="15dp"
+            android:background="@drawable/test_good_eva_eye_de"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="5456"
+            android:textColor="@color/tv_hint"
+            android:textSize="@dimen/tv_light"
+            />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="200px"
+            android:src="@drawable/test_good_eva_dianz_de"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="152"
+            android:textColor="@color/tv_hint"
+            android:textSize="@dimen/tv_light"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/ll_evaluate_show"
+        android:layout_marginTop="8dp"
+        android:background="@color/bg_gray"/>
+</RelativeLayout>

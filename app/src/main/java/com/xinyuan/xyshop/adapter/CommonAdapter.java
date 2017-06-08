@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import com.xinyuan.xyshop.common.interfac.INCOnDel;
 import com.xinyuan.xyshop.common.interfac.INCOnEdit;
 import com.xinyuan.xyshop.util.ViewHolder;
-import com.zhy.autolayout.utils.AutoUtils;
+
 
 import java.util.List;
 
@@ -69,7 +69,6 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
         ViewHolder holder = ViewHolder.get(this.mContext, convertView, parent, this.layoutId, position);
         this.position = position;
         convert(holder, getItem(position));
-        AutoUtils.autoSize(holder.getConvertView());
         return holder.getConvertView();
     }
 }

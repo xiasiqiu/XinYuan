@@ -16,7 +16,7 @@ public class ThirdSlide extends Fragment {
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		View v = inflater.inflate(R.layout.guide_third, container, false);
+		View v = inflater.inflate(R.layout.activity_guide_third, container, false);
 
 		return v;
 

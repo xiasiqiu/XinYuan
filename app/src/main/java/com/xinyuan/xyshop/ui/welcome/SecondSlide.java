@@ -16,7 +16,7 @@ public class SecondSlide extends Fragment {
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		View v = inflater.inflate(R.layout.guide_second, container, false);
+		View v = inflater.inflate(R.layout.activity_guide_second, container, false);
 
 		return v;
 

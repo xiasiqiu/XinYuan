@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -24,9 +23,6 @@ import com.youth.xframe.utils.log.XLog;
 
 import java.util.List;
 import java.util.Map;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by Administrator on 2017/5/31.
@@ -46,8 +42,8 @@ public class ShopCarAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, B
 		super(data);
 		this.groups = groups;
 		this.children = children;
-		addItemType(TYPE_LEVEL_0, R.layout.shopcar_item_store_title);
-		addItemType(TYPE_LEVEL_1, R.layout.shopcar_item_good);
+		addItemType(TYPE_LEVEL_0, R.layout.fragment_shopcar_item_store_title);
+		addItemType(TYPE_LEVEL_1, R.layout.fragment_shopcar_item_good);
 	}
 
 	public void setmListener(GroupEdtorListener mListener) {
@@ -262,7 +258,7 @@ public class ShopCarAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, B
 	 */
 	private void showDialog(final GoodsInfo goodinfo, final EditText edittext) {
 		final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
-		View alertDialogView = LayoutInflater.from(mContext).inflate(R.layout.dialog_change_num, null, false);
+		View alertDialogView = LayoutInflater.from(mContext).inflate(R.layout.view_dialog_change_num, null, false);
 		final AlertDialog alertDialog = alertDialogBuilder.create();
 		alertDialog.setView(alertDialogView);
 		count = goodinfo.getCount();

@@ -2,24 +2,18 @@ package com.xinyuan.xyshop.ui.goods.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.adapter.ActHomePagerAdapter;
 import com.xinyuan.xyshop.adapter.SimpleEvaluateAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.entity.GoodsEvaluate;
 import com.xinyuan.xyshop.util.FullyLinearLayoutManager;
-import com.xinyuan.xyshop.widget.NotSlipViewPager;
 import com.youth.xframe.utils.log.XLog;
-import com.zhy.autolayout.AutoLinearLayout;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,15 +31,15 @@ public class GoodsCommentFragment extends BaseFragment {
 //	NotSlipViewPager nvp_eva_content;
 
 	@BindView(R.id.ll_eva_all)
-	AutoLinearLayout ll_eva_all;
+	LinearLayout ll_eva_all;
 	@BindView(R.id.ll_eva_good)
-	AutoLinearLayout ll_eva_good;
+	LinearLayout ll_eva_good;
 	@BindView(R.id.ll_eva_med)
-	AutoLinearLayout ll_eva_med;
+	LinearLayout ll_eva_med;
 	@BindView(R.id.ll_eva_bad)
-	AutoLinearLayout ll_eva_bad;
+	LinearLayout ll_eva_bad;
 	@BindView(R.id.ll_eva_pic)
-	AutoLinearLayout ll_eva_pic;
+	LinearLayout ll_eva_pic;
 
 	@BindView(R.id.tv_eva_all_num)
 	TextView tv_eva_all_num;
@@ -100,8 +94,8 @@ public class GoodsCommentFragment extends BaseFragment {
 		for (int j = 0; j < i; j++) {
 			data.add(new GoodsEvaluate());
 		}
-		XLog.list(data);
-		this.simpleEvaluateAdapter = new SimpleEvaluateAdapter(R.layout.evaluate_item_simple, data);
+
+		this.simpleEvaluateAdapter = new SimpleEvaluateAdapter(R.layout.fragment_good_item_evaluate, data);
 		FullyLinearLayoutManager linearLayoutManager = new FullyLinearLayoutManager(context);
 		rv_comment.setNestedScrollingEnabled(false);
 		//设置布局管理器

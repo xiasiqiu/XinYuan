@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                     xmlns:app="http://schemas.android.com/apk/res-auto"
-                                     android:layout_width="match_parent"
-                                     android:layout_height="match_parent"
-                                     android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -133,7 +133,7 @@
                     </LinearLayout>
 
 
-                    <com.zhy.autolayout.AutoRelativeLayout
+                    <RelativeLayout
                         android:id="@+id/llGoodDiscount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -164,9 +164,9 @@
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/icon_right_more"/>
-                    </com.zhy.autolayout.AutoRelativeLayout>
+                    </RelativeLayout>
                     <!-- 当前已选的商品 -->
-                    <com.zhy.autolayout.AutoRelativeLayout
+                    <RelativeLayout
                         android:id="@+id/ll_current_goods"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -196,7 +196,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/icon_right_more"/>
-                    </com.zhy.autolayout.AutoRelativeLayout>
+                    </RelativeLayout>
 
 
                     <!-- 用户点评 -->
@@ -242,7 +242,7 @@
                             android:layout_marginTop="1dp"/>
                     </RelativeLayout>
 
-                    <com.zhy.autolayout.AutoRelativeLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/bg_white"
@@ -261,8 +261,8 @@
                             android:layout_marginLeft="10dp"
                             android:layout_toRightOf="@+id/iv_good_store_img"
                             android:text="梅子熟了 文艺复古清新女装"
-                            android:textSize="@dimen/tv_Normal"
-                            android:textColor="@color/tv_name"/>
+                            android:textColor="@color/tv_name"
+                            android:textSize="@dimen/tv_Normal"/>
 
 
                         <Button
@@ -340,7 +340,7 @@
                             android:textColor="@color/tv_price"
                             android:textSize="@dimen/tv_small"/>
 
-                    </com.zhy.autolayout.AutoRelativeLayout>
+                    </RelativeLayout>
 
                     <!-- 上拉查看图文详情 -->
                     <LinearLayout
@@ -391,4 +391,4 @@
     </android.support.design.widget.CoordinatorLayout>
 
 
-</com.zhy.autolayout.AutoLinearLayout>
+</LinearLayout>

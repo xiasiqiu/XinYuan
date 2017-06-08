@@ -40,7 +40,7 @@ public class StoreVoucherDialog extends Dialog {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.dialog_store_voucher);
+		setContentView(R.layout.fragment_shopcar_dialog_store_voucher);
 		ButterKnife.bind((Dialog) this);
 
 		List<GoodsEvaluate> data = new ArrayList<>();

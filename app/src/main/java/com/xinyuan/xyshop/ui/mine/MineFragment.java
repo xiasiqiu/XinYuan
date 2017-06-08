@@ -37,13 +37,12 @@ public class MineFragment extends BaseFragment {
 	@Override
 	public void initView() {
 		ButterKnife.bind(this, getView());
-		toolbar= (Toolbar) getView().findViewById(R.id.mine_toolbar);
-		if(num==1){
-			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
-			SystemBarHelper.setHeightAndPadding(getActivity(), toolbar);
-
-
-		}
+//		toolbar= (Toolbar) getView().findViewById(R.id.mine_toolbar);
+//		if(num==1){
+//			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
+//			SystemBarHelper.setHeightAndPadding(getActivity(), toolbar);
+//
+//		}
 		XLog.v("我的页面切换"+num);
 		num++;
 	}

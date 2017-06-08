@@ -5,7 +5,7 @@
               android:background="@color/bg_gray"
               android:orientation="vertical">
     <!--底部区域-->
-    <include layout="@layout/fragment_eva_tab"/>
+    <include layout="@layout/fragment_good_eva_tab"/>
 
    <android.support.v7.widget.RecyclerView
        android:id="@+id/rv_comment"
