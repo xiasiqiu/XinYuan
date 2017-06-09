@@ -11,15 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/bg_white"
-        android:elevation="6dp"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/iv_back"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
             android:src="@drawable/icon_back"/>
 
 
@@ -49,6 +48,7 @@
                 app:tl_textUnselectColor="@color/tv_name"
                 app:tl_textsize="15dp"
                 app:tl_underline_gravity="BOTTOM"
+                app:tl_underline_height="2px"
                 />
 
             <TextView
@@ -64,13 +64,24 @@
 
         <ImageView
             android:id="@+id/detail_btn_msg"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="15dp"
             android:background="@drawable/act_home_msg_de"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@color/tv_price"/>
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/colorLine"/>
 
     <com.xinyuan.xyshop.widget.NoScrollViewPager
         android:id="@+id/vp_content"
@@ -84,9 +95,9 @@
         android:layout_height="45dp"
         android:layout_gravity="bottom"
         android:background="@color/bg_white"
-        android:translationZ="10dp"
+        android:orientation="horizontal"
 
-        android:orientation="horizontal">
+        android:translationZ="10dp">
 
 
         <Button

@@ -166,7 +166,6 @@
                 android:layout_height="41.0dip"
                 android:layout_gravity="bottom"
                 android:background="@color/bg_white"
-                android:elevation="6dp"
                 app:tl_divider_color="@color/colorLine"
                 app:tl_divider_padding="10.0dip"
                 app:tl_divider_width="1px"
@@ -176,6 +175,7 @@
                 app:tl_textSelectColor="@color/colorPrimaryDark"
                 app:tl_textUnselectColor="@color/tv_name"
                 app:tl_textsize="@dimen/tv_Regular"
+                app:tl_indicator_height="4dp"
                 app:tl_underline_gravity="BOTTOM"/>
 
 
@@ -188,7 +188,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/store__tabs"
-        android:layout_marginTop="6dp"
         android:background="@color/bg_gray"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
@@ -197,6 +196,7 @@
         android:layout_height="45.0dip"
         android:layout_gravity="bottom"
         android:background="@color/bg_white"
+
         android:translationZ="10dp">
 
         <TextView

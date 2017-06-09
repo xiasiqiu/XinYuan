@@ -37,7 +37,7 @@ public abstract class BaseFragment extends Fragment implements ICallback, Lifecy
 
 
 	private final BehaviorSubject<FragmentEvent> lifecycleSubject = BehaviorSubject.create();
-
+	private static boolean VIEW_INIT = true;
 	//定义一个用于重复view 的回收池
 	private View contentView = null;
 	/**

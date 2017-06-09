@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                       android:layout_width="match_parent"
-                                       android:layout_height="match_parent"
-                                       android:background="@color/bg_white">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bg_white">
 
     <com.youth.banner.Banner
         android:id="@+id/bigimage_banner"
@@ -15,25 +15,28 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorTransparency_B"
         android:orientation="vertical"
-        android:padding="30px">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="25dp"
+        android:paddingTop="20dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/NormalTextView"
             android:layout_marginBottom="30px"
+            android:text="裙裙非常漂亮，素静的花色，飘逸的下摆和绑带，很有感觉，很喜欢。背部胸部还有下摆是有内衬的，不会透。"
             android:textColor="@color/bg_white"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="30px"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="15dp"
                 android:src="@drawable/test_good_eva_eye"/>
 
             <TextView
@@ -42,13 +45,13 @@
                 android:layout_marginLeft="20px"
                 android:text="5456"
                 android:textColor="@color/bg_white"
-                android:textSize="@dimen/tv_small"
+                android:textSize="@dimen/tv_light"
                 />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="200px"
+                android:layout_width="20dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="66dp"
                 android:src="@drawable/test_good_eva_dianz"/>
 
             <TextView
@@ -57,14 +60,14 @@
                 android:layout_marginLeft="20px"
                 android:text="152"
                 android:textColor="@color/bg_white"
-                android:textSize="@dimen/tv_small"
+                android:textSize="@dimen/tv_light"
                 />
 
             <LinearLayout
                 android:id="@+id/ll_close"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="400px"
+                android:layout_marginLeft="160dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -74,14 +77,13 @@
                     android:layout_height="wrap_content"
                     android:text="@string/packup"
                     android:textColor="@color/bg_white"
-                    android:textSize="@dimen/tv_small"
-                    />
+                    android:textSize="@dimen/tv_light"/>
 
                 <ImageView
                     android:id="@+id/iv_close"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20px"
+                    android:layout_width="15dp"
+                    android:layout_height="10dp"
+                    android:layout_marginLeft="10dp"
                     android:background="@drawable/up"/>
             </LinearLayout>
         </LinearLayout>

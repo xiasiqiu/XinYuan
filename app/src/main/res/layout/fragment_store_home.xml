@@ -12,12 +12,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="3dp"
             android:background="@color/bg_white"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="310px"
+                android:layout_height="105dp"
                 android:src="@drawable/test_store_ad"/>
 
             <View
@@ -47,8 +48,9 @@
                 app:tl_textUnselectColor="@color/tv_name"
                 app:tl_textsize="@dimen/tv_Normal"
                 app:tl_underline_color="@color/colorLine"
+                app:tl_indicator_height="4dp"
                 app:tl_underline_gravity="BOTTOM"
-                app:tl_underline_height="1px"/>
+                app:tl_underline_height="2px"/>
 
             <com.xinyuan.xyshop.widget.NoScrollViewPager
                 android:id="@+id/vp_content"

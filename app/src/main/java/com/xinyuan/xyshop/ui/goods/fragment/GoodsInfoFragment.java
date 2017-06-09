@@ -35,6 +35,7 @@ import com.xinyuan.xyshop.ui.goods.GoodDetailsActivity;
 import com.xinyuan.xyshop.ui.goods.StoreActivity;
 import com.xinyuan.xyshop.util.FullyLinearLayoutManager;
 import com.xinyuan.xyshop.util.GlideImageLoader;
+import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.xinyuan.xyshop.widget.SlideDetailsLayout;
 import com.xinyuan.xyshop.widget.dialog.GoodDetailsPromotionDialog;
 import com.xinyuan.xyshop.widget.dialog.GoodDetailsSpecDialog;
@@ -161,7 +162,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	public GoodDetailsActivity activity;
 	public GoodsInfoWebFragment goodsInfoWebFragment;
-
+	private static boolean VIEW_INIT = true;
 	@Override
 	public int getLayoutId() {
 		return R.layout.fragment_good_info;
@@ -195,7 +196,10 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	@Override
 	public void initView() {
-		EventBus.getDefault().register(this);
+		if (VIEW_INIT) {
+			EventBus.getDefault().register(this);
+		}
+		VIEW_INIT = false;
 		getView().setFocusable(true);
 		getView().setFocusableInTouchMode(true);
 		getView().setOnKeyListener(new View.OnKeyListener() {

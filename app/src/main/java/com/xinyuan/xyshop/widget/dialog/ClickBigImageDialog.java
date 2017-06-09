@@ -49,7 +49,7 @@ public class ClickBigImageDialog extends Dialog {
 		setContentView((int) R.layout.click_bigimage_list_show);
 		ButterKnife.bind((Dialog) this);
 		List<String> imgs = new ArrayList<>();
-		imgs.add("https://java.bizpower.com/upload/image/a9/e8/a9e8241550bd1f8885ee4ca2cbb7d215.jpg");
+		imgs.add("http://img30.360buyimg.com/shaidan/s616x405_jfs/t4699/49/2088711895/79151/7cdba7ce/58eb1a90Na939fc6b.jpg");
 		imgs.add("http://img30.360buyimg.com/shaidan/s616x405_jfs/t4426/42/2095712931/81237/4fe8af98/58eb1a90Nf9a70b96.jpg");
 		imgs.add("http://img30.360buyimg.com/shaidan/s616x405_jfs/t4699/49/2088711895/79151/7cdba7ce/58eb1a90Na939fc6b.jpg");
 

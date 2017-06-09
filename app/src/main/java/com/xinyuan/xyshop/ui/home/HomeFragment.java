@@ -24,6 +24,7 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.sunfusheng.marqueeview.MarqueeView;
+import com.trello.rxlifecycle.android.FragmentEvent;
 import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.ExpandableItemAdapter;
@@ -113,6 +114,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		XLog.v("首页切换" + VIEW_INIT);
 		VIEW_INIT = false;
 		mDistanceY = 0;
+		restoreState();
 
 	}
 
@@ -148,6 +150,45 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	}
 
+	private Bundle saveState;
+
+	private boolean RestoreStateformArguments() {
+
+		Bundle b = getArguments();
+		saveState = b.getBundle("saveState");
+		if (saveState != null) {
+			restoreState();
+			return true;
+		}
+		return false;
+	}
+
+	private void restoreState() {
+		if (saveState != null) {
+
+			mDistanceY = saveState.getInt("DistanceY");
+			XLog.v("保存了值"+mDistanceY);
+		}
+	}
+
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		saveStatetoArguments();
+	}
+
+	private void saveStatetoArguments() {
+		saveState = saveState();
+		if (saveState != null) {
+			Bundle b = getArguments();
+		}
+	}
+
+	private Bundle saveState() {
+		Bundle d = new Bundle();
+		d.putInt("DistanceY", mDistanceY);
+		return d;
+	}
 
 	/**
 	 * 加载状态监听
@@ -460,9 +501,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	@CallSuper
 	public void onResume() {
 		super.onResume();
-		mRecyclerView.scrollToPosition(0);
+		//mRecyclerView.scrollToPosition(0);
 		initView();
-
 	}
 
 }

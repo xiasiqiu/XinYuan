@@ -6,10 +6,13 @@
               android:orientation="vertical">
     <!--底部区域-->
     <include layout="@layout/fragment_good_eva_tab"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/colorLine"/>
 
    <android.support.v7.widget.RecyclerView
        android:id="@+id/rv_comment"
-       android:layout_marginTop="3dp"
        android:layout_width="match_parent"
        android:layout_height="match_parent"/>
 

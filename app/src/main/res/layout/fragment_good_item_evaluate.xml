@@ -71,7 +71,7 @@
         android:maxLines="2"
         android:text="裙裙非常漂亮，素静的花色，飘逸的下摆和绑带，很有感觉，很喜欢。背部胸部还有下摆是有内衬的，不会透。"
         android:textColor="@color/tv_name"
-        android:textSize="@dimen/tv_Normal"/>
+        android:textSize="@dimen/tv_light"/>
 
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/evaluateImages"
@@ -118,7 +118,7 @@
             android:maxLines="2"
             android:text="凑合，面料比较软，不太挺阔，凑合,红红火火恍恍惚惚吼吼所所所所所所所所少时诵诗书所所所"
             android:textColor="@color/tv_name"
-            android:textSize="@dimen/tv_Normal"/>
+            android:textSize="@dimen/tv_light"/>
 
 
     </LinearLayout>
@@ -168,6 +168,6 @@
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_below="@+id/ll_evaluate_show"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:background="@color/bg_gray"/>
 </RelativeLayout>
