@@ -54,8 +54,8 @@ public abstract class BaseActivity extends AppCompatActivity implements ICallbac
 		this.application = MyShopApplication.getInstance();
 		ButterKnife.bind(this);
 		mUnbinder = ButterKnife.bind(this);
-		initView();
 		initData(savedInstanceState);
+		initView();
 		lifecycleSubject.onNext(ActivityEvent.CREATE);
 
 

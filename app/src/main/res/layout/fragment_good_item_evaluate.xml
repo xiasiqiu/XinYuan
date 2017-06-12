@@ -6,13 +6,13 @@
                 android:background="@color/bg_white"
                 android:paddingTop="10dp">
 
-    <RelativeLayout
-        android:id="@+id/llStar"
+    <ImageView
+        android:id="@+id/iv_user_star"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/evaluate_star"
         android:orientation="horizontal"/>
 
@@ -20,7 +20,9 @@
         android:id="@+id/customer_image"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        android:layout_marginLeft="9dp"
+        android:layout_alignLeft="@+id/evaluateText"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/evaluateText"
         android:src="@drawable/touxiang"/>
 
     <TextView
@@ -99,15 +101,17 @@
         android:layout_marginTop="20dp"
         android:orientation="vertical"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        android:paddingRight="10dp"
+        android:visibility="visible">
 
         <TextView
+            android:id="@+id/tv_eva_late_time"
             style="@style/LightTextView"
             android:text="用户2天后追评"
             android:textColor="@color/tv_price"/>
 
         <TextView
-            android:id="@+id/evaluateTextzhui"
+            android:id="@+id/tv_eva_late_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/customerName"
@@ -123,12 +127,57 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/ll_evaluate_late"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorLine"/>
+
+    <LinearLayout
+        android:id="@+id/ll_evaluate_store"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_evaluate_late"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:visibility="visible">
+
+        <TextView
+
+            style="@style/LightTextView"
+            android:text="商家回复"
+            android:textColor="@color/tv_price"/>
+
+        <TextView
+            android:id="@+id/tv_eva_store_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/customerName"
+            android:layout_marginTop="6dp"
+            android:ellipsize="end"
+            android:letterSpacing="0.01"
+            android:lineSpacingExtra="5dp"
+            android:maxLines="2"
+            android:text="谢谢亲"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_light"/>
+
+
+    </LinearLayout>
+
     <LinearLayout
         android:id="@+id/ll_evaluate_show"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ll_evaluate_late"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ll_evaluate_store"
+        android:layout_marginTop="9dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="10dp"
@@ -140,6 +189,7 @@
             android:background="@drawable/test_good_eva_eye_de"/>
 
         <TextView
+            android:id="@+id/tv_goods_eva_lookcount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
@@ -155,6 +205,7 @@
             android:src="@drawable/test_good_eva_dianz_de"/>
 
         <TextView
+            android:id="@+id/tv_goods_eva_praisecount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"

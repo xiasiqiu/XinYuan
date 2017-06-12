@@ -48,6 +48,14 @@ public class GoodDetailsActivity extends BaseActivity {
 
 	private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
 	private String[] mTitles = {"商品", "详情", "评价", "推荐"};
+	private static int commonId;
+
+
+	public static String COMMONID = "commonId";
+	public static String GOODID = "goodsId";
+	public static String TRYSTYPE = "trysType";
+
+	private static int trysType;
 
 	@Override
 	public int getLayoutId() {
@@ -56,7 +64,9 @@ public class GoodDetailsActivity extends BaseActivity {
 
 	@Override
 	public void initData(Bundle savedInstanceState) {
-
+		this.commonId = getIntent().getIntExtra(COMMONID, 0);
+		this.commonId = getIntent().getIntExtra(GOODID, 0);
+		this.trysType = getIntent().getIntExtra(TRYSTYPE, 0);
 	}
 
 	@Override
@@ -84,7 +94,6 @@ public class GoodDetailsActivity extends BaseActivity {
 		if (goodBusBean.getFlag().equals(GoodBusBean.GoodEvaluate)) {
 			vp_content.setCurrentItem(2);
 		}
-
 
 	}
 

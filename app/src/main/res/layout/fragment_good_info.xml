@@ -122,12 +122,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp">
 
-                            <ImageView
-                                android:id="@+id/iv_ensure"
-                                android:layout_width="240dp"
-                                android:layout_height="11dp"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/item_goods_ensure"/>
+                            <com.google.android.flexbox.FlexboxLayout
+                                android:id="@+id/fl_stoer_sign"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:alignContent="flex_start"
+                                app:flexWrap="wrap"/>
 
                         </LinearLayout>
                     </LinearLayout>
@@ -268,21 +268,23 @@
                             android:id="@+id/tv_good_store_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignLeft="@+id/iv_good_store"
+                            android:layout_alignLeft="@+id/bt_good_store"
                             android:layout_alignParentTop="true"
-                            android:layout_alignStart="@+id/iv_good_store"
+                            android:layout_alignStart="@+id/bt_good_store"
                             android:text="梅子熟了 文艺复古清新女装"
                             android:textColor="@color/tv_name"
                             android:textSize="@dimen/tv_light"/>
 
 
                         <Button
-                            android:id="@+id/iv_good_store"
+                            android:id="@+id/bt_good_store"
                             style="?android:attr/borderlessButtonStyle"
                             android:layout_width="68dp"
                             android:layout_height="25dp"
+                            android:layout_alignParentBottom="true"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginTop="32dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_toEndOf="@+id/iv_good_store_img"
                             android:layout_toRightOf="@+id/iv_good_store_img"
                             android:background="@drawable/good_bt_store"
                             android:button="@null"

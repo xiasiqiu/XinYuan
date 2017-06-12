@@ -22,11 +22,13 @@ import com.xinyuan.xyshop.entity.Goods;
 import com.xinyuan.xyshop.entity.Menu;
 import com.xinyuan.xyshop.entity.PreGoods;
 import com.xinyuan.xyshop.entity.SelectFilterTest;
+import com.xinyuan.xyshop.model.GoodsDetailModel;
 import com.xinyuan.xyshop.util.CommUtil;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,24 +40,18 @@ import butterknife.OnClick;
 
 public class GoodDetailsSpecDialog extends Dialog {
 	private int addAndMinusCount = 1;
-	private String allNumPrice;
-	private HashMap<Integer, BuyData> buydatas;
+
 	private Context context;
-	private GoodDetailVo goodDetail;
-	private Goods selectedGoods;
-	private HashMap<Integer, PreGoods> preGoodsMap;
+	private GoodsDetailModel detailModel;
 	private int allGoodsNum;
 
 	@BindView(R.id.rv_spec)
 	RecyclerView rv_spec;
 
-	public GoodDetailsSpecDialog(Context context, GoodDetailVo goodDetail, HashMap<Integer, PreGoods> preGoodsMap, Goods selectedGoods, int allGoodsNum) {
+	public GoodDetailsSpecDialog(Context context, GoodsDetailModel detailModel) {
 		super(context, R.style.CommonDialog);
 		this.context = context;
-		this.goodDetail = goodDetail;
-		this.selectedGoods = selectedGoods;
-		this.preGoodsMap = preGoodsMap;
-		this.allGoodsNum = allGoodsNum;
+		this.detailModel = detailModel;
 	}
 
 
@@ -66,7 +62,6 @@ public class GoodDetailsSpecDialog extends Dialog {
 
 		ArrayList<MultiItemEntity> res = new ArrayList<>();
 		ArrayList<SelectFilterTest.FilterKey> filterKeyList = new ArrayList<>();
-
 
 		for (SelectFilterTest.FilterKey key : filterKeyList) {
 			ExpandItem expandItem = new ExpandItem("", key.getCategoryName());
@@ -115,7 +110,7 @@ public class GoodDetailsSpecDialog extends Dialog {
 	@OnClick(R.id.btnAppCommonAdd)
 	public void btnAppCommonAddClick() {
 		this.addAndMinusCount = Integer.valueOf(CommUtil.getText(this.tvAppCommonCount).trim()).intValue();
-		if (this.addAndMinusCount < this.selectedGoods.getGoodsStorage()) {
+		if (this.addAndMinusCount < detailModel.getStock()) {
 			this.addAndMinusCount++;
 			switchNumAddByGoodsModal(this.goodDetail.getGoodsModal());
 			this.tvAppCommonCount.setText(this.addAndMinusCount + "");

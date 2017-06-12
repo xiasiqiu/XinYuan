@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseFragment;
+import com.xinyuan.xyshop.mvp.contract.GoodsDetailContract;
 import com.xinyuan.xyshop.ui.goods.GoodDetailsActivity;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 
@@ -30,7 +31,7 @@ import butterknife.OnClick;
  * Created by Administrator on 2017/5/18.
  */
 
-public class GoodsDetailFragment extends BaseFragment {
+public class GoodsDetailFragment extends BaseFragment  {
 
 	@BindView(R.id.ll_goods_detail)
 	LinearLayout ll_goods_detail;
@@ -62,8 +63,6 @@ public class GoodsDetailFragment extends BaseFragment {
 	private View rootView;
 
 
-
-
 	@Override
 	public int getLayoutId() {
 		return R.layout.fragment_good_detail;
@@ -75,7 +74,6 @@ public class GoodsDetailFragment extends BaseFragment {
 	}
 
 
-
 	private GoodsConfigFragment goodsConfigFragment;
 	private GoodsDetailWebFragment goodsDetailWebFragment;
 	private GoodsServiceFragment goodsServiceFragment;
@@ -83,11 +81,6 @@ public class GoodsDetailFragment extends BaseFragment {
 
 	@Override
 	public void initView() {
-//		int resourceId = R.drawable.test_goods;
-//		Glide.with(this).
-//				load(resourceId).
-//				asBitmap().
-//				into(imageView);
 		tabTextList = new ArrayList<>();
 		tabTextList.add(tv_goods_detail);
 		tabTextList.add(tv_goods_config);
@@ -96,7 +89,7 @@ public class GoodsDetailFragment extends BaseFragment {
 
 		goodsDetailWebFragment = new GoodsDetailWebFragment();
 		goodsConfigFragment = new GoodsConfigFragment();
-		goodsServiceFragment=new GoodsServiceFragment();
+		goodsServiceFragment = new GoodsServiceFragment();
 
 		nowFragment = goodsDetailWebFragment;
 
@@ -107,7 +100,7 @@ public class GoodsDetailFragment extends BaseFragment {
 		tv_goods_detail.setTextColor(getResources().getColor(R.color.colorPrimary));
 	}
 
-	@OnClick({R.id.ll_goods_config,R.id.ll_goods_service,R.id.ll_goods_detail})
+	@OnClick({R.id.ll_goods_config, R.id.ll_goods_service, R.id.ll_goods_detail})
 	public void onClick(View view) {
 		switch (view.getId()) {
 			case R.id.ll_goods_detail:

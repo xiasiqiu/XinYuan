@@ -15,6 +15,7 @@ import com.xinyuan.xyshop.callback.JsonConvert;
 import com.xinyuan.xyshop.entity.ApiSpecialItem;
 import com.xinyuan.xyshop.entity.GoodCategory;
 import com.xinyuan.xyshop.model.CategoryModel;
+import com.xinyuan.xyshop.model.GoodsDetailModel;
 import com.xinyuan.xyshop.model.HomeModel;
 
 import java.util.List;
@@ -46,11 +47,13 @@ public class ApiServer {
 
 	}
 
+	public static Observable<LzyResponse<GoodsDetailModel>> getGoodsDetail(String url, int  goodId) {
+		return OkGo.post(url)
+				.params("goodId", goodId)
+				.getCall(new JsonConvert<LzyResponse<GoodsDetailModel>>() {
+				}, RxAdapter.<LzyResponse<GoodsDetailModel>>create());
 
-	public static Observable<LzyResponse<String>> getApiSpecialList(String url) {
-		return OkGo.get(url)
-				.getCall(new JsonConvert<LzyResponse<String>>() {
-				}, RxAdapter.<LzyResponse<String>>create());
 
 	}
+
 }

@@ -22,14 +22,19 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.google.android.flexbox.FlexboxLayout;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.SimpleEvaluateAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
+import com.xinyuan.xyshop.common.AddViewHolder;
 import com.xinyuan.xyshop.entity.BuyData;
 import com.xinyuan.xyshop.entity.GoodDetailVo;
 import com.xinyuan.xyshop.entity.Goods;
 import com.xinyuan.xyshop.entity.GoodsEvaluate;
 import com.xinyuan.xyshop.entity.PreGoods;
+import com.xinyuan.xyshop.model.GoodsDetailModel;
+import com.xinyuan.xyshop.mvp.contract.GoodsDetailContract;
+import com.xinyuan.xyshop.mvp.presenter.GoodsDetailPresenterImpl;
 import com.xinyuan.xyshop.ui.goods.GoodBusBean;
 import com.xinyuan.xyshop.ui.goods.GoodDetailsActivity;
 import com.xinyuan.xyshop.ui.goods.StoreActivity;
@@ -59,7 +64,7 @@ import butterknife.OnClick;
  * Created by Administrator on 2017/5/18.
  */
 
-public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayout.OnSlideDetailsListener {
+public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayout.OnSlideDetailsListener, GoodsDetailContract.GoodsDetailView, GoodsDetailContract.GoodsDetailPresenter {
 
 
 	@BindView(R.id.sv_switch)
@@ -73,34 +78,37 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	@BindView(R.id.goodinfo_banner)
 	Banner banner;
 	@BindView(R.id.goodinfo_share)
-	ImageView iv_share;
+	ImageView iv_share; //分享按钮
 
 
 	@BindView(R.id.tv_new_price)
-	TextView tv_newprice;
+	TextView tv_newprice; //商品最新价格
 	@BindView(R.id.tv_old_price)
-	TextView tv_oldprice;
+	TextView tv_oldprice; //商品旧价格
 
 	@BindView(R.id.tv_goods_postage)
-	TextView tv_goodspostage;
+	TextView tv_goodspostage; //商品快递费用
 	@BindView(R.id.tv_goods_sellnum)
-	TextView tv_goodssellnum;
+	TextView tv_goodssellnum; //商品销量
 	@BindView(R.id.tv_goods_talk)
-	TextView tv_goodstalk;
+	TextView tv_goodstalk; //商品评论
 
+
+	@BindView(R.id.fl_stoer_sign)
+	FlexboxLayout flexBoxLayout;
 
 	@BindView(R.id.llGoodDiscount)
-	RelativeLayout ll_discount;
+	RelativeLayout ll_discount; //促销布局
 	@BindView(R.id.ll_current_goods)
-	RelativeLayout ll_current;
+	RelativeLayout ll_current; //规格型号布局
 	@BindView(R.id.ll_comment)
-	RelativeLayout ll_comment;
+	RelativeLayout ll_comment;//评论布局
 
 	@BindView(R.id.rvEvaluate)
 	RecyclerView rvEvaluate;
 
-	@BindView(R.id.iv_good_store)
-	Button bt_store;
+	@BindView(R.id.bt_good_store)
+	Button bt_store; //店铺按钮
 
 	@BindView(R.id.fab_up_slide)
 	FloatingActionButton fab_up_slide;
@@ -146,12 +154,17 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	@BindView(R.id.fl_content)
 	FrameLayout fl_content;
 
+	@BindView(R.id.tv_comment_count)
+	TextView tv_comment_count;
 
 	private Fragment nowFragment;
 
 	GoodsDetailFragment goodsDetailFragment;
 	GoodsConfigFragment goodsConfigFragment;
 	GoodsServiceFragment goodsServiceFragment;
+
+	GoodsDetailContract.GoodsDetailPresenter presenter;
+	GoodsDetailContract.GoodsDetailView view;
 
 
 	private FragmentTransaction fragmentTransaction;
@@ -162,37 +175,22 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	public GoodDetailsActivity activity;
 	public GoodsInfoWebFragment goodsInfoWebFragment;
+
+	private HashMap<Integer, BuyData> buydatas;
+	private GoodDetailVo goodDetail;
+	private Goods selectedGoods;
+	private HashMap<Integer, PreGoods> preGoodsMap;
+	private int allGoodsNum;
+	private GoodsDetailModel detailModel;
 	private static boolean VIEW_INIT = true;
+	SimpleEvaluateAdapter simpleEvaluateAdapter;
+
+	private static SlideDetailsLayout.Status status;
+
 	@Override
 	public int getLayoutId() {
 		return R.layout.fragment_good_info;
 	}
-
-	@Override
-	public void initData(@Nullable Bundle savedInstanceState) {
-		fragmentList = new ArrayList<>();
-		tabTextList = new ArrayList<>();
-		tabTextList.add(tv_goods_detail);
-		tabTextList.add(tv_goods_config);
-		tabTextList.add(tv_goods_service);
-		goodsServiceFragment = new GoodsServiceFragment();
-		goodsConfigFragment = new GoodsConfigFragment();
-		goodsDetailFragment = new GoodsDetailFragment();
-		goodsInfoWebFragment = new GoodsInfoWebFragment();
-		fragmentList.add(goodsConfigFragment);
-		fragmentList.add(goodsServiceFragment);
-		fragmentList.add(goodsDetailFragment);
-		fragmentList.add(goodsInfoWebFragment);
-
-
-		nowFragment = goodsInfoWebFragment;
-
-		fragmentManager = getChildFragmentManager();
-		//默认显示商品详情tab
-		fragmentManager.beginTransaction().replace(R.id.fl_content, nowFragment).commitAllowingStateLoss();
-		tv_goods_detail.setTextColor(getResources().getColor(R.color.colorPrimary));
-	}
-
 
 	@Override
 	public void initView() {
@@ -221,17 +219,99 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 		sv_switch.setOnSlideDetailsListener(this);
 		fab_up_slide.hide();
+
+
+	}
+
+	@Override
+	public void initData(@Nullable Bundle savedInstanceState) {
+		new GoodsDetailPresenterImpl(view);
+		fragmentList = new ArrayList<>();
+		tabTextList = new ArrayList<>();
+		tabTextList.add(tv_goods_detail);
+		tabTextList.add(tv_goods_config);
+		tabTextList.add(tv_goods_service);
+		goodsServiceFragment = new GoodsServiceFragment();
+		goodsConfigFragment = new GoodsConfigFragment();
+		goodsDetailFragment = new GoodsDetailFragment();
+		goodsInfoWebFragment = new GoodsInfoWebFragment();
+		fragmentList.add(goodsConfigFragment);
+		fragmentList.add(goodsServiceFragment);
+		fragmentList.add(goodsDetailFragment);
+		fragmentList.add(goodsInfoWebFragment);
+		nowFragment = goodsInfoWebFragment;
+		fragmentManager = getChildFragmentManager();
+		//默认显示商品详情tab
+		fragmentManager.beginTransaction().replace(R.id.fl_content, nowFragment).commitAllowingStateLoss();
+		tv_goods_detail.setTextColor(getResources().getColor(R.color.colorPrimary));
+	}
+
+
+	@Override
+	public void onStatucChanged(SlideDetailsLayout.Status status) {
+		if (status == SlideDetailsLayout.Status.OPEN) {
+			this.status = status;
+			//当前为图文详情页
+			fab_up_slide.show();
+			activity.vp_content.setNoScroll(true);
+			activity.tv_title.setVisibility(View.VISIBLE);
+			activity.mTlMain.setVisibility(View.GONE);
+		} else {
+			this.status = status;
+			//当前为商品详情页
+			fab_up_slide.hide();
+			activity.vp_content.setNoScroll(false);
+			activity.tv_title.setVisibility(View.GONE);
+			activity.mTlMain.setVisibility(View.VISIBLE);
+		}
+	}
+
+	@OnClick(R.id.ll_current_goods)
+	public void onSpecChooseClick() {
+
+		showSelectSpecDialog();
+
+	}
+
+	@OnClick(R.id.llGoodDiscount)
+	public void onPromChooseClick() {
+		showSelectPromoDialog();
+	}
+
+
+	@Override
+	public void setPresenter(GoodsDetailContract.GoodsDetailPresenter presenter) {
+		this.presenter = presenter;
+
+	}
+
+	@Override
+	public void showState(int Sate) {
+
+
+	}
+
+
+	@Override
+	public void initData(int GoodsId) {
+
+	}
+
+	@Override
+	public void showView(GoodsDetailModel model) {
+		this.detailModel = model;
+	}
+
+	@Override
+	public void showBanner() {
+
 		ArrayList<String> titles = new ArrayList<>();
-		titles.add("妃子笑荔枝新鲜上市！！！");
-		titles.add("新人专享套餐");
-		titles.add("小龙虾，我们走！");
-
-
 		ArrayList<String> images = new ArrayList<>();
-		images.add("https://imgqn2.fruitday.com/images/2017-05-08/3939a1d9231eb02dd507744befbb2823.jpg");
-		images.add("https://imgqn2.fruitday.com/images/2017-03-03/6b24de7a7a42699abd07bb812c2d465e.jpg");
-		images.add("https://imgqn2.fruitday.com/images/2017-05-07/6314f8e67de76b26bd528297db56f8e7.jpg");
 
+		for (GoodsDetailModel.GoodBanner banner : detailModel.getBanners()) {
+			titles.add(banner.getImgTxt());
+			images.add(banner.getImgUrl());
+		}
 		banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE)
 				.setImageLoader(new GlideImageLoader())
 				.setImages(images)
@@ -242,12 +322,44 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 				.setIndicatorGravity(BannerConfig.CENTER)
 				.start();
 
-		List<GoodsEvaluate> data = new ArrayList<>();
-		for (int i = 0; i < 3; i++) {
-			data.add(new GoodsEvaluate());
-		}
-		XLog.list(data);
 
+	}
+
+
+	@Override
+	public void showGoodsInfo() {
+		tv_newprice.setText("￥" + detailModel.getActualPrice().toString());
+		tv_oldprice.setText("￥" + detailModel.getOldPrice().toString());
+		if (detailModel.getExpressCost() == 0) {
+			tv_goodspostage.setText("快递:免邮费");
+		} else {
+			tv_goodspostage.setText("快递:" + detailModel.getExpressCost());
+		}
+		tv_goodssellnum.setText("月销量:" + detailModel.getSalesVolume() + "笔");
+		tv_goodstalk.setText("评论:" + detailModel.getGoodComment().getTotalCount());
+		List<String> storeSign = new ArrayList<>();
+		storeSign.addAll(detailModel.getShopServer());
+
+		for (String type : storeSign) {
+			AddViewHolder addViewHolder = new AddViewHolder(context, R.layout.view_store_sign);
+			addViewHolder.setText(R.id.store_sign_type, type);
+			flexBoxLayout.addView(addViewHolder.getCustomView());
+		}
+
+
+	}
+
+
+	@Override
+	public void showEva() {
+
+
+		tv_comment_count.setText("评价(" + detailModel.getGoodComment().getTotalCount() + ")");
+
+
+		List<GoodsDetailModel.GoodComment.GoodCommentContent> data = new ArrayList<>();
+
+		data.addAll(detailModel.getGoodComment().getList());
 
 		this.simpleEvaluateAdapter = new SimpleEvaluateAdapter(R.layout.fragment_good_item_evaluate, data);
 
@@ -258,24 +370,51 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		rvEvaluate.setLayoutManager(linearLayoutManager);
 		this.rvEvaluate.setAdapter(this.simpleEvaluateAdapter);
 		this.simpleEvaluateAdapter.notifyDataSetChanged();
+
+
 	}
 
+	@Override
+	public void showStoreInfo() {
+		GlideImageLoader.setImage(context, detailModel.getShopInfo().getShopLogo(), srote_img);
+		tv_good_storename.setText(detailModel.getShopInfo().getName());
+		tv_StoreDescPoint.setText(String.valueOf(detailModel.getShopInfo().getGoodsScore()));
+		tv_StoreServicePoint.setText(String.valueOf(detailModel.getShopInfo().getServerScore()));
+		tv_StoreDeliveryPoint.setText(String.valueOf(detailModel.getShopInfo().getServerScore()));
+	}
+
+
+	@Override
+	public void showWeb() {
+
+	}
 
 	@Subscribe(threadMode = ThreadMode.MAIN) //第2步:注册一个在后台线程执行的方法,用于接收事件
 	public void onUserEvent(GoodBusBean event) {//参数必须是ClassEvent类型, 否则不会调用此方法
 	}
 
 
-	SimpleEvaluateAdapter simpleEvaluateAdapter;
-
-	@Override
-	public void onAttach(Context context) {
-		super.onAttach(context);
-		activity = (GoodDetailsActivity) context;
+	private void showSelectSpecDialog() {
+		GoodDetailsSpecDialog dialog = new GoodDetailsSpecDialog(this.context, detailModel);
+		Window dialogWindow = dialog.getWindow();
+		dialogWindow.setGravity(Gravity.BOTTOM);
+		dialog.show();
+		DisplayMetrics dm = new DisplayMetrics();
+		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+		dialogWindow.setLayout(dm.widthPixels, dialogWindow.getAttributes().height);
 	}
 
+	private void showSelectPromoDialog() {
+		GoodDetailsPromotionDialog dialog = new GoodDetailsPromotionDialog(this.context, detailModel.getSalesPromotion());
+		Window dialogWindow = dialog.getWindow();
+		dialogWindow.setGravity(Gravity.BOTTOM);
+		dialog.show();
+		DisplayMetrics dm = new DisplayMetrics();
+		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+		dialogWindow.setLayout(dm.widthPixels, dialogWindow.getAttributes().height);
+	}
 
-	@OnClick({R.id.ll_goods_config, R.id.ll_goods_service, R.id.ll_goods_detail, R.id.fab_up_slide, R.id.ll_comment, R.id.iv_good_store})
+	@OnClick({R.id.ll_goods_config, R.id.ll_goods_service, R.id.ll_goods_detail, R.id.fab_up_slide, R.id.ll_comment, R.id.bt_good_store})
 	public void onClick(View view) {
 		switch (view.getId()) {
 
@@ -311,7 +450,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 			case R.id.ll_comment:
 				EventBus.getDefault().post(new GoodBusBean(GoodBusBean.GoodEvaluate));
 				break;
-			case R.id.iv_good_store:
+			case R.id.bt_good_store:
 				Intent intent = new Intent(getActivity(), StoreActivity.class);
 				startActivity(intent);
 				break;
@@ -331,65 +470,14 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		}
 	}
 
-	private static SlideDetailsLayout.Status status;
+	@Override
+	public void initData() {
+
+	}
 
 	@Override
-	public void onStatucChanged(SlideDetailsLayout.Status status) {
-		if (status == SlideDetailsLayout.Status.OPEN) {
-			this.status = status;
-			//当前为图文详情页
-			fab_up_slide.show();
-			activity.vp_content.setNoScroll(true);
-			activity.tv_title.setVisibility(View.VISIBLE);
-			activity.mTlMain.setVisibility(View.GONE);
-		} else {
-			this.status = status;
-			//当前为商品详情页
-			fab_up_slide.hide();
-			activity.vp_content.setNoScroll(false);
-			activity.tv_title.setVisibility(View.GONE);
-			activity.mTlMain.setVisibility(View.VISIBLE);
-		}
+	public void onAttach(Context context) {
+		super.onAttach(context);
+		activity = (GoodDetailsActivity) context;
 	}
-
-	@OnClick(R.id.ll_current_goods)
-	public void onSpecChooseClick() {
-
-		showSelectSpecDialog();
-
-	}
-
-	@OnClick(R.id.llGoodDiscount)
-	public void onPromChooseClick() {
-
-		showSelectPromoDialog();
-
-	}
-
-	private HashMap<Integer, BuyData> buydatas;
-	private GoodDetailVo goodDetail;
-	private Goods selectedGoods;
-	private HashMap<Integer, PreGoods> preGoodsMap;
-	private int allGoodsNum;
-
-	private void showSelectSpecDialog() {
-		GoodDetailsSpecDialog dialog = new GoodDetailsSpecDialog(this.context, goodDetail, preGoodsMap, selectedGoods, allGoodsNum);
-		Window dialogWindow = dialog.getWindow();
-		dialogWindow.setGravity(Gravity.BOTTOM);
-		dialog.show();
-		DisplayMetrics dm = new DisplayMetrics();
-		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-		dialogWindow.setLayout(dm.widthPixels, dialogWindow.getAttributes().height);
-	}
-
-	private void showSelectPromoDialog() {
-		GoodDetailsPromotionDialog dialog = new GoodDetailsPromotionDialog(this.context, goodDetail, preGoodsMap, selectedGoods, allGoodsNum);
-		Window dialogWindow = dialog.getWindow();
-		dialogWindow.setGravity(Gravity.BOTTOM);
-		dialog.show();
-		DisplayMetrics dm = new DisplayMetrics();
-		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-		dialogWindow.setLayout(dm.widthPixels, dialogWindow.getAttributes().height);
-	}
-
 }

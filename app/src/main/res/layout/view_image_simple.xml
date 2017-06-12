@@ -5,8 +5,8 @@
 
     <ImageView
         android:id="@+id/ivImg"
-        android:layout_width="330px"
-        android:layout_height="330px"
-        android:layout_margin="5px"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_margin="3dp"
         android:scaleType="fitXY"/>
 </FrameLayout>
