@@ -62,243 +62,508 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
+    <string name="money_rmb">￥</string>
+    <string name="goods_details_spec_select_all">已选清单：共%1$d%2$s,¥%3$.2f</string>
     <string name="permission_rationale">"Contacts permissions are needed for
         providing email completions."
     </string>
 
-    <string name="jsonData">
-        {
-    "attributes": [
-        {
-            "tabID": 0,
-            "tabName": "颜色",
-            "attributesItem": [
-                "白",
-                "蓝",
-                "黑"
-            ]
-        },
-        {
-            "tabID": 1,
-            "tabName": "型号",
-            "attributesItem": [
-                "S",
-                "X",
-                "XL",
-                "XXL"
-            ]
-        },
-        {
-            "tabID": 2,
-            "tabName": "衣服",
-            "attributesItem": [
-                "羽绒服",
-                "T恤",
-                "棉毛衫"
-            ]
-        },
-        {
-            "tabID": 3,
-            "tabName": "大小",
-            "attributesItem": [
-                "大",
-                "中",
-                "小"
-            ]
-        }
-    ],
-    "stockGoods": [
-        {
-            "goodsID": 1,
-            "goodsInfo": [
-                {
-                    "tabID": 0,
-                    "tabName": "颜色",
-                    "tabValue": "白"
-                },
-                {
-                    "tabID": 1,
-                    "tabName": "型号",
-                    "tabValue": "X"
-                },
-                {
-                    "tabID": 2,
-                    "tabName": "衣服",
-                    "tabValue": "羽绒服"
-                },
-                {
-                    "tabID": 3,
-                    "tabName": "大小",
-                    "tabValue": "中"
-                }
 
+    <string name="jsonData">{
+        "goodsDetail": {
+            "goodsId": 0,
+            "commonId": 155,
+            "goodsName": "正品智能手机Xiaomi/小米 小米手机5 全网通标准版",
+            "jingle": "送钢化膜",
+            "categoryId": 1035,
+            "goodsQRCode": "https://uploadjava.bizpower.com/qr/16/155.gif",
+            "storeId": 16,
+            "brandId": 0,
+        "goodsBody":"123123",
+        "mobileBody":"12312312",
+            "goodsSerial": null,
+            "goodsStatus": 1,
+            "colorId": 0,
+            "areaId1": 0,
+            "areaId2": 0,
+            "goodsFavorite": 1,
+            "goodsClick": 0,
+            "evaluateNum": 4,
+            "goodsRate": 100,
+            "goodsSaleNum": 13,
+            "imageSrc": "https://uploadjava.bizpower.com/image/42/71/4271a8fdfdc8c3335733accd9e8bdb57.jpg",
+            "specJson": [
+                {
+                    "specId": 1,
+                    "specName": "机身颜色",
+                    "specValueList": [
+                        {
+                            "specValueId": 15,
+                            "specValueName": "金色",
+                            "imageSrc": "https://uploadjava.bizpower.com/image/42/71/4271a8fdfdc8c3335733accd9e8bdb57.jpg"
+                        },
+                        {
+                            "specValueId": 16,
+                            "specValueName": "黑色",
+                            "imageSrc": "https://uploadjava.bizpower.com/image/cc/55/cc55eebb9b08e393c0817423833ab0c7.jpg"
+                        },
+                        {
+                            "specValueId": 17,
+                            "specValueName": "白色",
+                            "imageSrc": "https://uploadjava.bizpower.com/image/de/db/dedbab226eb7945281a40cc93f0a97d1.jpg"
+                        },
+                        {
+                            "specValueId": 18,
+                            "specValueName": "淡紫色",
+                            "imageSrc": "https://uploadjava.bizpower.com/image/f6/6a/f66a567373389baadfc4e0f8f6459009.jpg"
+                        }
+                    ]
+                },
+                {
+                    "specId": 2,
+                    "specName": "套餐类型",
+                    "specValueList": [
+                        {
+                            "specValueId": 35,
+                            "specValueName": "官方标配",
+                            "imageSrc": ""
+                        }
+                    ]
+                },
+                {
+                    "specId": 3,
+                    "specName": "存储容量",
+                    "specValueList": [
+                        {
+                            "specValueId": 44,
+                            "specValueName": "32G",
+                            "imageSrc": ""
+                        }
+                    ]
+                }
             ],
-            "stock": 12,
-            "price": 88.5
-        },
-        {
-            "goodsID": 2,
-            "stock": 12,
-            "price": 88.5,
-            "goodsInfo": [
+            "goodsSpecNameList": [
+                "机身颜色",
+                "套餐类型",
+                "存储容量"
+            ],
+            "goodsSpecValues": "[{\"goodsId\":563,\"specValueIds\":\"15,35,44\"},{\"goodsId\":564,\"specValueIds\":\"16,35,44\"},{\"goodsId\":565,\"specValueIds\":\"17,35,44\"},{\"goodsId\":566,\"specValueIds\":\"18,35,44\"}]",
+            "goodsSpecValueJson": [
                 {
-                    "tabID": 0,
-                    "tabName": "颜色",
-                    "tabValue": "白"
+                    "goodsId": 563,
+                    "specValueIds": [
+                        15,
+                        35,
+                        44
+                    ]
                 },
                 {
-                    "tabID": 1,
-                    "tabName": "型号",
-                    "tabValue": "XL"
+                    "goodsId": 564,
+                    "specValueIds": [
+                        16,
+                        35,
+                        44
+                    ]
                 },
                 {
-                    "tabID": 2,
-                    "tabName": "衣服",
-                    "tabValue": "羽绒服"
+                    "goodsId": 565,
+                    "specValueIds": [
+                        17,
+                        35,
+                        44
+                    ]
                 },
                 {
-                    "tabID": 3,
-                    "tabName": "大小",
-                    "tabValue": "大"
+                    "goodsId": 566,
+                    "specValueIds": [
+                        18,
+                        35,
+                        44
+                    ]
                 }
-            ]
-        },
-        {
-            "goodsID": 3,
-            "stock": 12,
-            "price": 88.5,
-            "goodsInfo": [
+            ],
+            "goodsImageList": [
                 {
-                    "tabID": 0,
-                    "tabName": "颜色",
-                    "tabValue": "白"
+                    "imageId": 4590,
+                    "commonId": 155,
+                    "colorId": 15,
+                    "imageName": "image/42/71/4271a8fdfdc8c3335733accd9e8bdb57.jpg",
+                    "imageSort": 0,
+                    "isDefault": 1,
+                    "imageSrc": "https://uploadjava.bizpower.com/image/42/71/4271a8fdfdc8c3335733accd9e8bdb57.jpg"
                 },
                 {
-                    "tabID": 1,
-                    "tabName": "型号",
-                    "tabValue": "XXL"
+                    "imageId": 4591,
+                    "commonId": 155,
+                    "colorId": 15,
+                    "imageName": "image/cc/55/cc55eebb9b08e393c0817423833ab0c7.jpg",
+                    "imageSort": 1,
+                    "isDefault": 0,
+                    "imageSrc": "https://uploadjava.bizpower.com/image/cc/55/cc55eebb9b08e393c0817423833ab0c7.jpg"
                 },
                 {
-                    "tabID": 2,
-                    "tabName": "衣服",
-                    "tabValue": "棉毛衫"
+                    "imageId": 4592,
+                    "commonId": 155,
+                    "colorId": 15,
+                    "imageName": "image/de/db/dedbab226eb7945281a40cc93f0a97d1.jpg",
+                    "imageSort": 2,
+                    "isDefault": 0,
+                    "imageSrc": "https://uploadjava.bizpower.com/image/de/db/dedbab226eb7945281a40cc93f0a97d1.jpg"
                 },
                 {
-                    "tabID": 3,
-                    "tabName": "大小",
-                    "tabValue": "小"
+                    "imageId": 4593,
+                    "commonId": 155,
+                    "colorId": 15,
+                    "imageName": "image/14/43/14430e919ec9711f5929b5e5bb429b13.jpg",
+                    "imageSort": 3,
+                    "isDefault": 0,
+                    "imageSrc": "https://uploadjava.bizpower.com/image/14/43/14430e919ec9711f5929b5e5bb429b13.jpg"
+                },
+                {
+                    "imageId": 4594,
+                    "commonId": 155,
+                    "colorId": 16,
+                    "imageName": "image/cc/55/cc55eebb9b08e393c0817423833ab0c7.jpg",
+                    "imageSort": 0,
+                    "isDefault": 1,
+                    "imageSrc": "https://uploadjava.bizpower.com/image/cc/55/cc55eebb9b08e393c0817423833ab0c7.jpg"
+                },
+                {
+                    "imageId": 4595,
+                    "commonId": 155,
+                    "colorId": 16,
+                    "imageName": "image/d8/90/d890a24c438fec3989e1319ad5ad9223.jpg",
+                    "imageSort": 1,
+                    "isDefault": 0,
+                    "imageSrc": "https://uploadjava.bizpower.com/image/d8/90/d890a24c438fec3989e1319ad5ad9223.jpg"
+                },
+                {
+                    "imageId": 4596,
+                    "commonId": 155,
+                    "colorId": 16,
+                    "imageName": "image/89/2e/892ef9e0334fa1c7d70c7a735c846768.jpg",
+                    "imageSort": 2,
+                    "isDefault": 0,
+                    "imageSrc": "https://uploadjava.bizpower.com/image/89/2e/892ef9e0334fa1c7d70c7a735c846768.jpg"
+                },
+                {
+                    "imageId": 4597,
+                    "commonId": 155,
+                    "colorId": 16,
+                    "imageName": "image/14/43/14430e919ec9711f5929b5e5bb429b13.jpg",
+                    "imageSort": 3,
+                    "isDefault": 0,
+                    "imageSrc": "https://uploadjava.bizpower.com/image/14/43/14430e919ec9711f5929b5e5bb429b13.jpg"
+                },
+                {
+                    "imageId": 4598,
+                    "commonId": 155,
+                    "colorId": 17,
+                    "imageName": "image/de/db/dedbab226eb7945281a40cc93f0a97d1.jpg",
+                    "imageSort": 0,
+                    "isDefault": 1,
+                    "imageSrc": "https://uploadjava.bizpower.com/image/de/db/dedbab226eb7945281a40cc93f0a97d1.jpg"
+                },
+                {
+                    "imageId": 4599,
+                    "commonId": 155,
+                    "colorId": 17,
+                    "imageName": "image/14/43/14430e919ec9711f5929b5e5bb429b13.jpg",
+                    "imageSort": 1,
+                    "isDefault": 0,
+                    "imageSrc": "https://uploadjava.bizpower.com/image/14/43/14430e919ec9711f5929b5e5bb429b13.jpg"
+                },
+                {
+                    "imageId": 4600,
+                    "commonId": 155,
+                    "colorId": 17,
+                    "imageName": "image/89/2e/892ef9e0334fa1c7d70c7a735c846768.jpg",
+                    "imageSort": 2,
+                    "isDefault": 0,
+                    "imageSrc": "https://uploadjava.bizpower.com/image/89/2e/892ef9e0334fa1c7d70c7a735c846768.jpg"
+                },
+                {
+                    "imageId": 4601,
+                    "commonId": 155,
+                    "colorId": 17,
+                    "imageName": "image/d8/90/d890a24c438fec3989e1319ad5ad9223.jpg",
+                    "imageSort": 3,
+                    "isDefault": 0,
+                    "imageSrc": "https://uploadjava.bizpower.com/image/d8/90/d890a24c438fec3989e1319ad5ad9223.jpg"
+                },
+                {
+                    "imageId": 4602,
+                    "commonId": 155,
+                    "colorId": 18,
+                    "imageName": "image/f6/6a/f66a567373389baadfc4e0f8f6459009.jpg",
+                    "imageSort": 0,
+                    "isDefault": 1,
+                    "imageSrc": "https://uploadjava.bizpower.com/image/f6/6a/f66a567373389baadfc4e0f8f6459009.jpg"
+                },
+                {
+                    "imageId": 4603,
+                    "commonId": 155,
+                    "colorId": 18,
+                    "imageName": "image/89/2e/892ef9e0334fa1c7d70c7a735c846768.jpg",
+                    "imageSort": 1,
+                    "isDefault": 0,
+                    "imageSrc": "https://uploadjava.bizpower.com/image/89/2e/892ef9e0334fa1c7d70c7a735c846768.jpg"
+                },
+                {
+                    "imageId": 4604,
+                    "commonId": 155,
+                    "colorId": 18,
+                    "imageName": "image/d8/90/d890a24c438fec3989e1319ad5ad9223.jpg",
+                    "imageSort": 2,
+                    "isDefault": 0,
+                    "imageSrc": "https://uploadjava.bizpower.com/image/d8/90/d890a24c438fec3989e1319ad5ad9223.jpg"
+                },
+                {
+                    "imageId": 4605,
+                    "commonId": 155,
+                    "colorId": 18,
+                    "imageName": "image/14/43/14430e919ec9711f5929b5e5bb429b13.jpg",
+                    "imageSort": 3,
+                    "isDefault": 0,
+                    "imageSrc": "https://uploadjava.bizpower.com/image/14/43/14430e919ec9711f5929b5e5bb429b13.jpg"
                 }
-            ]
-        },
-        {
-            "goodsID": 4,
-            "stock": 12,
-            "price": 88.5,
-            "goodsInfo": [
+            ],
+            "goodsAttrList": [],
+            "formatTop": 0,
+            "formatBottom": 0,
+            "goodsList": [
                 {
-                    "tabID": 0,
-                    "tabName": "颜色",
-                    "tabValue": "蓝"
+                    "goodsId": 563,
+                    "commonId": 155,
+                    "goodsSpecs": "金色,,,官方标配,,,32G",
+                    "goodsSpecString": "金色；官方标配；32G",
+                    "goodsFullSpecs": "机身颜色：金色；套餐类型：官方标配；存储容量：32G",
+                    "specValueIds": "15,35,44",
+                    "goodsPrice0": 1799,
+                    "goodsPrice1": 0,
+                    "goodsPrice2": 0,
+                    "webPrice0": 1799,
+                    "webPrice1": 0,
+                    "webPrice2": 0,
+                    "webUsable": 0,
+                    "appPrice0": 1799,
+                    "appPrice1": 0,
+                    "appPrice2": 0,
+                    "appUsable": 0,
+                    "wechatPrice0": 1799,
+                    "wechatPrice1": 0,
+                    "wechatPrice2": 0,
+                    "wechatUsable": 0,
+                    "promotionId": 0,
+                    "promotionStartTime": "1970-01-01 08:00:00",
+                    "promotionEndTime": "1970-01-01 08:00:00",
+                    "promotionState": 0,
+                    "promotionType": 0,
+                    "promotionTypeText": "",
+                    "promotionTitle": "",
+                    "goodsSerial": "",
+                    "colorId": 15,
+                    "goodsStorage": 7989,
+                    "imageName": "image/42/71/4271a8fdfdc8c3335733accd9e8bdb57.jpg",
+                    "imageSrc": "https://uploadjava.bizpower.com/image/42/71/4271a8fdfdc8c3335733accd9e8bdb57.jpg",
+                    "giftVoList": [],
+                    "isGift": 0,
+                    "isGroup": 0,
+                    "groupPrice": 0,
+                    "limitAmount": 0,
+                    "wechat": 0,
+                    "web": 0,
+                    "app": 0
                 },
                 {
-                    "tabID": 1,
-                    "tabName": "型号",
-                    "tabValue": "S"
+                    "goodsId": 564,
+                    "commonId": 155,
+                    "goodsSpecs": "黑色,,,官方标配,,,32G",
+                    "goodsSpecString": "黑色；官方标配；32G",
+                    "goodsFullSpecs": "机身颜色：黑色；套餐类型：官方标配；存储容量：32G",
+                    "specValueIds": "16,35,44",
+                    "goodsPrice0": 1799,
+                    "goodsPrice1": 0,
+                    "goodsPrice2": 0,
+                    "webPrice0": 1799,
+                    "webPrice1": 0,
+                    "webPrice2": 0,
+                    "webUsable": 0,
+                    "appPrice0": 1799,
+                    "appPrice1": 0,
+                    "appPrice2": 0,
+                    "appUsable": 0,
+                    "wechatPrice0": 1799,
+                    "wechatPrice1": 0,
+                    "wechatPrice2": 0,
+                    "wechatUsable": 0,
+                    "promotionId": 0,
+                    "promotionStartTime": "1970-01-01 08:00:00",
+                    "promotionEndTime": "1970-01-01 08:00:00",
+                    "promotionState": 0,
+                    "promotionType": 0,
+                    "promotionTypeText": "",
+                    "promotionTitle": "",
+                    "goodsSerial": "",
+                    "colorId": 16,
+                    "goodsStorage": 7999,
+                    "imageName": "image/cc/55/cc55eebb9b08e393c0817423833ab0c7.jpg",
+                    "imageSrc": "https://uploadjava.bizpower.com/image/cc/55/cc55eebb9b08e393c0817423833ab0c7.jpg",
+                    "giftVoList": [],
+                    "isGift": 0,
+                    "isGroup": 0,
+                    "groupPrice": 0,
+                    "limitAmount": 0,
+                    "wechat": 0,
+                    "web": 0,
+                    "app": 0
                 },
                 {
-                    "tabID": 2,
-                    "tabName": "衣服",
-                    "tabValue": "棉毛衫"
+                    "goodsId": 565,
+                    "commonId": 155,
+                    "goodsSpecs": "白色,,,官方标配,,,32G",
+                    "goodsSpecString": "白色；官方标配；32G",
+                    "goodsFullSpecs": "机身颜色：白色；套餐类型：官方标配；存储容量：32G",
+                    "specValueIds": "17,35,44",
+                    "goodsPrice0": 1799,
+                    "goodsPrice1": 0,
+                    "goodsPrice2": 0,
+                    "webPrice0": 1799,
+                    "webPrice1": 0,
+                    "webPrice2": 0,
+                    "webUsable": 0,
+                    "appPrice0": 1799,
+                    "appPrice1": 0,
+                    "appPrice2": 0,
+                    "appUsable": 0,
+                    "wechatPrice0": 1799,
+                    "wechatPrice1": 0,
+                    "wechatPrice2": 0,
+                    "wechatUsable": 0,
+                    "promotionId": 0,
+                    "promotionStartTime": "1970-01-01 08:00:00",
+                    "promotionEndTime": "1970-01-01 08:00:00",
+                    "promotionState": 0,
+                    "promotionType": 0,
+                    "promotionTypeText": "",
+                    "promotionTitle": "",
+                    "goodsSerial": "",
+                    "colorId": 17,
+                    "goodsStorage": 7999,
+                    "imageName": "image/de/db/dedbab226eb7945281a40cc93f0a97d1.jpg",
+                    "imageSrc": "https://uploadjava.bizpower.com/image/de/db/dedbab226eb7945281a40cc93f0a97d1.jpg",
+                    "giftVoList": [],
+                    "isGift": 0,
+                    "isGroup": 0,
+                    "groupPrice": 0,
+                    "limitAmount": 0,
+                    "wechat": 0,
+                    "web": 0,
+                    "app": 0
                 },
                 {
-                    "tabID": 3,
-                    "tabName": "大小",
-                    "tabValue": "小"
+                    "goodsId": 566,
+                    "commonId": 155,
+                    "goodsSpecs": "淡紫色,,,官方标配,,,32G",
+                    "goodsSpecString": "淡紫色；官方标配；32G",
+                    "goodsFullSpecs": "机身颜色：淡紫色；套餐类型：官方标配；存储容量：32G",
+                    "specValueIds": "18,35,44",
+                    "goodsPrice0": 1799,
+                    "goodsPrice1": 0,
+                    "goodsPrice2": 0,
+                    "webPrice0": 1799,
+                    "webPrice1": 0,
+                    "webPrice2": 0,
+                    "webUsable": 0,
+                    "appPrice0": 1799,
+                    "appPrice1": 0,
+                    "appPrice2": 0,
+                    "appUsable": 0,
+                    "wechatPrice0": 1799,
+                    "wechatPrice1": 0,
+                    "wechatPrice2": 0,
+                    "wechatUsable": 0,
+                    "promotionId": 0,
+                    "promotionStartTime": "1970-01-01 08:00:00",
+                    "promotionEndTime": "1970-01-01 08:00:00",
+                    "promotionState": 0,
+                    "promotionType": 0,
+                    "promotionTypeText": "",
+                    "promotionTitle": "",
+                    "goodsSerial": "",
+                    "colorId": 18,
+                    "goodsStorage": 8000,
+                    "imageName": "image/f6/6a/f66a567373389baadfc4e0f8f6459009.jpg",
+                    "imageSrc": "https://uploadjava.bizpower.com/image/f6/6a/f66a567373389baadfc4e0f8f6459009.jpg",
+                    "giftVoList": [],
+                    "isGift": 0,
+                    "isGroup": 0,
+                    "groupPrice": 0,
+                    "limitAmount": 0,
+                    "wechat": 0,
+                    "web": 0,
+                    "app": 0
                 }
-            ]
-        },
-        {
-            "goodsID": 5,
-            "stock": 12,
-            "price": 88.5,
-            "goodsInfo": [
-                {
-                    "tabID": 0,
-                    "tabName": "颜色",
-                    "tabValue": "黑"
-                },
-                {
-                    "tabID": 1,
-                    "tabName": "型号",
-                    "tabValue": "XXL"
-                },
-                {
-                    "tabID": 2,
-                    "tabName": "衣服",
-                    "tabValue": "T恤"
-                },
-                {
-                    "tabID": 3,
-                    "tabName": "大小",
-                    "tabValue": "大"
-                }
-            ]
-        },
-        {
-            "goodsID": 5,
-            "stock": 12,
-            "price": 88.5,
-            "goodsInfo": [
-                {
-                    "tabID": 0,
-                    "tabName": "颜色",
-                    "tabValue": "黑"
-                },
-                {
-                    "tabID": 1,
-                    "tabName": "型号",
-                    "tabValue": "XL"
-                },
-                {
-                    "tabID": 2,
-                    "tabName": "衣服",
-                    "tabValue": "T恤"
-                },
-                {
-                    "tabID": 3,
-                    "tabName": "大小",
-                    "tabValue": "小"
-                }
-            ]
-        },
-        {
-            "goodsID": 5,
-            "stock": 12,
-            "price": 88.5,
-            "goodsInfo": [
-                {
-                    "tabID": 0,
-                    "tabName": "颜色",
-                    "tabValue": "黑"
-                },
-                {
-                    "tabID": 1,
-                    "tabName": "型号",
-                    "tabValue": "XL"
-                },
-                {
-                    "tabID": 2,
-                    "tabName": "衣服",
-                    "tabValue": "T恤"
-                },
-                {
-                    "tabID": 3,
-                    "tabName": "大小",
-                    "tabValue": "大"
-                }
-            ]
+            ],
+            "goodsModal": 1,
+            "batchNum0": 1,
+            "batchNum0End": 0,
+            "batchNum1": 0,
+            "batchNum1End": 0,
+            "batchNum2": 0,
+            "batchPrice0": 1799,
+            "batchPrice1": 0,
+            "batchPrice2": 1799,
+            "webPrice0": 1799,
+            "webPrice1": 0,
+            "webPrice2": 1799,
+            "webPriceMin": 1799,
+            "webUsable": 0,
+            "appPrice0": 1799,
+            "appPrice1": 0,
+            "appPrice2": 1799,
+            "appPriceMin": 1799,
+            "appUsable": 0,
+            "wechatPrice0": 1799,
+            "wechatPrice1": 0,
+            "wechatPrice2": 1799,
+            "wechatPriceMin": 1799,
+            "wechatUsable": 0,
+            "promotionId": 0,
+            "promotionStartTime": null,
+            "promotionEndTime": null,
+            "promotionType": 0,
+            "promotionTypeText": "",
+            "promotionCountDownTime": 0,
+            "promotionCountDownTimeType": "",
+            "promotionState": 0,
+            "unitName": "把",
+            "discount": null,
+            "conformList": [],
+            "voucherTemplate": null,
+            "voucherTemplateList": [],
+            "book": null,
+            "bookList": [],
+            "buyNow": 1,
+            "addCart": 1,
+            "isGift": 0,
+            "giftVoList": [],
+            "groupId": 0,
+            "contractItem1": 0,
+            "contractItem2": 0,
+            "contractItem3": 0,
+            "contractItem4": 0,
+            "contractItem5": 0,
+            "contractItem6": 0,
+            "contractItem7": 0,
+            "contractItem8": 0,
+            "contractItem9": 0,
+            "contractItem10": 0,
+            "contractVoList": [],
+            "web": 0,
+            "app": 0,
+            "wechat": 0
         }
-    ]
-}
-    </string>
+    }
+ </string>
 </resources>

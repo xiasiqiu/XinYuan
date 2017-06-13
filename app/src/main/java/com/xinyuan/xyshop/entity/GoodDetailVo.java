@@ -612,4 +612,77 @@ public class GoodDetailVo {
 	public void setWechatUsable(int wechatUsable) {
 		this.wechatUsable = wechatUsable;
 	}
+
+	@Override
+	public String toString() {
+		return "GoodDetailVo{" +
+				"appPrice0=" + appPrice0 +
+				", appPrice1=" + appPrice1 +
+				", appPrice2=" + appPrice2 +
+				", appPriceMin=" + appPriceMin +
+				", appUsable=" + appUsable +
+				", areaId1=" + areaId1 +
+				", areaId2=" + areaId2 +
+				", batchNum0=" + batchNum0 +
+				", batchNum0End=" + batchNum0End +
+				", batchNum1=" + batchNum1 +
+				", batchNum1End=" + batchNum1End +
+				", batchNum2=" + batchNum2 +
+				", batchPrice0=" + batchPrice0 +
+				", batchPrice1=" + batchPrice1 +
+				", batchPrice2=" + batchPrice2 +
+				", book=" + book +
+				", bookList=" + bookList +
+				", brandId=" + brandId +
+				", categoryId=" + categoryId +
+				", colorId=" + colorId +
+				", commonId=" + commonId +
+				", discount=" + discount +
+				", evaluateNum=" + evaluateNum +
+				", formatBottom=" + formatBottom +
+				", formatTop=" + formatTop +
+				", giftVoList=" + giftVoList +
+				", goodsAttrList=" + goodsAttrList +
+				", goodsBody='" + goodsBody + '\'' +
+				", goodsClick=" + goodsClick +
+				", goodsFavorite=" + goodsFavorite +
+				", goodsId=" + goodsId +
+				", goodsImageList=" + goodsImageList +
+				", goodsList=" + goodsList +
+				", goodsModal=" + goodsModal +
+				", goodsName='" + goodsName + '\'' +
+				", goodsPrice='" + goodsPrice + '\'' +
+				", goodsQRCode='" + goodsQRCode + '\'' +
+				", goodsRate=" + goodsRate +
+				", goodsSaleNum=" + goodsSaleNum +
+				", goodsSerial='" + goodsSerial + '\'' +
+				", goodsSpecNameList=" + goodsSpecNameList +
+				", goodsSpecValueJson=" + goodsSpecValueJson +
+				", goodsSpecValues='" + goodsSpecValues + '\'' +
+				", goodsStatus=" + goodsStatus +
+				", imageSrc='" + imageSrc + '\'' +
+				", isGift=" + isGift +
+				", jingle='" + jingle + '\'' +
+				", mobileBody='" + mobileBody + '\'' +
+				", promotionCountDownTime=" + promotionCountDownTime +
+				", promotionCountDownTimeType='" + promotionCountDownTimeType + '\'' +
+				", promotionEndTime='" + promotionEndTime + '\'' +
+				", promotionId=" + promotionId +
+				", promotionStartTime='" + promotionStartTime + '\'' +
+				", promotionState=" + promotionState +
+				", promotionType=" + promotionType +
+				", promotionTypeText='" + promotionTypeText + '\'' +
+				", specJson=" + specJson +
+				", storeId=" + storeId +
+				", unitName='" + unitName + '\'' +
+				", webPrice0=" + webPrice0 +
+				", webPrice1=" + webPrice1 +
+				", webPrice2=" + webPrice2 +
+				", webUsable=" + webUsable +
+				", wechatPrice0=" + wechatPrice0 +
+				", wechatPrice1=" + wechatPrice1 +
+				", wechatPrice2=" + wechatPrice2 +
+				", wechatUsable=" + wechatUsable +
+				'}';
+	}
 }

@@ -5,7 +5,7 @@ package com.xinyuan.xyshop.ui.goods;
  */
 
 public class GoodBusBean {
-
+	public static String SelectedGoods = "selectedGoods";
 	public static String GoodEvaluate = "goodEvaluate";
 
 	private String flag;
