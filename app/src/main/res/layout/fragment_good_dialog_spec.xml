@@ -1,38 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                     android:layout_width="match_parent"
-                                     android:layout_height="match_parent"
-                                     android:background="@color/bg_white"
-                                     android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_white"
+              android:orientation="vertical">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_margin="30px">
+        android:layout_margin="10dp">
 
         <ImageView
             android:id="@+id/iv_close"
-            android:layout_width="50px"
-            android:layout_height="50px"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="30px"
+            android:layout_marginRight="10dp"
             android:src="@drawable/icon_close"/>
 
         <ImageView
             android:id="@+id/ivSelectedGoodsImg"
-            android:layout_width="245px"
-            android:layout_height="245px"
-            android:layout_marginTop="20px"
+            android:layout_width="82dp"
+            android:layout_height="82dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/test_select_goodsimg"/>
 
         <TextView
             android:id="@+id/tvGoodsName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30px"
-            android:layout_marginTop="20px"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
             android:layout_toRightOf="@+id/ivSelectedGoodsImg"
             android:text="only纯棉卡通印花宽松t恤"
             android:textColor="@color/tv_name"
@@ -42,8 +41,8 @@
             android:id="@+id/tvSelectedPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30px"
-            android:layout_marginTop="90px"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
             android:layout_toRightOf="@+id/ivSelectedGoodsImg"
             android:text="$599"
             android:textColor="@color/tv_price"
@@ -53,20 +52,20 @@
             android:id="@+id/tvSelectedType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30px"
-            android:layout_marginTop="200px"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="75dp"
             android:layout_toRightOf="@+id/ivSelectedGoodsImg"
-            android:text="已选：“XS”“K02黄色”"
+            android:text="已选："
             android:textColor="@color/tv_name"
-            android:textSize="@dimen/tv_light"/>
+            android:textSize="@dimen/tv_small"/>
 
         <TextView
             android:id="@+id/tvSkuStorage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="200px"
-            android:text="库存815件"
+            android:layout_marginTop="75dp"
+            android:text="库存"
             android:textColor="@color/tv_hint"
             android:textSize="@dimen/tv_small"/>
 
@@ -74,27 +73,19 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_below="@+id/tvSkuStorage"
-            android:layout_marginTop="80px"
+            android:layout_marginTop="65px"
             android:background="@color/colorLine"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30px">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="请选择尺码"
-            android:textColor="@color/tv_name"
-            android:textSize="@dimen/tv_Normal"/>
+        android:layout_margin="5dp">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_spec"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60px"/>
+            android:layout_height="wrap_content"/>
 
         <View
             android:layout_width="match_parent"

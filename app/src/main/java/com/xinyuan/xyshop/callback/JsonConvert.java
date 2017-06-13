@@ -46,6 +46,7 @@ public class JsonConvert<T> implements Converter<T> {
 			response.close();
 			return (T) simpleResponse.toLzyResponse();
 		} else if (rawType == LzyResponse.class) {
+			XLog.v(response.body().toString());
 			LzyResponse lzyResponse = Convert.fromJson(jsonReader, type);
 			response.close();
 			int code = lzyResponse.code;

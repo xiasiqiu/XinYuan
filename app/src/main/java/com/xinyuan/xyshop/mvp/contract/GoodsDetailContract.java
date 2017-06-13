@@ -5,6 +5,7 @@ import android.view.View;
 import com.xinyuan.xyshop.base.BasePresenter;
 import com.xinyuan.xyshop.base.BaseView;
 import com.xinyuan.xyshop.model.CategoryModel;
+import com.xinyuan.xyshop.model.GoodDetailModel;
 import com.xinyuan.xyshop.model.GoodsDetailModel;
 
 import java.util.List;
@@ -15,7 +16,9 @@ import java.util.List;
 
 public class GoodsDetailContract {
 	public interface GoodsDetailView extends BaseView<GoodsDetailContract.GoodsDetailPresenter> {
-		void showView(GoodsDetailModel model);
+
+		void showView(GoodDetailModel model);
+
 		void showBanner();
 
 		void showGoodsInfo();

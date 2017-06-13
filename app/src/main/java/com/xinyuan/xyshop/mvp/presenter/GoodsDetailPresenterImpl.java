@@ -3,6 +3,7 @@ package com.xinyuan.xyshop.mvp.presenter;
 import com.xinyuan.xyshop.bean.LzyResponse;
 import com.xinyuan.xyshop.http.ApiServer;
 import com.xinyuan.xyshop.http.Urls;
+import com.xinyuan.xyshop.model.GoodDetailModel;
 import com.xinyuan.xyshop.model.GoodsDetailModel;
 import com.xinyuan.xyshop.model.HomeModel;
 import com.xinyuan.xyshop.mvp.contract.GoodsDetailContract;
@@ -31,24 +32,25 @@ public class GoodsDetailPresenterImpl implements GoodsDetailContract.GoodsDetail
 
 	@Override
 	public void initData(int goodsId) {
-		Subscription subscription = ApiServer.getGoodsDetail(Urls.URL_GOODS_DETAIL, goodsId)
+		Subscription subscription = ApiServer.getGoodsDetail(Urls.URL_GOODS_DETAIL)
 				.doOnSubscribe(new Action0() {
 					@Override
 					public void call() {
 						view.showState(0);
 					}
 				})
-				.map(new Func1<LzyResponse<GoodsDetailModel>, GoodsDetailModel>() {
+				.map(new Func1<LzyResponse<GoodDetailModel>, GoodDetailModel>() {
 
 					@Override
-					public GoodsDetailModel call(LzyResponse<GoodsDetailModel> goodsDetaillLzyResponse) {
+					public GoodDetailModel call(LzyResponse<GoodDetailModel> goodsDetaillLzyResponse) {
 						return goodsDetaillLzyResponse.getDatas();
 					}
 				})
 				.observeOn(AndroidSchedulers.mainThread())
-				.subscribe(new Action1<GoodsDetailModel>() {
+				.subscribe(new Action1<GoodDetailModel>() {
 					@Override
-					public void call(GoodsDetailModel goodsDetail) {
+					public void call(GoodDetailModel goodsDetail) {
+						XLog.v(goodsDetail.toString());
 						view.showView(goodsDetail);
 
 					}

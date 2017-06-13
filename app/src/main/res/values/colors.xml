@@ -23,7 +23,8 @@
     <color name="bg_light">#fffcfcfc</color>
 
     <color name="red">#ff3030</color>
-
+    <color name="saddlebrown">#8B4513</color>
+    <color name="dodgerblue">#1E90FF</color>
     <!--背景颜色-->
     <color name="colorBackground">#eeeeee</color>
     <!--顶部颜色-->

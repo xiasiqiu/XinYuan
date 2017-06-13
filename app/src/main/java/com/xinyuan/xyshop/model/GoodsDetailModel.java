@@ -104,7 +104,7 @@ public class GoodsDetailModel implements Serializable {
 			private int lookCount;
 			private int praiseCount;
 			private String time;
-			private GoodParam goodParam;
+			private List<CommentParam> params;
 			private CommentMore commentMore;
 
 			public String getHeadImg() {
@@ -139,8 +139,8 @@ public class GoodsDetailModel implements Serializable {
 				return time;
 			}
 
-			public GoodParam getGoodParam() {
-				return goodParam;
+			public List<CommentParam> getGoodParam() {
+				return params;
 			}
 
 			public CommentMore getCommentMore() {
@@ -158,6 +158,21 @@ public class GoodsDetailModel implements Serializable {
 
 				public String getContent() {
 					return content;
+				}
+			}
+
+			public class CommentParam implements Serializable {
+				private static final long serialVersionUID = -933595566508651340L;
+				String key;
+				String value;
+
+
+				public String getKey() {
+					return key;
+				}
+
+				public String getValue() {
+					return value;
 				}
 			}
 		}

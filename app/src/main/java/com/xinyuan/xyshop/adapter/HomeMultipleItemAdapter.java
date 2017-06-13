@@ -84,7 +84,7 @@ public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMulti
 
 				break;
 			case HomeMultipleItem.TAB2:
-
+			
 				ImageView iv_tab2_title = helper.getView(R.id.iv_tab_title);
 				TextView tv_tab2_title_cn = helper.getView(R.id.tv_tab_title_cn);
 				TextView tv_tab2_title_en = helper.getView(R.id.tv_tab_title_en);

@@ -94,7 +94,7 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 
 
 	private void showModule(List<HomeModel.HomeModule> list) {
-
+		XLog.list(list);
 		HomeMultipleList = new ArrayList<>();
 		bannerList = new ArrayList<>();
 		menuList = new ArrayList<>();
@@ -126,6 +126,7 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 				tabList.addAll(homeModule.getDataList());
 				HomeMultipleList.add(new HomeMultipleItem(HomeMultipleItem.TAB, HomeMultipleItem.TAB_SPAN_SIZE));
 			} else if (homeModule.getItemType().equals("tab2")) {
+				XLog.v("有tab2！！！！！！");
 				tab2List.addAll(homeModule.getDataList());
 				HomeMultipleList.add(new HomeMultipleItem(HomeMultipleItem.TAB2, HomeMultipleItem.TAB2_SPAN_SIZE));
 			} else if (homeModule.getItemType().equals("category")) {

@@ -19,6 +19,7 @@ import com.google.android.flexbox.FlexboxLayout;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.common.AddViewHolder;
 import com.xinyuan.xyshop.entity.GoodsEvaluate;
+import com.xinyuan.xyshop.model.GoodDetailModel;
 import com.xinyuan.xyshop.model.GoodsDetailModel;
 import com.xinyuan.xyshop.ui.goods.fragment.GoodsInfoFragment;
 import com.xinyuan.xyshop.util.GlideImageLoader;
@@ -34,14 +35,14 @@ import java.util.List;
  * Created by Administrator on 2017/5/25.
  */
 
-public class SimpleEvaluateAdapter extends BaseQuickAdapter<GoodsDetailModel.GoodComment.GoodCommentContent, BaseViewHolder> {
+public class SimpleEvaluateAdapter extends BaseQuickAdapter<GoodDetailModel.CommentList, BaseViewHolder> {
 
-	public SimpleEvaluateAdapter(@LayoutRes int layoutResId, @Nullable List<GoodsDetailModel.GoodComment.GoodCommentContent> data) {
+	public SimpleEvaluateAdapter(@LayoutRes int layoutResId, @Nullable List<GoodDetailModel.CommentList> data) {
 		super(layoutResId, data);
 	}
 
 	@Override
-	protected void convert(final BaseViewHolder helper, final GoodsDetailModel.GoodComment.GoodCommentContent item) {
+	protected void convert(final BaseViewHolder helper, final GoodDetailModel.CommentList item) {
 
 		ImageView headImag = helper.getView(R.id.customer_image);
 		GlideImageLoader.setImage(mContext, item.getHeadImg(), headImag);
@@ -50,7 +51,7 @@ public class SimpleEvaluateAdapter extends BaseQuickAdapter<GoodsDetailModel.Goo
 		TextView evaluatetime = helper.getView(R.id.evaluatetime);
 		evaluatetime.setText(item.getTime());
 		TextView goodSpec = helper.getView(R.id.goodSpec);
-		goodSpec.setText(item.getGoodParam().toString());
+		goodSpec.setText(item.getParams().toString());
 		ImageView iv_user_star = helper.getView(R.id.iv_user_star);
 		switch (item.getCommentLevel()) {
 			case 1:
@@ -115,8 +116,8 @@ public class SimpleEvaluateAdapter extends BaseQuickAdapter<GoodsDetailModel.Goo
 
 		TextView tv_goods_eva_lookcount = helper.getView(R.id.tv_goods_eva_lookcount);
 		TextView tv_goods_eva_praisecount = helper.getView(R.id.tv_goods_eva_praisecount);
-		tv_goods_eva_lookcount.setText(item.getLookCount());
-		tv_goods_eva_praisecount.setText(item.getPraiseCount());
+		tv_goods_eva_lookcount.setText(""+item.getLookCount());
+		tv_goods_eva_praisecount.setText(""+item.getPraiseCount());
 
 	}
 }

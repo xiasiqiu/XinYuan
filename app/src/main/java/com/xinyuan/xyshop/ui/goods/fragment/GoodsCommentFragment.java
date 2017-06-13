@@ -11,6 +11,7 @@ import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.SimpleEvaluateAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.entity.GoodsEvaluate;
+import com.xinyuan.xyshop.model.GoodDetailModel;
 import com.xinyuan.xyshop.model.GoodsDetailModel;
 import com.xinyuan.xyshop.util.FullyLinearLayoutManager;
 import com.youth.xframe.utils.log.XLog;
@@ -91,7 +92,7 @@ public class GoodsCommentFragment extends BaseFragment {
 	SimpleEvaluateAdapter simpleEvaluateAdapter;
 
 	private void initList(int i) {
-		List<GoodsDetailModel.GoodComment.GoodCommentContent> data = new ArrayList<>();
+		List<GoodDetailModel.CommentList> data = new ArrayList<>();
 		this.simpleEvaluateAdapter = new SimpleEvaluateAdapter(R.layout.fragment_good_item_evaluate, data);
 		FullyLinearLayoutManager linearLayoutManager = new FullyLinearLayoutManager(context);
 		rv_comment.setNestedScrollingEnabled(false);

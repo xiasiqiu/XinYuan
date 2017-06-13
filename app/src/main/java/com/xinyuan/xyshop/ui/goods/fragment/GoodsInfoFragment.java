@@ -32,7 +32,8 @@ import com.xinyuan.xyshop.entity.GoodDetailVo;
 import com.xinyuan.xyshop.entity.Goods;
 import com.xinyuan.xyshop.entity.GoodsEvaluate;
 import com.xinyuan.xyshop.entity.PreGoods;
-import com.xinyuan.xyshop.model.GoodsDetailModel;
+import com.xinyuan.xyshop.model.GoodDetailModel;
+import com.xinyuan.xyshop.mvp.contract.GoodSearchShowContract;
 import com.xinyuan.xyshop.mvp.contract.GoodsDetailContract;
 import com.xinyuan.xyshop.mvp.presenter.GoodsDetailPresenterImpl;
 import com.xinyuan.xyshop.ui.goods.GoodBusBean;
@@ -43,6 +44,7 @@ import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.xinyuan.xyshop.widget.SlideDetailsLayout;
 import com.xinyuan.xyshop.widget.dialog.GoodDetailsPromotionDialog;
+import com.xinyuan.xyshop.widget.dialog.GoodDetailsSpecDialog;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -63,7 +65,7 @@ import butterknife.OnClick;
  * Created by Administrator on 2017/5/18.
  */
 
-public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayout.OnSlideDetailsListener, GoodsDetailContract.GoodsDetailView, GoodsDetailContract.GoodsDetailPresenter {
+public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayout.OnSlideDetailsListener, GoodsDetailContract.GoodsDetailView {
 
 
 	@BindView(R.id.sv_switch)
@@ -162,8 +164,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	GoodsConfigFragment goodsConfigFragment;
 	GoodsServiceFragment goodsServiceFragment;
 
-	GoodsDetailContract.GoodsDetailPresenter presenter;
-	GoodsDetailContract.GoodsDetailView view;
+	private GoodsDetailContract.GoodsDetailPresenter presenter;
 
 
 	private FragmentTransaction fragmentTransaction;
@@ -180,7 +181,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	private Goods selectedGoods;
 	private HashMap<Integer, PreGoods> preGoodsMap;
 	private int allGoodsNum;
-	private GoodsDetailModel detailModel;
+	private GoodDetailModel detailModel;
 	private static boolean VIEW_INIT = true;
 	SimpleEvaluateAdapter simpleEvaluateAdapter;
 
@@ -224,7 +225,8 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	@Override
 	public void initData(@Nullable Bundle savedInstanceState) {
-		new GoodsDetailPresenterImpl(view);
+		new GoodsDetailPresenterImpl(this);
+		presenter.initData(123);
 		fragmentList = new ArrayList<>();
 		tabTextList = new ArrayList<>();
 		tabTextList.add(tv_goods_detail);
@@ -268,7 +270,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	@OnClick(R.id.ll_current_goods)
 	public void onSpecChooseClick() {
 
-		//showSelectSpecDialog();
+		showSelectSpecDialog();
 
 	}
 
@@ -292,13 +294,16 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 
 	@Override
-	public void initData(int GoodsId) {
-
-	}
-
-	@Override
-	public void showView(GoodsDetailModel model) {
+	public void showView(GoodDetailModel model) {
+		XLog.v(model.toString());
 		this.detailModel = model;
+
+		showBanner();
+		showGoodsInfo();
+		showEva();
+		showStoreInfo();
+		showSelectPromoDialog();
+
 	}
 
 	@Override
@@ -306,8 +311,8 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 		ArrayList<String> titles = new ArrayList<>();
 		ArrayList<String> images = new ArrayList<>();
-
-		for (GoodsDetailModel.GoodBanner banner : detailModel.getBanners()) {
+	XLog.v(detailModel.getGoodBanner().toString());
+		for (GoodDetailModel.GoodBanner banner : detailModel.getGoodBanner()) {
 			titles.add(banner.getImgTxt());
 			images.add(banner.getImgUrl());
 		}
@@ -327,8 +332,8 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	@Override
 	public void showGoodsInfo() {
-		tv_newprice.setText("￥" + detailModel.getActualPrice().toString());
-		tv_oldprice.setText("￥" + detailModel.getOldPrice().toString());
+		tv_newprice.setText("￥" + detailModel.getActualPrice());
+		tv_oldprice.setText("￥" + detailModel.getOldPrice());
 		if (detailModel.getExpressCost() == 0) {
 			tv_goodspostage.setText("快递:免邮费");
 		} else {
@@ -356,7 +361,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		tv_comment_count.setText("评价(" + detailModel.getGoodComment().getTotalCount() + ")");
 
 
-		List<GoodsDetailModel.GoodComment.GoodCommentContent> data = new ArrayList<>();
+		List<GoodDetailModel.CommentList> data = new ArrayList<>();
 
 		data.addAll(detailModel.getGoodComment().getList());
 
@@ -393,15 +398,15 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	}
 
 
-//	private void showSelectSpecDialog() {
-//		GoodDetailsSpecDialog dialog = new GoodDetailsSpecDialog(this.context, detailModel);
-//		Window dialogWindow = dialog.getWindow();
-//		dialogWindow.setGravity(Gravity.BOTTOM);
-//		dialog.show();
-//		DisplayMetrics dm = new DisplayMetrics();
-//		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-//		dialogWindow.setLayout(dm.widthPixels, dialogWindow.getAttributes().height);
-//	}
+	private void showSelectSpecDialog() {
+		GoodDetailsSpecDialog dialog = new GoodDetailsSpecDialog(this.context);
+		Window dialogWindow = dialog.getWindow();
+		dialogWindow.setGravity(Gravity.BOTTOM);
+		dialog.show();
+		DisplayMetrics dm = new DisplayMetrics();
+		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+		dialogWindow.setLayout(dm.widthPixels, dialogWindow.getAttributes().height);
+	}
 
 	private void showSelectPromoDialog() {
 		GoodDetailsPromotionDialog dialog = new GoodDetailsPromotionDialog(this.context, detailModel.getSalesPromotion());
@@ -469,14 +474,12 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		}
 	}
 
-	@Override
-	public void initData() {
-
-	}
 
 	@Override
 	public void onAttach(Context context) {
 		super.onAttach(context);
 		activity = (GoodDetailsActivity) context;
 	}
+
+
 }

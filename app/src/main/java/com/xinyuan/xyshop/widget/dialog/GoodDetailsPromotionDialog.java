@@ -3,6 +3,7 @@ package com.xinyuan.xyshop.widget.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 
@@ -15,6 +16,7 @@ import com.xinyuan.xyshop.entity.Goods;
 import com.xinyuan.xyshop.entity.PreGoods;
 import com.xinyuan.xyshop.model.GoodsDetailModel;
 import com.xinyuan.xyshop.util.FullyLinearLayoutManager;
+import com.youth.xframe.utils.log.XLog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,6 +47,7 @@ public class GoodDetailsPromotionDialog extends Dialog {
 		this.context = context;
 		this.salesPromotion = salesPromotion;
 
+
 	}
 
 
@@ -54,15 +57,10 @@ public class GoodDetailsPromotionDialog extends Dialog {
 		ButterKnife.bind((Dialog) this);
 
 
-		List<String> data = new ArrayList<>();
+		this.adapter = new TextLineAdapter(R.layout.item_textline, salesPromotion);
 
-		data.addAll(salesPromotion);
-
-		this.adapter = new TextLineAdapter(R.layout.item_textline, data);
-
-
-		FullyLinearLayoutManager linearLayoutManager = new FullyLinearLayoutManager(context);
-		rl_promotion.setNestedScrollingEnabled(false);
+		XLog.list(salesPromotion);
+		LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
 		//设置布局管理器
 		rl_promotion.setLayoutManager(linearLayoutManager);
 		this.rl_promotion.setAdapter(this.adapter);

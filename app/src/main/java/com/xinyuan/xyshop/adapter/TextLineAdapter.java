@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.xinyuan.xyshop.R;
+import com.youth.xframe.utils.log.XLog;
 
 import java.util.List;
 
@@ -25,5 +26,6 @@ public class TextLineAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 	protected void convert(BaseViewHolder helper, String item) {
 		TextView textView = helper.getView(R.id.good_promotion);
 		textView.setText(item);
+		XLog.v("促销"+item.toString());
 	}
 }
