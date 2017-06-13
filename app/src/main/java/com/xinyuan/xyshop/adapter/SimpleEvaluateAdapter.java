@@ -24,7 +24,7 @@ import com.xinyuan.xyshop.ui.goods.fragment.GoodsInfoFragment;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.Image;
 import com.xinyuan.xyshop.widget.dialog.ClickBigImageDialog;
-import com.xinyuan.xyshop.widget.dialog.GoodDetailsSpecDialog;
+
 import com.youth.xframe.utils.log.XLog;
 
 import java.util.ArrayList;

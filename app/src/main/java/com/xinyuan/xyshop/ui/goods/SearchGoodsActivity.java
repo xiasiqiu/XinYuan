@@ -180,7 +180,7 @@ public class SearchGoodsActivity extends BaseActivity {
 				HashMap<String, String> params;
 				params = new HashMap();
 				params.put("keyword", key);
-				//CommUtil.gotoActivity(this, SearchStoresShowActivity.class, false, params);
+				CommUtil.gotoActivity(this, SearchGoodsShowActivity.class, false, params);
 				return;
 			case R.id.search_btn_back:
 				finish();

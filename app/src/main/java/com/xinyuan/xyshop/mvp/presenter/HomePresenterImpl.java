@@ -44,6 +44,7 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 	private static List<HomeModel.HomeModule.HomeModuleData> adList;
 	private static List<HomeModel.HomeModule.HomeModuleData> tabTitleList;
 	private static List<HomeModel.HomeModule.HomeModuleData> tabList;
+	private static List<HomeModel.HomeModule.HomeModuleData> tab2List;
 	private static List<HomeModel.HomeModule.HomeModuleData> categoryList;
 
 
@@ -101,6 +102,7 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 		adList = new ArrayList<>();
 		tabTitleList = new ArrayList<>();
 		tabList = new ArrayList<>();
+		tab2List = new ArrayList<>();
 		categoryList = new ArrayList<>();
 
 
@@ -123,12 +125,16 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 			} else if (homeModule.getItemType().equals("tab")) {
 				tabList.addAll(homeModule.getDataList());
 				HomeMultipleList.add(new HomeMultipleItem(HomeMultipleItem.TAB, HomeMultipleItem.TAB_SPAN_SIZE));
+			} else if (homeModule.getItemType().equals("tab2")) {
+				tab2List.addAll(homeModule.getDataList());
+				HomeMultipleList.add(new HomeMultipleItem(HomeMultipleItem.TAB2, HomeMultipleItem.TAB2_SPAN_SIZE));
 			} else if (homeModule.getItemType().equals("category")) {
 				categoryList.addAll(homeModule.getDataList());
 				HomeMultipleList.add(new HomeMultipleItem(HomeMultipleItem.CATEGORY, HomeMultipleItem.CATEGORY_SPAN_SIZE));
 			}
 
 		}
+
 		showView();
 
 

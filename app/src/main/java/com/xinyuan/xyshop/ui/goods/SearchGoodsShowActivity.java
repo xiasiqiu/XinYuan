@@ -14,6 +14,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -255,9 +256,9 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 
 		}
 
-//		menuHeaderView = new RightSearchPly(SearchGoodsShowActivity.this, selectFilterTests);
-//		nav_view.addView(menuHeaderView);
-//		drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, Gravity.RIGHT);
+		menuHeaderView = new RightSearchPly(SearchGoodsShowActivity.this, selectFilterTests);
+		nav_view.addView(menuHeaderView);
+		drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, Gravity.RIGHT);
 	}
 
 
@@ -393,11 +394,11 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 				XLog.v("点击了筛选");
 
 
-//				if(drawer.isDrawerVisible(GravityCompat.END)){
-//					closeMenu();
-//				}else {
-//					openMenu();
-//				}
+				if (drawer.isDrawerVisible(GravityCompat.END)) {
+					closeMenu();
+				} else {
+					openMenu();
+				}
 
 
 				sortSelected(false, false, true);

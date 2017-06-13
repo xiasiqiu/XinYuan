@@ -43,7 +43,6 @@ import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.xinyuan.xyshop.widget.SlideDetailsLayout;
 import com.xinyuan.xyshop.widget.dialog.GoodDetailsPromotionDialog;
-import com.xinyuan.xyshop.widget.dialog.GoodDetailsSpecDialog;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -269,7 +268,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	@OnClick(R.id.ll_current_goods)
 	public void onSpecChooseClick() {
 
-		showSelectSpecDialog();
+		//showSelectSpecDialog();
 
 	}
 
@@ -394,15 +393,15 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	}
 
 
-	private void showSelectSpecDialog() {
-		GoodDetailsSpecDialog dialog = new GoodDetailsSpecDialog(this.context, detailModel);
-		Window dialogWindow = dialog.getWindow();
-		dialogWindow.setGravity(Gravity.BOTTOM);
-		dialog.show();
-		DisplayMetrics dm = new DisplayMetrics();
-		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-		dialogWindow.setLayout(dm.widthPixels, dialogWindow.getAttributes().height);
-	}
+//	private void showSelectSpecDialog() {
+//		GoodDetailsSpecDialog dialog = new GoodDetailsSpecDialog(this.context, detailModel);
+//		Window dialogWindow = dialog.getWindow();
+//		dialogWindow.setGravity(Gravity.BOTTOM);
+//		dialog.show();
+//		DisplayMetrics dm = new DisplayMetrics();
+//		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+//		dialogWindow.setLayout(dm.widthPixels, dialogWindow.getAttributes().height);
+//	}
 
 	private void showSelectPromoDialog() {
 		GoodDetailsPromotionDialog dialog = new GoodDetailsPromotionDialog(this.context, detailModel.getSalesPromotion());

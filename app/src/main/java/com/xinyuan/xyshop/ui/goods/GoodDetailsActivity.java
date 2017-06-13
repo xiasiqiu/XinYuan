@@ -13,6 +13,7 @@ import com.gxz.PagerSlidingTabStrip;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.ItemTitlePagerAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
+import com.xinyuan.xyshop.entity.PreGoods;
 import com.xinyuan.xyshop.entity.TabEntity;
 import com.xinyuan.xyshop.ui.goods.fragment.GoodsCommentFragment;
 import com.xinyuan.xyshop.ui.goods.fragment.GoodsDetailFragment;
@@ -25,6 +26,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -50,7 +52,7 @@ public class GoodDetailsActivity extends BaseActivity {
 	private String[] mTitles = {"商品", "详情", "评价", "推荐"};
 	private static int commonId;
 
-
+	private HashMap<Integer, PreGoods> preGoodsMap;
 	public static String COMMONID = "commonId";
 	public static String GOODID = "goodsId";
 	public static String TRYSTYPE = "trysType";
@@ -67,6 +69,7 @@ public class GoodDetailsActivity extends BaseActivity {
 		this.commonId = getIntent().getIntExtra(COMMONID, 0);
 		this.commonId = getIntent().getIntExtra(GOODID, 0);
 		this.trysType = getIntent().getIntExtra(TRYSTYPE, 0);
+		this.preGoodsMap = new HashMap();
 	}
 
 	@Override

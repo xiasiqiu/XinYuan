@@ -68,30 +68,30 @@ public class SearchGoodsShowPresenterImpl implements GoodSearchShowContract.Good
 		XLog.v("此次请求的地址为loadGoods: url = " + url);
 
 
-//		if (keyword.equals("手机")) {
-//			OkGo.get(Urls.URL_SEARCH_SHOUJI)
-//					.execute(new StringCallback() {
-//						@Override
-//						public void onSuccess(String s, Call call, Response response) {
-//							searchGoodsListTest = JsonUtil.toBean(s, SearchGoodsListTest.class);
-//							SearchGoodsListTest.SearchGoodsData data = searchGoodsListTest.getDatas();
-//							selectFilterTest = data.getSelectFilter();
-//							XLog.v("selectFilterTest" + selectFilterTest);
-//							keyList = selectFilterTest.getKeyList();
-//							XLog.list(keyList);
-//							pageEntity = data.getPageEntity();
-//							List<GoodsVo> goodsVoList = data.getGoodsList();
-//							showView.showGoodList(goodsVoList, selectFilterTest,pageEntity);
-//
-//						}
-//
-//
-//						@Override
-//						public void onError(Call call, Response response, Exception e) {
-//							showView.showState(2);
-//						}
-//					});
-//		} else {
+		if (keyword.equals("手机")) {
+			OkGo.get(Urls.URL_SEARCH_SHOUJI)
+					.execute(new StringCallback() {
+						@Override
+						public void onSuccess(String s, Call call, Response response) {
+							searchGoodsListTest = JsonUtil.toBean(s, SearchGoodsListTest.class);
+							SearchGoodsListTest.SearchGoodsData data = searchGoodsListTest.getDatas();
+							selectFilterTest = data.getSelectFilter();
+							XLog.v("selectFilterTest" + selectFilterTest);
+							keyList = selectFilterTest.getKeyList();
+							XLog.list(keyList);
+							pageEntity = data.getPageEntity();
+							List<GoodsVo> goodsVoList = data.getGoodsList();
+							showView.showGoodList(goodsVoList, selectFilterTest,pageEntity);
+
+						}
+
+
+						@Override
+						public void onError(Call call, Response response, Exception e) {
+							showView.showState(2);
+						}
+					});
+		} else {
 
 		OkGo.get(url)
 				.execute(new StringCallback() {
@@ -108,7 +108,7 @@ public class SearchGoodsShowPresenterImpl implements GoodSearchShowContract.Good
 
 					}
 				});
-//		}
+		}
 	}
 
 

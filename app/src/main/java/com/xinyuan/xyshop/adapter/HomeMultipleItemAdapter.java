@@ -31,6 +31,7 @@ public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMulti
 		super(data);
 		addItemType(HomeMultipleItem.AD, R.layout.fragment_home_item_ad);
 		addItemType(HomeMultipleItem.TAB, R.layout.fragment_home_item_tab);
+		addItemType(HomeMultipleItem.TAB2, R.layout.fragment_home_item_tab2);
 		addItemType(HomeMultipleItem.CATEGORY, R.layout.fragment_home_item_category);
 		this.context = context;
 		dataList = HomePresenterImpl.getModuleList();
@@ -39,7 +40,6 @@ public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMulti
 
 	@Override
 	protected void convert(BaseViewHolder helper, HomeMultipleItem item) {
-
 
 
 		switch (item.getItemType()) {
@@ -83,6 +83,28 @@ public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMulti
 				helper.setTextColor(R.id.tv_tab_title_cn, Color.parseColor(homeModel.getItemtitleColor()));
 
 				break;
+			case HomeMultipleItem.TAB2:
+
+				ImageView iv_tab2_title = helper.getView(R.id.iv_tab_title);
+				TextView tv_tab2_title_cn = helper.getView(R.id.tv_tab_title_cn);
+				TextView tv_tab2_title_en = helper.getView(R.id.tv_tab_title_en);
+
+				ImageView home_tab2_img1 = helper.getView(R.id.home_tab2_img1);
+				ImageView home_tab2_img2 = helper.getView(R.id.home_tab2_img2);
+				ImageView home_tab2_img3 = helper.getView(R.id.home_tab2_img3);
+				HomeModel.HomeModule tab2homeModel = dataList.get(helper.getLayoutPosition() + 2);
+
+				List<HomeModel.HomeModule.HomeModuleData> tab2list = tab2homeModel.getDataList();
+				GlideImageLoader.setImage(context, tab2list.get(0).getImageUrl(), home_tab2_img1);
+				GlideImageLoader.setImage(context, tab2list.get(1).getImageUrl(), home_tab2_img2);
+				GlideImageLoader.setImage(context, tab2list.get(2).getImageUrl(), home_tab2_img3);
+
+				GlideImageLoader.setImage(context, tab2homeModel.getItemtitleImage(), iv_tab2_title);
+				helper.setText(R.id.tv_tab_title_cn, tab2homeModel.getItemtitleCN());
+				helper.setText(R.id.tv_tab_title_en, tab2homeModel.getItemtitleEN());
+				helper.setTextColor(R.id.tv_tab_title_cn, Color.parseColor(tab2homeModel.getItemtitleColor()));
+
+				break;
 			case HomeMultipleItem.CATEGORY:
 
 
@@ -96,6 +118,7 @@ public class HomeMultipleItemAdapter extends BaseMultiItemQuickAdapter<HomeMulti
 				ImageView iv_ca_title = helper.getView(R.id.iv_tab_title);
 				TextView tv_ca_title_cn = helper.getView(R.id.tv_tab_title_cn);
 				TextView tv_ca_title_en = helper.getView(R.id.tv_tab_title_en);
+
 				HomeModel.HomeModule cahomeModel = dataList.get(helper.getLayoutPosition() + 2);
 
 				GlideImageLoader.setImage(context, cahomeModel.getItemtitleImage(), iv_ca_title);
