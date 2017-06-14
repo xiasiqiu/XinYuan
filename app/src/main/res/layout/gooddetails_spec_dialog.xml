@@ -51,21 +51,6 @@
             android:textColor="@color/tv_price"
             android:textSize="@dimen/tv_Regular"/>
 
-        <TextView
-            android:id="@+id/tvPromotionType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4.0dip"
-            android:layout_marginLeft="16.0dip"
-            android:background="@drawable/btn_bg_normal"
-            android:paddingBottom="2.0dip"
-            android:paddingLeft="4.0dip"
-            android:paddingRight="4.0dip"
-            android:paddingTop="2.0dip"
-            android:text="限时折扣"
-            android:textColor="@color/bg_white"
-            android:textSize="@dimen/tv_light"
-            android:visibility="gone"/>
     </LinearLayout>
 
     <TextView
@@ -85,164 +70,165 @@
         style="@style/XYLine"
         android:layout_below="@+id/ivSelectedGoodsImg"/>
 
-    <TextView
-        android:id="@+id/tvPrePrice"
+
+    <ScrollView
+        android:id="@+id/sv_spec"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ivSelectedGoodsImg"
-        android:layout_marginTop="1.0dip"
-        android:background="@drawable/bg_border_bottom"
-        android:padding="10.0dip"
-        android:text="dingjinhfaISHOAI"
-        android:textColor="@color/tv_hint"
-        android:textSize="@dimen/tv_light"
-        android:visibility="gone"/>
+        android:layout_below="@+id/tvSkuStorage"
+        android:layout_marginTop="35dp">
 
-    <LinearLayout
-        android:id="@+id/llSpec"
-        android:layout_width="fill_parent"
+        <LinearLayout
+            android:id="@+id/llSpec"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/llSpec0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tvSpecName0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10.0dip"
+                    android:padding="4.0dip"
+                    android:text="颜色"
+                    android:textColor="@color/tv_name"/>
+
+                <com.google.android.flexbox.FlexboxLayout
+                    android:id="@+id/rvSpecList0"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    app:alignContent="flex_start"
+                    app:flexWrap="wrap"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llSpec1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tvSpecName1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4.0dip"
+                    android:text="颜色"
+                    android:textColor="@color/tv_name"/>
+
+                <com.google.android.flexbox.FlexboxLayout
+                    android:id="@+id/rvSpecList1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    app:alignContent="flex_start"
+                    app:flexWrap="wrap"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llSpec2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tvSpecName2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10.0dip"
+                    android:padding="4.0dip"
+                    android:text="颜色"
+                    android:textColor="@color/tv_name"/>
+
+                <com.google.android.flexbox.FlexboxLayout
+                    android:id="@+id/rvSpecList2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.0dip"
+                    app:alignContent="flex_start"
+                    app:flexWrap="wrap"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llSpec3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tvSpecName3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10.0dip"
+                    android:padding="4.0dip"
+                    android:text="基站"
+                    android:textColor="@color/tv_name"/>
+
+                <com.google.android.flexbox.FlexboxLayout
+                    android:id="@+id/rvSpecList3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.0dip"
+                    app:alignContent="flex_start"
+                    app:flexWrap="wrap"/>
+            </LinearLayout>
+
+            <TextView
+                style="@style/XYLine"
+                android:layout_marginTop="10.0dip"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/ll_good_num"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvPrePrice"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/llSpec0"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10.0dip"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/tvSpecName0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10.0dip"
-                android:padding="4.0dip"
-                android:text="颜色"
-                android:textColor="@color/tv_name"/>
-
-            <com.google.android.flexbox.FlexboxLayout
-                android:id="@+id/rvSpecList0"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                app:alignContent="flex_start"
-                app:flexWrap="wrap"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/llSpec1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10.0dip"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/tvSpecName1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="4.0dip"
-                android:text="颜色"
-                android:textColor="@color/tv_name"/>
-
-            <com.google.android.flexbox.FlexboxLayout
-                android:id="@+id/rvSpecList1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                app:alignContent="flex_start"
-                app:flexWrap="wrap"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/llSpec2"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10.0dip"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/tvSpecName2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10.0dip"
-                android:padding="4.0dip"
-                android:text="颜色"
-                android:textColor="@color/tv_name"/>
-
-            <com.google.android.flexbox.FlexboxLayout
-                android:id="@+id/rvSpecList2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4.0dip"
-                app:alignContent="flex_start"
-                app:flexWrap="wrap"/>
-        </LinearLayout>
+        android:layout_below="@+id/sv_spec"
+        android:padding="10dp">
 
         <TextView
-            style="@style/XYLine"
-            android:layout_marginTop="10.0dip"/>
-    </LinearLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/llSpec"
-        android:layout_marginRight="44.0dip"
-        android:layout_marginTop="2.0dip"
-        android:text="购买数量"
-        android:textSize="@dimen/tv_Normal"/>
+            android:text="购买数量"
+            android:textSize="@dimen/tv_Normal"/>
 
-    <TextView
-        android:id="@+id/tvAllNumPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/llSpec"
-        android:layout_marginLeft="10.0dip"
-        android:layout_marginTop="24.0dip"
-        android:textColor="@color/tv_price"
-        android:textSize="@dimen/tv_Normal"/>
+        <include
+            android:id="@+id/llNum"
+            layout="@layout/view_add_and_minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
 
-    <include
-        android:id="@+id/llNum"
-        layout="@layout/view_add_and_minus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/llSpec"
-        android:layout_marginTop="18.0dip"/>
-
-    <TextView
-        style="@style/XYLine"
-        android:layout_below="@+id/llNum"/>
 
     <LinearLayout
         android:id="@+id/llBuyCart"
         android:layout_width="fill_parent"
         android:layout_height="40.0dip"
-        android:layout_below="@+id/llNum">
-
-        <Button
-            android:id="@+id/btnEditSelectedList"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:background="@null"
-            android:drawableTop="@drawable/act_home_shopcar"
-            android:paddingLeft="10.0dip"
-            android:paddingRight="10.0dip"
-            android:paddingTop="2.0dip"
-            android:text="已选清单"
-            android:textColor="@color/tv_name"
-            android:textSize="@dimen/tv_Normal"/>
+        android:layout_below="@+id/ll_good_num"
+        android:layout_marginTop="10dp">
 
         <Button
             android:id="@+id/btnBuy"
             android:layout_width="0.0dip"
             android:layout_height="fill_parent"
             android:layout_weight="1.0"
-            android:background="@color/tv_price"
+            android:background="@color/colorPrimaryDark"
             android:text="立即购买"
             android:textColor="@color/bg_white"/>
 
@@ -251,66 +237,11 @@
             android:layout_width="0.0dip"
             android:layout_height="fill_parent"
             android:layout_weight="1.0"
-            android:background="#fff57200"
+            android:background="@color/colorPrimary"
             android:text="加入购物车"
             android:textColor="#fffefefe"/>
 
-        <Button
-            android:id="@+id/btnArrivalNotice"
-            android:layout_width="0.0dip"
-            android:layout_height="fill_parent"
-            android:layout_weight="1.0"
-            android:background="@color/tv_price"
-            android:text="到货通知"
-            android:textColor="@color/bg_white"
-            android:visibility="gone"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/llPreBottom"
-        android:layout_width="fill_parent"
-        android:layout_height="48.0dip"
-        android:layout_below="@+id/llNum"
-        android:background="@drawable/bg_border_bottom"
-        android:orientation="horizontal"
-        android:visibility="gone">
 
-        <TextView
-            android:id="@+id/imID"
-            android:layout_width="60.0dip"
-            android:layout_height="fill_parent"
-            android:layout_marginTop="5.0dip"
-            android:drawableTop="@drawable/ic_store_service"
-            android:gravity="center"
-            android:text="客服"
-            android:textColor="@color/tv_name"
-            android:textSize="14.0dip"/>
-
-        <TextView
-            android:layout_width="1.0dip"
-            android:layout_height="fill_parent"
-            android:background="@color/boder"/>
-
-        <TextView
-            android:id="@+id/showCartLayoutID"
-            android:layout_width="60.0dip"
-            android:layout_height="fill_parent"
-            android:layout_marginTop="5.0dip"
-            android:drawableTop="@drawable/act_home_shopcar"
-            android:gravity="center"
-            android:text="购物车"
-            android:textColor="@color/tv_name"
-            android:textSize="12.0dip"/>
-
-        <Button
-            android:id="@+id/btnBuyPre"
-            android:layout_width="0.0dip"
-            android:layout_height="fill_parent"
-            android:layout_weight="3.0"
-            android:background="@color/tv_price"
-            android:padding="10.0dip"
-            android:text="支付定金"
-            android:textColor="@color/bg_white"
-            android:textSize="14.0dip"/>
-    </LinearLayout>
 </RelativeLayout>

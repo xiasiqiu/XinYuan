@@ -12,6 +12,7 @@ public class Urls {
 	public static final String URL_SEARCH_DEFAULT = "https://java.bizpower.com/api/search/default/keyword";//搜索热词数据
 	public static final String URL_SEARCH_SHOUJI = "http://tututo.me/api/search.json";//模拟手机数据
 	public static final String URL_GOODS_DETAIL = "http://tututo.me/api/goodsDetail.json";//商品详情数据
+	public static final String URL_GOODS_TEST = "http://tututo.me/api/test2.json";//商品详情数据
 
 
 

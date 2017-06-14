@@ -75,18 +75,6 @@ public class JsonUtil {
 		return error;
 	}
 
-	public static LzyResponse getBaseData(String json) {
-		try {
-			JSONObject object = new JSONObject(json);
-			LzyResponse baseData = new LzyResponse();
-			baseData.setCode(object.optInt("code"));
-			baseData.setDatas(object.optString("datas"));
-			return baseData;
-		} catch (JSONException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
 
 	public static String getSuccess(String json) {
 		String success = null;

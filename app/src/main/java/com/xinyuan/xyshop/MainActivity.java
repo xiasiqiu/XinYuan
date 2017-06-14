@@ -76,6 +76,8 @@ public class MainActivity extends BaseActivity {
 			fragments.add(new MineFragment());
 			showFragment();
 		}
+
+		changBtnSelectedStatus(0);
 	}
 
 
