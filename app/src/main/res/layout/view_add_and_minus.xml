@@ -20,7 +20,7 @@
             android:textColor="@color/tv_name"
             android:textSize="@dimen/tv_light"/>
 
-        <EditText
+        <TextView
             android:id="@+id/tvAppCommonCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

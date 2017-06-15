@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="wrap_content"
               android:background="@color/bg_white"
               android:orientation="vertical">
 
@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="促销信息"
-            android:textColor="@color/tv_name"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/tv_Regular"/>
 
 
@@ -32,9 +32,9 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rl_promotion"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_marginBottom="50dp"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="10dp"/>
 
 </LinearLayout>

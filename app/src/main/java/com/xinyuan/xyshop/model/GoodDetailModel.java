@@ -1,5 +1,6 @@
 package com.xinyuan.xyshop.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,6 +13,27 @@ public class GoodDetailModel {
 	private int goodsType;
 
 	private List<GoodBanner> banner;
+	private GoodsAttrsBean goodSpec;
+
+	public List<GoodBanner> getBanner() {
+		return banner;
+	}
+
+	public GoodsAttrsBean getGoodSpec() {
+		return goodSpec;
+	}
+
+	public List<Goodparams> getParams() {
+		return params;
+	}
+
+	public GoodComment getComment() {
+		return comment;
+	}
+
+	public ShopInfo getShop() {
+		return shop;
+	}
 
 	private int actualPrice;
 
@@ -125,6 +147,7 @@ public class GoodDetailModel {
 		return this.goodsDetailImg;
 	}
 
+
 	public class GoodBanner {
 		private String imgUrl;
 
@@ -198,8 +221,8 @@ public class GoodDetailModel {
 
 		@Override
 		public String toString() {
-			return  key +
-					":"+ value+";";
+			return key +
+					":" + value + ";";
 		}
 	}
 
@@ -367,20 +390,21 @@ public class GoodDetailModel {
 		return "GoodDetailModel{" +
 				"goodsId=" + goodsId +
 				", goodsType=" + goodsType +
-				", GoodBanner=" + banner +
+				", banner=" + banner +
+				", goodSpec=" + goodSpec +
 				", actualPrice=" + actualPrice +
 				", oldPrice=" + oldPrice +
 				", expressCost=" + expressCost +
 				", salesVolume=" + salesVolume +
 				", stock=" + stock +
 				", unit='" + unit + '\'' +
-				", Goodparams=" + params +
+				", params=" + params +
 				", specParams=" + specParams +
-				", GoodComment=" + comment +
+				", comment=" + comment +
 				", deliveryAddress='" + deliveryAddress + '\'' +
 				", shopServer=" + shopServer +
 				", salesPromotion=" + salesPromotion +
-				", ShopInfo=" + shop +
+				", shop=" + shop +
 				", goodsDetailImg=" + goodsDetailImg +
 				'}';
 	}

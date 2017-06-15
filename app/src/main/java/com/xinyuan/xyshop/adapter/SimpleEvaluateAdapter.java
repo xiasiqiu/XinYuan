@@ -103,7 +103,8 @@ public class SimpleEvaluateAdapter extends BaseQuickAdapter<GoodDetailModel.Comm
 		}
 
 
-		if (!item.getCommentMore().getTime().equals("")) {
+
+		if (!item.getCommentMore().getTime().isEmpty()) {
 			LinearLayout ll_evaluate_late = helper.getView(R.id.ll_evaluate_late);
 			ll_evaluate_late.setVisibility(View.VISIBLE);
 

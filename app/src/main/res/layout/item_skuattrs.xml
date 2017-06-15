@@ -6,20 +6,16 @@
 
     <TextView
         android:id="@+id/tv_ItemName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dip"
+        style="@style/NormalTextView"
         android:focusable="false"
         android:gravity="center"
-        android:text="规格"
-        android:textColor="@color/tv_hint"
-        android:textSize="12sp"/>
+        android:text="规格"/>
 
     <com.xinyuan.xyshop.widget.SKUViewGroup
         android:id="@+id/vg_skuItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:descendantFocusability="beforeDescendants"
         android:focusable="false"/>

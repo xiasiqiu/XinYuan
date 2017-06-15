@@ -49,15 +49,17 @@
 
     <TextView
         android:id="@+id/goodSpec"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/customerName"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/evaluatetime"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:text="颜色：K02黄色；尺码:M"
         android:textColor="@color/tv_hint"
-        android:textSize="@dimen/tv_light"/>
+        android:textSize="@dimen/tv_small"/>
 
 
     <TextView

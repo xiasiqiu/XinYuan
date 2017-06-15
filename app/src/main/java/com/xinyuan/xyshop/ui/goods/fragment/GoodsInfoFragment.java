@@ -23,34 +23,24 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.android.flexbox.FlexboxLayout;
-import com.google.gson.reflect.TypeToken;
-import com.lzy.okgo.OkGo;
-import com.lzy.okgo.callback.StringCallback;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.SimpleEvaluateAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.common.AddViewHolder;
 import com.xinyuan.xyshop.entity.BuyData;
-import com.xinyuan.xyshop.entity.GoodDetailVo;
-import com.xinyuan.xyshop.entity.Goods;
 import com.xinyuan.xyshop.entity.PreGoods;
-import com.xinyuan.xyshop.entity.SearchHot;
-import com.xinyuan.xyshop.http.Urls;
-import com.xinyuan.xyshop.model.GoodDetail;
 import com.xinyuan.xyshop.model.GoodDetailModel;
-import com.xinyuan.xyshop.model.HomeModel;
+import com.xinyuan.xyshop.model.GoodsAttrsBean;
 import com.xinyuan.xyshop.model.TestModel;
 import com.xinyuan.xyshop.mvp.contract.GoodsDetailContract;
-import com.xinyuan.xyshop.mvp.presenter.GoodsDetailPresenterImpl;
 import com.xinyuan.xyshop.ui.goods.GoodBusBean;
 import com.xinyuan.xyshop.ui.goods.GoodDetailsActivity;
 import com.xinyuan.xyshop.ui.goods.StoreActivity;
 import com.xinyuan.xyshop.util.FullyLinearLayoutManager;
 import com.xinyuan.xyshop.util.GlideImageLoader;
-import com.xinyuan.xyshop.util.JsonUtil;
 import com.xinyuan.xyshop.widget.SlideDetailsLayout;
 import com.xinyuan.xyshop.widget.dialog.GoodDetailsPromotionDialog;
-import com.xinyuan.xyshop.widget.dialog.GoodDetailsSpecDialogs;
+import com.xinyuan.xyshop.widget.dialog.GoodDetailsSpecDialog;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -60,17 +50,12 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.Call;
-import okhttp3.Response;
-
-import static com.xinyuan.xyshop.util.JsonUtil.gson;
 
 /**
  * Created by Administrator on 2017/5/18.
@@ -161,6 +146,8 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	@BindView(R.id.tv_goods_service)
 	TextView tv_goods_service;
 
+	@BindView(R.id.tvGoodDiscount)
+	TextView tvGoodDiscount;
 
 	@BindView(R.id.fl_content)
 	FrameLayout fl_content;
@@ -196,6 +183,8 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	private static SlideDetailsLayout.Status status;
 
+	private static String unit;
+
 	@Override
 	public int getLayoutId() {
 		return R.layout.fragment_good_info;
@@ -228,18 +217,16 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 		sv_switch.setOnSlideDetailsListener(this);
 		fab_up_slide.hide();
-		testSpec();
+
 
 	}
 
 	@Override
 	public void initData(@Nullable Bundle savedInstanceState) {
-
 		if (VIEW_INIT) {
-			new GoodsDetailPresenterImpl(this);
+			new TestModel.GoodsDetailPresenterImpl(this);
 			presenter.initData(123);
 		}
-
 
 		fragmentList = new ArrayList<>();
 		tabTextList = new ArrayList<>();
@@ -356,9 +343,12 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		}
 		tv_goodssellnum.setText("月销量:" + detailModel.getSalesVolume() + "笔");
 		tv_goodstalk.setText("评论:" + detailModel.getGoodComment().getTotalCount());
+		this.unit = detailModel.getUnit();
 		List<String> storeSign = new ArrayList<>();
 		storeSign.addAll(detailModel.getShopServer());
-
+		tv_goods_location.setText(detailModel.getDeliveryAddress());
+		String dis = detailModel.getSalesPromotion().toString();
+		tvGoodDiscount.setText(dis.substring(1, dis.length() - 1));
 		for (String type : storeSign) {
 			AddViewHolder addViewHolder = new AddViewHolder(context, R.layout.view_store_sign);
 			addViewHolder.setText(R.id.store_sign_type, type);
@@ -409,23 +399,29 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	}
 
+	@BindView(R.id.tv_current_goods)
+	TextView tv_current_goods;
+	@BindView(R.id.tv_goods_location)
+	TextView tv_goods_location;
+
 	@Subscribe(threadMode = ThreadMode.MAIN) //第2步:注册一个在后台线程执行的方法,用于接收事件
 	public void onUserEvent(GoodBusBean event) {//参数必须是ClassEvent类型, 否则不会调用此方法
+		if (event.getFlag().equals(GoodBusBean.SelectedGoods)) {
+			GoodsAttrsBean.StockGoodsBean bean = (GoodsAttrsBean.StockGoodsBean) event.getObj();
+
+			tv_newprice.setText("￥" + bean.getPrice());
+			tv_current_goods.setText("已选择" + bean.getSpecText());
+
+
+		}
+
+
 	}
 
 
-//    private void showSelectSpecDialog() {
-//        GoodDetailsSpecDialog dialog = new GoodDetailsSpecDialog(this.context);
-//        Window dialogWindow = dialog.getWindow();
-//        dialogWindow.setGravity(Gravity.BOTTOM);
-//        dialog.show();
-//        DisplayMetrics dm = new DisplayMetrics();
-//        getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-//        dialogWindow.setLayout(dm.widthPixels, dialogWindow.getAttributes().height);
-//    }
-
 	private void showSelectPromoDialog() {
-		GoodDetailsPromotionDialog dialog = new GoodDetailsPromotionDialog(this.context, detailModel.getSalesPromotion());
+
+		GoodDetailsPromotionDialog dialog = new GoodDetailsPromotionDialog(context, detailModel.getSalesPromotion());
 		Window dialogWindow = dialog.getWindow();
 		dialogWindow.setGravity(Gravity.BOTTOM);
 		dialog.show();
@@ -433,6 +429,18 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
 		dialogWindow.setLayout(dm.widthPixels, dialogWindow.getAttributes().height);
 	}
+
+
+	private void showSelectSpecDialog() {
+		GoodDetailsSpecDialog dialog = new GoodDetailsSpecDialog(context, detailModel.getGoodSpec());
+		Window dialogWindow = dialog.getWindow();
+		dialogWindow.setGravity(Gravity.BOTTOM);
+		dialog.show();
+		DisplayMetrics dm = new DisplayMetrics();
+		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+		dialogWindow.setLayout(dm.widthPixels, dialogWindow.getAttributes().height);
+	}
+
 
 	@OnClick({R.id.ll_goods_config, R.id.ll_goods_service, R.id.ll_goods_detail, R.id.fab_up_slide, R.id.ll_comment, R.id.bt_good_store})
 	public void onClick(View view) {
@@ -488,59 +496,6 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 				fragmentTransaction.hide(fromFragment).show(toFragment).commitAllowingStateLoss(); // 隐藏当前的fragment，显示下一个
 			}
 		}
-	}
-
-	private GoodDetail.Good selectedGoods;
-	private int selectedNum = 1;
-	private List<GoodDetail.Good> goodsList;
-	private int goodsId;
-
-	private void testSpec() {
-
-
-		OkGo.get(Urls.URL_GOODS_TEST)
-				.execute(new StringCallback() {
-					@Override
-					public void onSuccess(String s, Call call, Response response) {
-
-						XLog.v("数据请求" + s);
-
-
-						TestModel searchHot = JsonUtil.toBean(s, TestModel.class);
-						GoodDetail goodDetail = searchHot.getDatas();
-						XLog.v("数据解析" + goodDetail.toString());
-						initSpec(goodDetail);
-
-					}
-				});
-
-
-	}
-
-	private void initSpec(GoodDetail goodDetailVo) {
-		this.goodDetailVo = goodDetailVo;
-		this.goodsList = goodDetailVo.getGoodsList();
-		if (this.goodsId != 0) {
-			for (GoodDetail.Good goods : goodDetailVo.getGoodsList()) {
-				if (goods.getGoodsId() == this.goodsId) {
-					this.selectedGoods = goods;
-					break;
-				}
-			}
-		}
-		this.selectedGoods = (GoodDetail.Good) this.goodsList.get(0);
-	}
-
-	GoodDetail goodDetailVo;
-
-	private void showSelectSpecDialog() {
-		GoodDetailsSpecDialogs dialog = new GoodDetailsSpecDialogs(context, goodDetailVo, preGoodsMap, selectedGoods, selectedNum);
-		Window dialogWindow = dialog.getWindow();
-		dialogWindow.setGravity(80);
-		dialog.show();
-		DisplayMetrics dm = new DisplayMetrics();
-		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-		dialogWindow.setLayout(dm.widthPixels, dialogWindow.getAttributes().height);
 	}
 
 

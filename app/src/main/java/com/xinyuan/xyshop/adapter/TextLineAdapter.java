@@ -26,6 +26,6 @@ public class TextLineAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 	protected void convert(BaseViewHolder helper, String item) {
 		TextView textView = helper.getView(R.id.good_promotion);
 		textView.setText(item);
-		XLog.v("促销"+item.toString());
+		XLog.v("促销sss" + item.toString());
 	}
 }

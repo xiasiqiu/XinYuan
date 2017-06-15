@@ -7,7 +7,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xinyuan.xyshop.R;
+import com.xinyuan.xyshop.adapter.GoodsAttrsAdapter;
+import com.xinyuan.xyshop.adapter.SearchGoodListAdapter;
 import com.xinyuan.xyshop.adapter.SimpleEvaluateAdapter;
 import com.xinyuan.xyshop.adapter.TextLineAdapter;
 import com.xinyuan.xyshop.entity.BuyData;
@@ -40,14 +43,13 @@ public class GoodDetailsPromotionDialog extends Dialog {
 
 	@BindView(R.id.rl_promotion)
 	RecyclerView rl_promotion;
+
 	TextLineAdapter adapter;
 
 	public GoodDetailsPromotionDialog(Context context, List<String> salesPromotion) {
 		super(context, R.style.CommonDialog);
 		this.context = context;
 		this.salesPromotion = salesPromotion;
-
-
 	}
 
 
@@ -57,14 +59,11 @@ public class GoodDetailsPromotionDialog extends Dialog {
 		ButterKnife.bind((Dialog) this);
 
 
-		this.adapter = new TextLineAdapter(R.layout.item_textline, salesPromotion);
+		adapter = new TextLineAdapter(R.layout.item_textline, salesPromotion);
+		rl_promotion.setLayoutManager(new LinearLayoutManager(getContext()));
+		rl_promotion.setFocusable(false);
+		rl_promotion.setAdapter(adapter);
 
-		XLog.list(salesPromotion);
-		LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
-		//设置布局管理器
-		rl_promotion.setLayoutManager(linearLayoutManager);
-		this.rl_promotion.setAdapter(this.adapter);
-		this.adapter.notifyDataSetChanged();
 
 	}
 

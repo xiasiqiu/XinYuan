@@ -1,94 +1,239 @@
-//package com.xinyuan.xyshop.widget.dialog;
-//
-//import android.app.Dialog;
-//import android.content.Context;
-//import android.os.Bundle;
-//import android.support.v7.widget.LinearLayoutManager;
-//import android.support.v7.widget.RecyclerView;
-//import android.text.TextUtils;
-//import android.widget.TextView;
-//
-//import com.google.gson.Gson;
-//import com.xinyuan.xyshop.R;
-//import com.xinyuan.xyshop.adapter.GoodsAttrsAdapter;
-//import com.xinyuan.xyshop.callback.SKUInterface;
-//import com.xinyuan.xyshop.model.GoodsAttrsBean;
-//import com.youth.xframe.utils.log.XLog;
-//
-//import butterknife.BindView;
-//import butterknife.ButterKnife;
-//
-//
-///**
-// * Created by Administrator on 2017/5/25.
-// */
-//
-//public class GoodDetailsSpecDialog extends Dialog implements SKUInterface {
-//
-//
-//	private Context context;
-//	private GoodsAttrsBean dataBean;
-//
-//	private GoodsAttrsAdapter mAdapter;
-//
-//	@BindView(R.id.rv_spec)
-//	RecyclerView rv_spec;
-//	@BindView(R.id.tvSelectedType)
-//	TextView tvSelectedType;
-//	@BindView(R.id.tvSkuStorage)
-//
-//	TextView tvSkuStorage;
-//
-//	public GoodDetailsSpecDialog(Context context) {
-//		super(context, R.style.CommonDialog);
-//		this.context = context;
-//		//this.goodsSpecModel = goodsSpecModel;
-//	}
-//
-//
-//	protected void onCreate(Bundle savedInstanceState) {
-//		super.onCreate(savedInstanceState);
-//		setContentView(R.layout.fragment_good_dialog_spec);
-//		ButterKnife.bind((Dialog) this);
-//		Gson gson = new Gson();
-//		dataBean = gson.fromJson(context.getResources().getString(R.string.jsonData), GoodsAttrsBean.class);
-//		XLog.v("dataBean" + dataBean.toString());
-//		install();
-//
-//	}
-//
-//	private void install() {
-//		mAdapter = new GoodsAttrsAdapter(context, dataBean.getAttributes(), dataBean.getStockGoods());
-//		LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-//		layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-//		rv_spec.setLayoutManager(layoutManager);
-//		rv_spec.setFocusable(false);
-//		mAdapter.setSKUInterface(this);
-//		rv_spec.setAdapter(mAdapter);
-//	}
-//
-//	@Override
-//	public void selectedAttribute(String[] attr) {
-//		String str = "";
-//		String ss = "";
-//		for (int i = 0; i < attr.length; i++) {
-//			str += " " + dataBean.getAttributes().get(i).getTabName() + "：";
-//			ss = TextUtils.isEmpty(attr[i]) ? "" : attr[i];
-//			str += ss + " ";
-//		}
-//		tvSelectedType.setText("已选:" + str);
-//	}
-//
-//	@Override
-//	public void uncheckAttribute(String[] attr) {
-//		String str = "";
-//		String ss = "";
-//		for (int i = 0; i < attr.length; i++) {
-//			str += " " + dataBean.getAttributes().get(i).getTabName() + "：";
-//			ss = TextUtils.isEmpty(attr[i]) ? "" : attr[i];
-//			str += ss + " ";
-//		}
-//		tvSelectedType.setText("已选:" + str);
-//
-//	}
-//}
+package com.xinyuan.xyshop.widget.dialog;
+
+import android.app.Dialog;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.xinyuan.xyshop.R;
+import com.xinyuan.xyshop.adapter.GoodsAttrsAdapter;
+import com.xinyuan.xyshop.callback.SKUInterface;
+import com.xinyuan.xyshop.model.GoodsAttrsBean;
+import com.xinyuan.xyshop.ui.goods.GoodBusBean;
+import com.xinyuan.xyshop.ui.goods.fragment.GoodsInfoFragment;
+import com.xinyuan.xyshop.util.CommUtil;
+import com.xinyuan.xyshop.util.GlideImageLoader;
+import com.xinyuan.xyshop.util.Image;
+import com.youth.xframe.utils.log.XLog;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+
+/**
+ * Created by Administrator on 2017/5/25.
+ */
+
+public class GoodDetailsSpecDialog extends Dialog implements SKUInterface {
+
+	private Context context;
+	private GoodsAttrsBean goodsAttrsBean;
+
+	private GoodsAttrsAdapter mAdapter;
+
+	@BindView(R.id.rv_sku)
+	RecyclerView rv_sku;
+
+	@BindView(R.id.tvGoodsName)
+	TextView tvGoodsName;
+	@BindView(R.id.tvSkuName)
+	TextView tvSkuName;
+	@BindView(R.id.tvSelectedPrice)
+	TextView tvSelectedPrice;
+	@BindView(R.id.tvSkuStorage)
+	TextView tvSkuStorage;
+	@BindView(R.id.ivSelectedGoodsImg)
+	ImageView ivSelectedGoodsImg;
+
+
+	public GoodDetailsSpecDialog(Context context, GoodsAttrsBean goodsAttrsBean) {
+		super(context, R.style.CommonDialog);
+		this.context = context;
+		this.goodsAttrsBean = goodsAttrsBean;
+	}
+
+	String attrs;
+
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.view_dialog_gooddetail_spec);
+		EventBus.getDefault().register(this);
+		ButterKnife.bind((Dialog) this);
+		this.selecGood = goodsAttrsBean.getDefaultGood();
+		mAdapter = new GoodsAttrsAdapter(context, goodsAttrsBean.getAttributes(), goodsAttrsBean.getStockGoods(), this.selecGood);
+		LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+		layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+		rv_sku.setLayoutManager(layoutManager);
+		rv_sku.setFocusable(false);
+		mAdapter.setSKUInterface(this);
+		rv_sku.setAdapter(mAdapter);
+		init();
+
+	}
+
+
+	private void init() {
+		tvAppCommonCount.setText("1");
+
+		tvGoodsName.setText(goodsAttrsBean.getDefaultGood().getGoodsName());
+		tvSkuStorage.setText("库存:" + goodsAttrsBean.getDefaultGood().getStock());
+		tvSelectedPrice.setText("￥" + goodsAttrsBean.getDefaultGood().getPrice());
+		GlideImageLoader.setImage(context, goodsAttrsBean.getAttributes().get(0).getAttributesItem().get(0).getValueImage(), ivSelectedGoodsImg);
+
+		attrs = "";
+		for (int i = 0; i < goodsAttrsBean.getAttributes().size(); i++) {
+			attrs += goodsAttrsBean.getAttributes().get(i).getTabName() + ";";
+
+		}
+
+		tvSkuName.setText("请选择:" + attrs);
+
+
+
+	}
+
+	private static GoodsAttrsBean.StockGoodsBean selecGood;
+
+	@Subscribe
+	public void onEventMainThread(GoodBusBean goodBusBean) {
+
+
+	}
+
+	@Override
+	public void selectedAttribute(String[] attr) {
+		String str = "";
+		String ss = "";
+
+		String Bs = "";
+		boolean ok = false;
+		for (int i = 0; i < attr.length; i++) {
+			str += "" + goodsAttrsBean.getAttributes().get(i).getTabName() + ":";
+			ss = TextUtils.isEmpty(attr[i]) ? "无" : attr[i];
+			str += ss + "";
+
+			if (TextUtils.isEmpty(attr[i])) {
+				Bs += goodsAttrsBean.getAttributes().get(i).getTabName() + ";";
+			}
+		}
+		for (GoodsAttrsBean.AttributesBean attributesBean : goodsAttrsBean.getAttributes()) {
+
+			List<GoodsAttrsBean.AttributesBean.AttributeBean> list = attributesBean.getAttributesItem();
+			for (GoodsAttrsBean.AttributesBean.AttributeBean attributeBean : list) {
+
+				if (str.contains(attributeBean.getValueName())) {
+					if (!attributeBean.getValueImage().equals("")) {
+						GlideImageLoader.setImage(context, attributeBean.getValueImage(), ivSelectedGoodsImg);
+					}
+				}
+
+
+			}
+
+
+		}
+
+		if (Bs.equals("")) {
+			ok = true;
+		}
+
+		for (GoodsAttrsBean.StockGoodsBean goodsBean : goodsAttrsBean.getStockGoods()) {
+			String goods = goodsBean.toString();
+			goods = goods.substring(1, goods.length());
+			goods = goods.substring(0, goods.length() - 1);
+			goods = goods.replace(",", "");
+			goods = goods.replace(" ", "");
+			if (str.equals(goods)) {
+				this.selecGood = goodsBean;
+				tvSkuStorage.setText("库存:" + goodsBean.getStock());
+				tvSelectedPrice.setText("￥" + goodsBean.getPrice());
+
+			}
+		}
+
+
+		if (Bs.equals("")) {
+			tvSkuName.setText("已选择:" + selecGood.getSpecText());
+		} else {
+			tvSkuName.setText("请选择:" + Bs);
+
+
+		}
+
+
+	}
+
+	@Override
+	public void uncheckAttribute(String[] attr) {
+
+		XLog.v("attr" + attr.toString());
+
+		String str = "";
+		String ss = "";
+		String Bs = "";
+		for (int i = 0; i < attr.length; i++) {
+			str += " " + goodsAttrsBean.getAttributes().get(i).getTabName() + "：";
+			ss = TextUtils.isEmpty(attr[i]) ? "无" : attr[i];
+			str += ss + " ";
+			if (TextUtils.isEmpty(attr[i])) {
+				Bs += goodsAttrsBean.getAttributes().get(i).getTabName() + ";";
+			}
+		}
+
+		if (Bs.equals(attrs)) {
+			init();
+		}
+
+
+	}
+
+	private int addAndMinusCount = 1;
+
+	@BindView(R.id.tvAppCommonCount)
+	TextView tvAppCommonCount;
+
+	@OnClick(R.id.btnAppCommonMinus)
+	public void btnAppCommonMinusClick() {
+		this.addAndMinusCount = Integer.valueOf(CommUtil.getText(this.tvAppCommonCount)).intValue();
+		this.addAndMinusCount--;
+		this.tvAppCommonCount.setText(this.addAndMinusCount + "");
+
+
+	}
+
+	@OnClick(R.id.btnAppCommonAdd)
+	public void btnAppCommonAddClick() {
+		this.addAndMinusCount = Integer.valueOf(CommUtil.getText(this.tvAppCommonCount).trim()).intValue();
+		if (this.addAndMinusCount < this.selecGood.getStock()) {
+			this.addAndMinusCount++;
+			this.tvAppCommonCount.setText(this.addAndMinusCount + "");
+		}
+
+	}
+
+	@OnClick(R.id.tvOut)
+	public void closeDialog() {
+		dismiss();
+	}
+
+	@Override
+	public void dismiss() {
+		XLog.v("退出啦");
+		EventBus.getDefault().post(new GoodBusBean(GoodBusBean.SelectedGoods, this.selecGood));
+		super.dismiss();
+	}
+
+
+}

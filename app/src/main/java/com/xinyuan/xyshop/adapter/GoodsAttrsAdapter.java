@@ -1,10 +1,13 @@
 package com.xinyuan.xyshop.adapter;
 
 import android.content.Context;
+import android.os.SystemClock;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.util.SimpleArrayMap;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -12,9 +15,13 @@ import android.widget.TextView;
 
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.callback.SKUInterface;
+import com.xinyuan.xyshop.entity.Attribute;
+import com.xinyuan.xyshop.entity.BookBean;
 import com.xinyuan.xyshop.model.GoodsAttrsBean;
 import com.xinyuan.xyshop.widget.SKUViewGroup;
+import com.youth.xframe.utils.log.XLog;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,21 +35,30 @@ public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.Attrib
 	private SimpleArrayMap<Integer, String> saveClick;
 
 	private List<GoodsAttrsBean.StockGoodsBean> stockGoodsList;//商品数据集合
-	private String[] selectedValue;   //选中的属性
+	private static String[] selectedValue;   //选中的属性
 	private TextView[][] childrenViews;    //二维 装所有属性
-
+	private GoodsAttrsBean.StockGoodsBean[][] childrenGoods;
 	private final int SELECTED = 0x100;
 	private final int CANCEL = 0x101;
+	private static GoodsAttrsBean.StockGoodsBean selecGood;
 
-	public GoodsAttrsAdapter(Context ctx, List<GoodsAttrsBean.AttributesBean> list, List<GoodsAttrsBean.StockGoodsBean> stockGoodsList) {
+
+	private List<GoodsAttrsBean.AttributesBean> list;
+
+	public GoodsAttrsAdapter(Context ctx, List<GoodsAttrsBean.AttributesBean> list, List<GoodsAttrsBean.StockGoodsBean> stockGoodsList, GoodsAttrsBean.StockGoodsBean selecGood) {
 		super(ctx, list);
 		this.stockGoodsList = stockGoodsList;
 		saveClick = new SimpleArrayMap<>();
 		childrenViews = new TextView[list.size()][0];
+		childrenGoods = new GoodsAttrsBean.StockGoodsBean[list.size()][0];
 		selectedValue = new String[list.size()];
 		for (int i = 0; i < list.size(); i++) {
 			selectedValue[i] = "";
 		}
+		this.selecGood = selecGood;
+		this.list = list;
+
+
 	}
 
 	public void setSKUInterface(SKUInterface myInterface) {
@@ -56,22 +72,35 @@ public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.Attrib
 
 	@Override
 	public void bindData(RecyclerViewHolder holder, int position, GoodsAttrsBean.AttributesBean item) {
+
 		TextView tv_ItemName = holder.getTextView(R.id.tv_ItemName);
 		SKUViewGroup vg_skuItem = (SKUViewGroup) holder.getView(R.id.vg_skuItem);
 		tv_ItemName.setText(item.getTabName());
-		List<String> childrens = item.getAttributesItem();
+
+
+		List<String> childrens = new ArrayList<>();
+
+		for (GoodsAttrsBean.AttributesBean.AttributeBean attributeBean : item.getAttributesItem()) {
+
+			childrens.add(attributeBean.getValueName());
+
+		}
+
+
 		int childrenSize = childrens.size();
 		TextView[] textViews = new TextView[childrenSize];
+
 		for (int i = 0; i < childrenSize; i++) {
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-			params.setMargins(5, 5, 5, 0);
+			params.setMargins(0, 0, 15, 0);
 			TextView textView = new TextView(mContext);
 			textView.setGravity(Gravity.CENTER);
-			textView.setPadding(80, 10, 80, 10);
+			textView.setPadding(10, 0, 10, 0);
+			textView.setTextSize(12);
 			textView.setLayoutParams(params);
-			textView.setBackgroundColor(ContextCompat.getColor(mContext, R.color.tv_hint));
+			textView.setBackground(ContextCompat.getDrawable(mContext, R.drawable.spec_btn_select_false));
 			textView.setText(childrens.get(i));
-			textView.setTextColor(ContextCompat.getColor(mContext, R.color.bg_white));
+			textView.setTextColor(ContextCompat.getColor(mContext, R.color.tv_name));
 			textViews[i] = textView;
 			vg_skuItem.addView(textViews[i]);
 		}
@@ -126,6 +155,10 @@ public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.Attrib
 		}
 	}
 
+	private static void setSelec() {
+
+	}
+
 
 	class MyOnFocusChangeListener implements View.OnFocusChangeListener {
 
@@ -169,12 +202,17 @@ public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.Attrib
 	 * 初始化选项（不可点击，焦点消失）
 	 */
 	private void initOptions() {
+
+
 		for (int y = 0; y < childrenViews.length; y++) {
+
+
 			for (int z = 0; z < childrenViews[y].length; z++) {//循环所有属性
+
 				TextView textView = childrenViews[y][z];
 				textView.setEnabled(false);
 				textView.setFocusable(false);
-				textView.setTextColor(ContextCompat.getColor(mContext, R.color.colorLine));//变灰
+				textView.setTextColor(ContextCompat.getColor(mContext, R.color.flg_hint));//变灰
 			}
 		}
 	}
@@ -182,7 +220,9 @@ public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.Attrib
 	/**
 	 * 找到符合条件的选项变为可选
 	 */
+
 	private void canClickOptions() {
+
 		for (int i = 0; i < childrenViews.length; i++) {
 			for (int j = 0; j < stockGoodsList.size(); j++) {
 				boolean filter = false;
@@ -207,10 +247,12 @@ public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.Attrib
 							textView.setFocusable(true); //设置可以获取焦点
 							//不要让焦点乱跑
 							if (focusPositionG == i && focusPositionC == n) {
-								textView.setTextColor(ContextCompat.getColor(mContext, R.color.dodgerblue));
+								textView.setTextColor(ContextCompat.getColor(mContext, R.color.tv_name));
+								textView.setBackground(ContextCompat.getDrawable(mContext, R.drawable.spec_btn_select_false));
 								textView.requestFocus();
 							} else {
-								textView.setTextColor(ContextCompat.getColor(mContext, R.color.bg_white));
+								textView.setTextColor(ContextCompat.getColor(mContext, R.color.tv_name));
+								textView.setBackground(ContextCompat.getDrawable(mContext, R.drawable.spec_btn_select_false));
 							}
 							textView.setOnClickListener(new MyOnClickListener(SELECTED, i, n) {
 							});
@@ -223,17 +265,21 @@ public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.Attrib
 		}
 	}
 
+
 	/**
 	 * 找到已经选中的选项，让其变红
 	 */
 	private void getSelected() {
+
+
 		for (int i = 0; i < childrenViews.length; i++) {
 			for (int j = 0; j < childrenViews[i].length; j++) {//拿到每行属性Item
 				TextView textView = childrenViews[i][j];//拿到所有属性TextView
 				String value = textView.getText().toString();
 				for (int m = 0; m < selectedValue.length; m++) {
 					if (selectedValue[m].equals(value)) {
-						textView.setTextColor(ContextCompat.getColor(mContext, R.color.red));
+						textView.setTextColor(ContextCompat.getColor(mContext, R.color.bg_white));
+						textView.setBackground(ContextCompat.getDrawable(mContext, R.drawable.spec_btn_select_true));
 						textView.setOnClickListener(new MyOnClickListener(CANCEL, i, j) {
 						});
 					}
