@@ -78,8 +78,8 @@
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:background="@color/bg_white"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:padding="20px">
 
         <LinearLayout
@@ -183,23 +183,18 @@
             android:layout_toRightOf="@id/iv_mine_myorder"
             android:text="我的订单"/>
 
-        <TextView
-            android:id="@+id/tv_mine_myorder"
-            style="@style/NormalHintTextView"
-            android:layout_marginRight="8dp"
-            android:text="查看更多订单"
-            android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/iv_mine_order"
-            android:layout_toStartOf="@+id/iv_mine_order"
-            android:layout_marginEnd="8dp"/>
-
-        <ImageView
-            android:id="@+id/iv_mine_order"
+        <Button
+            android:id="@+id/bt_more_order"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_height="20dp"
             android:layout_alignParentRight="true"
-            android:src="@drawable/ic_right_row"/>
+            android:background="@null"
+            android:button="@null"
+            android:drawableRight="@drawable/ic_right_row"
+            android:text="查看更多订单"
+            android:textColor="@color/tv_hint"
+            android:textSize="@dimen/tv_Normal"/>
+
 
         <View
             style="@style/XYLine"
@@ -287,23 +282,23 @@
             android:src="@drawable/ic_mine_band"/>
 
         <TextView
+            android:id="@+id/textView2"
             style="@style/NormalTextView"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="3dp"
             android:layout_toRightOf="@id/iv_mine_band"
-            android:text="我的资产"
-            android:id="@+id/textView2"/>
+            android:text="我的资产"/>
 
         <TextView
             android:id="@+id/tv_mine_band"
             style="@style/NormalHintTextView"
-            android:layout_marginRight="7dp"
-            android:text="查看全部财产"
             android:layout_alignBaseline="@+id/textView2"
             android:layout_alignBottom="@+id/textView2"
+            android:layout_marginEnd="7dp"
+            android:layout_marginRight="7dp"
             android:layout_toLeftOf="@+id/iv_mine_band_more"
             android:layout_toStartOf="@+id/iv_mine_band_more"
-            android:layout_marginEnd="7dp"/>
+            android:text="查看全部财产"/>
 
         <ImageView
             android:id="@+id/iv_mine_band_more"

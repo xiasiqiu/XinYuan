@@ -6,21 +6,28 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.youth.banner.Banner
-        android:id="@+id/banner"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:indicator_drawable_selected="@drawable/banner_shape"
-        app:indicator_height="8dp"
-        app:indicator_margin="6dp"
-        app:indicator_width="8dp"/>
+        android:layout_height="wrap_content">
+
+        <com.youth.banner.Banner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="205dp"
+            app:indicator_drawable_selected="@drawable/banner_shape"
+            app:indicator_height="8dp"
+            app:indicator_margin="6dp"
+            app:indicator_width="8dp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/menu_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="190dp"
+            android:background="@drawable/bt_rabg_up"/>
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/menu_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bg_white"/>
+    </RelativeLayout>
 
 
     <View

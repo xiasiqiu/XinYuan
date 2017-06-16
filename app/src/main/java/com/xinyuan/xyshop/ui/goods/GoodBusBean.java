@@ -5,9 +5,12 @@ package com.xinyuan.xyshop.ui.goods;
  */
 
 public class GoodBusBean {
+
+
+	public static String GoodsStoreId = "goodsStoreId";
 	public static String SelectedGoods = "selectedGoods";
 	public static String GoodEvaluate = "goodEvaluate";
-	public static String SelectAdapter = "adapter";
+
 
 	private String flag;
 	private Object obj;

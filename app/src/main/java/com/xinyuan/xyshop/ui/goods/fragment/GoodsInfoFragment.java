@@ -15,9 +15,12 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -77,6 +80,13 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	@BindView(R.id.goodinfo_share)
 	ImageView iv_share; //分享按钮
 
+
+	@BindView(R.id.tv_current_goods)
+	TextView tv_current_goods;
+	@BindView(R.id.tv_goods_location)
+	TextView tv_goods_location;
+	@BindView(R.id.bt_sale_notice)
+	CheckBox bt_sale_notice;
 
 	@BindView(R.id.tv_new_price)
 	TextView tv_newprice; //商品最新价格
@@ -297,7 +307,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	@Override
 	public void showView(GoodDetailModel model) {
-		XLog.v(model.toString());
+
 		this.detailModel = model;
 
 		showBanner();
@@ -313,7 +323,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 		ArrayList<String> titles = new ArrayList<>();
 		ArrayList<String> images = new ArrayList<>();
-		XLog.v(detailModel.getGoodBanner().toString());
+
 		for (GoodDetailModel.GoodBanner banner : detailModel.getGoodBanner()) {
 			titles.add(banner.getImgTxt());
 			images.add(banner.getImgUrl());
@@ -357,6 +367,19 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		storeSign.clear();
 
 
+		bt_sale_notice.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+				XLog.v("点击" + b);
+				if (b) {
+					bt_sale_notice.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+					bt_sale_notice.setBackground(getResources().getDrawable(R.drawable.button__b_bg_t));
+				} else {
+					bt_sale_notice.setTextColor(getResources().getColor(R.color.tv_name));
+					bt_sale_notice.setBackground(getResources().getDrawable(R.drawable.button__b_bg));
+				}
+			}
+		});
 	}
 
 
@@ -386,6 +409,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	@Override
 	public void showStoreInfo() {
+		EventBus.getDefault().post(new GoodBusBean(GoodBusBean.GoodsStoreId, detailModel.getShopInfo().getShopId()));
 		GlideImageLoader.setImage(context, detailModel.getShopInfo().getShopLogo(), srote_img);
 		tv_good_storename.setText(detailModel.getShopInfo().getName());
 		tv_StoreDescPoint.setText(String.valueOf(detailModel.getShopInfo().getGoodsScore()));
@@ -399,22 +423,15 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	}
 
-	@BindView(R.id.tv_current_goods)
-	TextView tv_current_goods;
-	@BindView(R.id.tv_goods_location)
-	TextView tv_goods_location;
-
 	@Subscribe(threadMode = ThreadMode.MAIN) //第2步:注册一个在后台线程执行的方法,用于接收事件
 	public void onUserEvent(GoodBusBean event) {//参数必须是ClassEvent类型, 否则不会调用此方法
 		if (event.getFlag().equals(GoodBusBean.SelectedGoods)) {
 			GoodsAttrsBean.StockGoodsBean bean = (GoodsAttrsBean.StockGoodsBean) event.getObj();
-
 			tv_newprice.setText("￥" + bean.getPrice());
 			tv_current_goods.setText("已选择" + bean.getSpecText());
 
 
 		}
-
 
 	}
 

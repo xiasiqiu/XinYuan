@@ -101,6 +101,7 @@
 
 
         <Button
+            android:id="@+id/bt_service"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
@@ -108,6 +109,7 @@
             android:background="@color/bg_white"
             android:drawableTop="@drawable/ic_store_service"
             android:padding="5dp"
+            android:drawablePadding="3dp"
             android:text="客服"
             android:textColor="@color/tv_hint"
             android:textSize="@dimen/tv_small"/>
@@ -118,6 +120,7 @@
             android:background="@color/colorLine"/>
 
         <Button
+            android:id="@+id/bt_store"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
@@ -125,6 +128,7 @@
             android:background="@color/bg_white"
             android:drawableTop="@drawable/ic_store"
             android:padding="5dp"
+            android:drawablePadding="3dp"
             android:text="店铺"
             android:textColor="@color/tv_hint"
             android:textSize="@dimen/tv_small"/>
@@ -134,15 +138,19 @@
             android:layout_height="match_parent"
             android:background="@color/colorLine"/>
 
-        <Button
+        <CheckBox
+            android:id="@+id/cb_store_fv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:background="@color/bg_white"
-            android:drawableTop="@drawable/ic_store_fav"
+            android:button="@null"
+            android:gravity="center_horizontal"
+            android:drawableTop="@drawable/ic_store_fav_de"
             android:padding="5dp"
             android:text="收藏"
+            android:drawablePadding="3dp"
             android:textColor="@color/tv_hint"
             android:textSize="@dimen/tv_small"/>
 

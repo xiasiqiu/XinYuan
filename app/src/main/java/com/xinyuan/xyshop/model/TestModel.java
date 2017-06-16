@@ -70,7 +70,7 @@ public class TestModel {
 					.subscribe(new Action1<GoodDetailModel>() {
 						@Override
 						public void call(GoodDetailModel goodsDetail) {
-							XLog.v(goodsDetail.toString());
+
 							view.showView(goodsDetail);
 
 						}

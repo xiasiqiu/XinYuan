@@ -49,6 +49,12 @@ public class HomeModel implements Serializable {
 			private String type;
 			private String imageUrl;
 			private String data;
+			private String text;
+
+
+			public String getText() {
+				return text;
+			}
 
 			public String getType() {
 				return type;

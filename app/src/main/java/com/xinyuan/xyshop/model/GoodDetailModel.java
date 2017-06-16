@@ -222,7 +222,7 @@ public class GoodDetailModel {
 		@Override
 		public String toString() {
 			return key +
-					":" + value + ";";
+					":" + value;
 		}
 	}
 

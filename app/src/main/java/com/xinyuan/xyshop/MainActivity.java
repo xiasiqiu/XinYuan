@@ -127,7 +127,7 @@ public class MainActivity extends BaseActivity {
 			transaction
 					.hide(currentFragment)
 					.add(R.id.main_content, fragments.get(currentIndex), "" + currentIndex);  //第三个参数为添加当前的fragment时绑定一个tag
-			XLog.v("当前显示的Fragment为" + currentIndex);
+
 		} else {
 			XLog.v("当前显示的Fragment为" + currentIndex);
 			transaction

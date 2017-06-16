@@ -57,7 +57,7 @@
                         android:orientation="vertical"
                         android:padding="10dp">
 
-                        <LinearLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
@@ -66,6 +66,7 @@
                                 android:id="@+id/tv_new_price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
                                 android:text="￥799"
                                 android:textColor="@color/tv_price"
                                 android:textSize="@dimen/tv_Blod"/>
@@ -74,13 +75,29 @@
                                 android:id="@+id/tv_old_price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="15dp"
-                                android:gravity="center_vertical"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="35dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_toRightOf="@id/tv_new_price"
+                                android:button="@null"
                                 android:text="￥799"
                                 android:textColor="@color/tv_name"
                                 android:textSize="@dimen/tv_light"/>
 
-                        </LinearLayout>
+                            <CheckBox
+                                android:id="@+id/bt_sale_notice"
+                                android:layout_width="60dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/button__b_bg"
+                                android:button="@null"
+                                android:gravity="center"
+                                android:text="降价通知"
+                                android:textColor="@color/tv_name"
+                                android:textSize="@dimen/tv_light"/>
+
+                        </RelativeLayout>
 
                         <RelativeLayout
                             android:layout_width="match_parent"

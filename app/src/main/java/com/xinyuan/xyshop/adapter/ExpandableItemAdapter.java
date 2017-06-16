@@ -10,10 +10,12 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.bean.ExpandItem;
+import com.xinyuan.xyshop.entity.Brand;
 import com.xinyuan.xyshop.entity.Menu;
 import com.xinyuan.xyshop.model.HomeModel;
 import com.xinyuan.xyshop.ui.home.BrandActivity;
 import com.xinyuan.xyshop.util.GlideImageLoader;
+import com.youth.xframe.utils.log.XLog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +46,7 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
 			case TYPE_LEVEL_0:
 
 				final ExpandItem expandItem = (ExpandItem) item;
-				holder.setText(R.id.home_menu_title, menuList.get(holder.getPosition()).getData());
+				holder.setText(R.id.home_menu_title, menuList.get(holder.getPosition()).getText());
 				GlideImageLoader.setImage(mContext, menuList.get(holder.getPosition()).getImageUrl(), (ImageView) holder.getView(R.id.home_menu_img));
 
 
@@ -52,36 +54,25 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
 					@Override
 					public void onClick(View v) {
 						int pos = holder.getAdapterPosition();
-						Log.d(TAG, "Level 0 item pos: " + pos);
-						if (expandItem.isExpanded()) {
-							collapse(pos);
-
-
-						} else {
-
-							expand(pos);
-							if(pos==0){
-								Intent intent=new Intent(mContext,BrandActivity.class);
-								mContext.startActivity(intent);
-							}
-
-
-						}
-
+						Log.d(TAG, "Level 1 item pos: " + pos);
+						menuOnclick(menuList.get(pos).getType());
 
 					}
 				});
+
+
 				break;
 			case TYPE_MENU:
 				final Menu menItem = (Menu) item;
-				holder.setText(R.id.home_menu_title, menuList.get(holder.getPosition()).getData());
+				holder.setText(R.id.home_menu_title, menuList.get(holder.getPosition()).getText());
 				GlideImageLoader.setImage(mContext, menuList.get(holder.getPosition()).getImageUrl(), (ImageView) holder.getView(R.id.home_menu_img));
-
+				int pos = holder.getAdapterPosition();
 				holder.itemView.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
 						int pos = holder.getAdapterPosition();
-						Log.d(TAG, "menu 0 item pos: " + pos);
+						Log.d(TAG, "Level 2item pos: " + pos);
+						menuOnclick(menuList.get(pos).getType());
 						Intent intent=new Intent(mContext,BrandActivity.class);
 						mContext.startActivity(intent);
 					}
@@ -92,4 +83,22 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
 
 
 	}
+
+
+	private void menuOnclick(String type) {
+
+		if (type.equals("html")) {
+
+
+
+		} else if (type.equals("native")) {
+
+
+
+
+		}
+
+	}
+
+
 }

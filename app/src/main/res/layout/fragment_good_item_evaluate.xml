@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="3dp"
         android:background="@drawable/evaluate_star"
         android:orientation="horizontal"/>
 
@@ -29,8 +29,7 @@
         android:id="@+id/customerName"
         style="@style/evaluate_text_style"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_toRightOf="@+id/customer_image"
+        android:layout_toRightOf="@id/customer_image"
         android:text="JJSRWE"
         android:textColor="@color/tv_name"
         android:textSize="@dimen/tv_Normal"/>
@@ -45,7 +44,7 @@
         android:layout_toRightOf="@id/customer_image"
         android:text="2017-05-12"
         android:textColor="@color/tv_hint"
-        android:textSize="@dimen/tv_light"/>
+        android:textSize="@dimen/tv_small"/>
 
     <TextView
         android:id="@+id/goodSpec"
@@ -104,12 +103,11 @@
         android:orientation="vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tv_eva_late_time"
             style="@style/LightTextView"
-            android:text="用户2天后追评"
             android:textColor="@color/tv_price"/>
 
         <TextView
@@ -122,7 +120,6 @@
             android:letterSpacing="0.01"
             android:lineSpacingExtra="5dp"
             android:maxLines="2"
-            android:text="凑合，面料比较软，不太挺阔，凑合,红红火火恍恍惚惚吼吼所所所所所所所所少时诵诗书所所所"
             android:textColor="@color/tv_name"
             android:textSize="@dimen/tv_light"/>
 
@@ -194,23 +191,25 @@
             android:id="@+id/tv_goods_eva_lookcount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="12dp"
             android:text="5456"
             android:textColor="@color/tv_hint"
             android:textSize="@dimen/tv_light"
             />
 
-        <ImageView
+        <CheckBox
+            android:id="@+id/cb_eva_like"
             android:layout_width="20dp"
             android:layout_height="15dp"
             android:layout_marginLeft="200px"
-            android:src="@drawable/test_good_eva_dianz_de"/>
+            android:background="@drawable/test_good_eva_dianz_de"
+            android:button="@null"/>
 
         <TextView
             android:id="@+id/tv_goods_eva_praisecount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="12dp"
             android:text="152"
             android:textColor="@color/tv_hint"
             android:textSize="@dimen/tv_light"

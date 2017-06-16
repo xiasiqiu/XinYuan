@@ -16,6 +16,7 @@ import android.text.style.ForegroundColorSpan;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -111,7 +112,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 			SystemBarHelper.setHeightAndPadding(getActivity(), mToolbar);
 		}
 
-		XLog.v("首页切换" + VIEW_INIT);
+
 		VIEW_INIT = false;
 		mDistanceY = 0;
 		restoreState();
@@ -167,7 +168,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		if (saveState != null) {
 
 			mDistanceY = saveState.getInt("DistanceY");
-			XLog.v("保存了值"+mDistanceY);
+			XLog.v("保存了值" + mDistanceY);
 		}
 	}
 
@@ -282,6 +283,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	}
 
+
 	/**
 	 * 显示首页菜单
 	 *
@@ -289,6 +291,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	 */
 	@Override
 	public void showMenu(final List<HomeModel.HomeModule.HomeModuleData> itemList) {
+
 		menuListView = (RecyclerView) headView.findViewById(R.id.menu_list);
 		int menucount = 10;
 		ArrayList<MultiItemEntity> res = new ArrayList<>();
@@ -319,6 +322,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 				OnImageViewClick(view, itemList.get(position).getType(), itemList.get(position).getData(), false);
 			}
 		});
+		expandableItemAdapter.expandAll();
 
 	}
 

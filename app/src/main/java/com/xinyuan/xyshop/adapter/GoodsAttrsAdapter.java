@@ -55,8 +55,7 @@ public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.Attrib
 		for (int i = 0; i < list.size(); i++) {
 			selectedValue[i] = "";
 		}
-		this.selecGood = selecGood;
-		this.list = list;
+
 
 
 	}
