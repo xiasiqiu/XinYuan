@@ -10,7 +10,6 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.bean.ExpandItem;
-import com.xinyuan.xyshop.entity.Brand;
 import com.xinyuan.xyshop.entity.Menu;
 import com.xinyuan.xyshop.model.HomeModel;
 import com.xinyuan.xyshop.ui.home.BrandActivity;

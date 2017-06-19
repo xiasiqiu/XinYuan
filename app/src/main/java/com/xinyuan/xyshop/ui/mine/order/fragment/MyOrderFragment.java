@@ -3,19 +3,16 @@ package com.xinyuan.xyshop.ui.mine.order.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
 
 import com.flyco.tablayout.SlidingTabLayout;
-import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.CommonPagerAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
+import com.xinyuan.xyshop.entity.GoodsVo;
 import com.youth.xframe.utils.log.XLog;
 
-
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -35,6 +32,7 @@ public class MyOrderFragment extends BaseFragment {
 			, "待收货", "待评价"
 	};
 	private String mTitle;
+
 	private ArrayList<Fragment> mFragments = new ArrayList<>();
 	private CommonPagerAdapter adapter;
 	private MyOrderContentFragment contentFragment;
@@ -42,6 +40,7 @@ public class MyOrderFragment extends BaseFragment {
 	public static MyOrderFragment getInstance(String title) {
 		MyOrderFragment sf = new MyOrderFragment();
 		sf.mTitle = title;
+
 		return sf;
 	}
 
@@ -53,19 +52,23 @@ public class MyOrderFragment extends BaseFragment {
 	@Override
 	public void initData(Bundle savedInstanceState) {
 
+
 	}
 
 	@Override
 	public void initView() {
-		XLog.v("实物Fragment" + mTitle);
+		XLog.v("Fragment" + ":" + mTitle);
+
 		for (String title : mTitles) {
-			mFragments.add(contentFragment.getInstance(title));
+			mFragments.add(contentFragment.getInstance(title, mTitle));
 		}
 		adapter = new CommonPagerAdapter(getChildFragmentManager(), mFragments, mTitles);
 		vp_content.setAdapter(adapter);
 		order__tabs.setViewPager(vp_content);
 		vp_content.setCurrentItem(0);
 		vp_content.setOffscreenPageLimit(4);
+
+
 	}
 
 

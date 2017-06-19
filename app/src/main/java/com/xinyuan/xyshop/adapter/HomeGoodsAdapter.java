@@ -19,6 +19,7 @@ import com.xinyuan.xyshop.ui.goods.GoodDetailsActivity;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.ViewHolder;
+import com.youth.xframe.utils.log.XLog;
 
 import java.util.List;
 
@@ -38,7 +39,10 @@ public class HomeGoodsAdapter extends BaseQuickAdapter<HomeModel.GoodModule.Home
 		ImageView goodsImg = helper.getView(R.id.ivGoodPic);
 		GlideImageLoader.setImage(mContext, item.getImageUrl(), goodsImg);
 		TextView tv_goods_name = helper.getView(R.id.tv_goods_name);
-		tv_goods_name.setText(item.getGoodsName());
+		XLog.v("前面"+item.getGoodsName());
+		String name =CommUtil.getSubString(mContext, tv_goods_name, item.getGoodsName(), 1);
+		XLog.v("处理后"+name);
+		tv_goods_name.setText(name);
 		TextView tv_goods_price = helper.getView(R.id.tv_goods_price);
 		tv_goods_price.setText("￥" + String.valueOf(item.getAppPriceMin()));
 		TextView tv_goods_sellnum = helper.getView(R.id.tv_goods_sellnum);

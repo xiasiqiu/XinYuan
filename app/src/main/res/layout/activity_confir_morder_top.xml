@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/bg_white"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/tv_order_person"
+            style="@style/RegularTextView"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="收货人:张连云"/>
+
+        <TextView
+            android:id="@+id/tv_order_phone"
+            style="@style/RegularTextView"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:text="18428386357"/>
+
+
+        <Button
+            android:id="@+id/bt_order_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_order_phone"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/icon_location"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/ic_right_row"
+            android:gravity="center_vertical"
+            android:text="收货地址：四川省成都市武侯区石羊场街道和盛西街南城都汇5B汇朗园"
+            android:textColor="@color/tv_name"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_location_line"/>
+</LinearLayout>

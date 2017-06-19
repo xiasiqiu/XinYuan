@@ -85,17 +85,7 @@
                                 android:textColor="@color/tv_name"
                                 android:textSize="@dimen/tv_light"/>
 
-                            <CheckBox
-                                android:id="@+id/bt_sale_notice"
-                                android:layout_width="60dp"
-                                android:layout_height="20dp"
-                                android:layout_alignParentRight="true"
-                                android:background="@drawable/button__b_bg"
-                                android:button="@null"
-                                android:gravity="center"
-                                android:text="降价通知"
-                                android:textColor="@color/tv_name"
-                                android:textSize="@dimen/tv_light"/>
+
 
                         </RelativeLayout>
 

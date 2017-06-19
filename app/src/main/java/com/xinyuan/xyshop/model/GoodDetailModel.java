@@ -244,7 +244,7 @@ public class GoodDetailModel {
 	}
 
 
-	public class CommentList {
+	public static class CommentList {
 		private String headImg;
 
 		private String name;

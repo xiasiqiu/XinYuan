@@ -11,17 +11,17 @@ import com.lzy.okgo.callback.StringCallback;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.BrandAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
-import com.xinyuan.xyshop.entity.Brand;
+import com.xinyuan.xyshop.entity.BrandBean;
 import com.xinyuan.xyshop.entity.BrandList;
 import com.xinyuan.xyshop.entity.MySection;
 import com.xinyuan.xyshop.http.Urls;
+import com.xinyuan.xyshop.model.BrandModel;
 import com.xinyuan.xyshop.util.JsonUtil;
-import com.xinyuan.xyshop.util.LetterComparator;
 import com.xinyuan.xyshop.widget.WaveSideBarView;
+import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.loadingview.XLoadingView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -35,9 +35,8 @@ public class BrandActivity extends BaseActivity {
 	RecyclerView rv_brand;
 	@BindView(R.id.side_view)
 	WaveSideBarView mSideBarView;
-
-	private List<Brand> listData;
-	private List<Brand> adData;
+	private List<BrandBean> AdList;
+	private List<BrandModel.Brand> AllBrandList;
 
 	BrandAdapter brandAdapter;
 	@BindView(R.id.brand_loadingView)
@@ -76,57 +75,35 @@ public class BrandActivity extends BaseActivity {
 
 	}
 
-	private void inRV(BrandList list) {
-		if (list.equals("")) {
+	private void inRV(BrandList brandList) {
+
+
+		if (brandList.equals("")) {
 			xLoadingView.showEmpty();
 
 		} else {
-			listData = list.getDatas().getBrandList();
-			adData = list.getDatas().getAdList();
-
+			AdList = brandList.getDatas().getAdList();
+			AllBrandList = brandList.getDatas().getAllBrandList();
 			List<MySection> lists = new ArrayList<>();
-
-			List<Brand> brands = new ArrayList<>();
-			List<Brand> AllData = new ArrayList<>();
-
-			String a = "";
-
-			Collections.sort(listData, new LetterComparator());
-			for (Brand b : listData) {
-				if (!a.equals(b.getBrandInitial())) {
-					brands.add(new Brand(b.getBrandInitial(), 0));
-				}
-
-				a = b.getBrandInitial();
-
-			}
-
-			AllData.addAll(brands);
-			AllData.addAll(listData);
-			Collections.sort(AllData, new LetterComparator());
-
-			AllData.addAll(0, adData);
-			for (Brand bran : AllData) {
-				if (bran.getShowType() == 1) {
-
-					lists.add(new MySection(bran));
-				} else {
-					lists.add(new MySection(true, bran.getBrandInitial(), false));
+			for (int i = 0; i < AllBrandList.size(); i++) {
+				lists.add(new MySection(true, AllBrandList.get(i).getBrandInitial(), false));
+				for (int j = 0; j < AllBrandList.get(i).getBrandBeanList().size(); j++) {
+					lists.add(new MySection(AllBrandList.get(i).getBrandBeanList().get(j)));
 				}
 
 			}
-
-
+			for (BrandBean brandBean : AdList) {
+				lists.add(0, new MySection(brandBean));
+			}
 			lists.add(0, new MySection(true, "品牌推荐#", false));
 
+			XLog.list(lists);
 			brandAdapter = new BrandAdapter(R.layout.activity_brand_item, R.layout.activity_brand_item_header, lists);
 			rv_brand.setAdapter(brandAdapter);
 
 			mSideBarView.setOnTouchLetterChangeListener(new WaveSideBarView.OnTouchLetterChangeListener() {
 				@Override
 				public void onLetterChange(String letter) {
-
-
 					int pos = brandAdapter.getLetterPosition(letter);
 					if (pos != -1) {
 						rv_brand.scrollToPosition(pos);
@@ -137,7 +114,6 @@ public class BrandActivity extends BaseActivity {
 				}
 			});
 			xLoadingView.showContent();
-
 
 		}
 	}

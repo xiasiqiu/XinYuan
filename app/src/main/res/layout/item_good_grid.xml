@@ -29,6 +29,7 @@
         android:background="@color/bg_white"
         android:paddingBottom="10px">
 
+
         <TextView
             android:id="@+id/home_goods_name"
             style="@style/GoodsNameTextView"
@@ -38,6 +39,16 @@
             android:letterSpacing="0.01"
             android:lineSpacingExtra="10px"
             />
+
+        <!--<TextView-->
+            <!--android:layout_width="60dp"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:background="@drawable/bg_flow_selected"-->
+            <!--android:gravity="center"-->
+
+            <!--android:text="虚拟兑换"-->
+            <!--android:textColor="@color/bg_white"-->
+            <!--android:textSize="@dimen/tv_small"/>-->
 
 
         <TextView

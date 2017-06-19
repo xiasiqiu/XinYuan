@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="wrap_content"
               android:layout_marginBottom="3dp"
-              android:layout_marginLeft="10dp"
-              android:layout_marginRight="10dp"
-              android:orientation="vertical">
+              android:background="@color/bg_white"
+              android:orientation="vertical"
+              android:paddingBottom="3dp"
+              android:paddingLeft="10dp"
+              android:paddingRight="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,7 +23,8 @@
             android:drawableLeft="@drawable/ic_store"
             android:drawablePadding="10dp"
             android:drawableRight="@drawable/ic_right_row"
-            android:text="珂玥化妆品专营店"/>
+            android:text="珂玥化妆品专营店"
+            android:textColor="@color/tv_name"/>
 
         <TextView
             style="@style/NormalTextView"
@@ -31,21 +35,24 @@
 
     </RelativeLayout>
 
-    <View
-        style="@style/XYLine"
-        android:layout_marginTop="10dp"/>
-
-    <android.support.v7.widget.RecyclerView
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/fl_order_goods"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/evaluateText"
+        android:layout_marginTop="10dp"
+        app:alignContent="flex_start"
+        app:flexWrap="wrap"/>
 
     <View
         style="@style/XYLine"
         android:layout_marginTop="10dp"/>
 
     <TextView
+        android:id="@+id/tv_order_good_price"
         style="@style/LightTextView"
         android:layout_gravity="right"
+        android:layout_marginTop="10dp"
         android:text="共2件商品 合计￥598.00（含运费￥0.00）"
         android:textColor="@color/tv_hint"/>
 
@@ -56,24 +63,34 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_gravity="right">
+        android:layout_gravity="right"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp">
 
         <Button
-            android:layout_width="85dp"
-            android:layout_height="30dp"
+            android:layout_width="70dp"
+            android:layout_height="22dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/bg_flow"/>
+            android:background="@drawable/bt_unselect_normal"
+            android:text="延长收货"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_small"/>
 
         <Button
-            android:layout_width="85dp"
-            android:layout_height="30dp"
+            android:layout_width="70dp"
+            android:layout_height="22dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/bg_flow"/>
+            android:background="@drawable/bt_unselect_normal"
+            android:text="查看物流"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_small"/>
 
         <Button
-            android:layout_width="85dp"
-            android:layout_height="30dp"
-            android:background="@drawable/bg_flow"/>
+            android:layout_width="70dp"
+            android:layout_height="22dp"
+            android:background="@drawable/bt_unselect_red"
+            android:text="确认收货"
+            android:textColor="@color/tv_price"
+            android:textSize="@dimen/tv_small"/>
     </LinearLayout>
 </LinearLayout>

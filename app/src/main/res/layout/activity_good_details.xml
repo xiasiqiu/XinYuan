@@ -175,6 +175,7 @@
             android:background="@color/bg_white"/>
 
         <Button
+            android:id="@+id/bt_goos_buy"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"

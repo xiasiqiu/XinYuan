@@ -24,10 +24,12 @@
         app:tl_textsize="@dimen/tv_Regular"
         app:tl_underline_gravity="BOTTOM"/>
 
+    <View
+        style="@style/XYLine"/>
+
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="3dp"/>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

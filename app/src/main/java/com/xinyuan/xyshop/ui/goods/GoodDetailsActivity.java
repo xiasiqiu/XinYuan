@@ -18,6 +18,7 @@ import com.xinyuan.xyshop.base.BaseActivity;
 import com.xinyuan.xyshop.entity.PreGoods;
 import com.xinyuan.xyshop.entity.TabEntity;
 import com.xinyuan.xyshop.model.GoodDetail;
+import com.xinyuan.xyshop.ui.buy.ConfirmOrderActivity;
 import com.xinyuan.xyshop.ui.goods.fragment.GoodsCommentFragment;
 import com.xinyuan.xyshop.ui.goods.fragment.GoodsDetailFragment;
 import com.xinyuan.xyshop.ui.goods.fragment.GoodsInfoFragment;
@@ -135,11 +136,10 @@ public class GoodDetailsActivity extends BaseActivity {
 
 	}
 
-	@OnClick({R.id.bt_store, R.id.bt_service})
+	@OnClick({R.id.bt_store, R.id.bt_service, R.id.bt_goos_buy})
 	public void OnClick(View v) {
 		v.getId();
 		switch (v.getId()) {
-
 			case R.id.bt_store:
 				if (!storeId.equals("")) {
 					Intent intent = new Intent(this, StoreActivity.class);
@@ -148,6 +148,10 @@ public class GoodDetailsActivity extends BaseActivity {
 				}
 				break;
 			case R.id.bt_service:
+				break;
+			case R.id.bt_goos_buy:
+				Intent intent = new Intent(this, ConfirmOrderActivity.class);
+				startActivity(intent);
 				break;
 		}
 

@@ -6,8 +6,9 @@ import android.widget.ImageView;
 import com.chad.library.adapter.base.BaseSectionQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.entity.Brand;
+import com.xinyuan.xyshop.entity.BrandBean;
 import com.xinyuan.xyshop.entity.MySection;
+import com.xinyuan.xyshop.model.BrandModel;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.youth.xframe.utils.log.XLog;
 
@@ -40,14 +41,15 @@ public class BrandAdapter extends BaseSectionQuickAdapter<MySection, BaseViewHol
 
 	@Override
 	protected void convert(BaseViewHolder helper, MySection item) {
-		Brand brand = (Brand) item.t;
-		GlideImageLoader.setImage(mContext, brand.getBrandImageSrc(), (ImageView) helper.getView(R.id.ivBrandPic));
+		BrandBean bean = (BrandBean) item.t;
+		XLog.v("图片"+bean.getBrandImage());
+		GlideImageLoader.setImage(mContext, bean.getBrandImage(), (ImageView) helper.getView(R.id.ivBrandPic));
 	}
 
-	public int getLetterPosition(String letter){
-		XLog.v("HHHHH"+letter);
-		for (int i = 0 ; i < getData().size(); i++){
-			if(getData().get(i).isHeader&&getData().get(i).header.contains(letter)){
+	public int getLetterPosition(String letter) {
+		XLog.v("HHHHH" + letter);
+		for (int i = 0; i < getData().size(); i++) {
+			if (getData().get(i).isHeader && getData().get(i).header.contains(letter)) {
 				return i;
 			}
 		}

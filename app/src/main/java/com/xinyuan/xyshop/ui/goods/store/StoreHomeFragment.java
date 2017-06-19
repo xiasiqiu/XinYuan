@@ -85,15 +85,18 @@ public class StoreHomeFragment extends BaseFragment {
 				fragmentList, new String[]{"收藏排行", "销量排行"}));
 		vp_content.setOffscreenPageLimit(2);
 		homeTab.setViewPager(vp_content);
-		XYGridLayoutManager layoutManager2 = new XYGridLayoutManager(this.context, 2);
-		layoutManager2.setScrollEnabled(false);
-		this.rv_store_home.setLayoutManager(layoutManager2);
-		this.manager = layoutManager2;
+
 
 	}
 
 	private void initlIST(List<GoodsVo> goodses) {
+		XLog.list(goodses);
+		XYGridLayoutManager layoutManager2 = new XYGridLayoutManager(this.context, 2);
+		layoutManager2.setScrollEnabled(false);
+		this.rv_store_home.setLayoutManager(layoutManager2);
 		adapter = new SearchGoodListAdapter(R.layout.activity_searchgood_item_grid, goodses, false);
 		rv_store_home.setAdapter(adapter);
+
+
 	}
 }

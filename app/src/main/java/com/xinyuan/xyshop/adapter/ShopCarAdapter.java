@@ -103,7 +103,7 @@ public class ShopCarAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, B
 							checkInterface.checkChild(shopCarGoodsItem.getStorePosition(), shopCarGoodsItem.getGoddsPostion(), ((CheckBox) v).isChecked());// 暴露子选接口
 						}
 					});
-					final EditText etNum = helper.getView(R.id.tvAppCommonCount);
+					final TextView etNum = helper.getView(R.id.tvAppCommonCount);
 					Button btReduce = helper.getView(R.id.btnAppCommonMinus);
 					btReduce.setOnClickListener(new View.OnClickListener() {
 						@Override
@@ -119,23 +119,23 @@ public class ShopCarAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, B
 						}
 					});
 					etNum.setText(""+goodsInfo.getCount());
-					etNum.setOnFocusChangeListener(new android.view.View.
-							OnFocusChangeListener() {
-						@Override
-						public void onFocusChange(View v, boolean hasFocus) {//监听焦点的变化
-							if (hasFocus) {//获取到焦点也就是文本框被点击修改了
-								// 1，先强制键盘不弹出
-								InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-								imm.hideSoftInputFromWindow(v.getWindowToken(), 0); //强制隐藏键盘
-								// 2.显示弹出dialog进行修改
-								showDialog(goodsInfo, etNum);
-								// 3.清除焦点防止不断弹出dialog和软键盘
-								etNum.clearFocus();
-								//4. 数据刷新
-								notifyDataSetChanged();
-							}
-						}
-					});
+//					etNum.setOnFocusChangeListener(new android.view.View.
+//							OnFocusChangeListener() {
+//						@Override
+//						public void onFocusChange(View v, boolean hasFocus) {//监听焦点的变化
+//							if (hasFocus) {//获取到焦点也就是文本框被点击修改了
+//								// 1，先强制键盘不弹出
+//								InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+//								imm.hideSoftInputFromWindow(v.getWindowToken(), 0); //强制隐藏键盘
+//								// 2.显示弹出dialog进行修改
+//								showDialog(goodsInfo, etNum);
+//								// 3.清除焦点防止不断弹出dialog和软键盘
+//								etNum.clearFocus();
+//								//4. 数据刷新
+//								notifyDataSetChanged();
+//							}
+//						}
+//					});
 
 
 				}

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="5dp"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_store_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_store"/>
+
+        <TextView
+            android:id="@+id/tv_good_name"
+            style="@style/RegularTextView"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/iv_store_logo"
+            android:text="梅子熟了 文艺清新女装"/>
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/fl_goods"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_good_name"
+            android:layout_marginTop="5dp"
+            app:alignContent="flex_start"
+            app:flexWrap="wrap"/>
+
+
+        <View
+            android:id="@+id/llNum_line"
+            style="@style/XYLine"
+            android:layout_below="@id/fl_goods"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_below="@id/llNum_line"
+            android:layout_marginTop="10dp"
+            android:text="配送方式"/>
+
+        <Button
+            android:id="@+id/bt_order_good_send"
+            style="@style/NormalTextView"
+            android:layout_width="70dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/llNum_line"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:drawableRight="@drawable/ic_right_row"
+            android:text="快递免邮"
+            android:textColor="@color/tv_hint"/>
+
+        <View
+            android:id="@+id/send_line"
+            style="@style/XYLine"
+            android:layout_below="@id/bt_order_good_send"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_below="@id/send_line"
+            android:layout_marginTop="10dp"
+            android:text="发票"/>
+
+
+        <Button
+            android:id="@+id/bt_order_good_bill"
+            style="@style/NormalTextView"
+            android:layout_width="70dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/send_line"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:drawableRight="@drawable/ic_right_row"
+            android:text="不开发票"
+            android:textColor="@color/tv_hint"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:text="优惠券"/>
+
+        <Button
+            android:id="@+id/bt_order_good_discount"
+            style="@style/NormalTextView"
+            android:layout_width="70dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:drawableRight="@drawable/ic_right_row"
+            android:text="-￥10.00"
+            android:textColor="@color/tv_hint"/>
+
+        <View
+            android:id="@+id/dicount_line"
+            style="@style/XYLine"
+            android:layout_below="@id/bt_order_good_discount"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_below="@id/dicount_line"
+            android:layout_marginTop="10dp"
+            android:text="店铺红包"/>
+
+        <Button
+            android:id="@+id/bt_order_good_red"
+            style="@style/NormalTextView"
+            android:layout_width="70dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/dicount_line"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:drawableRight="@drawable/ic_right_row"
+            android:text="无红包"
+            android:textColor="@color/tv_hint"/>
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/bg_white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:padding="10dp"
+        android:text="选填：给卖家留言（45字以内）"
+        android:textColor="@color/tv_hint"
+        android:textSize="@dimen/tv_Normal"/>
+</LinearLayout>

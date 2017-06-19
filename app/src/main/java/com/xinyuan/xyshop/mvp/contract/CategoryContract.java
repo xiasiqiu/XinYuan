@@ -4,8 +4,7 @@ import android.view.View;
 
 import com.xinyuan.xyshop.base.BasePresenter;
 import com.xinyuan.xyshop.base.BaseView;
-import com.xinyuan.xyshop.entity.Brand;
-import com.xinyuan.xyshop.entity.GoodCategory;
+
 import com.xinyuan.xyshop.model.CategoryModel;
 
 import java.util.List;

@@ -85,8 +85,6 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	TextView tv_current_goods;
 	@BindView(R.id.tv_goods_location)
 	TextView tv_goods_location;
-	@BindView(R.id.bt_sale_notice)
-	CheckBox bt_sale_notice;
 
 	@BindView(R.id.tv_new_price)
 	TextView tv_newprice; //商品最新价格
@@ -367,19 +365,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		storeSign.clear();
 
 
-		bt_sale_notice.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-				XLog.v("点击" + b);
-				if (b) {
-					bt_sale_notice.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
-					bt_sale_notice.setBackground(getResources().getDrawable(R.drawable.button__b_bg_t));
-				} else {
-					bt_sale_notice.setTextColor(getResources().getColor(R.color.tv_name));
-					bt_sale_notice.setBackground(getResources().getDrawable(R.drawable.button__b_bg));
-				}
-			}
-		});
+
 	}
 
 
@@ -409,7 +395,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	@Override
 	public void showStoreInfo() {
-		EventBus.getDefault().post(new GoodBusBean(GoodBusBean.GoodsStoreId, detailModel.getShopInfo().getShopId()));
+		EventBus.getDefault().post(new GoodBusBean(GoodBusBean.GoodsStoreId, String.valueOf(detailModel.getShopInfo().getShopId())));
 		GlideImageLoader.setImage(context, detailModel.getShopInfo().getShopLogo(), srote_img);
 		tv_good_storename.setText(detailModel.getShopInfo().getName());
 		tv_StoreDescPoint.setText(String.valueOf(detailModel.getShopInfo().getGoodsScore()));

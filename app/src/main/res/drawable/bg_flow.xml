@@ -3,6 +3,8 @@
     <item android:drawable="@drawable/bg_flow_selected" android:state_pressed="true"/>
     <item android:drawable="@drawable/bg_flow_selected" android:state_checked="true"/>
     <item android:drawable="@drawable/bg_flow_selected" android:state_selected="true"/>
+
+    <item android:drawable="@drawable/bg_flow_unselect" android:state_checked="false"/>
     <item android:drawable="@drawable/bg_flow_unselect" android:state_pressed="false"/>
-    <item android:drawable="@drawable/bg_flow_selected" android:state_selected="false"/>
+    <item android:drawable="@drawable/bg_flow_unselect" android:state_selected="false"/>
 </selector>

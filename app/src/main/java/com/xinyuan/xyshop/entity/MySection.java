@@ -1,12 +1,13 @@
 package com.xinyuan.xyshop.entity;
 
+
 import com.chad.library.adapter.base.entity.SectionEntity;
 
 /**
  * Created by Administrator on 2017/5/22.
  */
 
-public class MySection extends SectionEntity<Brand> {
+public class MySection extends SectionEntity<BrandBean> {
 	private boolean isMore;
 
 	public MySection(boolean isHeader, String header, boolean isMroe) {
@@ -14,7 +15,7 @@ public class MySection extends SectionEntity<Brand> {
 		this.isMore = isMroe;
 	}
 
-	public MySection(Brand t) {
+	public MySection(BrandBean t) {
 		super(t);
 	}
 

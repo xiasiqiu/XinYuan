@@ -7,9 +7,7 @@ import android.content.SharedPreferences;
 import com.google.gson.reflect.TypeToken;
 import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.bean.LzyResponse;
-import com.xinyuan.xyshop.entity.ApiSpecialItem;
-import com.xinyuan.xyshop.entity.Brand;
-import com.xinyuan.xyshop.entity.GoodCategory;
+
 import com.xinyuan.xyshop.http.ApiServer;
 import com.xinyuan.xyshop.http.Urls;
 import com.xinyuan.xyshop.model.CategoryModel;

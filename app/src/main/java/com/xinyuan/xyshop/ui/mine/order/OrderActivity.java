@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.widget.FrameLayout;
 
@@ -12,14 +11,9 @@ import com.flyco.tablayout.SegmentTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.CommonPagerAdapter;
-import com.xinyuan.xyshop.adapter.ItemTitlePagerAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
-import com.xinyuan.xyshop.ui.mine.msg.MallMsgFragment;
-import com.xinyuan.xyshop.ui.mine.msg.StoreMsgFragment;
 import com.xinyuan.xyshop.ui.mine.order.fragment.MyOrderFragment;
-import com.xinyuan.xyshop.ui.mine.order.fragment.MyOrderXFragment;
 import com.xinyuan.xyshop.util.SystemBarHelper;
-import com.xinyuan.xyshop.widget.NoScrollViewPager;
 import com.youth.xframe.utils.log.XLog;
 
 import java.util.ArrayList;
@@ -45,14 +39,15 @@ public class OrderActivity extends BaseActivity {
 	Toolbar msg_toolbar;
 
 	private MyOrderFragment nOrderFragment;
-	private MyOrderXFragment xFragment;
+	private MyOrderFragment xFragment;
 	private CommonPagerAdapter adapter;
 	private FragmentManager fragmentManager;
 	private Fragment currentFragment = new Fragment();
 	private int currentIndex = 0;
 	private ArrayList<Fragment> fragmentList = new ArrayList<>();
 	public static int DATA_TYPE = 0;
-	private String[] mTitles = {"首页", "消息"};
+	private String[] mTitles = {"实物订单", "虚拟订单"};
+
 	@Override
 	public int getLayoutId() {
 		return R.layout.activity_order;
@@ -69,10 +64,11 @@ public class OrderActivity extends BaseActivity {
 
 		SystemBarHelper.immersiveStatusBar(this); //设置状态栏透明
 		SystemBarHelper.setHeightAndPadding(this, msg_toolbar);
+		for (String title : mTitles) {
+			fragmentList.add(nOrderFragment.getInstance(title));
+		}
 
 		fragmentManager = getSupportFragmentManager();
-		fragmentList.add(nOrderFragment = new MyOrderFragment());
-		fragmentList.add(xFragment = new MyOrderXFragment());
 		psts_tabs.setTabData(mTitles);
 		psts_tabs.setOnTabSelectListener(new OnTabSelectListener() {
 			@Override

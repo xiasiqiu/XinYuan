@@ -93,6 +93,9 @@ public class GoodsCommentFragment extends BaseFragment {
 
 	private void initList(int i) {
 		List<GoodDetailModel.CommentList> data = new ArrayList<>();
+		for ( int j = 0; j < i; j++) {
+			data.add(new GoodDetailModel.CommentList());
+		}
 		this.simpleEvaluateAdapter = new SimpleEvaluateAdapter(R.layout.fragment_good_item_evaluate, data);
 		FullyLinearLayoutManager linearLayoutManager = new FullyLinearLayoutManager(context);
 		rv_comment.setNestedScrollingEnabled(false);

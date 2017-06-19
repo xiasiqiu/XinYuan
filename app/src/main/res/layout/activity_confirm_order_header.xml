@@ -28,20 +28,12 @@
             android:src="@drawable/icon_back"/>
 
 
-        <com.flyco.tablayout.SegmentTabLayout
-            android:id="@+id/stab_order"
-            android:layout_width="0dp"
-            android:layout_height="25dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="6"
-            app:tl_bar_color="#ffffff"
-            app:tl_indicator_anim_enable="true"
-            app:tl_indicator_color="@color/colorPrimary"
-            app:tl_indicator_corner_radius="2dp"
-            app:tl_textBold="SELECT"/>
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_weight="7"
+            android:gravity="center"
+            android:text="确认订单"
+            android:textSize="@dimen/tv_Blod"/>
 
         <ImageView
             android:id="@+id/brand_btn_msg"

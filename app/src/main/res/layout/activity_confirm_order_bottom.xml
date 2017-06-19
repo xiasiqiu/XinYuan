@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:background="@color/bg_white"
+                android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_order_good_price_t"
+        style="@style/RegularTextView"
+        android:text="商品金额"/>
+
+    <TextView
+        android:id="@+id/tv_order_good_price"
+        style="@style/RegularTextView"
+        android:layout_alignParentRight="true"
+        android:text="￥422.00"
+        android:textColor="@color/tv_price"/>
+
+    <TextView
+        android:id="@+id/tv_order_good_send_t"
+        style="@style/RegularTextView"
+        android:layout_below="@id/tv_order_good_price_t"
+        android:layout_marginTop="10dp"
+        android:text="运费"/>
+
+    <TextView
+        android:id="@+id/tv_order_good_send"
+        style="@style/RegularTextView"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv_order_good_price"
+        android:layout_marginTop="10dp"
+        android:text="+￥0.00"
+        android:textColor="@color/tv_price"/>
+
+    <TextView
+        android:id="@+id/tv_order_store_t"
+        style="@style/RegularTextView"
+        android:layout_below="@id/tv_order_good_send_t"
+        android:layout_marginTop="10dp"
+        android:text="优惠券"/>
+
+    <TextView
+        android:id="@+id/tv_order_store"
+        style="@style/RegularTextView"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv_order_good_send"
+        android:layout_marginTop="10dp"
+        android:text="-￥10.00"
+        android:textColor="@color/tv_price"/>
+
+    <TextView
+        android:id="@+id/tv_order_store_red_t"
+        style="@style/RegularTextView"
+        android:layout_below="@id/tv_order_store_t"
+        android:layout_marginTop="10dp"
+        android:text="店铺红包"/>
+
+    <TextView
+        android:id="@+id/tv_order_store_red"
+        style="@style/RegularTextView"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv_order_store"
+        android:layout_marginTop="10dp"
+        android:text="-￥0.00"
+        android:textColor="@color/tv_price"/>
+</RelativeLayout>

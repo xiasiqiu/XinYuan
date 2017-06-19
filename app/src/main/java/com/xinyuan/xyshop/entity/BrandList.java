@@ -1,5 +1,7 @@
 package com.xinyuan.xyshop.entity;
 
+import com.xinyuan.xyshop.model.BrandModel;
+
 import java.util.List;
 
 /**
@@ -8,43 +10,21 @@ import java.util.List;
 
 public class BrandList {
 	private int code;
-	private BradnData datas;
+	private BrandModel datas;
 
 	public int getCode() {
 		return code;
 	}
 
-	public void setCode(int code) {
-		this.code = code;
-	}
-
-	public BradnData getDatas() {
+	public BrandModel getDatas() {
 		return datas;
 	}
 
-	public void setDatas(BradnData datas) {
-		this.datas = datas;
-	}
-
-	public class BradnData {
-
-		private List<Brand> AdList;
-		private List<Brand> brandList;
-
-		public List<Brand> getAdList() {
-			return AdList;
-		}
-
-		public void setAdList(List<Brand> adList) {
-			AdList = adList;
-		}
-
-		public List<Brand> getBrandList() {
-			return brandList;
-		}
-
-		public void setBrandList(List<Brand> brandList) {
-			this.brandList = brandList;
-		}
+	@Override
+	public String toString() {
+		return "BrandList{" +
+				"code=" + code +
+				", datas=" + datas +
+				'}';
 	}
 }

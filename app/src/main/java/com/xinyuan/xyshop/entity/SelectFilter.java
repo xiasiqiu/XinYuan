@@ -1,11 +1,13 @@
 package com.xinyuan.xyshop.entity;
 
+import com.xinyuan.xyshop.model.BrandModel;
+
 import java.io.Serializable;
 import java.util.List;
 
 public class SelectFilter implements Serializable {
 	private List<Attribute> attributeList;
-	private List<Brand> brandList;
+	private List<BrandModel.Brand> brandList;
 	private List<GoodCategory> categoryList;
 	private int express;
 	private int gift;
@@ -69,11 +71,11 @@ public class SelectFilter implements Serializable {
 		this.attributeList = attributeList;
 	}
 
-	public List<Brand> getBrandList() {
+	public List<BrandModel.Brand> getBrandList() {
 		return this.brandList;
 	}
 
-	public void setBrandList(List<Brand> brandList) {
+	public void setBrandList(List<BrandModel.Brand> brandList) {
 		this.brandList = brandList;
 	}
 }

@@ -8,15 +8,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8px"
-        android:layout_marginTop="20px"
+        android:layout_margin="3dp"
+        android:layout_marginTop="8dp"
         android:background="@color/bg_white"
-        android:padding="10px">
+        android:padding="3dp">
 
         <ImageView
             android:id="@+id/ivBrandPic"
-            android:layout_width="235px"
-            android:layout_height="128px"
+            android:layout_width="85dp"
+            android:layout_height="50dp"
             android:layout_centerInParent="true"
             android:adjustViewBounds="true"
             android:clickable="false"
