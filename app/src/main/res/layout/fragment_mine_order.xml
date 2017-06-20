@@ -12,8 +12,6 @@
         android:layout_height="41.0dip"
         android:layout_gravity="bottom"
         android:background="@color/bg_white"
-        app:tl_divider_color="@color/colorLine"
-        app:tl_divider_padding="10.0dip"
         app:tl_divider_width="1px"
         app:tl_indicator_color="@color/colorPrimaryDark"
         app:tl_indicator_height="4dp"

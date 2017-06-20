@@ -1,5 +1,6 @@
 package com.xinyuan.xyshop.ui.mine.order;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +13,7 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.CommonPagerAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
+import com.xinyuan.xyshop.model.OrderModel;
 import com.xinyuan.xyshop.ui.mine.order.fragment.MyOrderFragment;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.youth.xframe.utils.log.XLog;
@@ -44,6 +46,7 @@ public class OrderActivity extends BaseActivity {
 	private FragmentManager fragmentManager;
 	private Fragment currentFragment = new Fragment();
 	private int currentIndex = 0;
+	private int childIndex = 0;
 	private ArrayList<Fragment> fragmentList = new ArrayList<>();
 	public static int DATA_TYPE = 0;
 	private String[] mTitles = {"实物订单", "虚拟订单"};
@@ -61,11 +64,12 @@ public class OrderActivity extends BaseActivity {
 	@Override
 	public void initView() {
 		ButterKnife.bind(this);
-
+		Intent intent = this.getIntent();
+		childIndex = (int) intent.getSerializableExtra("order_index");
 		SystemBarHelper.immersiveStatusBar(this); //设置状态栏透明
 		SystemBarHelper.setHeightAndPadding(this, msg_toolbar);
 		for (String title : mTitles) {
-			fragmentList.add(nOrderFragment.getInstance(title));
+			fragmentList.add(nOrderFragment.getInstance(title, childIndex));
 		}
 
 		fragmentManager = getSupportFragmentManager();

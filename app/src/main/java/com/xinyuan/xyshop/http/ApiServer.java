@@ -18,6 +18,7 @@ import com.xinyuan.xyshop.model.CategoryModel;
 import com.xinyuan.xyshop.model.GoodDetailModel;
 import com.xinyuan.xyshop.model.GoodsDetailModel;
 import com.xinyuan.xyshop.model.HomeModel;
+import com.xinyuan.xyshop.model.OrderModel;
 
 import java.util.List;
 
@@ -56,5 +57,12 @@ public class ApiServer {
 
 
 	}
+
+	public static Observable<LzyResponse<OrderModel>> getOrderList(String url) {
+		return OkGo.get(url)
+				.getCall(new JsonConvert<LzyResponse<OrderModel>>() {
+				}, RxAdapter.<LzyResponse<OrderModel>>create());
+	}
+
 
 }

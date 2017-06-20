@@ -12,23 +12,25 @@
         android:id="@+id/iv_good_img"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/test_good_img"/>
+        android:layout_marginTop="10dp"
+        />
 
 
     <TextView
         android:id="@+id/tv_good_price"
         style="@style/NormalTextView"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="10dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="￥199.00"/>
+        android:text=""
+        android:layout_alignBaseline="@+id/tv_good_name"
+        android:layout_alignBottom="@+id/tv_good_name"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
     <TextView
         android:id="@+id/tv_good_name"
-        style="@style/NormalTextView"
+        style="@style/LightTextView"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="10dp"
@@ -36,18 +38,18 @@
         android:layout_toRightOf="@id/iv_good_img"
         android:ellipsize="end"
         android:maxLines="2"
-        android:text="雅诗兰黛 红石榴泡沫洁面乳125ml清洁补水保湿 "/>
+        android:text=""/>
 
     <TextView
         android:id="@+id/tv_good_spec"
-        style="@style/LightTextView"
+        style="@style/SmallTextView"
         android:layout_below="@id/tv_good_name"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@id/iv_good_img"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="已选：“120ml”"
+        android:text=""
         android:textColor="@color/tv_hint"/>
 
     <TextView
@@ -58,7 +60,7 @@
         android:layout_marginTop="5dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="￥249.00"
+        android:text=""
         android:textColor="@color/tv_hint"/>
 
     <TextView
@@ -69,7 +71,32 @@
         android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="×1"
+        android:text=""
         android:textColor="@color/tv_hint"/>
 
+    <Button
+        android:id="@+id/bt_order_good_refund"
+        android:layout_width="60dp"
+        android:layout_height="18dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv_good_num"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/bt_unselect_red"
+        android:text="退款"
+        android:textColor="@color/tv_price"
+        android:textSize="@dimen/tv_small"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/bt_order_good_service"
+        android:layout_width="60dp"
+        android:layout_height="18dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv_good_num"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/bt_unselect_red"
+        android:text="申请售后"
+        android:textColor="@color/tv_price"
+        android:textSize="@dimen/tv_small"
+        android:visibility="gone"/>
 </RelativeLayout>

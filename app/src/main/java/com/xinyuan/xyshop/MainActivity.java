@@ -12,11 +12,17 @@ import android.widget.FrameLayout;
 import com.xinyuan.xyshop.base.BaseActivity;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.ui.catrgory.CategoryFragment;
+import com.xinyuan.xyshop.ui.goods.GoodBusBean;
 import com.xinyuan.xyshop.ui.home.HomeFragment;
+import com.xinyuan.xyshop.ui.home.UserBusBean;
 import com.xinyuan.xyshop.ui.mine.MineFragment;
 import com.xinyuan.xyshop.ui.shopcar.ShopCarFragment;
 import com.xinyuan.xyshop.widget.NotSlipViewPager;
 import com.youth.xframe.utils.log.XLog;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +61,7 @@ public class MainActivity extends BaseActivity {
 
 	@Override
 	public void initView() {
+		EventBus.getDefault().register(this);
 		btns = new Button[]{bt_home, bt_category, bt_shopcar, bt_mine};
 		fragmentManager = getSupportFragmentManager();
 		if (savedInstanceState != null) { // “内存重启”时调用
@@ -88,6 +95,16 @@ public class MainActivity extends BaseActivity {
 
 	}
 
+	@Subscribe(threadMode = ThreadMode.MAIN)
+	//第2步:注册一个在后台线程执行的方法,用于接收事件
+	public void onUserEvent(UserBusBean userBusBean) {//参数必须是ClassEvent类型, 否则不会调用此方法
+		if (userBusBean.getFlag().equals(UserBusBean.HomeIndex)) {
+			currentIndex = (int) userBusBean.getObj();
+			showFragment();
+			changBtnSelectedStatus(0);
+		}
+
+	}
 
 	@OnClick({R.id.act_home_btn_home, R.id.act_home_btn_category, R.id.act_home_btn_shopcar, R.id.act_home_btn_mine})
 	public void onClick(View view) {

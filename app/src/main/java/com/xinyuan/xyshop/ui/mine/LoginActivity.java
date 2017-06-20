@@ -3,6 +3,7 @@ package com.xinyuan.xyshop.ui.mine;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -35,13 +36,19 @@ import java.util.List;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseActivity;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends BaseActivity  {
+public class LoginActivity extends BaseActivity {
 
+	@BindView(R.id.bt_login)
+	Button bt_login;
+	private int resultCode = 0;
 
 	@Override
 	public int getLayoutId() {
@@ -55,7 +62,16 @@ public class LoginActivity extends BaseActivity  {
 
 	@Override
 	public void initView() {
-
+		ButterKnife.bind(this);
+		bt_login.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent mIntent = new Intent();
+				mIntent.putExtra("userId", "11231231000");
+				setResult(resultCode, mIntent);
+				finish();
+			}
+		});
 	}
 }
 

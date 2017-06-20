@@ -16,6 +16,7 @@
         android:layout_marginTop="10dp">
 
         <Button
+            android:id="@+id/bt_order_item_store"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_centerVertical="true"
@@ -23,14 +24,15 @@
             android:drawableLeft="@drawable/ic_store"
             android:drawablePadding="10dp"
             android:drawableRight="@drawable/ic_right_row"
-            android:text="珂玥化妆品专营店"
+            android:text=""
             android:textColor="@color/tv_name"/>
 
         <TextView
+            android:id="@+id/tv_order_item_status"
             style="@style/NormalTextView"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="卖家已发货"
+            android:text=""
             android:textColor="@color/tv_price"/>
 
     </RelativeLayout>
@@ -53,7 +55,7 @@
         style="@style/LightTextView"
         android:layout_gravity="right"
         android:layout_marginTop="10dp"
-        android:text="共2件商品 合计￥598.00（含运费￥0.00）"
+        android:text=""
         android:textColor="@color/tv_hint"/>
 
     <View
@@ -61,22 +63,46 @@
         android:layout_marginTop="10dp"/>
 
     <LinearLayout
+        android:id="@+id/ll_order_bt_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginBottom="5dp"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:visibility="gone">
+
 
         <Button
+            android:id="@+id/bt_order_close_detele"
+            android:layout_width="70dp"
+            android:layout_height="22dp"
+            android:background="@drawable/bt_unselect_red"
+            android:text="删除订单"
+            android:textColor="@color/tv_price"
+            android:textSize="@dimen/tv_small"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_order_bt_finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/bt_order_detele"
             android:layout_width="70dp"
             android:layout_height="22dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/bt_unselect_normal"
-            android:text="延长收货"
+            android:text="删除订单"
             android:textColor="@color/tv_name"
             android:textSize="@dimen/tv_small"/>
 
         <Button
+            android:id="@+id/bt_order_finish_logistical"
             android:layout_width="70dp"
             android:layout_height="22dp"
             android:layout_marginRight="10dp"
@@ -86,6 +112,115 @@
             android:textSize="@dimen/tv_small"/>
 
         <Button
+            android:id="@+id/bt_order_eva_later"
+            android:layout_width="70dp"
+            android:layout_height="22dp"
+            android:background="@drawable/bt_unselect_red"
+            android:text="追加评论"
+            android:textColor="@color/tv_price"
+            android:textSize="@dimen/tv_small"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_order_bt_dpj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone">
+
+
+        <Button
+            android:id="@+id/bt_order_dpj_logistical"
+            android:layout_width="70dp"
+            android:layout_height="22dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bt_unselect_normal"
+            android:text="查看物流"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_small"/>
+
+        <Button
+            android:id="@+id/bt_order_eva"
+            android:layout_width="70dp"
+            android:layout_height="22dp"
+            android:background="@drawable/bt_unselect_red"
+            android:text="评价"
+            android:textColor="@color/tv_price"
+            android:textSize="@dimen/tv_small"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_order_bt_dfk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/bt_order_contatct"
+            android:layout_width="70dp"
+            android:layout_height="22dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bt_unselect_normal"
+            android:text="联系卖家"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_small"/>
+
+        <Button
+            android:id="@+id/bt_order_cancel"
+            android:layout_width="70dp"
+            android:layout_height="22dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bt_unselect_normal"
+            android:text="取消订单"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_small"/>
+
+        <Button
+            android:id="@+id/bt_order_pay"
+            android:layout_width="70dp"
+            android:layout_height="22dp"
+            android:background="@drawable/bt_unselect_red"
+            android:text="付款"
+            android:textColor="@color/tv_price"
+            android:textSize="@dimen/tv_small"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_order_bt_dsh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/bt_order_overime"
+            android:layout_width="70dp"
+            android:layout_height="22dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bt_unselect_normal"
+            android:text="延长收货"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_small"/>
+
+        <Button
+            android:id="@+id/bt_order_logistical"
+            android:layout_width="70dp"
+            android:layout_height="22dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bt_unselect_normal"
+            android:text="查看物流"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_small"/>
+
+        <Button
+            android:id="@+id/bt_order_suertake"
             android:layout_width="70dp"
             android:layout_height="22dp"
             android:background="@drawable/bt_unselect_red"
