@@ -1,4 +1,4 @@
-package com.xinyuan.xyshop.ui.goods.fragment;
+package com.xinyuan.xyshop.ui.goods.detail.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,12 +15,9 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -32,13 +29,14 @@ import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.common.AddViewHolder;
 import com.xinyuan.xyshop.entity.BuyData;
 import com.xinyuan.xyshop.entity.PreGoods;
+import com.xinyuan.xyshop.model.EvaluateModel;
 import com.xinyuan.xyshop.model.GoodDetailModel;
 import com.xinyuan.xyshop.model.GoodsAttrsBean;
 import com.xinyuan.xyshop.model.TestModel;
 import com.xinyuan.xyshop.mvp.contract.GoodsDetailContract;
 import com.xinyuan.xyshop.ui.goods.GoodBusBean;
-import com.xinyuan.xyshop.ui.goods.GoodDetailsActivity;
-import com.xinyuan.xyshop.ui.goods.StoreActivity;
+import com.xinyuan.xyshop.ui.goods.detail.GoodDetailsActivity;
+import com.xinyuan.xyshop.ui.goods.store.StoreActivity;
 import com.xinyuan.xyshop.util.FullyLinearLayoutManager;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.widget.SlideDetailsLayout;
@@ -47,7 +45,7 @@ import com.xinyuan.xyshop.widget.dialog.GoodDetailsSpecDialog;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
-import com.youth.xframe.utils.log.XLog;
+import com.youth.xframe.widget.loadingview.XLoadingView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -59,6 +57,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.refactor.lib.colordialog.PromptDialog;
 
 /**
  * Created by Administrator on 2017/5/18.
@@ -163,6 +162,9 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	@BindView(R.id.tv_comment_count)
 	TextView tv_comment_count;
 
+	@BindView(R.id.lodingView)
+	XLoadingView lodingView;
+
 	private Fragment nowFragment;
 
 	GoodsDetailFragment goodsDetailFragment;
@@ -231,11 +233,18 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	@Override
 	public void initData(@Nullable Bundle savedInstanceState) {
-		if (VIEW_INIT) {
+
 			new TestModel.GoodsDetailPresenterImpl(this);
 			presenter.initData(123);
-		}
 
+		lodingView.setOnRetryClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+
+				presenter.initData();
+				lodingView.showLoading();
+			}
+		});
 		fragmentList = new ArrayList<>();
 		tabTextList = new ArrayList<>();
 		tabTextList.add(tv_goods_detail);
@@ -298,7 +307,18 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	@Override
 	public void showState(int Sate) {
+		switch (Sate) {
+			case 0:
+				lodingView.showLoading();
+				break;
+			case 1:
+				lodingView.showContent();
+				break;
+			case 2:
+				lodingView.showError();
+				break;
 
+		}
 
 	}
 
@@ -312,7 +332,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		showGoodsInfo();
 		showEva();
 		showStoreInfo();
-
+		showState(1);
 
 	}
 
@@ -351,6 +371,12 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		}
 		tv_goodssellnum.setText("月销量:" + detailModel.getSalesVolume() + "笔");
 		tv_goodstalk.setText("评论:" + detailModel.getGoodComment().getTotalCount());
+		GoodDetailsActivity.totalCount = detailModel.getGoodComment().getTotalCount();
+		GoodDetailsActivity.goodAssess = detailModel.getGoodComment().getGoodAssess();
+		GoodDetailsActivity.normalAssess = detailModel.getGoodComment().getNormalAssess();
+		GoodDetailsActivity.lowAssess = detailModel.getGoodComment().getLowAssess();
+		GoodDetailsActivity.blueprint = detailModel.getGoodComment().getBlueprint();
+
 		this.unit = detailModel.getUnit();
 		List<String> storeSign = new ArrayList<>();
 		storeSign.addAll(detailModel.getShopServer());
@@ -365,7 +391,6 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		storeSign.clear();
 
 
-
 	}
 
 
@@ -376,7 +401,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		tv_comment_count.setText("评价(" + detailModel.getGoodComment().getTotalCount() + ")");
 
 
-		List<GoodDetailModel.CommentList> data = new ArrayList<>();
+		List<EvaluateModel.EvaluateBean> data = new ArrayList<>();
 
 		data.addAll(detailModel.getGoodComment().getList());
 
@@ -406,18 +431,6 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	@Override
 	public void showWeb() {
-
-	}
-
-	@Subscribe(threadMode = ThreadMode.MAIN) //第2步:注册一个在后台线程执行的方法,用于接收事件
-	public void onUserEvent(GoodBusBean event) {//参数必须是ClassEvent类型, 否则不会调用此方法
-		if (event.getFlag().equals(GoodBusBean.SelectedGoods)) {
-			GoodsAttrsBean.StockGoodsBean bean = (GoodsAttrsBean.StockGoodsBean) event.getObj();
-			tv_newprice.setText("￥" + bean.getPrice());
-			tv_current_goods.setText("已选择" + bean.getSpecText());
-
-
-		}
 
 	}
 
@@ -479,7 +492,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 				break;
 			case R.id.ll_comment:
-				EventBus.getDefault().post(new GoodBusBean(GoodBusBean.GoodEvaluate));
+				EventBus.getDefault().post(new GoodBusBean(GoodBusBean.SelectedEvaluate));
 				break;
 			case R.id.bt_good_store:
 				Intent intent = new Intent(getActivity(), StoreActivity.class);
@@ -506,6 +519,36 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	public void onAttach(Context context) {
 		super.onAttach(context);
 		activity = (GoodDetailsActivity) context;
+	}
+
+	@Subscribe(threadMode = ThreadMode.MAIN)
+	//第2步:注册一个在后台线程执行的方法,用于接收事件
+	public void onGoodEvent(GoodBusBean goodBusBean) {//参数必须是ClassEvent类型, 否则不会调用此方法
+		if (goodBusBean.getFlag().equals(GoodBusBean.addShopCar)) {
+			boolean isAdd = false;
+			isAdd = (boolean) goodBusBean.getObj();
+			if (isAdd) {
+				new PromptDialog(context)
+						.setDialogType(PromptDialog.DIALOG_TYPE_SUCCESS)
+						.setAnimationEnable(true)
+						.setContentText("已加入购物车")
+						.setPositiveListener("确认", new PromptDialog.OnPositiveListener() {
+							@Override
+							public void onClick(PromptDialog dialog) {
+								dialog.dismiss();
+							}
+						}).show();
+
+			}
+		} else if (goodBusBean.getFlag().equals(GoodBusBean.SelectedSpec)) {
+			showSelectSpecDialog();
+
+		} else if (goodBusBean.getFlag().equals(GoodBusBean.SelectedGoods)) {
+			GoodsAttrsBean.StockGoodsBean bean = (GoodsAttrsBean.StockGoodsBean) goodBusBean.getObj();
+			tv_newprice.setText("￥" + bean.getPrice());
+			tv_current_goods.setText("已选择" + bean.getSpecText());
+		}
+
 	}
 
 

@@ -7,14 +7,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="3dp"
         android:background="@color/bg_gray"
-        android:layout_marginTop="1dp"
         android:orientation="vertical">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="36dp"
             android:background="@color/bg_white"
+            android:elevation="6dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -31,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/com_sort"
                     android:textColor="@drawable/text_btn_color"
-                    android:textSize="@dimen/tv_Normal"/>
+                    android:textSize="@dimen/tv_Regular"/>
 
                 <ImageView
                     android:id="@+id/ivSort"
@@ -50,7 +52,7 @@
                 android:gravity="center"
                 android:text="@string/sell_sort"
                 android:textColor="@drawable/text_btn_color"
-                android:textSize="@dimen/tv_Normal"/>
+                android:textSize="@dimen/tv_Regular"/>
 
 
             <LinearLayout
@@ -67,7 +69,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/select_sort"
                     android:textColor="@drawable/text_btn_color"
-                    android:textSize="@dimen/tv_Normal"/>
+                    android:textSize="@dimen/tv_Regular"/>
 
                 <ImageView
                     android:id="@+id/ivScreen"
@@ -86,8 +88,8 @@
 
                 <ImageView
                     android:id="@+id/btnListType"
-                    android:layout_width="50px"
-                    android:layout_height="50px"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:background="@color/bg_white"
                     android:src="@drawable/btn_goods_list_type"/>
@@ -99,42 +101,11 @@
             android:layout_height="1px"
             android:background="@color/colorLine"/>
 
-
-        <com.youth.xframe.widget.loadingview.XLoadingView
-            android:id="@+id/search_loadingView"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_group"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <android.support.v4.widget.DrawerLayout
-                android:id="@+id/search_drawer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <android.support.v4.widget.SwipeRefreshLayout
-                    android:id="@+id/swipeLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    >
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/rvGoodList"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/bg_gray"/>
-                </android.support.v4.widget.SwipeRefreshLayout>
-
-                <LinearLayout
-                    android:id="@+id/nav_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="end"
-                    android:fitsSystemWindows="true"
-                    android:orientation="vertical"/>
-            </android.support.v4.widget.DrawerLayout>
-
-        </com.youth.xframe.widget.loadingview.XLoadingView>
-
+            android:layout_height="match_parent"/>
     </LinearLayout>
+
+
 </LinearLayout>

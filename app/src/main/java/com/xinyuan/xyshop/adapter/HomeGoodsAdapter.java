@@ -1,10 +1,8 @@
 package com.xinyuan.xyshop.adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,13 +10,10 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.entity.GoodCategory;
 import com.xinyuan.xyshop.model.HomeModel;
-import com.xinyuan.xyshop.mvp.presenter.CategoryPresenterImpl;
-import com.xinyuan.xyshop.ui.goods.GoodDetailsActivity;
+import com.xinyuan.xyshop.ui.goods.detail.GoodDetailsActivity;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
-import com.xinyuan.xyshop.util.ViewHolder;
 import com.youth.xframe.utils.log.XLog;
 
 import java.util.List;

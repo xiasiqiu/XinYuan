@@ -9,7 +9,10 @@ public class GoodBusBean {
 
 	public static String GoodsStoreId = "goodsStoreId";
 	public static String SelectedGoods = "selectedGoods";
+	public static String SelectedEvaluate = "selectEvaluate";
 	public static String GoodEvaluate = "goodEvaluate";
+	public static String SelectedSpec = "SelectedSpec";
+	public static String addShopCar = "addShopCar";
 
 
 	private String flag;
@@ -24,13 +27,6 @@ public class GoodBusBean {
 		this.obj = obj;
 	}
 
-	public static String getGoodEvaluate() {
-		return GoodEvaluate;
-	}
-
-	public static void setGoodEvaluate(String goodEvaluate) {
-		GoodEvaluate = goodEvaluate;
-	}
 
 	public String getFlag() {
 		return flag;

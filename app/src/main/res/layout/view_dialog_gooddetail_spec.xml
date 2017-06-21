@@ -131,21 +131,21 @@
         android:layout_alignParentBottom="true">
 
         <Button
-            android:id="@+id/btnBuy"
-            android:layout_width="0.0dip"
-            android:layout_height="fill_parent"
-            android:layout_weight="1.0"
-            android:background="@color/colorPrimary"
-            android:text="立即购买"
-            android:textColor="@color/bg_white"/>
-
-        <Button
             android:id="@+id/btnAddCart"
             android:layout_width="0.0dip"
             android:layout_height="fill_parent"
             android:layout_weight="1.0"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorPrimary"
             android:text="加入购物车"
+            android:textColor="@color/bg_white"/>
+
+        <Button
+            android:id="@+id/btnBuy"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@color/colorPrimaryDark"
+            android:text="立即购买"
             android:textColor="#fffefefe"/>
 
     </LinearLayout>

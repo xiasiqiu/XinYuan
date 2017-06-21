@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="com.xinyuan.xyshop">
 
     <uses-permission android:name="android.permission.CALL_PHONE"/>
@@ -17,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
         <meta-data
             android:name="com.xinyuan.xyshop.util.GlideConfiguration"
             android:value="GlideModule"/>
@@ -33,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.goods.GoodDetailsActivity"
+            android:name=".ui.goods.detail.GoodDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
@@ -59,7 +61,7 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".ui.goods.StoreActivity"
+            android:name=".ui.goods.store.StoreActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
@@ -90,6 +92,11 @@
         </activity>
         <activity
             android:name=".ui.mine.order.OrderDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".ui.goods.groupbuy.GroupBuyActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

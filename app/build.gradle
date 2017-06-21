@@ -45,7 +45,7 @@ dependencies {
     compile 'com.trello:rxlifecycle-components:1.0'
     compile 'com.github.paolorotolo:appintro:1.1.0'
     compile 'com.google.android:flexbox:0.2.6'
-    compile 'com.gxz.pagerslidingtabstrip:library:1.3'
+
     compile 'com.android.support:support-v4:25.3.1'
     testCompile 'junit:junit:4.12'
     compile 'cc.solart:turbo-recyclerview-helper:1.0.3-beta'
@@ -54,4 +54,5 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     compile files('lib/badgeview.jar')
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    compile 'com.github.andyxialm:ColorDialog:1.0.0'
 }

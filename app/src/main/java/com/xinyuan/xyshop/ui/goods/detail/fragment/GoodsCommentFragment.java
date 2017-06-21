@@ -1,4 +1,4 @@
-package com.xinyuan.xyshop.ui.goods.fragment;
+package com.xinyuan.xyshop.ui.goods.detail.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,21 +7,34 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.callback.StringCallback;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.SimpleEvaluateAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
-import com.xinyuan.xyshop.entity.GoodsEvaluate;
+import com.xinyuan.xyshop.entity.BrandList;
+import com.xinyuan.xyshop.http.Urls;
+import com.xinyuan.xyshop.model.EvaluateModel;
 import com.xinyuan.xyshop.model.GoodDetailModel;
-import com.xinyuan.xyshop.model.GoodsDetailModel;
+import com.xinyuan.xyshop.model.TestEvaluateModel;
+import com.xinyuan.xyshop.ui.goods.GoodBusBean;
+import com.xinyuan.xyshop.ui.goods.detail.GoodDetailsActivity;
 import com.xinyuan.xyshop.util.FullyLinearLayoutManager;
+import com.xinyuan.xyshop.util.JsonUtil;
 import com.youth.xframe.utils.log.XLog;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.Call;
+import okhttp3.Response;
 
 /**
  * Created by Administrator on 2017/5/18.
@@ -68,6 +81,7 @@ public class GoodsCommentFragment extends BaseFragment {
 	@BindView(R.id.rv_comment)
 	RecyclerView rv_comment;
 
+	private static boolean VIEW_INIT = true;
 
 	@Override
 	public int getLayoutId() {
@@ -81,22 +95,52 @@ public class GoodsCommentFragment extends BaseFragment {
 
 	@Override
 	public void initView() {
-		XLog.v("开始加载视图");
-		tv_eva_all_num.setEnabled(false);
-		tv_eva_all.setEnabled(false);
-		initList(20);
+		if (VIEW_INIT) {
+			XLog.v("开始加载视图");
+			tv_eva_all_num.setEnabled(false);
+			tv_eva_all.setEnabled(false);
+			initList(20);
+
+			tv_eva_all_num.setText("" + GoodDetailsActivity.totalCount);
+			tv_eva_good_num.setText("" + GoodDetailsActivity.goodAssess);
+			tv_eva_med_num.setText("" + GoodDetailsActivity.normalAssess);
+			tv_eva_bad_num.setText("" + GoodDetailsActivity.lowAssess);
+			tv_eva_pic_num.setText("" + GoodDetailsActivity.blueprint);
+		}
+
+
+		VIEW_INIT = false;
 
 
 	}
 
 	SimpleEvaluateAdapter simpleEvaluateAdapter;
 
+	GoodDetailModel.GoodComment comment;
+
+
 	private void initList(int i) {
-		List<GoodDetailModel.CommentList> data = new ArrayList<>();
-		for ( int j = 0; j < i; j++) {
-			data.add(new GoodDetailModel.CommentList());
-		}
-		this.simpleEvaluateAdapter = new SimpleEvaluateAdapter(R.layout.fragment_good_item_evaluate, data);
+		OkGo.get(Urls.URL_GOOD_EVA)
+				.execute(new StringCallback() {
+					@Override
+					public void onSuccess(String s, Call call, Response response) {
+
+						XLog.v("String:" + s);
+
+						TestEvaluateModel model = JsonUtil.toBean(s, TestEvaluateModel.class);
+						EvaluateModel evaluateModel = model.getDatas();
+						XLog.v("EvaluateModel=" + evaluateModel.toString());
+
+						getView(evaluateModel.getList());
+					}
+				});
+
+
+	}
+
+	private void getView(List<EvaluateModel.EvaluateBean> list) {
+
+		this.simpleEvaluateAdapter = new SimpleEvaluateAdapter(R.layout.fragment_good_item_evaluate, list);
 		FullyLinearLayoutManager linearLayoutManager = new FullyLinearLayoutManager(context);
 		rv_comment.setNestedScrollingEnabled(false);
 		//设置布局管理器
@@ -104,7 +148,6 @@ public class GoodsCommentFragment extends BaseFragment {
 		this.rv_comment.setAdapter(this.simpleEvaluateAdapter);
 		this.simpleEvaluateAdapter.notifyDataSetChanged();
 	}
-
 
 	@OnClick({R.id.ll_eva_all, R.id.ll_eva_good, R.id.ll_eva_med, R.id.ll_eva_bad, R.id.ll_eva_pic})
 	public void onClick(View view) {

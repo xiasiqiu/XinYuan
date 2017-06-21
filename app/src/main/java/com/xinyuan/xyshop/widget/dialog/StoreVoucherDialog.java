@@ -1,4 +1,4 @@
-package com.xinyuan.xyshop.ui.goods.store;
+package com.xinyuan.xyshop.widget.dialog;
 
 import android.app.Dialog;
 import android.content.Context;

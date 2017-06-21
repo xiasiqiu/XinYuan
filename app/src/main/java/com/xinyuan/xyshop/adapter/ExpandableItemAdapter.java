@@ -12,7 +12,8 @@ import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.bean.ExpandItem;
 import com.xinyuan.xyshop.entity.Menu;
 import com.xinyuan.xyshop.model.HomeModel;
-import com.xinyuan.xyshop.ui.home.BrandActivity;
+
+import com.xinyuan.xyshop.ui.goods.groupbuy.GroupBuyActivity;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.youth.xframe.utils.log.XLog;
 
@@ -54,7 +55,7 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
 					public void onClick(View v) {
 						int pos = holder.getAdapterPosition();
 						Log.d(TAG, "Level 1 item pos: " + pos);
-						menuOnclick(menuList.get(pos).getType());
+						menuOnclick(menuList.get(pos));
 
 					}
 				});
@@ -71,9 +72,7 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
 					public void onClick(View v) {
 						int pos = holder.getAdapterPosition();
 						Log.d(TAG, "Level 2item pos: " + pos);
-						menuOnclick(menuList.get(pos).getType());
-						Intent intent=new Intent(mContext,BrandActivity.class);
-						mContext.startActivity(intent);
+						menuOnclick(menuList.get(pos));
 					}
 				});
 				break;
@@ -84,16 +83,18 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
 	}
 
 
-	private void menuOnclick(String type) {
+	private void menuOnclick(HomeModel.HomeModule.HomeModuleData data) {
 
-		if (type.equals("html")) {
+		if (data.getType().equals("html")) {
+			XLog.v("TYPE:" + data.getType() + "---" + "Text" + data.getText());
+			if (data.getText().equals("团购商城")) {
+				Intent intent = new Intent(mContext, GroupBuyActivity.class);
+				mContext.startActivity(intent);
+			}
 
 
-
-		} else if (type.equals("native")) {
-
-
-
+		} else if (data.getType().equals("native")) {
+			XLog.v("TYPE:" + data.getType() + "---" + "Text" + data.getText());
 
 		}
 

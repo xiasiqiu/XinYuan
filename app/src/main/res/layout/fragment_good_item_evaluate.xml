@@ -108,6 +108,7 @@
         <TextView
             android:id="@+id/tv_eva_late_time"
             style="@style/LightTextView"
+            android:text=""
             android:textColor="@color/tv_price"/>
 
         <TextView
@@ -120,9 +121,18 @@
             android:letterSpacing="0.01"
             android:lineSpacingExtra="5dp"
             android:maxLines="2"
+            android:text=""
             android:textColor="@color/tv_name"
             android:textSize="@dimen/tv_light"/>
 
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/evaluate_late_Images"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_eva_late_content"
+            android:layout_marginTop="10dp"
+            app:alignContent="flex_start"
+            app:flexWrap="wrap"/>
 
     </LinearLayout>
 

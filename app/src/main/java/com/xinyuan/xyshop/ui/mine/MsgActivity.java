@@ -7,18 +7,14 @@ import android.support.v7.widget.Toolbar;
 
 import com.flyco.tablayout.SegmentTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
-import com.gxz.PagerSlidingTabStrip;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.ItemTitlePagerAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
-import com.xinyuan.xyshop.ui.goods.store.StoreAllGoodFragment;
-import com.xinyuan.xyshop.ui.goods.store.StoreHomeFragment;
 import com.xinyuan.xyshop.ui.mine.msg.MallMsgFragment;
 import com.xinyuan.xyshop.ui.mine.msg.StoreMsgFragment;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

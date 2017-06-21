@@ -3,21 +3,16 @@ package com.xinyuan.xyshop.ui.mine.order.fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.OrderAdapter;
-import com.xinyuan.xyshop.adapter.SearchGoodListAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
-import com.xinyuan.xyshop.entity.GoodsVo;
 import com.xinyuan.xyshop.model.OrderModel;
 import com.xinyuan.xyshop.mvp.contract.OrderListContract;
-import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
 import com.xinyuan.xyshop.mvp.presenter.OrderListPresenterImpl;
 import com.youth.xframe.utils.log.XLog;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -48,7 +43,7 @@ public class MyOrderContentFragment extends BaseFragment implements OrderListCon
 
 	@Override
 	public int getLayoutId() {
-		return R.layout.fragment_mine_order_content;
+		return R.layout.fragment_order_content;
 	}
 
 	@Override

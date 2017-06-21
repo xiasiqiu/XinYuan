@@ -1,9 +1,13 @@
-package com.xinyuan.xyshop.ui.goods.store;
+package com.xinyuan.xyshop.ui.goods.store.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.lzy.okgo.OkGo;
@@ -32,14 +36,9 @@ import okhttp3.Response;
 
 public class StoreHomeFragment extends BaseFragment {
 
-	@BindView(R.id.store__home_tabs)
-	SlidingTabLayout homeTab;
-
-	@BindView(R.id.vp_content)
-	NoScrollViewPager vp_content;
-
 	@BindView(R.id.rv_store_home)
 	RecyclerView rv_store_home;
+
 	private List<Fragment> fragmentList = new ArrayList<>();
 
 	private StoreSellFragment sellFragment;
@@ -79,24 +78,31 @@ public class StoreHomeFragment extends BaseFragment {
 	@Override
 	public void initView() {
 
+
+	}
+
+	private void initlIST(List<GoodsVo> goodses) {
+
+		GridLayoutManager layoutManager2 = new GridLayoutManager(this.context, 2);
+		this.rv_store_home.setLayoutManager(layoutManager2);
+		this.manager = layoutManager2;
+		this.rv_store_home.setLayoutManager(layoutManager2);
+		this.adapter = new SearchGoodListAdapter(R.layout.activity_searchgood_item_grid, goodses, false);
+		this.rv_store_home.setAdapter(adapter);
+
+
+
+
+		View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_store_top, (ViewGroup) rv_store_home.getParent(), false);
+		NoScrollViewPager vp_content = (NoScrollViewPager) view.findViewById(R.id.vp_content);
+		SlidingTabLayout homeTab = (SlidingTabLayout) view.findViewById(R.id.store__home_tabs);
 		fragmentList.add(collectFragment = new StoreCollectFragment());
 		fragmentList.add(sellFragment = new StoreSellFragment());
 		vp_content.setAdapter(new ItemTitlePagerAdapter(getChildFragmentManager(),
 				fragmentList, new String[]{"收藏排行", "销量排行"}));
 		vp_content.setOffscreenPageLimit(2);
 		homeTab.setViewPager(vp_content);
-
-
-	}
-
-	private void initlIST(List<GoodsVo> goodses) {
-		XLog.list(goodses);
-		XYGridLayoutManager layoutManager2 = new XYGridLayoutManager(this.context, 2);
-		layoutManager2.setScrollEnabled(false);
-		this.rv_store_home.setLayoutManager(layoutManager2);
-		adapter = new SearchGoodListAdapter(R.layout.activity_searchgood_item_grid, goodses, false);
-		rv_store_home.setAdapter(adapter);
-
+		adapter.addHeaderView(view);
 
 	}
 }

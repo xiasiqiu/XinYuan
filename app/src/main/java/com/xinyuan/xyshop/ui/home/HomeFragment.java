@@ -360,7 +360,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 		View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_home_footer, (ViewGroup) mRecyclerView.getParent(), false);
 		RecyclerView rv_goods = (RecyclerView) view.findViewById(R.id.rv_home_goods);
-
 		ImageView iv_ca_title = (ImageView) view.findViewById(R.id.iv_tab_title);
 		TextView tv_ca_title_cn = (TextView) view.findViewById(R.id.tv_tab_title_cn);
 		TextView tv_ca_title_en = (TextView) view.findViewById(R.id.tv_tab_title_en);

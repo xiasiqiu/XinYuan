@@ -1,4 +1,4 @@
-package com.xinyuan.xyshop.ui.goods.store;
+package com.xinyuan.xyshop.ui.goods.store.fragment;
 
 import android.os.Bundle;
 
@@ -10,6 +10,9 @@ import com.xinyuan.xyshop.base.BaseFragment;
  */
 
 public class StoreSellFragment extends BaseFragment {
+
+
+
 	@Override
 	public int getLayoutId() {
 		return R.layout.fragment_store_sell;

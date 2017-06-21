@@ -28,7 +28,8 @@ public class GlideImageLoader extends ImageLoader {
 		 */
 
 		//Glide 加载图片简单用法
-		Glide.with(context).load(path).into(imageView);
+
+		Glide.with(context).load(path).crossFade().diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder((int) R.drawable.img_defaule).error((int) R.drawable.img_defaule).into(imageView);
 
 
 	}
@@ -37,5 +38,6 @@ public class GlideImageLoader extends ImageLoader {
 		Glide.with(context).load(path).crossFade().diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder((int) R.drawable.img_defaule).error((int) R.drawable.img_defaule).into(imageView);
 
 	}
+
 
 }

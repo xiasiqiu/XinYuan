@@ -1,4 +1,4 @@
-package com.xinyuan.xyshop.ui.goods;
+package com.xinyuan.xyshop.ui.goods.store;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -12,26 +12,21 @@ import android.view.Window;
 import android.widget.TextView;
 
 import com.flyco.tablayout.SlidingTabLayout;
-import com.gxz.PagerSlidingTabStrip;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.ItemTitlePagerAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
-import com.xinyuan.xyshop.ui.goods.store.StoreActivityFragment;
-import com.xinyuan.xyshop.ui.goods.store.StoreAllGoodFragment;
-import com.xinyuan.xyshop.ui.goods.store.StoreHomeFragment;
-import com.xinyuan.xyshop.ui.goods.store.StoreIntroduceActivity;
-import com.xinyuan.xyshop.ui.goods.store.StoreNewGoodFragment;
-import com.xinyuan.xyshop.ui.goods.store.StoreVoucherDialog;
+import com.xinyuan.xyshop.ui.goods.store.fragment.StoreActivityFragment;
+import com.xinyuan.xyshop.ui.goods.store.fragment.StoreAllGoodFragment;
+import com.xinyuan.xyshop.ui.goods.store.fragment.StoreHomeFragment;
+import com.xinyuan.xyshop.ui.goods.store.fragment.StoreNewGoodFragment;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.SystemBarHelper;
-import com.xinyuan.xyshop.widget.NoScrollViewPager;
-import com.xinyuan.xyshop.widget.dialog.GoodDetailsPromotionDialog;
+import com.xinyuan.xyshop.widget.dialog.StoreVoucherDialog;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**

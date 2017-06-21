@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginTop="64dp"
+                android:background="@drawable/group_buy"
+                android:scaleType="fitXY"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="1"/>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/group_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                app:contentInsetStart="0dp"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/bg_white"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
+
+
+                    <ImageView
+                        android:id="@+id/brand_btn_back"
+                        android:layout_width="8dp"
+                        android:layout_height="15dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/icon_back"/>
+
+
+                    <TextView
+                        style="@style/RegularTextView"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="团购商城"
+                        android:textSize="@dimen/tv_Blod"/>
+
+                    <ImageView
+                        android:id="@+id/brand_btn_msg"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="40px"
+                        android:background="@drawable/act_home_msg_de"/>
+
+                    <View
+                        style="@style/XYLine"
+                        android:layout_alignParentBottom="true"/>
+
+                </RelativeLayout>
+
+
+            </android.support.v7.widget.Toolbar>
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/group__tabs"
+            android:layout_width="match_parent"
+            android:layout_height="41.0dip"
+            android:background="@color/bg_white"
+            app:tl_divider_color="@color/colorLine"
+            app:tl_divider_padding="10dp"
+            app:tl_divider_width="1px"
+            app:tl_indicator_color="@color/colorPrimaryDark"
+            app:tl_indicator_height="4dp"
+            app:tl_indicator_width_equal_title="true"
+            app:tl_tab_space_equal="true"
+            app:tl_textSelectColor="@color/colorPrimaryDark"
+            app:tl_textUnselectColor="@color/tv_name"
+            app:tl_textsize="@dimen/tv_Normal"
+            app:tl_underline_gravity="BOTTOM"/>
+
+        <View
+            style="@style/XYLine"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

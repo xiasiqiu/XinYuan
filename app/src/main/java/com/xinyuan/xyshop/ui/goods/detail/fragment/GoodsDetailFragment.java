@@ -1,25 +1,18 @@
-package com.xinyuan.xyshop.ui.goods.fragment;
+package com.xinyuan.xyshop.ui.goods.detail.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseFragment;
-import com.xinyuan.xyshop.mvp.contract.GoodsDetailContract;
-import com.xinyuan.xyshop.ui.goods.GoodDetailsActivity;
-import com.xinyuan.xyshop.util.GlideImageLoader;
+import com.xinyuan.xyshop.ui.goods.detail.GoodDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -58,7 +58,7 @@ public class ConfirmOrderActivity extends BaseActivity {
 
 
 	private void getTop() {
-		View view = this.getLayoutInflater().inflate(R.layout.activity_confir_morder_top, (ViewGroup) rv_order.getParent(), false);
+		View view = this.getLayoutInflater().inflate(R.layout.activity_confirm_order_top, (ViewGroup) rv_order.getParent(), false);
 		adapter.setHeaderView(view);
 	}
 

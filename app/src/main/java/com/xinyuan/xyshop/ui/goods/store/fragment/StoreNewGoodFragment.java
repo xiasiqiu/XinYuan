@@ -1,4 +1,4 @@
-package com.xinyuan.xyshop.ui.goods.store;
+package com.xinyuan.xyshop.ui.goods.store.fragment;
 
 import android.os.Bundle;
 

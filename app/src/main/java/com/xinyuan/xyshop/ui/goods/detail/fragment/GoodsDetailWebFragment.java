@@ -1,4 +1,4 @@
-package com.xinyuan.xyshop.ui.goods.fragment;
+package com.xinyuan.xyshop.ui.goods.detail.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,8 +16,9 @@ import com.xinyuan.xyshop.R;
 /**
  * 图文详情webview的Fragment
  */
-public class GoodsInfoWebFragment extends Fragment {
+public class GoodsDetailWebFragment extends Fragment {
     public WebView wv_detail;
+
     private WebSettings webSettings;
     private LayoutInflater inflater;
 
@@ -25,7 +26,7 @@ public class GoodsInfoWebFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.inflater = inflater;
-        View rootView = inflater.inflate(R.layout.fragment_item_info_web, null);
+        View rootView = inflater.inflate(R.layout.fragment_item_detail_web, null);
         initWebView(rootView);
         return rootView;
     }
@@ -39,7 +40,7 @@ public class GoodsInfoWebFragment extends Fragment {
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setBuiltInZoomControls(true);
         webSettings.setLoadsImagesAutomatically(true);
-        webSettings.setRenderPriority(WebSettings.RenderPriority.HIGH);
+        webSettings.setRenderPriority(WebSettings.RenderPriority.NORMAL);
         webSettings.setBlockNetworkImage(true);
         webSettings.setUseWideViewPort(true);
         webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);

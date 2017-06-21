@@ -8,11 +8,9 @@ import com.flyco.tablayout.SlidingTabLayout;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.CommonPagerAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
-import com.xinyuan.xyshop.entity.GoodsVo;
 import com.youth.xframe.utils.log.XLog;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 
@@ -50,7 +48,7 @@ public class MyOrderFragment extends BaseFragment {
 
 	@Override
 	public int getLayoutId() {
-		return R.layout.fragment_mine_order;
+		return R.layout.fragment_order;
 	}
 
 	@Override

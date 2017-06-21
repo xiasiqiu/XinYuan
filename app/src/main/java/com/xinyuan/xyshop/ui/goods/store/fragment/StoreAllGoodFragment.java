@@ -1,4 +1,4 @@
-package com.xinyuan.xyshop.ui.goods.store;
+package com.xinyuan.xyshop.ui.goods.store.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.SearchGoodListAdapter;
@@ -25,12 +24,11 @@ import com.xinyuan.xyshop.entity.PageEntity;
 import com.xinyuan.xyshop.entity.SelectFilterTest;
 import com.xinyuan.xyshop.mvp.contract.GoodSearchShowContract;
 import com.xinyuan.xyshop.mvp.presenter.SearchGoodsShowPresenterImpl;
-import com.xinyuan.xyshop.ui.goods.GoodDetailsActivity;
 import com.xinyuan.xyshop.ui.goods.RightSearchPly;
+import com.xinyuan.xyshop.ui.goods.detail.GoodDetailsActivity;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.XToast;
 import com.youth.xframe.widget.loadingview.XLoadingView;
-
 
 import java.util.ArrayList;
 import java.util.List;

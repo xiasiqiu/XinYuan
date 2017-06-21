@@ -33,6 +33,7 @@ import com.xinyuan.xyshop.entity.PageEntity;
 import com.xinyuan.xyshop.entity.SelectFilterTest;
 import com.xinyuan.xyshop.mvp.contract.GoodSearchShowContract;
 import com.xinyuan.xyshop.mvp.presenter.SearchGoodsShowPresenterImpl;
+import com.xinyuan.xyshop.ui.goods.detail.GoodDetailsActivity;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.XToast;

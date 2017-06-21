@@ -19,4 +19,9 @@ public class Urls {
 	public static final String URL_ORDER_DPJ = "http://tututo.me/api/order/order_dpj.json";//待评价数据
 
 
+
+	public static final String URL_GOOD_EVA = "http://tututo.me/api/good_AssessContent.json";//全部评价数据
+
+
+
 }

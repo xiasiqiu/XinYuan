@@ -2,24 +2,23 @@ package com.xinyuan.xyshop.widget.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.GoodsAttrsAdapter;
 import com.xinyuan.xyshop.callback.SKUInterface;
 import com.xinyuan.xyshop.model.GoodsAttrsBean;
+import com.xinyuan.xyshop.ui.buy.ConfirmOrderActivity;
 import com.xinyuan.xyshop.ui.goods.GoodBusBean;
-import com.xinyuan.xyshop.ui.goods.fragment.GoodsInfoFragment;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
-import com.xinyuan.xyshop.util.Image;
 import com.youth.xframe.utils.log.XLog;
 
 import org.greenrobot.eventbus.EventBus;
@@ -99,7 +98,6 @@ public class GoodDetailsSpecDialog extends Dialog implements SKUInterface {
 		}
 
 		tvSkuName.setText("请选择:" + attrs);
-
 
 
 	}
@@ -223,16 +221,30 @@ public class GoodDetailsSpecDialog extends Dialog implements SKUInterface {
 
 	}
 
-	@OnClick(R.id.tvOut)
-	public void closeDialog() {
-		dismiss();
-	}
 
 	@Override
 	public void dismiss() {
 		XLog.v("退出啦");
 		EventBus.getDefault().post(new GoodBusBean(GoodBusBean.SelectedGoods, this.selecGood));
 		super.dismiss();
+	}
+
+	@OnClick({R.id.btnBuy, R.id.btnAddCart, R.id.tvOut})
+	public void onClick(View v) {
+		switch (v.getId()) {
+			case R.id.btnBuy:
+				Intent intent = new Intent(context, ConfirmOrderActivity.class);
+				context.startActivity(intent);
+				break;
+			case R.id.btnAddCart:
+				dismiss();
+				EventBus.getDefault().post(new GoodBusBean(GoodBusBean.addShopCar, true));
+				break;
+			case R.id.tvOut:
+				dismiss();
+				break;
+
+		}
 	}
 
 

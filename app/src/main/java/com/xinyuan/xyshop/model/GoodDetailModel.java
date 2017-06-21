@@ -244,83 +244,31 @@ public class GoodDetailModel {
 	}
 
 
-	public static class CommentList {
-		private String headImg;
-
-		private String name;
-
-		private int commentLevel;
-
-		private String commentContent;
-
-		private List<String> commentImg;
-
-		private int lookCount;
-
-		private int praiseCount;
-
-		private String time;
-
-		private List<Params> params;
-
-		private CommentMore commentMore;
-
-
-		public String getHeadImg() {
-			return this.headImg;
-		}
-
-
-		public String getName() {
-			return this.name;
-		}
-
-
-		public int getCommentLevel() {
-			return this.commentLevel;
-		}
-
-
-		public String getCommentContent() {
-			return this.commentContent;
-		}
-
-
-		public List<String> getCommentImg() {
-			return this.commentImg;
-		}
-
-
-		public int getLookCount() {
-			return this.lookCount;
-		}
-
-
-		public int getPraiseCount() {
-			return this.praiseCount;
-		}
-
-
-		public String getTime() {
-			return this.time;
-		}
-
-
-		public List<Params> getParams() {
-			return this.params;
-		}
-
-
-		public CommentMore getCommentMore() {
-			return this.commentMore;
-		}
-	}
-
-
 	public class GoodComment {
-		private int totalCount;
 
-		private List<CommentList> list;
+		private int totalCount;
+		private int goodAssess;
+		private int normalAssess;
+		private int lowAssess;
+		private int blueprint;
+
+		public int getGoodAssess() {
+			return goodAssess;
+		}
+
+		public int getNormalAssess() {
+			return normalAssess;
+		}
+
+		public int getLowAssess() {
+			return lowAssess;
+		}
+
+		public int getBlueprint() {
+			return blueprint;
+		}
+
+		private List<EvaluateModel.EvaluateBean> list;
 
 
 		public int getTotalCount() {
@@ -328,7 +276,7 @@ public class GoodDetailModel {
 		}
 
 
-		public List<CommentList> getList() {
+		public List<EvaluateModel.EvaluateBean> getList() {
 			return this.list;
 		}
 	}
