@@ -22,6 +22,7 @@
     <dimen name="tv_Normal">12sp</dimen>
     <dimen name="tv_light">11sp</dimen>
     <dimen name="tv_small">10sp</dimen>
+    <dimen name="tv_v_small">8sp</dimen>
 
 
     <dimen name="bottom">150px</dimen>

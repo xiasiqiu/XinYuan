@@ -226,6 +226,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		mSwipeRefreshLayout.setOnRefreshListener(this);
 		mSwipeRefreshLayout.setColorSchemeColors(Color.rgb(29, 160, 57));
 		headView = getActivity().getLayoutInflater().inflate(R.layout.fragment_home_top, (ViewGroup) mRecyclerView.getParent(), false);
+
 		final GridLayoutManager manager = new GridLayoutManager(context, 4);
 		mRecyclerView.setLayoutManager(manager);
 		homeMultipleItemAdapter = new HomeMultipleItemAdapter(this.getContext(), list);
@@ -238,6 +239,9 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		});
 		homeMultipleItemAdapter.addHeaderView(headView);
 		mRecyclerView.setAdapter(homeMultipleItemAdapter);
+
+
+
 	}
 
 
@@ -338,10 +342,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		List<String> content = new ArrayList<>();
 
 		for (HomeModel.HomeModule.HomeModuleData itemData : itemList) {
-			name.add(itemData.getData());
-			content.add(itemData.getImageUrl());
-			SpannableStringBuilder style = new SpannableStringBuilder(content.toString());
-			style.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimary)), 10, 21, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			name.add("["+itemData.getText()+"]");
+			content.add(itemData.getData());
+//			SpannableStringBuilder style = new SpannableStringBuilder(content.toString());
+//			style.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimary)), 10, 21, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 			//style.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimary)), 10, 21, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
 		}

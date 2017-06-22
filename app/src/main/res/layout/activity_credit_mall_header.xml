@@ -56,8 +56,6 @@
                 android:background="@drawable/btn_bg_gray"
                 android:src="@drawable/act_home_search_de"
                 />
-
-
         </LinearLayout>
 
 
@@ -70,6 +68,6 @@
             android:layout_marginRight="40px"
             android:scaleType="fitXY"
             android:src="@drawable/act_home_msg_de"/>
-
+        
     </RelativeLayout>
 </android.support.v7.widget.Toolbar>

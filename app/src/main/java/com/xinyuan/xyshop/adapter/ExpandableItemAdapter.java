@@ -14,6 +14,7 @@ import com.xinyuan.xyshop.entity.Menu;
 import com.xinyuan.xyshop.model.HomeModel;
 
 import com.xinyuan.xyshop.ui.goods.groupbuy.GroupBuyActivity;
+import com.xinyuan.xyshop.ui.home.CreditMallActivity;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.youth.xframe.utils.log.XLog;
 
@@ -95,6 +96,10 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
 
 		} else if (data.getType().equals("native")) {
 			XLog.v("TYPE:" + data.getType() + "---" + "Text" + data.getText());
+			if(data.getText().equals("积分中心")){
+				Intent intent = new Intent(mContext, CreditMallActivity.class);
+				mContext.startActivity(intent);
+			}
 
 		}
 

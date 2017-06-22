@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.youth.banner.Banner
+        android:id="@+id/banner_fx"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/bg_white"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableBottom="@drawable/test_ic_credit_img1"
+            android:drawablePadding="5dp"
+            android:paddingTop="5dp"
+            android:text="店铺代金券"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_light"/>
+
+        <View
+            android:layout_width="2px"
+            android:layout_height="40dp"
+            android:background="@color/colorLine"
+            android:layout_gravity="center_vertical"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableBottom="@drawable/test_ic_credit_img2"
+            android:drawablePadding="5dp"
+            android:paddingTop="5dp"
+            android:text="积分兑换礼品"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_light"/>
+
+        <View
+            android:layout_width="2px"
+            android:layout_height="40dp"
+            android:background="@color/colorLine"
+            android:layout_gravity="center_vertical"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableBottom="@drawable/test_ic_credit_img3"
+            android:drawablePadding="5dp"
+            android:paddingTop="5dp"
+            android:text="商品红包"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_light"/>
+
+    </LinearLayout>
+
+</LinearLayout>

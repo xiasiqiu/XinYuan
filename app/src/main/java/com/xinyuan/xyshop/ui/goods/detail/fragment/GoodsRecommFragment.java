@@ -51,7 +51,7 @@ public class GoodsRecommFragment extends BaseFragment {
 					public void onSuccess(String s, Call call, Response response) {
 
 						searchGoodsList = JsonUtil.toBean(s, SearchGoodsList.class);
-						XLog.v("datas" + searchGoodsList);
+
 						SearchGoodsList.SearchGoodsData data = searchGoodsList.getDatas();
 						goodses = data.getGoodsList();
 						initlIST(goodses);

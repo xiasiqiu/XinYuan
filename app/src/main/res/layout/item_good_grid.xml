@@ -2,19 +2,22 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/home_rl_goods"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="1px"
+    android:layout_marginBottom="2px"
+    android:layout_marginLeft="1px"
+    android:layout_marginRight="1px"
     android:background="@color/bg_white"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="540px">
+        android:layout_height="180dp"
+        android:padding="10dp">
+
 
         <ImageView
-            android:id="@+id/home_goods_img"
+            android:id="@+id/ivGoodPic"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"/>
@@ -24,46 +27,31 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="220px"
-        android:layout_marginLeft="10px"
+        android:layout_height="75dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:background="@color/bg_white"
-        android:paddingBottom="10px">
-
+        android:paddingBottom="5dp">
 
         <TextView
-            android:id="@+id/home_goods_name"
+            android:id="@+id/tv_goods_name"
             style="@style/GoodsNameTextView"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30px"
+            android:layout_marginTop="10dp"
             android:letterSpacing="0.01"
-            android:lineSpacingExtra="10px"
-            />
-
-        <!--<TextView-->
-            <!--android:layout_width="60dp"-->
-            <!--android:layout_height="20dp"-->
-            <!--android:background="@drawable/bg_flow_selected"-->
-            <!--android:gravity="center"-->
-
-            <!--android:text="虚拟兑换"-->
-            <!--android:textColor="@color/bg_white"-->
-            <!--android:textSize="@dimen/tv_small"/>-->
-
+            android:lineSpacingExtra="3dp"/>
 
         <TextView
             android:id="@+id/tv_goods_price"
             style="@style/GoodsPriceTextView"
-            android:layout_alignParentBottom="true"
-            />
+            android:layout_alignParentBottom="true"/>
 
         <TextView
-            android:id="@+id/tv_goods_buynum"
+            android:id="@+id/tv_goods_sellnum"
             style="@style/SmallHintTextView"
             android:layout_alignParentBottom="true"
-            android:layout_marginLeft="50px"
-            android:layout_toRightOf="@+id/tv_goods_price"
-            />
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@+id/tv_goods_price"/>
     </RelativeLayout>
 
 </LinearLayout>

@@ -13,18 +13,19 @@
         <com.youth.banner.Banner
             android:id="@+id/banner"
             android:layout_width="match_parent"
-            android:layout_height="205dp"
+            android:layout_height="225dp"
+            app:image_scale_type="fit_xy"
             app:indicator_drawable_selected="@drawable/banner_shape"
             app:indicator_height="8dp"
             app:indicator_margin="6dp"
-            app:image_scale_type="fit_xy"
+
             app:indicator_width="8dp"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/menu_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="190dp"
+            android:layout_marginTop="220dp"
             android:background="@drawable/bt_rabg_up"/>
 
 
@@ -59,13 +60,14 @@
             app:mvAnimDuration="1000"
             app:mvInterval="3000"
             app:mvTextColor="@color/colorPrimary"
-            app:mvTextSize="@dimen/tv_light"/>
+            app:mvTextSize="@dimen/tv_Normal"/>
 
         <com.sunfusheng.marqueeview.MarqueeView
             android:id="@+id/marquee_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="1dp"
             android:layout_marginRight="40dp"
             android:layout_toRightOf="@+id/marquee_name"
             android:ellipsize="end"

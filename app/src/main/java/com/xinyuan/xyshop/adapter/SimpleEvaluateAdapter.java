@@ -48,7 +48,7 @@ public class SimpleEvaluateAdapter extends BaseQuickAdapter<EvaluateModel.Evalua
 	protected void convert(final BaseViewHolder helper, final EvaluateModel.EvaluateBean item) {
 
 		final CircleImageView headImag = helper.getView(R.id.customer_image);
-		XLog.v("IAMGE" + item.getHeadImg());
+
 		Glide.with(mContext).load(item.getHeadImg()).asBitmap().centerCrop().placeholder(R.drawable.img_defaule).into(new BitmapImageViewTarget(headImag) {
 			@Override
 			protected void setResource(Bitmap resource) {

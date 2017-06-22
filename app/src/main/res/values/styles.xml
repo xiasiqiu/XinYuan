@@ -78,7 +78,11 @@
         <item name="android:layout_height">2px</item>
         <item name="android:background">@color/colorLine</item>
     </style>
-
+    <style name="XYVLine">
+        <item name="android:layout_width">2px</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/colorLine</item>
+    </style>
 
 
 

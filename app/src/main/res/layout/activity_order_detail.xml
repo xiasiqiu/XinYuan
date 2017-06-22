@@ -114,14 +114,13 @@
 
                 <Button
                     android:id="@+id/bt_order_item_store"
+                    style="@style/NormalTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:background="@null"
                     android:drawableLeft="@drawable/ic_store"
                     android:drawablePadding="10dp"
-                    android:drawableRight="@drawable/ic_right_row"
-                    android:text=""
-                    android:textColor="@color/tv_name"/>
+                    android:drawableRight="@drawable/ic_right_row"/>
 
                 <com.google.android.flexbox.FlexboxLayout
                     android:id="@+id/fl_goods"
@@ -194,6 +193,7 @@
 
                 <Button
                     android:id="@+id/bt_order_service"
+                    style="@style/RegularTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -214,6 +214,7 @@
 
                 <Button
                     android:id="@+id/bt_order_phone"
+                    style="@style/RegularTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -221,7 +222,7 @@
                     android:drawableLeft="@drawable/ic_order_phone"
                     android:paddingLeft="30dp"
                     android:paddingRight="30dp"
-                    android:text="联系客服"/>
+                    android:text="拨打电话"/>
             </LinearLayout>
 
             <LinearLayout

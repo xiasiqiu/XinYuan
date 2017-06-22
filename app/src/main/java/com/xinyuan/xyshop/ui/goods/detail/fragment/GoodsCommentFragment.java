@@ -2,8 +2,13 @@ package com.xinyuan.xyshop.ui.goods.detail.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,11 +22,16 @@ import com.xinyuan.xyshop.http.Urls;
 import com.xinyuan.xyshop.model.EvaluateModel;
 import com.xinyuan.xyshop.model.GoodDetailModel;
 import com.xinyuan.xyshop.model.TestEvaluateModel;
+import com.xinyuan.xyshop.ui.catrgory.CategoryFragment;
 import com.xinyuan.xyshop.ui.goods.GoodBusBean;
 import com.xinyuan.xyshop.ui.goods.detail.GoodDetailsActivity;
+import com.xinyuan.xyshop.ui.home.HomeFragment;
+import com.xinyuan.xyshop.ui.mine.MineFragment;
+import com.xinyuan.xyshop.ui.shopcar.ShopCarFragment;
 import com.xinyuan.xyshop.util.FullyLinearLayoutManager;
 import com.xinyuan.xyshop.util.JsonUtil;
 import com.youth.xframe.utils.log.XLog;
+import com.youth.xframe.widget.loadingview.XLoadingView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -42,8 +52,6 @@ import okhttp3.Response;
 
 public class GoodsCommentFragment extends BaseFragment {
 
-//	@BindView(R.id.nvp_eva_content)
-//	NotSlipViewPager nvp_eva_content;
 
 	@BindView(R.id.ll_eva_all)
 	LinearLayout ll_eva_all;
@@ -78,10 +86,19 @@ public class GoodsCommentFragment extends BaseFragment {
 	@BindView(R.id.tv_eva_pic)
 	TextView tv_eva_pic;
 
-	@BindView(R.id.rv_comment)
-	RecyclerView rv_comment;
+	private static final String CURRENT_FRAGMENT = "STATE_FRAGMENT_SHOW";
+	@BindView(R.id.good_eva_content)
+	FrameLayout good_eva_content;
 
+
+	private int currentIndex = 0;
+	private List<Fragment> fragments = new ArrayList<>();
+	private Fragment currentFragment = new Fragment();
+	Bundle savedInstanceState;
 	private static boolean VIEW_INIT = true;
+	private FragmentManager fragmentManager;
+	private CommentContentFragment commentContentFragment;
+	private TextView tvs[];
 
 	@Override
 	public int getLayoutId() {
@@ -90,17 +107,16 @@ public class GoodsCommentFragment extends BaseFragment {
 
 	@Override
 	public void initData(@Nullable Bundle savedInstanceState) {
-
+		this.savedInstanceState = savedInstanceState;
 	}
 
 	@Override
 	public void initView() {
+		fragmentManager = getChildFragmentManager();
 		if (VIEW_INIT) {
 			XLog.v("开始加载视图");
 			tv_eva_all_num.setEnabled(false);
 			tv_eva_all.setEnabled(false);
-			initList(20);
-
 			tv_eva_all_num.setText("" + GoodDetailsActivity.totalCount);
 			tv_eva_good_num.setText("" + GoodDetailsActivity.goodAssess);
 			tv_eva_med_num.setText("" + GoodDetailsActivity.normalAssess);
@@ -108,127 +124,139 @@ public class GoodsCommentFragment extends BaseFragment {
 			tv_eva_pic_num.setText("" + GoodDetailsActivity.blueprint);
 		}
 
-
 		VIEW_INIT = false;
 
+		if (savedInstanceState != null) { // “内存重启”时调用
 
+			//获取“内存重启”时保存的索引下标
+			currentIndex = savedInstanceState.getInt(CURRENT_FRAGMENT, 0);
+
+			fragments.removeAll(fragments);
+			fragments.add(fragmentManager.findFragmentByTag(0 + ""));
+			fragments.add(fragmentManager.findFragmentByTag(1 + ""));
+			fragments.add(fragmentManager.findFragmentByTag(2 + ""));
+			fragments.add(fragmentManager.findFragmentByTag(3 + ""));
+			fragments.add(fragmentManager.findFragmentByTag(4 + ""));
+			//恢复fragment页面
+			restoreFragment();
+		} else {      //正常启动时调用
+			for (int i = 0; i < 5; i++) {
+				fragments.add(commentContentFragment.getInstance(i));
+			}
+
+			showFragment();
+		}
+
+
+		tvs = new TextView[]{tv_eva_all, tv_eva_all_num, tv_eva_good, tv_eva_good_num, tv_eva_med, tv_eva_med_num, tv_eva_bad, tv_eva_bad_num, tv_eva_pic, tv_eva_pic_num};
 	}
 
-	SimpleEvaluateAdapter simpleEvaluateAdapter;
-
-	GoodDetailModel.GoodComment comment;
-
-
-	private void initList(int i) {
-		OkGo.get(Urls.URL_GOOD_EVA)
-				.execute(new StringCallback() {
-					@Override
-					public void onSuccess(String s, Call call, Response response) {
-
-						XLog.v("String:" + s);
-
-						TestEvaluateModel model = JsonUtil.toBean(s, TestEvaluateModel.class);
-						EvaluateModel evaluateModel = model.getDatas();
-						XLog.v("EvaluateModel=" + evaluateModel.toString());
-
-						getView(evaluateModel.getList());
-					}
-				});
-
-
-	}
-
-	private void getView(List<EvaluateModel.EvaluateBean> list) {
-
-		this.simpleEvaluateAdapter = new SimpleEvaluateAdapter(R.layout.fragment_good_item_evaluate, list);
-		FullyLinearLayoutManager linearLayoutManager = new FullyLinearLayoutManager(context);
-		rv_comment.setNestedScrollingEnabled(false);
-		//设置布局管理器
-		rv_comment.setLayoutManager(linearLayoutManager);
-		this.rv_comment.setAdapter(this.simpleEvaluateAdapter);
-		this.simpleEvaluateAdapter.notifyDataSetChanged();
-	}
 
 	@OnClick({R.id.ll_eva_all, R.id.ll_eva_good, R.id.ll_eva_med, R.id.ll_eva_bad, R.id.ll_eva_pic})
 	public void onClick(View view) {
 		switch (view.getId()) {
-
 			case R.id.ll_eva_all:
-				XLog.v("点击了！！！！！！！！！！！！！！");
-				tv_eva_all_num.setEnabled(false);
-				tv_eva_all.setEnabled(false);
-
-				tv_eva_good_num.setEnabled(true);
-				tv_eva_good.setEnabled(true);
-				tv_eva_med_num.setEnabled(true);
-				tv_eva_med.setEnabled(true);
-				tv_eva_bad_num.setEnabled(true);
-				tv_eva_bad.setEnabled(true);
-				tv_eva_pic_num.setEnabled(true);
-				tv_eva_pic.setEnabled(true);
-				initList(20);
+				changBtnSelectedStatus(0);
+				currentIndex = 0;
 				break;
 			case R.id.ll_eva_good:
-
-				tv_eva_good_num.setEnabled(false);
-				tv_eva_good.setEnabled(false);
-
-				tv_eva_all_num.setEnabled(true);
-				tv_eva_all.setEnabled(true);
-				tv_eva_med_num.setEnabled(true);
-				tv_eva_med.setEnabled(true);
-				tv_eva_bad_num.setEnabled(true);
-				tv_eva_bad.setEnabled(true);
-				tv_eva_pic_num.setEnabled(true);
-				tv_eva_pic.setEnabled(true);
-				initList(15);
+				currentIndex = 1;
+				changBtnSelectedStatus(1);
 				break;
 			case R.id.ll_eva_med:
-
-				tv_eva_med_num.setEnabled(false);
-				tv_eva_med.setEnabled(false);
-
-				tv_eva_all_num.setEnabled(true);
-				tv_eva_all.setEnabled(true);
-				tv_eva_good_num.setEnabled(true);
-				tv_eva_good.setEnabled(true);
-				tv_eva_bad_num.setEnabled(true);
-				tv_eva_bad.setEnabled(true);
-				tv_eva_pic_num.setEnabled(true);
-				tv_eva_pic.setEnabled(true);
-				initList(3);
+				currentIndex = 2;
+				changBtnSelectedStatus(2);
 				break;
 			case R.id.ll_eva_bad:
-
-				tv_eva_bad_num.setEnabled(false);
-				tv_eva_bad.setEnabled(false);
-
-				tv_eva_all_num.setEnabled(true);
-				tv_eva_all.setEnabled(true);
-				tv_eva_good_num.setEnabled(true);
-				tv_eva_good.setEnabled(true);
-				tv_eva_med_num.setEnabled(true);
-				tv_eva_med.setEnabled(true);
-				tv_eva_pic_num.setEnabled(true);
-				tv_eva_pic.setEnabled(true);
-				initList(2);
+				currentIndex = 3;
+				changBtnSelectedStatus(3);
 				break;
 			case R.id.ll_eva_pic:
-				tv_eva_pic_num.setEnabled(false);
-				tv_eva_pic.setEnabled(false);
+				currentIndex = 4;
+				changBtnSelectedStatus(4);
+				break;
+		}
+		showFragment();
 
-				tv_eva_all_num.setEnabled(true);
-				tv_eva_all.setEnabled(true);
-				tv_eva_good_num.setEnabled(true);
-				tv_eva_good.setEnabled(true);
-				tv_eva_med_num.setEnabled(true);
-				tv_eva_med.setEnabled(true);
-				tv_eva_bad_num.setEnabled(true);
-				tv_eva_bad.setEnabled(true);
-				initList(10);
-				break;
-			default:
-				break;
+	}
+
+	/**
+	 * 使用show() hide()切换页面
+	 * 显示fragment
+	 */
+	private void showFragment() {
+
+		FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+
+		//如果之前没有添加过
+		if (!fragments.get(currentIndex).isAdded()) {
+			transaction
+					.hide(currentFragment)
+					.add(R.id.good_eva_content, fragments.get(currentIndex), "" + currentIndex);  //第三个参数为添加当前的fragment时绑定一个tag
+
+		} else {
+
+			transaction
+					.hide(currentFragment)
+					.show(fragments.get(currentIndex));
+		}
+
+		currentFragment = fragments.get(currentIndex);
+		transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
+		transaction.commitAllowingStateLoss();
+
+
+	}
+
+	/**
+	 * 恢复fragment
+	 */
+	private void restoreFragment() {
+
+
+		FragmentTransaction mBeginTreansaction = fragmentManager.beginTransaction();
+
+		for (int i = 0; i < fragments.size(); i++) {
+
+			if (i == currentIndex) {
+				mBeginTreansaction.show(fragments.get(i));
+			} else {
+				mBeginTreansaction.hide(fragments.get(i));
+			}
+
+		}
+
+		mBeginTreansaction.commit();
+
+		//把当前显示的fragment记录下来
+		currentFragment = fragments.get(currentIndex);
+
+	}
+
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+
+		//“内存重启”时保存当前的fragment名字
+		outState.putInt(CURRENT_FRAGMENT, currentIndex);
+		super.onSaveInstanceState(outState);
+	}
+
+	public void changBtnSelectedStatus(int position) {
+		int index = position * 2;
+		int next = index + 1;
+
+		XLog.v("选中的index:" + index + ":" + next);
+		XLog.v(tvs.toString());
+		for (int i = 0; i < 9; i++) {
+			if (i == index) {
+				tvs[i].setEnabled(false);
+			} else if (i == next) {
+				tvs[i].setEnabled(false);
+			} else {
+				tvs[i].setEnabled(true);
+			}
 		}
 
 	}

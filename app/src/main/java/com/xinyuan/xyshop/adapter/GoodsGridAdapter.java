@@ -26,13 +26,17 @@ public class GoodsGridAdapter extends BaseQuickAdapter<GoodsVo, BaseViewHolder> 
 
 	@Override
 	protected void convert(BaseViewHolder helper, GoodsVo item) {
-		ImageView goodsImg = helper.getView(R.id.ivGoodPic);
-		GlideImageLoader.setImage(mContext, item.getImageSrc(), goodsImg);
-		TextView tv_goods_name = helper.getView(R.id.tv_goods_name);
-		tv_goods_name.setText(item.getGoodsName());
-		TextView tv_goods_price = helper.getView(R.id.tv_goods_price);
-		tv_goods_price.setText("￥" + String.valueOf(item.getAppPriceMin()));
-		TextView tv_goods_sellnum = helper.getView(R.id.tv_goods_sellnum);
-		tv_goods_sellnum.setText("月销量:" + item.getGoodsSaleNum() + "件");
+		if (item.getImageSrc()!=null) {
+
+			ImageView goodsImg = helper.getView(R.id.ivGoodPic);
+			GlideImageLoader.setImage(mContext, item.getImageSrc(), goodsImg);
+			TextView tv_goods_name = helper.getView(R.id.tv_goods_name);
+			tv_goods_name.setText(item.getGoodsName());
+			TextView tv_goods_price = helper.getView(R.id.tv_goods_price);
+			tv_goods_price.setText("￥" + String.valueOf(item.getAppPriceMin()));
+			TextView tv_goods_sellnum = helper.getView(R.id.tv_goods_sellnum);
+			tv_goods_sellnum.setText("月销量:" + item.getGoodsSaleNum() + "件");
+		}
+
 	}
 }
