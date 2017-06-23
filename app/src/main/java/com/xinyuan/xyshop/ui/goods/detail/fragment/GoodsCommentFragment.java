@@ -117,13 +117,8 @@ public class GoodsCommentFragment extends BaseFragment {
 			XLog.v("开始加载视图");
 			tv_eva_all_num.setEnabled(false);
 			tv_eva_all.setEnabled(false);
-			tv_eva_all_num.setText("" + GoodDetailsActivity.totalCount);
-			tv_eva_good_num.setText("" + GoodDetailsActivity.goodAssess);
-			tv_eva_med_num.setText("" + GoodDetailsActivity.normalAssess);
-			tv_eva_bad_num.setText("" + GoodDetailsActivity.lowAssess);
-			tv_eva_pic_num.setText("" + GoodDetailsActivity.blueprint);
+			EventBus.getDefault().register(this);
 		}
-
 		VIEW_INIT = false;
 
 		if (savedInstanceState != null) { // “内存重启”时调用
@@ -151,6 +146,19 @@ public class GoodsCommentFragment extends BaseFragment {
 		tvs = new TextView[]{tv_eva_all, tv_eva_all_num, tv_eva_good, tv_eva_good_num, tv_eva_med, tv_eva_med_num, tv_eva_bad, tv_eva_bad_num, tv_eva_pic, tv_eva_pic_num};
 	}
 
+	@Subscribe(threadMode = ThreadMode.MAIN)
+	//第2步:注册一个在后台线程执行的方法,用于接收事件
+	public void onGoodEvent(GoodBusBean goodBusBean) {//参数必须是ClassEvent类型, 否则不会调用此方法
+		if (goodBusBean.getFlag().equals(GoodBusBean.GoodEvaluate)) {
+			GoodDetailModel.GoodComment comment = (GoodDetailModel.GoodComment) goodBusBean.getObj();
+			tv_eva_all_num.setText("" + comment.getTotalCount());
+			tv_eva_good_num.setText("" + comment.getGoodAssess());
+			tv_eva_med_num.setText("" + comment.getNormalAssess());
+			tv_eva_bad_num.setText("" + comment.getLowAssess());
+			tv_eva_pic_num.setText("" + comment.getBlueprint());
+		}
+
+	}
 
 	@OnClick({R.id.ll_eva_all, R.id.ll_eva_good, R.id.ll_eva_med, R.id.ll_eva_bad, R.id.ll_eva_pic})
 	public void onClick(View view) {

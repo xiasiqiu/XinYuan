@@ -32,6 +32,7 @@ public class OrderListPresenterImpl implements OrderListContract.OrderListPresen
 
 	@Override
 	public void initData(int orderType, int orderStatus, boolean isAll) {
+		view.showState(0);
 		String url = "";
 		XLog.v("url="+orderType+":"+orderStatus+":"+isAll);
 		switch (orderType) {

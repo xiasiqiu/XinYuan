@@ -33,12 +33,15 @@ import com.xinyuan.xyshop.adapter.HomeGoodsAdapter;
 import com.xinyuan.xyshop.adapter.HomeMultipleItemAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.bean.ExpandItem;
+import com.xinyuan.xyshop.entity.GoodListItem;
 import com.xinyuan.xyshop.entity.HomeMultipleItem;
 import com.xinyuan.xyshop.entity.Menu;
 import com.xinyuan.xyshop.model.HomeModel;
 import com.xinyuan.xyshop.mvp.contract.HomeContract;
 import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
 import com.xinyuan.xyshop.ui.goods.SearchGoodsActivity;
+import com.xinyuan.xyshop.ui.goods.detail.GoodDetailsActivity;
+import com.xinyuan.xyshop.ui.goods.store.StoreActivity;
 import com.xinyuan.xyshop.ui.mine.MsgActivity;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
@@ -51,6 +54,7 @@ import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.loadingview.XLoadingView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -66,7 +70,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	@BindView(R.id.home_list)
 	RecyclerView mRecyclerView;
 
-	RecyclerView menuListView;
+
 	@BindView(R.id.home_swipeLayout)
 	SwipeRefreshLayout mSwipeRefreshLayout;
 	@BindView(R.id.home_loadingView)
@@ -100,6 +104,9 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	private List<HomeMultipleItem> data;
 	private static boolean VIEW_INIT = true;
 
+	private RecyclerView menuListView;
+	private Bundle saveState;
+
 	@Override
 	public int getLayoutId() {
 		return R.layout.fragment_home;
@@ -111,8 +118,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
 			SystemBarHelper.setHeightAndPadding(getActivity(), mToolbar);
 		}
-
-
 		VIEW_INIT = false;
 		mDistanceY = 0;
 		restoreState();
@@ -151,7 +156,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	}
 
-	private Bundle saveState;
 
 	private boolean RestoreStateformArguments() {
 
@@ -239,7 +243,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		});
 		homeMultipleItemAdapter.addHeaderView(headView);
 		mRecyclerView.setAdapter(homeMultipleItemAdapter);
-
 
 
 	}
@@ -342,19 +345,12 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		List<String> content = new ArrayList<>();
 
 		for (HomeModel.HomeModule.HomeModuleData itemData : itemList) {
-			name.add("["+itemData.getText()+"]");
+			name.add("[" + itemData.getText() + "]");
 			content.add(itemData.getData());
-//			SpannableStringBuilder style = new SpannableStringBuilder(content.toString());
-//			style.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimary)), 10, 21, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-			//style.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimary)), 10, 21, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
 		}
-
 
 		MarqueeView marquee_name = (MarqueeView) headView.findViewById(R.id.marquee_name);
 		MarqueeView marquee_content = (MarqueeView) headView.findViewById(R.id.marquee_content);
-
-
 		marquee_name.startWithList(name);
 		marquee_content.startWithList(content);
 	}
@@ -368,7 +364,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		TextView tv_ca_title_cn = (TextView) view.findViewById(R.id.tv_tab_title_cn);
 		TextView tv_ca_title_en = (TextView) view.findViewById(R.id.tv_tab_title_en);
 
-		List<HomeModel.GoodModule.HomeGood> goodList = new ArrayList<>();
+		List<GoodListItem> goodList = new ArrayList<>();
 		goodList = goodModule.getGoodList();
 
 
@@ -453,13 +449,21 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	 */
 	@Override
 	public void OnImageViewClick(View view, final String type, final String data, boolean isAD) {
-
-		if (type.equals("brand")) {
-			CommUtil.gotoActivity(getActivity(), BrandActivity.class, false, null);
+			XLog.v("TYPE"+type+":DATA"+data);
+		if (type.equals("good")) {
+			HashMap<String, String> params = new HashMap();
+			params.put("goodId", data);
+			CommUtil.gotoActivity(getActivity(), GoodDetailsActivity.class, false, params);
+		} else if (type.equals("store")) {
+			HashMap<String, String> params = new HashMap();
+			params.put("storeId", data);
+			CommUtil.gotoActivity(getActivity(), StoreActivity.class, false, params);
+		} else if (type.equals("html")) {
+			HashMap<String, String> params = new HashMap();
+			params.put("htmlUrl", data);
+			CommUtil.gotoActivity(getActivity(), WebViewActivity.class, false, params);
 		}
-
 	}
-
 
 	/**
 	 * 搜素栏监听
@@ -508,7 +512,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	@CallSuper
 	public void onResume() {
 		super.onResume();
-		//mRecyclerView.scrollToPosition(0);
 		initView();
 	}
 

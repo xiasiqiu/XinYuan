@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -34,7 +36,8 @@ public class GroupGoodsFragment extends BaseFragment {
 
 	@BindView(R.id.rv_group)
 	RecyclerView rv_group;
-
+	@BindView(R.id.ll_group_select)
+	LinearLayout ll_group_select;
 	private GoodsGridAdapter adapter;
 	private LinearLayoutManager manager;
 	private List<GoodsVo> goodses = new ArrayList();
@@ -74,6 +77,10 @@ public class GroupGoodsFragment extends BaseFragment {
 
 	@Override
 	public void initView() {
+		if (mTitle.equals("全部团购")) {
+			ll_group_select.setVisibility(View.VISIBLE);
+		}
+
 		GridLayoutManager layoutManager2 = new GridLayoutManager(this.context, 2, 1, false);
 		this.rv_group.setLayoutManager(layoutManager2);
 		this.manager = layoutManager2;
@@ -86,5 +93,7 @@ public class GroupGoodsFragment extends BaseFragment {
 
 	}
 
-
+	public RecyclerView getRvList() {
+		return rv_group;
+	}
 }

@@ -78,7 +78,7 @@
         <Button
             android:id="@+id/bt_order_close_detele"
             android:layout_width="70dp"
-            android:layout_height="30dp"
+            android:layout_height="26dp"
             android:background="@drawable/bt_unselect_red"
             android:text="删除订单"
             android:textColor="@color/tv_price"
@@ -97,7 +97,7 @@
         <Button
             android:id="@+id/bt_order_detele"
             android:layout_width="70dp"
-            android:layout_height="30dp"
+            android:layout_height="26dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/bt_unselect_normal"
             android:text="删除订单"
@@ -107,7 +107,7 @@
         <Button
             android:id="@+id/bt_order_finish_logistical"
             android:layout_width="70dp"
-            android:layout_height="30dp"
+            android:layout_height="26dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/bt_unselect_normal"
             android:text="查看物流"
@@ -117,7 +117,7 @@
         <Button
             android:id="@+id/bt_order_eva_later"
             android:layout_width="70dp"
-            android:layout_height="30dp"
+            android:layout_height="26dp"
             android:background="@drawable/bt_unselect_red"
             android:text="追加评论"
             android:textColor="@color/tv_price"
@@ -137,7 +137,7 @@
         <Button
             android:id="@+id/bt_order_dpj_logistical"
             android:layout_width="70dp"
-            android:layout_height="30dp"
+            android:layout_height="26dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/bt_unselect_normal"
             android:text="查看物流"
@@ -147,7 +147,7 @@
         <Button
             android:id="@+id/bt_order_eva"
             android:layout_width="70dp"
-            android:layout_height="30dp"
+            android:layout_height="26dp"
             android:background="@drawable/bt_unselect_red"
             android:text="评价"
             android:textColor="@color/tv_price"
@@ -166,7 +166,7 @@
         <Button
             android:id="@+id/bt_order_contatct"
             android:layout_width="70dp"
-            android:layout_height="30dp"
+            android:layout_height="26dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/bt_unselect_normal"
             android:text="联系卖家"
@@ -176,7 +176,7 @@
         <Button
             android:id="@+id/bt_order_cancel"
             android:layout_width="70dp"
-            android:layout_height="30dp"
+            android:layout_height="26dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/bt_unselect_normal"
             android:text="取消订单"
@@ -186,7 +186,7 @@
         <Button
             android:id="@+id/bt_order_pay"
             android:layout_width="70dp"
-            android:layout_height="30dp"
+            android:layout_height="26dp"
             android:background="@drawable/bt_unselect_red"
             android:text="付款"
             android:textColor="@color/tv_price"
@@ -205,7 +205,7 @@
         <Button
             android:id="@+id/bt_order_overime"
             android:layout_width="70dp"
-            android:layout_height="30dp"
+            android:layout_height="26dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/bt_unselect_normal"
             android:text="延长收货"
@@ -215,7 +215,7 @@
         <Button
             android:id="@+id/bt_order_logistical"
             android:layout_width="70dp"
-            android:layout_height="30dp"
+            android:layout_height="26dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/bt_unselect_normal"
             android:text="查看物流"
@@ -225,7 +225,7 @@
         <Button
             android:id="@+id/bt_order_suertake"
             android:layout_width="70dp"
-            android:layout_height="30dp"
+            android:layout_height="26dp"
             android:background="@drawable/bt_unselect_red"
             android:text="确认收货"
             android:textColor="@color/tv_price"

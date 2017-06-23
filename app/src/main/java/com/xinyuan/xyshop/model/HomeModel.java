@@ -1,5 +1,7 @@
 package com.xinyuan.xyshop.model;
 
+import com.xinyuan.xyshop.entity.GoodListItem;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
@@ -151,77 +153,8 @@ public class HomeModel implements Serializable {
 
 		private static final long serialVersionUID = -8688200587140878181L;
 		private GoodInfo goodInfo;
-		private List<HomeGood> goodList;
+		private List<GoodListItem> goodList;
 
-		public class HomeGood implements Serializable {
-			private static final long serialVersionUID = 4805937780770804782L;
-			private BigDecimal appPriceMin;
-			private BigDecimal goodsPrice;
-			private String goodsName;
-			private int commonId;
-			private int sellnum;
-			private String imageUrl;
-
-			public BigDecimal getAppPriceMin() {
-				return appPriceMin;
-			}
-
-			public void setAppPriceMin(BigDecimal appPriceMin) {
-				this.appPriceMin = appPriceMin;
-			}
-
-			public BigDecimal getGoodsPrice() {
-				return goodsPrice;
-			}
-
-			public void setGoodsPrice(BigDecimal goodsPrice) {
-				this.goodsPrice = goodsPrice;
-			}
-
-			public String getGoodsName() {
-				return goodsName;
-			}
-
-			public void setGoodsName(String goodsName) {
-				this.goodsName = goodsName;
-			}
-
-			public int getCommonId() {
-				return commonId;
-			}
-
-			public void setCommonId(int commonId) {
-				this.commonId = commonId;
-			}
-
-			public int getSellnum() {
-				return sellnum;
-			}
-
-			public void setSellnum(int sellnum) {
-				this.sellnum = sellnum;
-			}
-
-			public String getImageUrl() {
-				return imageUrl;
-			}
-
-			public void setImageUrl(String imageUrl) {
-				this.imageUrl = imageUrl;
-			}
-
-			@Override
-			public String toString() {
-				return "HomeGood{" +
-						"appPriceMin=" + appPriceMin +
-						", goodsPrice=" + goodsPrice +
-						", goodsName='" + goodsName + '\'' +
-						", commonId=" + commonId +
-						", sellnum=" + sellnum +
-						", imageUrl='" + imageUrl + '\'' +
-						'}';
-			}
-		}
 
 		public class GoodInfo implements Serializable {
 
@@ -253,7 +186,7 @@ public class HomeModel implements Serializable {
 			return goodInfo;
 		}
 
-		public List<HomeGood> getGoodList() {
+		public List<GoodListItem> getGoodList() {
 			return goodList;
 		}
 	}

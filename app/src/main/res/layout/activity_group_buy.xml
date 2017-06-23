@@ -19,11 +19,13 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
 
-            <ImageView
+            <LinearLayout
+                android:id="@+id/ll_header_layout"
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
                 android:layout_marginTop="64dp"
                 android:background="@drawable/group_buy"
+                android:orientation="vertical"
                 android:scaleType="fitXY"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="1"/>

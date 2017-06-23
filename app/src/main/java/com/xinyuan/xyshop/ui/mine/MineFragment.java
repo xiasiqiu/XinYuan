@@ -140,4 +140,9 @@ public class MineFragment extends BaseFragment {
 
 	}
 
+	@OnClick(R.id.customer_image)
+	public void goUserInfo() {
+		CommUtil.gotoActivity(this.getActivity(), UserInfoActivity.class, false, null);
+	}
+
 }

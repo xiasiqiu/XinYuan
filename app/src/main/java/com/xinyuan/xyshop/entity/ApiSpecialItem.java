@@ -9,6 +9,7 @@ import java.util.List;
  */
 
 public class ApiSpecialItem implements Serializable {
+	private static final long serialVersionUID = -7330954813984749988L;
 	private String itemData = "";
 	private int itemId;
 	private int itemSort = 999;

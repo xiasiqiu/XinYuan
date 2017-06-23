@@ -10,7 +10,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -246,4 +247,46 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
+    <View
+        style="@style/XYLine"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_order_detail_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+
+        <Button
+            android:id="@+id/bt_order_red"
+            android:layout_width="70dp"
+            android:layout_height="23dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bt_unselect_red"
+            android:textColor="@color/tv_price"
+            android:textSize="@dimen/tv_small"/>
+
+        <Button
+            android:id="@+id/bt_order_2"
+            android:layout_width="70dp"
+            android:layout_height="23dp"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@id/bt_order_red"
+            android:background="@drawable/bt_unselect_normal"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_small"/>
+
+        <Button
+            android:id="@+id/bt_order_1"
+            android:layout_width="70dp"
+            android:layout_height="23dp"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@id/bt_order_2"
+            android:background="@drawable/bt_unselect_normal"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_small"/>
+
+    </RelativeLayout>
 </LinearLayout>

@@ -1,23 +1,27 @@
 package com.xinyuan.xyshop.ui.goods.groupbuy;
 
+import android.animation.LayoutTransition;
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.CommonPagerAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
-import com.xinyuan.xyshop.ui.goods.groupbuy.fragment.GroupAllFragment;
 import com.xinyuan.xyshop.ui.goods.groupbuy.fragment.GroupGoodsFragment;
-import com.xinyuan.xyshop.ui.goods.store.fragment.StoreHomeFragment;
 import com.xinyuan.xyshop.util.SystemBarHelper;
+import com.youth.xframe.utils.log.XLog;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,16 +39,18 @@ public class GroupBuyActivity extends BaseActivity {
 	@BindView(R.id.group_toolbar)
 	Toolbar group_toolbar;
 	@BindView(R.id.collapsing_toolbar)
-	CollapsingToolbarLayout collapsingToolbar;
+	CollapsingToolbarLayout collapsing_toolbar;
 	private CommonPagerAdapter adapter;
 	@BindView(R.id.appbar)
 	AppBarLayout mAppbar;
 	private GroupGoodsFragment newGoodsFragment;
-	private GroupAllFragment allFragment;
 	private final String[] mTitles = {
-			"热门团购", "最新团购"
+			"热门团购", "最新团购", "全部团购"
 	};
-
+	@BindView(R.id.ll_header_layout)
+	LinearLayout headerLayout;
+	//是否隐藏了头部
+	private boolean isHideHeaderLayout = false;
 
 	@Override
 	public int getLayoutId() {
@@ -60,25 +66,86 @@ public class GroupBuyActivity extends BaseActivity {
 	public void initView() {
 		ButterKnife.bind(this);
 		setSupportActionBar(group_toolbar);
-		collapsingToolbar.setTitleEnabled(false);
+
 
 		SystemBarHelper.immersiveStatusBar(this); //设置状态栏透明
 		SystemBarHelper.setHeightAndPadding(this, group_toolbar);
 
-
 		for (String title : mTitles) {
 			mFragments.add(newGoodsFragment.getInstance(title));
 		}
-		mFragments.add(allFragment.getInstance("全部团购"));
-		 String[] mTitle = {
-				"热门团购", "最新团购","全部团购"
-		};
-
-		adapter = new CommonPagerAdapter(getSupportFragmentManager(), mFragments, mTitle);
+		adapter = new CommonPagerAdapter(getSupportFragmentManager(), mFragments, mTitles);
 		vp_content.setAdapter(adapter);
 		psts_group.setViewPager(vp_content);
 		vp_content.setCurrentItem(0);
-		vp_content.setOffscreenPageLimit(4);
+		vp_content.setOffscreenPageLimit(3);
+		initAppBarLayout();
+	}
+
+
+	// 初始化AppBarLayout
+	private void initAppBarLayout() {
+		LayoutTransition mTransition = new LayoutTransition();
+		/**
+		 * 添加View时过渡动画效果
+		 */
+		ObjectAnimator addAnimator = ObjectAnimator.ofFloat(null, "translationY", 0, 1.f).
+				setDuration(mTransition.getDuration(LayoutTransition.APPEARING));
+		mTransition.setAnimator(LayoutTransition.APPEARING, addAnimator);
+
+		//header layout height
+		final int headerHeight = getResources().getDimensionPixelOffset(R.dimen.header_height);
+		mAppbar.setLayoutTransition(mTransition);
+
+		mAppbar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+			@Override
+			public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+				verticalOffset = Math.abs(verticalOffset);
+
+				XLog.v("移动:" + verticalOffset);
+				if (verticalOffset >= 250) {
+
+					isHideHeaderLayout = true;
+					//当偏移量超过顶部layout的高度时，我们认为他已经完全移动出屏幕了
+					new Handler().postDelayed(new Runnable() {
+						@Override
+						public void run() {
+							AppBarLayout.LayoutParams mParams = (AppBarLayout.LayoutParams) collapsing_toolbar.getLayoutParams();
+							mParams.setScrollFlags(0);
+							collapsing_toolbar.setLayoutParams(mParams);
+							headerLayout.setVisibility(View.GONE);
+						}
+					}, 100);
+				}
+			}
+		});
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			//监听返回键
+			if (isHideHeaderLayout) {
+				isHideHeaderLayout = false;
+
+				((GroupGoodsFragment) mFragments.get(0)).getRvList().scrollToPosition(0);
+				headerLayout.setVisibility(View.VISIBLE);
+
+				new Handler().postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						AppBarLayout.LayoutParams mParams = (AppBarLayout.LayoutParams) collapsing_toolbar.getLayoutParams();
+						mParams.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL |
+								AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED);
+						collapsing_toolbar.setLayoutParams(mParams);
+					}
+				}, 300);
+			} else {
+				finish();
+			}
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 
 

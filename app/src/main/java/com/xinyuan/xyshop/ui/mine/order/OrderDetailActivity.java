@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.flexbox.FlexboxLayout;
@@ -50,6 +51,17 @@ public class OrderDetailActivity extends BaseActivity {
 	@BindView(R.id.bt_order_item_store)
 	Button bt_order_item_store;
 
+	@BindView(R.id.bt_order_red)
+	Button bt_order_red;
+
+	@BindView(R.id.bt_order_2)
+	Button bt_order_2;
+
+	@BindView(R.id.bt_order_1)
+	Button bt_order_1;
+	@BindView(R.id.rl_order_detail_bottom)
+	RelativeLayout rl_order_detail_bottom;
+
 	@Override
 	public int getLayoutId() {
 		return R.layout.activity_order_detail;
@@ -69,21 +81,47 @@ public class OrderDetailActivity extends BaseActivity {
 		switch (orderBean.getOrderStatus()) {
 			case 0:
 				tv_order_status.setText("等待买家付款");
+				bt_order_1.setVisibility(View.GONE);
+				bt_order_2.setText("取消订单");
+				bt_order_red.setText("付款");
+				ButtomOnClick(0, 2);
+				ButtomOnClick(0, 3);
 				break;
 			case 1:
 				tv_order_status.setText("买家已付款");
+				rl_order_detail_bottom.setVisibility(View.GONE);
 				break;
 			case 2:
 				tv_order_status.setText("卖家已发货");
+				bt_order_1.setText("延长收货");
+				ButtomOnClick(2, 1);
+				bt_order_2.setText("查看物流");
+				ButtomOnClick(2, 2);
+				bt_order_red.setText("确认收货");
+				ButtomOnClick(2, 3);
 				break;
 			case 3:
 				tv_order_status.setText("等待评价");
+				bt_order_1.setVisibility(View.GONE);
+				bt_order_2.setText("查看物流");
+				ButtomOnClick(3, 2);
+				bt_order_red.setText("评价");
+				ButtomOnClick(3, 3);
 				break;
 			case 4:
 				tv_order_status.setText("交易成功");
+				bt_order_1.setVisibility(View.GONE);
+				bt_order_2.setText("删除订单");
+				ButtomOnClick(4, 2);
+				bt_order_red.setText("追评");
+				ButtomOnClick(4, 3);
 				break;
 			case 5:
 				tv_order_status.setText("交易关闭");
+				bt_order_red.setText("删除订单");
+				bt_order_1.setVisibility(View.GONE);
+				bt_order_2.setVisibility(View.GONE);
+				ButtomOnClick(5, 3);
 				break;
 		}
 
@@ -130,6 +168,11 @@ public class OrderDetailActivity extends BaseActivity {
 		tv_order_price.setText("￥" + String.valueOf(orderBean.getOrderExtra() + orderBean.getOrderPrice()));
 		tv_order_orderId.setText("订单编号:" + orderBean.getOrderID());
 		tv_order_createTime.setText("创建时间:" + orderBean.getCreateTime());
+
+	}
+
+
+	private void ButtomOnClick(int Status, int index) {
 
 	}
 }

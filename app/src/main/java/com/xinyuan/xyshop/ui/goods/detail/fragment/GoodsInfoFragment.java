@@ -2,6 +2,7 @@ package com.xinyuan.xyshop.ui.goods.detail.fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -45,6 +46,7 @@ import com.xinyuan.xyshop.widget.dialog.GoodDetailsSpecDialog;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
+import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.loadingview.XLoadingView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -234,8 +236,8 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	@Override
 	public void initData(@Nullable Bundle savedInstanceState) {
 
-			new TestModel.GoodsDetailPresenterImpl(this);
-			presenter.initData(123);
+		new TestModel.GoodsDetailPresenterImpl(this);
+		presenter.initData(123);
 
 		lodingView.setOnRetryClickListener(new View.OnClickListener() {
 			@Override
@@ -327,7 +329,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	public void showView(GoodDetailModel model) {
 
 		this.detailModel = model;
-
+		EventBus.getDefault().post(new GoodBusBean(GoodBusBean.GoodEvaluate, model.getGoodComment()));
 		showBanner();
 		showGoodsInfo();
 		showEva();
@@ -362,8 +364,10 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	@Override
 	public void showGoodsInfo() {
+		XLog.v("进入");
 		tv_newprice.setText("￥" + detailModel.getActualPrice());
 		tv_oldprice.setText("￥" + detailModel.getOldPrice());
+		tv_oldprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
 		if (detailModel.getExpressCost() == 0) {
 			tv_goodspostage.setText("快递:免邮费");
 		} else {
@@ -371,11 +375,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		}
 		tv_goodssellnum.setText("月销量:" + detailModel.getSalesVolume() + "笔");
 		tv_goodstalk.setText("评论:" + detailModel.getGoodComment().getTotalCount());
-		GoodDetailsActivity.totalCount = detailModel.getGoodComment().getTotalCount();
-		GoodDetailsActivity.goodAssess = detailModel.getGoodComment().getGoodAssess();
-		GoodDetailsActivity.normalAssess = detailModel.getGoodComment().getNormalAssess();
-		GoodDetailsActivity.lowAssess = detailModel.getGoodComment().getLowAssess();
-		GoodDetailsActivity.blueprint = detailModel.getGoodComment().getBlueprint();
+
 
 		this.unit = detailModel.getUnit();
 		List<String> storeSign = new ArrayList<>();

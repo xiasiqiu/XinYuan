@@ -4,6 +4,11 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <include
+        android:id="@+id/ll_group_select"
+        layout="@layout/view_select_layout"
+        android:visibility="gone"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_group"
         android:layout_width="match_parent"

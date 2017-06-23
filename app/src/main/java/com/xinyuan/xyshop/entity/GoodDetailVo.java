@@ -46,7 +46,6 @@ public class GoodDetailVo {
 	private int goodsSaleNum;
 	private String goodsSerial;
 	private List<String> goodsSpecNameList = new ArrayList();
-	private List<GoodsSpecValueJsonVo> goodsSpecValueJson;
 	private String goodsSpecValues;
 	private int goodsStatus;
 	private String imageSrc;
@@ -497,13 +496,7 @@ public class GoodDetailVo {
 		this.goodsSpecNameList = goodsSpecNameList;
 	}
 
-	public List<GoodsSpecValueJsonVo> getGoodsSpecValueJson() {
-		return this.goodsSpecValueJson;
-	}
 
-	public void setGoodsSpecValueJson(List<GoodsSpecValueJsonVo> goodsSpecValueJson) {
-		this.goodsSpecValueJson = goodsSpecValueJson;
-	}
 
 	public List<GoodsAttrVo> getGoodsAttrList() {
 		return this.goodsAttrList;

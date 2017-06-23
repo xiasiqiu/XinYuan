@@ -8,9 +8,35 @@
     <!--android:id="@+id/rv_order"-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="match_parent"/>-->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_order"
+    <com.youth.xframe.widget.loadingview.XLoadingView
+        android:id="@+id/loadingView"
         android:layout_width="match_parent"
-        android:background="@color/bg_gray"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_order"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bg_gray"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <LinearLayout
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical"/>
+
+
+    </com.youth.xframe.widget.loadingview.XLoadingView>
+
 </RelativeLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/msg_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="@color/colorPrimary"
+    app:contentInsetLeft="0dp"
+    app:contentInsetStart="0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/bg_white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/brand_btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:src="@drawable/icon_back"/>
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/RegularTextView"
+            android:layout_centerInParent="true"
+            />
+
+        <ImageView
+            android:id="@+id/brand_btn_msg"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="40px"
+            android:background="@drawable/act_home_msg_de"/>
+
+
+    </RelativeLayout>
+
+
+</android.support.v7.widget.Toolbar>

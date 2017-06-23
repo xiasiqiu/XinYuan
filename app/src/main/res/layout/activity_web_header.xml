@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                   android:id="@+id/group_toolbar"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="40dp"
+                                   app:contentInsetStart="0dp"
+                                   app:layout_collapseMode="pin"
+                                   app:popupTheme="@style/AppTheme.PopupOverlay">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/bg_white"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+
+        <ImageView
+            android:id="@+id/brand_btn_back"
+            android:layout_width="8dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/icon_back"/>
+
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="团购商城"
+            android:textSize="@dimen/tv_Blod"/>
+
+        <ImageView
+            android:id="@+id/brand_btn_msg"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="40px"
+            android:background="@drawable/act_home_msg_de"/>
+
+        <View
+            style="@style/XYLine"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+
+</android.support.v7.widget.Toolbar>
