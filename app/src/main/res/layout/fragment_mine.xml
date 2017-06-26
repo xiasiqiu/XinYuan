@@ -83,20 +83,20 @@
         android:padding="20px">
 
         <LinearLayout
-            android:id="@+id/ll_eva_all"
+            android:id="@+id/ll_mine_fav"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_eva_all"
+                android:id="@+id/tv_mine_fav_num"
                 style="@style/NormalTextView"
                 android:layout_gravity="center_horizontal"
                 android:text="433"/>
 
             <TextView
-                android:id="@+id/tv_eva_all_num"
+                android:id="@+id/tv_mine_fav"
                 style="@style/NormalTextView"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
@@ -111,20 +111,20 @@
             android:background="@color/colorLine"/>
 
         <LinearLayout
-            android:id="@+id/ll_eva_all1"
+            android:id="@+id/ll_follow_store"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_eva_fav"
+                android:id="@+id/tv_follow_store_num"
                 style="@style/NormalTextView"
                 android:layout_gravity="center_horizontal"
                 android:text="50"/>
 
             <TextView
-                android:id="@+id/tv_fav_all_num"
+                android:id="@+id/tv_follow_store"
                 style="@style/NormalTextView"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
@@ -139,20 +139,20 @@
             android:background="@color/colorLine"/>
 
         <LinearLayout
-            android:id="@+id/ll_eva_alls"
+            android:id="@+id/ll_mine_foot"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_eva_s"
+                android:id="@+id/tv_mine_foot_num"
                 style="@style/NormalTextView"
                 android:layout_gravity="center_horizontal"
                 android:text="399"/>
 
             <TextView
-                android:id="@+id/tv_eva_all_s"
+                android:id="@+id/tv_mine_foot"
                 style="@style/NormalTextView"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
@@ -289,24 +289,18 @@
             android:layout_toRightOf="@id/iv_mine_band"
             android:text="我的资产"/>
 
-        <TextView
-            android:id="@+id/tv_mine_band"
-            style="@style/NormalHintTextView"
-            android:layout_alignBaseline="@+id/textView2"
-            android:layout_alignBottom="@+id/textView2"
-            android:layout_marginEnd="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_toLeftOf="@+id/iv_mine_band_more"
-            android:layout_toStartOf="@+id/iv_mine_band_more"
-            android:text="查看全部财产"/>
-
-        <ImageView
-            android:id="@+id/iv_mine_band_more"
+        <Button
+            android:id="@+id/bt_more_band"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/ic_right_row"/>
+            android:background="@null"
+            android:button="@null"
+            android:drawableRight="@drawable/ic_right_row"
+            android:text="查看全部财产"
+            android:textColor="@color/tv_hint"
+            android:textSize="@dimen/tv_Normal"/>
+
 
         <View
             style="@style/XYLine"

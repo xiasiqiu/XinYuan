@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_gray"
+              android:orientation="vertical">
+
+    <include layout="@layout/view_header_tv_msg"/>
+
+    <View
+        style="@style/NoramLine"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/bg_white">
+
+        <ImageView
+            android:id="@+id/iv_pro_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ic_mine_count"/>
+
+        <TextView
+            android:id="@+id/tv_pro_count"
+            style="@style/NormalTextView"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/iv_pro_count"
+            android:text="账户余额"/>
+
+        <TextView
+            android:id="@+id/tv_pro_count_hint"
+            style="@style/LightTextView"
+            android:layout_below="@id/tv_pro_count"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/iv_pro_count"
+            android:text="预存款账户余额，充值及提现明细"
+            android:textColor="@color/tv_hint"/>
+
+        <TextView
+            android:id="@+id/tv_pro_count_num"
+            style="@style/NormalTextView"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="25dp"
+            android:text="138.00元"
+            android:textColor="@color/tv_hint"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_right_row"/>
+
+        <View
+            style="@style/XYLine"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/bg_white">
+
+        <ImageView
+            android:id="@+id/iv_mine_coupon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ic_mine_coupon"/>
+
+        <TextView
+            android:id="@+id/tv_mine_coupon"
+            style="@style/NormalTextView"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/iv_mine_coupon"
+            android:text="店铺代金券"/>
+
+        <TextView
+            android:id="@+id/tv_mine_coupon_hint"
+            style="@style/LightTextView"
+            android:layout_below="@id/tv_mine_coupon"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/iv_mine_coupon"
+            android:text="店铺代金券使用情况"
+            android:textColor="@color/tv_hint"/>
+
+        <TextView
+            android:id="@+id/tv_mine_coupon_num"
+            style="@style/NormalTextView"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="25dp"
+            android:text="10张"
+            android:textColor="@color/tv_hint"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_right_row"/>
+
+        <View
+            style="@style/XYLine"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/bg_white">
+
+        <ImageView
+            android:id="@+id/iv_mine_redpacke"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ic_mine_redpacke"/>
+
+        <TextView
+            android:id="@+id/tv_mine_redpacke"
+            style="@style/NormalTextView"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/iv_mine_redpacke"
+            android:text="红包"/>
+
+        <TextView
+            android:id="@+id/tv_mine_redpacke_hint"
+            style="@style/LightTextView"
+            android:layout_below="@id/tv_mine_redpacke"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/iv_mine_redpacke"
+            android:text="平台红包使用情况"
+            android:textColor="@color/tv_hint"/>
+
+        <TextView
+            android:id="@+id/tv_mine_redpacke_num"
+            style="@style/NormalTextView"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="25dp"
+            android:text="5张"
+            android:textColor="@color/tv_hint"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_right_row"/>
+
+        <View
+            style="@style/XYLine"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/bg_white">
+
+        <ImageView
+            android:id="@+id/iv_mine_credit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ic_mine_credit"/>
+
+        <TextView
+            android:id="@+id/tv_mine_credit"
+            style="@style/NormalTextView"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/iv_mine_credit"
+            android:text="店铺代金券"/>
+
+        <TextView
+            android:id="@+id/tv_mine_credit_hint"
+            style="@style/LightTextView"
+            android:layout_below="@id/tv_mine_credit"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/iv_mine_credit"
+            android:text="店铺代金券使用情况"
+            android:textColor="@color/tv_hint"/>
+
+        <TextView
+            android:id="@+id/tv_mine_credit_num"
+            style="@style/NormalTextView"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="25dp"
+            android:text="25565分"
+            android:textColor="@color/tv_hint"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_right_row"/>
+    </RelativeLayout>
+
+</LinearLayout>

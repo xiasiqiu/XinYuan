@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="42dp"
+              android:background="@color/bg_white"
+              android:orientation="vertical"
+              android:paddingLeft="10dp"
+              android:paddingRight="10dp">
+
+    <Button
+        android:id="@+id/btn_popup_option"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:textColor="@color/tv_name"
+        android:textSize="@dimen/tv_Regular"/>
+
+    <View
+        style="@style/XYLine"/>
+</LinearLayout>

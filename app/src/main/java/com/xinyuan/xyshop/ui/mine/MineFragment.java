@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseFragment;
@@ -40,6 +41,7 @@ public class MineFragment extends BaseFragment {
 	Button bt_more_order;
 	private int requestCode;
 
+
 	@Override
 	public int getLayoutId() {
 		return R.layout.fragment_mine;
@@ -71,7 +73,7 @@ public class MineFragment extends BaseFragment {
 	}
 
 	@OnClick({R.id.bt_more_order, R.id.bt_mine_order1, R.id.bt_mine_order2, R.id.bt_mine_order3, R.id.bt_mine_order4, R.id.bt_mine_order5})
-	public void onClick(View v) {
+	public void onOrderClick(View v) {
 		switch (v.getId()) {
 
 			case R.id.bt_more_order:
@@ -118,11 +120,28 @@ public class MineFragment extends BaseFragment {
 
 	}
 
-	@Subscribe(threadMode = ThreadMode.MAIN)
-	//第2步:注册一个在后台线程执行的方法,用于接收事件
-	public void onUserEvent(UserBusBean userBusBean) {//参数必须是ClassEvent类型, 否则不会调用此方法
-		if (userBusBean.getFlag().equals(UserBusBean.UserId)) {
-			String id = (String) userBusBean.getObj();
+	@OnClick({R.id.ll_mine_fav, R.id.customer_image})
+	public void onMyInfoClick(View view) {
+		switch (view.getId()) {
+
+			case R.id.ll_mine_fav:
+				CommUtil.gotoActivity(getActivity(), FavoriteActivity.class, false, null);
+				break;
+			case R.id.customer_image:
+				CommUtil.gotoActivity(this.getActivity(), UserInfoActivity.class, false, null);
+				break;
+		}
+
+	}
+
+	@OnClick({R.id.bt_more_band, R.id.bt_mine_money1})
+	public void onMyProClick(View view) {
+		switch (view.getId()) {
+			case R.id.bt_more_band:
+				CommUtil.gotoActivity(getActivity(), PropertyActivity.class, false, null);
+				break;
+			case R.id.bt_mine_money1:
+				break;
 		}
 
 	}
@@ -140,9 +159,13 @@ public class MineFragment extends BaseFragment {
 
 	}
 
-	@OnClick(R.id.customer_image)
-	public void goUserInfo() {
-		CommUtil.gotoActivity(this.getActivity(), UserInfoActivity.class, false, null);
-	}
 
+	@Subscribe(threadMode = ThreadMode.MAIN)
+	//第2步:注册一个在后台线程执行的方法,用于接收事件
+	public void onUserEvent(UserBusBean userBusBean) {//参数必须是ClassEvent类型, 否则不会调用此方法
+		if (userBusBean.getFlag().equals(UserBusBean.UserId)) {
+			String id = (String) userBusBean.getObj();
+		}
+
+	}
 }

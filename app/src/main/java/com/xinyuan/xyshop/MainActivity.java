@@ -1,5 +1,6 @@
 package com.xinyuan.xyshop;
 
+import android.Manifest;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import com.xinyuan.xyshop.ui.mine.MineFragment;
 import com.xinyuan.xyshop.ui.shopcar.ShopCarFragment;
 import com.xinyuan.xyshop.widget.NotSlipViewPager;
 import com.youth.xframe.utils.log.XLog;
+import com.youth.xframe.utils.permission.XPermission;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -85,8 +87,26 @@ public class MainActivity extends BaseActivity {
 		}
 
 		changBtnSelectedStatus(0);
+		getPer();
 	}
 
+	private void getPer() {
+		XPermission.requestPermissions(this, 100, new String[]{Manifest.permission
+				.CALL_PHONE,Manifest.permission.READ_PHONE_STATE,Manifest.permission.GET_ACCOUNTS,Manifest.permission.READ_CONTACTS,Manifest.permission.WRITE_EXTERNAL_STORAGE}, new XPermission.OnPermissionListener() {
+			//权限申请成功时调用
+			@Override
+			public void onPermissionGranted() {
+
+			}
+
+			//权限被用户禁止时调用
+			@Override
+			public void onPermissionDenied() {
+				//给出友好提示，并且提示启动当前应用设置页面打开权限
+				XPermission.showTipsDialog(getApplicationContext());
+			}
+		});
+	}
 
 	@Override
 	public void initData(Bundle savedInstanceState) {

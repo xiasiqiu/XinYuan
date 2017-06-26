@@ -122,6 +122,14 @@
 
     </style>
 
+    <style name="BlodTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/tv_Blod</item>
+        <item name="android:textColor">@color/tv_name</item>
+
+    </style>
+
     <style name="NormalTextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -163,5 +171,10 @@
 
     </style>
 
-
+    <style name="popwindow_anim_style">
+        <item name="android:windowEnterAnimation">@anim/anim_enter_bottom</item>
+        <!-- 指定显示的动画xml -->
+        <item name="android:windowExitAnimation">@anim/anim_exit_bottom</item>
+        <!-- 指定消失的动画xml -->
+    </style>
 </resources>

@@ -55,6 +55,6 @@
     <color name="colorTransparency_B">#5A000000</color>
     <!--顶部搜索框内的字体颜色-->
     <color name="colorTopFont">#d42d00</color>
-
+    <color name="list_divider_line">#e7e7e7</color>
     <color name="colorAskTopBackgroud">#00BCD4</color>
 </resources>

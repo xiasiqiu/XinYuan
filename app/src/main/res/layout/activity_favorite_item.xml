@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="105dp"
+    android:background="@color/bg_white"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="12dp">
+
+    <ImageView
+        android:id="@+id/iv_fav_goodimage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/test_good_img"/>
+
+    <TextView
+        android:id="@+id/tv_fav_goodname"
+        style="@style/NormalTextView"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@+id/iv_fav_goodimage"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="雅诗兰黛 红石榴泡沫洁面乳125ml清洁补水保湿"/>
+
+    <TextView
+        android:id="@+id/tv_fav_price"
+        style="@style/NormalTextView"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@+id/iv_fav_goodimage"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="￥198"
+        android:textColor="@color/tv_price"/>
+
+    <Button
+        android:id="@+id/bt_fav_sim"
+        android:layout_width="60dp"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bt_unselect_red"
+        android:text="找相似"
+        android:textColor="@color/tv_price"
+        android:textSize="@dimen/tv_small"/>
+
+    <View
+        android:id="@+id/line_fav"
+        style="@style/XYLine"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="100dp"/>
+</RelativeLayout>
