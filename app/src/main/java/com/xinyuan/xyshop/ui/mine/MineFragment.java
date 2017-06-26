@@ -10,12 +10,24 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.xinyuan.xyshop.MainFragment;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseFragment;
+import com.xinyuan.xyshop.even.StartBrotherEvent;
+import com.xinyuan.xyshop.even.TabSelectedEvent;
 import com.xinyuan.xyshop.ui.goods.GoodBusBean;
 import com.xinyuan.xyshop.ui.home.UserBusBean;
+import com.xinyuan.xyshop.ui.mine.info.FavFragment;
+import com.xinyuan.xyshop.ui.mine.info.FollowFragment;
+import com.xinyuan.xyshop.ui.mine.info.UserInfoFragment;
 import com.xinyuan.xyshop.ui.mine.order.OrderActivity;
 import com.xinyuan.xyshop.ui.mine.order.OrderDetailActivity;
+import com.xinyuan.xyshop.ui.mine.pro.AccountConFragment;
+import com.xinyuan.xyshop.ui.mine.pro.AccountFragment;
+import com.xinyuan.xyshop.ui.mine.pro.CouponFragment;
+import com.xinyuan.xyshop.ui.mine.pro.CreditFragment;
+import com.xinyuan.xyshop.ui.mine.pro.ProPertyFragment;
+import com.xinyuan.xyshop.ui.shopcar.ShopCarFragment;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.youth.xframe.utils.log.XLog;
@@ -41,6 +53,14 @@ public class MineFragment extends BaseFragment {
 	Button bt_more_order;
 	private int requestCode;
 
+	public static MineFragment newInstance() {
+
+		Bundle args = new Bundle();
+
+		MineFragment fragment = new MineFragment();
+		fragment.setArguments(args);
+		return fragment;
+	}
 
 	@Override
 	public int getLayoutId() {
@@ -50,26 +70,12 @@ public class MineFragment extends BaseFragment {
 	@Override
 	public void initData(@Nullable Bundle savedInstanceState) {
 		EventBus.getDefault().register(this);
-		if (true) {
-			Intent mIntent = new Intent();
-			mIntent.setClass(getActivity(), LoginActivity.class);
-			startActivityForResult(mIntent, requestCode);
-		}
 	}
 
 	@Override
 	public void initView() {
 		ButterKnife.bind(this, getView());
-
-//		toolbar= (Toolbar) getView().findViewById(R.id.mine_toolbar);
-//		if(num==1){
-//			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
-//			SystemBarHelper.setHeightAndPadding(getActivity(), toolbar);
-//
-//		}
-
-
-		num++;
+		XLog.v("加载个人页面Fragment");
 	}
 
 	@OnClick({R.id.bt_more_order, R.id.bt_mine_order1, R.id.bt_mine_order2, R.id.bt_mine_order3, R.id.bt_mine_order4, R.id.bt_mine_order5})
@@ -120,27 +126,42 @@ public class MineFragment extends BaseFragment {
 
 	}
 
-	@OnClick({R.id.ll_mine_fav, R.id.customer_image})
+	@OnClick({R.id.ll_mine_fav, R.id.customer_image, R.id.bt_mine_credit, R.id.ll_follow_store})
 	public void onMyInfoClick(View view) {
 		switch (view.getId()) {
-
 			case R.id.ll_mine_fav:
-				CommUtil.gotoActivity(getActivity(), FavoriteActivity.class, false, null);
+				EventBus.getDefault().post(new StartBrotherEvent(FavFragment.newInstance()));
 				break;
 			case R.id.customer_image:
-				CommUtil.gotoActivity(this.getActivity(), UserInfoActivity.class, false, null);
+				EventBus.getDefault().post(new StartBrotherEvent(UserInfoFragment.newInstance()));
+				break;
+			case R.id.bt_mine_credit:
+				EventBus.getDefault().post(new StartBrotherEvent(CreditFragment.newInstance()));
+				break;
+			case R.id.ll_follow_store:
+				EventBus.getDefault().post(new StartBrotherEvent(FollowFragment.newInstance()));
 				break;
 		}
 
 	}
 
-	@OnClick({R.id.bt_more_band, R.id.bt_mine_money1})
+	@OnClick({R.id.bt_more_band, R.id.bt_mine_money1, R.id.bt_mine_money2, R.id.bt_mine_money3, R.id.bt_mine_money4})
 	public void onMyProClick(View view) {
 		switch (view.getId()) {
 			case R.id.bt_more_band:
-				CommUtil.gotoActivity(getActivity(), PropertyActivity.class, false, null);
+				EventBus.getDefault().post(new StartBrotherEvent(ProPertyFragment.newInstance()));
 				break;
 			case R.id.bt_mine_money1:
+				EventBus.getDefault().post(new StartBrotherEvent(AccountFragment.newInstance()));
+				break;
+			case R.id.bt_mine_money2:
+				EventBus.getDefault().post(new StartBrotherEvent(CouponFragment.newInstance()));
+				break;
+			case R.id.bt_mine_money3:
+				EventBus.getDefault().post(new StartBrotherEvent(CouponFragment.newInstance()));
+				break;
+			case R.id.bt_mine_money4:
+				EventBus.getDefault().post(new StartBrotherEvent(CreditFragment.newInstance()));
 				break;
 		}
 
@@ -150,9 +171,7 @@ public class MineFragment extends BaseFragment {
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (data != null) {
 			String change01 = data.getStringExtra("userId");
-			XLog.v("用户ID" + change01);
 		} else {
-
 			EventBus.getDefault().post(new UserBusBean(UserBusBean.HomeIndex, 0));
 		}
 
@@ -166,6 +185,22 @@ public class MineFragment extends BaseFragment {
 		if (userBusBean.getFlag().equals(UserBusBean.UserId)) {
 			String id = (String) userBusBean.getObj();
 		}
+	}
+
+
+	private boolean login = false;
+
+	@Subscribe
+	public void onTabSelectedEvent(TabSelectedEvent event) {
+		if (event.position != MainFragment.MINE) return;
+
+		if (!false) {
+			Intent mIntent = new Intent();
+			mIntent.setClass(getActivity(), LoginActivity.class);
+			startActivityForResult(mIntent, requestCode);
+			login = true;
+		}
 
 	}
 }
+

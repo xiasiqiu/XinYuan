@@ -87,7 +87,7 @@ public class ShopCarAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, B
 
 				final ShopCarGoodsItem shopCarGoodsItem = (ShopCarGoodsItem) item;
 
-				XLog.v("商品位置" + shopCarGoodsItem.getGoddsPostion() + "店铺位置" + shopCarGoodsItem.getStorePosition());
+
 				final int groupPosition = shopCarGoodsItem.getStorePosition();
 				final int childPosition = shopCarGoodsItem.getGoddsPostion();
 				final GoodsInfo goodsInfo = (GoodsInfo) getChild(shopCarGoodsItem.getStorePosition(), shopCarGoodsItem.getGoddsPostion());

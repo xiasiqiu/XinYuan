@@ -26,6 +26,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.sunfusheng.marqueeview.MarqueeView;
 import com.trello.rxlifecycle.android.FragmentEvent;
+import com.xinyuan.xyshop.MainFragment;
 import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.ExpandableItemAdapter;
@@ -36,6 +37,7 @@ import com.xinyuan.xyshop.bean.ExpandItem;
 import com.xinyuan.xyshop.entity.GoodListItem;
 import com.xinyuan.xyshop.entity.HomeMultipleItem;
 import com.xinyuan.xyshop.entity.Menu;
+import com.xinyuan.xyshop.even.TabSelectedEvent;
 import com.xinyuan.xyshop.model.HomeModel;
 import com.xinyuan.xyshop.mvp.contract.HomeContract;
 import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
@@ -52,6 +54,8 @@ import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.loadingview.XLoadingView;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -107,6 +111,15 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	private RecyclerView menuListView;
 	private Bundle saveState;
 
+
+	public static HomeFragment newInstance() {
+		Bundle args = new Bundle();
+		HomeFragment fragment = new HomeFragment();
+		fragment.setArguments(args);
+		return fragment;
+	}
+
+
 	@Override
 	public int getLayoutId() {
 		return R.layout.fragment_home;
@@ -114,6 +127,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	@Override
 	public void initView() {
+		XLog.v("加载首页页面Fragment");
 		if (VIEW_INIT) {
 			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
 			SystemBarHelper.setHeightAndPadding(getActivity(), mToolbar);
@@ -449,7 +463,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	 */
 	@Override
 	public void OnImageViewClick(View view, final String type, final String data, boolean isAD) {
-			XLog.v("TYPE"+type+":DATA"+data);
+		XLog.v("TYPE" + type + ":DATA" + data);
 		if (type.equals("good")) {
 			HashMap<String, String> params = new HashMap();
 			params.put("goodId", data);
@@ -515,4 +529,22 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		initView();
 	}
 
+	private boolean mInAtTop = true;
+	private int mScrollTotal;
+
+	@Subscribe
+	public void onTabSelectedEvent(TabSelectedEvent event) {
+		if (event.position != MainFragment.HOME) return;
+
+		if (mInAtTop) {
+			mSwipeRefreshLayout.setRefreshing(true);
+			onRefresh();
+		} else {
+			scrollToTop();
+		}
+	}
+
+	private void scrollToTop() {
+		mRecyclerView.smoothScrollToPosition(0);
+	}
 }

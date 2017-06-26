@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:background="@drawable/ic_account_bg"
+                android:padding="15dp">
+
+
+    <TextView
+        style="@style/RegularTextView"
+        android:text="我的积分（元）"
+        android:textColor="@color/bg_white"/>
+
+    <TextView
+        style="@style/RegularTextView"
+        android:layout_alignParentBottom="true"
+        android:text="22555"
+        android:textColor="@color/bg_white"/>
+</RelativeLayout>

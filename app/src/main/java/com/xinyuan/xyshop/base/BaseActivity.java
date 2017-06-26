@@ -23,6 +23,7 @@ import com.youth.xframe.utils.permission.XPermission;
 import com.youth.xframe.utils.statusbar.XStatusBar;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import me.yokeyword.fragmentation.SupportActivity;
 import rx.Observable;
 import rx.subjects.BehaviorSubject;
 
@@ -34,7 +35,7 @@ import org.greenrobot.eventbus.EventBus;
  * Created by fx on 2017/5/2 0002.
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements ICallback, LifecycleProvider<ActivityEvent> {
+public abstract class BaseActivity extends SupportActivity implements ICallback, LifecycleProvider<ActivityEvent> {
 
 
 	private final BehaviorSubject<ActivityEvent> lifecycleSubject = BehaviorSubject.create();
@@ -57,8 +58,6 @@ public abstract class BaseActivity extends AppCompatActivity implements ICallbac
 		initData(savedInstanceState);
 		initView();
 		lifecycleSubject.onNext(ActivityEvent.CREATE);
-
-
 
 	}
 

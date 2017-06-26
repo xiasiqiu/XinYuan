@@ -11,8 +11,7 @@
         android:layout_weight="9"
         android:background="#EEE"/>
 
-
-    <!--底部区域-->
-    <include layout="@layout/activity_main_bottom"/>
+    <!--&lt;!&ndash;底部区域&ndash;&gt;-->
+    <!--<include layout="@layout/activity_main_bottom"/>-->
 </LinearLayout>
 

@@ -1,19 +1,17 @@
-package com.xinyuan.xyshop.ui.mine;
+package com.xinyuan.xyshop.ui.mine.info;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.TimePickerView;
 import com.bumptech.glide.Glide;
 import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.base.BaseActivity;
+import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.util.CallImageLoader;
-import com.xinyuan.xyshop.util.GlideImageLoader;
+import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.xinyuan.xyshop.widget.BottomPopupImage;
 import com.yancy.gallerypick.config.GalleryConfig;
 import com.yancy.gallerypick.config.GalleryPick;
@@ -31,10 +29,10 @@ import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
- * Created by Administrator on 2017/6/23.
+ * Created by Administrator on 2017/6/26.
  */
 
-public class UserInfoActivity extends BaseActivity {
+public class UserInfoFragment extends BaseFragment {
 
 	@BindView(R.id.rl_user_head)
 	RelativeLayout rl_user_head;
@@ -50,10 +48,19 @@ public class UserInfoActivity extends BaseActivity {
 	TextView tv_user_name;
 	@BindView(R.id.tv_user_sex)
 	TextView tv_user_sex;
-
+	@BindView(R.id.toolbar_iv)
+	Toolbar msg_toolbar;
 	@BindView(R.id.customer_image)
 	CircleImageView customer_image;
 	private IHandlerCallBack iHandlerCallBack;
+	TimePickerView pvTime;
+	private GalleryConfig galleryConfig;
+	private List<String> path = new ArrayList<>();
+
+	public static UserInfoFragment newInstance() {
+		UserInfoFragment fragment = new UserInfoFragment();
+		return fragment;
+	}
 
 	@Override
 	public int getLayoutId() {
@@ -65,12 +72,10 @@ public class UserInfoActivity extends BaseActivity {
 
 	}
 
-	TimePickerView pvTime;
-	private GalleryConfig galleryConfig;
-	private List<String> path = new ArrayList<>();
-
 	@Override
 	public void initView() {
+		SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
+		SystemBarHelper.setHeightAndPadding(getActivity(), msg_toolbar);
 		setTime();
 		initGallery();
 		galleryConfig = new GalleryConfig.Builder()
@@ -88,7 +93,6 @@ public class UserInfoActivity extends BaseActivity {
 				.build();
 	}
 
-
 	@OnClick({R.id.rl_user_head, R.id.rl_user_name, R.id.rl_user_sex, R.id.rl_user_birth})
 	public void onClick(View v) {
 
@@ -97,7 +101,7 @@ public class UserInfoActivity extends BaseActivity {
 				pvTime.show();
 				break;
 			case R.id.rl_user_head:
-				BottomPopupImage bottomPopupOption = new BottomPopupImage(this);
+				BottomPopupImage bottomPopupOption = new BottomPopupImage(context);
 				bottomPopupOption.setItemText("拍照", "选择相册");
 				bottomPopupOption.showPopupWindow();
 				bottomPopupOption.setItemClickListener(new BottomPopupImage.onPopupWindowItemClickListener() {
@@ -106,11 +110,11 @@ public class UserInfoActivity extends BaseActivity {
 						XLog.v("选择" + position);
 						switch (position) {
 							case 0:
-								GalleryPick.getInstance().setGalleryConfig(galleryConfig).openCamera(UserInfoActivity.this);
+								GalleryPick.getInstance().setGalleryConfig(galleryConfig).openCamera(getActivity());
 								break;
 							case 1:
 								galleryConfig.getBuilder().isOpenCamera(false).build();
-								GalleryPick.getInstance().setGalleryConfig(galleryConfig).open(UserInfoActivity.this);
+								GalleryPick.getInstance().setGalleryConfig(galleryConfig).open(getActivity());
 								break;
 						}
 
@@ -118,7 +122,7 @@ public class UserInfoActivity extends BaseActivity {
 				});
 				break;
 			case R.id.rl_user_sex:
-				final BottomPopupImage bottomPopupSex = new BottomPopupImage(this);
+				final BottomPopupImage bottomPopupSex = new BottomPopupImage(context);
 				bottomPopupSex.setItemText("男", "女");
 				bottomPopupSex.showPopupWindow();
 				bottomPopupSex.setItemClickListener(new BottomPopupImage.onPopupWindowItemClickListener() {
@@ -161,7 +165,7 @@ public class UserInfoActivity extends BaseActivity {
 					path.add(s);
 				}
 				XLog.list(path);
-				Glide.with(UserInfoActivity.this)
+				Glide.with(context)
 						.load(path.get(0))
 						.into(customer_image);
 
@@ -184,8 +188,9 @@ public class UserInfoActivity extends BaseActivity {
 		};
 	}
 
-@BindView(R.id.tv_user_birth)
-TextView tv_user_birth;
+	@BindView(R.id.tv_user_birth)
+	TextView tv_user_birth;
+
 	private void setTime() {
 		Calendar selectedDate = Calendar.getInstance();
 		Calendar startDate = Calendar.getInstance();
@@ -193,7 +198,7 @@ TextView tv_user_birth;
 		Calendar endDate = Calendar.getInstance();
 		endDate.set(2018, 0, 0);
 
-		pvTime = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
+		pvTime = new TimePickerView.Builder(context, new TimePickerView.OnTimeSelectListener() {
 			@Override
 			public void onTimeSelect(Date date, View v) {//选中事件回调
 				XLog.v("时间" + getTime(date));

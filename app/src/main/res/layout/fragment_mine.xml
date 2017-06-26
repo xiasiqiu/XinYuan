@@ -39,6 +39,7 @@
                 android:src="@drawable/touxiang"/>
 
             <TextView
+                android:id="@+id/textView4"
                 style="@style/RegularTextView"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
@@ -59,17 +60,20 @@
                 android:textSize="@dimen/tv_Normal"/>
 
             <Button
+                android:id="@+id/bt_mine_credit"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_centerInParent="true"
+                android:layout_alignTop="@+id/textView4"
                 android:background="@drawable/bt_rabg"
                 android:drawableLeft="@drawable/mine_point"
+                android:drawablePadding="5dp"
                 android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:text="我的积分885522"
-                android:textColor="@color/tv_name"
 
+                android:paddingRight="15dp"
+                android:text="我的积分 885522"
+                android:textColor="@color/tv_name"
                 android:textSize="@dimen/tv_Normal"/>
         </RelativeLayout>
     </RelativeLayout>

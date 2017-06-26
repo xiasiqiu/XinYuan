@@ -4,12 +4,14 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.CheckResult;
+import android.support.annotation.FloatRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.trello.rxlifecycle.LifecycleProvider;
 import com.trello.rxlifecycle.LifecycleTransformer;
@@ -17,6 +19,7 @@ import com.trello.rxlifecycle.RxLifecycle;
 import com.trello.rxlifecycle.android.FragmentEvent;
 import com.trello.rxlifecycle.android.RxLifecycleAndroid;
 import com.xinyuan.xyshop.MyShopApplication;
+import com.xinyuan.xyshop.R;
 import com.youth.xframe.base.ICallback;
 import com.youth.xframe.utils.log.XLog;
 
@@ -25,6 +28,7 @@ import org.greenrobot.eventbus.EventBus;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import me.yokeyword.fragmentation.SupportFragment;
 import rx.Observable;
 import rx.subjects.BehaviorSubject;
 
@@ -33,8 +37,10 @@ import rx.subjects.BehaviorSubject;
  * Created by fx on 2017/5/2 0002.
  */
 
-public abstract class BaseFragment extends Fragment implements ICallback, LifecycleProvider<FragmentEvent> {
-
+public abstract class BaseFragment extends SupportFragment implements ICallback, LifecycleProvider<FragmentEvent> {
+	// 再点一次退出程序时间设置
+	private static final long WAIT_TIME = 2000L;
+	private long TOUCH_TIME = 0;
 
 	private final BehaviorSubject<FragmentEvent> lifecycleSubject = BehaviorSubject.create();
 	private static boolean VIEW_INIT = true;
@@ -47,6 +53,7 @@ public abstract class BaseFragment extends Fragment implements ICallback, Lifecy
 	protected MyShopApplication application;
 	protected Context context;
 	Unbinder mUnbinder;
+
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -56,7 +63,7 @@ public abstract class BaseFragment extends Fragment implements ICallback, Lifecy
 		this.context = getActivity();
 		if (contentView == null) {
 			contentView = inflater.inflate(getLayoutId(), container, false);
-			mUnbinder=ButterKnife.bind(this,contentView);
+			mUnbinder = ButterKnife.bind(this, contentView);
 			return contentView;
 		} else {
 
@@ -76,7 +83,7 @@ public abstract class BaseFragment extends Fragment implements ICallback, Lifecy
 
 
 	@Override
-	public final void onDestroyView() {
+	public void onDestroyView() {
 		//移除当前视图，防止重复加载相同视图使得程序闪退
 		((ViewGroup) contentView.getParent()).removeView(contentView);
 		lifecycleSubject.onNext(FragmentEvent.DESTROY_VIEW);
@@ -162,7 +169,6 @@ public abstract class BaseFragment extends Fragment implements ICallback, Lifecy
 		lifecycleSubject.onNext(FragmentEvent.DETACH);
 		super.onDetach();
 	}
-
 
 
 }

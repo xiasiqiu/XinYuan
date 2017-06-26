@@ -1,25 +1,29 @@
-package com.xinyuan.xyshop.ui.mine;
+package com.xinyuan.xyshop.ui.mine.info;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.GoodsGridAdapter;
-import com.xinyuan.xyshop.adapter.SearchGoodListAdapter;
-import com.xinyuan.xyshop.base.BaseActivity;
+import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.entity.GoodsVo;
+import com.xinyuan.xyshop.ui.mine.pro.AccountFragment;
+import com.xinyuan.xyshop.util.SystemBarHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 
-public class FavoriteActivity extends BaseActivity {
+/**
+ * Created by Administrator on 2017/6/26.
+ */
 
+public class FavFragment extends BaseFragment {
 	@BindView(R.id.rv_fav)
 	RecyclerView rv_fav;
 	GoodsGridAdapter adapter;
@@ -29,6 +33,13 @@ public class FavoriteActivity extends BaseActivity {
 
 	@BindView(R.id.tv_header_right)
 	TextView tv_header_right;
+	@BindView(R.id.toolbar_iv)
+	Toolbar msg_toolbar;
+	public static FavFragment newInstance() {
+		FavFragment fragment = new FavFragment();
+		return fragment;
+	}
+
 	@Override
 	public int getLayoutId() {
 		return R.layout.activity_favorite;
@@ -41,12 +52,12 @@ public class FavoriteActivity extends BaseActivity {
 
 	@Override
 	public void initView() {
-
+		SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
+		SystemBarHelper.setHeightAndPadding(getActivity(), msg_toolbar);
 		tv_header_center.setText("收藏夹");
 		tv_header_right.setText("编辑");
-		LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+		LinearLayoutManager layoutManager = new LinearLayoutManager(context);
 		layoutManager.setOrientation(1);
-
 		List<GoodsVo> goodses = new ArrayList<>();
 		goodses.add(new GoodsVo());
 		goodses.add(new GoodsVo());

@@ -17,6 +17,8 @@ import com.youth.xframe.utils.log.XLog;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
+import me.yokeyword.fragmentation.Fragmentation;
+
 /**
  * Created by Administrator on 2017/5/2 0002.
  */
@@ -45,6 +47,9 @@ public class MyShopApplication extends XApplication {
 				.setCacheMode(CacheMode.NO_CACHE)
 				.setCacheTime(CacheEntity.CACHE_NEVER_EXPIRE)
 				.setRetryCount(3);
+		Fragmentation.builder()
+				.debug(true)
+				.install();
 		this.sysInitSharedPreferences = getSharedPreferences(Constants.SYSTEM_INIT_FILE_NAME, 0);
 		this.token = this.sysInitSharedPreferences.getString("token", "");//获取缓存中的token
 		this.memberID = this.sysInitSharedPreferences.getString("memberID", "");//获取缓存中的会员ID

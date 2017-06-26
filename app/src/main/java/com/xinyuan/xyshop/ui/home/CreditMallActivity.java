@@ -11,9 +11,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.adapter.CreditAdapter;
+import com.xinyuan.xyshop.adapter.CreditMallAdapter;
 import com.xinyuan.xyshop.adapter.CreditGoodsAdapter;
-import com.xinyuan.xyshop.adapter.GoodsGridAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
 import com.xinyuan.xyshop.entity.CreditMultipleItem;
 import com.xinyuan.xyshop.http.Urls;
@@ -41,7 +40,7 @@ public class CreditMallActivity extends BaseActivity {
 
 	@BindView(R.id.rv_credit)
 	RecyclerView rv_credit;
-	private CreditAdapter creditAdapter;
+	private CreditMallAdapter creditAdapter;
 
 
 	List<CreditMultipleItem> list = new ArrayList<>();
@@ -77,7 +76,7 @@ public class CreditMallActivity extends BaseActivity {
 		rv_credit.setLayoutManager(manager);
 
 
-		creditAdapter = new CreditAdapter(list, creditModel.getMallFloors());
+		creditAdapter = new CreditMallAdapter(list, creditModel.getMallFloors());
 		creditAdapter.setSpanSizeLookup(new BaseQuickAdapter.SpanSizeLookup() {
 			@Override
 			public int getSpanSize(GridLayoutManager gridLayoutManager, int position) {

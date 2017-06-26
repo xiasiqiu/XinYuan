@@ -11,12 +11,13 @@
         style="@style/NoramLine"/>
 
     <RelativeLayout
+        android:id="@+id/rl_pro_account"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/bg_white">
 
         <ImageView
-            android:id="@+id/iv_pro_count"
+            android:id="@+id/iv_pro_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -24,25 +25,25 @@
             android:background="@drawable/ic_mine_count"/>
 
         <TextView
-            android:id="@+id/tv_pro_count"
+            android:id="@+id/tv_pro_account"
             style="@style/NormalTextView"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
-            android:layout_toRightOf="@id/iv_pro_count"
+            android:layout_toRightOf="@id/iv_pro_account"
             android:text="账户余额"/>
 
         <TextView
             android:id="@+id/tv_pro_count_hint"
             style="@style/LightTextView"
-            android:layout_below="@id/tv_pro_count"
+            android:layout_below="@id/tv_pro_account"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
-            android:layout_toRightOf="@id/iv_pro_count"
+            android:layout_toRightOf="@id/iv_pro_account"
             android:text="预存款账户余额，充值及提现明细"
             android:textColor="@color/tv_hint"/>
 
         <TextView
-            android:id="@+id/tv_pro_count_num"
+            android:id="@+id/tv_pro_account_num"
             style="@style/NormalTextView"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
@@ -67,6 +68,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/rl_pro_coupon"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/bg_white">
@@ -123,6 +125,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/rl_pro_redpacke"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/bg_white">
@@ -179,6 +182,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/rl_pro_credit"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/bg_white">

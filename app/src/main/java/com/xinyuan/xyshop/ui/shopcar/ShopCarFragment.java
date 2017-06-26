@@ -26,6 +26,7 @@ import com.xinyuan.xyshop.entity.GoodsVo;
 import com.xinyuan.xyshop.entity.ShopCarGoodsItem;
 import com.xinyuan.xyshop.entity.ShopCarStoreItem;
 import com.xinyuan.xyshop.entity.StoreInfo;
+import com.xinyuan.xyshop.ui.catrgory.CategoryFragment;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.XToast;
@@ -79,6 +80,15 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 	private List<StoreInfo> groups = new ArrayList<StoreInfo>();// 组元素数据列表
 	private Map<String, List<GoodsInfo>> children = new HashMap<String, List<GoodsInfo>>();// 子元素数据列表
 
+	public static ShopCarFragment newInstance() {
+
+		Bundle args = new Bundle();
+
+		ShopCarFragment fragment = new ShopCarFragment();
+		fragment.setArguments(args);
+		return fragment;
+	}
+
 	@Override
 	public int getLayoutId() {
 		return R.layout.fragment_shopcart;
@@ -113,7 +123,7 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 			res.add(more);
 
 		}
-		XLog.v(children.toString());
+
 		return res;
 	}
 
@@ -125,7 +135,7 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
 			SystemBarHelper.setHeightAndPadding(getActivity(), toolbar);
 		}
-		XLog.v("购物车页面切换" + VIEW_INIT);
+		XLog.v("加载购物车页面Fragment");
 		VIEW_INIT = false;
 
 		adapter = new ShopCarAdapter(groups, children, initdatas());

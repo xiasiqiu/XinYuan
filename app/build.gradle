@@ -57,4 +57,7 @@ dependencies {
     compile 'com.github.YancyYe:GalleryPick:1.2.1'
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    //fragment
+    compile 'me.yokeyword:fragmentation:1.0.0'
+
 }

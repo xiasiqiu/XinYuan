@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_gray"
+              android:orientation="vertical">
+
+    <include layout="@layout/view_header_tv_msg"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@drawable/ic_account_bg"
+        android:padding="15dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:text="账户余额（元）"
+            android:textColor="@color/bg_white"/>
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_alignParentBottom="true"
+            android:text="128.00"
+            android:textColor="@color/bg_white"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_acctount_recharge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/iv_account_recharge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_account_recharge"/>
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_account_recharge"
+            android:text="充值"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_right_row"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_acctount_withdrawals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@color/bg_white"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/iv_account_withdrawals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_account_withdrawals"/>
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_account_withdrawals"
+            android:text="提现"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_right_row"/>
+    </RelativeLayout>
+</LinearLayout>

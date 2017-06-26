@@ -15,6 +15,7 @@ import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.common.AddViewHolder;
 import com.xinyuan.xyshop.mvp.contract.CategoryContract;
 import com.xinyuan.xyshop.mvp.presenter.CategoryPresenterImpl;
+import com.xinyuan.xyshop.ui.home.HomeFragment;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.youth.xframe.utils.log.XLog;
@@ -61,6 +62,15 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 	ImageView btn_scan;
 	private static boolean VIEW_INIT = true;
 
+	public static CategoryFragment newInstance() {
+
+		Bundle args = new Bundle();
+
+		CategoryFragment fragment = new CategoryFragment();
+		fragment.setArguments(args);
+		return fragment;
+	}
+
 	@Override
 	public int getLayoutId() {
 		return R.layout.fragment_category;
@@ -68,11 +78,11 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 
 	@Override
 	public void initView() {
+		XLog.v("加载分类页面Fragment");
 		if (VIEW_INIT) {
 			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
 			SystemBarHelper.setHeightAndPadding(getActivity(), toolbar);
 		}
-		XLog.v("分类页面切换" + VIEW_INIT);
 		VIEW_INIT = false;
 	}
 

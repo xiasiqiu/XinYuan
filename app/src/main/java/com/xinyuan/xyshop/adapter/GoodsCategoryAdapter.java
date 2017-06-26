@@ -25,7 +25,6 @@ public class GoodsCategoryAdapter extends CommonAdapter<CategoryData> {
 
 		holder.setText(R.id.tvGoodsClassName, goodsCategory.getCategoryName());
 		holder.setImage(R.id.tvGoodsClassImage, goodsCategory.getCategoryImageUrl());
-		XLog.v("imageUrl"+goodsCategory.getCategoryImageUrl());
 		holder.getConvertView().setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				CategoryPresenterImpl.jump(GoodsCategoryAdapter.this.mContext, goodsCategory.getCategoryName(), false);

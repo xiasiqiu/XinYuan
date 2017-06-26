@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_credit_name"
+            style="@style/RegularTextView"
+            android:layout_marginRight="60dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="雅诗兰黛 红石榴泡沫洁面乳25ml清洁补水保湿"/>
+
+        <TextView
+            android:id="@+id/tb_credit_num"
+            style="@style/BlodTextView"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="+5"
+            android:textColor="@color/tv_price"
+            android:textSize="25sp"/>
+
+        <TextView
+            style="@style/SmallHintTextView"
+            android:layout_below="@id/tv_credit_name"
+            android:layout_marginTop="30dp"
+            android:text="订单编号：275149863576"/>
+
+        <TextView
+            style="@style/SmallHintTextView"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tv_credit_name"
+            android:layout_marginTop="30dp"
+            android:text="2017-05-0412:05:03"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/XYLine"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+</LinearLayout>
