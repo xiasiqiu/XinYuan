@@ -16,7 +16,6 @@
             android:id="@+id/ivGoodPic"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/test_good_img"
             android:scaleType="fitXY"/>
 
         <TextView
@@ -46,8 +45,8 @@
         <TextView
             android:id="@+id/tv_goods_name"
             style="@style/GoodsNameTextView"
-            android:layout_alignParentTop="true"
             android:layout_width="wrap_content"
+            android:layout_alignParentTop="true"
             android:letterSpacing="0.01"
             android:lineSpacingExtra="3dp"
             android:text="【AVON雅芳】美容SPA养生馆钟大夫365元办年卡"/>
@@ -65,10 +64,10 @@
             style="@style/LightTextView"
             android:layout_below="@id/tv_goods_name"
             android:layout_marginLeft="15dp"
-            android:textColor="@color/tv_hint"
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@+id/tv_goods_price"
             android:text="2456人已团"
+            android:textColor="@color/tv_hint"
             />
     </RelativeLayout>
 

@@ -10,10 +10,12 @@
 
     <include layout="@layout/view_header_tv_tv"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_fav"
+    <View
+        style="@style/XYLine"/>
+
+    <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="3dp"/>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

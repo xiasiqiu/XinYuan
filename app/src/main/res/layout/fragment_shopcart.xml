@@ -13,9 +13,7 @@
         android:background="@color/bg_white">
 
         <View
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/colorLine"/>
+            style="@style/LightLine"/>
 
         <TextView
             android:id="@+id/tv_shopcar_login"
@@ -36,6 +34,9 @@
             android:textColor="@color/bg_white"
             android:textSize="@dimen/tv_small"/>
 
+        <View
+            style="@style/LightLine"
+            android:layout_alignParentBottom="true"/>
     </RelativeLayout>
 
     <include

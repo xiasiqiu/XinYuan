@@ -1,11 +1,13 @@
 package com.xinyuan.xyshop.ui.mine.pro;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xinyuan.xyshop.R;
@@ -29,7 +31,8 @@ import butterknife.BindView;
 public class CreditFragment extends BaseFragment {
 	@BindView(R.id.rv_credit)
 	RecyclerView rv_credit;
-
+	@BindView(R.id.tv_header_center)
+	TextView tv_header_center;
 	CreditAdapter adapter;
 	@BindView(R.id.toolbar_iv)
 	Toolbar msg_toolbar;
@@ -51,9 +54,18 @@ public class CreditFragment extends BaseFragment {
 
 	@Override
 	public void initView() {
-		SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
-		SystemBarHelper.setHeightAndPadding(getActivity(), msg_toolbar);
-		XLog.v("积分中心");
+		if (msg_toolbar != null) {
+
+			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
+			SystemBarHelper.setHeightAndPadding(getActivity(), msg_toolbar);
+			tv_header_center.setText("我的积分");
+		}
+
+
+	}
+
+	@Override
+	public void onLazyInitView(@Nullable Bundle savedInstanceState) {
 		LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
 		layoutManager.setOrientation(1);
 		this.rv_credit.setLayoutManager(layoutManager);
@@ -61,10 +73,6 @@ public class CreditFragment extends BaseFragment {
 		list.add(new CreditBean("雅诗兰黛 红石榴泡沫洁面乳25ml清洁补水保湿", 255654784, "2017-05-14 12:06:12", 5, 0));
 		list.add(new CreditBean("雅诗兰黛 红石榴泡沫洁面乳25ml清洁补水保湿", 255654784, "2017-05-14 12:06:12", 4, 1));
 		list.add(new CreditBean("雅诗兰黛 红石榴泡沫洁面乳25ml清洁补水保湿", 255654784, "2017-05-14 12:06:12", 6, 0));
-		list.add(new CreditBean("雅诗兰黛 红石榴泡沫洁面乳25ml清洁补水保湿", 255654784, "2017-05-14 12:06:12", 2, 1));
-		list.add(new CreditBean("雅诗兰黛 红石榴泡沫洁面乳25ml清洁补水保湿", 255654784, "2017-05-14 12:06:12", 5, 1));
-		list.add(new CreditBean("雅诗兰黛 红石榴泡沫洁面乳25ml清洁补水保湿", 255654784, "2017-05-14 12:06:12", 7, 0));
-		list.add(new CreditBean("雅诗兰黛 红石榴泡沫洁面乳25ml清洁补水保湿", 255654784, "2017-05-14 12:06:12", 4, 1));
 		this.adapter = new CreditAdapter(R.layout.fragment_credit_item, list);
 		this.rv_credit.setAdapter(adapter);
 

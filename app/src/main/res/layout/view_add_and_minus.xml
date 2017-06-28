@@ -18,7 +18,7 @@
             android:background="@drawable/left_round_btn"
             android:text="—"
             android:textColor="@color/tv_name"
-            android:textSize="@dimen/tv_light"/>
+            android:textSize="@dimen/tv_Normal"/>
 
         <TextView
             android:id="@+id/tvAppCommonCount"
@@ -28,7 +28,7 @@
             android:gravity="center"
             android:text="1"
             android:textColor="@color/tv_hint"
-            android:textSize="@dimen/tv_light"/>
+            android:textSize="@dimen/tv_Regular"/>
 
         <Button
             android:id="@+id/btnAppCommonAdd"
@@ -37,7 +37,7 @@
             android:background="@drawable/right_round_edittext"
             android:text="+"
             android:textColor="@color/tv_name"
-            android:textSize="@dimen/tv_light"/>
+            android:textSize="@dimen/tv_Normal"/>
     </LinearLayout>
 
 </LinearLayout>

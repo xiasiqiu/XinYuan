@@ -50,6 +50,8 @@ public class UserInfoFragment extends BaseFragment {
 	TextView tv_user_sex;
 	@BindView(R.id.toolbar_iv)
 	Toolbar msg_toolbar;
+	@BindView(R.id.tv_header_center)
+	TextView tv_header_center;
 	@BindView(R.id.customer_image)
 	CircleImageView customer_image;
 	private IHandlerCallBack iHandlerCallBack;
@@ -64,7 +66,7 @@ public class UserInfoFragment extends BaseFragment {
 
 	@Override
 	public int getLayoutId() {
-		return R.layout.activity_user_info;
+		return R.layout.fragment_user_info;
 	}
 
 	@Override
@@ -76,6 +78,7 @@ public class UserInfoFragment extends BaseFragment {
 	public void initView() {
 		SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
 		SystemBarHelper.setHeightAndPadding(getActivity(), msg_toolbar);
+		tv_header_center.setText("个人资料");
 		setTime();
 		initGallery();
 		galleryConfig = new GalleryConfig.Builder()
@@ -101,7 +104,7 @@ public class UserInfoFragment extends BaseFragment {
 				pvTime.show();
 				break;
 			case R.id.rl_user_head:
-				BottomPopupImage bottomPopupOption = new BottomPopupImage(context);
+				final BottomPopupImage bottomPopupOption = new BottomPopupImage(context);
 				bottomPopupOption.setItemText("拍照", "选择相册");
 				bottomPopupOption.showPopupWindow();
 				bottomPopupOption.setItemClickListener(new BottomPopupImage.onPopupWindowItemClickListener() {
@@ -111,10 +114,12 @@ public class UserInfoFragment extends BaseFragment {
 						switch (position) {
 							case 0:
 								GalleryPick.getInstance().setGalleryConfig(galleryConfig).openCamera(getActivity());
+								bottomPopupOption.dismiss();
 								break;
 							case 1:
 								galleryConfig.getBuilder().isOpenCamera(false).build();
 								GalleryPick.getInstance().setGalleryConfig(galleryConfig).open(getActivity());
+								bottomPopupOption.dismiss();
 								break;
 						}
 

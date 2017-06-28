@@ -6,10 +6,8 @@
               android:orientation="vertical">
 
     <include layout="@layout/view_header_tv_tv"/>
-
     <View
-        style="@style/XYLine"/>
-
+       style="@style/LightLine"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_follow"
         android:layout_width="match_parent"

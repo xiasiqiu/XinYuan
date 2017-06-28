@@ -26,7 +26,7 @@
 
         <TextView
             android:id="@+id/tv_pro_account"
-            style="@style/NormalTextView"
+            style="@style/RegularTextView"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@id/iv_pro_account"
@@ -34,13 +34,12 @@
 
         <TextView
             android:id="@+id/tv_pro_count_hint"
-            style="@style/LightTextView"
+            style="@style/NormalHintTextView"
             android:layout_below="@id/tv_pro_account"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/iv_pro_account"
-            android:text="预存款账户余额，充值及提现明细"
-            android:textColor="@color/tv_hint"/>
+            android:text="预存款账户余额，充值及提现明细"/>
 
         <TextView
             android:id="@+id/tv_pro_account_num"
@@ -83,7 +82,7 @@
 
         <TextView
             android:id="@+id/tv_mine_coupon"
-            style="@style/NormalTextView"
+            style="@style/RegularTextView"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@id/iv_mine_coupon"
@@ -91,13 +90,12 @@
 
         <TextView
             android:id="@+id/tv_mine_coupon_hint"
-            style="@style/LightTextView"
+            style="@style/NormalHintTextView"
             android:layout_below="@id/tv_mine_coupon"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/iv_mine_coupon"
-            android:text="店铺代金券使用情况"
-            android:textColor="@color/tv_hint"/>
+            android:text="店铺代金券使用情况"/>
 
         <TextView
             android:id="@+id/tv_mine_coupon_num"
@@ -140,7 +138,7 @@
 
         <TextView
             android:id="@+id/tv_mine_redpacke"
-            style="@style/NormalTextView"
+            style="@style/RegularTextView"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@id/iv_mine_redpacke"
@@ -148,13 +146,12 @@
 
         <TextView
             android:id="@+id/tv_mine_redpacke_hint"
-            style="@style/LightTextView"
+            style="@style/NormalHintTextView"
             android:layout_below="@id/tv_mine_redpacke"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/iv_mine_redpacke"
-            android:text="平台红包使用情况"
-            android:textColor="@color/tv_hint"/>
+            android:text="平台红包使用情况"/>
 
         <TextView
             android:id="@+id/tv_mine_redpacke_num"
@@ -197,7 +194,7 @@
 
         <TextView
             android:id="@+id/tv_mine_credit"
-            style="@style/NormalTextView"
+            style="@style/RegularTextView"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@id/iv_mine_credit"
@@ -205,13 +202,12 @@
 
         <TextView
             android:id="@+id/tv_mine_credit_hint"
-            style="@style/LightTextView"
             android:layout_below="@id/tv_mine_credit"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/iv_mine_credit"
             android:text="店铺代金券使用情况"
-            android:textColor="@color/tv_hint"/>
+            style="@style/NormalHintTextView"/>
 
         <TextView
             android:id="@+id/tv_mine_credit_num"
@@ -231,4 +227,8 @@
             android:background="@drawable/ic_right_row"/>
     </RelativeLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_gray"/>
 </LinearLayout>

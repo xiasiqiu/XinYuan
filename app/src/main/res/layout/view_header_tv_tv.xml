@@ -33,7 +33,9 @@
         <TextView
             android:id="@+id/tv_header_center"
             style="@style/BlodTextView"
-            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:text="撒大声地撒"
             />
 
         <TextView
@@ -41,7 +43,7 @@
             style="@style/RegularTextView"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="40px"/>
+            android:text="送到"/>
 
 
     </RelativeLayout>

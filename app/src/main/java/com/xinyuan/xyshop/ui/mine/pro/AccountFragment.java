@@ -45,10 +45,15 @@ public class AccountFragment extends BaseFragment {
 
 	@Override
 	public void initView() {
-		SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
-		SystemBarHelper.setHeightAndPadding(getActivity(), msg_toolbar);
+		if (msg_toolbar != null) {
+			XLog.v("账户加载Tooolbar");
+			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
+			SystemBarHelper.setHeightAndPadding(getActivity(), msg_toolbar);
+			tv_header_center.setText("账户余额");
+		}
 
-		tv_header_center.setText("账户余额");
+
+
 	}
 
 	@OnClick({R.id.rl_acctount_withdrawals, R.id.rl_acctount_recharge})

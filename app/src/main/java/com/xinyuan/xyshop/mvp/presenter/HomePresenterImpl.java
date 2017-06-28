@@ -58,6 +58,7 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 
 	@Override
 	public void initData() {
+		view.showState(0);
 		Subscription subscription = ApiServer.getHomeIndex(Urls.API_INDEX)
 				.doOnSubscribe(new Action0() {
 					@Override

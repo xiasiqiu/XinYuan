@@ -58,7 +58,6 @@
         android:layout_height="50dp"
         android:layout_marginTop="3dp"
         android:background="@color/bg_white"
-        android:padding="5dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:visibility="gone">
@@ -71,14 +70,15 @@
 
         <EditText
             android:id="@+id/et_acctount_re"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/tv_account_re"
             android:background="@null"
             android:hint="请输入充值金额"
+            android:inputType="number"
             android:textColorHint="@color/tv_hint"
-            android:textSize="@dimen/tv_Normal"/>
+            android:textSize="@dimen/tv_Regular"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -112,6 +112,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:hint="请输入提现金额"
+                android:inputType="number"
                 android:paddingBottom="10dp"
                 android:textColorHint="@color/tv_hint"
                 android:textSize="18sp"/>
@@ -140,4 +141,9 @@
         android:text="下一步"
         android:textColor="@color/bg_white"
         android:textSize="@dimen/tv_Normal"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_gray"/>
 </LinearLayout>

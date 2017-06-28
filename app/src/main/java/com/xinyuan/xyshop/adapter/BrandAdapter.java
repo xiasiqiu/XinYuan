@@ -42,12 +42,10 @@ public class BrandAdapter extends BaseSectionQuickAdapter<MySection, BaseViewHol
 	@Override
 	protected void convert(BaseViewHolder helper, MySection item) {
 		BrandBean bean = (BrandBean) item.t;
-		XLog.v("图片"+bean.getBrandImage());
 		GlideImageLoader.setImage(mContext, bean.getBrandImage(), (ImageView) helper.getView(R.id.ivBrandPic));
 	}
 
 	public int getLetterPosition(String letter) {
-		XLog.v("HHHHH" + letter);
 		for (int i = 0; i < getData().size(); i++) {
 			if (getData().get(i).isHeader && getData().get(i).header.contains(letter)) {
 				return i;

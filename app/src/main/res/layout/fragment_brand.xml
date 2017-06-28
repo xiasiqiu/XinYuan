@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_gray"
     android:orientation="vertical">
 
-    <include layout="@layout/activity_brand_header"/>
+    <include layout="@layout/view_header_tv_msg"/>
+
+    <View
+        style="@style/LightLine"/>
 
     <com.youth.xframe.widget.loadingview.XLoadingView
         android:id="@+id/brand_loadingView"
@@ -15,16 +18,13 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="?attr/actionBarSize">
+            android:layout_height="match_parent">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_brand"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10px"
-                android:layout_marginRight="90px"
-                android:layout_marginTop="30px"
+                android:layout_marginRight="30dp"
                 />
 
             <com.xinyuan.xyshop.widget.WaveSideBarView
@@ -34,4 +34,4 @@
                 />
         </RelativeLayout>
     </com.youth.xframe.widget.loadingview.XLoadingView>
-</RelativeLayout>
+</LinearLayout>

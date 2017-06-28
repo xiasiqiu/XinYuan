@@ -62,7 +62,10 @@ public abstract class BaseFragment extends SupportFragment implements ICallback,
 
 		this.context = getActivity();
 		if (contentView == null) {
+
 			contentView = inflater.inflate(getLayoutId(), container, false);
+
+			contentView.setClickable(true);// 防止点击穿透，底层的fragment响应上层点击触摸事件
 			mUnbinder = ButterKnife.bind(this, contentView);
 			return contentView;
 		} else {

@@ -6,7 +6,7 @@
     android:id="@+id/category_toolbar"
     android:layout_width="match_parent"
     android:layout_height="?android:actionBarSize"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorPrimaryDark"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp">
 

@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseItemDraggableAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.xinyuan.xyshop.R;
@@ -26,7 +27,7 @@ public class GoodsGridAdapter extends BaseQuickAdapter<GoodsVo, BaseViewHolder> 
 
 	@Override
 	protected void convert(BaseViewHolder helper, GoodsVo item) {
-		if (item.getImageSrc()!=null) {
+		if (item.getImageSrc() != null) {
 
 			ImageView goodsImg = helper.getView(R.id.ivGoodPic);
 			GlideImageLoader.setImage(mContext, item.getImageSrc(), goodsImg);

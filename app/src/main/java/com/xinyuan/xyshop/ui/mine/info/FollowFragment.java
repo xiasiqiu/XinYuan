@@ -1,6 +1,7 @@
 package com.xinyuan.xyshop.ui.mine.info;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -55,10 +56,18 @@ public class FollowFragment extends BaseFragment {
 
 	@Override
 	public void initView() {
-		SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
-		SystemBarHelper.setHeightAndPadding(getActivity(), toolbar_tv);
-		tv_header_center.setText("关注店铺");
-		tv_header_right.setText("编辑");
+		if (toolbar_tv != null) {
+			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
+			SystemBarHelper.setHeightAndPadding(getActivity(), toolbar_tv);
+			tv_header_center.setText("关注店铺");
+			tv_header_right.setText("编辑");
+		}
+
+
+	}
+
+	@Override
+	public void onLazyInitView(@Nullable Bundle savedInstanceState) {
 		LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
 		layoutManager.setOrientation(1);
 		this.rv_follow.setLayoutManager(layoutManager);

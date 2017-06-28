@@ -33,10 +33,11 @@ public class GlideImageLoader extends ImageLoader {
 
 
 	}
+	private void ii(){
 
+	}
 	public static void setImage(Context context, Object path, ImageView imageView) {
 		Glide.with(context).load(path).crossFade().diskCacheStrategy(DiskCacheStrategy.SOURCE).placeholder((int) R.drawable.img_defaule).error((int) R.drawable.img_defaule).into(imageView);
-
 	}
 
 

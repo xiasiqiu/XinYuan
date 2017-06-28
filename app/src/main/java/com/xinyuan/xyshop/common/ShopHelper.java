@@ -8,6 +8,8 @@ import java.text.DecimalFormat;
  */
 
 public class ShopHelper {
+	private static boolean SignStatus = true;
+
 	public static String getPriceString(double price) {
 		return new DecimalFormat("0.00").format(price);
 	}
@@ -17,5 +19,14 @@ public class ShopHelper {
 			return new DecimalFormat("0.00").format(price);
 		}
 		return "0.00";
+	}
+
+
+	public static boolean getSignStatus() {
+		return SignStatus;
+	}
+
+	public static void setSignStatus(Boolean b) {
+		SignStatus = b;
 	}
 }

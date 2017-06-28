@@ -9,14 +9,14 @@
         android:id="@+id/btnSortDefault"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30px"
+        android:padding="10dp"
         android:background="@color/bg_white"
         android:drawableLeft="@drawable/text_btn_check_mark"
-        android:drawablePadding="20px"
+        android:drawablePadding="10dp"
         android:gravity="left"
         android:text="@string/com_sort"
         android:textColor="@drawable/text_btn_color"
-        android:textSize="36px"/>
+        android:textSize="@dimen/tv_Normal"/>
 
     <View
         android:layout_width="match_parent"
@@ -29,50 +29,50 @@
         android:id="@+id/btnSortHon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30px"
+        android:padding="10dp"
         android:background="@color/bg_white"
         android:drawableLeft="@drawable/text_btn_check_mark"
-        android:drawablePadding="20px"
+        android:drawablePadding="10dp"
         android:text="@string/hon_sort"
         android:textColor="@drawable/text_btn_color"
-        android:textSize="36px"/>
+        android:textSize="@dimen/tv_Normal"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:layout_marginLeft="30px"
-        android:layout_marginRight="30px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@color/normal_bg"/>
 
     <TextView
         android:id="@+id/btnSortPriceL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30px"
         android:background="@color/bg_white"
         android:drawableLeft="@drawable/text_btn_check_mark"
-        android:drawablePadding="20px"
+        android:drawablePadding="10dp"
+        android:padding="10dp"
         android:text="@string/price_up"
         android:textColor="@drawable/text_btn_color"
-        android:textSize="36px"/>
+        android:textSize="@dimen/tv_Normal"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:layout_marginLeft="30px"
-        android:layout_marginRight="30px"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@color/bg_gray"/>
 
     <TextView
         android:id="@+id/btnSortPriceU"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30px"
+        android:padding="10dp"
         android:background="@color/bg_white"
         android:drawableLeft="@drawable/text_btn_check_mark"
-        android:drawablePadding="20px"
+        android:drawablePadding="10dp"
         android:text="@string/price_down"
         android:textColor="@drawable/text_btn_color"
-        android:textSize="36px"/>
+        android:textSize="@dimen/tv_Normal"/>
 
 </LinearLayout>

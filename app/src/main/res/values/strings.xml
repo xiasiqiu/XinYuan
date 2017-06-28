@@ -68,6 +68,9 @@
     <string name="permission_rationale">"Contacts permissions are needed for
         providing email completions."
     </string>
+    <string name="brandrecomm">品牌推荐#</string>
+    <string name="brandtitle">品牌店铺</string>
+    <string name="user_recomm">为您推荐</string>
 
 
 </resources>

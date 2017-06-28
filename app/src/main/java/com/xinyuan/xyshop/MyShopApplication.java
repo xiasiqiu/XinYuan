@@ -6,9 +6,8 @@ import android.content.SharedPreferences;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheEntity;
 import com.lzy.okgo.cache.CacheMode;
-import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.TbsListener;
 import com.xinyuan.xyshop.common.Constants;
+import com.xinyuan.xyshop.common.ShopHelper;
 import com.youth.xframe.XFrame;
 import com.youth.xframe.base.XApplication;
 import com.youth.xframe.utils.log.XLog;
@@ -35,6 +34,7 @@ public class MyShopApplication extends XApplication {
 	private String memberID;
 	private String memberName;
 	private String token;
+	public static boolean isLogin = false;
 
 	@Override
 	public void onCreate() {
@@ -55,7 +55,8 @@ public class MyShopApplication extends XApplication {
 		this.memberID = this.sysInitSharedPreferences.getString("memberID", "");//获取缓存中的会员ID
 		this.memberName = this.sysInitSharedPreferences.getString("memberName", "");//获取缓存中的会员名称
 		this.avatar = this.sysInitSharedPreferences.getString("avatar", "");
-		initTbs();
+
+		ShopHelper.setSignStatus(true);
 	}
 
 
@@ -85,39 +86,5 @@ public class MyShopApplication extends XApplication {
 		MyShopApplication.keyWord = keyWord;
 	}
 
-	private void initTbs() {
-		QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
-
-			@Override
-			public void onViewInitFinished(boolean arg0) {
-				XLog.i("onViewInitFinished is " + arg0);
-			}
-
-			@Override
-			public void onCoreInitFinished() {
-			}
-		};
-
-		QbSdk.setTbsListener(new TbsListener() {
-			@Override
-			public void onDownloadFinish(int i) {
-				XLog.i("onDownloadFinish");
-			}
-
-			@Override
-			public void onInstallFinish(int i) {
-				XLog.i("onInstallFinish");
-			}
-
-			@Override
-			public void onDownloadProgress(int i) {
-				XLog.i("onDownloadProgress:" + i);
-			}
-		});
-
-		QbSdk.initX5Environment(getApplicationContext(), cb);
-
-
-	}
 
 }

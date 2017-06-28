@@ -29,7 +29,7 @@ public class CommUtil {
 		return (int) (dipValue * scale + 0.5f);
 	}
 
-	public static void gotoActivity(Activity poFrom, Class<?> poTo, boolean pbFinish, Map<String, String> pmExtra) {
+	public static void gotoActivity(Context poFrom, Class<?> poTo, boolean pbFinish, Map<String, String> pmExtra) {
 		Intent loIntent = new Intent(poFrom, poTo);
 		if (!(pmExtra == null || pmExtra.isEmpty())) {
 			for (String lsKey : pmExtra.keySet()) {
@@ -37,7 +37,7 @@ public class CommUtil {
 			}
 		}
 		if (pbFinish) {
-			poFrom.finish();
+			((Activity) poFrom).finish();
 		}
 		poFrom.startActivity(loIntent);
 	}

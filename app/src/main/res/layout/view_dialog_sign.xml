@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+
+              android:background="@color/bg_white"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/NormalTextView"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:text="今日签到"/>
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:layout_margin="10dp"
+            android:background="@drawable/icon_close"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/LightLine"/>
+
+    <TextView
+        android:id="@+id/tv_content"
+        style="@style/RegularTextView"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:text="恭喜你，你已经成功签到"
+        android:textColor="@color/tv_hint"/>
+
+    <TextView
+        android:id="@+id/tv_sign_credit"
+        style="@style/BlodTextView"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="积分+1"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"/>
+
+</LinearLayout>

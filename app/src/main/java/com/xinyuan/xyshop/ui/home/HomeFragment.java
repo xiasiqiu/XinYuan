@@ -53,6 +53,7 @@ import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.xframe.utils.log.XLog;
+import com.youth.xframe.utils.statusbar.XStatusBar;
 import com.youth.xframe.widget.loadingview.XLoadingView;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -60,6 +61,7 @@ import org.greenrobot.eventbus.Subscribe;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 
@@ -69,17 +71,12 @@ import butterknife.BindView;
 
 public class HomeFragment extends BaseFragment implements HomeContract.HomeView, SwipeRefreshLayout.OnRefreshListener {
 
-	public static final String INTENT_STRING_TABNAME = "intent_String_tabname";
-	public static final String INTENT_INT_INDEX = "intent_int_index";
 	@BindView(R.id.home_list)
 	RecyclerView mRecyclerView;
-
-
 	@BindView(R.id.home_swipeLayout)
 	SwipeRefreshLayout mSwipeRefreshLayout;
 	@BindView(R.id.home_loadingView)
 	XLoadingView xLoadingView;
-
 	@BindView(R.id.home_toolbar)
 	Toolbar mToolbar;
 	@BindView(R.id.home_header_rl)
@@ -89,12 +86,14 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	@BindView(R.id.act_home_btn_msg)
 	ImageView mMsg;
 	@BindView(R.id.frag_home_et_search)
-	EditText et_search;
+	Button et_search;
 	private View headView;
 
 	private HomeContract.HomePresenter presenter;
 	private HomeMultipleItemAdapter homeMultipleItemAdapter;
+	private RecyclerView menuListView;
 
+	private static boolean isLoad = true;
 	private int mDistanceY = 0;
 	private static final int TOTAL_COUNTER = 30;
 	private static final int PAGE_SIZE = 6;
@@ -104,11 +103,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	private boolean isErr;
 	private boolean mLoadMoreEndGone = false;
 	private int mCurrentCounter = 0;
-
 	private List<HomeMultipleItem> data;
-	private static boolean VIEW_INIT = true;
-
-	private RecyclerView menuListView;
 	private Bundle saveState;
 
 
@@ -127,138 +122,32 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	@Override
 	public void initView() {
-		XLog.v("加载首页页面Fragment");
-		if (VIEW_INIT) {
+		if (isLoad) {
 			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
 			SystemBarHelper.setHeightAndPadding(getActivity(), mToolbar);
 		}
-		VIEW_INIT = false;
+		isLoad = false;
 		mDistanceY = 0;
 		restoreState();
 
 	}
 
-	/**
-	 * 设置Presenter
-	 *
-	 * @param presenter
-	 */
 	@Override
-	public void setPresenter(HomeContract.HomePresenter presenter) {
-
-		this.presenter = presenter;
-
-	}
-
-	/**
-	 * Prenenter加载首页数据
-	 *
-	 * @param savedInstanceState
-	 */
-	@Override
-	public void initData(@Nullable Bundle savedInstanceState) {
+	public void onLazyInitView(@Nullable Bundle savedInstanceState) {
 		new HomePresenterImpl(this);
 		presenter.initData();
 		xLoadingView.setOnRetryClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
 				presenter.initData();
-				xLoadingView.showLoading();
 			}
 		});
 
 	}
 
-
-	private boolean RestoreStateformArguments() {
-
-		Bundle b = getArguments();
-		saveState = b.getBundle("saveState");
-		if (saveState != null) {
-			restoreState();
-			return true;
-		}
-		return false;
-	}
-
-	private void restoreState() {
-		if (saveState != null) {
-
-			mDistanceY = saveState.getInt("DistanceY");
-			XLog.v("保存了值" + mDistanceY);
-		}
-	}
-
 	@Override
-	public void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-		saveStatetoArguments();
-	}
-
-	private void saveStatetoArguments() {
-		saveState = saveState();
-		if (saveState != null) {
-			Bundle b = getArguments();
-		}
-	}
-
-	private Bundle saveState() {
-		Bundle d = new Bundle();
-		d.putInt("DistanceY", mDistanceY);
-		return d;
-	}
-
-	/**
-	 * 加载状态监听
-	 *
-	 * @param Sate
-	 */
-
-	@Override
-	public void showState(int Sate) {
-		switch (Sate) {
-			case 0:
-				xLoadingView.showLoading();
-				break;
-			case 1:
-
-				xLoadingView.showContent();
-				break;
-			case 2:
-				xLoadingView.showError();
-				break;
-
-		}
-
-	}
-
-	/**
-	 * RecyclerView加载头部View
-	 *
-	 * @param list
-	 */
-	@Override
-	public void addHead(final List<HomeMultipleItem> list) {
-
-		mSwipeRefreshLayout.setOnRefreshListener(this);
-		mSwipeRefreshLayout.setColorSchemeColors(Color.rgb(29, 160, 57));
-		headView = getActivity().getLayoutInflater().inflate(R.layout.fragment_home_top, (ViewGroup) mRecyclerView.getParent(), false);
-
-		final GridLayoutManager manager = new GridLayoutManager(context, 4);
-		mRecyclerView.setLayoutManager(manager);
-		homeMultipleItemAdapter = new HomeMultipleItemAdapter(this.getContext(), list);
-		homeMultipleItemAdapter.setSpanSizeLookup(new BaseQuickAdapter.SpanSizeLookup() {
-			@Override
-			public int getSpanSize(GridLayoutManager gridLayoutManager, int position) {
-
-				return list.get(position).getSpanSize();
-			}
-		});
-		homeMultipleItemAdapter.addHeaderView(headView);
-		mRecyclerView.setAdapter(homeMultipleItemAdapter);
-
-
+	public void setPresenter(HomeContract.HomePresenter presenter) {
+		this.presenter = presenter;
 	}
 
 
@@ -304,6 +193,26 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	}
 
+	/**
+	 * 显示首页公告
+	 *
+	 * @param itemList
+	 */
+	@Override
+	public void showNotice(List<HomeModel.HomeModule.HomeModuleData> itemList) {
+		List<String> name = new ArrayList<>();
+		List<String> content = new ArrayList<>();
+
+		for (HomeModel.HomeModule.HomeModuleData itemData : itemList) {
+			name.add("[" + itemData.getText() + "]");
+			content.add(itemData.getData());
+		}
+
+		MarqueeView marquee_name = (MarqueeView) headView.findViewById(R.id.marquee_name);
+		MarqueeView marquee_content = (MarqueeView) headView.findViewById(R.id.marquee_content);
+		marquee_name.startWithList(name);
+		marquee_content.startWithList(content);
+	}
 
 	/**
 	 * 显示首页菜单
@@ -349,24 +258,55 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 
 	/**
-	 * 显示首页公告
+	 * RecyclerView加载头部View
 	 *
-	 * @param itemList
+	 * @param list
 	 */
 	@Override
-	public void showNotice(List<HomeModel.HomeModule.HomeModuleData> itemList) {
-		List<String> name = new ArrayList<>();
-		List<String> content = new ArrayList<>();
+	public void addHead(final List<HomeMultipleItem> list) {
 
-		for (HomeModel.HomeModule.HomeModuleData itemData : itemList) {
-			name.add("[" + itemData.getText() + "]");
-			content.add(itemData.getData());
+		mSwipeRefreshLayout.setOnRefreshListener(this);
+		mSwipeRefreshLayout.setColorSchemeColors(Color.rgb(29, 160, 57));
+		headView = getActivity().getLayoutInflater().inflate(R.layout.fragment_home_top, (ViewGroup) mRecyclerView.getParent(), false);
+
+		final GridLayoutManager manager = new GridLayoutManager(context, 4);
+		mRecyclerView.setLayoutManager(manager);
+		homeMultipleItemAdapter = new HomeMultipleItemAdapter(this.getContext(), list);
+		homeMultipleItemAdapter.setSpanSizeLookup(new BaseQuickAdapter.SpanSizeLookup() {
+			@Override
+			public int getSpanSize(GridLayoutManager gridLayoutManager, int position) {
+
+				return list.get(position).getSpanSize();
+			}
+		});
+		homeMultipleItemAdapter.addHeaderView(headView);
+		mRecyclerView.setAdapter(homeMultipleItemAdapter);
+
+
+	}
+
+	/**
+	 * 加载状态监听
+	 *
+	 * @param Sate
+	 */
+
+	@Override
+	public void showState(int Sate) {
+		switch (Sate) {
+			case 0:
+				xLoadingView.showLoading();
+				break;
+			case 1:
+
+				xLoadingView.showContent();
+				break;
+			case 2:
+				xLoadingView.showError();
+				break;
+
 		}
 
-		MarqueeView marquee_name = (MarqueeView) headView.findViewById(R.id.marquee_name);
-		MarqueeView marquee_content = (MarqueeView) headView.findViewById(R.id.marquee_content);
-		marquee_name.startWithList(name);
-		marquee_content.startWithList(content);
 	}
 
 	@Override
@@ -414,7 +354,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 				if (mDistanceY < 10) {
 					mToolbar.setBackgroundResource(R.color.colorTransparency);
 					darkView.setBackgroundResource(R.color.colorTransparency);
-					et_search.setHintTextColor(getResources().getColor(R.color.tv_hint));
+					et_search.setTextColor(getResources().getColor(R.color.tv_hint));
 
 				} else if (mDistanceY <= toolbarHeight) {
 
@@ -422,13 +362,13 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 					float alpha = scale * 255;
 					mToolbar.setBackgroundColor(Color.argb((int) alpha, 0, 118, 42));
 					darkView.setBackgroundColor(Color.argb((int) alpha, 29, 160, 57));
-					et_search.setHintTextColor(getResources().getColor(R.color.bg_gray));
+					et_search.setTextColor(getResources().getColor(R.color.bg_gray));
 
 
 				} else {
 					mToolbar.setBackgroundResource(R.color.colorPrimaryDark);
 					darkView.setBackgroundResource(R.color.colorPrimary);
-					et_search.setHintTextColor(getResources().getColor(R.color.bg_white));
+					et_search.setTextColor(getResources().getColor(R.color.bg_white));
 				}
 			}
 		});
@@ -447,7 +387,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		this.showWord = showWord;
 		this.keyWord = keyWord;
 		MyShopApplication.setKeyWord(keyWord);
-		et_search.setHint(keyWord);
+		et_search.setText(keyWord);
 		MyShopApplication.setKeyWord(keyWord);
 		setSearchListener();
 
@@ -463,18 +403,22 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	 */
 	@Override
 	public void OnImageViewClick(View view, final String type, final String data, boolean isAD) {
+
+		Map<String, String> params = new HashMap();
+
+
 		XLog.v("TYPE" + type + ":DATA" + data);
 		if (type.equals("good")) {
-			HashMap<String, String> params = new HashMap();
+
 			params.put("goodId", data);
 			CommUtil.gotoActivity(getActivity(), GoodDetailsActivity.class, false, params);
 		} else if (type.equals("store")) {
-			HashMap<String, String> params = new HashMap();
+
 			params.put("storeId", data);
 			CommUtil.gotoActivity(getActivity(), StoreActivity.class, false, params);
 		} else if (type.equals("html")) {
-			HashMap<String, String> params = new HashMap();
-			params.put("htmlUrl", data);
+
+			params.put("url", data);
 			CommUtil.gotoActivity(getActivity(), WebViewActivity.class, false, params);
 		}
 	}
@@ -489,10 +433,11 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 			@Override
 			public boolean onTouch(View view, MotionEvent motionEvent) {
 				if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-					Intent intent = new Intent(getActivity(), SearchGoodsActivity.class);
-					intent.putExtra("keyword", keyWord);
-					intent.putExtra("showWord", showWord);
-					startActivity(intent);
+					Map<String, String> params = new HashMap();
+					params.put("keyword", keyWord);
+					params.put("showWord", showWord);
+					CommUtil.gotoActivity(getActivity(), SearchGoodsActivity.class, false, params);
+
 				}
 				return false;
 			}
@@ -521,6 +466,30 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	}
 
+	private void restoreState() {
+		if (saveState != null) {
+			mDistanceY = saveState.getInt("DistanceY");
+		}
+	}
+
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		saveStatetoArguments();
+	}
+
+	private void saveStatetoArguments() {
+		saveState = saveState();
+		if (saveState != null) {
+			Bundle b = getArguments();
+		}
+	}
+
+	private Bundle saveState() {
+		Bundle d = new Bundle();
+		d.putInt("DistanceY", mDistanceY);
+		return d;
+	}
 
 	@Override
 	@CallSuper
@@ -546,5 +515,16 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	private void scrollToTop() {
 		mRecyclerView.smoothScrollToPosition(0);
+	}
+
+	/**
+	 * Prenenter加载首页数据
+	 *
+	 * @param savedInstanceState
+	 */
+	@Override
+	public void initData(@Nullable Bundle savedInstanceState) {
+
+
 	}
 }

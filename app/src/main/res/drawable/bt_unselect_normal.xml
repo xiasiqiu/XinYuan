@@ -6,5 +6,5 @@
         android:color="@color/tv_name"/>
 
 
-    <corners android:radius="10dip"/>
+    <corners android:radius="15dip"/>
 </shape>

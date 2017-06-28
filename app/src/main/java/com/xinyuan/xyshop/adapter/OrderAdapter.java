@@ -19,6 +19,7 @@ import com.xinyuan.xyshop.common.AddViewHolder;
 import com.xinyuan.xyshop.model.OrderModel;
 import com.xinyuan.xyshop.ui.goods.store.StoreActivity;
 import com.xinyuan.xyshop.ui.mine.order.OrderDetailActivity;
+import com.xinyuan.xyshop.ui.mine.order.fragment.EvaActivity;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 
 import java.util.List;
@@ -69,12 +70,28 @@ public class OrderAdapter extends BaseQuickAdapter<OrderModel.OrderBean, BaseVie
 				break;
 			case 3:
 				LinearLayout ll_order_bt_dpj = helper.getView(R.id.ll_order_bt_dpj);
+				Button bt_order_eva = helper.getView(R.id.bt_order_eva);
+				bt_order_eva.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						Intent intent = new Intent(mContext, EvaActivity.class);
+						mContext.startActivity(intent);
+					}
+				});
 				ll_order_bt_dpj.setVisibility(View.VISIBLE);
 				tv_status.setText("等待评价");
 				break;
 			case 4:
 				LinearLayout ll_order_bt_finish = helper.getView(R.id.ll_order_bt_finish);
 				ll_order_bt_finish.setVisibility(View.VISIBLE);
+				Button bt_order_eva_later = helper.getView(R.id.bt_order_eva_later);
+				bt_order_eva_later.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						Intent intent = new Intent(mContext, EvaActivity.class);
+						mContext.startActivity(intent);
+					}
+				});
 				tv_status.setText("交易成功");
 				break;
 			case 5:

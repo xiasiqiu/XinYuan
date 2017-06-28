@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.flyco.tablayout.SlidingTabLayout;
@@ -48,7 +49,8 @@ public class GroupBuyActivity extends BaseActivity {
 			"热门团购", "最新团购", "全部团购"
 	};
 	@BindView(R.id.ll_header_layout)
-	LinearLayout headerLayout;
+	ImageView headerLayout;
+
 	//是否隐藏了头部
 	private boolean isHideHeaderLayout = false;
 
@@ -79,6 +81,7 @@ public class GroupBuyActivity extends BaseActivity {
 		psts_group.setViewPager(vp_content);
 		vp_content.setCurrentItem(0);
 		vp_content.setOffscreenPageLimit(3);
+		headerLayout.setImageResource(R.drawable.ic_beauty);
 		initAppBarLayout();
 	}
 
@@ -147,6 +150,5 @@ public class GroupBuyActivity extends BaseActivity {
 		}
 		return super.onKeyDown(keyCode, event);
 	}
-
 
 }

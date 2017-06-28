@@ -5,5 +5,5 @@
 
 
 
-    <stroke android:width="1px" android:color="@color/colorLine" />
+    <stroke android:width="2px" android:color="@color/colorLine" />
 </shape>

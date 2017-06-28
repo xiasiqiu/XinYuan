@@ -7,11 +7,14 @@
 
     <include layout="@layout/view_header_tv_tv"/>
 
+    <View
+        style="@style/XYLine"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_footer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="3dp"/>
+        android:background="@color/bg_gray"
+        android:layout_height="match_parent"/>
 
 
 </LinearLayout>

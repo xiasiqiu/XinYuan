@@ -58,29 +58,31 @@ public class RightSearchPly extends RelativeLayout {
 		if (selectFilterTests != null) {
 			filterKeyList = selectFilterTests.getKeyList();
 		}
-
-		int menucount = filterKeyList.size();
-		ArrayList<MultiItemEntity> res = new ArrayList<>();
-		for (SelectFilterTest.FilterKey key : filterKeyList) {
-			ExpandItem expandItem = new ExpandItem("", key.getCategoryName());
-			for (SelectFilterTest.FilterKey.KeyItem item : key.getKeyitem()) {
-				expandItem.addSubItem(new Menu("", item.getCategoryName()));
+		if (filterKeyList!= null) {
+			int menucount = filterKeyList.size();
+			ArrayList<MultiItemEntity> res = new ArrayList<>();
+			for (SelectFilterTest.FilterKey key : filterKeyList) {
+				ExpandItem expandItem = new ExpandItem("", key.getCategoryName());
+				for (SelectFilterTest.FilterKey.KeyItem item : key.getKeyitem()) {
+					expandItem.addSubItem(new Menu("", item.getCategoryName()));
+				}
+				res.add(expandItem);
 			}
-			res.add(expandItem);
+
+			final SelectDialogAdapter selectDialogAdapter = new SelectDialogAdapter(res, filterKeyList);
+			final GridLayoutManager manager = new GridLayoutManager(getContext(), 3);
+			manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+				@Override
+				public int getSpanSize(int position) {
+					return selectDialogAdapter.getItemViewType(position) == SelectDialogAdapter.TYPE_ITEM ? 1 : manager.getSpanCount();
+				}
+			});
+			RV_filter.setAdapter(selectDialogAdapter);
+			selectDialogAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
+			RV_filter.setLayoutManager(manager);
+			selectDialogAdapter.expandAll();
 		}
 
-		final SelectDialogAdapter selectDialogAdapter = new SelectDialogAdapter(res, filterKeyList);
-		final GridLayoutManager manager = new GridLayoutManager(getContext(), 3);
-		manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-			@Override
-			public int getSpanSize(int position) {
-				return selectDialogAdapter.getItemViewType(position) == SelectDialogAdapter.TYPE_ITEM ? 1 : manager.getSpanCount();
-			}
-		});
-		RV_filter.setAdapter(selectDialogAdapter);
-		selectDialogAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
-		RV_filter.setLayoutManager(manager);
-		selectDialogAdapter.expandAll();
 
 	}
 

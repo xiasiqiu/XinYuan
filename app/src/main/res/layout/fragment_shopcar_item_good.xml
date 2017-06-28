@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="125dp"
                 android:background="@color/bg_white">
 
     <View
@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="10dp"
         android:text="[促销]满19：00得赠品，赠完为止"
         android:textSize="@dimen/tv_light"/>
 
@@ -63,15 +63,17 @@
         android:layout_marginLeft="6dp"
         android:layout_marginTop="13dp"
         android:layout_toRightOf="@+id/ll_good_img"
-        android:text="重量:0.473kg   颜色：魅海蓝   版本：全网通（4G）"/>
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="重量:0.473kg  颜色：魅海蓝   版本：全网通（4G）"/>
 
     <TextView
         android:id="@+id/tv_good_price"
         style="@style/GoodsPriceTextView"
-        android:layout_below="@+id/tv_good_spec"
-        android:layout_marginBottom="15dp"
+
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="18dp"
         android:layout_marginLeft="6dp"
-        android:layout_marginTop="17dp"
         android:layout_toRightOf="@+id/ll_good_img"
         android:text="￥：2099.00"/>
 
@@ -82,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
         android:layout_marginRight="10dp"/>
 
 

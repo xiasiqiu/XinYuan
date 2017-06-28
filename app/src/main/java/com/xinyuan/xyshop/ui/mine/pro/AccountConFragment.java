@@ -1,6 +1,7 @@
 package com.xinyuan.xyshop.ui.mine.pro;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.util.SystemBarHelper;
+import com.youth.xframe.utils.log.XLog;
 
 import butterknife.BindView;
 
@@ -51,18 +53,24 @@ public class AccountConFragment extends BaseFragment {
 
 	@Override
 	public void initView() {
-		SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
-		SystemBarHelper.setHeightAndPadding(getActivity(), msg_toolbar);
+		if (msg_toolbar != null) {
+			XLog.v("余额操作加载Tooolbar");
+			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
+			SystemBarHelper.setHeightAndPadding(getActivity(), msg_toolbar);
+			if (mTitle.equals("余额充值")) {
+				tv_account_re_hint.setVisibility(View.VISIBLE);
+				rl_account_re.setVisibility(View.VISIBLE);
+			} else {
+				ll_account_withdrawals.setVisibility(View.VISIBLE);
+			}
 
-		if (mTitle.equals("余额充值")) {
-			tv_account_re_hint.setVisibility(View.VISIBLE);
-			rl_account_re.setVisibility(View.VISIBLE);
-		} else {
-			ll_account_withdrawals.setVisibility(View.VISIBLE);
+			getToolBar();
 		}
 
-		getToolBar();
+
 	}
+
+
 
 	private void getToolBar() {
 		tv_header_center.setText(mTitle);

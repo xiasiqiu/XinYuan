@@ -144,7 +144,7 @@ public class GoodDetailsActivity extends BaseActivity {
 
 	}
 
-	@OnClick({R.id.bt_store, R.id.bt_service, R.id.bt_goos_buy,R.id.bt_add_car})
+	@OnClick({R.id.bt_store, R.id.bt_service, R.id.bt_goos_buy, R.id.bt_add_car})
 	public void OnClick(View v) {
 		v.getId();
 		switch (v.getId()) {

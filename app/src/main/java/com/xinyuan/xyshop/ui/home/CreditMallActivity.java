@@ -5,6 +5,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -18,6 +19,8 @@ import com.xinyuan.xyshop.entity.CreditMultipleItem;
 import com.xinyuan.xyshop.http.Urls;
 import com.xinyuan.xyshop.model.CreditModel;
 import com.xinyuan.xyshop.model.TestCreditModel;
+import com.xinyuan.xyshop.ui.goods.SearchGoodsActivity;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.JsonUtil;
 import com.youth.banner.Banner;
@@ -28,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -113,7 +117,7 @@ public class CreditMallActivity extends BaseActivity {
 	private void addFooter() {
 		View footView = this.getLayoutInflater().inflate(R.layout.activity_credit_mall_item_module, (ViewGroup) rv_credit.getParent(), false);
 		TextView textView = (TextView) footView.findViewById(R.id.tv_credit_module);
-		textView.setText("为您推荐");
+		textView.setText(R.string.user_recomm);
 		RecyclerView rv_recom = (RecyclerView) footView.findViewById(R.id.rv_credit_content);
 		CreditGoodsAdapter adapter = new CreditGoodsAdapter(R.layout.item_good_grid, creditModel.getRecommend());
 		GridLayoutManager layoutManager2 = new GridLayoutManager(this, 2, 1, false);
@@ -125,6 +129,22 @@ public class CreditMallActivity extends BaseActivity {
 	@Override
 	public void initView() {
 
+
+	}
+
+
+	@OnClick({R.id.goodshow_btn_back, R.id.goodshow_et_search, R.id.goodshow_btn_msg})
+	public void onToolBarClick(View view) {
+		switch (view.getId()) {
+			case R.id.goodshow_btn_back:
+				onBackPressed();
+				break;
+			case R.id.goodshow_et_search:
+				CommUtil.gotoActivity(this, SearchGoodsActivity.class,false,null);
+				break;
+			case R.id.goodshow_btn_msg:
+				break;
+		}
 
 	}
 }

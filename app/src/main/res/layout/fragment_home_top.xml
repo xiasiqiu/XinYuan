@@ -18,7 +18,6 @@
             app:indicator_drawable_selected="@drawable/banner_shape"
             app:indicator_height="8dp"
             app:indicator_margin="6dp"
-
             app:indicator_width="8dp"/>
 
         <android.support.v7.widget.RecyclerView

@@ -8,6 +8,7 @@
     <ImageView
         android:id="@+id/iv_store_level"
         android:layout_width="wrap_content"
+        android:layout_margin="2dp"
         android:layout_height="wrap_content"/>
 
 </RelativeLayout>

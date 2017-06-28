@@ -11,5 +11,5 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:textColor="@color/colorPrimary"
-        android:layout_marginLeft="48px"/>
+        android:layout_marginLeft="15dp"/>
 </RelativeLayout>

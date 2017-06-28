@@ -49,7 +49,6 @@ public class SearchGoodsActivity extends BaseActivity {
 	ImageView search_btn_search;
 
 
-
 	public static String showWord;
 	public static String keyWord;
 	private List<String> hotSearchs;
@@ -68,9 +67,7 @@ public class SearchGoodsActivity extends BaseActivity {
 
 	@Override
 	public void initData(Bundle savedInstanceState) {
-		this.showWord = getIntent().getStringExtra("showWord");
 		this.keyWord = getIntent().getStringExtra("keyword");
-		XLog.v("showKeyWord" + keyWord);
 
 	}
 
@@ -78,8 +75,10 @@ public class SearchGoodsActivity extends BaseActivity {
 	@Override
 	public void initView() {
 		ButterKnife.bind(this);
+		if (keyWord != null && !keyWord.equals("")) {
+			search_et.setHint(keyWord);
+		}
 
-		search_et.setHint(keyWord);
 		this.application = MyShopApplication.getInstance();
 		search_et.addTextChangedListener(new TextWatcher() {
 			@Override
@@ -165,7 +164,7 @@ public class SearchGoodsActivity extends BaseActivity {
 	}
 
 
-	@OnClick({ R.id.seach_btn_delete, R.id.search_btn_search, R.id.btnClearHistory,R.id.search_btn_back})
+	@OnClick({R.id.seach_btn_delete, R.id.search_btn_search, R.id.btnClearHistory, R.id.search_btn_back})
 	public void onClick(View view) {
 		switch (view.getId()) {
 			case R.id.seach_btn_delete:

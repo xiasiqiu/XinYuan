@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:ratingbar="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_gray"
+              android:orientation="vertical">
+
+    <include layout="@layout/view_header_tv_msg"/>
+
+    <View
+        style="@style/XYLine"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/ed_eva"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_border"
+            android:gravity="top"
+            android:hint="亲，请在这里写下你对商品的评价"
+            android:padding="5dp"
+            android:textSize="@dimen/tv_Normal"/>
+
+        <View
+            style="@style/NoramLine"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+
+            <RelativeLayout
+                android:id="@+id/rl_eva_pic_pull"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/bg_border"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_eva_pullpic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_mine_pic"/>
+
+                <TextView
+                    style="@style/NormalTextView"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/iv_eva_pullpic"
+                    android:text="晒美图"/>
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rl_eva_star"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                style="@style/RegularTextView"
+                android:text="店铺评分"/>
+
+            <TextView
+                style="@style/NormalTextView"
+                android:layout_marginTop="30dp"
+                android:text="描述相符"/>
+
+            <TextView
+                style="@style/NormalTextView"
+                android:layout_marginTop="55dp"
+                android:text="物流服务"/>
+
+            <TextView
+                style="@style/NormalTextView"
+                android:layout_marginTop="80dp"
+                android:text="服务态度"/>
+
+            <com.xinyuan.xyshop.widget.StarBar
+                android:id="@+id/startBar1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="30dp"
+                android:padding="30dp"
+                ratingbar:starCount="5"
+                ratingbar:starDistance="5dp"
+                ratingbar:starEmpty="@drawable/ic_eva_star"
+                ratingbar:starFill="@drawable/ic_star_p"
+                ratingbar:starSize="15dp"/>
+
+            <com.xinyuan.xyshop.widget.StarBar
+                android:id="@+id/startBar2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="55dp"
+                android:padding="30dp"
+                ratingbar:starCount="5"
+                ratingbar:starDistance="5dp"
+                ratingbar:starEmpty="@drawable/ic_eva_star"
+                ratingbar:starFill="@drawable/ic_star_p"
+                ratingbar:starSize="15dp"/>
+
+            <com.xinyuan.xyshop.widget.StarBar
+                android:id="@+id/startBar3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="80dp"
+                android:padding="30dp"
+                ratingbar:starCount="5"
+                ratingbar:starDistance="5dp"
+                ratingbar:starEmpty="@drawable/ic_eva_star"
+                ratingbar:starFill="@drawable/ic_star_p"
+                ratingbar:starSize="15dp"/>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

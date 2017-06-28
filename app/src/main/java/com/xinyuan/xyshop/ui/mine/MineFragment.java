@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.xinyuan.xyshop.MainFragment;
+import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.even.StartBrotherEvent;
@@ -19,6 +20,8 @@ import com.xinyuan.xyshop.ui.goods.GoodBusBean;
 import com.xinyuan.xyshop.ui.home.UserBusBean;
 import com.xinyuan.xyshop.ui.mine.info.FavFragment;
 import com.xinyuan.xyshop.ui.mine.info.FollowFragment;
+import com.xinyuan.xyshop.ui.mine.info.FooterFragment;
+import com.xinyuan.xyshop.ui.mine.info.SettingFragment;
 import com.xinyuan.xyshop.ui.mine.info.UserInfoFragment;
 import com.xinyuan.xyshop.ui.mine.order.OrderActivity;
 import com.xinyuan.xyshop.ui.mine.order.OrderDetailActivity;
@@ -126,7 +129,7 @@ public class MineFragment extends BaseFragment {
 
 	}
 
-	@OnClick({R.id.ll_mine_fav, R.id.customer_image, R.id.bt_mine_credit, R.id.ll_follow_store})
+	@OnClick({R.id.ll_mine_fav, R.id.customer_image, R.id.tv_mine_perfect, R.id.bt_mine_credit, R.id.ll_follow_store, R.id.ll_mine_foot, R.id.bt_setting})
 	public void onMyInfoClick(View view) {
 		switch (view.getId()) {
 			case R.id.ll_mine_fav:
@@ -135,11 +138,20 @@ public class MineFragment extends BaseFragment {
 			case R.id.customer_image:
 				EventBus.getDefault().post(new StartBrotherEvent(UserInfoFragment.newInstance()));
 				break;
+			case R.id.tv_mine_perfect:
+				EventBus.getDefault().post(new StartBrotherEvent(UserInfoFragment.newInstance()));
+				break;
 			case R.id.bt_mine_credit:
 				EventBus.getDefault().post(new StartBrotherEvent(CreditFragment.newInstance()));
 				break;
 			case R.id.ll_follow_store:
 				EventBus.getDefault().post(new StartBrotherEvent(FollowFragment.newInstance()));
+				break;
+			case R.id.ll_mine_foot:
+				EventBus.getDefault().post(new StartBrotherEvent(FooterFragment.newInstance()));
+				break;
+			case R.id.bt_setting:
+				EventBus.getDefault().post(new StartBrotherEvent(SettingFragment.newInstance()));
 				break;
 		}
 
@@ -188,17 +200,15 @@ public class MineFragment extends BaseFragment {
 	}
 
 
-	private boolean login = false;
-
 	@Subscribe
 	public void onTabSelectedEvent(TabSelectedEvent event) {
 		if (event.position != MainFragment.MINE) return;
 
-		if (!false) {
+		if (!MyShopApplication.isLogin) {
 			Intent mIntent = new Intent();
 			mIntent.setClass(getActivity(), LoginActivity.class);
 			startActivityForResult(mIntent, requestCode);
-			login = true;
+			MyShopApplication.isLogin = true;
 		}
 
 	}
