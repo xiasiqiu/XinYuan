@@ -18,6 +18,7 @@
     <color name="tv_price">#ff3030</color>
 
 
+
     <color name="search_bg">#F8F8FF</color>
     <color name="search_sort_bg">#ababab</color>
     <color name="boder">#ffe3e3e3</color>
@@ -57,4 +58,6 @@
     <color name="colorTopFont">#d42d00</color>
     <color name="list_divider_line">#e7e7e7</color>
     <color name="colorAskTopBackgroud">#00BCD4</color>
+
+    <color name="paper_button_shadow_color">#000000</color>
 </resources>

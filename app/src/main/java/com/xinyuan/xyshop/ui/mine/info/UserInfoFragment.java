@@ -1,5 +1,6 @@
 package com.xinyuan.xyshop.ui.mine.info;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.yancy.gallerypick.config.GalleryConfig;
 import com.yancy.gallerypick.config.GalleryPick;
 import com.yancy.gallerypick.inter.IHandlerCallBack;
 import com.youth.xframe.utils.log.XLog;
+import com.youth.xframe.utils.permission.XPermission;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -104,27 +106,44 @@ public class UserInfoFragment extends BaseFragment {
 				pvTime.show();
 				break;
 			case R.id.rl_user_head:
-				final BottomPopupImage bottomPopupOption = new BottomPopupImage(context);
-				bottomPopupOption.setItemText("拍照", "选择相册");
-				bottomPopupOption.showPopupWindow();
-				bottomPopupOption.setItemClickListener(new BottomPopupImage.onPopupWindowItemClickListener() {
-					@Override
-					public void onItemClick(int position) {
-						XLog.v("选择" + position);
-						switch (position) {
-							case 0:
-								GalleryPick.getInstance().setGalleryConfig(galleryConfig).openCamera(getActivity());
-								bottomPopupOption.dismiss();
-								break;
-							case 1:
-								galleryConfig.getBuilder().isOpenCamera(false).build();
-								GalleryPick.getInstance().setGalleryConfig(galleryConfig).open(getActivity());
-								bottomPopupOption.dismiss();
-								break;
-						}
 
+				XPermission.requestPermissions(context, 100, new String[]{Manifest.permission
+						.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, new XPermission.OnPermissionListener() {
+					//权限申请成功时调用
+					@Override
+					public void onPermissionGranted() {
+						final BottomPopupImage bottomPopupOption = new BottomPopupImage(context);
+						bottomPopupOption.setItemText(getString(R.string.take_pic), getString(R.string.chose_pic));
+						bottomPopupOption.showPopupWindow();
+						bottomPopupOption.setItemClickListener(new BottomPopupImage.onPopupWindowItemClickListener() {
+							@Override
+							public void onItemClick(int position) {
+
+								switch (position) {
+									case 0:
+										GalleryPick.getInstance().setGalleryConfig(galleryConfig).openCamera(getActivity());
+										bottomPopupOption.dismiss();
+										break;
+									case 1:
+										galleryConfig.getBuilder().isOpenCamera(false).build();
+										GalleryPick.getInstance().setGalleryConfig(galleryConfig).open(getActivity());
+										bottomPopupOption.dismiss();
+										break;
+								}
+
+							}
+						});
+					}
+
+					//权限被用户禁止时调用
+					@Override
+					public void onPermissionDenied() {
+
+						XPermission.showTipsDialog(context);
 					}
 				});
+
+
 				break;
 			case R.id.rl_user_sex:
 				final BottomPopupImage bottomPopupSex = new BottomPopupImage(context);

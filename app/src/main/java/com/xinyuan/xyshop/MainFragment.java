@@ -27,7 +27,7 @@ import me.yokeyword.fragmentation.SupportFragment;
 public class MainFragment extends BaseFragment {
 	@BindView(R.id.bottomBar)
 	BottomBar bottomBar;
-
+	private static final int REQ_USER = 100;
 	public static final int HOME = 0;
 	public static final int CLASS = 1;
 	public static final int CAR = 2;
@@ -108,18 +108,19 @@ public class MainFragment extends BaseFragment {
 		}
 	}
 
-	@Override
-	public void onFragmentResult(int requestCode, int resultCode, Bundle data) {
-		super.onFragmentResult(requestCode, resultCode, data);
-
-	}
-
 
 	@Subscribe
 	public void startBrother(StartBrotherEvent event) {
-		start(event.targetFragment);
+		if (event.isResult) {
+			startForResult(event.targetFragment, event.requestCode);
+		} else {
+			start(event.targetFragment);
+		}
+
 
 	}
+
+
 
 	@Override
 	public void onDestroyView() {

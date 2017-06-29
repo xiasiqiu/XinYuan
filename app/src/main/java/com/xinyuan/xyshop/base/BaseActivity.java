@@ -21,6 +21,7 @@ import com.youth.xframe.common.XActivityStack;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.utils.permission.XPermission;
 import com.youth.xframe.utils.statusbar.XStatusBar;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.yokeyword.fragmentation.SupportActivity;
@@ -104,8 +105,7 @@ public abstract class BaseActivity extends SupportActivity implements ICallback,
 		EventBus.getDefault().unregister(this);//反注册
 		XActivityStack.getInstance().finishActivity();
 		super.onDestroy();
-		XLog.d("-----------------------Acitivty已经销毁了------------------");
-
+		XLog.d("-----------------------Acitivty销毁!s------------------");
 
 
 	}

@@ -4,11 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.xinyuan.xyshop.MainFragment;
 import com.xinyuan.xyshop.MyShopApplication;
@@ -16,23 +13,18 @@ import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.even.StartBrotherEvent;
 import com.xinyuan.xyshop.even.TabSelectedEvent;
-import com.xinyuan.xyshop.ui.goods.GoodBusBean;
 import com.xinyuan.xyshop.ui.home.UserBusBean;
 import com.xinyuan.xyshop.ui.mine.info.FavFragment;
 import com.xinyuan.xyshop.ui.mine.info.FollowFragment;
 import com.xinyuan.xyshop.ui.mine.info.FooterFragment;
 import com.xinyuan.xyshop.ui.mine.info.SettingFragment;
 import com.xinyuan.xyshop.ui.mine.info.UserInfoFragment;
+import com.xinyuan.xyshop.ui.mine.login.LoginFragment;
 import com.xinyuan.xyshop.ui.mine.order.OrderActivity;
-import com.xinyuan.xyshop.ui.mine.order.OrderDetailActivity;
-import com.xinyuan.xyshop.ui.mine.pro.AccountConFragment;
 import com.xinyuan.xyshop.ui.mine.pro.AccountFragment;
 import com.xinyuan.xyshop.ui.mine.pro.CouponFragment;
 import com.xinyuan.xyshop.ui.mine.pro.CreditFragment;
 import com.xinyuan.xyshop.ui.mine.pro.ProPertyFragment;
-import com.xinyuan.xyshop.ui.shopcar.ShopCarFragment;
-import com.xinyuan.xyshop.util.CommUtil;
-import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.youth.xframe.utils.log.XLog;
 
 import org.greenrobot.eventbus.EventBus;
@@ -79,6 +71,7 @@ public class MineFragment extends BaseFragment {
 	public void initView() {
 		ButterKnife.bind(this, getView());
 		XLog.v("加载个人页面Fragment");
+		MyShopApplication.isLogin=false;
 	}
 
 	@OnClick({R.id.bt_more_order, R.id.bt_mine_order1, R.id.bt_mine_order2, R.id.bt_mine_order3, R.id.bt_mine_order4, R.id.bt_mine_order5})
@@ -179,12 +172,12 @@ public class MineFragment extends BaseFragment {
 
 	}
 
+	private static final int REQ_USER = 100;
+
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (data != null) {
+		if (requestCode == REQ_USER && resultCode == RESULT_OK && data != null) {
 			String change01 = data.getStringExtra("userId");
-		} else {
-			EventBus.getDefault().post(new UserBusBean(UserBusBean.HomeIndex, 0));
 		}
 
 
@@ -203,11 +196,8 @@ public class MineFragment extends BaseFragment {
 	@Subscribe
 	public void onTabSelectedEvent(TabSelectedEvent event) {
 		if (event.position != MainFragment.MINE) return;
-
 		if (!MyShopApplication.isLogin) {
-			Intent mIntent = new Intent();
-			mIntent.setClass(getActivity(), LoginActivity.class);
-			startActivityForResult(mIntent, requestCode);
+			EventBus.getDefault().post(new StartBrotherEvent(LoginFragment.newInstance(), true, REQ_USER));
 			MyShopApplication.isLogin = true;
 		}
 

@@ -71,6 +71,9 @@
     <string name="brandrecomm">品牌推荐#</string>
     <string name="brandtitle">品牌店铺</string>
     <string name="user_recomm">为您推荐</string>
+    <string name="take_pic">拍照</string>
+    <string name="chose_pic">选择相册</string>
+    <string name="login_inputname">输入用户名</string>
 
 
 </resources>

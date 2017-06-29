@@ -22,6 +22,8 @@ import com.xinyuan.xyshop.model.BrandModel;
 import com.xinyuan.xyshop.util.JsonUtil;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.xinyuan.xyshop.widget.WaveSideBarView;
+import com.youth.xframe.utils.XAppUtils;
+import com.youth.xframe.utils.XEmptyUtils;
 import com.youth.xframe.widget.loadingview.XLoadingView;
 
 import java.util.ArrayList;
@@ -105,8 +107,8 @@ public class BrandFragment extends BaseFragment {
 	}
 
 	private void inRV(BrandList brandList) {
-		if (brandList.equals("") || brandList == null) {
-			loadingView.showEmpty();
+		if (XEmptyUtils.isEmpty(brandList)) {
+			loadingView.showError();
 		} else {
 			AdList = brandList.getDatas().getAdList();
 			AllBrandList = brandList.getDatas().getAllBrandList();

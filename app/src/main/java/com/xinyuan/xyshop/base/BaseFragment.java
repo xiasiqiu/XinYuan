@@ -57,14 +57,8 @@ public abstract class BaseFragment extends SupportFragment implements ICallback,
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-		this.application = MyShopApplication.getInstance();
-
-		this.context = getActivity();
 		if (contentView == null) {
-
 			contentView = inflater.inflate(getLayoutId(), container, false);
-
 			contentView.setClickable(true);// 防止点击穿透，底层的fragment响应上层点击触摸事件
 			mUnbinder = ButterKnife.bind(this, contentView);
 			return contentView;
@@ -80,6 +74,8 @@ public abstract class BaseFragment extends SupportFragment implements ICallback,
 	@Override
 	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		this.application = MyShopApplication.getInstance();
+		this.context = getActivity();
 		initData(savedInstanceState);
 		initView();
 	}
@@ -163,7 +159,7 @@ public abstract class BaseFragment extends SupportFragment implements ICallback,
 		lifecycleSubject.onNext(FragmentEvent.DESTROY);
 		mUnbinder.unbind();
 		super.onDestroy();
-		XLog.d("-----------------------Acitivty已经销毁了------------------");
+		XLog.d("-----------------------Fragment销毁!------------------");
 
 	}
 

@@ -33,17 +33,15 @@
         <TextView
             android:id="@+id/tv_header_center"
             style="@style/BlodTextView"
-            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:text="撒大声地撒"
+            android:layout_centerVertical="true"
             />
 
         <TextView
             android:id="@+id/tv_header_right"
             style="@style/RegularTextView"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:text="送到"/>
+            android:layout_centerVertical="true"/>
 
 
     </RelativeLayout>

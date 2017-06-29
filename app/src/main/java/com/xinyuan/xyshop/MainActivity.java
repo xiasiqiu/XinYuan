@@ -52,30 +52,9 @@ public class MainActivity extends BaseActivity {
 
 	@Override
 	public void initView() {
-		getPer();
 		if (findFragment(MainFragment.class) == null) {
 			loadRootFragment(R.id.main_content, MainFragment.newInstance());
 		}
 		setFragmentAnimator(new DefaultHorizontalAnimator());
 	}
-
-	private void getPer() {
-		XPermission.requestPermissions(this, 100, new String[]{Manifest.permission
-				.CALL_PHONE, Manifest.permission.READ_PHONE_STATE, Manifest.permission.GET_ACCOUNTS, Manifest.permission.READ_CONTACTS, Manifest.permission.WRITE_EXTERNAL_STORAGE}, new XPermission.OnPermissionListener() {
-			//权限申请成功时调用
-			@Override
-			public void onPermissionGranted() {
-
-			}
-
-			//权限被用户禁止时调用
-			@Override
-			public void onPermissionDenied() {
-				//给出友好提示，并且提示启动当前应用设置页面打开权限
-				XPermission.showTipsDialog(getApplicationContext());
-			}
-		});
-	}
-
-
 }
