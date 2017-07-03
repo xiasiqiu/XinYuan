@@ -64,6 +64,7 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by fx on 2017/5/9 0009.
@@ -526,5 +527,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	public void initData(@Nullable Bundle savedInstanceState) {
 
 
+	}
+
+	@OnClick(R.id.act_home_btn_scan)
+	public void OpenScan() {
+		CommUtil.gotoActivity(getActivity(), ScanActivity.class, false, null);
 	}
 }

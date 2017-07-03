@@ -7,34 +7,11 @@ import java.io.Serializable;
  */
 
 public class ItemData implements Serializable {
+	private static final long serialVersionUID = -8926264069824104056L;
 	private String data;
 	private String imageUrl;
 	private String type;
-	private String image;
-
-	public String getImageUrl() {
-		return this.imageUrl;
-	}
-
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
-
-	public String getType() {
-		return this.type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getData() {
-		return this.data;
-	}
-
-	public void setData(String data) {
-		this.data = data;
-	}
+	private String text;
 
 	@Override
 	public String toString() {
@@ -42,6 +19,23 @@ public class ItemData implements Serializable {
 				"data='" + data + '\'' +
 				", imageUrl='" + imageUrl + '\'' +
 				", type='" + type + '\'' +
+				", text='" + text + '\'' +
 				'}';
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public String getData() {
+		return data;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public String getType() {
+		return type;
 	}
 }

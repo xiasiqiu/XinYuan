@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/bg_gray"
+              android:orientation="vertical"
+              android:padding="10dp">
+
+    <TextView
+        style="@style/LightTextView"
+        android:layout_gravity="center_horizontal"
+        android:text="2017-03-02 22:12"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/service_store_bg"
+        android:orientation="vertical"
+        android:paddingBottom="15dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_status_title"
+                style="@style/RegularTextView"
+                android:text="请退货"
+                android:textColor="@color/bg_white"/>
+
+            <TextView
+                android:id="@+id/tv_status_hint"
+                style="@style/LightTextView"
+                android:layout_alignParentRight="true"
+                android:text="剩余06天11小时48分"
+                android:textColor="@color/bg_white"/>
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/service_line"
+            style="@style/Line"
+            android:layout_marginTop="10dp"
+            android:background="@color/bg_white"/>
+
+        <LinearLayout
+            android:id="@+id/ll_service_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/NormalTextView"
+                android:layout_marginTop="10dp"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="3dp"
+                android:text="由于您在鑫圆共享交易记录良好，平台已将卖家退货地址提供给您，请你确认商品完好的前提下尽快将货物退回。
+退货地址：四川省 成都市 成华区 洛辅街道  沙溪大道珊瑚天峰4栋301（VNOOK售后部  收）15263478591。
+退货说明：请在退货包裹内留下纸条，写上退款编号、您的会员名以及联系方式，以便及时确认完成退款。
+温馨提醒:未经卖家同意，请不要使用到付。
+申请退货后请填写物流信息，逾期未填写，申请将关闭"
+                android:textColor="@color/bg_white"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

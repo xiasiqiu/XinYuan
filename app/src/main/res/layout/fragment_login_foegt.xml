@@ -6,7 +6,6 @@
               android:background="@color/bg_white"
               android:gravity="center_horizontal"
               android:orientation="vertical">
-
     <include layout="@layout/view_header_tv_tv"/>
 
     <View style="@style/NoramLine"/>

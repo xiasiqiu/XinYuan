@@ -15,6 +15,7 @@ import com.xinyuan.xyshop.model.HomeModel;
 import com.xinyuan.xyshop.ui.goods.groupbuy.GroupBuyActivity;
 import com.xinyuan.xyshop.ui.home.BrandFragment;
 import com.xinyuan.xyshop.ui.home.CreditMallActivity;
+import com.xinyuan.xyshop.ui.home.MenuActivity;
 import com.xinyuan.xyshop.ui.home.WebViewActivity;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
@@ -104,6 +105,8 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
 				SignDialog.Builder builder = new SignDialog.Builder(mContext);
 				builder.create().show();
 				final SignDialog dialog = new SignDialog.Builder(mContext).create();
+			}else  if(data.getText().equals("查看更多")){
+				CommUtil.gotoActivity(mContext, MenuActivity.class,false,null);
 			}
 
 

@@ -7,9 +7,8 @@
     <FrameLayout
         android:id="@+id/main_content"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9"
-        android:background="#EEE"/>
+        android:layout_height="match_parent"
+        android:background="@color/bg_gray"/>
 
     <!--&lt;!&ndash;底部区域&ndash;&gt;-->
     <!--<include layout="@layout/activity_main_bottom"/>-->

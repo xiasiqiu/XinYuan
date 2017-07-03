@@ -59,5 +59,5 @@
     <color name="list_divider_line">#e7e7e7</color>
     <color name="colorAskTopBackgroud">#00BCD4</color>
 
-    <color name="paper_button_shadow_color">#000000</color>
+    <color name="paper_button_shadow_color">#0000</color>
 </resources>

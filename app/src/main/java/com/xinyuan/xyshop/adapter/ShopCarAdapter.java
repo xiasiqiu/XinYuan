@@ -80,7 +80,8 @@ public class ShopCarAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, B
 				});
 				checkBox.setChecked(group.isChoosed);
 				// notifyDataSetChanged();
-
+				TextView tv_store_name=helper.getView(R.id.tv_store_name);
+				tv_store_name.setText(groups.get(helper.getLayoutPosition()).getName());
 
 				break;
 			case TYPE_LEVEL_1:
@@ -92,7 +93,8 @@ public class ShopCarAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, B
 				final int childPosition = shopCarGoodsItem.getGoddsPostion();
 				final GoodsInfo goodsInfo = (GoodsInfo) getChild(shopCarGoodsItem.getStorePosition(), shopCarGoodsItem.getGoddsPostion());
 				if (goodsInfo != null) {
-
+					TextView tv_good_name=helper.getView(R.id.tv_good_name);
+					tv_good_name.setText(((ShopCarGoodsItem) item).getGoodsName());
 					final CheckBox goodCheckBox = helper.getView(R.id.good_checkbox);
 					goodCheckBox.setChecked(goodsInfo.isChoosed());
 					goodCheckBox.setOnClickListener(new View.OnClickListener() {
@@ -301,7 +303,7 @@ public class ShopCarAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, B
 		btreduce.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (count > 1) {//数量大雨1时操作
+				if (count > 1) {//数量大于1时操作
 					count--; //点一下减1
 					editText.setText("" + count);
 				}

@@ -18,8 +18,10 @@ import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.common.AddViewHolder;
 import com.xinyuan.xyshop.model.OrderModel;
 import com.xinyuan.xyshop.ui.goods.store.StoreActivity;
+import com.xinyuan.xyshop.ui.mine.order.LogisticActivity;
 import com.xinyuan.xyshop.ui.mine.order.OrderDetailActivity;
 import com.xinyuan.xyshop.ui.mine.order.fragment.EvaActivity;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 
 import java.util.List;
@@ -74,11 +76,17 @@ public class OrderAdapter extends BaseQuickAdapter<OrderModel.OrderBean, BaseVie
 				bt_order_eva.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-						Intent intent = new Intent(mContext, EvaActivity.class);
-						mContext.startActivity(intent);
+						CommUtil.gotoActivity(mContext, EvaActivity.class, false, null);
 					}
 				});
 				ll_order_bt_dpj.setVisibility(View.VISIBLE);
+				Button bt_order_dpj_logistical = helper.getView(R.id.bt_order_dpj_logistical);
+				bt_order_dpj_logistical.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						CommUtil.gotoActivity(mContext, LogisticActivity.class, false, null);
+					}
+				});
 				tv_status.setText("等待评价");
 				break;
 			case 4:
@@ -88,8 +96,7 @@ public class OrderAdapter extends BaseQuickAdapter<OrderModel.OrderBean, BaseVie
 				bt_order_eva_later.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-						Intent intent = new Intent(mContext, EvaActivity.class);
-						mContext.startActivity(intent);
+						CommUtil.gotoActivity(mContext, EvaActivity.class, false, null);
 					}
 				});
 				tv_status.setText("交易成功");

@@ -29,6 +29,8 @@ public class Urls {
 
 
 	public static final String URL_CREDIT = "http://tututo.me/api/creditmall.json";//积分商城数据
+	public static final String URL_EXPRESS = "http://tututo.me/api/express.json";//快递物流数据
+	public static final String URL_MENU = "http://tututo.me/api/home_menu.json";//快递物流数据
 
 
 

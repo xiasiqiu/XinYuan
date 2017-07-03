@@ -11,14 +11,17 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.GoodsAttrsAdapter;
 import com.xinyuan.xyshop.callback.SKUInterface;
 import com.xinyuan.xyshop.model.GoodsAttrsBean;
 import com.xinyuan.xyshop.ui.buy.ConfirmOrderActivity;
 import com.xinyuan.xyshop.ui.goods.GoodBusBean;
+import com.xinyuan.xyshop.ui.mine.login.LoginActivity;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
+import com.youth.xframe.utils.XEmptyUtils;
 import com.youth.xframe.utils.log.XLog;
 
 import org.greenrobot.eventbus.EventBus;
@@ -89,7 +92,19 @@ public class GoodDetailsSpecDialog extends Dialog implements SKUInterface {
 		tvGoodsName.setText(goodsAttrsBean.getDefaultGood().getGoodsName());
 		tvSkuStorage.setText("库存:" + goodsAttrsBean.getDefaultGood().getStock());
 		tvSelectedPrice.setText("￥" + goodsAttrsBean.getDefaultGood().getPrice());
-		GlideImageLoader.setImage(context, goodsAttrsBean.getAttributes().get(0).getAttributesItem().get(0).getValueImage(), ivSelectedGoodsImg);
+		XLog.v("默认产品" + selecGood.toString());
+		for (int i = 0; i < selecGood.getGoodsInfo().size(); i++) {
+			goodsAttrsBean.getAttributes().get(i);
+
+			for (int j = 0; j < goodsAttrsBean.getAttributes().get(i).getAttributesItem().size(); j++) {
+				if (goodsAttrsBean.getAttributes().get(i).getAttributesItem().get(j).getValueName().equals(selecGood.getGoodsInfo().get(i).getTabValue())) {
+					if (!goodsAttrsBean.getAttributes().get(i).getAttributesItem().get(j).getValueImage().equals("")) {
+						XLog.v("选中的是" + goodsAttrsBean.getAttributes().get(i).getAttributesItem().get(j).getValueImage());
+						GlideImageLoader.setImage(context, goodsAttrsBean.getAttributes().get(i).getAttributesItem().get(j).getValueImage(), ivSelectedGoodsImg);
+					}
+				}
+			}
+		}
 
 		attrs = "";
 		for (int i = 0; i < goodsAttrsBean.getAttributes().size(); i++) {
@@ -237,8 +252,13 @@ public class GoodDetailsSpecDialog extends Dialog implements SKUInterface {
 				context.startActivity(intent);
 				break;
 			case R.id.btnAddCart:
-				dismiss();
-				EventBus.getDefault().post(new GoodBusBean(GoodBusBean.addShopCar, true));
+				if (MyShopApplication.isLogin) {
+					dismiss();
+					EventBus.getDefault().post(new GoodBusBean(GoodBusBean.addShopCar, true));
+				} else {
+					CommUtil.gotoActivity(context, LoginActivity.class, false, null);
+				}
+
 				break;
 			case R.id.tvOut:
 				dismiss();

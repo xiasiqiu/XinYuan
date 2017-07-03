@@ -15,11 +15,13 @@
 
 
         <ImageView
+            android:id="@+id/iv_mine_setting"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/ic_mine_setting"/>
 
         <ImageView
+            android:id="@+id/iv_mine_msg"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginRight="15dp"

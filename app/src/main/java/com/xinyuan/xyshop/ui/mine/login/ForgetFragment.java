@@ -13,8 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseFragment;
+import com.xinyuan.xyshop.even.LoginPageEvent;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.widget.EditTextWithDel;
 import com.xinyuan.xyshop.widget.PaperButton;
@@ -23,6 +25,8 @@ import com.youth.xframe.utils.XRegexUtils;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.XToast;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -30,16 +34,13 @@ import butterknife.OnClick;
  * A login screen that offers login via email/password.
  */
 public class ForgetFragment extends BaseFragment {
-	private static final int REQ_USER = 100;
 	@BindView(R.id.bt_login)
 	Button bt_login;
 	private int resultCode = 0;
-
 	@BindView(R.id.toolbar_tv)
 	Toolbar toolbar_tv;
 	@BindView(R.id.tv_header_center)
 	TextView tv_header_center;
-
 	@BindView(R.id.ed_userphone)
 	EditTextWithDel ed_userphone;
 	@BindView(R.id.ed_code)
@@ -86,7 +87,6 @@ public class ForgetFragment extends BaseFragment {
 	@Override
 	public void initView() {
 		tv_header_center.setText("忘记密码");
-
 	}
 
 	@Override
@@ -95,7 +95,8 @@ public class ForgetFragment extends BaseFragment {
 
 	}
 
-	private static boolean isCheck = true;
+	private static boolean isCheck = false;
+	private static boolean CodeRight = true;
 
 	@OnClick({R.id.pb_code, R.id.bt_login})
 	public void onClick(View view) {
@@ -105,8 +106,13 @@ public class ForgetFragment extends BaseFragment {
 				String phone = ed_userphone.getText().toString();
 				if (!XEmptyUtils.isSpace(phone)) {
 					if (XRegexUtils.checkMobile(phone)) {
-						timer = new MyCountTimer(30000, 1000);
-						timer.start();
+						if (isCheck) {
+
+						} else {
+							timer = new MyCountTimer(30000, 1000);
+							timer.start();
+							isCheck = true;
+						}
 
 					} else {
 						ll_login_phone.setBackground(getResources().getDrawable(R.drawable.button_error_bg));
@@ -123,9 +129,10 @@ public class ForgetFragment extends BaseFragment {
 
 				break;
 			case R.id.bt_login:
-				if (isCheck) {
+				if (CodeRight) {
 					ll_login_forget.setVisibility(View.GONE);
 					ll_login_re.setVisibility(View.VISIBLE);
+					tv_header_center.setText("修改密码");
 				} else {
 					String pass = ed_password.getText().toString();
 					String pass_re = ed_password_re.getText().toString();
@@ -138,14 +145,10 @@ public class ForgetFragment extends BaseFragment {
 						ed_password_re.setAnimation(CommUtil.shakeAnimation(2));
 						XToast.info("请重复密码");
 					} else {
-
 						if (pass.equals(pass_re)) {
 							XLog.v("可以登录");
-							Bundle bundle = new Bundle();
-							bundle.putString(LoginFragment.KEY_RESULT_TITLE, "忘记密码登录");
-							setFragmentResult(RESULT_OK, bundle);
-							isCheck = false;
-							_mActivity.onBackPressed();
+							MyShopApplication.isLogin = true;
+							getActivity().finish();
 						} else {
 							ed_password_re.setBackground(getResources().getDrawable(R.drawable.button_error_bg));
 							ed_password_re.setAnimation(CommUtil.shakeAnimation(2));
@@ -179,6 +182,7 @@ public class ForgetFragment extends BaseFragment {
 		public void onFinish() {
 			pb_code.setText("重新发送");
 			pb_code.setClickable(true);
+			isCheck = false;
 		}
 	}
 

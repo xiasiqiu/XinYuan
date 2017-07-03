@@ -13,23 +13,23 @@ import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.even.StartBrotherEvent;
 import com.xinyuan.xyshop.even.TabSelectedEvent;
-import com.xinyuan.xyshop.ui.home.UserBusBean;
 import com.xinyuan.xyshop.ui.mine.info.FavFragment;
 import com.xinyuan.xyshop.ui.mine.info.FollowFragment;
 import com.xinyuan.xyshop.ui.mine.info.FooterFragment;
 import com.xinyuan.xyshop.ui.mine.info.SettingFragment;
 import com.xinyuan.xyshop.ui.mine.info.UserInfoFragment;
-import com.xinyuan.xyshop.ui.mine.login.LoginFragment;
+import com.xinyuan.xyshop.ui.mine.login.LoginActivity;
 import com.xinyuan.xyshop.ui.mine.order.OrderActivity;
+import com.xinyuan.xyshop.ui.mine.order.fragment.OrderServiceFragment;
 import com.xinyuan.xyshop.ui.mine.pro.AccountFragment;
 import com.xinyuan.xyshop.ui.mine.pro.CouponFragment;
 import com.xinyuan.xyshop.ui.mine.pro.CreditFragment;
 import com.xinyuan.xyshop.ui.mine.pro.ProPertyFragment;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.youth.xframe.utils.log.XLog;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -71,7 +71,7 @@ public class MineFragment extends BaseFragment {
 	public void initView() {
 		ButterKnife.bind(this, getView());
 		XLog.v("加载个人页面Fragment");
-		MyShopApplication.isLogin=false;
+		MyShopApplication.isLogin = false;
 	}
 
 	@OnClick({R.id.bt_more_order, R.id.bt_mine_order1, R.id.bt_mine_order2, R.id.bt_mine_order3, R.id.bt_mine_order4, R.id.bt_mine_order5})
@@ -116,13 +116,14 @@ public class MineFragment extends BaseFragment {
 				startActivity(order4);
 				break;
 			case R.id.bt_mine_order5:
+				EventBus.getDefault().post(new StartBrotherEvent(OrderServiceFragment.newInstance()));
 				break;
 
 		}
 
 	}
 
-	@OnClick({R.id.ll_mine_fav, R.id.customer_image, R.id.tv_mine_perfect, R.id.bt_mine_credit, R.id.ll_follow_store, R.id.ll_mine_foot, R.id.bt_setting})
+	@OnClick({R.id.ll_mine_fav, R.id.customer_image, R.id.tv_mine_perfect, R.id.bt_mine_credit, R.id.ll_follow_store, R.id.ll_mine_foot, R.id.bt_setting, R.id.iv_mine_setting, R.id.iv_mine_msg})
 	public void onMyInfoClick(View view) {
 		switch (view.getId()) {
 			case R.id.ll_mine_fav:
@@ -145,6 +146,12 @@ public class MineFragment extends BaseFragment {
 				break;
 			case R.id.bt_setting:
 				EventBus.getDefault().post(new StartBrotherEvent(SettingFragment.newInstance()));
+				break;
+			case R.id.iv_mine_setting:
+				EventBus.getDefault().post(new StartBrotherEvent(SettingFragment.newInstance()));
+				break;
+			case R.id.iv_mine_msg:
+				CommUtil.gotoActivity(getActivity(), MsgActivity.class, false, null);
 				break;
 		}
 
@@ -174,30 +181,13 @@ public class MineFragment extends BaseFragment {
 
 	private static final int REQ_USER = 100;
 
-	@Override
-	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (requestCode == REQ_USER && resultCode == RESULT_OK && data != null) {
-			String change01 = data.getStringExtra("userId");
-		}
-
-
-	}
-
-
-	@Subscribe(threadMode = ThreadMode.MAIN)
-	//第2步:注册一个在后台线程执行的方法,用于接收事件
-	public void onUserEvent(UserBusBean userBusBean) {//参数必须是ClassEvent类型, 否则不会调用此方法
-		if (userBusBean.getFlag().equals(UserBusBean.UserId)) {
-			String id = (String) userBusBean.getObj();
-		}
-	}
-
 
 	@Subscribe
 	public void onTabSelectedEvent(TabSelectedEvent event) {
 		if (event.position != MainFragment.MINE) return;
 		if (!MyShopApplication.isLogin) {
-			EventBus.getDefault().post(new StartBrotherEvent(LoginFragment.newInstance(), true, REQ_USER));
+			Intent intent = new Intent(getActivity(), LoginActivity.class);
+			startActivityForResult(intent, REQ_USER);
 			MyShopApplication.isLogin = true;
 		}
 

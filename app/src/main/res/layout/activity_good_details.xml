@@ -66,6 +66,7 @@
             android:id="@+id/detail_btn_msg"
             android:layout_width="25dp"
             android:layout_height="25dp"
+            android:layout_marginRight="20dp"
             android:layout_gravity="center_vertical"
             android:background="@drawable/act_home_msg_de"/>
 

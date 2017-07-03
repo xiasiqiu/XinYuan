@@ -52,11 +52,12 @@ public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.Attrib
 		childrenViews = new TextView[list.size()][0];
 		childrenGoods = new GoodsAttrsBean.StockGoodsBean[list.size()][0];
 		selectedValue = new String[list.size()];
-		for (int i = 0; i < list.size(); i++) {
-			selectedValue[i] = "";
+
+
+		for (int i = 0; i < selecGood.getGoodsInfo().size(); i++) {
+			selectedValue[i] = selecGood.getGoodsInfo().get(i).getTabValue();
+			XLog.v("选中的默认："+selecGood.getGoodsInfo().get(i).getTabValue());
 		}
-
-
 
 	}
 
@@ -104,6 +105,8 @@ public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.Attrib
 			vg_skuItem.addView(textViews[i]);
 		}
 		childrenViews[position] = textViews;
+
+
 		initOptions();
 		canClickOptions();
 		getSelected();
@@ -152,10 +155,6 @@ public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.Attrib
 			canClickOptions();
 			getSelected();
 		}
-	}
-
-	private static void setSelec() {
-
 	}
 
 
@@ -269,7 +268,10 @@ public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.Attrib
 	 * 找到已经选中的选项，让其变红
 	 */
 	private void getSelected() {
-
+		String str = "";
+		for (String s : selectedValue) {
+			str += s + "-";
+		}
 
 		for (int i = 0; i < childrenViews.length; i++) {
 			for (int j = 0; j < childrenViews[i].length; j++) {//拿到每行属性Item

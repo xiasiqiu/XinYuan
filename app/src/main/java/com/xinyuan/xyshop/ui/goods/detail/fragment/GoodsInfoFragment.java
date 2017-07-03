@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -364,7 +365,6 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	@Override
 	public void showGoodsInfo() {
-		XLog.v("进入");
 		tv_newprice.setText("￥" + detailModel.getActualPrice());
 		tv_oldprice.setText("￥" + detailModel.getOldPrice());
 		tv_oldprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
@@ -408,7 +408,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		this.simpleEvaluateAdapter = new SimpleEvaluateAdapter(R.layout.fragment_good_item_evaluate, data);
 
 
-		FullyLinearLayoutManager linearLayoutManager = new FullyLinearLayoutManager(context);
+		LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
 		rvEvaluate.setNestedScrollingEnabled(false);
 		//设置布局管理器
 		rvEvaluate.setLayoutManager(linearLayoutManager);

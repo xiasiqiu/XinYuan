@@ -3,10 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorLine"
+    android:background="@color/bg_gray"
     android:orientation="vertical">
 
-    <include layout="@layout/fragment_home_item_tab_title"/>
+    <include
+        layout="@layout/fragment_home_item_tab_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="3dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -62,8 +66,8 @@
             android:id="@+id/home_tab_img5"
             android:layout_width="0px"
             android:layout_height="match_parent"
-            android:layout_marginRight="1px"
             android:layout_marginLeft="1px"
+            android:layout_marginRight="1px"
             android:layout_weight="0.265"
             android:scaleType="fitXY"/>
 

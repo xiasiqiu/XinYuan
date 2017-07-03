@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.SearchGoodListAdapter;
 import com.xinyuan.xyshop.adapter.ShopCarAdapter;
@@ -137,7 +138,7 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 		}
 		XLog.v("加载购物车页面Fragment");
 		VIEW_INIT = false;
-
+		getLogin();
 		adapter = new ShopCarAdapter(groups, children, initdatas());
 		adapter.setCheckInterface(this);
 		adapter.setModifyCountInterface(this);
@@ -296,7 +297,7 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 			childs.removeAll(toBeDeleteProducts);
 		}
 		groups.removeAll(toBeDeleteGroups);
-		res.clear();
+		//res.clear();
 		setCartNum();
 		adapter.notifyDataSetChanged();
 
@@ -439,9 +440,17 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 	@Override
 	public void onResume() {
 		super.onResume();
+		getLogin();
 		setCartNum();
 	}
 
+
+	private void getLogin() {
+	if(MyShopApplication.isLogin){
+		rl_car_login_notice.setVisibility(View.GONE);
+	}
+
+	}
 
 	/**
 	 * 底部推荐产品

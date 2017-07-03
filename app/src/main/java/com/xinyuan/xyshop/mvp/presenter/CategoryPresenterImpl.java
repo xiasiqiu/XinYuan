@@ -15,6 +15,7 @@ import com.xinyuan.xyshop.mvp.contract.CategoryContract;
 import com.xinyuan.xyshop.ui.goods.PromotionListActivity;
 import com.xinyuan.xyshop.ui.goods.SearchGoodsShowActivity;
 import com.xinyuan.xyshop.util.JsonUtil;
+import com.youth.xframe.cache.XCache;
 import com.youth.xframe.utils.log.XLog;
 
 import java.util.ArrayList;
@@ -40,51 +41,67 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
 	public static List<CategoryData> goodsCategoryList_one;
 	public static List<CategoryData> goodsCategoryList_three;
 	public static List<CategoryData> goodsCategoryList_two;
+	private Context context;
+	private XCache xCache;
 
-	public CategoryPresenterImpl(CategoryContract.CategoryView view) {
+	public CategoryPresenterImpl(CategoryContract.CategoryView view, Context context) {
 		this.mCategoryView = view;
 		view.setPresenter(this);
-
+		this.context = context;
+		xCache = XCache.get(context);
 	}
 
 	@Override
 	public void initData() {
 		XLog.v("分类页面开始加载数据");
-		Subscription subscription = ApiServer.getCategory(Urls.URL_GOODS_CATEGORY)
-				.doOnSubscribe(new Action0() {
-					@Override
-					public void call() {
-						XLog.v("分类加载中");
-						mCategoryView.showState(0);
+		if (xCache.getAsObject("categoryModel") == null) {
+			XLog.v("缓存的分类数据没有了,重新去网络加载");
+			Subscription subscription = ApiServer.getCategory(Urls.URL_GOODS_CATEGORY)
+					.doOnSubscribe(new Action0() {
+						@Override
+						public void call() {
+							XLog.v("分类加载中");
+							mCategoryView.showState(0);
 
-					}
-				}).map(new Func1<LzyResponse<CategoryModel>, CategoryModel>() {
+						}
+					}).map(new Func1<LzyResponse<CategoryModel>, CategoryModel>() {
 
 
-					@Override
-					public CategoryModel call(LzyResponse<CategoryModel> Response) {
+						@Override
+						public CategoryModel call(LzyResponse<CategoryModel> Response) {
 
-						return Response.getDatas();
-					}
-				})
-				.observeOn(AndroidSchedulers.mainThread())
-				.subscribe(new Action1<CategoryModel>() {
-					@Override
-					public void call(CategoryModel categoryModel) {
+							return Response.getDatas();
+						}
+					})
+					.observeOn(AndroidSchedulers.mainThread())
+					.subscribe(new Action1<CategoryModel>() {
+						@Override
+						public void call(CategoryModel categoryModel) {
 
-						List<CategoryModel.CategoryData> goodsCategoryList = new ArrayList<CategoryModel.CategoryData>();
-						goodsCategoryList = categoryModel.getDatas();
-						cleanData(goodsCategoryList);
+							List<CategoryModel.CategoryData> goodsCategoryList = new ArrayList<CategoryModel.CategoryData>();
+							goodsCategoryList = categoryModel.getDatas();
 
-					}
-				}, new Action1<Throwable>() {
-					@Override
-					public void call(Throwable throwable) {
-						throwable.printStackTrace();
-						XLog.v("分类请求失败");
-						mCategoryView.showState(2);
-					}
-				});
+							xCache.put("categoryModel", categoryModel, XCache.TIME_HOUR);
+							cleanData(goodsCategoryList);
+
+						}
+					}, new Action1<Throwable>() {
+						@Override
+						public void call(Throwable throwable) {
+							throwable.printStackTrace();
+							XLog.v("分类请求失败");
+							mCategoryView.showState(2);
+						}
+					});
+		} else {
+			XLog.v("缓存的分类数据还有，去缓存加载");
+			CategoryModel categoryModel = (CategoryModel) xCache.getAsObject("categoryModel");
+			List<CategoryModel.CategoryData> goodsCategoryList = new ArrayList<CategoryModel.CategoryData>();
+			goodsCategoryList = categoryModel.getDatas();
+			cleanData(goodsCategoryList);
+
+
+		}
 	}
 
 	private void cleanData(List<CategoryData> goodsCategoryList) {

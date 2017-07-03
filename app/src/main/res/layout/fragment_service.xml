@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_good_img"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/test_good_img" />
+
+
+        <TextView
+            android:id="@+id/tv_good_name"
+            style="@style/NormalTextView"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/iv_good_img"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="奥术大师大所"/>
+
+        <TextView
+            android:id="@+id/tv_good_spec"
+            style="@style/LightTextView"
+            android:layout_below="@id/tv_good_name"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/iv_good_img"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="已经选啊实打实大"
+            android:textColor="@color/tv_hint"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_service_money"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="6dp"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:text="仅退款"/>
+
+        <TextView
+            style="@style/LightTextView"
+            android:layout_alignParentBottom="true"
+            android:text="在未收到货（包含未签收），或卖家协商同意前提下"
+            android:textColor="@color/tv_hint"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_right_row"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_service_goods"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="6dp"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:text="退货退款"/>
+
+        <TextView
+            style="@style/LightTextView"
+            android:layout_alignParentBottom="true"
+            android:text="已收到货物，需要退还已收到货物"
+            android:textColor="@color/tv_hint"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_right_row"/>
+    </RelativeLayout>
+
+</LinearLayout>

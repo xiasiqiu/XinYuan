@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_gray"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_good_img"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/test_good_img"/>
+
+
+        <TextView
+            android:id="@+id/tv_good_name"
+            style="@style/NormalTextView"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/iv_good_img"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="奥术大师大所"/>
+
+        <TextView
+            android:id="@+id/tv_good_spec"
+            style="@style/LightTextView"
+            android:layout_below="@id/tv_good_name"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/iv_good_img"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="已经选啊实打实大"
+            android:textColor="@color/tv_hint"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_goods_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_good_status"
+            style="@style/NormalTextView"
+            android:text="货物状态"/>
+
+        <TextView
+            style="@style/NormalTextView"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="请选择"
+            android:textColor="@color/tv_hint"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/ic_right_row"/>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_goods_reason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <View
+            style="@style/LightLine"/>
+
+        <TextView
+            android:id="@+id/tv_good_reason"
+            style="@style/NormalTextView"
+            android:layout_marginTop="10dp"
+            android:text="退款原因"/>
+
+        <TextView
+            style="@style/NormalTextView"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="请选择"
+            android:textColor="@color/tv_hint"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/ic_right_row"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_goods_price"
+            style="@style/NormalTextView"
+            android:text="退款金额"/>
+
+        <TextView
+            style="@style/NormalTextView"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/tv_goods_price"
+            android:text="$12333"
+            android:textColor="@color/tv_price"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_service_info"
+            style="@style/NormalTextView"
+            android:text="退款说明"/>
+
+        <EditText
+            android:id="@+id/ed_eva"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/tv_service_info"
+            android:background="@drawable/bg_border"
+            android:gravity="top"
+            android:padding="5dp"
+            android:textSize="@dimen/tv_Normal"/>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/bg_white"
+        android:orientation="horizontal">
+
+
+        <RelativeLayout
+            android:id="@+id/rl_eva_pic_pull"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/bg_border"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/iv_eva_pullpic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_mine_pic"/>
+
+            <TextView
+                style="@style/NormalTextView"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/iv_eva_pullpic"
+                android:text="晒美图"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimaryDark"
+            android:text="提交"
+            android:textColor="@color/bg_white"
+            android:textSize="@dimen/tv_Regular"/>
+    </RelativeLayout>
+</LinearLayout>

@@ -23,12 +23,6 @@
         <item name="background">@android:color/transparent</item>
     </style>
 
-    <style name="Line">
-        <item name="android:background">@color/boder</item>
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">1.0dip</item>
-    </style>
-
 
     <style name="AnimationFade">
         <item name="android:inAnimation">@anim/popwin_top_in</item>
@@ -70,9 +64,15 @@
         <item name="android:background">@color/colorLine</item>
     </style>
 
-    <style name="LightLine">
+    <style name="Line">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/colorLine</item>
+    </style>
+
+    <style name="LightLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
         <item name="android:background">@color/colorLine</item>
     </style>
 
@@ -172,5 +172,5 @@
         <!-- 指定消失的动画xml -->
     </style>
 
-   
+
 </resources>

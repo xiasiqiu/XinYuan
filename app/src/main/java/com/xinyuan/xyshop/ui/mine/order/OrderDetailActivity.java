@@ -14,6 +14,7 @@ import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseActivity;
 import com.xinyuan.xyshop.common.AddViewHolder;
 import com.xinyuan.xyshop.model.OrderModel;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 
 import butterknife.BindView;
@@ -156,6 +157,12 @@ public class OrderDetailActivity extends BaseActivity {
 			} else if (orderBean.getOrderStatus() == 3) {
 				Button bt_order_good_service = addViewHolder.getView(R.id.bt_order_good_service);
 				bt_order_good_service.setVisibility(View.VISIBLE);
+				bt_order_good_service.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						CommUtil.gotoActivity(OrderDetailActivity.this, ServiceActivity.class, false, null);
+					}
+				});
 			}
 
 			fl_goods.addView(addViewHolder.getCustomView());

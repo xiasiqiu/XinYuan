@@ -67,6 +67,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_login_code"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_gravity="center_horizontal"

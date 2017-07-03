@@ -90,7 +90,7 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 	@Override
 	public void initData(@Nullable Bundle savedInstanceState) {
 		if (VIEW_INIT) {
-			new CategoryPresenterImpl(this);
+			new CategoryPresenterImpl(this,context);
 			presenter.initData();
 		}
 

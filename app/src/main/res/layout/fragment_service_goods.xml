@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_gray"
+              android:orientation="vertical">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_service_good"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"/>
+    <View
+       style="@style/XYLine"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+
+        <Button
+            android:id="@+id/bt_order_eva_later"
+            android:layout_width="65dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bt_unselect_red"
+            android:text="填单号"
+            android:textColor="@color/tv_price"
+            android:textSize="@dimen/tv_small"/>
+
+        <Button
+            android:id="@+id/bt_order_finish_logistical"
+            android:layout_width="65dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@id/bt_order_eva_later"
+            android:background="@drawable/bt_unselect_normal"
+            android:text="撤销申请"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_small"/>
+    </RelativeLayout>
+</LinearLayout>

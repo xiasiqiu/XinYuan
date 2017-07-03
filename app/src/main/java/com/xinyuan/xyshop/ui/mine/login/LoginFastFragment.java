@@ -13,8 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseFragment;
+import com.xinyuan.xyshop.even.LoginPageEvent;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.widget.EditTextWithDel;
 import com.xinyuan.xyshop.widget.PaperButton;
@@ -23,6 +25,8 @@ import com.youth.xframe.utils.XRegexUtils;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.XToast;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -30,12 +34,9 @@ import butterknife.OnClick;
  * A login screen that offers login via email/password.
  */
 public class LoginFastFragment extends BaseFragment {
-	static final String KEY_RESULT_TITLE = "logininfo";
-
 	@BindView(R.id.bt_login)
 	Button bt_login;
 	private int resultCode = 0;
-
 	@BindView(R.id.toolbar_tv)
 	Toolbar toolbar_tv;
 	@BindView(R.id.tv_header_center)
@@ -54,6 +55,8 @@ public class LoginFastFragment extends BaseFragment {
 	LinearLayout ll_login_phone;
 	@BindView(R.id.pb_code)
 	PaperButton pb_code;
+	@BindView(R.id.ll_login_code)
+	LinearLayout ll_login_code;
 	MyCountTimer timer;
 
 	public static LoginFastFragment newInstance() {
@@ -74,7 +77,6 @@ public class LoginFastFragment extends BaseFragment {
 	@Override
 	public void initView() {
 		tv_header_center.setText("快捷登录");
-
 	}
 
 	@Override
@@ -82,6 +84,8 @@ public class LoginFastFragment extends BaseFragment {
 
 
 	}
+
+	private static boolean isCheck = false;
 
 	@OnClick({R.id.pb_code, R.id.bt_login})
 	public void onClick(View view) {
@@ -91,8 +95,13 @@ public class LoginFastFragment extends BaseFragment {
 				String phone = ed_userphone.getText().toString();
 				if (!XEmptyUtils.isSpace(phone)) {
 					if (XRegexUtils.checkMobile(phone)) {
-						timer = new MyCountTimer(30000, 1000);
-						timer.start();
+						if (isCheck) {
+
+						} else {
+							timer = new MyCountTimer(30000, 1000);
+							timer.start();
+							isCheck = true;
+						}
 
 					} else {
 						ll_login_phone.setBackground(getResources().getDrawable(R.drawable.button_error_bg));
@@ -117,16 +126,13 @@ public class LoginFastFragment extends BaseFragment {
 					iv_login_phone.setAnimation(CommUtil.shakeAnimation(2));
 					XToast.error("手机号未输入");
 				} else if (XEmptyUtils.isSpace(user_code)) {
-					ed_code.setBackground(getResources().getDrawable(R.drawable.button_error_bg));
+					ll_login_code.setBackground(getResources().getDrawable(R.drawable.button_error_bg));
 					iv_login_code.setAnimation(CommUtil.shakeAnimation(2));
 					XToast.error("验证码未输入");
 				} else {
 					XLog.v("可以登录");
-					Bundle bundle = new Bundle();
-					bundle.putString(LoginFragment.KEY_RESULT_TITLE, "快捷登录");
-					setFragmentResult(RESULT_OK, bundle);
-					_mActivity.onBackPressed();
-
+					MyShopApplication.isLogin = true;
+					getActivity().finish();
 				}
 
 
@@ -153,6 +159,7 @@ public class LoginFastFragment extends BaseFragment {
 		public void onFinish() {
 			pb_code.setText("重新发送");
 			pb_code.setClickable(true);
+			isCheck = false;
 		}
 	}
 

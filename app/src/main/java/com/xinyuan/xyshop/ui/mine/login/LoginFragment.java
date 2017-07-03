@@ -8,9 +8,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseFragment;
+import com.xinyuan.xyshop.common.ShopHelper;
+import com.xinyuan.xyshop.even.LoginPageEvent;
+import com.xinyuan.xyshop.ui.goods.GoodBusBean;
+import com.youth.xframe.cache.XCache;
 import com.youth.xframe.utils.log.XLog;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -21,16 +29,15 @@ import butterknife.OnClick;
 public class LoginFragment extends BaseFragment {
 
 
-	@BindView(R.id.bt_login)
-	Button bt_login;
-	private int resultCode = 0;
-
 	@BindView(R.id.toolbar_tv)
 	Toolbar toolbar_tv;
 	@BindView(R.id.tv_header_center)
 	TextView tv_header_center;
+	@BindView(R.id.tv_header_right)
+	TextView tv_header_right;
+	@BindView(R.id.bt_login)
+	Button bt_login;
 
-	private static int loginType = 0;
 
 	public static LoginFragment newInstance() {
 		LoginFragment fragment = new LoginFragment();
@@ -50,7 +57,13 @@ public class LoginFragment extends BaseFragment {
 	@Override
 	public void initView() {
 		tv_header_center.setText("登录");
-
+		tv_header_right.setText("注册");
+		tv_header_right.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				start(RegFragment.newInstance());
+			}
+		});
 	}
 
 	@Override
@@ -61,33 +74,34 @@ public class LoginFragment extends BaseFragment {
 
 	private static final int REQ_USER = 100;
 
-	@OnClick({R.id.tv_fast_login, R.id.tv_forget_pass})
+	@OnClick({R.id.tv_fast_login, R.id.tv_forget_pass, R.id.bt_login, R.id.iv_login_wechat, R.id.iv_login_qq, R.id.iv_login_weibo})
 	public void onClick(View view) {
 		switch (view.getId()) {
 			case R.id.tv_fast_login:
-				startForResult(LoginFastFragment.newInstance(), REQ_USER);
+				start(LoginFastFragment.newInstance());
 				break;
 			case R.id.tv_forget_pass:
-				startForResult(ForgetFragment.newInstance(), REQ_USER);
-
+				start(ForgetFragment.newInstance());
+				break;
+			case R.id.bt_login:
+				getActivity().finish();
+				MyShopApplication.isLogin=true;
+				break;
+			case R.id.iv_login_qq:
+				getActivity().finish();
+				MyShopApplication.isLogin=true;
+				break;
+			case R.id.iv_login_wechat:
+				getActivity().finish();
+				MyShopApplication.isLogin=true;
+				break;
+			case R.id.iv_login_weibo:
+				getActivity().finish();
+				MyShopApplication.isLogin=true;
 				break;
 
-		}
-
-	}
-
-	static final String KEY_RESULT_TITLE = "logininfo";
-
-	@Override
-	public void onFragmentResult(int requestCode, int resultCode, Bundle data) {
-		super.onFragmentResult(requestCode, resultCode, data);
-		String s = data.getString(KEY_RESULT_TITLE);
-		XLog.v("登录信息:" + s);
-		if (requestCode == REQ_USER && resultCode == RESULT_OK && data != null) {
-
 
 		}
 	}
-
 }
 
