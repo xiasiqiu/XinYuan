@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -23,6 +24,9 @@ import com.youth.xframe.utils.log.XLog;
 
 import java.util.List;
 import java.util.Map;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Administrator on 2017/5/31.
@@ -63,12 +67,7 @@ public class ShopCarAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, B
 	protected void convert(BaseViewHolder helper, final MultiItemEntity item) {
 		switch (item.getItemType()) {
 			case TYPE_LEVEL_0:
-
-
 				final ShopCarStoreItem shopCarStoreItem = (ShopCarStoreItem) item;
-				XLog.v("店铺位置" + shopCarStoreItem.getPosition());
-
-
 				CheckBox checkBox = helper.getView(R.id.store_checkbox);
 				final StoreInfo group = (StoreInfo) getGroup(shopCarStoreItem.getPosition());
 				checkBox.setOnClickListener(new View.OnClickListener() {
@@ -80,21 +79,17 @@ public class ShopCarAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, B
 				});
 				checkBox.setChecked(group.isChoosed);
 				// notifyDataSetChanged();
-				TextView tv_store_name=helper.getView(R.id.tv_store_name);
-				tv_store_name.setText(groups.get(helper.getLayoutPosition()).getName());
+
 
 				break;
 			case TYPE_LEVEL_1:
 
 				final ShopCarGoodsItem shopCarGoodsItem = (ShopCarGoodsItem) item;
-
-
 				final int groupPosition = shopCarGoodsItem.getStorePosition();
 				final int childPosition = shopCarGoodsItem.getGoddsPostion();
 				final GoodsInfo goodsInfo = (GoodsInfo) getChild(shopCarGoodsItem.getStorePosition(), shopCarGoodsItem.getGoddsPostion());
 				if (goodsInfo != null) {
-					TextView tv_good_name=helper.getView(R.id.tv_good_name);
-					tv_good_name.setText(((ShopCarGoodsItem) item).getGoodsName());
+
 					final CheckBox goodCheckBox = helper.getView(R.id.good_checkbox);
 					goodCheckBox.setChecked(goodsInfo.isChoosed());
 					goodCheckBox.setOnClickListener(new View.OnClickListener() {
@@ -120,24 +115,7 @@ public class ShopCarAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, B
 							modifyCountInterface.doIncrease(groupPosition, childPosition, etNum, goodCheckBox.isChecked());// 暴露增加接口
 						}
 					});
-					etNum.setText(""+goodsInfo.getCount());
-//					etNum.setOnFocusChangeListener(new android.view.View.
-//							OnFocusChangeListener() {
-//						@Override
-//						public void onFocusChange(View v, boolean hasFocus) {//监听焦点的变化
-//							if (hasFocus) {//获取到焦点也就是文本框被点击修改了
-//								// 1，先强制键盘不弹出
-//								InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-//								imm.hideSoftInputFromWindow(v.getWindowToken(), 0); //强制隐藏键盘
-//								// 2.显示弹出dialog进行修改
-//								showDialog(goodsInfo, etNum);
-//								// 3.清除焦点防止不断弹出dialog和软键盘
-//								etNum.clearFocus();
-//								//4. 数据刷新
-//								notifyDataSetChanged();
-//							}
-//						}
-//					});
+					etNum.setText("" + goodsInfo.getCount());
 
 
 				}
@@ -303,7 +281,7 @@ public class ShopCarAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, B
 		btreduce.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if (count > 1) {//数量大于1时操作
+				if (count > 1) {//数量大雨1时操作
 					count--; //点一下减1
 					editText.setText("" + count);
 				}

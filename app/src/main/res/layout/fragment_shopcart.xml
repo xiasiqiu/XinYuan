@@ -76,11 +76,6 @@
             android:visibility="visible">
 
 
-            <TextView
-                android:id="@+id/tv_all"
-                style="@style/LightTextView"
-                android:layout_toLeftOf="@+id/all_price"
-                android:text="合计:"/>
 
             <TextView
                 android:id="@+id/all_price"
@@ -91,6 +86,11 @@
                 android:text="￥60556.00"
                 android:textColor="@color/tv_price"/>
 
+            <TextView
+                android:id="@+id/tv_all"
+                style="@style/LightTextView"
+                android:layout_toLeftOf="@id/all_price"
+                android:text="合计:"/>
             <TextView
                 style="@style/SmallHintTextView"
                 android:layout_alignParentBottom="true"

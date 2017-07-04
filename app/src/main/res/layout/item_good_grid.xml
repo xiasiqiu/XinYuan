@@ -51,7 +51,7 @@
             style="@style/SmallHintTextView"
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="12dp"
-            android:layout_toRightOf="@+id/tv_goods_price"/>
+            android:layout_toRightOf="@id/tv_goods_price"/>
     </RelativeLayout>
 
 </LinearLayout>

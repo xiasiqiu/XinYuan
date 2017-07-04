@@ -14,6 +14,14 @@ public class ShopCarStoreItem extends AbstractExpandableItem<ShopCarGoodsItem> i
 	private String sotrename;
 	private String isDiscount;
 
+	@Override
+	public String toString() {
+		return "ShopCarStoreItem{" +
+				"position=" + position +
+				", sotrename='" + sotrename + '\'' +
+				", isDiscount='" + isDiscount + '\'' +
+				'}';
+	}
 
 	@Override
 	public int getLevel() {

@@ -64,7 +64,7 @@ public class MineFragment extends BaseFragment {
 
 	@Override
 	public void initData(@Nullable Bundle savedInstanceState) {
-		EventBus.getDefault().register(this);
+
 	}
 
 	@Override
@@ -191,6 +191,19 @@ public class MineFragment extends BaseFragment {
 			MyShopApplication.isLogin = true;
 		}
 
+	}
+
+	@Override
+	public void onStart() {
+		super.onStart();
+		EventBus.getDefault().register(this);
+
+	}
+
+	@Override
+	public void onStop() {
+		EventBus.getDefault().unregister(this);
+		super.onStop();
 	}
 }
 

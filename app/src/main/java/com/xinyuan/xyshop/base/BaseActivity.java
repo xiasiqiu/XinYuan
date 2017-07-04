@@ -137,6 +137,7 @@ public abstract class BaseActivity extends SupportActivity implements ICallback,
 	protected void onStart() {
 		super.onStart();
 		lifecycleSubject.onNext(ActivityEvent.START);
+
 	}
 
 

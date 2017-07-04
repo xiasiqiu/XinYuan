@@ -13,6 +13,15 @@ public class ShopCarGoodsItem implements MultiItemEntity {
 	private  int goddsPostion;
 	private String goodsName;
 
+	@Override
+	public String toString() {
+		return "ShopCarGoodsItem{" +
+				"StorePosition=" + StorePosition +
+				", goddsPostion=" + goddsPostion +
+				", goodsName='" + goodsName + '\'' +
+				'}';
+	}
+
 	public int getStorePosition() {
 		return StorePosition;
 	}

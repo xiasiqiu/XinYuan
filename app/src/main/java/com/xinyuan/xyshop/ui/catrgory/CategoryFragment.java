@@ -9,10 +9,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
+import com.xinyuan.xyshop.MainFragment;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.GoodsCategoryAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.common.AddViewHolder;
+import com.xinyuan.xyshop.even.TabSelectedEvent;
 import com.xinyuan.xyshop.mvp.contract.CategoryContract;
 import com.xinyuan.xyshop.mvp.presenter.CategoryPresenterImpl;
 import com.xinyuan.xyshop.ui.home.HomeFragment;
@@ -27,6 +29,8 @@ import java.util.List;
 import butterknife.BindView;
 
 import com.xinyuan.xyshop.model.CategoryModel.CategoryData;
+
+import org.greenrobot.eventbus.Subscribe;
 
 /**
  * Created by fx on 2017/5/2 0002.
@@ -90,7 +94,7 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 	@Override
 	public void initData(@Nullable Bundle savedInstanceState) {
 		if (VIEW_INIT) {
-			new CategoryPresenterImpl(this,context);
+			new CategoryPresenterImpl(this, context);
 			presenter.initData();
 		}
 

@@ -24,6 +24,7 @@ import com.youth.xframe.base.ICallback;
 import com.youth.xframe.utils.log.XLog;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,6 +62,7 @@ public abstract class BaseFragment extends SupportFragment implements ICallback,
 			contentView = inflater.inflate(getLayoutId(), container, false);
 			contentView.setClickable(true);// 防止点击穿透，底层的fragment响应上层点击触摸事件
 			mUnbinder = ButterKnife.bind(this, contentView);
+
 			return contentView;
 		} else {
 
@@ -75,7 +77,7 @@ public abstract class BaseFragment extends SupportFragment implements ICallback,
 	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		this.application = MyShopApplication.getInstance();
-		this.context = getActivity();
+		this.context = getContext();
 		initData(savedInstanceState);
 		initView();
 	}
@@ -149,6 +151,7 @@ public abstract class BaseFragment extends SupportFragment implements ICallback,
 
 	@Override
 	public void onStop() {
+
 		lifecycleSubject.onNext(FragmentEvent.STOP);
 		super.onStop();
 	}
@@ -167,6 +170,11 @@ public abstract class BaseFragment extends SupportFragment implements ICallback,
 	public void onDetach() {
 		lifecycleSubject.onNext(FragmentEvent.DETACH);
 		super.onDetach();
+	}
+
+	@Subscribe
+	public void onDoing() {
+
 	}
 
 

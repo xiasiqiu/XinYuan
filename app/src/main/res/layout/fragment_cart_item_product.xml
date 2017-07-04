@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/bg_white"
+              android:orientation="vertical">
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorLine"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="10dp"
+        android:text="[促销]满19：00得赠品，赠完为止"
+        android:textSize="@dimen/tv_light"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/bg_white"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp">
+
+        <CheckBox
+            android:id="@+id/check_box"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/checkbox_selector"
+            android:button="@null"/>
+
+        <ImageView
+            android:id="@+id/iv_adapter_list_pic"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/goods1"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_no_edtor"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:id="@+id/tv_intro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:singleLine="true"
+                android:text="第八号店铺"
+                android:textColor="@color/tv_name"
+                android:textSize="@dimen/tv_Regular"/>
+
+            <TextView
+                android:id="@+id/tv_color_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="5dp"
+                android:text="颜色：黑色；尺码：29"
+                android:textColor="@color/tv_hint"
+                android:textSize="@dimen/tv_small"/>
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerVertical="true"
+                android:singleLine="true"
+                android:text="￥ 308.00"
+                android:textColor="@color/tv_price"
+                android:textSize="@dimen/tv_Regular"/>
+
+
+            <RelativeLayout
+                android:id="@+id/ll_change_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/bt_reduce"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/left_round_btn"
+                    android:clickable="false"
+                    android:focusableInTouchMode="false"
+                    android:text="—"
+                    android:textColor="@color/tv_name"
+                    android:textSize="@dimen/tv_Normal"/>
+
+                <TextView
+                    android:id="@+id/et_num"
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:layout_toRightOf="@id/bt_reduce"
+                    android:background="@drawable/bg_border"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text="1"
+                    android:textColor="@color/tv_hint"
+                    android:textSize="@dimen/tv_Regular"/>
+
+                <Button
+                    android:id="@+id/bt_add"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_toRightOf="@id/et_num"
+                    android:background="@drawable/right_round_edittext"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:text="+"
+                    android:textColor="@color/tv_name"
+                    android:textSize="@dimen/tv_Normal"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
+

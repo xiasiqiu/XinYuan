@@ -5,9 +5,13 @@
               android:background="@color/bg_white"
               android:orientation="vertical">
 
+    <View
+        style="@style/LightLine"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_msg"
         android:layout_width="match_parent"
+        android:paddingTop="3dp"
         android:layout_height="match_parent"/>
 
 </LinearLayout>

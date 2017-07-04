@@ -3,16 +3,16 @@
 <android.support.v7.widget.Toolbar
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/category_toolbar"
+    android:id="@+id/cart_toolbar"
     android:layout_width="match_parent"
-    android:layout_height="?android:actionBarSize"
+    android:layout_height="45dp"
     android:background="@color/colorPrimaryDark"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?android:actionBarSize"
+        android:layout_height="45dp"
         android:background="@color/bg_white"
         android:focusable="true"
         android:focusableInTouchMode="true"

@@ -205,10 +205,6 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	@Override
 	public void initView() {
-		if (VIEW_INIT) {
-			EventBus.getDefault().register(this);
-		}
-		VIEW_INIT = false;
 		getView().setFocusable(true);
 		getView().setFocusableInTouchMode(true);
 		getView().setOnKeyListener(new View.OnKeyListener() {
@@ -328,7 +324,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	@Override
 	public void showView(GoodDetailModel model) {
-
+		XLog.v(model.toString());
 		this.detailModel = model;
 		EventBus.getDefault().post(new GoodBusBean(GoodBusBean.GoodEvaluate, model.getGoodComment()));
 		showBanner();

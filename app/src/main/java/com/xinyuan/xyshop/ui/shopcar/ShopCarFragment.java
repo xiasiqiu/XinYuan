@@ -297,7 +297,7 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 			childs.removeAll(toBeDeleteProducts);
 		}
 		groups.removeAll(toBeDeleteGroups);
-		//res.clear();
+		res.clear();
 		setCartNum();
 		adapter.notifyDataSetChanged();
 
@@ -446,9 +446,9 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 
 
 	private void getLogin() {
-	if(MyShopApplication.isLogin){
-		rl_car_login_notice.setVisibility(View.GONE);
-	}
+		if (MyShopApplication.isLogin) {
+			rl_car_login_notice.setVisibility(View.GONE);
+		}
 
 	}
 

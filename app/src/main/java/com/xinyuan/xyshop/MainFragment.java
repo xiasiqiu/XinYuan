@@ -3,13 +3,14 @@ package com.xinyuan.xyshop;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.even.StartBrotherEvent;
 import com.xinyuan.xyshop.even.TabSelectedEvent;
 import com.xinyuan.xyshop.ui.catrgory.CategoryFragment;
 import com.xinyuan.xyshop.ui.home.HomeFragment;
 import com.xinyuan.xyshop.ui.mine.MineFragment;
-import com.xinyuan.xyshop.ui.shopcar.ShopCarFragment;
+import com.xinyuan.xyshop.ui.shopcar.CartFragment;
 import com.xinyuan.xyshop.widget.BottomBar;
 import com.xinyuan.xyshop.widget.BottomBarTab;
 import com.youth.xframe.utils.log.XLog;
@@ -53,7 +54,6 @@ public class MainFragment extends BaseFragment {
 
 	@Override
 	public void initView() {
-		EventBus.getDefault().register(this);
 		bottomBar.addItem(new BottomBarTab(_mActivity, R.drawable.act_home_home, "首页"))
 				.addItem(new BottomBarTab(_mActivity, R.drawable.act_home_we, "分类"))
 				.addItem(new BottomBarTab(_mActivity, R.drawable.act_home_shopcar, "购物车"))
@@ -93,7 +93,7 @@ public class MainFragment extends BaseFragment {
 		if (homeFragment == null) {
 			mFragments[HOME] = HomeFragment.newInstance();
 			mFragments[CLASS] = CategoryFragment.newInstance();
-			mFragments[CAR] = ShopCarFragment.newInstance();
+			mFragments[CAR] = CartFragment.newInstance();
 			mFragments[MINE] = MineFragment.newInstance();
 			loadMultipleRootFragment(R.id.fl_tab_container, HOME,
 					mFragments[HOME],
@@ -103,7 +103,7 @@ public class MainFragment extends BaseFragment {
 		} else {
 			mFragments[HOME] = homeFragment;
 			mFragments[CLASS] = findChildFragment(CategoryFragment.class);
-			mFragments[CAR] = findChildFragment(ShopCarFragment.class);
+			mFragments[CAR] = findChildFragment(CartFragment.class);
 			mFragments[MINE] = findChildFragment(MineFragment.class);
 		}
 	}
@@ -120,12 +120,17 @@ public class MainFragment extends BaseFragment {
 
 	}
 
+	@Override
+	public void onStart() {
+		super.onStart();
+		EventBus.getDefault().register(this);
 
+	}
 
 	@Override
-	public void onDestroyView() {
+	public void onStop() {
 		EventBus.getDefault().unregister(this);
-		super.onDestroyView();
+		super.onStop();
 	}
 
 }

@@ -46,6 +46,10 @@ public class StoreInfo {
 		isEdtor = edtor;
 	}
 
+	public boolean isEdtor() {
+		return isEdtor;
+	}
+
 	@Override
 	public String toString() {
 		return "SotreInfo{" +

@@ -95,7 +95,7 @@ public class GoodDetailsActivity extends BaseActivity {
 
 	@Override
 	public void initView() {
-		EventBus.getDefault().register(this);
+
 		for (int i = 0; i < mTitles.length; i++) {
 			mTabEntities.add(new TabEntity(mTitles[i]));
 		}

@@ -56,6 +56,7 @@ import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.utils.statusbar.XStatusBar;
 import com.youth.xframe.widget.loadingview.XLoadingView;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
@@ -497,6 +498,19 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	public void onResume() {
 		super.onResume();
 		initView();
+	}
+
+	@Override
+	public void onStart() {
+		super.onStart();
+		EventBus.getDefault().register(this);
+
+	}
+
+	@Override
+	public void onStop() {
+		EventBus.getDefault().unregister(this);
+		super.onStop();
 	}
 
 	private boolean mInAtTop = true;
