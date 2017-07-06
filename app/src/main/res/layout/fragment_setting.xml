@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
-        android:background="@color/bg_white"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -19,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="3dp"
+            android:background="@color/bg_white"
             android:padding="10dp">
 
 
@@ -46,7 +46,7 @@
             android:id="@+id/bt_setting_address"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@null"
+            android:background="@color/bg_white"
             android:drawableRight="@drawable/ic_right_row"
             android:gravity="left|center_vertical"
             android:paddingLeft="10dp"
@@ -56,14 +56,12 @@
             android:textSize="@dimen/tv_Regular"/>
 
 
-        <View
-            style="@style/NoramLine"/>
-
         <Button
             android:id="@+id/bt_setting_security"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@null"
+            android:layout_marginTop="3dp"
+            android:background="@color/bg_white"
             android:drawableRight="@drawable/ic_right_row"
             android:gravity="left|center_vertical"
             android:paddingLeft="10dp"
@@ -73,15 +71,12 @@
             android:textSize="@dimen/tv_Regular"/>
 
 
-        <View
-            style="@style/NoramLine"/>
-
         <Button
             android:id="@+id/bt_setting_cache"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="3dp"
-            android:background="@null"
+            android:background="@color/bg_white"
             android:drawableRight="@drawable/ic_right_row"
             android:gravity="left|center_vertical"
             android:paddingLeft="10dp"
@@ -90,15 +85,13 @@
             android:textColor="@color/tv_name"
             android:textSize="@dimen/tv_Regular"/>
 
-        <View
-            style="@style/NoramLine"/>
 
         <Button
             android:id="@+id/bt_setting_sugges"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="3dp"
-            android:background="@null"
+            android:background="@color/bg_white"
             android:drawableRight="@drawable/ic_right_row"
             android:gravity="left|center_vertical"
             android:paddingLeft="10dp"
@@ -116,7 +109,7 @@
             android:id="@+id/bt_setting_about"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@null"
+            android:background="@color/bg_white"
             android:drawableRight="@drawable/ic_right_row"
             android:gravity="left|center_vertical"
             android:paddingLeft="10dp"

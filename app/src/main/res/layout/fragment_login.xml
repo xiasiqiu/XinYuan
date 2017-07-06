@@ -25,13 +25,13 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:orientation="vertical"
         android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
 
             android:background="@drawable/button__n_bg"
@@ -70,7 +70,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
 
             android:layout_marginTop="20dp"
@@ -140,7 +140,7 @@
     <Button
         android:id="@+id/bt_login"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
@@ -155,7 +155,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -169,6 +169,7 @@
             android:background="@color/tv_hint"/>
 
         <TextView
+            android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -188,10 +189,11 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
+        android:gravity="center_vertical"
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
 

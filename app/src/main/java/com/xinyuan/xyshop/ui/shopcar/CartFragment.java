@@ -92,7 +92,6 @@ public class CartFragment extends BaseFragment implements CartAdapter.CheckInter
 	@BindView(R.id.cart_swipeLayout)
 	SwipeRefreshLayout mSwipeRefreshLayout;
 
-	private Context context;
 	private double totalPrice = 0.00;// 购买的商品总价
 	private int totalCount = 0;// 购买的商品总数量
 	private CartAdapter selva;

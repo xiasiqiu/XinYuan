@@ -39,10 +39,11 @@ public class MyOrderFragment extends BaseFragment {
 	private CommonPagerAdapter adapter;
 	private MyOrderContentFragment contentFragment;
 	private int index;
-	public static MyOrderFragment getInstance(String title,int index) {
+
+	public static MyOrderFragment getInstance(String title, int index) {
 		MyOrderFragment sf = new MyOrderFragment();
 		sf.mTitle = title;
-		sf.index=index;
+		sf.index = index;
 		return sf;
 	}
 

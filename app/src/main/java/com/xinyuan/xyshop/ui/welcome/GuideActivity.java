@@ -23,12 +23,10 @@ public class GuideActivity extends AppIntro {
 		addSlide(new SecondSlide(), getApplicationContext());
 		addSlide(new ThirdSlide(), getApplicationContext());
 
-		// You can override bar/separator color if you want.
 
 		setBarColor(getResources().getColor(R.color.colorPrimary));
 		setSeparatorColor(getResources().getColor(R.color.colorPrimaryDark));
 
-		// You can also hide Skip button
 		showSkipButton(true);
 
 

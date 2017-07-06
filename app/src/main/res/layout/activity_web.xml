@@ -4,6 +4,10 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <include layout="@layout/view_header_tv_tv"/>
+
+    <View
+        style="@style/XYLine"/>
 
     <com.tamic.jswebview.view.ProgressBarWebView
         android:id="@+id/login_progress_webview"

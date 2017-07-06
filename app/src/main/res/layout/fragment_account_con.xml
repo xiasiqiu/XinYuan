@@ -134,16 +134,11 @@
         android:id="@+id/bt_account_next"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_margin="15dp"
         android:background="@drawable/bt_selected_fang"
         android:text="下一步"
         android:textColor="@color/bg_white"
         android:textSize="@dimen/tv_Normal"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bg_gray"/>
+
 </LinearLayout>

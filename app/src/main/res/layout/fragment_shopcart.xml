@@ -56,9 +56,9 @@
     <RelativeLayout
         android:id="@+id/rl_bottom"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:background="@color/bg_white"
-        android:elevation="1dp"
+        android:elevation="2dp"
         android:padding="5dp">
 
         <CheckBox
@@ -72,9 +72,9 @@
         <RelativeLayout
             android:id="@+id/rl_shopcar_pay_layout"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
             android:visibility="visible">
-
 
 
             <TextView
@@ -91,6 +91,7 @@
                 style="@style/LightTextView"
                 android:layout_toLeftOf="@id/all_price"
                 android:text="合计:"/>
+
             <TextView
                 style="@style/SmallHintTextView"
                 android:layout_alignParentBottom="true"
@@ -101,11 +102,12 @@
             <Button
                 android:id="@+id/bt_sell"
                 android:layout_width="90dp"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:background="@color/colorPrimaryDark"
+                android:gravity="center_horizontal|center_vertical"
                 android:text="去结算"
                 android:textColor="@color/bg_white"
                 android:textSize="@dimen/tv_light"/>

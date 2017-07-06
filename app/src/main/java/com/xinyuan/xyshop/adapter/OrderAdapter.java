@@ -18,9 +18,9 @@ import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.common.AddViewHolder;
 import com.xinyuan.xyshop.model.OrderModel;
 import com.xinyuan.xyshop.ui.goods.store.StoreActivity;
+import com.xinyuan.xyshop.ui.mine.order.EvaActivity;
 import com.xinyuan.xyshop.ui.mine.order.LogisticActivity;
 import com.xinyuan.xyshop.ui.mine.order.OrderDetailActivity;
-import com.xinyuan.xyshop.ui.mine.order.fragment.EvaActivity;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 

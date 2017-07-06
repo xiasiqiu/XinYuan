@@ -30,7 +30,7 @@
         <LinearLayout
             android:id="@+id/ll_login_phone"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/button__n_bg"
             android:orientation="horizontal">
@@ -69,7 +69,7 @@
         <LinearLayout
             android:id="@+id/ll_login_code"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:background="@drawable/button__n_bg"
@@ -123,7 +123,7 @@
     <Button
         android:id="@+id/bt_login"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"

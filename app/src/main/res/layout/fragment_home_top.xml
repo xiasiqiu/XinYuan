@@ -37,6 +37,7 @@
         android:background="@color/colorLine"/>
 
     <RelativeLayout
+        android:id="@+id/rl_home_news"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:background="@color/bg_white"

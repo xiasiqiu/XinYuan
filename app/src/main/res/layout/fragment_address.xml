@@ -17,8 +17,9 @@
         android:background="@color/bg_gray"/>
 
     <Button
+        android:id="@+id/bt_add_address"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:background="@color/colorPrimaryDark"
         android:text="新增收货地址"
         android:textColor="@color/bg_white"/>

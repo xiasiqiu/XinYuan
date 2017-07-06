@@ -1,15 +1,23 @@
 package com.xinyuan.xyshop.ui.mine.info;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.even.StartBrotherEvent;
 import com.xinyuan.xyshop.ui.mine.pro.AccountFragment;
 import com.xinyuan.xyshop.util.SystemBarHelper;
+import com.xinyuan.xyshop.widget.dialog.color.ColorDialog;
+import com.xinyuan.xyshop.widget.dialog.color.PromptDialog;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -60,13 +68,58 @@ public class SettingFragment extends BaseFragment {
 				start(SecurityFragment.newInstance());
 				break;
 			case R.id.bt_setting_cache:
+				ColorDialog dialog = new ColorDialog(getContext());
+				dialog.setTitle("清理缓存");
+				dialog.setAnimationEnable(true);
+				dialog.setContentText("确定要清理APP图片缓存吗？");
+				dialog.setAnimationIn(getInAnimationTest(getActivity()));
+				dialog.setAnimationOut(getOutAnimationTest(getActivity()));
+				dialog.setPositiveListener("清理", new ColorDialog.OnPositiveListener() {
+					@Override
+					public void onClick(ColorDialog dialog) {
+
+						dialog.dismiss();
+						Toast.makeText(getActivity(), "清理完成", Toast.LENGTH_SHORT).show();
+					}
+				})
+						.setNegativeListener("取消", new ColorDialog.OnNegativeListener() {
+							@Override
+							public void onClick(ColorDialog dialog) {
+								Toast.makeText(getActivity(), dialog.getNegativeText().toString(), Toast.LENGTH_SHORT).show();
+								dialog.dismiss();
+							}
+						}).show();
 				break;
 			case R.id.bt_setting_sugges:
+
+				start(SuggesFragment.newInstance());
 				break;
 			case R.id.bt_setting_about:
 				break;
 
 		}
 
+	}
+
+	public static AnimationSet getInAnimationTest(Context context) {
+		AnimationSet out = new AnimationSet(context, null);
+		AlphaAnimation alpha = new AlphaAnimation(0.0f, 1.0f);
+		alpha.setDuration(150);
+		ScaleAnimation scale = new ScaleAnimation(0.6f, 1.0f, 0.6f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+		scale.setDuration(150);
+		out.addAnimation(alpha);
+		out.addAnimation(scale);
+		return out;
+	}
+
+	public static AnimationSet getOutAnimationTest(Context context) {
+		AnimationSet out = new AnimationSet(context, null);
+		AlphaAnimation alpha = new AlphaAnimation(1.0f, 0.0f);
+		alpha.setDuration(150);
+		ScaleAnimation scale = new ScaleAnimation(1.0f, 0.6f, 1.0f, 0.6f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+		scale.setDuration(150);
+		out.addAnimation(alpha);
+		out.addAnimation(scale);
+		return out;
 	}
 }

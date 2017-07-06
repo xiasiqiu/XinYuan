@@ -37,7 +37,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/fl_eva_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                app:alignContent="flex_start"
+                app:flexWrap="wrap"
+                app:justifyContent="center"/>
 
             <RelativeLayout
                 android:id="@+id/rl_eva_pic_pull"

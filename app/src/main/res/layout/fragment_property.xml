@@ -142,7 +142,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@id/iv_mine_redpacke"
-            android:text="红包"/>
+            android:text="平台红包"/>
 
         <TextView
             android:id="@+id/tv_mine_redpacke_hint"
@@ -195,10 +195,10 @@
         <TextView
             android:id="@+id/tv_mine_credit"
             style="@style/RegularTextView"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_toRightOf="@id/iv_mine_credit"
-            android:text="店铺代金券"/>
+            android:text="会员积分"
+            android:layout_alignTop="@+id/iv_mine_credit"
+            android:layout_alignLeft="@+id/tv_mine_credit_hint"
+            android:layout_alignStart="@+id/tv_mine_credit_hint"/>
 
         <TextView
             android:id="@+id/tv_mine_credit_hint"
@@ -206,7 +206,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/iv_mine_credit"
-            android:text="店铺代金券使用情况"
+            android:text="会员积分获取及消费日志"
             style="@style/NormalHintTextView"/>
 
         <TextView

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="15dp">
+
+    <TextView
+        android:id="@+id/tv_new_title"
+        style="@style/RegularTextView"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="李**"/>
+
+    <TextView
+        android:id="@+id/tv_new_time"
+        style="@style/LightTextView"
+        android:layout_alignParentRight="true"
+        android:text="2017-06-21"
+        android:textColor="@color/tv_hint"/>
+
+    <TextView
+        android:id="@+id/tv_new_content"
+        style="@style/NormalTextView"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="70dp"
+        android:layout_toRightOf="@id/tv_new_title"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="积分兑换了华为P10一台"/>
+
+    <View
+        style="@style/LightLine"
+        android:layout_width="match_parent"
+        android:layout_below="@id/tv_new_content"
+        android:layout_marginTop="15dp"/>
+
+</RelativeLayout>

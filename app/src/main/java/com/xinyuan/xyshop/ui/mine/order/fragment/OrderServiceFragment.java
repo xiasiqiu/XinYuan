@@ -56,8 +56,6 @@ public class OrderServiceFragment extends BaseFragment {
 			SystemBarHelper.setHeightAndPadding(getActivity(), msg_toolbar);
 			tv_header_center.setText("退款/售后");
 		}
-
-
 	}
 
 	@Override

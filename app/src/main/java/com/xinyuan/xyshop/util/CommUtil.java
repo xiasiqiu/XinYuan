@@ -3,6 +3,7 @@ package com.xinyuan.xyshop.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.Window;
@@ -115,5 +116,10 @@ public class CommUtil {
 		translateAnimation.setDuration(1000);
 		return translateAnimation;
 	}
-
+	public static Point getScreenSize(Context context) {
+		Point point = new Point();
+		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+		wm.getDefaultDisplay().getSize(point);
+		return point;
+	}
 }

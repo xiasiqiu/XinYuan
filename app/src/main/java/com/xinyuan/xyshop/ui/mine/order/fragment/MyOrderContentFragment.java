@@ -111,11 +111,9 @@ public class MyOrderContentFragment extends BaseFragment implements OrderListCon
 		this.adapter = new OrderAdapter(R.layout.fragment_order_item, orderList);
 		this.adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
 		this.rv_order.setAdapter(adapter);
-
 		adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
 			@Override
 			public void onLoadMoreRequested() {
-
 				rv_order.postDelayed(new Runnable() {
 					@Override
 					public void run() {
@@ -125,7 +123,7 @@ public class MyOrderContentFragment extends BaseFragment implements OrderListCon
 				}, 1000);
 			}
 		}, rv_order);
-		XLog.v("加载数据"+mTitle);
+		XLog.v("加载数据" + mTitle);
 		mSwipeRefreshLayout.setRefreshing(false);
 		adapter.setEnableLoadMore(true);
 		loadingView.showContent();

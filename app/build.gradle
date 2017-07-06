@@ -10,10 +10,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
     }
     buildTypes {
         release {
-            minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -51,7 +53,6 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
-    compile 'com.github.andyxialm:ColorDialog:1.0.0'
     compile 'com.contrarywind:Android-PickerView:3.2.5'
     compile 'com.github.YancyYe:GalleryPick:1.2.1'
     testCompile 'junit:junit:4.12'
@@ -63,4 +64,5 @@ dependencies {
     compile 'com.google.zxing:core:3.2.1'
     compile 'cn.bingoogolapple:bga-qrcodecore:1.1.7@aar'
     compile 'cn.bingoogolapple:bga-zxing:1.1.7@aar'
+    compile 'com.android.support:multidex:1.0.1'
 }

@@ -6,6 +6,7 @@ import android.view.View;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.ui.mine.login.LoginFragment;
+import com.xinyuan.xyshop.util.CommUtil;
 
 import butterknife.OnClick;
 
@@ -42,7 +43,7 @@ public class ServiceFragment extends BaseFragment {
 				start(ServiceMoneyFragment.newInstance());
 				break;
 			case R.id.rl_service_goods:
-				start(ServiceGoodsFragment.newInstance());
+				CommUtil.gotoActivity(getActivity(),ServiceGoodsActivity.class,false,null);
 				break;
 		}
 	}

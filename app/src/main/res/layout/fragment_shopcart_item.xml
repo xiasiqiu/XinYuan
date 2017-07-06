@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:background="@color/bg_gray"
-              android:orientation="vertical">
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/bg_gray"
+                                    android:orientation="vertical"
+                                    card_view:cardCornerRadius="5dp"
+                                    card_view:cardElevation="4dp"
+                                    card_view:cardUseCompatPadding="true">
 
 
     <RelativeLayout
@@ -56,5 +60,6 @@
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/flex_goods"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.google.android.flexbox.FlexboxLayout>
-</LinearLayout>
+        android:layout_gravity="bottom"
+        android:layout_height="wrap_content"/>
+</android.support.v7.widget.CardView>

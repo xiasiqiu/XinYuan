@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_gray"
+              android:orientation="vertical">
+
+    <include layout="@layout/view_header_tv_msg"/>
+
+    <View
+        style="@style/XYLine"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:text="请留下您对我们的宝贵意见或建议"
+            android:textColor="@color/tv_hint"/>
+
+        <EditText
+            android:id="@+id/ed_eva"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_border"
+            android:gravity="top"
+            android:padding="5dp"
+            android:textSize="@dimen/tv_Normal"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="提交"
+            android:textColor="@color/bg_white"
+            android:textSize="@dimen/tv_Blod"/>
+    </LinearLayout>
+
+</LinearLayout>

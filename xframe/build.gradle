@@ -31,7 +31,6 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
 }
 def siteUrl = 'https://github.com/youth5201314/XFrame' // 项目的主页
 def gitUrl = 'https://github.com/youth5201314/XFrame.git' // Git仓库的url

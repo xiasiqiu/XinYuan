@@ -28,7 +28,7 @@
             android:drawableRight="@drawable/ic_right_row"
             android:text="萨达所大所多"
             android:textColor="@color/tv_name"
-            android:textSize="@dimen/tv_Normal"/>
+            android:textSize="@dimen/tv_Regular"/>
 
 
     </RelativeLayout>
@@ -57,12 +57,12 @@
 
         <Button
             android:id="@+id/bt_order_eva_later"
-            android:layout_width="65dp"
-            android:layout_height="20dp"
+            android:layout_width="75dp"
+            android:layout_height="25dp"
             android:background="@drawable/bt_unselect_red"
             android:text="查看详细"
             android:textColor="@color/tv_price"
-            android:textSize="@dimen/tv_small"/>
+            android:textSize="@dimen/tv_light"/>
     </LinearLayout>
 
 

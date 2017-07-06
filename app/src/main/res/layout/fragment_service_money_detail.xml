@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/view_header_tv_msg"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/mine_bg"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_service_status"
+            style="@style/NormalTextView"
+            android:text="退款成功"
+            android:textColor="@color/bg_white"/>
+
+        <TextView
+            android:id="@+id/tv_status_time"
+            style="@style/SmallHintTextView"
+            android:layout_below="@id/tv_service_status"
+            android:layout_marginTop="10dp"
+            android:text="2017年6月28日"
+            android:textColor="@color/bg_white"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+
+        <TextView
+            style="@style/NormalTextView"
+
+            android:text="退款总金额"/>
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_alignParentRight="true"
+            android:text="￥20.00"
+            android:textColor="@color/tv_price"/>
+
+        <View
+            style="@style/LightLine"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/bg_white"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            style="@style/NormalTextView"
+            android:text="退回银行卡"/>
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_alignParentRight="true"
+            android:text="￥20.00"
+            android:textColor="@color/tv_hint"/>
+
+        <View
+            style="@style/LightLine"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_gray"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp">
+
+            <ImageView
+                android:id="@+id/iv_service_statu1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_point"/>
+
+
+            <ImageView
+                android:id="@+id/iv_service_statu2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/ic_point"
+                android:visibility="gone"/>
+
+            <View
+                android:id="@+id/v_service_statu2"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/iv_service_statu2"
+                android:layout_toRightOf="@id/iv_service_statu1"
+                android:background="@color/colorPrimaryDark"
+                android:visibility="gone"/>
+
+
+            <ImageView
+                android:id="@+id/iv_service_statu3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_point"
+                android:visibility="gone"/>
+
+            <View
+                android:id="@+id/v_service_statu3"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/iv_service_statu3"
+                android:layout_toRightOf="@id/iv_service_statu2"
+                android:background="@color/colorPrimaryDark"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp">
+
+            <TextView
+                android:id="@+id/tv_status_1"
+                style="@style/LightTextView"
+                android:text="买家退款"/>
+
+            <TextView
+                android:id="@+id/tv_status_2"
+                style="@style/LightTextView"
+                android:layout_centerHorizontal="true"
+                android:text="银行受理"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tv_status_3"
+                style="@style/LightTextView"
+                android:layout_alignParentRight="true"
+                android:gravity="center_horizontal"
+                android:text="买家退款"
+                android:visibility="gone"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:id="@+id/tv_status_1_time"
+                style="@style/SmallHintTextView"
+                android:text="2017-05-23 09:37"/>
+
+
+            <TextView
+                android:id="@+id/tv_status_2_time"
+                style="@style/SmallHintTextView"
+                android:layout_centerHorizontal="true"
+                android:text="2017-05-23 09:37"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tv_status_3_time"
+                style="@style/SmallHintTextView"
+                android:layout_alignParentRight="true"
+                android:text="2017-05-23 09:37"
+                android:visibility="gone"/>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+
+        <TextView
+            style="@style/NormalTextView"
+            android:text="退款信息"/>
+
+        <View
+            android:id="@+id/good_line"
+            style="@style/LightLine"
+            android:layout_marginTop="25dp"/>
+
+        <ImageView
+            android:id="@+id/iv_good_img"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_below="@id/good_line"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/test_good_img"/>
+
+        <TextView
+            android:id="@+id/tv_goods_name"
+            style="@style/NormalTextView"
+            android:layout_below="@id/good_line"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/iv_good_img"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="雅诗兰黛 红石榴泡沫洁面乳125ml清洁补水保湿"/>
+
+        <TextView
+            style="@style/LightTextView"
+            android:layout_alignLeft="@+id/tv_goods_name"
+            android:layout_alignStart="@+id/tv_goods_name"
+            android:layout_below="@+id/tv_goods_name"
+            android:layout_marginTop="11dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="已选：“200ML"
+            android:textColor="@color/tv_hint"/>
+
+        <View
+            style="@style/LightLine"
+            android:layout_below="@id/iv_good_img"
+            android:layout_marginTop="10dp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/LightTextView"
+                android:text="退款原因:"/>
+
+            <TextView
+                android:id="@+id/tv_service_reason"
+                style="@style/LightTextView"
+                android:layout_marginLeft="10dp"
+                android:text="尺码拍错/不喜欢"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/LightTextView"
+                android:text="退款金额:"/>
+
+            <TextView
+                android:id="@+id/tv_service_money"
+                style="@style/LightTextView"
+                android:layout_marginLeft="10dp"
+                android:text="￥20.00"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+                style="@style/LightTextView"
+                android:text="申请时间:"/>
+
+            <TextView
+                android:id="@+id/tv_service_time"
+                style="@style/LightTextView"
+                android:layout_marginLeft="10dp"
+                android:text="2017-5-23 09:23"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+                style="@style/LightTextView"
+                android:text="退款编号:"/>
+
+            <TextView
+                android:id="@+id/tv_service_id"
+                style="@style/LightTextView"
+                android:layout_marginLeft="10dp"
+                android:text="11685958774545454"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -54,6 +54,85 @@
 
                         </RelativeLayout>
 
+                        <RelativeLayout
+                            android:id="@+id/rl_group_info"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="3dp"
+                            android:background="@color/bg_white"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:paddingTop="5dp"
+                            android:visibility="gone">
+
+                            <TextView
+                                style="@style/RegularTextView"
+                                android:layout_centerVertical="true"
+                                android:text="团购精选"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentRight="true"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tv_good_day"
+                                    style="@style/LightTextView"
+                                    android:layout_marginRight="5dp"
+                                    android:background="@color/colorBackground"
+                                    android:padding="5dp"
+                                    android:text="0"
+                                    android:textColor="@color/tv_price"/>
+
+                                <TextView
+                                    style="@style/LightTextView"
+                                    android:layout_marginRight="5dp"
+                                    android:text="天"/>
+
+                                <TextView
+                                    android:id="@+id/tv_good_hour"
+                                    style="@style/LightTextView"
+                                    android:layout_marginRight="5dp"
+                                    android:background="@color/colorBackground"
+                                    android:padding="5dp"
+                                    android:text="0"
+                                    android:textColor="@color/tv_price"/>
+
+                                <TextView
+                                    style="@style/LightTextView"
+                                    android:layout_marginRight="5dp"
+                                    android:text="时"/>
+
+                                <TextView
+                                    android:id="@+id/tv_good_min"
+                                    style="@style/LightTextView"
+                                    android:layout_marginRight="5dp"
+                                    android:background="@color/colorBackground"
+                                    android:padding="5dp"
+                                    android:text="0"
+                                    android:textColor="@color/tv_price"/>
+
+                                <TextView
+                                    style="@style/LightTextView"
+                                    android:layout_marginRight="5dp"
+                                    android:text="分"/>
+
+                                <TextView
+                                    android:id="@+id/tv_good_second"
+                                    style="@style/LightTextView"
+                                    android:layout_marginRight="5dp"
+                                    android:background="@color/colorBackground"
+                                    android:padding="5dp"
+                                    android:text="0"
+                                    android:textColor="@color/tv_price"/>
+
+                                <TextView
+                                    style="@style/LightTextView"
+                                    android:text="秒"/>
+                            </LinearLayout>
+                        </RelativeLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"

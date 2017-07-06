@@ -63,7 +63,6 @@ public class OrderActivity extends BaseActivity {
 
 	@Override
 	public void initView() {
-		ButterKnife.bind(this);
 		Intent intent = this.getIntent();
 		childIndex = (int) intent.getSerializableExtra("order_index");
 		SystemBarHelper.immersiveStatusBar(this); //设置状态栏透明

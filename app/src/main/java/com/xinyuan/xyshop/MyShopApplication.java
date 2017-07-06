@@ -2,6 +2,8 @@ package com.xinyuan.xyshop;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.multidex.MultiDex;
+
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheEntity;
@@ -10,13 +12,13 @@ import com.xinyuan.xyshop.common.Constants;
 import com.xinyuan.xyshop.common.ShopHelper;
 import com.youth.xframe.XFrame;
 import com.youth.xframe.base.XApplication;
-import com.youth.xframe.utils.log.XLog;
 
 
 import java.util.ArrayList;
 import java.util.logging.Level;
 
 import me.yokeyword.fragmentation.Fragmentation;
+import rx.android.schedulers.AndroidSchedulers;
 
 /**
  * Created by Administrator on 2017/5/2 0002.
@@ -50,6 +52,8 @@ public class MyShopApplication extends XApplication {
 		Fragmentation.builder()
 				.debug(true)
 				.install();
+
+
 		this.sysInitSharedPreferences = getSharedPreferences(Constants.SYSTEM_INIT_FILE_NAME, 0);
 		this.token = this.sysInitSharedPreferences.getString("token", "");//获取缓存中的token
 		this.memberID = this.sysInitSharedPreferences.getString("memberID", "");//获取缓存中的会员ID
@@ -86,5 +90,9 @@ public class MyShopApplication extends XApplication {
 		MyShopApplication.keyWord = keyWord;
 	}
 
-
+	@Override
+	protected void attachBaseContext(Context base) {
+		super.attachBaseContext(base);
+		MultiDex.install(this);
+	}
 }

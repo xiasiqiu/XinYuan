@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="20dp">
+
+    <TextView
+        android:id="@+id/tv_new_title"
+        style="@style/RegularTextView"
+        android:text="华北因异常降雨天气配送延迟"/>
+
+    <TextView
+        android:id="@+id/tv_new_time"
+        style="@style/LightTextView"
+        android:layout_alignParentRight="true"
+        android:text="2017-06-21 15:40:23  "
+        android:textColor="@color/tv_hint"/>
+
+    <TextView
+        android:id="@+id/tv_new_content"
+        style="@style/LightTextView"
+        android:layout_below="@id/tv_new_title"
+        android:layout_marginTop="15dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="华北地区近期将普遍降雨，异常天气会对我们的配送产生影响，如您的订单出现延误，烦请您耐心等待，我们将尽最大努力为您尽快送达！ 感谢您一直以来的支持和理解！"
+        android:textColor="@color/tv_hint"/>
+
+    <View
+        style="@style/LightLine"
+        android:layout_width="match_parent"
+        android:layout_below="@id/tv_new_content"
+        android:layout_marginTop="20dp"/>
+
+</RelativeLayout>

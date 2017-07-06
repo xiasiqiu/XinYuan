@@ -2,14 +2,17 @@ package com.xinyuan.xyshop.ui.home;
 
 import android.graphics.PixelFormat;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.tamic.jswebview.browse.JsWeb.CustomWebViewClient;
 import com.tamic.jswebview.view.ProgressBarWebView;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseActivity;
+import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.loadingview.XLoadingView;
 
@@ -26,7 +29,10 @@ public class WebViewActivity extends BaseActivity {
 
 	private String urls = "";
 
-
+	@BindView(R.id.toolbar_tv)
+	Toolbar toolbar_tv;
+	@BindView(R.id.tv_header_center)
+	TextView tv_header_center;
 	@BindView(R.id.login_progress_webview)
 	ProgressBarWebView webView;
 
@@ -70,7 +76,13 @@ public class WebViewActivity extends BaseActivity {
 
 	@Override
 	public void initView() {
+		if (toolbar_tv != null) {
+			SystemBarHelper.immersiveStatusBar(this, 0); //设置状态栏透明
+			SystemBarHelper.setHeightAndPadding(this, toolbar_tv);
+			tv_header_center.setText(R.string.brandtitle);
+		}
 
+		tv_header_center.setText("HTML页面");
 	}
 
 }

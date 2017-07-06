@@ -12,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.trello.rxlifecycle.LifecycleProvider;
 import com.trello.rxlifecycle.LifecycleTransformer;
 import com.trello.rxlifecycle.RxLifecycle;
@@ -39,6 +38,9 @@ import rx.subjects.BehaviorSubject;
  */
 
 public abstract class BaseFragment extends SupportFragment implements ICallback, LifecycleProvider<FragmentEvent> {
+
+	public static final String TAG = BaseFragment.class.getSimpleName();
+
 	// 再点一次退出程序时间设置
 	private static final long WAIT_TIME = 2000L;
 	private long TOUCH_TIME = 0;
@@ -62,7 +64,6 @@ public abstract class BaseFragment extends SupportFragment implements ICallback,
 			contentView = inflater.inflate(getLayoutId(), container, false);
 			contentView.setClickable(true);// 防止点击穿透，底层的fragment响应上层点击触摸事件
 			mUnbinder = ButterKnife.bind(this, contentView);
-
 			return contentView;
 		} else {
 
@@ -162,7 +163,7 @@ public abstract class BaseFragment extends SupportFragment implements ICallback,
 		lifecycleSubject.onNext(FragmentEvent.DESTROY);
 		mUnbinder.unbind();
 		super.onDestroy();
-		XLog.d("-----------------------Fragment销毁!------------------");
+		XLog.d(TAG+"-----------------------Fragment销毁!------------------");
 
 	}
 

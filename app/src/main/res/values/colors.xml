@@ -58,6 +58,14 @@
     <color name="colorTopFont">#d42d00</color>
     <color name="list_divider_line">#e7e7e7</color>
     <color name="colorAskTopBackgroud">#00BCD4</color>
-
+    <color name="color_dialog_title">#303030</color>
+    <color name="color_dialog_content_prompt">#343434</color>
     <color name="paper_button_shadow_color">#0000</color>
+
+
+    <color name="color_type_info">#79b3e4</color>
+    <color name="color_type_help">#e8bd4b</color>
+    <color name="color_type_wrong">#ed7861</color>
+    <color name="color_type_warning">#e8bd4b</color>
+    <color name="color_type_success">#90b06e</color>
 </resources>

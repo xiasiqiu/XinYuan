@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.Window;
-
 import com.trello.rxlifecycle.LifecycleTransformer;
 import com.trello.rxlifecycle.RxLifecycle;
 import com.trello.rxlifecycle.android.ActivityEvent;
@@ -37,6 +36,7 @@ import org.greenrobot.eventbus.EventBus;
  */
 
 public abstract class BaseActivity extends SupportActivity implements ICallback, LifecycleProvider<ActivityEvent> {
+	public static final String TAG = BaseActivity.class.getSimpleName();
 
 
 	private final BehaviorSubject<ActivityEvent> lifecycleSubject = BehaviorSubject.create();
@@ -100,12 +100,12 @@ public abstract class BaseActivity extends SupportActivity implements ICallback,
 
 	@Override
 	protected void onDestroy() {
+		super.onDestroy();
 		lifecycleSubject.onNext(ActivityEvent.DESTROY);
 		mUnbinder.unbind();
 		EventBus.getDefault().unregister(this);//反注册
 		XActivityStack.getInstance().finishActivity();
-		super.onDestroy();
-		XLog.d("-----------------------Acitivty销毁!s------------------");
+		XLog.d(TAG + "-----------------------Acitivty销毁!s------------------");
 
 
 	}

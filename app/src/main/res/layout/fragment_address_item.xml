@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="90dp"
                 android:layout_marginTop="3dp"
                 android:background="@color/bg_white"
                 android:padding="10dp">
@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/tv_address"
-        style="@style/NormalTextView"
+        style="@style/LightTextView"
         android:layout_below="@id/tv_user_name"
         android:layout_marginTop="10dp"
         android:ellipsize="end"
@@ -27,10 +27,6 @@
         android:text="四川省成都市武侯区石羊场街道  和盛西街南城都汇5A期汇晴园"
         android:textColor="@color/tv_hint"/>
 
-    <View
-        style="@style/XYLine"
-        android:layout_below="@id/tv_address"
-        android:layout_marginTop="10dp"/>
 
     <CheckBox
         android:id="@+id/address_checkbox"

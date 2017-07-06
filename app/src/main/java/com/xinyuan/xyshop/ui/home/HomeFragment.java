@@ -212,8 +212,15 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 		MarqueeView marquee_name = (MarqueeView) headView.findViewById(R.id.marquee_name);
 		MarqueeView marquee_content = (MarqueeView) headView.findViewById(R.id.marquee_content);
+		RelativeLayout rl_home_news= (RelativeLayout) headView.findViewById(R.id.rl_home_news);
 		marquee_name.startWithList(name);
 		marquee_content.startWithList(content);
+		rl_home_news.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				CommUtil.gotoActivity(getActivity(),NewsActivity.class,false,null);
+			}
+		});
 	}
 
 	/**
@@ -389,7 +396,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		this.showWord = showWord;
 		this.keyWord = keyWord;
 		MyShopApplication.setKeyWord(keyWord);
-		et_search.setText(keyWord);
+		et_search.setHint(keyWord);
 		MyShopApplication.setKeyWord(keyWord);
 		setSearchListener();
 
@@ -518,14 +525,14 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	@Subscribe
 	public void onTabSelectedEvent(TabSelectedEvent event) {
-		if (event.position != MainFragment.HOME) return;
-
-		if (mInAtTop) {
-			mSwipeRefreshLayout.setRefreshing(true);
-			onRefresh();
-		} else {
-			scrollToTop();
-		}
+//		if (event.position != MainFragment.HOME) return;
+//
+//		if (mInAtTop) {
+//			mSwipeRefreshLayout.setRefreshing(true);
+//			onRefresh();
+//		} else {
+//			scrollToTop();
+//		}
 	}
 
 	private void scrollToTop() {

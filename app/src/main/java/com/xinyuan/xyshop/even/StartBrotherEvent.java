@@ -10,6 +10,9 @@ public class StartBrotherEvent {
 	public SupportFragment targetFragment;
 	public boolean isResult = false;
 	public int requestCode;
+	public StartBrotherEvent() {
+
+	}
 
 	public StartBrotherEvent(SupportFragment targetFragment, boolean isResult, int requestCode) {
 		this.targetFragment = targetFragment;

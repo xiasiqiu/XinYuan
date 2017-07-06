@@ -253,8 +253,9 @@ public class GoodDetailsSpecDialog extends Dialog implements SKUInterface {
 				break;
 			case R.id.btnAddCart:
 				if (MyShopApplication.isLogin) {
-					dismiss();
 					EventBus.getDefault().post(new GoodBusBean(GoodBusBean.addShopCar, true));
+					dismiss();
+
 				} else {
 					CommUtil.gotoActivity(context, LoginActivity.class, false, null);
 				}

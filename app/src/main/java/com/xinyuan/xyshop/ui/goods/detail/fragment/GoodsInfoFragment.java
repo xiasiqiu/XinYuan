@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -15,6 +17,7 @@ import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -25,6 +28,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.android.flexbox.FlexboxLayout;
+import com.trello.rxlifecycle.android.FragmentEvent;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.SimpleEvaluateAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
@@ -44,6 +48,7 @@ import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.widget.SlideDetailsLayout;
 import com.xinyuan.xyshop.widget.dialog.GoodDetailsPromotionDialog;
 import com.xinyuan.xyshop.widget.dialog.GoodDetailsSpecDialog;
+import com.xinyuan.xyshop.widget.dialog.color.PromptDialog;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -60,7 +65,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import cn.refactor.lib.colordialog.PromptDialog;
+
 
 /**
  * Created by Administrator on 2017/5/18.
@@ -165,6 +170,8 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	@BindView(R.id.tv_comment_count)
 	TextView tv_comment_count;
 
+	@BindView(R.id.rl_group_info)
+	RelativeLayout rl_group_info;
 	@BindView(R.id.lodingView)
 	XLoadingView lodingView;
 
@@ -197,6 +204,14 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	private static SlideDetailsLayout.Status status;
 
 	private static String unit;
+
+
+	private long mDay = 10;
+	private long mHour = 12;
+	private long mMin = 43;
+	private long mSecond = 00;
+	private boolean isRun = true;
+
 
 	@Override
 	public int getLayoutId() {
@@ -327,6 +342,11 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		XLog.v(model.toString());
 		this.detailModel = model;
 		EventBus.getDefault().post(new GoodBusBean(GoodBusBean.GoodEvaluate, model.getGoodComment()));
+		if (detailModel.getGoodsType() == 0) {
+			XLog.v("开启倒计时");
+			rl_group_info.setVisibility(View.VISIBLE);
+			startRun();
+		}
 		showBanner();
 		showGoodsInfo();
 		showEva();
@@ -523,8 +543,9 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		if (goodBusBean.getFlag().equals(GoodBusBean.addShopCar)) {
 			boolean isAdd = false;
 			isAdd = (boolean) goodBusBean.getObj();
+			XLog.v("加入购物车");
 			if (isAdd) {
-				new PromptDialog(context)
+				new PromptDialog(getContext())
 						.setDialogType(PromptDialog.DIALOG_TYPE_SUCCESS)
 						.setAnimationEnable(true)
 						.setContentText("已加入购物车")
@@ -547,5 +568,78 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	}
 
+	@BindView(R.id.tv_good_second)
+	TextView tv_good_second;
+	@BindView(R.id.tv_good_min)
+	TextView tv_good_min;
+	@BindView(R.id.tv_good_hour)
+	TextView tv_good_hour;
+	@BindView(R.id.tv_good_day)
+	TextView tv_good_day;
 
+	/**
+	 * 开启倒计时
+	 */
+	private void startRun() {
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				while (isRun) {
+					try {
+						Thread.sleep(1000); // sleep 1000ms
+						Message message = Message.obtain();
+						message.what = 1;
+						timeHandler.sendMessage(message);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}).start();
+	}
+
+
+	private Handler timeHandler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+			if (msg.what == 1) {
+				computeTime();
+				if (isRun) {
+					tv_good_day.setText(mDay + "");
+					tv_good_hour.setText(mHour + "");
+					tv_good_min.setText(mMin + "");
+					tv_good_second.setText(mSecond + "");
+				}
+
+			}
+		}
+	};
+
+	private void computeTime() {
+		mSecond--;
+		if (mSecond < 0) {
+			mMin--;
+			mSecond = 59;
+			if (mMin < 0) {
+				mMin = 59;
+				mHour--;
+				if (mHour < 0) {
+					// 倒计时结束
+					mHour = 23;
+					mDay--;
+				}
+			}
+		}
+	}
+
+	@Override
+	public void onDestroyView() {
+		XLog.v("商品详情销毁了");
+		isRun = false;
+		super.onDestroyView();
+
+
+	}
 }
