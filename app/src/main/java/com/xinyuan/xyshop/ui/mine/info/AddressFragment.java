@@ -97,10 +97,9 @@ public class AddressFragment extends BaseFragment {
 	}
 
 
-
 	@OnClick(R.id.bt_add_address)
-	public void onClick(){
-		start(AddressFragment.newInstance());
+	public void onClick() {
+		start(AddAddressFragment.newInstance());
 	}
 
 	@Override

@@ -342,7 +342,7 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		XLog.v(model.toString());
 		this.detailModel = model;
 		EventBus.getDefault().post(new GoodBusBean(GoodBusBean.GoodEvaluate, model.getGoodComment()));
-		if (detailModel.getGoodsType() == 0) {
+		if (detailModel.getGoodsType() == 1) {
 			XLog.v("开启倒计时");
 			rl_group_info.setVisibility(View.VISIBLE);
 			startRun();

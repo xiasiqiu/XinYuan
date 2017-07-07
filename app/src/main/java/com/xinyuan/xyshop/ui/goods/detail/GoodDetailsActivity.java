@@ -25,7 +25,9 @@ import com.xinyuan.xyshop.ui.goods.detail.fragment.GoodsDetailFragment;
 import com.xinyuan.xyshop.ui.goods.detail.fragment.GoodsInfoFragment;
 import com.xinyuan.xyshop.ui.goods.detail.fragment.GoodsRecommFragment;
 import com.xinyuan.xyshop.ui.goods.store.StoreActivity;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.widget.NoScrollViewPager;
+import com.youth.xframe.utils.log.XLog;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -33,6 +35,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -149,17 +152,16 @@ public class GoodDetailsActivity extends BaseActivity {
 		v.getId();
 		switch (v.getId()) {
 			case R.id.bt_store:
-				if (!storeId.equals("")) {
-					Intent intent = new Intent(this, StoreActivity.class);
-					intent.putExtra("storeId", storeId);
-					startActivity(intent);
-				}
+				XLog.v("Store" + storeId);
+				Map<String, String> params = new HashMap();
+				params.put("storeId", storeId);
+				CommUtil.gotoActivity(this, StoreActivity.class, false, params);
 				break;
 			case R.id.bt_service:
 				break;
 			case R.id.bt_goos_buy:
-				Intent intent = new Intent(this, ConfirmOrderActivity.class);
-				startActivity(intent);
+
+				CommUtil.gotoActivity(this, ConfirmOrderActivity.class, false, null);
 				break;
 			case R.id.bt_add_car:
 				EventBus.getDefault().post(new GoodBusBean(GoodBusBean.SelectedSpec));

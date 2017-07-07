@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/bg_gray"
               android:orientation="vertical">
 
     <include layout="@layout/view_header_tv_msg"/>
@@ -11,7 +10,7 @@
         android:id="@+id/rv_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="3dp"
-        android:background="@color/bg_white"/>
+        android:background="@color/colorLine"
+        />
 
 </LinearLayout>

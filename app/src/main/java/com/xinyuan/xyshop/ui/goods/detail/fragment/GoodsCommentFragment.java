@@ -114,10 +114,10 @@ public class GoodsCommentFragment extends BaseFragment {
 	public void initView() {
 		fragmentManager = getChildFragmentManager();
 		if (VIEW_INIT) {
-			XLog.v("开始加载视图");
+
 			tv_eva_all_num.setEnabled(false);
 			tv_eva_all.setEnabled(false);
-			EventBus.getDefault().register(this);
+
 		}
 		VIEW_INIT = false;
 
@@ -254,9 +254,6 @@ public class GoodsCommentFragment extends BaseFragment {
 	public void changBtnSelectedStatus(int position) {
 		int index = position * 2;
 		int next = index + 1;
-
-		XLog.v("选中的index:" + index + ":" + next);
-		XLog.v(tvs.toString());
 		for (int i = 0; i < 9; i++) {
 			if (i == index) {
 				tvs[i].setEnabled(false);
@@ -269,7 +266,18 @@ public class GoodsCommentFragment extends BaseFragment {
 
 	}
 
+	@Override
+	public void onStart() {
+		super.onStart();
+		EventBus.getDefault().register(this);
 
+	}
+
+	@Override
+	public void onStop() {
+		EventBus.getDefault().unregister(this);
+		super.onStop();
+	}
 }
 
 

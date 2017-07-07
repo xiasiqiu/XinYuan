@@ -7,7 +7,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_gray"
         android:layout_marginTop="1dp"
         android:orientation="vertical">
 
@@ -15,6 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@color/bg_white"
+            android:elevation="3dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -94,11 +94,6 @@
             </FrameLayout>
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/colorLine"/>
-
 
         <com.youth.xframe.widget.loadingview.XLoadingView
             android:id="@+id/search_loadingView"
@@ -121,8 +116,7 @@
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/rvGoodList"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/bg_gray"/>
+                        android:layout_height="match_parent"/>
                 </android.support.v4.widget.SwipeRefreshLayout>
 
                 <LinearLayout

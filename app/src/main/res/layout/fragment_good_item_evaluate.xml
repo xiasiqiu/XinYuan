@@ -3,6 +3,7 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
                 android:background="@color/bg_white"
                 android:paddingTop="10dp">
 
@@ -13,7 +14,6 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:layout_marginTop="3dp"
-        android:background="@drawable/evaluate_star"
         android:orientation="horizontal"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -30,7 +30,6 @@
         style="@style/evaluate_text_style"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/customer_image"
-        android:text="JJSRWE"
         android:textColor="@color/tv_name"
         android:textSize="@dimen/tv_Normal"/>
 
@@ -42,7 +41,6 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/customer_image"
-        android:text="2017-05-12"
         android:textColor="@color/tv_hint"
         android:textSize="@dimen/tv_small"/>
 
@@ -56,7 +54,6 @@
         android:layout_toRightOf="@id/evaluatetime"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="颜色：K02黄色；尺码:M"
         android:textColor="@color/tv_hint"
         android:textSize="@dimen/tv_small"/>
 
@@ -72,7 +69,6 @@
         android:letterSpacing="0.01"
         android:lineSpacingExtra="5dp"
         android:maxLines="2"
-        android:text="裙裙非常漂亮，素静的花色，飘逸的下摆和绑带，很有感觉，很喜欢。背部胸部还有下摆是有内衬的，不会透。"
         android:textColor="@color/tv_name"
         android:textSize="@dimen/tv_light"/>
 
@@ -121,7 +117,6 @@
             android:letterSpacing="0.01"
             android:lineSpacingExtra="5dp"
             android:maxLines="2"
-            android:text=""
             android:textColor="@color/tv_name"
             android:textSize="@dimen/tv_light"/>
 
@@ -201,8 +196,7 @@
             android:id="@+id/tv_goods_eva_lookcount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:text="5456"
+            android:layout_marginLeft="5dp"
             android:textColor="@color/tv_hint"
             android:textSize="@dimen/tv_light"
             />
@@ -219,17 +213,10 @@
             android:id="@+id/tv_goods_eva_praisecount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:text="152"
+            android:layout_marginLeft="5dp"
             android:textColor="@color/tv_hint"
             android:textSize="@dimen/tv_light"
             />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_below="@+id/ll_evaluate_show"
-        android:layout_marginTop="10dp"
-        android:background="@color/bg_gray"/>
 </RelativeLayout>

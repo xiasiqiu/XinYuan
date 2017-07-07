@@ -10,53 +10,68 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.tamic.jswebview.browse.JsWeb.CustomWebViewClient;
+import com.tamic.jswebview.view.ProgressBarWebView;
 import com.xinyuan.xyshop.R;
+import com.xinyuan.xyshop.base.BaseFragment;
+import com.youth.xframe.utils.log.XLog;
+
+import java.util.Map;
+
+import butterknife.BindView;
 
 
 /**
  * 图文详情webview的Fragment
  */
-public class GoodsDetailWebFragment extends Fragment {
-    public WebView wv_detail;
+public class GoodsDetailWebFragment extends BaseFragment {
+	@BindView(R.id.webview)
+	ProgressBarWebView webView;
+	private String urls = "http://m.okhqb.com/item/description/1000334264.html?fromApp=true";
 
-    private WebSettings webSettings;
-    private LayoutInflater inflater;
+	@Override
+	public int getLayoutId() {
+		return R.layout.fragment_good_detail_web;
+	}
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.inflater = inflater;
-        View rootView = inflater.inflate(R.layout.fragment_item_detail_web, null);
-        initWebView(rootView);
-        return rootView;
-    }
 
-    public void initWebView(View rootView) {
-        String url = "http://m.okhqb.com/item/description/1000334264.html?fromApp=true";
-        wv_detail = (WebView) rootView.findViewById(R.id.wv_detail);
-        wv_detail.setFocusable(false);
-        wv_detail.loadUrl(url);
-        webSettings = wv_detail.getSettings();
-        webSettings.setLoadWithOverviewMode(true);
-        webSettings.setBuiltInZoomControls(true);
-        webSettings.setLoadsImagesAutomatically(true);
-        webSettings.setRenderPriority(WebSettings.RenderPriority.NORMAL);
-        webSettings.setBlockNetworkImage(true);
-        webSettings.setUseWideViewPort(true);
-        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
-        wv_detail.setWebViewClient(new GoodsDetailWebViewClient());
-    }
+	public GoodsDetailWebFragment getInstance(String url) {
+		GoodsDetailWebFragment goodsDetailWebFragment = new GoodsDetailWebFragment();
+		goodsDetailWebFragment.urls = url;
+		return goodsDetailWebFragment;
 
-    private class GoodsDetailWebViewClient extends WebViewClient {
-        @Override
-        public void onPageFinished(WebView view, String url) {
-            super.onPageFinished(view, url);
-            webSettings.setBlockNetworkImage(false);
-        }
+	}
 
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            return true;
-        }
-    }
+	@Override
+	public void initData(Bundle savedInstanceState) {
+		initWeb(urls);
+	}
+
+	private void initWeb(String url) {
+
+		webView.setWebViewClient(new CustomWebViewClient(webView.getWebView()) {
+			@Override
+			public String onPageError(String url) {
+				//指定网络加载失败时的错误页面
+				return "file:///android_asset/error.html";
+			}
+
+			@Override
+			public Map<String, String> onPageHeaders(String url) {
+
+				// 可以加入header
+
+				return null;
+			}
+
+
+		});
+
+		webView.loadUrl(url);
+	}
+
+	@Override
+	public void initView() {
+
+	}
 }

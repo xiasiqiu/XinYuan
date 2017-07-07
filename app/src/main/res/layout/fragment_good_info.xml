@@ -151,7 +151,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
-                                    android:text="￥799"
                                     android:textColor="@color/tv_price"
                                     android:textSize="@dimen/tv_Blod"/>
 
@@ -165,7 +164,6 @@
                                     android:layout_marginTop="3dp"
                                     android:layout_toRightOf="@id/tv_new_price"
                                     android:button="@null"
-                                    android:text="￥799"
                                     android:textColor="@color/tv_name"
                                     android:textSize="@dimen/tv_light"/>
 
@@ -182,7 +180,6 @@
                                     android:id="@+id/tv_goods_postage"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="快递：免邮费"
                                     android:textColor="@color/tv_hint"
                                     android:textSize="@dimen/tv_light"/>
 
@@ -193,7 +190,6 @@
                                     android:layout_marginLeft="18dp"
                                     android:layout_toRightOf="@+id/tv_goods_postage"
                                     android:gravity="center_vertical"
-                                    android:text="月销量：143笔"
                                     android:textColor="@color/tv_hint"
                                     android:textSize="@dimen/tv_Normal"/>
 
@@ -204,7 +200,6 @@
                                     android:layout_marginLeft="18dp"
                                     android:layout_toRightOf="@+id/tv_goods_sellnum"
                                     android:gravity="center_vertical"
-                                    android:text="评论：82条"
                                     android:textColor="@color/tv_hint"
                                     android:textSize="@dimen/tv_Normal"/>
 
@@ -215,7 +210,6 @@
                                     android:layout_alignParentRight="true"
                                     android:layout_marginRight="10dp"
                                     android:gravity="center_vertical"
-                                    android:text="四川成都"
                                     android:textColor="@color/tv_hint"
                                     android:textSize="@dimen/tv_Normal"/>
                             </RelativeLayout>
@@ -247,7 +241,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="促销:"
+                                android:text="@string/dicount"
                                 android:textColor="@color/tv_price"
                                 android:textSize="@dimen/tv_Normal"/>
 
@@ -280,7 +274,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="选择"
+                                android:text="@string/good_choses"
                                 android:textColor="@color/tv_name"
                                 android:textSize="@dimen/tv_Normal"/>
 
@@ -291,7 +285,7 @@
                                 android:layout_marginLeft="42dp"
                                 android:ellipsize="end"
                                 android:maxLines="1"
-                                android:text="请选择产品规格"
+                                android:text="@string/good_spec"
                                 android:textColor="@color/tv_name"
                                 android:textSize="@dimen/tv_Normal"/>
 
@@ -321,7 +315,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="10dp"
-                                android:text="评价"
+                                android:text="@string/good_eva"
                                 android:textColor="#222222"
                                 android:textSize="13dp"/>
 
@@ -376,7 +370,6 @@
                                 android:layout_alignLeft="@+id/bt_good_store"
                                 android:layout_alignParentTop="true"
                                 android:layout_alignStart="@+id/bt_good_store"
-                                android:text=""
                                 android:textColor="@color/tv_name"
                                 android:textSize="@dimen/tv_light"/>
 
@@ -393,7 +386,7 @@
                                 android:layout_toRightOf="@+id/iv_good_store_img"
                                 android:background="@drawable/good_bt_store"
                                 android:button="@null"
-                                android:text="进店逛逛"
+                                android:text="@string/good_gostore"
                                 android:textColor="@color/tv_price"
                                 android:textSize="@dimen/tv_small"/>
 
@@ -415,7 +408,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="宝贝描述"
+                                    android:text="@string/good_info_point"
                                     android:textColor="@color/tv_hint"
                                     android:textSize="@dimen/tv_small"/>
 
@@ -423,7 +416,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
-                                    android:text="卖家服务"
+                                    android:text="@string/good_store_point"
                                     android:textColor="@color/tv_hint"
                                     android:textSize="@dimen/tv_small"/>
 
@@ -431,7 +424,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentBottom="true"
-                                    android:text="物流服务"
+                                    android:text="@string/good_express_point"
                                     android:textColor="@color/tv_hint"
                                     android:textSize="@dimen/tv_small"/>
 
@@ -440,7 +433,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentRight="true"
-                                    android:text="4.8"
                                     android:textColor="@color/tv_price"
                                     android:textSize="@dimen/tv_small"/>
 
@@ -450,7 +442,6 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentRight="true"
                                     android:layout_centerVertical="true"
-                                    android:text="4.8"
                                     android:textColor="@color/tv_price"
                                     android:textSize="@dimen/tv_small"/>
 
@@ -460,7 +451,6 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentBottom="true"
                                     android:layout_alignParentRight="true"
-                                    android:text="4.8"
                                     android:textColor="@color/tv_price"
                                     android:textSize="@dimen/tv_small"/>
 
@@ -486,7 +476,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="6dp"
+                                android:layout_marginLeft="7dp"
                                 android:text="上拉查看图文详情"
                                 android:textColor="@color/tv_hint"
                                 android:textSize="@dimen/tv_light"/>

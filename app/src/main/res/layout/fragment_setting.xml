@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/bg_gray"
               android:orientation="vertical">
 
     <include layout="@layout/view_header_tv_msg"/>
@@ -10,14 +9,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
         android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/rl_user_head"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="3dp"
             android:background="@color/bg_white"
             android:padding="10dp">
 
@@ -60,7 +57,7 @@
             android:id="@+id/bt_setting_security"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="1px"
             android:background="@color/bg_white"
             android:drawableRight="@drawable/ic_right_row"
             android:gravity="left|center_vertical"
@@ -75,7 +72,7 @@
             android:id="@+id/bt_setting_cache"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="2dp"
             android:background="@color/bg_white"
             android:drawableRight="@drawable/ic_right_row"
             android:gravity="left|center_vertical"
@@ -90,7 +87,7 @@
             android:id="@+id/bt_setting_sugges"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="1px"
             android:background="@color/bg_white"
             android:drawableRight="@drawable/ic_right_row"
             android:gravity="left|center_vertical"
@@ -100,15 +97,13 @@
             android:textColor="@color/tv_name"
             android:textSize="@dimen/tv_Regular"/>
 
-        <View
-            style="@style/LightLine"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"/>
+
 
         <Button
             android:id="@+id/bt_setting_about"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginTop="1px"
             android:background="@color/bg_white"
             android:drawableRight="@drawable/ic_right_row"
             android:gravity="left|center_vertical"

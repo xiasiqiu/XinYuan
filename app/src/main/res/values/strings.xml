@@ -74,6 +74,18 @@
     <string name="take_pic">拍照</string>
     <string name="chose_pic">选择相册</string>
     <string name="login_inputname">输入用户名</string>
+    <string name="search_hint">请输入关键字</string>
+    <string name="dicount">促销:</string>
+    <string name="good_choses">选择</string>
+    <string name="good_spec">请选择产品规格</string>
+    <string name="good_eva">评价</string>
+    <string name="good_gostore">进店逛逛</string>
+    <string name="good_info_point">宝贝描述</string>
+    <string name="good_store_point">卖家服务</string>
+    <string name="good_express_point">物流服务</string>
+    <string name="store_introduce">店铺介绍</string>
+    <string name="store_voucher">免费领券</string>
+    <string name="store_service">联系客服</string>
 
 
 </resources>

@@ -49,7 +49,7 @@ public class NewsFragment extends BaseFragment {
 	@Override
 	public void initView() {
 		List<NewsBean> list = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 30; i++) {
 			NewsBean bean = new NewsBean();
 			bean.setId("123");
 			bean.setType("华北因异常降雨天气配送延迟");

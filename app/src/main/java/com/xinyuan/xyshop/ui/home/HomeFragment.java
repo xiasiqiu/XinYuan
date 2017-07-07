@@ -507,37 +507,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		initView();
 	}
 
-	@Override
-	public void onStart() {
-		super.onStart();
-		EventBus.getDefault().register(this);
 
-	}
 
-	@Override
-	public void onStop() {
-		EventBus.getDefault().unregister(this);
-		super.onStop();
-	}
 
-	private boolean mInAtTop = true;
-	private int mScrollTotal;
 
-	@Subscribe
-	public void onTabSelectedEvent(TabSelectedEvent event) {
-//		if (event.position != MainFragment.HOME) return;
-//
-//		if (mInAtTop) {
-//			mSwipeRefreshLayout.setRefreshing(true);
-//			onRefresh();
-//		} else {
-//			scrollToTop();
-//		}
-	}
-
-	private void scrollToTop() {
-		mRecyclerView.smoothScrollToPosition(0);
-	}
 
 	/**
 	 * Prenenter加载首页数据

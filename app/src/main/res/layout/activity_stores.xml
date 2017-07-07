@@ -2,20 +2,15 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                  xmlns:app="http://schemas.android.com/apk/res-auto"
                                                  android:layout_width="match_parent"
-                                                 android:layout_height="match_parent"
-                                                 android:background="@color/bg_gray">
+                                                 android:layout_height="match_parent">
 
-    <View
-        style="@style/XYLine"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="45dp"
-        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_gravity="bottom"
         android:background="@color/bg_white"
+        android:elevation="3dp"
         android:translationZ="10dp">
 
         <TextView
@@ -24,12 +19,12 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="店铺介绍"
+            android:text="@string/store_introduce"
             android:textSize="@dimen/tv_Regular"/>
 
         <View
             android:layout_width="2px"
-            android:layout_height="18dp"
+            android:layout_height="20dp"
             android:layout_gravity="center_vertical"
             android:background="@color/colorLine"/>
 
@@ -39,12 +34,12 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="免费领券"
+            android:text="@string/store_voucher"
             android:textSize="@dimen/tv_Regular"/>
 
         <View
             android:layout_width="2px"
-            android:layout_height="18dp"
+            android:layout_height="20dp"
             android:layout_gravity="center_vertical"
             android:background="@color/colorLine"/>
 
@@ -55,7 +50,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="联系客服"
+            android:text="@string/store_service"
             android:textSize="@dimen/tv_Regular"/>
     </LinearLayout>
 
@@ -161,7 +156,6 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/colorTransparency"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:orientation="horizontal">
@@ -209,14 +203,6 @@
                         android:scaleType="centerInside"
                         android:src="@drawable/act_home_msg"/>
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="8dp"
-                        android:layout_height="8dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="8dp"
-                        android:src="@color/tv_price"/>
-
                 </RelativeLayout>
 
             </android.support.v7.widget.Toolbar>
@@ -253,8 +239,10 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/vp_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/bg_gray"/>
+            android:layout_height="wrap_content"/>
+
+
+
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

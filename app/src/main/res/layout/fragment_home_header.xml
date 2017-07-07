@@ -37,7 +37,7 @@
             android:drawableLeft="@drawable/act_home_search_de"
             android:drawablePadding="5dp"
             android:paddingLeft="10dp"
-            android:text="请输入关键字"
+            android:text="@string/search_hint"
             android:gravity="left|center_vertical"
             android:singleLine="true"
             android:textColor="@color/tv_hint"

@@ -6,6 +6,7 @@
     android:id="@+id/toolbar_tv"
     android:layout_width="match_parent"
     android:layout_height="45dp"
+    android:elevation="1dp"
     android:background="@color/colorPrimaryDark"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp">

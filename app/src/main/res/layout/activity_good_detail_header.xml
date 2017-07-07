@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/good_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="@color/bg_white"
+    app:contentInsetLeft="0dp"
+    app:contentInsetStart="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/icon_back"/>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <!-- 商品、详情、评价切换的控件 -->
+
+
+            <com.flyco.tablayout.SlidingTabLayout
+                android:id="@+id/tl_main"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                app:tl_divider_width="1px"
+                app:tl_indicator_color="@color/colorPrimaryDark"
+                app:tl_indicator_height="4dp"
+                app:tl_indicator_width_equal_title="true"
+                app:tl_tab_padding="10dp"
+                app:tl_textSelectColor="@color/colorPrimaryDark"
+                app:tl_textUnselectColor="@color/tv_name"
+                app:tl_textsize="15dp"
+                app:tl_underline_gravity="BOTTOM"
+                app:tl_underline_height="2px"
+                />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/good_detail_title"
+                android:textColor="@color/tv_name"
+                android:textSize="@dimen/tv_Regular"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/detail_btn_msg"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/act_home_msg_de"/>
+
+
+    </LinearLayout>
+</android.support.v7.widget.Toolbar>

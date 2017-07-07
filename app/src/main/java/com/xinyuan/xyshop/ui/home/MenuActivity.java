@@ -3,6 +3,8 @@ package com.xinyuan.xyshop.ui.home;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -31,7 +33,10 @@ public class MenuActivity extends BaseActivity {
 	@BindView(R.id.rv_menu)
 	RecyclerView rv_menu;
 	MenuMoreAdapter adapter;
-
+	@BindView(R.id.toolbar_iv)
+	Toolbar toolbar_iv;
+	@BindView(R.id.tv_header_center)
+	TextView tv_header_center;
 	@Override
 	public int getLayoutId() {
 		return R.layout.activity_menu;
@@ -52,13 +57,13 @@ public class MenuActivity extends BaseActivity {
 
 	@Override
 	public void initView() {
-
+		tv_header_center.setText("全部菜单");
 	}
 
 
 	private void inRV(MenuModel brands) {
 		adapter = new MenuMoreAdapter(R.layout.fragment_home_item_expandable, brands.getData());
-		final GridLayoutManager manager = new GridLayoutManager(this, 3);
+		final GridLayoutManager manager = new GridLayoutManager(this, 4);
 		rv_menu.setLayoutManager(manager);
 		rv_menu.setAdapter(adapter);
 

@@ -6,9 +6,6 @@
 
     <include layout="@layout/activity_news_header"/>
 
-    <View
-        style="@style/LightLine"/>
-
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_content"
         android:layout_width="match_parent"

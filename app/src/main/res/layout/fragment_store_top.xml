@@ -4,7 +4,6 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_marginTop="3dp"
-              android:background="@color/bg_white"
               android:orientation="vertical">
 
 
@@ -15,36 +14,41 @@
         android:adjustViewBounds="true"
         android:background="@drawable/test_store_ad"/>
 
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="@color/bg_gray"/>
-
-    <TextView
-        style="@style/RegularTextView"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:text="店铺排行榜"/>
-
-
-    <com.flyco.tablayout.SlidingTabLayout
-        android:id="@+id/store__home_tabs"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:background="@color/bg_white"
-        app:tl_indicator_color="@color/colorPrimaryDark"
-        app:tl_indicator_height="4dp"
-        app:tl_indicator_width_equal_title="true"
-        app:tl_tab_space_equal="true"
-        app:tl_textSelectColor="@color/colorPrimaryDark"
-        app:tl_textUnselectColor="@color/tv_name"
-        app:tl_textsize="@dimen/tv_Normal"
-        app:tl_underline_color="@color/colorLine"
-        app:tl_underline_gravity="BOTTOM"
-        app:tl_underline_height="2px"/>
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="店铺排行榜"/>
+
+
+        <com.flyco.tablayout.SlidingTabLayout
+            android:id="@+id/store__home_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:background="@color/bg_white"
+            app:tl_indicator_color="@color/colorPrimaryDark"
+            app:tl_indicator_height="4dp"
+            app:tl_indicator_width_equal_title="true"
+            app:tl_tab_space_equal="true"
+            app:tl_textSelectColor="@color/colorPrimaryDark"
+            app:tl_textUnselectColor="@color/tv_name"
+            app:tl_textsize="@dimen/tv_Normal"
+            app:tl_underline_color="@color/colorLine"
+            app:tl_underline_gravity="BOTTOM"
+            app:tl_underline_height="2px"/>
+
+
+    </LinearLayout>
 
     <com.xinyuan.xyshop.widget.NoScrollViewPager
         android:id="@+id/vp_content"
@@ -53,17 +57,14 @@
         android:layout_below="@id/store__tabs"
         android:layout_weight="1"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="@color/bg_gray"/>
-
     <TextView
-        style="@style/RegularTextView"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="30px"
-        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/bg_white"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
         android:text="店主推荐"/>
-
 
 </LinearLayout>

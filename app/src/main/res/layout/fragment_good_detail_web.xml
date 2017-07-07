@@ -4,9 +4,11 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <WebView
-        android:id="@+id/webView"
+    <com.tamic.jswebview.view.ProgressBarWebView
+        android:id="@+id/webview"
+        style="@style/NumberProgressBar_Default"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></WebView>
+        android:layout_height="wrap_content"/>
+
 
 </LinearLayout>
