@@ -8,14 +8,13 @@
 
     <TextView
         android:id="@+id/tv_user_name"
-        style="@style/RegularTextView"
-        android:text="王静"/>
+        style="@style/RegularTextView"/>
 
     <TextView
         android:id="@+id/tv_user_phone"
         style="@style/SmallTextView"
         android:layout_alignParentRight="true"
-        android:text="15708446531"/>
+       />
 
     <TextView
         android:id="@+id/tv_address"
@@ -24,7 +23,6 @@
         android:layout_marginTop="10dp"
         android:ellipsize="end"
         android:maxLines="2"
-        android:text="四川省成都市武侯区石羊场街道  和盛西街南城都汇5A期汇晴园"
         android:textColor="@color/tv_hint"/>
 
 

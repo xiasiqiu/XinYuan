@@ -81,7 +81,7 @@ public class GroupBuyActivity extends BaseActivity {
 		psts_group.setViewPager(vp_content);
 		vp_content.setCurrentItem(0);
 		vp_content.setOffscreenPageLimit(3);
-		headerLayout.setImageResource(R.drawable.ic_beauty);
+		headerLayout.setImageResource(R.drawable.group_buy);
 		initAppBarLayout();
 	}
 

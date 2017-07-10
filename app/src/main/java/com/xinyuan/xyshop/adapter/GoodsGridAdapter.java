@@ -44,38 +44,6 @@ public class GoodsGridAdapter extends BaseQuickAdapter<GoodsVo, BaseViewHolder> 
 			tv_goods_price.setText("￥" + String.valueOf(item.getAppPriceMin()));
 			TextView tv_goods_sellnum = helper.getView(R.id.tv_goods_sellnum);
 			tv_goods_sellnum.setText("月销量:" + item.getGoodsSaleNum() + "件");
-		} else {
-			Button bt_address_delete = helper.getView(R.id.bt_address_delete);
-			Button bt_address_edit = helper.getView(R.id.bt_address_edit);
-			bt_address_edit.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					EventBus.getDefault().post(new AddressEven(helper.getPosition()));
-				}
-			});
-			bt_address_delete.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					final ColorDialog colorDialog = new ColorDialog(mContext);
-					colorDialog.setTitle("删除地址");
-					colorDialog.setContentText("确认删除该地址?");
-					colorDialog.setPositiveListener("删除", new ColorDialog.OnPositiveListener() {
-						@Override
-						public void onClick(ColorDialog dialog) {
-							remove(helper.getPosition());
-							XToast.info("地址已删除");colorDialog.dismiss();
-						}
-					})
-							.setNegativeListener("取消", new ColorDialog.OnNegativeListener() {
-								@Override
-								public void onClick(ColorDialog dialog) {
-									colorDialog.dismiss();
-								}
-							}).show();
-
-				}
-			});
 		}
-
 	}
 }

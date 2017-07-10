@@ -13,8 +13,10 @@ import android.widget.TextView;
 import com.xinyuan.xyshop.MainFragment;
 import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
+import com.xinyuan.xyshop.adapter.AddressAdapter;
 import com.xinyuan.xyshop.adapter.GoodsGridAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
+import com.xinyuan.xyshop.entity.AddressBean;
 import com.xinyuan.xyshop.entity.GoodsVo;
 import com.xinyuan.xyshop.even.TabSelectedEvent;
 import com.xinyuan.xyshop.ui.mine.login.LoginActivity;
@@ -41,7 +43,7 @@ public class AddressFragment extends BaseFragment {
 	TextView tv_header_center;
 	@BindView(R.id.rv_address)
 	RecyclerView rv_address;
-	GoodsGridAdapter adapter;
+	AddressAdapter adapter;
 
 	public static AddressFragment newInstance() {
 		AddressFragment fragment = new AddressFragment();
@@ -67,24 +69,28 @@ public class AddressFragment extends BaseFragment {
 		}
 	}
 
+	List<AddressBean> list = new ArrayList<>();
 
 	@Override
 	public void onLazyInitView(@Nullable Bundle savedInstanceState) {
 		LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
 		layoutManager.setOrientation(1);
 		this.rv_address.setLayoutManager(layoutManager);
-		List<GoodsVo> list = new ArrayList<>();
-		list.add(new GoodsVo());
-		list.add(new GoodsVo());
-		list.add(new GoodsVo());
-		list.add(new GoodsVo());
-		list.add(new GoodsVo());
-		list.add(new GoodsVo());
-		list.add(new GoodsVo());
-		list.add(new GoodsVo());
-		list.add(new GoodsVo());
-		list.add(new GoodsVo());
-		this.adapter = new GoodsGridAdapter(R.layout.fragment_address_item, list);
+
+		list.add(new AddressBean(1, "冯熙", "15708446531", true, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
+		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
+		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
+		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
+		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
+		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
+		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
+		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
+		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
+		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
+		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
+		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
+
+		adapter = new AddressAdapter(R.layout.fragment_address_item, list);
 		this.rv_address.setAdapter(adapter);
 
 	}
@@ -92,14 +98,25 @@ public class AddressFragment extends BaseFragment {
 
 	@Subscribe
 	public void onAddressClick(AddressEven event) {
-		start(new AddAddressFragment());
+		start(AddAddressFragment.newInstance(list.get(event.position)));
+	}
 
+	@Subscribe
+	public void addAddress(AddressBean bean) {
+
+		if (bean.isDefault()) {
+			for (AddressBean bean1 : list) {
+				bean1.setDefault(false);
+			}
+		}
+		list.add(0, bean);
+		adapter.notifyDataSetChanged();
 	}
 
 
 	@OnClick(R.id.bt_add_address)
 	public void onClick() {
-		start(AddAddressFragment.newInstance());
+		start(AddAddressFragment.newInstance(null));
 	}
 
 	@Override

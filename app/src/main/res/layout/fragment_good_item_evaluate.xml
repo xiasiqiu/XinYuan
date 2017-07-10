@@ -3,7 +3,6 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
                 android:background="@color/bg_white"
                 android:paddingTop="10dp">
 
@@ -218,5 +217,10 @@
             android:textSize="@dimen/tv_light"
             />
     </LinearLayout>
+
+    <View
+        style="@style/LightLine"
+        android:layout_below="@+id/ll_evaluate_show"
+        android:layout_marginTop="10dp"/>
 
 </RelativeLayout>

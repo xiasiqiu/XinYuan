@@ -7,7 +7,6 @@
     <include layout="@layout/view_header_tv_tv"/>
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +21,7 @@
             android:gravity="center_vertical"
             android:text="收货人"/>
 
-        <EditText
+        <com.xinyuan.xyshop.widget.EditTextWithDel
             android:id="@+id/ed_address_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,7 +47,7 @@
             android:gravity="center_vertical"
             android:text="联系电话"/>
 
-        <EditText
+        <com.xinyuan.xyshop.widget.EditTextWithDel
             android:id="@+id/ed_address_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,15 +71,18 @@
             style="@style/RegularTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:gravity="center_vertical"
             android:text="所在地区"/>
 
         <TextView
+            android:id="@+id/tv_area"
             style="@style/NormalTextView"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="60dp"
             android:layout_marginRight="10dp"
-            android:text="请选择"
+            android:maxLines="1"
             android:textColor="@color/tv_hint"/>
 
         <ImageView
@@ -91,6 +93,58 @@
             android:background="@drawable/ic_right_row"/>
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/rl_area_street"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/bg_white"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center_vertical"
+            android:text="街道"/>
+
+        <TextView
+            android:id="@+id/tv_street"
+            style="@style/NormalTextView"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/tv_hint"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ic_right_row"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/bg_white"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+
+        <com.xinyuan.xyshop.widget.EditTextWithDel
+            android:id="@+id/ed_address_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="请输入具体门牌号地址"
+            android:textColorHint="@color/tv_hint"
+            android:textSize="@dimen/tv_Regular"/>
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -110,13 +164,25 @@
 
         <CheckBox
             android:id="@+id/cb_address_default"
-            android:layout_width="25dp"
+            android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
-            android:background="@null"
-            android:textColorHint="@color/tv_hint"
-            android:textSize="@dimen/tv_Regular"/>
+            android:background="@drawable/checkbox_selector"
+            android:button="@null"
+            android:textColorHint="@color/tv_hint"/>
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/bt_submit"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="25dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="提交地址"
+        android:textColor="@color/bg_white"
+        android:textSize="@dimen/tv_Blod"/>
 </LinearLayout>

@@ -5,14 +5,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
 import android.os.Environment;
+import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.CycleInterpolator;
+import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.xinyuan.xyshop.common.Constants;
@@ -116,10 +121,33 @@ public class CommUtil {
 		translateAnimation.setDuration(1000);
 		return translateAnimation;
 	}
+
 	public static Point getScreenSize(Context context) {
 		Point point = new Point();
 		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
 		wm.getDefaultDisplay().getSize(point);
 		return point;
+	}
+
+	public static AnimationSet getInAnimationTest(Context context) {
+		AnimationSet out = new AnimationSet(context, null);
+		AlphaAnimation alpha = new AlphaAnimation(0.0f, 1.0f);
+		alpha.setDuration(150);
+		ScaleAnimation scale = new ScaleAnimation(0.6f, 1.0f, 0.6f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+		scale.setDuration(150);
+		out.addAnimation(alpha);
+		out.addAnimation(scale);
+		return out;
+	}
+
+	public static AnimationSet getOutAnimationTest(Context context) {
+		AnimationSet out = new AnimationSet(context, null);
+		AlphaAnimation alpha = new AlphaAnimation(1.0f, 0.0f);
+		alpha.setDuration(150);
+		ScaleAnimation scale = new ScaleAnimation(1.0f, 0.6f, 1.0f, 0.6f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+		scale.setDuration(150);
+		out.addAnimation(alpha);
+		out.addAnimation(scale);
+		return out;
 	}
 }

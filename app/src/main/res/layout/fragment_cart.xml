@@ -87,7 +87,7 @@
                 android:layout_height="45dp"
                 android:layout_alignParentBottom="true"
                 android:background="@color/bg_white"
-                android:elevation="1dp"
+                android:elevation="3dp"
                 android:padding="5dp">
 
                 <CheckBox

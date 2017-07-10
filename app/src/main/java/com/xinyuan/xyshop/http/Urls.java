@@ -34,4 +34,11 @@ public class Urls {
 
 
 
+	public static final String URL_AREA = "http://tututo.me/api/area.json";//全国省市数据
+	public static final String URL_AREA1 = "http://tututo.me/api/area1.json";//市数据
+	public static final String URL_AREA2 = "http://tututo.me/api/area2.json";//县区数据
+	public static final String URL_AREA3 = "http://tututo.me/api/area3.json";//街道数据
+
+
+
 }

@@ -24,6 +24,9 @@ import org.greenrobot.eventbus.EventBus;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+import static com.xinyuan.xyshop.util.CommUtil.getInAnimationTest;
+import static com.xinyuan.xyshop.util.CommUtil.getOutAnimationTest;
+
 /**
  * Created by Administrator on 2017/6/27.
  */
@@ -101,25 +104,5 @@ public class SettingFragment extends BaseFragment {
 
 	}
 
-	public static AnimationSet getInAnimationTest(Context context) {
-		AnimationSet out = new AnimationSet(context, null);
-		AlphaAnimation alpha = new AlphaAnimation(0.0f, 1.0f);
-		alpha.setDuration(150);
-		ScaleAnimation scale = new ScaleAnimation(0.6f, 1.0f, 0.6f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-		scale.setDuration(150);
-		out.addAnimation(alpha);
-		out.addAnimation(scale);
-		return out;
-	}
 
-	public static AnimationSet getOutAnimationTest(Context context) {
-		AnimationSet out = new AnimationSet(context, null);
-		AlphaAnimation alpha = new AlphaAnimation(1.0f, 0.0f);
-		alpha.setDuration(150);
-		ScaleAnimation scale = new ScaleAnimation(1.0f, 0.6f, 1.0f, 0.6f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-		scale.setDuration(150);
-		out.addAnimation(alpha);
-		out.addAnimation(scale);
-		return out;
-	}
 }
