@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.TextView;
 
 import com.flyco.tablayout.SegmentTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Administrator on 2017/6/5.
@@ -33,7 +36,8 @@ public class MsgActivity extends BaseActivity {
 	@BindView(R.id.msg_toolbar)
 	Toolbar msg_toolbar;
 
-
+	@BindView(R.id.tv_mgs_edit)
+	TextView tv_mgs_edit;
 	private StoreMsgFragment storeMsgFragment;
 	private MallMsgFragment mallMsgFragment;
 
@@ -92,4 +96,5 @@ public class MsgActivity extends BaseActivity {
 		viewPager.setOffscreenPageLimit(2);
 
 	}
+
 }

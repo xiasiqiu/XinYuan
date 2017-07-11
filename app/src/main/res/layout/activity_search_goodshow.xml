@@ -90,8 +90,8 @@
 
                 <ImageView
                     android:id="@+id/btnListType"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@color/bg_white"
                     android:src="@drawable/btn_goods_list_type"/>

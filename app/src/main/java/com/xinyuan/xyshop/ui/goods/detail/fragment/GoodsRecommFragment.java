@@ -70,7 +70,7 @@ public class GoodsRecommFragment extends BaseFragment {
 	}
 
 	private void initlIST(List<GoodsVo> goodses) {
-		adapter = new SearchGoodListAdapter(R.layout.activity_searchgood_item_grid, goodses, false);
+		adapter = new SearchGoodListAdapter(R.layout.item_good_grid, goodses, false);
 		rv_recomm.setAdapter(adapter);
 	}
 }

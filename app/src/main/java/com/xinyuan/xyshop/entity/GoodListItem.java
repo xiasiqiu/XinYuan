@@ -16,6 +16,11 @@ public class GoodListItem implements Serializable {
 	private String goodsActive;
 	private BigDecimal goodsPrice;
 	private String goodsName;
+	private String goodsEvaNum;
+
+	public String getGoodsEvaNum() {
+		return goodsEvaNum;
+	}
 
 	public String getGoodsId() {
 		return goodsId;
@@ -43,5 +48,19 @@ public class GoodListItem implements Serializable {
 
 	public String getGoodsName() {
 		return goodsName;
+	}
+
+	@Override
+	public String toString() {
+		return "GoodListItem{" +
+				"goodsId='" + goodsId + '\'' +
+				", goodsType='" + goodsType + '\'' +
+				", imageUrl='" + imageUrl + '\'' +
+				", consumeNum='" + consumeNum + '\'' +
+				", goodsActive='" + goodsActive + '\'' +
+				", goodsPrice=" + goodsPrice +
+				", goodsName='" + goodsName + '\'' +
+				", goodsEvaNum='" + goodsEvaNum + '\'' +
+				'}';
 	}
 }

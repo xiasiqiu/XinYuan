@@ -21,10 +21,10 @@
 
         <ImageView
             android:id="@+id/car_btn_scan"
-            android:layout_width="70px"
-            android:layout_height="70px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="50px"
+            android:layout_marginLeft="20dp"
             android:src="@drawable/act_home_scan_de"/>
 
         <TextView
@@ -40,7 +40,7 @@
             style="@style/NormalTextView"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="50px"
+            android:layout_marginRight="20dp"
             android:text="编辑"
             />
 

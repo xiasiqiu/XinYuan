@@ -5,57 +5,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/store_introduce_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="48.0dip"
-        android:background="@color/bg_white">
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorTransparency"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/goodshow_btn_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:src="@drawable/icon_back"/>
-
-            <TextView
-                style="@style/RegularTextView"
-                android:layout_centerInParent="true"
-                android:text="店铺介绍"
-                android:textSize="@dimen/tv_Blod"/>
-
-            <ImageView
-                android:id="@+id/goodshow_btn_msg"
-                android:layout_width="79px"
-                android:layout_height="79px"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="40px"
-                android:scaleType="fitXY"
-                android:src="@drawable/act_home_msg_de"/>
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="25px"
-                android:layout_height="25px"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="30px"
-                android:layout_marginTop="20px"
-                android:src="@color/tv_price"/>
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.Toolbar>
-
+    <include layout="@layout/view_header_tv_msg"/>
 
     <RelativeLayout
         android:id="@+id/rl_store_name"

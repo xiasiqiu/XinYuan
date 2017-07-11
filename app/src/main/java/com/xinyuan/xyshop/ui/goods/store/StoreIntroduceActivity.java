@@ -2,6 +2,7 @@ package com.xinyuan.xyshop.ui.goods.store;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseActivity;
@@ -15,8 +16,10 @@ import butterknife.BindView;
 
 public class StoreIntroduceActivity extends BaseActivity {
 
-	@BindView(R.id.store_introduce_toolbar)
+	@BindView(R.id.toolbar_iv)
 	Toolbar store_toolbar;
+	@BindView(R.id.tv_header_center)
+	TextView tv_header_center;
 
 
 	@Override
@@ -31,9 +34,7 @@ public class StoreIntroduceActivity extends BaseActivity {
 
 	@Override
 	public void initView() {
+		tv_header_center.setText("店铺介绍");
 
-//		setSupportActionBar(store_toolbar);
-//		SystemBarHelper.immersiveStatusBar(this); //设置状态栏透明
-//		SystemBarHelper.setHeightAndPadding(this, store_toolbar);
 	}
 }

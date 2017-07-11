@@ -8,8 +8,8 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_width="240px"
-        android:layout_height="150px">
+        android:layout_width="80dp"
+        android:layout_height="50dp">
 
         <TextView
             android:id="@+id/tvGoodsClassId"
@@ -25,14 +25,11 @@
             android:layout_centerInParent="true"
             android:textColor="@color/tv_name"
             android:textSize="@dimen/tv_Regular"/>
+
         <View
-            android:layout_width="match_parent"
-            android:layout_height="5px"
-            android:layout_alignParentBottom="true"
-            android:background="@color/normal_bg"/>
+            style="@style/LightLine"/>
 
     </RelativeLayout>
-
 
 
 </RelativeLayout>

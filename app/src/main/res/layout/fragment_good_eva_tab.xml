@@ -3,7 +3,7 @@
               android:layout_height="45dp"
               android:background="@color/bg_white"
               android:orientation="horizontal"
-              android:padding="6dp">
+              android:paddingTop="6dp">
 
     <LinearLayout
         android:id="@+id/ll_eva_all"

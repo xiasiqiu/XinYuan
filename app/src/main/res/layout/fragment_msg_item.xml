@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@color/bg_white"
+                android:background="@drawable/select_press"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="10dp">
+
 
     <ImageView
         android:id="@+id/store_img"
@@ -26,7 +28,7 @@
         style="@style/NormalTextView"
         android:layout_below="@id/tv_store_name"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_toRightOf="@id/store_img"
         android:text="亲，我们这边已经发货了哦，你那边注意查···"
         android:textColor="@color/tv_hint"/>

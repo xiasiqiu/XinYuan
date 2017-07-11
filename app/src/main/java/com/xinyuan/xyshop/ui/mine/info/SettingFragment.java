@@ -18,6 +18,7 @@ import com.xinyuan.xyshop.ui.mine.pro.AccountFragment;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.xinyuan.xyshop.widget.dialog.color.ColorDialog;
 import com.xinyuan.xyshop.widget.dialog.color.PromptDialog;
+import com.youth.xframe.widget.XToast;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -82,13 +83,13 @@ public class SettingFragment extends BaseFragment {
 					public void onClick(ColorDialog dialog) {
 
 						dialog.dismiss();
-						Toast.makeText(getActivity(), "清理完成", Toast.LENGTH_SHORT).show();
+
+						XToast.info("清理完成！");
 					}
 				})
 						.setNegativeListener("取消", new ColorDialog.OnNegativeListener() {
 							@Override
 							public void onClick(ColorDialog dialog) {
-								Toast.makeText(getActivity(), dialog.getNegativeText().toString(), Toast.LENGTH_SHORT).show();
 								dialog.dismiss();
 							}
 						}).show();

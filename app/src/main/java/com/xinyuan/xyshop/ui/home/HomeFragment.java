@@ -331,7 +331,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		goodList = goodModule.getGoodList();
 
 
-		HomeGoodsAdapter adapters = new HomeGoodsAdapter(R.layout.activity_searchgood_item_grid, goodList);
+		HomeGoodsAdapter adapters = new HomeGoodsAdapter(R.layout.item_good_grid, goodList);
 		GridLayoutManager layoutManager2 = new GridLayoutManager(this.context, 2, 1, false);
 		rv_goods.setLayoutManager(layoutManager2);
 		rv_goods.setAdapter(adapters);

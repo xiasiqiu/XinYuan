@@ -17,11 +17,11 @@
 
         <ImageView
             android:id="@+id/iv_close"
-            android:layout_width="50px"
-            android:layout_height="50px"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="30px"
+            android:layout_marginRight="10dp"
             android:src="@drawable/icon_close"/>
     </RelativeLayout>
 

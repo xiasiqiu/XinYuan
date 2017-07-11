@@ -27,7 +27,7 @@ public class XToast {
     private static final @ColorInt int DEFAULT_TEXT_COLOR = Color.parseColor("#FFFFFF");
 
     private static final @ColorInt int ERROR_COLOR = Color.parseColor("#D8524E");
-    private static final @ColorInt int INFO_COLOR = Color.parseColor("#3278B5");
+    private static final @ColorInt int INFO_COLOR = Color.parseColor("#1da039");
     private static final @ColorInt int SUCCESS_COLOR = Color.parseColor("#5BB75B");
     private static final @ColorInt int WARNING_COLOR = Color.parseColor("#FB9B4D");
     private static final @ColorInt int NORMAL_COLOR = Color.parseColor("#444344");

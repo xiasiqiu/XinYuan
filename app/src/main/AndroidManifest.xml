@@ -153,6 +153,10 @@
             android:name=".ui.mine.order.fragment.ServiceGoodsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ui.mine.order.fragment.ServiceExpActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

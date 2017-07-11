@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.Window;
+
 import com.trello.rxlifecycle.LifecycleTransformer;
 import com.trello.rxlifecycle.RxLifecycle;
 import com.trello.rxlifecycle.android.ActivityEvent;
@@ -105,7 +106,6 @@ public abstract class BaseActivity extends SupportActivity implements ICallback,
 		mUnbinder.unbind();
 		EventBus.getDefault().unregister(this);//反注册
 		XActivityStack.getInstance().finishActivity();
-		XLog.d(TAG + "-----------------------Acitivty销毁!s------------------");
 
 
 	}
@@ -115,6 +115,7 @@ public abstract class BaseActivity extends SupportActivity implements ICallback,
 	protected void onResume() {
 		super.onResume();
 		lifecycleSubject.onNext(ActivityEvent.RESUME);
+
 	}
 
 	@Override

@@ -17,18 +17,19 @@
         <ImageView
             android:id="@+id/ivGoodPic1"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="150dp"
+
             android:scaleType="fitXY"/>
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="65dp"
             android:layout_below="@id/ivGoodPic1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:background="@color/bg_white"
-            android:paddingBottom="5dp">
+            >
 
             <TextView
                 android:id="@+id/tv_goods_name1"
@@ -36,19 +37,24 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="10dp"
                 android:letterSpacing="0.01"
-                android:lineSpacingExtra="3dp"/>
+                android:lineSpacingExtra="3dp"
+                />
 
             <TextView
                 android:id="@+id/tv_goods_price1"
                 style="@style/GoodsPriceTextView"
-                android:layout_alignParentBottom="true"/>
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="1dp"
+                />
 
             <TextView
                 android:id="@+id/tv_goods_sellnum1"
                 style="@style/SmallHintTextView"
                 android:layout_alignParentBottom="true"
+                android:layout_marginBottom="2dp"
                 android:layout_marginLeft="12dp"
-                android:layout_toRightOf="@id/tv_goods_price1"/>
+                android:layout_toRightOf="@id/tv_goods_price1"
+                />
         </RelativeLayout>
     </RelativeLayout>
 
@@ -63,18 +69,18 @@
         <ImageView
             android:id="@+id/ivGoodPic2"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="150dp"
+
             android:scaleType="fitXY"/>
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="65dp"
             android:layout_below="@id/ivGoodPic2"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@color/bg_white"
-            android:paddingBottom="5dp">
+            android:background="@color/bg_white">
 
             <TextView
                 android:id="@+id/tv_goods_name2"
@@ -82,19 +88,23 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="10dp"
                 android:letterSpacing="0.01"
-                android:lineSpacingExtra="3dp"/>
+                android:lineSpacingExtra="3dp"
+                />
 
             <TextView
                 android:id="@+id/tv_goods_price2"
                 style="@style/GoodsPriceTextView"
-                android:layout_alignParentBottom="true"/>
+                android:layout_alignParentBottom="true"
+                />
 
             <TextView
                 android:id="@+id/tv_goods_sellnum2"
                 style="@style/SmallHintTextView"
                 android:layout_alignParentBottom="true"
+                android:layout_marginBottom="2dp"
                 android:layout_marginLeft="12dp"
-                android:layout_toRightOf="@id/tv_goods_price2"/>
+                android:layout_toRightOf="@id/tv_goods_price2"
+                />
         </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>

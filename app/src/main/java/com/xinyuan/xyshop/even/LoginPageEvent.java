@@ -6,7 +6,7 @@ package com.xinyuan.xyshop.even;
 
 public class LoginPageEvent {
 	public String type;
-	public static boolean loginStatus;
+	public boolean loginStatus;
 
 	public LoginPageEvent(String type) {
 		this.type = type;
@@ -25,11 +25,11 @@ public class LoginPageEvent {
 		this.type = type;
 	}
 
-	public static boolean isLoginStatus() {
+	public boolean isLoginStatus() {
 		return loginStatus;
 	}
 
-	public static void setLoginStatus(boolean loginStatus) {
-		LoginPageEvent.loginStatus = loginStatus;
+	public void setLoginStatus(boolean loginStatus) {
+		this.loginStatus = loginStatus;
 	}
 }

@@ -18,6 +18,7 @@ import com.xinyuan.xyshop.entity.ServiceMultipleItem;
 import com.xinyuan.xyshop.ui.mine.order.ServiceMoneyDetailActivity;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.widget.dialog.color.ColorDialog;
+import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.XToast;
 
 import java.util.ArrayList;
@@ -55,6 +56,7 @@ public class ServiceGoodsActivity extends BaseActivity {
 
 	@Override
 	public void initView() {
+		XLog.v("initView");
 		tv_header_center.setText("退货售后");
 		final GridLayoutManager manager = new GridLayoutManager(this, 4);
 		rv_service_good.setLayoutManager(manager);
@@ -79,7 +81,7 @@ public class ServiceGoodsActivity extends BaseActivity {
 	public void onClick(View view) {
 		switch (view.getId()) {
 			case R.id.bt_order_eva_later:
-
+				CommUtil.gotoActivity(this, ServiceExpActivity.class, false, null);
 				break;
 			case R.id.bt_order_finish_logistical:
 				final ColorDialog colorDialog = new ColorDialog(this);

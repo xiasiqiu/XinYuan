@@ -1,57 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="2px"
-    android:layout_marginLeft="1px"
-    android:layout_marginRight="1px"
-    android:background="@color/bg_white"
-    android:orientation="vertical">
+    android:layout_height="255dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:padding="10dp">
-
+        android:layout_height="255dp"
+        android:layout_marginBottom="1px"
+        android:layout_marginLeft="1px"
+        android:layout_marginRight="1px"
+        android:layout_marginTop="1px"
+        android:background="@color/bg_white"
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/ivGoodPic"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="fitXY"/>
+            android:layout_height="150dp"
+            android:layout_margin="5dp"/>
 
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:background="@color/bg_white"
-        android:paddingBottom="5dp">
 
         <TextView
             android:id="@+id/tv_goods_name"
             style="@style/GoodsNameTextView"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="10dp"
+            android:layout_below="@id/ivGoodPic"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
             android:letterSpacing="0.01"
-            android:lineSpacingExtra="3dp"/>
+            android:lineSpacingExtra="3dp"
+            android:maxLines="2"
+            />
 
-        <TextView
-            android:id="@+id/tv_goods_price"
-            style="@style/GoodsPriceTextView"
-            android:layout_alignParentBottom="true"/>
 
         <TextView
             android:id="@+id/tv_goods_sellnum"
             style="@style/SmallHintTextView"
             android:layout_alignParentBottom="true"
-            android:layout_marginLeft="12dp"
-            android:layout_toRightOf="@id/tv_goods_price"/>
+            android:layout_marginBottom="5dp"
+            android:text="月销量:123件"
+            />
+
+        <TextView
+            android:id="@+id/tv_goods_talk"
+            style="@style/SmallHintTextView"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/tv_goods_sellnum"
+            android:text="评论:12"
+            />
+
+        <TextView
+            android:id="@+id/tv_goods_price"
+            style="@style/GoodsPriceTextView"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="25dp"
+            android:text="￥123.00"
+            />
+
+        <TextView
+            android:id="@+id/tv_good_active"
+            style="@style/LightTextView"
+            android:layout_below="@id/tv_goods_name"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/tv_goods_price"
+            android:background="@drawable/button_bg"
+            android:padding="5dp"
+            android:text="虚拟兑换"
+            android:textColor="@color/bg_white"
+            android:visibility="gone"/>
+
+
     </RelativeLayout>
 
-</LinearLayout>
+
+</FrameLayout>

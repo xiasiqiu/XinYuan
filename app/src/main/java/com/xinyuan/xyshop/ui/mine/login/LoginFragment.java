@@ -85,23 +85,45 @@ public class LoginFragment extends BaseFragment {
 				break;
 			case R.id.bt_login:
 				getActivity().finish();
-				MyShopApplication.isLogin=true;
+				MyShopApplication.isLogin = true;
+				EventBus.getDefault().post(new LoginPageEvent("Login", true));
 				break;
 			case R.id.iv_login_qq:
 				getActivity().finish();
-				MyShopApplication.isLogin=true;
+				MyShopApplication.isLogin = true;
+				EventBus.getDefault().post(new LoginPageEvent("QQ", true));
 				break;
 			case R.id.iv_login_wechat:
 				getActivity().finish();
-				MyShopApplication.isLogin=true;
+				MyShopApplication.isLogin = true;
+				EventBus.getDefault().post(new LoginPageEvent("weChat", true));
 				break;
 			case R.id.iv_login_weibo:
 				getActivity().finish();
-				MyShopApplication.isLogin=true;
+				MyShopApplication.isLogin = true;
+				EventBus.getDefault().post(new LoginPageEvent("weiBo", true));
 				break;
 
 
 		}
+	}
+
+	@Override
+	public void onStart() {
+		super.onStart();
+		EventBus.getDefault().register(this);
+
+	}
+
+	@Override
+	public void onStop() {
+		EventBus.getDefault().unregister(this);
+		super.onStop();
+	}
+
+	@Subscribe
+	public void page(LoginPageEvent eventBus) {
+
 	}
 }
 

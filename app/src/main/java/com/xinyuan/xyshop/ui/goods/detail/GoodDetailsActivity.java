@@ -28,6 +28,7 @@ import com.xinyuan.xyshop.ui.goods.store.StoreActivity;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.widget.NoScrollViewPager;
 import com.youth.xframe.utils.log.XLog;
+import com.youth.xframe.widget.XToast;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -118,16 +119,13 @@ public class GoodDetailsActivity extends BaseActivity {
 			@Override
 			public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 				if (b) {
-					Drawable drawable = getResources().getDrawable(R.drawable.ic_store_fav);
-					drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-					cb_store_fv.setCompoundDrawables(null, drawable, null, null);
 					cb_store_fv.setText("已收藏");
-
+					cb_store_fv.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+					XToast.info("已收藏！");
 				} else {
-					Drawable drawable = getResources().getDrawable(R.drawable.ic_store_fav_de);
-					drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
-					cb_store_fv.setBackground(getResources().getDrawable(R.drawable.ic_store_fav_de));
 					cb_store_fv.setText("收藏");
+					cb_store_fv.setTextColor(getResources().getColor(R.color.tv_name));
+					XToast.normal("取消收藏！");
 				}
 			}
 		});

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/view_header_tv_msg"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:text="物流公司"/>
+
+        <Spinner
+            android:id="@+id/sp_chose"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="@dimen/tv_light"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/bg_white"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:text="物流单号"/>
+
+        <EditText
+            android:id="@+id/ed_expressnum"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/bg_border"
+            android:gravity="top"
+            android:padding="5dp"
+            android:textSize="@dimen/tv_Normal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/bg_white"
+
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:text="联系电话"/>
+
+        <EditText
+            android:id="@+id/ed_phone"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/bg_border"
+            android:gravity="top"
+            android:padding="5dp"
+            android:textSize="@dimen/tv_Normal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:text="发货说明"/>
+
+        <EditText
+            android:id="@+id/ed_info"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_border"
+            android:gravity="top"
+            android:padding="5dp"
+            android:textSize="@dimen/tv_Normal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:text="上传凭证"/>
+
+        <TextView
+            android:id="@+id/tv_add_img"
+            style="@style/RegularTextView"
+            android:layout_marginLeft="10dp"
+            android:background="@color/colorLine"
+            android:paddingBottom="3dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="3dp"
+            android:text="上传凭证"
+            android:textColor="@color/tv_hint"/>
+
+        <ImageView
+            android:id="@+id/iv_service_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="提交"
+        android:textColor="@color/bg_white"
+        android:textSize="@dimen/tv_Regular"/>
+</LinearLayout>

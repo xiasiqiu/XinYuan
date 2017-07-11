@@ -31,6 +31,7 @@ import com.xinyuan.xyshop.common.AddViewHolder;
 import com.xinyuan.xyshop.entity.GoodsInfo;
 import com.xinyuan.xyshop.entity.GoodsVo;
 import com.xinyuan.xyshop.entity.StoreInfo;
+import com.xinyuan.xyshop.even.LoginPageEvent;
 import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.SystemBarHelper;
@@ -38,6 +39,10 @@ import com.xinyuan.xyshop.widget.XYGridLayoutManager;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.XToast;
 import com.youth.xframe.widget.loadingview.XLoadingView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -126,6 +131,7 @@ public class CartFragment extends BaseFragment implements CartAdapter.CheckInter
 
 	@Override
 	public void initView() {
+		EventBus.getDefault().register(this);
 		if (VIEW_INIT) {
 			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
 			SystemBarHelper.setHeightAndPadding(getActivity(), topBar);
@@ -141,7 +147,9 @@ public class CartFragment extends BaseFragment implements CartAdapter.CheckInter
 			rl_car_login_notice.setVisibility(View.GONE);
 			initDatas();
 		} else {
-			initDatas();
+			rl_car_login_notice.setVisibility(View.VISIBLE);
+			cart_empty.setVisibility(View.VISIBLE);
+			loading_view.showContent();
 		}
 	}
 
@@ -152,7 +160,6 @@ public class CartFragment extends BaseFragment implements CartAdapter.CheckInter
 	}
 
 	private void initDatas() {
-		loading_view.showLoading();
 		for (int i = 0; i < 3; i++) {
 			groups.add(new StoreInfo(i + "", "天猫店铺" + (i + 1) + "号店"));
 			List<GoodsInfo> products = new ArrayList<GoodsInfo>();
@@ -215,7 +222,6 @@ public class CartFragment extends BaseFragment implements CartAdapter.CheckInter
 	@Override
 	public void onResume() {
 		super.onResume();
-		setCartNum();
 	}
 
 	/**
@@ -515,5 +521,27 @@ public class CartFragment extends BaseFragment implements CartAdapter.CheckInter
 			}
 		}, 2000);
 
+	}
+
+	@Subscribe(threadMode = ThreadMode.MAIN)
+	public void onEvent(LoginPageEvent event) {
+		XToast.info("登录了！" + event.toString());
+		if (event.isLoginStatus()) {
+			initDatas();
+		}
+
+	}
+
+	@Override
+	public void onStart() {
+		super.onStart();
+
+
+	}
+
+	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+		EventBus.getDefault().unregister(this);
 	}
 }

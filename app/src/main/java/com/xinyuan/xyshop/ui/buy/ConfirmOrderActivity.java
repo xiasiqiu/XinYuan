@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xinyuan.xyshop.R;
@@ -26,6 +27,8 @@ public class ConfirmOrderActivity extends BaseActivity {
 	@BindView(R.id.rv_confirm_order)
 	RecyclerView rv_order;
 	private OrderConfirmAdapter adapter;
+	@BindView(R.id.tv_header_center)
+	TextView tv_header_center;
 
 	@Override
 	public int getLayoutId() {
@@ -39,7 +42,7 @@ public class ConfirmOrderActivity extends BaseActivity {
 
 	@Override
 	public void initView() {
-
+		tv_header_center.setText("确认订单");
 		List<GoodsVo> list = new ArrayList<>();
 		for (int i = 0; i < 3; i++) {
 			list.add(new GoodsVo());

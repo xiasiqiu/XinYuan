@@ -187,7 +187,7 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 			GridLayoutManager layoutManager2 = new GridLayoutManager(this.context, 2, 1, false);
 			this.rvGoods.setLayoutManager(layoutManager2);
 			this.manager = layoutManager2;
-			this.adapter = new SearchGoodListAdapter(R.layout.activity_searchgood_item_grid, goodses, isList);
+			this.adapter = new SearchGoodListAdapter(R.layout.item_good_grid, goodses, isList);
 			this.rvGoods.setAdapter(adapter);
 		}
 

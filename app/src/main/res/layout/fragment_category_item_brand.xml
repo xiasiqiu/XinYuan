@@ -7,16 +7,16 @@
               android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_width="300px"
-        android:layout_height="230px"
-        android:padding="10px">
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/ivBrandPic"
-            android:layout_width="150px"
-            android:layout_height="60px"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
             android:layout_centerInParent="true"
-            android:layout_marginTop="10px"
+            android:layout_marginTop="3dp"
             android:adjustViewBounds="true"
             android:clickable="false"
             android:focusable="false"

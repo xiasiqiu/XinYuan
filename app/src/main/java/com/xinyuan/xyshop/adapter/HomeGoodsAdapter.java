@@ -27,6 +27,7 @@ public class HomeGoodsAdapter extends BaseQuickAdapter<GoodListItem, BaseViewHol
 
 	public HomeGoodsAdapter(@LayoutRes int layoutResId, @Nullable List<GoodListItem> data) {
 		super(layoutResId, data);
+		XLog.list(data);
 	}
 
 	@Override
@@ -47,6 +48,12 @@ public class HomeGoodsAdapter extends BaseQuickAdapter<GoodListItem, BaseViewHol
 				CommUtil.gotoActivity((Activity) mContext, GoodDetailsActivity.class, false, null);
 			}
 		});
+
+		TextView tv_good_active = helper.getView(R.id.tv_good_active);
+		TextView tv_goods_talk = helper.getView(R.id.tv_goods_talk);
+		tv_goods_talk.setText("评论:" + item.getGoodsEvaNum());
+		tv_good_active.setVisibility(View.GONE);
+
 	}
 
 

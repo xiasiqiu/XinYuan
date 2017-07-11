@@ -87,7 +87,7 @@ public class StoreHomeFragment extends BaseFragment {
 		this.rv_store_home.setLayoutManager(layoutManager2);
 		this.manager = layoutManager2;
 		this.rv_store_home.setLayoutManager(layoutManager2);
-		this.adapter = new SearchGoodListAdapter(R.layout.activity_searchgood_item_grid, goodses, false);
+		this.adapter = new SearchGoodListAdapter(R.layout.item_good_grid, goodses, false);
 		this.rv_store_home.setAdapter(adapter);
 
 

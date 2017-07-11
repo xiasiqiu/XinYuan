@@ -219,7 +219,7 @@
     </LinearLayout>
 
     <View
-        style="@style/LightLine"
+        style="@style/NoramLine"
         android:layout_below="@+id/ll_evaluate_show"
         android:layout_marginTop="10dp"/>
 

@@ -33,10 +33,10 @@
             android:id="@+id/stab_msg"
             android:layout_width="0dp"
             android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
             android:layout_weight="6"
             app:tl_bar_color="#ffffff"
             app:tl_indicator_anim_enable="true"
@@ -52,16 +52,6 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="40px"
             android:background="@drawable/act_home_msg_de"/>
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="25px"
-            android:layout_height="25px"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="top"
-            android:layout_marginRight="20px"
-            android:layout_marginTop="15dp"
-            android:src="@color/tv_price"/>
-
     </LinearLayout>
 
 

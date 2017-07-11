@@ -26,6 +26,7 @@ import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.XToast;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -132,6 +133,7 @@ public class LoginFastFragment extends BaseFragment {
 				} else {
 					XLog.v("可以登录");
 					MyShopApplication.isLogin = true;
+					EventBus.getDefault().post(new LoginPageEvent("Fast", true));
 					getActivity().finish();
 				}
 
@@ -170,5 +172,7 @@ public class LoginFastFragment extends BaseFragment {
 			timer.cancel();
 		}
 	}
+
+
 }
 

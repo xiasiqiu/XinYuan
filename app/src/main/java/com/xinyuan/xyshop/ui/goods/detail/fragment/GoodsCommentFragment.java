@@ -5,46 +5,25 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.lzy.okgo.OkGo;
-import com.lzy.okgo.callback.StringCallback;
 import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.adapter.SimpleEvaluateAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
-import com.xinyuan.xyshop.entity.BrandList;
-import com.xinyuan.xyshop.http.Urls;
-import com.xinyuan.xyshop.model.EvaluateModel;
 import com.xinyuan.xyshop.model.GoodDetailModel;
-import com.xinyuan.xyshop.model.TestEvaluateModel;
-import com.xinyuan.xyshop.ui.catrgory.CategoryFragment;
 import com.xinyuan.xyshop.ui.goods.GoodBusBean;
-import com.xinyuan.xyshop.ui.goods.detail.GoodDetailsActivity;
-import com.xinyuan.xyshop.ui.home.HomeFragment;
-import com.xinyuan.xyshop.ui.mine.MineFragment;
-import com.xinyuan.xyshop.ui.shopcar.ShopCarFragment;
-import com.xinyuan.xyshop.util.FullyLinearLayoutManager;
-import com.xinyuan.xyshop.util.JsonUtil;
-import com.youth.xframe.utils.log.XLog;
-import com.youth.xframe.widget.loadingview.XLoadingView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.Call;
-import okhttp3.Response;
 
 /**
  * Created by Administrator on 2017/5/18.

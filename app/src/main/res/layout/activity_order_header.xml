@@ -52,14 +52,6 @@
             android:layout_marginRight="40px"
             android:background="@drawable/act_home_msg_de"/>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="25px"
-            android:layout_height="25px"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="top"
-            android:layout_marginRight="20px"
-            android:layout_marginTop="15dp"
-            android:src="@color/tv_price"/>
 
     </LinearLayout>
 

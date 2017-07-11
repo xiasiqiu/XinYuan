@@ -470,7 +470,7 @@ public class ShopCarFragment extends BaseFragment implements ShopCarAdapter.Chec
 			list.add(goodsVo);
 		}
 
-		SearchGoodListAdapter adapters = new SearchGoodListAdapter(R.layout.activity_searchgood_item_grid, list, false);
+		SearchGoodListAdapter adapters = new SearchGoodListAdapter(R.layout.item_good_grid, list, false);
 		GridLayoutManager layoutManager2 = new GridLayoutManager(this.context, 2, 1, false);
 		rv_recomm.setLayoutManager(layoutManager2);
 		rv_recomm.setAdapter(adapters);
