@@ -32,7 +32,7 @@
 
 
     <View
-       style="@style/XYLine"/>
+        style="@style/XYLine"/>
 
     <RelativeLayout
         android:id="@+id/rl_home_news"
@@ -48,32 +48,6 @@
             android:layout_centerVertical="true"
             android:text="@string/new_notice"/>
 
-        <com.sunfusheng.marqueeview.MarqueeView
-            android:id="@+id/marquee_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/textView"
-            app:mvAnimDuration="1000"
-            app:mvInterval="3000"
-            app:mvTextColor="@color/colorPrimary"
-            app:mvTextSize="@dimen/tv_Normal"/>
-
-        <com.sunfusheng.marqueeview.MarqueeView
-            android:id="@+id/marquee_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="1dp"
-            android:layout_marginRight="40dp"
-            android:layout_toRightOf="@+id/marquee_name"
-            android:ellipsize="end"
-            app:mvAnimDuration="1000"
-            app:mvInterval="3000"
-            app:mvSingleLine="true"
-            app:mvTextColor="@color/tv_hint"
-            app:mvTextSize="@dimen/tv_light"/>
 
         <View
             android:layout_width="3px"
@@ -90,6 +64,18 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:text="@string/more"/>
+
+        <com.sunfusheng.marqueeview.MarqueeView
+            android:id="@+id/marquee_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:layout_toLeftOf="@id/home_notice_more"
+            android:layout_toRightOf="@id/textView"
+            app:mvSingleLine="true"
+            app:mvTextColor="@color/tv_name"
+            app:mvTextSize="@dimen/tv_light"/>
     </RelativeLayout>
 
 

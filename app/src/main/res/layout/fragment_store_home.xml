@@ -4,11 +4,15 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <com.youth.xframe.widget.loadingview.XLoadingView
+        android:id="@+id/lodingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_store_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="10dp"/>
-
+        android:paddingBottom="50dp"/>
+    </com.youth.xframe.widget.loadingview.XLoadingView>
 
 </LinearLayout>

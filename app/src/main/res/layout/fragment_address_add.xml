@@ -181,7 +181,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="25dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/button_bg"
         android:text="提交地址"
         android:textColor="@color/bg_white"
         android:textSize="@dimen/tv_Blod"/>

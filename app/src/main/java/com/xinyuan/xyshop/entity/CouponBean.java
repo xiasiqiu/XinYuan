@@ -1,37 +1,37 @@
 package com.xinyuan.xyshop.entity;
 
 import java.io.Serializable;
-import java.text.DecimalFormat;
 
 /**
- * Created by Administrator on 2017/6/26.
+ * Created by Administrator on 2017/7/12.
  */
 
 public class CouponBean implements Serializable{
-	private static final long serialVersionUID = -7488839802758573062L;
-	private long couponId;
-	private String storeImage;
-	private String storeName;
-	private DecimalFormat money;
-	private String useTime;
 
-	public long getCouponId() {
+
+	private static final long serialVersionUID = 3732356561071474547L;
+	private int couponId;
+	private String couponName;
+	private int couponNum;
+
+	public int getCouponId() {
 		return couponId;
 	}
 
-	public String getStoreImage() {
-		return storeImage;
+	public String getCouponName() {
+		return couponName;
 	}
 
-	public String getStoreName() {
-		return storeName;
+	public int getCouponNum() {
+		return couponNum;
 	}
 
-	public DecimalFormat getMoney() {
-		return money;
-	}
-
-	public String getUseTime() {
-		return useTime;
+	@Override
+	public String toString() {
+		return "CouponBean{" +
+				"couponId=" + couponId +
+				", couponName='" + couponName + '\'' +
+				", couponNum=" + couponNum +
+				'}';
 	}
 }

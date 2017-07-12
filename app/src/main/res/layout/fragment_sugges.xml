@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="25dp"
-            android:background="@color/colorPrimaryDark"
+            android:background="@drawable/button_bg"
             android:text="提交"
             android:textColor="@color/bg_white"
             android:textSize="@dimen/tv_Blod"/>

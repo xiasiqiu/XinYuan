@@ -16,7 +16,7 @@
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:layout_margin="10dp"
-            android:background="@drawable/test_good_img"
+
             android:scaleType="fitXY"/>
 
         <RelativeLayout
@@ -31,7 +31,7 @@
                 style="@style/GoodsNameTextView"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:text="产品奥术大所大所所多"
+
                 />
 
 
@@ -60,14 +60,14 @@
                 <TextView
                     android:id="@+id/tv_goods_sellnum"
                     style="@style/SmallHintTextView"
-                    android:text="月销量：123件"
+
                     />
 
                 <TextView
                     android:id="@+id/tv_goods_talk"
                     style="@style/SmallHintTextView"
                     android:layout_marginLeft="15dp"
-                    android:text="评论：23"/>
+                    />
             </LinearLayout>
 
             <TextView
@@ -75,7 +75,7 @@
                 style="@style/GoodsPriceTextView"
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="20dp"
-                android:text="￥123.00"
+
                 />
 
         </RelativeLayout>

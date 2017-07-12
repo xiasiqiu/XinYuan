@@ -9,19 +9,35 @@ import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.flyco.tablayout.SlidingTabLayout;
+import com.google.android.flexbox.FlexboxLayout;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.ItemTitlePagerAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
+import com.xinyuan.xyshop.common.AddViewHolder;
+import com.xinyuan.xyshop.entity.StoreInfoBean;
+import com.xinyuan.xyshop.even.LoginPageEvent;
 import com.xinyuan.xyshop.ui.goods.store.fragment.StoreActivityFragment;
 import com.xinyuan.xyshop.ui.goods.store.fragment.StoreAllGoodFragment;
 import com.xinyuan.xyshop.ui.goods.store.fragment.StoreHomeFragment;
 import com.xinyuan.xyshop.ui.goods.store.fragment.StoreNewGoodFragment;
 import com.xinyuan.xyshop.util.CommUtil;
+import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.xinyuan.xyshop.widget.dialog.StoreVoucherDialog;
+import com.youth.xframe.utils.XEmptyUtils;
+import com.youth.xframe.utils.log.XLog;
+import com.youth.xframe.widget.XToast;
+import com.youth.xframe.widget.loadingview.XLoadingView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,11 +69,27 @@ public class StoreActivity extends BaseActivity {
 	@BindView(R.id.tv_store_service)
 	TextView tv_store_service;
 
+
+	@BindView(R.id.iv_store_bg)
+	ImageView iv_store_bg;
+	@BindView(R.id.iv_store_logo)
+	ImageView iv_store_logo;
+	@BindView(R.id.tv_store_name)
+	TextView tv_store_namel;
+	@BindView(R.id.tv_store_fans)
+	TextView tv_store_fans;
+	@BindView(R.id.bt_store_fav)
+	CheckBox bt_store_fav;
+	@BindView(R.id.fl_store_sign)
+	FlexboxLayout flexBoxLayout;
+
+
 	private StoreHomeFragment homeFragment;
 	private StoreAllGoodFragment allGoodFragment;
 	private StoreNewGoodFragment newGoodFragment;
 	private StoreActivityFragment activityFragment;
 
+	public static int state;
 
 	@Override
 	public int getLayoutId() {
@@ -88,6 +120,8 @@ public class StoreActivity extends BaseActivity {
 				fragmentList, new String[]{"店铺首页", "全部商品", "商品上新", "店铺活动"}));
 		vp_content.setOffscreenPageLimit(4);
 		psts_tabs.setViewPager(vp_content);
+
+
 	}
 
 
@@ -116,5 +150,52 @@ public class StoreActivity extends BaseActivity {
 		DisplayMetrics dm = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(dm);
 		dialogWindow.setLayout(dm.widthPixels, dialogWindow.getAttributes().height);
+	}
+
+	@Subscribe(threadMode = ThreadMode.MAIN)
+	public void onEvent(StoreInfoBean event) {
+		if (!XEmptyUtils.isEmpty(event)) {
+
+			GlideImageLoader.setImage(StoreActivity.this, event.getBannerBg(), iv_store_bg);
+			GlideImageLoader.setImage(StoreActivity.this, event.getStoreLogo(), iv_store_logo);
+			tv_store_namel.setText(event.getStorename());
+			tv_store_fans.setText(event.getFansNum());
+			if (event.isFollowStatus() == 1) {
+				bt_store_fav.setText("已关注");
+			}
+
+			List<String> list = new ArrayList<>();
+			list.addAll(event.getStoresign());
+
+			AddViewHolder addViewHolder = new AddViewHolder(this, R.layout.view_store_sign);
+			ImageView ivImg = addViewHolder.getView(R.id.ivImg);
+			GlideImageLoader.setImage(this, CommUtil.getStoreSign(this, event.getStoreLevel()), ivImg);
+			flexBoxLayout.addView(addViewHolder.getCustomView());
+			if (!XEmptyUtils.isEmpty(event.getStoresign())) {
+				for (String type : event.getStoresign()) {
+
+					AddViewHolder addViewHolder1 = new AddViewHolder(this, R.layout.view_store_sign);
+					ImageView ivImg1 = addViewHolder1.getView(R.id.ivImg);
+					GlideImageLoader.setImage(this, type, ivImg1);
+					flexBoxLayout.addView(addViewHolder1.getCustomView());
+				}
+			}
+
+		}
+
+
+	}
+
+	@Override
+	public void onStart() {
+		super.onStart();
+		EventBus.getDefault().register(this);
+
+	}
+
+	@Override
+	public void onStop() {
+		EventBus.getDefault().unregister(this);
+		super.onStop();
 	}
 }

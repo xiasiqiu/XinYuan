@@ -26,9 +26,10 @@ public class Urls {
 	public static final String URL_GOOD_EVA_BAD = "http://tututo.me/api/good_Assess_Bad.json";//差评评价数据
 	public static final String URL_GOOD_EVA_PIC = "http://tututo.me/api/good_Assess_Pic.json";//晒图评价数据
 
-
+	public static final String URL_STOREHOME = "http://tututo.me/api/storeIndex.json";//店铺首页数据
 
 	public static final String URL_CREDIT = "http://tututo.me/api/creditmall.json";//积分商城数据
+
 	public static final String URL_EXPRESS = "http://tututo.me/api/express.json";//快递物流数据
 	public static final String URL_MENU = "http://tututo.me/api/home_menu.json";//快递物流数据
 

@@ -19,6 +19,7 @@ import com.xinyuan.xyshop.model.GoodDetailModel;
 import com.xinyuan.xyshop.model.GoodsDetailModel;
 import com.xinyuan.xyshop.model.HomeModel;
 import com.xinyuan.xyshop.model.OrderModel;
+import com.xinyuan.xyshop.model.StoreHomeModel;
 
 import java.util.List;
 
@@ -32,7 +33,12 @@ import rx.Observable;
 
 public class ApiServer {
 
-
+	/**
+	 * 首页数据
+	 *
+	 * @param url
+	 * @return
+	 */
 	public static Observable<LzyResponse<HomeModel>> getHomeIndex(String url) {
 		return OkGo.get(url)
 				.getCall(new JsonConvert<LzyResponse<HomeModel>>() {
@@ -40,7 +46,12 @@ public class ApiServer {
 
 	}
 
-
+	/**
+	 * 分类数据
+	 *
+	 * @param url
+	 * @return
+	 */
 	public static Observable<LzyResponse<CategoryModel>> getCategory(String url) {
 		return OkGo.get(url)
 				.getCall(new JsonConvert<LzyResponse<CategoryModel>>() {
@@ -49,6 +60,12 @@ public class ApiServer {
 
 	}
 
+	/**
+	 * 商品详情数据
+	 *
+	 * @param url
+	 * @return
+	 */
 	public static Observable<LzyResponse<GoodDetailModel>> getGoodsDetail(String url) {
 		return OkGo.get(url)
 				//.params("goodId", goodId)
@@ -58,6 +75,21 @@ public class ApiServer {
 
 	}
 
+	public static Observable<LzyResponse<StoreHomeModel>> getStoreHome(String url) {
+		return OkGo.get(url)
+				//.params("goodId", goodId)
+				.getCall(new JsonConvert<LzyResponse<StoreHomeModel>>() {
+				}, RxAdapter.<LzyResponse<StoreHomeModel>>create());
+
+
+	}
+
+	/**
+	 * 订单数据
+	 *
+	 * @param url
+	 * @return
+	 */
 	public static Observable<LzyResponse<OrderModel>> getOrderList(String url) {
 		return OkGo.get(url)
 				.getCall(new JsonConvert<LzyResponse<OrderModel>>() {

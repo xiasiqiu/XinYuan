@@ -165,6 +165,7 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 						KeyWord.Key key = keyWords.getKey();
 						view.setKeyWord(key.getKeywordValue(), key.getKeywordName());
 
+
 					}
 				});
 

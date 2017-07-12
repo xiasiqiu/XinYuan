@@ -27,7 +27,7 @@ public class HomeGoodsAdapter extends BaseQuickAdapter<GoodListItem, BaseViewHol
 
 	public HomeGoodsAdapter(@LayoutRes int layoutResId, @Nullable List<GoodListItem> data) {
 		super(layoutResId, data);
-		XLog.list(data);
+
 	}
 
 	@Override

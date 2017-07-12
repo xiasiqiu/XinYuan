@@ -37,7 +37,7 @@ import org.greenrobot.eventbus.EventBus;
  */
 
 public abstract class BaseActivity extends SupportActivity implements ICallback, LifecycleProvider<ActivityEvent> {
-	public static final String TAG = BaseActivity.class.getSimpleName();
+	public static final String TAG = "ACTIVITY";
 
 
 	private final BehaviorSubject<ActivityEvent> lifecycleSubject = BehaviorSubject.create();

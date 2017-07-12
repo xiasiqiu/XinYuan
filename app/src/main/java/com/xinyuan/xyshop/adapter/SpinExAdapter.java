@@ -7,9 +7,7 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.base.BaseView;
 import com.xinyuan.xyshop.entity.CourierBean;
-import com.xinyuan.xyshop.entity.ExpressBean;
 
 import java.util.List;
 

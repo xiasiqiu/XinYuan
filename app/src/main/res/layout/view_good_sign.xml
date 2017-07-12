@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_margin="3dp">
+
+    <ImageView
+        android:id="@+id/ivImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/cardview_compat_inset_shadow"
+        android:src="@drawable/ic_shopcar_select"/>
+
+    <TextView
+        android:id="@+id/tv_sign_type"
+        style="@style/SmallHintTextView"
+        android:layout_gravity="right"
+        android:layout_marginLeft="15dp"/>
+</FrameLayout>

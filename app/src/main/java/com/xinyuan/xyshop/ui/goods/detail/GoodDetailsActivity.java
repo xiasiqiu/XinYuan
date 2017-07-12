@@ -150,7 +150,7 @@ public class GoodDetailsActivity extends BaseActivity {
 		v.getId();
 		switch (v.getId()) {
 			case R.id.bt_store:
-				XLog.v("Store" + storeId);
+
 				Map<String, String> params = new HashMap();
 				params.put("storeId", storeId);
 				CommUtil.gotoActivity(this, StoreActivity.class, false, params);

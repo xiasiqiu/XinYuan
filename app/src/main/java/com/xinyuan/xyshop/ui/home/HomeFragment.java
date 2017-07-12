@@ -10,23 +10,19 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.sunfusheng.marqueeview.MarqueeView;
-import com.trello.rxlifecycle.android.FragmentEvent;
-import com.xinyuan.xyshop.MainFragment;
 import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.ExpandableItemAdapter;
@@ -37,7 +33,6 @@ import com.xinyuan.xyshop.bean.ExpandItem;
 import com.xinyuan.xyshop.entity.GoodListItem;
 import com.xinyuan.xyshop.entity.HomeMultipleItem;
 import com.xinyuan.xyshop.entity.Menu;
-import com.xinyuan.xyshop.even.TabSelectedEvent;
 import com.xinyuan.xyshop.model.HomeModel;
 import com.xinyuan.xyshop.mvp.contract.HomeContract;
 import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
@@ -53,11 +48,7 @@ import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.xframe.utils.log.XLog;
-import com.youth.xframe.utils.statusbar.XStatusBar;
 import com.youth.xframe.widget.loadingview.XLoadingView;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -195,6 +186,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	}
 
+
 	/**
 	 * 显示首页公告
 	 *
@@ -202,26 +194,26 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	 */
 	@Override
 	public void showNotice(List<HomeModel.HomeModule.HomeModuleData> itemList) {
-		List<String> name = new ArrayList<>();
-		List<String> content = new ArrayList<>();
+		List<CharSequence> list = new ArrayList<>();
+		MarqueeView marqueeView = (MarqueeView) headView.findViewById(R.id.marquee_name);
+		for (HomeModel.HomeModule.HomeModuleData data : itemList) {
 
-		for (HomeModel.HomeModule.HomeModuleData itemData : itemList) {
-			name.add("[" + itemData.getText() + "]");
-			content.add(itemData.getData());
+			String s = "【" + data.getText() + "】" + data.getData();
+			SpannableString ss1 = new SpannableString(s);
+			ss1.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimaryDark)), 0, 6, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 		}
 
-		MarqueeView marquee_name = (MarqueeView) headView.findViewById(R.id.marquee_name);
-		MarqueeView marquee_content = (MarqueeView) headView.findViewById(R.id.marquee_content);
-		RelativeLayout rl_home_news= (RelativeLayout) headView.findViewById(R.id.rl_home_news);
-		marquee_name.startWithList(name);
-		marquee_content.startWithList(content);
+		marqueeView.startWithList(list);
+
+		RelativeLayout rl_home_news = (RelativeLayout) headView.findViewById(R.id.rl_home_news);
 		rl_home_news.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				CommUtil.gotoActivity(getActivity(),NewsActivity.class,false,null);
+				CommUtil.gotoActivity(getActivity(), NewsActivity.class, false, null);
 			}
 		});
 	}
+
 
 	/**
 	 * 显示首页菜单
@@ -290,7 +282,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 		});
 		homeMultipleItemAdapter.addHeaderView(headView);
 		mRecyclerView.setAdapter(homeMultipleItemAdapter);
-
 
 	}
 
@@ -505,11 +496,28 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	public void onResume() {
 		super.onResume();
 		initView();
+
+
 	}
 
+	@Override
+	public void onPause() {
+		super.onPause();
 
 
+	}
 
+	@Override
+	public void onStart() {
+		super.onStart();
+
+	}
+
+	@Override
+	public void onStop() {
+		super.onStop();
+
+	}
 
 
 	/**

@@ -339,11 +339,11 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	@Override
 	public void showView(GoodDetailModel model) {
-		XLog.v(model.toString());
+
 		this.detailModel = model;
 		EventBus.getDefault().post(new GoodBusBean(GoodBusBean.GoodEvaluate, model.getGoodComment()));
 		if (detailModel.getGoodsType() == 0) {
-			XLog.v("开启倒计时");
+
 			rl_group_info.setVisibility(View.VISIBLE);
 			startRun();
 		}
@@ -400,8 +400,8 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		String dis = detailModel.getSalesPromotion().toString();
 		tvGoodDiscount.setText(dis.substring(1, dis.length() - 1));
 		for (String type : storeSign) {
-			AddViewHolder addViewHolder = new AddViewHolder(context, R.layout.view_store_sign);
-			addViewHolder.setText(R.id.store_sign_type, type);
+			AddViewHolder addViewHolder = new AddViewHolder(context, R.layout.view_good_sign);
+			addViewHolder.setText(R.id.tv_sign_type, type);
 			flexBoxLayout.addView(addViewHolder.getCustomView());
 		}
 		storeSign.clear();
@@ -642,4 +642,5 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 
 	}
+
 }

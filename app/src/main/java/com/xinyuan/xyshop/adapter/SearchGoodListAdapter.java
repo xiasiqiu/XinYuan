@@ -46,7 +46,7 @@ public class SearchGoodListAdapter extends BaseQuickAdapter<GoodsVo, BaseViewHol
 			tv_goods_sellnum.setText("月销量:" + item.getGoodsSaleNum() + "件");
 			tv_goods_talk.setText("评论:" + item.getEvaluateNum());
 			int num = (int) (Math.random() * 10 + 1);
-			XLog.v("NUM" + num);
+
 			if (num % 2 == 0) {
 				tv_good_active.setText("包邮");
 				tv_good_active.setBackground(mContext.getResources().getDrawable(R.color.bg_white));

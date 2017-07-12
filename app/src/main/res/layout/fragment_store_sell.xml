@@ -3,7 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="220dp"
               android:orientation="horizontal"
-              android:padding="10dp">
+              android:padding="5dp">
 
     <RelativeLayout
         android:id="@+id/iv_store_co_1"
@@ -13,17 +13,20 @@
         android:layout_weight="1">
 
         <ImageView
+            android:id="@+id/iv_img_1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/test_store_home_1"/>
+            android:scaleType="fitXY"
+            />
 
         <TextView
+            android:id="@+id/tv_sell_1"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:layout_alignParentBottom="true"
             android:background="@color/colorTransparency_B"
             android:gravity="center"
-            android:text="已售：2563"
+
             android:textColor="@color/bg_white"
             android:textSize="@dimen/tv_light"/>
 
@@ -45,17 +48,20 @@
             android:layout_weight="1">
 
             <ImageView
+                android:id="@+id/iv_img_2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/store_home_2"/>
+                android:scaleType="fitXY"
+                />
 
             <TextView
+                android:id="@+id/tv_sell_2"
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
                 android:layout_alignParentBottom="true"
                 android:background="@color/colorTransparency_B"
                 android:gravity="center"
-                android:text="已售：2563"
+
                 android:textColor="@color/bg_white"
                 android:textSize="@dimen/tv_light"/>
 
@@ -77,20 +83,22 @@
                 android:layout_weight="1">
 
                 <ImageView
+                    android:id="@+id/iv_img_3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:background="@drawable/store_home_3"/>
+                    android:scaleType="fitXY"
+                    />
 
                 <TextView
+                    android:id="@+id/tv_sell_3"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:layout_alignParentBottom="true"
                     android:background="@color/colorTransparency_B"
                     android:gravity="center"
-                    android:text="已售：2563"
                     android:textColor="@color/bg_white"
                     android:textSize="@dimen/tv_light"/>
 
@@ -104,21 +112,24 @@
                 android:layout_weight="1">
 
                 <ImageView
+                    android:id="@+id/iv_img_4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="4dp"
-                    android:background="@drawable/home_store_4"/>
+                    android:scaleType="fitXY"
+                    />
 
                 <TextView
+                    android:id="@+id/tv_sell_4"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:layout_alignParentBottom="true"
                     android:background="@color/colorTransparency_B"
                     android:gravity="center"
-                    android:text="已售：2563"
+                    android:scaleType="fitXY"
                     android:textColor="@color/bg_white"
                     android:textSize="@dimen/tv_light"/>
 

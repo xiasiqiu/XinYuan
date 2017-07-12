@@ -76,9 +76,9 @@ public class SearchGoodsShowPresenterImpl implements GoodSearchShowContract.Good
 							searchGoodsListTest = JsonUtil.toBean(s, SearchGoodsListTest.class);
 							SearchGoodsListTest.SearchGoodsData data = searchGoodsListTest.getDatas();
 							selectFilterTest = data.getSelectFilter();
-							XLog.v("selectFilterTest" + selectFilterTest);
+
 							keyList = selectFilterTest.getKeyList();
-							XLog.list(keyList);
+
 							pageEntity = data.getPageEntity();
 							List<GoodsVo> goodsVoList = data.getGoodsList();
 							showView.showGoodList(goodsVoList, selectFilterTest,pageEntity);
