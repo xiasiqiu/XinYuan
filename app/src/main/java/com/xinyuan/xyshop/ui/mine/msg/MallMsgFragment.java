@@ -1,6 +1,7 @@
 package com.xinyuan.xyshop.ui.mine.msg;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
@@ -8,16 +9,11 @@ import android.widget.Toast;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.MsgAdapter;
-import com.xinyuan.xyshop.adapter.SimpleEvaluateAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
-import com.xinyuan.xyshop.entity.GoodsEvaluate;
 import com.xinyuan.xyshop.entity.MsgBean;
-import com.xinyuan.xyshop.util.FullyLinearLayoutManager;
 import com.xinyuan.xyshop.widget.dialog.color.ColorDialog;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.XToast;
-
-import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,10 +52,17 @@ public class MallMsgFragment extends BaseFragment {
 		data.add(new MsgBean("4号店","萨达所大所多几位千万IE气温气温气温IE"));
 		data.add(new MsgBean("5号店","萨达所大所多几位千万IE气温气温气温IE"));
 		data.add(new MsgBean("6号店","萨达所大所多几位千万IE气温气温气温IE"));
+		data.add(new MsgBean("1号店","萨达所大所多几位千万IE气温气温气温IE"));
+		data.add(new MsgBean("2号店","萨达所大所多几位千万IE气温气温气温IE"));
+		data.add(new MsgBean("3号店","萨达所大所多几位千万IE气温气温气温IE"));
+		data.add(new MsgBean("4号店","萨达所大所多几位千万IE气温气温气温IE"));
+		data.add(new MsgBean("5号店","萨达所大所多几位千万IE气温气温气温IE"));
+		data.add(new MsgBean("6号店","萨达所大所多几位千万IE气温气温气温IE"));
 
 		this.msgAdapter = new MsgAdapter(R.layout.fragment_msg_item, data);
-		FullyLinearLayoutManager linearLayoutManager = new FullyLinearLayoutManager(context);
-		rv_msg.setNestedScrollingEnabled(false);
+		LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+		linearLayoutManager.setOrientation(1);
+		//rv_msg.setNestedScrollingEnabled(false);
 		//设置布局管理器
 		rv_msg.setLayoutManager(linearLayoutManager);
 		rv_msg.setAdapter(msgAdapter);

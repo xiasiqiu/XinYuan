@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.xinyuan.xyshop.R;
@@ -15,11 +16,15 @@ import com.xinyuan.xyshop.adapter.SearchGoodListAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.entity.GoodsVo;
 import com.xinyuan.xyshop.entity.SearchGoodsList;
+import com.xinyuan.xyshop.model.GoodDetail;
+import com.xinyuan.xyshop.ui.goods.detail.GoodDetailsActivity;
 import com.xinyuan.xyshop.ui.mine.order.fragment.MyOrderContentFragment;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.JsonUtil;
 import com.youth.xframe.utils.log.XLog;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -90,6 +95,16 @@ public class GroupGoodsFragment extends BaseFragment {
 	private void initlIST(List<GoodsVo> goodses) {
 		adapter = new GoodsGridAdapter(R.layout.activity_group_item_grid, goodses);
 		rv_group.setAdapter(adapter);
+		adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+			@Override
+			public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+				String Type = "1:1";
+				HashMap<String, String> params;
+				params = new HashMap();
+				params.put("GoodType", Type);
+				CommUtil.gotoActivity(getActivity(), GoodDetailsActivity.class, false, params);
+			}
+		});
 
 	}
 

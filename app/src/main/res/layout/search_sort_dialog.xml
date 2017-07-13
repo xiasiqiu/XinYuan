@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/b87"/>
+
+    <TextView
+        android:id="@+id/tvGood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@color/search_sort_bg"
+        android:drawableLeft="@drawable/goods_w"
+        android:drawablePadding="6dp"
+        android:padding="10dp"
+        android:text="商品"
+        android:textColor="@color/bg_white"/>
+
+    <TextView
+        android:id="@+id/tvStore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvGood"
+        android:background="@color/search_sort_bg"
+        android:drawableLeft="@drawable/store_secelt_w"
+        android:drawablePadding="6dp"
+        android:padding="10dp"
+        android:text="店铺"
+        android:textColor="@color/bg_white"/>
+</RelativeLayout>

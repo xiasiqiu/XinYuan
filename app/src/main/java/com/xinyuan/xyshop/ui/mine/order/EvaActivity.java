@@ -73,7 +73,6 @@ public class EvaActivity extends BaseActivity {
 	@Override
 	public void initView() {
 		if (toolbar_iv != null) {
-			XLog.v("余额操作加载Tooolbar");
 			SystemBarHelper.immersiveStatusBar(this, 0); //设置状态栏透明
 			SystemBarHelper.setHeightAndPadding(this, toolbar_iv);
 			tv_header_center.setText(mTitle);
@@ -132,9 +131,9 @@ public class EvaActivity extends BaseActivity {
 	}
 
 	private void intoView(List<String> path) {
-			if(path.size()==5){
-				rl_eva_pic_pull.setVisibility(View.GONE);
-			}
+		if (path.size() == 5) {
+			rl_eva_pic_pull.setVisibility(View.GONE);
+		}
 		for (String url : path) {
 			AddViewHolder addViewHolder = new AddViewHolder(this, R.layout.view_evapull_simple);
 			ImageView imageView = addViewHolder.getView(R.id.ivImg);

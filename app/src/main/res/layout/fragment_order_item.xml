@@ -203,16 +203,6 @@
         android:visibility="gone">
 
         <Button
-            android:id="@+id/bt_order_overime"
-            android:layout_width="70dp"
-            android:layout_height="26dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/bt_unselect_normal"
-            android:text="延长收货"
-            android:textColor="@color/tv_name"
-            android:textSize="@dimen/tv_small"/>
-
-        <Button
             android:id="@+id/bt_order_logistical"
             android:layout_width="70dp"
             android:layout_height="26dp"

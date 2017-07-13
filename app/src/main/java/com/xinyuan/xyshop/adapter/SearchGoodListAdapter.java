@@ -3,6 +3,7 @@ package com.xinyuan.xyshop.adapter;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,10 +11,13 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.entity.GoodsVo;
+import com.xinyuan.xyshop.ui.goods.detail.GoodDetailsActivity;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.widget.PaperButton;
 import com.youth.xframe.utils.log.XLog;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -46,14 +50,27 @@ public class SearchGoodListAdapter extends BaseQuickAdapter<GoodsVo, BaseViewHol
 			tv_goods_sellnum.setText("月销量:" + item.getGoodsSaleNum() + "件");
 			tv_goods_talk.setText("评论:" + item.getEvaluateNum());
 			int num = (int) (Math.random() * 10 + 1);
-
+			String type = "";
 			if (num % 2 == 0) {
 				tv_good_active.setText("包邮");
 				tv_good_active.setBackground(mContext.getResources().getDrawable(R.color.bg_white));
 				tv_good_active.setTextColor(mContext.getResources().getColor(R.color.tv_price));
+				type = "1:0";
 			} else {
 				tv_good_active.setVisibility(View.VISIBLE);
+				type = "2:0";
 			}
+
+			final String finalType = type;
+			goodsImg.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					HashMap<String, String> params;
+					params = new HashMap();
+					params.put("GoodType", finalType);
+					CommUtil.gotoActivity(mContext, GoodDetailsActivity.class, false, params);
+				}
+			});
 
 		} else {
 			TextView tv_good_active = helper.getView(R.id.tv_good_active);
@@ -66,15 +83,28 @@ public class SearchGoodListAdapter extends BaseQuickAdapter<GoodsVo, BaseViewHol
 			TextView tv_goods_sellnum = helper.getView(R.id.tv_goods_sellnum);
 			tv_goods_sellnum.setText("月销量:" + item.getGoodsSaleNum() + "件");
 			int num = (int) (Math.random() * 10 + 1);
+			String type = "";
 			if (num % 2 == 0) {
 				tv_good_active.setText("包邮");
 				tv_good_active.setBackground(mContext.getResources().getDrawable(R.color.bg_white));
 				tv_good_active.setTextColor(mContext.getResources().getColor(R.color.tv_price));
+				type = "1:0";
 			} else {
 				tv_good_active.setVisibility(View.VISIBLE);
+				type = "2:0";
 			}
-
+			final String finalType = type;
+			goodsImg.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					HashMap<String, String> params;
+					params = new HashMap();
+					params.put("GoodType", finalType);
+					CommUtil.gotoActivity(mContext, GoodDetailsActivity.class, false, params);
+				}
+			});
 		}
+
 
 	}
 

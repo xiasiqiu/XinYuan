@@ -27,6 +27,7 @@ import com.xinyuan.xyshop.ui.goods.detail.fragment.GoodsRecommFragment;
 import com.xinyuan.xyshop.ui.goods.store.StoreActivity;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.widget.NoScrollViewPager;
+import com.youth.xframe.utils.XEmptyUtils;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.XToast;
 
@@ -63,10 +64,10 @@ public class GoodDetailsActivity extends BaseActivity {
 	private GoodsInfoFragment goodsInfoFragment;
 	private GoodsDetailFragment goodsDetailFragment;
 	private GoodsCommentFragment goodsCommentFragment;
-	private GoodsRecommFragment goodsRecommFragment;
+
 
 	private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
-	private String[] mTitles = {"商品", "详情", "评价", "推荐"};
+	private String[] mTitles = {"商品", "详情", "评价"};
 	private static int commonId;
 
 	private HashMap<Integer, PreGoods> preGoodsMap;
@@ -82,6 +83,9 @@ public class GoodDetailsActivity extends BaseActivity {
 	public static int lowAssess;
 	public static int blueprint;
 
+	public static String goodType;
+	public static int GOODTYPE;
+	public static int GOODACTIVE;
 
 	@Override
 	public int getLayoutId() {
@@ -94,6 +98,14 @@ public class GoodDetailsActivity extends BaseActivity {
 		this.commonId = getIntent().getIntExtra(GOODID, 0);
 		this.trysType = getIntent().getIntExtra(TRYSTYPE, 0);
 		this.preGoodsMap = new HashMap();
+		Intent intent = getIntent();
+		goodType = intent.getStringExtra("GoodType");
+		if(!XEmptyUtils.isEmpty(goodType)){
+			String[] s = goodType.split(":");
+			GOODTYPE = Integer.parseInt(s[0]);
+			GOODACTIVE = Integer.parseInt(s[1]);
+			XLog.v("商品类型===" + GOODTYPE + ":" + GOODACTIVE);
+		}
 
 	}
 
@@ -107,10 +119,10 @@ public class GoodDetailsActivity extends BaseActivity {
 		fragmentList.add(goodsInfoFragment = new GoodsInfoFragment());
 		fragmentList.add(goodsDetailFragment = new GoodsDetailFragment());
 		fragmentList.add(goodsCommentFragment = new GoodsCommentFragment());
-		fragmentList.add(goodsRecommFragment = new GoodsRecommFragment());
+
 
 		vp_content.setAdapter(new ItemTitlePagerAdapter(getSupportFragmentManager(),
-				fragmentList, new String[]{"商品", "详情", "评价", "推荐"}));
+				fragmentList, new String[]{"商品", "详情", "评价"}));
 		vp_content.setOffscreenPageLimit(4);
 		mTlMain.setViewPager(vp_content);
 

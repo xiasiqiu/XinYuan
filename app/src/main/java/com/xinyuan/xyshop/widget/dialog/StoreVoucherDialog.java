@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,7 +12,6 @@ import android.widget.ImageView;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.VoucherAdapter;
 import com.xinyuan.xyshop.entity.GoodsEvaluate;
-import com.xinyuan.xyshop.util.FullyLinearLayoutManager;
 import com.youth.xframe.utils.log.XLog;
 
 import java.util.ArrayList;
@@ -50,8 +50,8 @@ public class StoreVoucherDialog extends Dialog {
 		XLog.list(data);
 
 		voucherAdapter = new VoucherAdapter(R.layout.item_store_voucher, data);
-		FullyLinearLayoutManager linearLayoutManager = new FullyLinearLayoutManager(getContext());
-		rv_store_voucher.setNestedScrollingEnabled(false);
+		LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+		linearLayoutManager.setOrientation(1);
 		//设置布局管理器
 		rv_store_voucher.setLayoutManager(linearLayoutManager);
 		this.rv_store_voucher.setAdapter(this.voucherAdapter);

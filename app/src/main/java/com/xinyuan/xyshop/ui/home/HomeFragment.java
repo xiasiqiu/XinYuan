@@ -201,6 +201,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 			String s = "【" + data.getText() + "】" + data.getData();
 			SpannableString ss1 = new SpannableString(s);
 			ss1.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimaryDark)), 0, 6, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+			list.add(ss1);
 		}
 
 		marqueeView.startWithList(list);

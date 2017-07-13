@@ -20,7 +20,7 @@ import butterknife.BindView;
  * 图文详情webview的Fragment
  */
 public class GoodsInfoWebFragment extends BaseFragment {
-	@BindView(R.id.webview)
+	@BindView(R.id.web_detail)
 	ProgressBarWebView webView;
 	private String urls = "http://m.okhqb.com/item/description/1000334264.html?fromApp=true";
 

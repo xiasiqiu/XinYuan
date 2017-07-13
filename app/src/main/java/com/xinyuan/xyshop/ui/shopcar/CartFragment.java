@@ -146,6 +146,7 @@ public class CartFragment extends BaseFragment implements CartAdapter.CheckInter
 		if (MyShopApplication.isLogin) {
 			rl_car_login_notice.setVisibility(View.GONE);
 			initDatas();
+
 		} else {
 			rl_car_login_notice.setVisibility(View.VISIBLE);
 			cart_empty.setVisibility(View.VISIBLE);
@@ -160,6 +161,7 @@ public class CartFragment extends BaseFragment implements CartAdapter.CheckInter
 	}
 
 	private void initDatas() {
+		cart_empty.setVisibility(View.GONE);
 		for (int i = 0; i < 3; i++) {
 			groups.add(new StoreInfo(i + "", "天猫店铺" + (i + 1) + "号店"));
 			List<GoodsInfo> products = new ArrayList<GoodsInfo>();

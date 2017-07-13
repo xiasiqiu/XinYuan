@@ -65,7 +65,7 @@
                     android:id="@+id/btnScreen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/select_sort"
+                    android:text="产品分类"
                     android:textColor="@drawable/text_btn_color"
                     android:textSize="@dimen/tv_Normal"/>
 

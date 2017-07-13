@@ -7,19 +7,23 @@
 
     <include layout="@layout/view_header_tv_msg"/>
 
+
     <RelativeLayout
         android:id="@+id/rl_store_name"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginTop="5dp"
+
         android:background="@color/bg_white"
         android:padding="10dp">
 
 
         <ImageView
+            android:id="@+id/iv_store_logo"
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:src="@drawable/test_good_store"/>
+            />
+
 
         <View
             android:layout_width="1px"
@@ -30,26 +34,43 @@
             android:background="@color/colorLine"/>
 
         <TextView
+            android:id="@+id/tv_store_name"
             style="@style/LightTextView"
             android:layout_marginLeft="80dp"
-            android:text="梅子熟了 文艺复古清新女装"/>
+
+            />
 
         <TextView
+            android:id="@+id/tv_store_type"
             style="@style/LightTextView"
             android:layout_marginLeft="80dp"
             android:layout_marginTop="40dp"
-            android:text="类型:服饰鞋帽"/>
+            />
 
-        <TextView
-            style="@style/LightTextView"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="30dp"
-            android:layout_toLeftOf="@+id/bt_store_fav"
-            android:text="247.6万"
-            android:textColor="@color/tv_hint"/>
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/fl_store_sign"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_store_name"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="130dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/iv_store_logo"
+            app:alignContent="flex_start"
+            app:flexWrap="wrap"/>
 
         <TextView
             android:id="@+id/tv_store_fans"
+            style="@style/LightTextView"
+
+            android:layout_alignEnd="@+id/textView7"
+            android:layout_alignRight="@+id/textView7"
+            android:layout_alignTop="@+id/bt_store_fav"
+            android:textColor="@color/tv_hint"/>
+
+        <TextView
+
+            android:id="@+id/textView7"
             style="@style/LightTextView"
             android:layout_alignParentBottom="true"
             android:layout_marginRight="10dp"
@@ -79,13 +100,13 @@
 
         <TextView
             style="@style/RegularTextView"
-
             android:text="描述相符"/>
 
         <TextView
+            android:id="@+id/tv_store_score"
             style="@style/RegularTextView"
             android:layout_marginLeft="50dp"
-            android:text="4.4  与同行业低于4%"
+
             android:textColor="@color/tv_price"/>
     </LinearLayout>
 
@@ -108,9 +129,10 @@
             android:text="服务态度"/>
 
         <TextView
+            android:id="@+id/tv_store_service_score"
             style="@style/RegularTextView"
             android:layout_marginLeft="50dp"
-            android:text="4.8  与同行业高于2%"
+
             android:textColor="@color/tv_price"/>
     </LinearLayout>
 
@@ -133,9 +155,10 @@
             android:text="物流服务"/>
 
         <TextView
+            android:id="@+id/tv_store_express_score"
             style="@style/RegularTextView"
             android:layout_marginLeft="50dp"
-            android:text="4.8  与同行业高于2%"
+
             android:textColor="@color/tv_price"/>
     </LinearLayout>
 
@@ -149,12 +172,13 @@
 
         <TextView
             style="@style/RegularTextView"
-            android:text="店铺名称"/>
+            android:text="店铺名称"
+            />
 
         <TextView
+            android:id="@+id/tv_store_name2"
             style="@style/RegularTextView"
             android:layout_marginLeft="50dp"
-            android:text="梅子熟了 文艺复古清新女装"
             android:textColor="@color/tv_hint"/>
     </LinearLayout>
 
@@ -173,12 +197,14 @@
 
         <TextView
             style="@style/RegularTextView"
-            android:text="店铺地址"/>
+            android:text="店铺地址"
+            />
 
         <TextView
+            android:id="@+id/tv_store_location"
             style="@style/RegularTextView"
             android:layout_marginLeft="50dp"
-            android:text="四川省成都市"
+
             android:textColor="@color/tv_hint"/>
     </LinearLayout>
 
@@ -197,12 +223,14 @@
 
         <TextView
             style="@style/RegularTextView"
-            android:text="注册时间"/>
+            android:text="开店时间"
+            />
 
         <TextView
+            android:id="@+id/tv_store_createTime"
             style="@style/RegularTextView"
             android:layout_marginLeft="50dp"
-            android:text="2016-06-11"
+
             android:textColor="@color/tv_hint"/>
     </LinearLayout>
 
@@ -215,12 +243,14 @@
 
         <TextView
             style="@style/RegularTextView"
-            android:text="联系电话"/>
+            android:text="联系电话"
+            />
 
         <TextView
+            android:id="@+id/tv_store_phone"
             style="@style/RegularTextView"
             android:layout_marginLeft="50dp"
-            android:text="18425783259"
+
             android:textColor="@color/tv_hint"/>
     </LinearLayout>
 
@@ -239,12 +269,14 @@
 
         <TextView
             style="@style/RegularTextView"
-            android:text="工作时间"/>
+            android:text="营业时间"
+            />
 
         <TextView
+            android:id="@+id/tv_store_workTime"
             style="@style/RegularTextView"
             android:layout_marginLeft="50dp"
-            android:text="18425783259"
             android:textColor="@color/tv_hint"/>
     </LinearLayout>
+
 </LinearLayout>

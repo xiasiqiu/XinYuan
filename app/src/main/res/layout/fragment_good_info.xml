@@ -167,6 +167,18 @@
                                     android:textColor="@color/tv_name"
                                     android:textSize="@dimen/tv_light"/>
 
+                                <TextView
+                                    android:id="@+id/tv_good_active"
+                                    style="@style/SmallTextView"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginRight="10dp"
+                                    android:background="@drawable/button_bg"
+                                    android:padding="5dp"
+                                    android:text="虚拟兑换"
+                                    android:textColor="@color/bg_white"
+                                    android:visibility="gone"/>
+
 
                             </RelativeLayout>
 
@@ -181,13 +193,13 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/tv_hint"
+                                    android:layout_marginRight="10dp"
                                     android:textSize="@dimen/tv_light"/>
 
                                 <TextView
                                     android:id="@+id/tv_goods_sellnum"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="18dp"
                                     android:layout_toRightOf="@+id/tv_goods_postage"
                                     android:gravity="center_vertical"
                                     android:textColor="@color/tv_hint"
@@ -230,38 +242,6 @@
                         </LinearLayout>
 
 
-                        <RelativeLayout
-                            android:id="@+id/llGoodDiscount"
-                            android:layout_width="match_parent"
-                            android:layout_height="38dp"
-                            android:layout_marginTop="1dp"
-                            android:background="@color/bg_white"
-                            android:padding="10dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/dicount"
-                                android:textColor="@color/tv_price"
-                                android:textSize="@dimen/tv_Normal"/>
-
-                            <TextView
-                                android:id="@+id/tvGoodDiscount"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="42dp"
-                                android:text=" "
-                                android:textColor="@color/tv_name"
-                                android:textSize="@dimen/tv_Normal"/>
-
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:src="@drawable/icon_right_more"/>
-                        </RelativeLayout>
                         <!-- 当前已选的商品 -->
                         <RelativeLayout
                             android:id="@+id/ll_current_goods"

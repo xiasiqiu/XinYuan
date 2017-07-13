@@ -20,6 +20,7 @@ import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.JsonUtil;
 import com.xinyuan.xyshop.widget.OnFlexboxSubscribeListener;
 import com.xinyuan.xyshop.widget.TagFlowLayout;
+import com.xinyuan.xyshop.widget.dialog.SearchSortDialog;
 import com.youth.xframe.utils.log.XLog;
 
 import java.util.ArrayList;
@@ -48,7 +49,8 @@ public class SearchGoodsActivity extends BaseActivity {
 	@BindView(R.id.search_btn_search)
 	ImageView search_btn_search;
 
-
+	@BindView(R.id.tvSortName)
+	TextView tvSortName;
 	public static String showWord;
 	public static String keyWord;
 	private List<String> hotSearchs;
@@ -59,6 +61,7 @@ public class SearchGoodsActivity extends BaseActivity {
 
 	private MyShopApplication application;
 
+	private SearchSortDialog sortDialog;
 
 	@Override
 	public int getLayoutId() {
@@ -80,6 +83,10 @@ public class SearchGoodsActivity extends BaseActivity {
 		}
 
 		this.application = MyShopApplication.getInstance();
+
+		this.sortDialog = new SearchSortDialog(this, this.tvSortName, this.tvSortName);
+
+
 		search_et.addTextChangedListener(new TextWatcher() {
 			@Override
 			public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -164,7 +171,7 @@ public class SearchGoodsActivity extends BaseActivity {
 	}
 
 
-	@OnClick({R.id.seach_btn_delete, R.id.search_btn_search, R.id.btnClearHistory, R.id.search_btn_back})
+	@OnClick({R.id.seach_btn_delete, R.id.search_btn_search, R.id.btnClearHistory, R.id.search_btn_back, R.id.ll_store_good})
 	public void onClick(View view) {
 		switch (view.getId()) {
 			case R.id.seach_btn_delete:
@@ -184,6 +191,9 @@ public class SearchGoodsActivity extends BaseActivity {
 			case R.id.search_btn_back:
 				finish();
 				return;
+			case R.id.ll_store_good:
+				this.sortDialog.show();
+				break;
 		}
 
 	}

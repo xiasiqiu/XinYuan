@@ -11,7 +11,7 @@ public class GoodDetailModel {
 	private int goodsId;
 
 	private int goodsType;
-
+	private int goodsActive;
 	private List<GoodBanner> banner;
 	private GoodsAttrsBean goodSpec;
 
@@ -77,6 +77,9 @@ public class GoodDetailModel {
 		return this.banner;
 	}
 
+	public int getGoodsActive() {
+		return goodsActive;
+	}
 
 	public int getActualPrice() {
 		return this.actualPrice;

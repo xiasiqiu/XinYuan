@@ -192,12 +192,7 @@ public class SearchGoodsShowActivity extends BaseActivity implements GoodSearchS
 		}
 
 
-		adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-			@Override
-			public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-				CommUtil.gotoActivity(SearchGoodsShowActivity.this, GoodDetailsActivity.class, false, null);
-			}
-		});
+
 
 
 		adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {

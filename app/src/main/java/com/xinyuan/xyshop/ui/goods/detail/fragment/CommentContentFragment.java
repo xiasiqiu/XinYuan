@@ -1,6 +1,7 @@
 package com.xinyuan.xyshop.ui.goods.detail.fragment;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.lzy.okgo.OkGo;
@@ -12,10 +13,7 @@ import com.xinyuan.xyshop.http.Urls;
 import com.xinyuan.xyshop.model.EvaluateModel;
 import com.xinyuan.xyshop.model.GoodDetailModel;
 import com.xinyuan.xyshop.model.TestEvaluateModel;
-import com.xinyuan.xyshop.ui.mine.order.fragment.MyOrderFragment;
-import com.xinyuan.xyshop.util.FullyLinearLayoutManager;
 import com.xinyuan.xyshop.util.JsonUtil;
-import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.loadingview.XLoadingView;
 
 import java.util.List;
@@ -91,11 +89,8 @@ public class CommentContentFragment extends BaseFragment {
 	}
 
 	private void getView(List<EvaluateModel.EvaluateBean> list) {
-
 		this.simpleEvaluateAdapter = new SimpleEvaluateAdapter(R.layout.fragment_good_item_evaluate, list);
-		FullyLinearLayoutManager linearLayoutManager = new FullyLinearLayoutManager(context);
-		rv_comment.setNestedScrollingEnabled(false);
-		//设置布局管理器
+		LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
 		rv_comment.setLayoutManager(linearLayoutManager);
 		this.rv_comment.setAdapter(this.simpleEvaluateAdapter);
 		this.simpleEvaluateAdapter.notifyDataSetChanged();

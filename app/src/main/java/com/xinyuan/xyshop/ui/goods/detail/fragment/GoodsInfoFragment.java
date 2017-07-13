@@ -17,7 +17,6 @@ import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -28,7 +27,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.android.flexbox.FlexboxLayout;
-import com.trello.rxlifecycle.android.FragmentEvent;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.SimpleEvaluateAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
@@ -43,7 +41,6 @@ import com.xinyuan.xyshop.mvp.contract.GoodsDetailContract;
 import com.xinyuan.xyshop.ui.goods.GoodBusBean;
 import com.xinyuan.xyshop.ui.goods.detail.GoodDetailsActivity;
 import com.xinyuan.xyshop.ui.goods.store.StoreActivity;
-import com.xinyuan.xyshop.util.FullyLinearLayoutManager;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.widget.SlideDetailsLayout;
 import com.xinyuan.xyshop.widget.dialog.GoodDetailsPromotionDialog;
@@ -52,6 +49,7 @@ import com.xinyuan.xyshop.widget.dialog.color.PromptDialog;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
+import com.youth.xframe.utils.XEmptyUtils;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.loadingview.XLoadingView;
 
@@ -161,8 +159,6 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	@BindView(R.id.tv_goods_service)
 	TextView tv_goods_service;
 
-	@BindView(R.id.tvGoodDiscount)
-	TextView tvGoodDiscount;
 
 	@BindView(R.id.fl_content)
 	FrameLayout fl_content;
@@ -174,7 +170,8 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 	RelativeLayout rl_group_info;
 	@BindView(R.id.lodingView)
 	XLoadingView lodingView;
-
+	@BindView(R.id.tv_good_active)
+	TextView tv_good_active;
 	private Fragment nowFragment;
 
 	GoodsDetailFragment goodsDetailFragment;
@@ -306,12 +303,6 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	}
 
-	@OnClick(R.id.llGoodDiscount)
-	public void onPromChooseClick() {
-		showSelectPromoDialog();
-
-	}
-
 
 	@Override
 	public void setPresenter(GoodsDetailContract.GoodsDetailPresenter presenter) {
@@ -342,11 +333,6 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 		this.detailModel = model;
 		EventBus.getDefault().post(new GoodBusBean(GoodBusBean.GoodEvaluate, model.getGoodComment()));
-		if (detailModel.getGoodsType() == 0) {
-
-			rl_group_info.setVisibility(View.VISIBLE);
-			startRun();
-		}
 		showBanner();
 		showGoodsInfo();
 		showEva();
@@ -378,33 +364,80 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 	}
 
+	private int goodsType;
+	private int goodsActive;
 
 	@Override
 	public void showGoodsInfo() {
-		tv_newprice.setText("￥" + detailModel.getActualPrice());
-		tv_oldprice.setText("￥" + detailModel.getOldPrice());
-		tv_oldprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-		if (detailModel.getExpressCost() == 0) {
-			tv_goodspostage.setText("快递:免邮费");
+		//如果商品为虚拟商品
+		XLog.v("type:" + detailModel.getGoodsType() + "Active:" + detailModel.getGoodsActive());
+
+		//如果商品为团购活动
+
+		if (!XEmptyUtils.isEmpty(GoodDetailsActivity.goodType)) {
+			goodsType = GoodDetailsActivity.GOODTYPE;
+			goodsActive = GoodDetailsActivity.GOODACTIVE;
 		} else {
-			tv_goodspostage.setText("快递:" + detailModel.getExpressCost());
+			goodsType = detailModel.getGoodsType();
+			goodsActive = detailModel.getGoodsActive();
 		}
-		tv_goodssellnum.setText("月销量:" + detailModel.getSalesVolume() + "笔");
-		tv_goodstalk.setText("评论:" + detailModel.getGoodComment().getTotalCount());
 
 
-		this.unit = detailModel.getUnit();
-		List<String> storeSign = new ArrayList<>();
-		storeSign.addAll(detailModel.getShopServer());
-		tv_goods_location.setText(detailModel.getDeliveryAddress());
-		String dis = detailModel.getSalesPromotion().toString();
-		tvGoodDiscount.setText(dis.substring(1, dis.length() - 1));
-		for (String type : storeSign) {
-			AddViewHolder addViewHolder = new AddViewHolder(context, R.layout.view_good_sign);
-			addViewHolder.setText(R.id.tv_sign_type, type);
-			flexBoxLayout.addView(addViewHolder.getCustomView());
+		switch (goodsType) {
+			case 1:
+				tv_newprice.setText("￥" + detailModel.getActualPrice());
+				tv_oldprice.setText("￥" + detailModel.getOldPrice());
+				tv_oldprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+				if (detailModel.getExpressCost() == 0) {
+					tv_goodspostage.setText("快递:免邮费");
+				} else {
+					tv_goodspostage.setText("快递:" + detailModel.getExpressCost());
+				}
+				tv_goodssellnum.setText("月销量:" + detailModel.getSalesVolume() + "笔");
+				tv_goodstalk.setText("评论:" + detailModel.getGoodComment().getTotalCount());
+				this.unit = detailModel.getUnit();
+				List<String> storeSign = new ArrayList<>();
+				storeSign.addAll(detailModel.getShopServer());
+				tv_goods_location.setText(detailModel.getDeliveryAddress());
+				String dis = detailModel.getSalesPromotion().toString();
+				for (String type : storeSign) {
+					AddViewHolder addViewHolder = new AddViewHolder(context, R.layout.view_good_sign);
+					addViewHolder.setText(R.id.tv_sign_type, type);
+					flexBoxLayout.addView(addViewHolder.getCustomView());
+				}
+				storeSign.clear();
+				break;
+			case 2:
+				tv_goods_location.setVisibility(View.GONE);
+				ll_current.setVisibility(View.GONE);
+				tv_good_active.setVisibility(View.VISIBLE);
+				tv_goodspostage.setVisibility(View.GONE);
+				flexBoxLayout.setVisibility(View.GONE);
+				tv_newprice.setText("￥" + detailModel.getActualPrice());
+				tv_oldprice.setText("￥" + detailModel.getOldPrice());
+				tv_oldprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+				tv_goodssellnum.setText("月销量:" + detailModel.getSalesVolume() + "笔");
+				tv_goodstalk.setText("评论:" + detailModel.getGoodComment().getTotalCount());
+				break;
 		}
-		storeSign.clear();
+
+		if (goodsActive == 1) {
+			rl_group_info.setVisibility(View.VISIBLE);
+			startRun();
+		} else if (goodsActive == 2) {
+			tv_goods_location.setVisibility(View.GONE);
+			ll_current.setVisibility(View.GONE);
+			tv_good_active.setVisibility(View.VISIBLE);
+			tv_good_active.setText("积分兑换");
+			tv_goodspostage.setVisibility(View.GONE);
+			flexBoxLayout.setVisibility(View.GONE);
+
+			tv_newprice.setText(detailModel.getActualPrice() + "积分");
+			tv_oldprice.setText(detailModel.getOldPrice() + "积分");
+			tv_oldprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+			tv_goodssellnum.setText("月销量:" + detailModel.getSalesVolume() + "笔");
+			tv_goodstalk.setText("评论:" + detailModel.getGoodComment().getTotalCount());
+		}
 
 
 	}

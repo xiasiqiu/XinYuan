@@ -20,6 +20,7 @@ import com.xinyuan.xyshop.http.Urls;
 import com.xinyuan.xyshop.model.CreditModel;
 import com.xinyuan.xyshop.model.TestCreditModel;
 import com.xinyuan.xyshop.ui.goods.SearchGoodsActivity;
+import com.xinyuan.xyshop.ui.goods.detail.GoodDetailsActivity;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.JsonUtil;
@@ -28,6 +29,7 @@ import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -91,6 +93,7 @@ public class CreditMallActivity extends BaseActivity {
 
 		rv_credit.setAdapter(creditAdapter);
 		creditAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+
 		addHeader();
 		addFooter();
 
@@ -124,6 +127,7 @@ public class CreditMallActivity extends BaseActivity {
 		rv_recom.setLayoutManager(layoutManager2);
 		rv_recom.setAdapter(adapter);
 		creditAdapter.addFooterView(footView);
+
 	}
 
 	@Override
@@ -140,7 +144,7 @@ public class CreditMallActivity extends BaseActivity {
 				onBackPressed();
 				break;
 			case R.id.goodshow_et_search:
-				CommUtil.gotoActivity(this, SearchGoodsActivity.class,false,null);
+				CommUtil.gotoActivity(this, SearchGoodsActivity.class, false, null);
 				break;
 			case R.id.goodshow_btn_msg:
 				break;

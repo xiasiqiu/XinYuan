@@ -97,22 +97,6 @@
             android:textColor="@color/tv_name"
             android:textSize="@dimen/tv_Regular"/>
 
-
-
-        <Button
-            android:id="@+id/bt_setting_about"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="1px"
-            android:background="@color/bg_white"
-            android:drawableRight="@drawable/ic_right_row"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="关于我们"
-            android:textColor="@color/tv_name"
-            android:textSize="@dimen/tv_Regular"/>
-
     </LinearLayout>
 
     <View

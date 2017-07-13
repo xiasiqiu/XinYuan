@@ -7,22 +7,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.adapter.GoodsAttrsAdapter;
-import com.xinyuan.xyshop.adapter.SearchGoodListAdapter;
-import com.xinyuan.xyshop.adapter.SimpleEvaluateAdapter;
 import com.xinyuan.xyshop.adapter.TextLineAdapter;
-import com.xinyuan.xyshop.entity.BuyData;
-import com.xinyuan.xyshop.entity.GoodDetailVo;
-import com.xinyuan.xyshop.entity.Goods;
-import com.xinyuan.xyshop.entity.PreGoods;
-import com.xinyuan.xyshop.model.GoodsDetailModel;
-import com.xinyuan.xyshop.util.FullyLinearLayoutManager;
-import com.youth.xframe.utils.log.XLog;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;

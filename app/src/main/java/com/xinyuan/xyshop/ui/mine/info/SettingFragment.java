@@ -62,7 +62,7 @@ public class SettingFragment extends BaseFragment {
 		}
 	}
 
-	@OnClick({R.id.bt_setting_address, R.id.bt_setting_cache, R.id.bt_setting_sugges, R.id.bt_setting_about, R.id.bt_setting_security})
+	@OnClick({R.id.bt_setting_address, R.id.bt_setting_cache, R.id.bt_setting_sugges, R.id.bt_setting_security})
 	public void OnClick(View view) {
 		switch (view.getId()) {
 			case R.id.bt_setting_address:
@@ -97,8 +97,6 @@ public class SettingFragment extends BaseFragment {
 			case R.id.bt_setting_sugges:
 
 				start(SuggesFragment.newInstance());
-				break;
-			case R.id.bt_setting_about:
 				break;
 
 		}

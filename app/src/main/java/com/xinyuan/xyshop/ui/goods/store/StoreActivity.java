@@ -1,5 +1,6 @@
 package com.xinyuan.xyshop.ui.goods.store;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.google.android.flexbox.FlexboxLayout;
@@ -20,6 +22,7 @@ import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.ItemTitlePagerAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
 import com.xinyuan.xyshop.common.AddViewHolder;
+import com.xinyuan.xyshop.entity.StoreInfo;
 import com.xinyuan.xyshop.entity.StoreInfoBean;
 import com.xinyuan.xyshop.even.LoginPageEvent;
 import com.xinyuan.xyshop.ui.goods.store.fragment.StoreActivityFragment;
@@ -30,6 +33,7 @@ import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.xinyuan.xyshop.widget.dialog.StoreVoucherDialog;
+import com.xinyuan.xyshop.widget.dialog.color.ColorDialog;
 import com.youth.xframe.utils.XEmptyUtils;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.widget.XToast;
@@ -40,10 +44,14 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static com.xinyuan.xyshop.util.CommUtil.getInAnimationTest;
+import static com.xinyuan.xyshop.util.CommUtil.getOutAnimationTest;
 
 /**
  * Created by Administrator on 2017/5/31.
@@ -125,11 +133,16 @@ public class StoreActivity extends BaseActivity {
 	}
 
 
-	@OnClick({R.id.tv_store_introduce, R.id.tv_store_voucher, R.id.tv_store_service})
+	@OnClick({R.id.tv_store_introduce, R.id.tv_store_voucher, R.id.tv_store_service, R.id.bt_store_fav})
 	public void onClick(View view) {
+		Bundle mBundle = new Bundle();
+
 		switch (view.getId()) {
 			case R.id.tv_store_introduce:
-				CommUtil.gotoActivity(this, StoreIntroduceActivity.class, false, null);
+				Intent intent = new Intent(StoreActivity.this, StoreIntroduceActivity.class);
+				mBundle.putSerializable("storeInfo", info);
+				intent.putExtras(mBundle);
+				startActivity(intent);
 				break;
 			case R.id.tv_store_voucher:
 				showSelectPromoDialog();
@@ -137,6 +150,38 @@ public class StoreActivity extends BaseActivity {
 			case R.id.tv_store_service:
 				CommUtil.gotoActivity(this, StoreIntroduceActivity.class, false, null);
 				break;
+			case R.id.bt_store_fav:
+				if (info.isFollowStatus() == 0) {
+					bt_store_fav.setText("已关注");
+					XToast.info("已关注" + info.getStorename() + "店铺");
+					info.setFollowStatus(1);
+				} else {
+
+					ColorDialog colorDialog = new ColorDialog(this);
+					colorDialog.setTitle("取消关注");
+					colorDialog.setContentText("确定要取消对" + info.getStorename() + "的关注？");
+					colorDialog.setAnimationEnable(true);
+					colorDialog.setAnimationIn(getInAnimationTest(this));
+					colorDialog.setAnimationOut(getOutAnimationTest(this));
+					colorDialog.setPositiveListener("确定", new ColorDialog.OnPositiveListener() {
+						@Override
+						public void onClick(ColorDialog dialog) {
+							dialog.dismiss();
+							XToast.info("已取消对" + info.getStorename() + "的关注");
+							bt_store_fav.setText("+关注");
+							info.setFollowStatus(0);
+						}
+					})
+							.setNegativeListener("取消", new ColorDialog.OnNegativeListener() {
+								@Override
+								public void onClick(ColorDialog dialog) {
+									dialog.dismiss();
+									XLog.v(info.isFollowStatus() == 0 ? "没关注" : "关注了");
+								}
+							}).show();
+
+
+				}
 
 		}
 
@@ -152,10 +197,12 @@ public class StoreActivity extends BaseActivity {
 		dialogWindow.setLayout(dm.widthPixels, dialogWindow.getAttributes().height);
 	}
 
+	private StoreInfoBean info = new StoreInfoBean();
+
 	@Subscribe(threadMode = ThreadMode.MAIN)
 	public void onEvent(StoreInfoBean event) {
 		if (!XEmptyUtils.isEmpty(event)) {
-
+			this.info = event;
 			GlideImageLoader.setImage(StoreActivity.this, event.getBannerBg(), iv_store_bg);
 			GlideImageLoader.setImage(StoreActivity.this, event.getStoreLogo(), iv_store_logo);
 			tv_store_namel.setText(event.getStorename());
@@ -170,14 +217,17 @@ public class StoreActivity extends BaseActivity {
 			AddViewHolder addViewHolder = new AddViewHolder(this, R.layout.view_store_sign);
 			ImageView ivImg = addViewHolder.getView(R.id.ivImg);
 			GlideImageLoader.setImage(this, CommUtil.getStoreSign(this, event.getStoreLevel()), ivImg);
+
 			flexBoxLayout.addView(addViewHolder.getCustomView());
+
+
 			if (!XEmptyUtils.isEmpty(event.getStoresign())) {
 				for (String type : event.getStoresign()) {
-
-					AddViewHolder addViewHolder1 = new AddViewHolder(this, R.layout.view_store_sign);
-					ImageView ivImg1 = addViewHolder1.getView(R.id.ivImg);
-					GlideImageLoader.setImage(this, type, ivImg1);
-					flexBoxLayout.addView(addViewHolder1.getCustomView());
+					AddViewHolder addView = new AddViewHolder(this, R.layout.view_store_sign);
+					ImageView iv = addView.getView(R.id.ivImg);
+					GlideImageLoader.setImage(this, type, iv);
+					XLog.v("Sign;---" + type);
+					flexBoxLayout.addView(addView.getCustomView());
 				}
 			}
 

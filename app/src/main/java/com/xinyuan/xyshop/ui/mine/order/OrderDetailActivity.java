@@ -2,6 +2,7 @@ package com.xinyuan.xyshop.ui.mine.order;
 
 import android.content.Intent;
 import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,7 @@ import com.xinyuan.xyshop.util.GlideImageLoader;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Administrator on 2017/6/20.
@@ -181,5 +183,17 @@ public class OrderDetailActivity extends BaseActivity {
 
 	private void ButtomOnClick(int Status, int index) {
 
+	}
+
+	@OnClick({R.id.bt_order_phone})
+	public void onClick(View view) {
+		switch (view.getId()) {
+			case R.id.bt_order_phone:
+				Intent intent = new Intent(Intent.ACTION_DIAL);
+				Uri data = Uri.parse("tel:" + "15708446531");
+				intent.setData(data);
+				startActivity(intent);
+				break;
+		}
 	}
 }

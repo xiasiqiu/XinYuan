@@ -59,6 +59,9 @@ public class AddressAdapter extends BaseQuickAdapter<AddressBean, BaseViewHolder
 					@Override
 					public void onClick(ColorDialog dialog) {
 						remove(helper.getPosition());
+						if (item.isDefault()) {
+							datas.get(0).setDefault(true);
+						}
 						XToast.info("地址已删除");
 						colorDialog.dismiss();
 					}

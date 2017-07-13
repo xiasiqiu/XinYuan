@@ -28,6 +28,7 @@ import com.yanzhenjie.recyclerview.swipe.SwipeMenuCreator;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuItem;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 import com.youth.xframe.utils.log.XLog;
+import com.youth.xframe.widget.XToast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,7 +76,7 @@ public class FavFragment extends BaseFragment {
 			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
 			SystemBarHelper.setHeightAndPadding(getActivity(), msg_toolbar);
 			tv_header_center.setText("收藏夹");
-			tv_header_right.setText("编辑");
+
 
 		}
 
@@ -83,7 +84,6 @@ public class FavFragment extends BaseFragment {
 
 	@Override
 	public void onLazyInitView(@Nullable Bundle savedInstanceState) {
-		XLog.v("懒加载");
 		LinearLayoutManager layoutManager = new LinearLayoutManager(context);
 		layoutManager.setOrientation(1);
 		goodses = new ArrayList<>();
@@ -116,14 +116,16 @@ public class FavFragment extends BaseFragment {
 						.setBackgroundDrawable(R.color.colorPrimary)
 						.setText("分享") // 文字，还可以设置文字颜色，大小等。。
 						.setTextColor(Color.WHITE)
+						.setTextSize(12)
 						.setWidth(width)
 						.setHeight(height);
 				swipeRightMenu.addMenuItem(shareItem);// 添加一个按钮到右侧侧菜单。
 				SwipeMenuItem deleteItem = new SwipeMenuItem(context)
 						.setBackgroundDrawable(R.color.colorPrimaryDark)
-						.setText("删除") // 文字，还可以设置文字颜色，大小等。。
+						.setText("取消收藏") // 文字，还可以设置文字颜色，大小等。。
 						.setTextColor(Color.WHITE)
 						.setWidth(width)
+						.setTextSize(12)
 						.setHeight(height);
 				swipeRightMenu.addMenuItem(deleteItem);// 添加一个按钮到右侧侧菜单。
 			}
@@ -149,9 +151,14 @@ public class FavFragment extends BaseFragment {
 			closeable.smoothCloseMenu();// 关闭被点击的菜单。
 
 			if (direction == SwipeMenuRecyclerView.RIGHT_DIRECTION) {
-				Toast.makeText(context, "list第" + adapterPosition + "; 右侧菜单第" + menuPosition, Toast.LENGTH_SHORT).show();
-			} else if (direction == SwipeMenuRecyclerView.LEFT_DIRECTION) {
-				Toast.makeText(context, "list第" + adapterPosition + "; 左侧菜单第" + menuPosition, Toast.LENGTH_SHORT).show();
+				XLog.v("list第" + adapterPosition + "; 右侧菜单第" + menuPosition, Toast.LENGTH_SHORT);
+				if (menuPosition == 0) {
+					XToast.info("成功分享！");
+				} else {
+					XToast.info("已移除收藏夹");
+				}
+
+
 			}
 
 

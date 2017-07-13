@@ -3,12 +3,12 @@
               android:layout_width="match_parent"
               android:layout_height="125dp"
               android:layout_margin="1px"
-              android:background="@color/bg_white"
               android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="125dp"
+        android:background="@color/bg_white"
         android:orientation="horizontal">
 
         <ImageView
@@ -16,7 +16,6 @@
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:layout_margin="10dp"
-
             android:scaleType="fitXY"/>
 
         <RelativeLayout
@@ -37,7 +36,7 @@
 
             <TextView
                 android:id="@+id/tv_good_active"
-                style="@style/LightTextView"
+                style="@style/SmallTextView"
                 android:layout_below="@id/tv_goods_name"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/button_bg"
@@ -59,32 +58,20 @@
 
                 <TextView
                     android:id="@+id/tv_goods_sellnum"
-                    style="@style/SmallHintTextView"
-
-                    />
+                    style="@style/SmallHintTextView"/>
 
                 <TextView
                     android:id="@+id/tv_goods_talk"
                     style="@style/SmallHintTextView"
-                    android:layout_marginLeft="15dp"
-                    />
+                    android:layout_marginLeft="15dp"/>
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_goods_price"
                 style="@style/GoodsPriceTextView"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="20dp"
-
-                />
+                android:layout_marginBottom="20dp"/>
 
         </RelativeLayout>
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@color/colorLine"/>
 </LinearLayout>

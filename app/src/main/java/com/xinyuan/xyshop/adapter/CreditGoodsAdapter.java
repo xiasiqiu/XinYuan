@@ -34,7 +34,6 @@ public class CreditGoodsAdapter extends BaseQuickAdapter<CreditModel.CreditGood,
 		goodname.setText(item.getGoodsName());
 		tv_goods_price.setText(mContext.getString(R.string.money_rmb) + item.getGoodsPrice());
 		tv_goods_sellnum.setText(item.getExNum() + "人兑换");
-
 		GlideImageLoader.setImage(mContext, item.getImageUrl(), imageView);
 	}
 }

@@ -1,6 +1,7 @@
 package com.xinyuan.xyshop.ui.buy;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,6 @@ import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.OrderConfirmAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
 import com.xinyuan.xyshop.entity.GoodsVo;
-import com.xinyuan.xyshop.util.FullyLinearLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +49,7 @@ public class ConfirmOrderActivity extends BaseActivity {
 		}
 
 
-		FullyLinearLayoutManager layoutManager = new FullyLinearLayoutManager(this);
+		LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 		layoutManager.setOrientation(1);
 		this.rv_order.setLayoutManager(layoutManager);
 		this.adapter = new OrderConfirmAdapter(R.layout.activity_confirm_order_item, list);

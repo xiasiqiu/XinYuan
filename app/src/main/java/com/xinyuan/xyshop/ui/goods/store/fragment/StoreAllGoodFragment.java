@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.SearchGoodListAdapter;
@@ -174,7 +175,6 @@ public class StoreAllGoodFragment extends BaseFragment implements GoodSearchShow
 			showListView();
 			mSwipeRefreshLayout.setRefreshing(false);
 			adapter.setEnableLoadMore(true);
-			Log.v("shenme", "执行到这儿了？？？？？？？");
 			if (goodsVoList != null) {
 				goodses = goodsVoList;
 			}
@@ -231,7 +231,6 @@ public class StoreAllGoodFragment extends BaseFragment implements GoodSearchShow
 					@Override
 					public void run() {
 						mSwipeRefreshLayout.setEnabled(false);
-						XLog.v("有没有剩下的数据" + pageEntity.toString());
 						if (pageEntity.isHasMore()) {
 							page = page + 1;
 							presenter.initData(keyword, brandId, cat, sort, selectValue, page);

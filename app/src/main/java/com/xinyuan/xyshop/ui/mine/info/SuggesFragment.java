@@ -8,6 +8,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseFragment;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.xinyuan.xyshop.widget.dialog.color.ColorDialog;
+import com.youth.xframe.utils.XEmptyUtils;
 import com.youth.xframe.widget.XToast;
 
 import butterknife.BindView;
@@ -32,6 +34,9 @@ public class SuggesFragment extends BaseFragment {
 	Toolbar msg_toolbar;
 	@BindView(R.id.tv_header_center)
 	TextView tv_header_center;
+
+	@BindView(R.id.ed_eva)
+	EditText ed_eva;
 
 	public static SuggesFragment newInstance() {
 		SuggesFragment fragment = new SuggesFragment();
@@ -55,6 +60,7 @@ public class SuggesFragment extends BaseFragment {
 			SystemBarHelper.setHeightAndPadding(getActivity(), msg_toolbar);
 			tv_header_center.setText("用户设置");
 		}
+
 	}
 
 	@OnClick(R.id.bt_submit)
@@ -71,6 +77,7 @@ public class SuggesFragment extends BaseFragment {
 
 				dialog.dismiss();
 				XToast.info("提交成功");
+				ed_eva.setText("");
 				_mActivity.onBackPressed();
 			}
 		})
@@ -83,4 +90,50 @@ public class SuggesFragment extends BaseFragment {
 	}
 
 
+	private static boolean falg = true;
+
+	@Override
+	public boolean onBackPressedSupport() {
+
+		if (XEmptyUtils.isSpace(ed_eva.getText().toString())) {
+
+			return super.onBackPressedSupport();
+		} else {
+			return showDialog();
+
+		}
+
+
+	}
+
+
+	private boolean showDialog() {
+
+
+		ColorDialog dialog = new ColorDialog(getContext());
+		dialog.setTitle("退出");
+		dialog.setAnimationEnable(true);
+		dialog.setContentText("还未提交，确定要退出吗？");
+		dialog.setAnimationIn(getInAnimationTest(getActivity()));
+		dialog.setAnimationOut(getOutAnimationTest(getActivity()));
+		dialog.setPositiveListener("确定", new ColorDialog.OnPositiveListener() {
+			@Override
+			public void onClick(ColorDialog dialog) {
+				dialog.dismiss();
+				ed_eva.setText("");
+				_mActivity.onBackPressed();
+
+			}
+		})
+				.setNegativeListener("取消", new ColorDialog.OnNegativeListener() {
+					@Override
+					public void onClick(ColorDialog dialog) {
+						dialog.dismiss();
+						falg = true;
+
+					}
+				}).show();
+
+		return falg;
+	}
 }

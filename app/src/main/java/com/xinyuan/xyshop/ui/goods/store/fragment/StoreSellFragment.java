@@ -30,8 +30,7 @@ public class StoreSellFragment extends BaseFragment {
 	ImageView iv_img_2;
 	@BindView(R.id.iv_img_3)
 	ImageView iv_img_3;
-	@BindView(R.id.iv_img_4)
-	ImageView iv_img_4;
+
 
 	@BindView(R.id.tv_sell_1)
 	TextView tv_sell_1;
@@ -39,8 +38,7 @@ public class StoreSellFragment extends BaseFragment {
 	TextView tv_sell_2;
 	@BindView(R.id.tv_sell_3)
 	TextView tv_sell_3;
-	@BindView(R.id.tv_sell_4)
-	TextView tv_sell_4;
+
 
 
 	private String mTitle;
@@ -72,22 +70,22 @@ public class StoreSellFragment extends BaseFragment {
 			GlideImageLoader.setImage(getContext(), goodList.get(0).getGoodImg(), iv_img_1);
 			GlideImageLoader.setImage(getContext(), goodList.get(1).getGoodImg(), iv_img_2);
 			GlideImageLoader.setImage(getContext(), goodList.get(2).getGoodImg(), iv_img_3);
-			GlideImageLoader.setImage(getContext(), goodList.get(3).getGoodImg(), iv_img_4);
+
 
 			tv_sell_1.setText("已售:" + goodList.get(0).getGoodSellNum());
 			tv_sell_2.setText("已售:" + goodList.get(1).getGoodSellNum());
 			tv_sell_3.setText("已售:" + goodList.get(2).getGoodSellNum());
-			tv_sell_4.setText("已售:" + goodList.get(3).getGoodSellNum());
+
 		} else if (mTitle.equals("销量")) {
 			GlideImageLoader.setImage(getContext(), favgoodList.get(0).getGoodImg(), iv_img_1);
 			GlideImageLoader.setImage(getContext(), favgoodList.get(1).getGoodImg(), iv_img_2);
 			GlideImageLoader.setImage(getContext(), favgoodList.get(2).getGoodImg(), iv_img_3);
-			GlideImageLoader.setImage(getContext(), favgoodList.get(3).getGoodImg(), iv_img_4);
+
 
 			tv_sell_1.setText("已售:" + favgoodList.get(0).getGoodSellNum());
 			tv_sell_2.setText("已售:" + favgoodList.get(1).getGoodSellNum());
 			tv_sell_3.setText("已售:" + favgoodList.get(2).getGoodSellNum());
-			tv_sell_4.setText("已售:" + favgoodList.get(3).getGoodSellNum());
+
 		}
 
 
