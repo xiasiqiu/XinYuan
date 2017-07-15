@@ -116,9 +116,9 @@ public class LoginFragment extends BaseFragment {
 	}
 
 	@Override
-	public void onStop() {
+	public void onDestroyView() {
 		EventBus.getDefault().unregister(this);
-		super.onStop();
+		super.onDestroyView();
 	}
 
 	@Subscribe

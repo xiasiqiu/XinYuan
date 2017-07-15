@@ -17,6 +17,8 @@ import com.xinyuan.xyshop.widget.BottomPopupImage;
 import com.yancy.gallerypick.config.GalleryConfig;
 import com.yancy.gallerypick.config.GalleryPick;
 import com.yancy.gallerypick.inter.IHandlerCallBack;
+import com.youth.xframe.utils.XDateUtils;
+import com.youth.xframe.utils.XFormatTimeUtils;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.utils.permission.XPermission;
 
@@ -216,12 +218,12 @@ public class UserInfoFragment extends BaseFragment {
 	TextView tv_user_birth;
 
 	private void setTime() {
-		Calendar selectedDate = Calendar.getInstance();
 		Calendar startDate = Calendar.getInstance();
 		startDate.set(1950, 0, 0);
 		Calendar endDate = Calendar.getInstance();
 		endDate.set(2018, 0, 0);
-
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(1994, 8, 24);
 		pvTime = new TimePickerView.Builder(context, new TimePickerView.OnTimeSelectListener() {
 			@Override
 			public void onTimeSelect(Date date, View v) {//选中事件回调
@@ -237,13 +239,13 @@ public class UserInfoFragment extends BaseFragment {
 				.setTitleText("选择生日")//标题文字
 				.setContentSize(25)
 				.setOutSideCancelable(true)//点击屏幕，点在控件外部范围时，是否取消显示
-				.isCyclic(true)//是否循环滚动
+				.isCyclic(false)//是否循环滚动
 				.setTitleColor(getResources().getColor(R.color.tv_name))//标题文字颜色
 				.setSubmitColor(getResources().getColor(R.color.colorPrimaryDark))//确定按钮文字颜色
 				.setCancelColor(getResources().getColor(R.color.tv_hint))//取消按钮文字颜色
 				.setTitleBgColor(getResources().getColor(R.color.bg_white))//标题背景颜色 Night mode
 				.setBgColor(getResources().getColor(R.color.bg_white))//滚轮背景颜色 Night mode
-				.setDate(selectedDate)// 如果不设置的话，默认是系统时间*/
+				.setDate(calendar)
 				.setRangDate(startDate, endDate)//起始终止年月日设定
 				.setLabel("年", "月", "日", "时", "分", "秒")
 				.isCenterLabel(false) //是否只显示中间选中项的label文字，false则每项item全部都带有label。

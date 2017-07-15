@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lzy.okgo.OkGo;
@@ -19,6 +20,7 @@ import com.xinyuan.xyshop.entity.BrandList;
 import com.xinyuan.xyshop.entity.MySection;
 import com.xinyuan.xyshop.http.Urls;
 import com.xinyuan.xyshop.model.BrandModel;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.JsonUtil;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.xinyuan.xyshop.widget.WaveSideBarView;
@@ -48,7 +50,10 @@ public class BrandFragment extends BaseFragment {
 	RecyclerView rv_brand;
 	@BindView(R.id.side_view)
 	WaveSideBarView mSideBarView;
-
+	@BindView(R.id.iv_header_left)
+	ImageView iv_header_left;
+	@BindView(R.id.iv_header_right)
+	ImageView iv_header_right;
 
 	private List<BrandBean> AdList;
 	private List<BrandModel.Brand> AllBrandList;
@@ -78,6 +83,7 @@ public class BrandFragment extends BaseFragment {
 			SystemBarHelper.setHeightAndPadding(getActivity(), toolbar_iv);
 			tv_header_center.setText(R.string.brandtitle);
 		}
+		CommUtil.initToolBar(_mActivity, context, iv_header_left, iv_header_right);
 		loadingView.setOnRetryClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {

@@ -7,6 +7,7 @@ import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.mvp.presenter.CategoryPresenterImpl;
 import com.xinyuan.xyshop.util.ViewHolder;
 import com.xinyuan.xyshop.model.CategoryModel.CategoryData;
+import com.youth.xframe.utils.XEmptyUtils;
 import com.youth.xframe.utils.log.XLog;
 
 /**
@@ -24,7 +25,16 @@ public class GoodsCategoryAdapter extends CommonAdapter<CategoryData> {
 	public void convert(ViewHolder holder, final CategoryData goodsCategory) {
 
 		holder.setText(R.id.tvGoodsClassName, goodsCategory.getCategoryName());
-		holder.setImage(R.id.tvGoodsClassImage, goodsCategory.getCategoryImageUrl());
+
+		XLog.v(goodsCategory.toString());
+
+		if(!XEmptyUtils.isEmpty(goodsCategory.getCategoryImageUrl())){
+			holder.setImage(R.id.tvGoodsClassImage, goodsCategory.getCategoryImageUrl());
+		}else {
+			holder.setImage(R.id.tvGoodsClassImage, R.drawable.class_default);
+		}
+
+
 		holder.getConvertView().setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				CategoryPresenterImpl.jump(GoodsCategoryAdapter.this.mContext, goodsCategory.getCategoryName(), false);

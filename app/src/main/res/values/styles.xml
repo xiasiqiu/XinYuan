@@ -149,6 +149,14 @@
 
     </style>
 
+    <style name="Small_V_TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/tv_v_small</item>
+        <item name="android:textColor">@color/tv_name</item>
+
+    </style>
+
     <style name="NormalHintTextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

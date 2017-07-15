@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ import com.xinyuan.xyshop.entity.AddressBean;
 import com.xinyuan.xyshop.entity.GoodsVo;
 import com.xinyuan.xyshop.even.TabSelectedEvent;
 import com.xinyuan.xyshop.ui.mine.login.LoginActivity;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.xinyuan.xyshop.widget.dialog.color.ColorDialog;
 
@@ -44,6 +46,10 @@ public class AddressFragment extends BaseFragment {
 	@BindView(R.id.rv_address)
 	RecyclerView rv_address;
 	AddressAdapter adapter;
+	@BindView(R.id.iv_header_left)
+	ImageView iv_header_left;
+	@BindView(R.id.iv_header_right)
+	ImageView iv_header_right;
 
 	public static AddressFragment newInstance() {
 		AddressFragment fragment = new AddressFragment();
@@ -67,6 +73,8 @@ public class AddressFragment extends BaseFragment {
 			SystemBarHelper.setHeightAndPadding(getActivity(), msg_toolbar);
 			tv_header_center.setText("收货地址");
 		}
+
+		CommUtil.initToolBar(_mActivity, context, iv_header_left, iv_header_right);
 	}
 
 	List<AddressBean> list = new ArrayList<>();

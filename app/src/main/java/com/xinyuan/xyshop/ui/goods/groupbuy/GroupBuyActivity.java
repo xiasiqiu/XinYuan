@@ -13,12 +13,14 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.CommonPagerAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
 import com.xinyuan.xyshop.ui.goods.groupbuy.fragment.GroupGoodsFragment;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.youth.xframe.utils.log.XLog;
 
@@ -37,8 +39,8 @@ public class GroupBuyActivity extends BaseActivity {
 	@BindView(R.id.vp_content)
 	public ViewPager vp_content;
 	private ArrayList<Fragment> mFragments = new ArrayList<>();
-	@BindView(R.id.group_toolbar)
-	Toolbar group_toolbar;
+	@BindView(R.id.toolbar_iv)
+	Toolbar toolbar_iv;
 	@BindView(R.id.collapsing_toolbar)
 	CollapsingToolbarLayout collapsing_toolbar;
 	private CommonPagerAdapter adapter;
@@ -50,6 +52,13 @@ public class GroupBuyActivity extends BaseActivity {
 	};
 	@BindView(R.id.ll_header_layout)
 	ImageView headerLayout;
+	@BindView(R.id.iv_header_right)
+	ImageView iv_header_right;
+	@BindView(R.id.iv_header_left)
+	ImageView iv_header_left;
+	@BindView(R.id.tv_header_center)
+	TextView tv_header_center;
+
 
 	//是否隐藏了头部
 	private boolean isHideHeaderLayout = false;
@@ -67,12 +76,13 @@ public class GroupBuyActivity extends BaseActivity {
 	@Override
 	public void initView() {
 		ButterKnife.bind(this);
-		setSupportActionBar(group_toolbar);
+		setSupportActionBar(toolbar_iv);
 
 
 		SystemBarHelper.immersiveStatusBar(this); //设置状态栏透明
-		SystemBarHelper.setHeightAndPadding(this, group_toolbar);
-
+		SystemBarHelper.setHeightAndPadding(this, toolbar_iv);
+		CommUtil.initToolBar(this, iv_header_left, iv_header_right);
+		tv_header_center.setText("团购商城");
 		for (String title : mTitles) {
 			mFragments.add(newGoodsFragment.getInstance(title));
 		}

@@ -11,8 +11,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_store_home"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="50dp"/>
+        android:layout_marginBottom="45dp"
+        android:layout_height="match_parent"/>
     </com.youth.xframe.widget.loadingview.XLoadingView>
 
 </LinearLayout>

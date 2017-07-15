@@ -6,10 +6,7 @@
     <!--底部区域-->
     <include layout="@layout/fragment_good_eva_tab"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:background="@color/colorLine"/>
+
 
     <FrameLayout
         android:id="@+id/good_eva_content"

@@ -17,6 +17,7 @@ import com.trello.rxlifecycle.android.RxLifecycleAndroid;
 import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.youth.xframe.base.ICallback;
+import com.youth.xframe.base.XActivity;
 import com.youth.xframe.common.XActivityStack;
 import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.utils.permission.XPermission;
@@ -37,17 +38,18 @@ import org.greenrobot.eventbus.EventBus;
  */
 
 public abstract class BaseActivity extends SupportActivity implements ICallback, LifecycleProvider<ActivityEvent> {
-	public static final String TAG = "ACTIVITY";
 
 
 	private final BehaviorSubject<ActivityEvent> lifecycleSubject = BehaviorSubject.create();
 
 	protected MyShopApplication application;
 	Unbinder mUnbinder;
+	private static String TAG = "";
 
 	@Override
 	@CallSuper
 	protected void onCreate(Bundle savedInstanceState) {
+		XLog.v("Activity:---onCreate:创建！");
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		XActivityStack.getInstance().addActivity(this);
 		super.onCreate(savedInstanceState);
@@ -101,6 +103,7 @@ public abstract class BaseActivity extends SupportActivity implements ICallback,
 
 	@Override
 	protected void onDestroy() {
+		XLog.v("Activity:---onDestroy：销毁！");
 		super.onDestroy();
 		lifecycleSubject.onNext(ActivityEvent.DESTROY);
 		mUnbinder.unbind();
@@ -114,6 +117,8 @@ public abstract class BaseActivity extends SupportActivity implements ICallback,
 	@CallSuper
 	protected void onResume() {
 		super.onResume();
+		XLog.v("Activity:---onResume：可见！");
+
 		lifecycleSubject.onNext(ActivityEvent.RESUME);
 
 	}
@@ -121,6 +126,8 @@ public abstract class BaseActivity extends SupportActivity implements ICallback,
 	@Override
 	@CallSuper
 	protected void onPause() {
+		XLog.v("Activity:---onPause：屏蔽！");
+
 		lifecycleSubject.onNext(ActivityEvent.PAUSE);
 		super.onPause();
 	}
@@ -128,6 +135,8 @@ public abstract class BaseActivity extends SupportActivity implements ICallback,
 	@Override
 	@CallSuper
 	protected void onStop() {
+		XLog.v("Activity:---onStop：停止 ！");
+
 		lifecycleSubject.onNext(ActivityEvent.STOP);
 		super.onStop();
 	}
@@ -136,6 +145,7 @@ public abstract class BaseActivity extends SupportActivity implements ICallback,
 	@Override
 	@CallSuper
 	protected void onStart() {
+		XLog.v("Activity:---onStop：启动 ！");
 		super.onStart();
 		lifecycleSubject.onNext(ActivityEvent.START);
 

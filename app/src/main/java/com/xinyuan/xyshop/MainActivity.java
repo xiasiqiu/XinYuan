@@ -6,10 +6,10 @@ import com.xinyuan.xyshop.base.BaseActivity;
 
 import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
 
+/**
+ * 首页Activity
+ */
 public class MainActivity extends BaseActivity {
-
-	private static final String CURRENT_FRAGMENT = "STATE_FRAGMENT_SHOW";
-
 
 	@Override
 	public int getLayoutId() {
@@ -24,6 +24,7 @@ public class MainActivity extends BaseActivity {
 	@Override
 	public void initView() {
 		if (findFragment(MainFragment.class) == null) {
+			//fragmentation框架里加载主Fragment
 			loadRootFragment(R.id.main_content, MainFragment.newInstance());
 		}
 		setFragmentAnimator(new DefaultHorizontalAnimator());

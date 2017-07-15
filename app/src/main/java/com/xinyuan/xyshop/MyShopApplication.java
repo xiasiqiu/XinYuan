@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.support.multidex.MultiDex;
 
 
+
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheEntity;
 import com.lzy.okgo.cache.CacheMode;
@@ -14,6 +15,7 @@ import com.youth.xframe.XFrame;
 import com.youth.xframe.base.XApplication;
 
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
 
@@ -28,7 +30,6 @@ public class MyShopApplication extends XApplication {
 	private static MyShopApplication instance;
 	private static String keyWord;
 	private SharedPreferences sysInitSharedPreferences;
-	//一个标记
 	public static String TAG;
 	public Context context;
 	private ArrayList<String> searchKeyList = new ArrayList();
@@ -52,7 +53,6 @@ public class MyShopApplication extends XApplication {
 		Fragmentation.builder()
 				.debug(true)
 				.install();
-
 
 		this.sysInitSharedPreferences = getSharedPreferences(Constants.SYSTEM_INIT_FILE_NAME, 0);
 		this.token = this.sysInitSharedPreferences.getString("token", "");//获取缓存中的token

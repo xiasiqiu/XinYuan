@@ -1,5 +1,6 @@
 package com.xinyuan.xyshop.ui.home;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.sunfusheng.marqueeview.MarqueeView;
@@ -86,18 +88,13 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	private HomeMultipleItemAdapter homeMultipleItemAdapter;
 	private RecyclerView menuListView;
 
-	private static boolean isLoad = true;
-	private int mDistanceY = 0;
-	private static final int TOTAL_COUNTER = 30;
-	private static final int PAGE_SIZE = 6;
+	private static boolean isLoad = true; //是否加载
+	private int mDistanceY = 0;           //列表滑动距离
 	private static String keyWord = "";
 	private static String showWord = "";
 	private int delayMillis = 1000;
-	private boolean isErr;
-	private boolean mLoadMoreEndGone = false;
-	private int mCurrentCounter = 0;
 	private List<HomeMultipleItem> data;
-	private Bundle saveState;
+	private Bundle saveState; //保存状态
 
 
 	public static HomeFragment newInstance() {
@@ -115,6 +112,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	@Override
 	public void initView() {
+		//避免重复加载Toolbar
 		if (isLoad) {
 			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
 			SystemBarHelper.setHeightAndPadding(getActivity(), mToolbar);
@@ -128,7 +126,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	@Override
 	public void onLazyInitView(@Nullable Bundle savedInstanceState) {
 		new HomePresenterImpl(this);
-		presenter.initData();
+		presenter.initData();   //加载数据
+		//加载失败，点击重试
 		xLoadingView.setOnRetryClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -151,15 +150,17 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	 */
 	@Override
 	public void showBanner(final List<HomeModel.HomeModule.HomeModuleData> itemList) {
-		ArrayList<String> images = new ArrayList<>();
+		ArrayList<String> bannerImages = new ArrayList<>();     //banner图片列表
+
+
 		for (HomeModel.HomeModule.HomeModuleData itemData : itemList) {
-			images.add(itemData.getImageUrl());
+			bannerImages.add(itemData.getImageUrl());
 		}
 
 		final Banner banner = (Banner) headView.findViewById(R.id.banner);
 		banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR)
 				.setImageLoader(new GlideImageLoader())
-				.setImages(images)
+				.setImages(bannerImages)
 				.setBannerAnimation(Transformer.DepthPage)
 				.isAutoPlay(true)
 				.setDelayTime(3000)
@@ -169,9 +170,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 			@Override
 			public void OnBannerClick(int position) {
 				if (itemList != null) {
-
 					HomeModel.HomeModule.HomeModuleData itemData = itemList.get(position);
-					OnImageViewClick(banner, itemData.getType(), itemData.getData(), true);
+					OnImageViewClick(banner, itemData.getType(), itemData.getData());
 				}
 			}
 		});
@@ -182,6 +182,8 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 				startActivity(intent);
 			}
 		});
+
+		bannerImages.clear();
 
 
 	}
@@ -194,17 +196,17 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	 */
 	@Override
 	public void showNotice(List<HomeModel.HomeModule.HomeModuleData> itemList) {
-		List<CharSequence> list = new ArrayList<>();
+		List<CharSequence> noticeList = new ArrayList<>();      //公告列表
+
 		MarqueeView marqueeView = (MarqueeView) headView.findViewById(R.id.marquee_name);
 		for (HomeModel.HomeModule.HomeModuleData data : itemList) {
-
 			String s = "【" + data.getText() + "】" + data.getData();
 			SpannableString ss1 = new SpannableString(s);
 			ss1.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimaryDark)), 0, 6, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-			list.add(ss1);
+			noticeList.add(ss1);
 		}
 
-		marqueeView.startWithList(list);
+		marqueeView.startWithList(noticeList);
 
 		RelativeLayout rl_home_news = (RelativeLayout) headView.findViewById(R.id.rl_home_news);
 		rl_home_news.setOnClickListener(new View.OnClickListener() {
@@ -213,6 +215,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 				CommUtil.gotoActivity(getActivity(), NewsActivity.class, false, null);
 			}
 		});
+
 	}
 
 
@@ -223,10 +226,10 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	 */
 	@Override
 	public void showMenu(final List<HomeModel.HomeModule.HomeModuleData> itemList) {
-
+		ArrayList<MultiItemEntity> menuExpen = new ArrayList<>();   //菜单视图列表
 		menuListView = (RecyclerView) headView.findViewById(R.id.menu_list);
+
 		int menucount = 10;
-		ArrayList<MultiItemEntity> res = new ArrayList<>();
 
 
 		for (int i = 0; i < 5; i++) {
@@ -237,11 +240,11 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 				}
 			}
 
-			res.add(expandItem);
+			menuExpen.add(expandItem);
 		}
 
 
-		ExpandableItemAdapter expandableItemAdapter = new ExpandableItemAdapter(res, itemList);
+		ExpandableItemAdapter expandableItemAdapter = new ExpandableItemAdapter(menuExpen, itemList);
 		final GridLayoutManager manager = new GridLayoutManager(getActivity(), 5);
 
 		menuListView.setAdapter(expandableItemAdapter);
@@ -251,10 +254,11 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 			@Override
 			public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
 
-				OnImageViewClick(view, itemList.get(position).getType(), itemList.get(position).getData(), false);
+				OnImageViewClick(view, itemList.get(position).getType(), itemList.get(position).getData());
 			}
 		});
 		expandableItemAdapter.expandAll();
+
 
 	}
 
@@ -310,24 +314,27 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 
 	}
 
+
 	@Override
 	public void showGoods(HomeModel.GoodModule goodModule) {
+		List<GoodListItem> goodList = new ArrayList<>();    //推荐商品列表
 
 		View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_home_footer, (ViewGroup) mRecyclerView.getParent(), false);
 		RecyclerView rv_goods = (RecyclerView) view.findViewById(R.id.rv_home_goods);
 		ImageView iv_ca_title = (ImageView) view.findViewById(R.id.iv_tab_title);
 		TextView tv_ca_title_cn = (TextView) view.findViewById(R.id.tv_tab_title_cn);
 		TextView tv_ca_title_en = (TextView) view.findViewById(R.id.tv_tab_title_en);
-
-		List<GoodListItem> goodList = new ArrayList<>();
 		goodList = goodModule.getGoodList();
-
-
-		HomeGoodsAdapter adapters = new HomeGoodsAdapter(R.layout.item_good_grid, goodList);
+		HomeGoodsAdapter adapters = new HomeGoodsAdapter(R.layout.item_home_good_grid, goodList);
 		GridLayoutManager layoutManager2 = new GridLayoutManager(this.context, 2, 1, false);
 		rv_goods.setLayoutManager(layoutManager2);
 		rv_goods.setAdapter(adapters);
-
+		adapters.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+			@Override
+			public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+				CommUtil.gotoActivity(getActivity(), GoodDetailsActivity.class, false, null);
+			}
+		});
 		GlideImageLoader.setImage(context, goodModule.getGoodInfo().getItemtitleImage(), iv_ca_title);
 		tv_ca_title_cn.setText(goodModule.getGoodInfo().getItemtitleCN());
 		tv_ca_title_en.setText(goodModule.getGoodInfo().getItemtitleEN());
@@ -397,13 +404,12 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	/**
 	 * 首页点击操作监听
 	 *
-	 * @param view
-	 * @param type
-	 * @param data
-	 * @param isAD
+	 * @param view 点击的View
+	 * @param type 跳转类型
+	 * @param data 跳转数据
 	 */
 	@Override
-	public void OnImageViewClick(View view, final String type, final String data, boolean isAD) {
+	public void OnImageViewClick(View view, final String type, final String data) {
 
 		Map<String, String> params = new HashMap();
 
@@ -457,8 +463,6 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 				presenter.initData();
 				data = HomePresenterImpl.getHomeMultipleList();
 				homeMultipleItemAdapter.setNewData(data);
-				isErr = false;
-				mCurrentCounter = PAGE_SIZE;
 				mSwipeRefreshLayout.setRefreshing(false);
 				homeMultipleItemAdapter.setEnableLoadMore(true);
 
@@ -502,33 +506,7 @@ public class HomeFragment extends BaseFragment implements HomeContract.HomeView,
 	}
 
 	@Override
-	public void onPause() {
-		super.onPause();
-
-
-	}
-
-	@Override
-	public void onStart() {
-		super.onStart();
-
-	}
-
-	@Override
-	public void onStop() {
-		super.onStop();
-
-	}
-
-
-	/**
-	 * Prenenter加载首页数据
-	 *
-	 * @param savedInstanceState
-	 */
-	@Override
 	public void initData(@Nullable Bundle savedInstanceState) {
-
 
 	}
 

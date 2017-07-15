@@ -53,7 +53,6 @@ public class CategoryPresenterImpl implements CategoryContract.CategoryPresenter
 
 	@Override
 	public void initData() {
-		XLog.v("分类页面开始加载数据");
 		if (xCache.getAsObject("categoryModel") == null) {
 			XLog.v("缓存的分类数据没有了,重新去网络加载");
 			Subscription subscription = ApiServer.getCategory(Urls.URL_GOODS_CATEGORY)

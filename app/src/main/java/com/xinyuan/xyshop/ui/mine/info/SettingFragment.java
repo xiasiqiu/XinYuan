@@ -2,19 +2,23 @@ package com.xinyuan.xyshop.ui.mine.info;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseFragment;
-import com.xinyuan.xyshop.even.StartBrotherEvent;
+import com.xinyuan.xyshop.even.MainFragmentStartEvent;
+import com.xinyuan.xyshop.ui.mine.MsgActivity;
 import com.xinyuan.xyshop.ui.mine.pro.AccountFragment;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.xinyuan.xyshop.widget.dialog.color.ColorDialog;
 import com.xinyuan.xyshop.widget.dialog.color.PromptDialog;
@@ -38,6 +42,11 @@ public class SettingFragment extends BaseFragment {
 	@BindView(R.id.tv_header_center)
 	TextView tv_header_center;
 
+	@BindView(R.id.iv_header_left)
+	ImageView iv_header_left;
+	@BindView(R.id.iv_header_right)
+	ImageView iv_header_right;
+
 	public static SettingFragment newInstance() {
 		SettingFragment fragment = new SettingFragment();
 		return fragment;
@@ -53,6 +62,7 @@ public class SettingFragment extends BaseFragment {
 
 	}
 
+
 	@Override
 	public void initView() {
 		if (msg_toolbar != null) {
@@ -60,6 +70,7 @@ public class SettingFragment extends BaseFragment {
 			SystemBarHelper.setHeightAndPadding(getActivity(), msg_toolbar);
 			tv_header_center.setText("用户设置");
 		}
+		CommUtil.initToolBar(_mActivity, context, iv_header_left, iv_header_right);
 	}
 
 	@OnClick({R.id.bt_setting_address, R.id.bt_setting_cache, R.id.bt_setting_sugges, R.id.bt_setting_security})

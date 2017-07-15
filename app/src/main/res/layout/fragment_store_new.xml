@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <TextView
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.youth.xframe.widget.loadingview.XLoadingView
+        android:id="@+id/lodingView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="@dimen/tv_Regular"
-        android:layout_gravity="center_horizontal"
-        android:text="最新产品"/>
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_store_new"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="45dp"/>
+    </com.youth.xframe.widget.loadingview.XLoadingView>
 </LinearLayout>

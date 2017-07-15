@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseFragment;
-import com.xinyuan.xyshop.even.StartBrotherEvent;
+import com.xinyuan.xyshop.even.MainFragmentStartEvent;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.youth.xframe.utils.log.XLog;
 
@@ -69,16 +69,16 @@ public class ProPertyFragment extends BaseFragment {
 	public void onClick(View view) {
 		switch (view.getId()) {
 			case R.id.rl_pro_account:
-				EventBus.getDefault().post(new StartBrotherEvent(AccountFragment.newInstance()));
+				EventBus.getDefault().post(new MainFragmentStartEvent(AccountFragment.newInstance()));
 				break;
 			case R.id.rl_pro_coupon:
-				EventBus.getDefault().post(new StartBrotherEvent(CouponFragment.newInstance()));
+				EventBus.getDefault().post(new MainFragmentStartEvent(CouponFragment.newInstance()));
 				break;
 			case R.id.rl_pro_redpacke:
-				EventBus.getDefault().post(new StartBrotherEvent(CouponFragment.newInstance()));
+				EventBus.getDefault().post(new MainFragmentStartEvent(CouponFragment.newInstance()));
 				break;
 			case R.id.rl_pro_credit:
-				EventBus.getDefault().post(new StartBrotherEvent(CreditFragment.newInstance()));
+				EventBus.getDefault().post(new MainFragmentStartEvent(CreditFragment.newInstance()));
 				break;
 		}
 	}

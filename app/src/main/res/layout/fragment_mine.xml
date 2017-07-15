@@ -16,14 +16,14 @@
 
         <ImageView
             android:id="@+id/iv_mine_setting"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/ic_mine_setting"/>
 
         <ImageView
             android:id="@+id/iv_mine_msg"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="15dp"
             android:src="@drawable/act_home_msg"/>
@@ -36,16 +36,15 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/customer_image"
                 android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/touxiang"/>
+                android:layout_height="70dp"/>
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/tv_user_name"
                 style="@style/RegularTextView"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:layout_toRightOf="@id/customer_image"
-                android:text="id_8883712"
+
                 android:textColor="@color/bg_white"/>
 
             <TextView
@@ -67,14 +66,13 @@
                 android:layout_height="45dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignTop="@+id/textView4"
                 android:background="@drawable/bt_rabg"
                 android:drawableLeft="@drawable/mine_point"
                 android:drawablePadding="5dp"
                 android:paddingLeft="15dp"
 
                 android:paddingRight="15dp"
-                android:text="我的积分 885522"
+                android:text="我的积分"
                 android:textColor="@color/tv_name"
                 android:textSize="@dimen/tv_Normal"/>
         </RelativeLayout>
@@ -100,7 +98,7 @@
                 android:id="@+id/tv_mine_fav_num"
                 style="@style/NormalTextView"
                 android:layout_gravity="center_horizontal"
-                android:text="433"/>
+                android:text=""/>
 
             <TextView
                 android:id="@+id/tv_mine_fav"
@@ -128,7 +126,7 @@
                 android:id="@+id/tv_follow_store_num"
                 style="@style/NormalTextView"
                 android:layout_gravity="center_horizontal"
-                android:text="50"/>
+                android:text=""/>
 
             <TextView
                 android:id="@+id/tv_follow_store"
@@ -156,7 +154,7 @@
                 android:id="@+id/tv_mine_foot_num"
                 style="@style/NormalTextView"
                 android:layout_gravity="center_horizontal"
-                android:text="399"/>
+                android:text=""/>
 
             <TextView
                 android:id="@+id/tv_mine_foot"

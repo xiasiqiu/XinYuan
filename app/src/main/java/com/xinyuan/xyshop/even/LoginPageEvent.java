@@ -32,4 +32,12 @@ public class LoginPageEvent {
 	public void setLoginStatus(boolean loginStatus) {
 		this.loginStatus = loginStatus;
 	}
+
+	@Override
+	public String toString() {
+		return "LoginPageEvent{" +
+				"type='" + type + '\'' +
+				", loginStatus=" + loginStatus +
+				'}';
+	}
 }

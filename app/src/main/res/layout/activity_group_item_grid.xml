@@ -27,7 +27,7 @@
             android:letterSpacing="0.01"
             android:lineSpacingExtra="3dp"
             android:padding="10dp"
-            android:text="21:02:53小时后结束"
+            android:text="5天3小时后结束"
             android:textColor="@color/bg_white"
             android:textSize="@dimen/tv_light"/>
 

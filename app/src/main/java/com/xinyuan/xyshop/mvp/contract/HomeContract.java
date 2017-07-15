@@ -30,7 +30,7 @@ public class HomeContract {
 
 		void showList();
 
-		void OnImageViewClick(View view, final String type, final String data, boolean isAD);
+		void OnImageViewClick(View view, final String type, final String data);
 
 		void setKeyWord(String keyWord, String showWord);
 

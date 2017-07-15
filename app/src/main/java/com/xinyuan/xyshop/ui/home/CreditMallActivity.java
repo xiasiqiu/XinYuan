@@ -3,8 +3,10 @@ package com.xinyuan.xyshop.ui.home;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +23,7 @@ import com.xinyuan.xyshop.model.CreditModel;
 import com.xinyuan.xyshop.model.TestCreditModel;
 import com.xinyuan.xyshop.ui.goods.SearchGoodsActivity;
 import com.xinyuan.xyshop.ui.goods.detail.GoodDetailsActivity;
+import com.xinyuan.xyshop.ui.mine.MsgActivity;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.JsonUtil;
@@ -42,7 +45,12 @@ import okhttp3.Response;
  */
 
 public class CreditMallActivity extends BaseActivity {
-
+	@BindView(R.id.category_toolbar)
+	Toolbar category_toolbar;
+	@BindView(R.id.goodshow_et_search)
+	EditText goodshow_et_search;
+	@BindView(R.id.goodshow_btn_msg)
+	ImageView goodshow_btn_msg;
 
 	@BindView(R.id.rv_credit)
 	RecyclerView rv_credit;
@@ -96,6 +104,19 @@ public class CreditMallActivity extends BaseActivity {
 
 		addHeader();
 		addFooter();
+		goodshow_et_search.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				CommUtil.gotoActivity(CreditMallActivity.this, SearchGoodsActivity.class, false, null);
+			}
+		});
+		goodshow_btn_msg.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				CommUtil.gotoActivity(CreditMallActivity.this, MsgActivity.class, false, null);
+
+			}
+		});
 
 	}
 

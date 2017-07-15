@@ -4,7 +4,9 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
 
 /**
  * Created by fx on 2017/5/4 0004.
+ * 首页模块视图实体类
  */
+
 
 public class HomeMultipleItem implements MultiItemEntity {
 	public static final int AD = 1;

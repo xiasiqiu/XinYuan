@@ -33,6 +33,9 @@ import com.xinyuan.xyshop.entity.GoodsVo;
 import com.xinyuan.xyshop.entity.StoreInfo;
 import com.xinyuan.xyshop.even.LoginPageEvent;
 import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
+import com.xinyuan.xyshop.ui.home.ScanActivity;
+import com.xinyuan.xyshop.ui.mine.login.LoginActivity;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.xinyuan.xyshop.widget.XYGridLayoutManager;
@@ -96,7 +99,8 @@ public class CartFragment extends BaseFragment implements CartAdapter.CheckInter
 
 	@BindView(R.id.cart_swipeLayout)
 	SwipeRefreshLayout mSwipeRefreshLayout;
-
+	@BindView(R.id.rl_bottom)
+	RelativeLayout rl_bottom;
 	private double totalPrice = 0.00;// 购买的商品总价
 	private int totalCount = 0;// 购买的商品总数量
 	private CartAdapter selva;
@@ -118,10 +122,6 @@ public class CartFragment extends BaseFragment implements CartAdapter.CheckInter
 		return R.layout.fragment_cart;
 	}
 
-	@Override
-	public void initData(Bundle savedInstanceState) {
-
-	}
 
 	private static boolean VIEW_INIT = true;
 
@@ -142,6 +142,7 @@ public class CartFragment extends BaseFragment implements CartAdapter.CheckInter
 
 	}
 
+
 	private void getLogin() {
 		if (MyShopApplication.isLogin) {
 			rl_car_login_notice.setVisibility(View.GONE);
@@ -150,6 +151,7 @@ public class CartFragment extends BaseFragment implements CartAdapter.CheckInter
 		} else {
 			rl_car_login_notice.setVisibility(View.VISIBLE);
 			cart_empty.setVisibility(View.VISIBLE);
+			rl_bottom.setVisibility(View.GONE);
 			loading_view.showContent();
 		}
 	}
@@ -162,6 +164,8 @@ public class CartFragment extends BaseFragment implements CartAdapter.CheckInter
 
 	private void initDatas() {
 		cart_empty.setVisibility(View.GONE);
+		rl_bottom.setVisibility(View.VISIBLE);
+		rl_car_login_notice.setVisibility(View.GONE);
 		for (int i = 0; i < 3; i++) {
 			groups.add(new StoreInfo(i + "", "天猫店铺" + (i + 1) + "号店"));
 			List<GoodsInfo> products = new ArrayList<GoodsInfo>();
@@ -527,17 +531,22 @@ public class CartFragment extends BaseFragment implements CartAdapter.CheckInter
 
 	@Subscribe(threadMode = ThreadMode.MAIN)
 	public void onEvent(LoginPageEvent event) {
-		XToast.info("登录了！" + event.toString());
 		if (event.isLoginStatus()) {
 			initDatas();
 		}
 
 	}
 
-	@Override
-	public void onStart() {
-		super.onStart();
-
+	@OnClick({R.id.car_btn_scan,R.id.bt_cart_login})
+	public void ScanClick(View view) {
+		switch (view.getId()){
+			case R.id.bt_cart_login:
+				CommUtil.gotoActivity(getActivity(), LoginActivity.class, false, null);
+				break;
+			case R.id.car_btn_scan:
+				CommUtil.gotoActivity(getActivity(), ScanActivity.class, false, null);
+				break;
+		}
 
 	}
 
@@ -545,5 +554,10 @@ public class CartFragment extends BaseFragment implements CartAdapter.CheckInter
 	public void onDestroyView() {
 		super.onDestroyView();
 		EventBus.getDefault().unregister(this);
+	}
+
+	@Override
+	public void initData(Bundle savedInstanceState) {
+
 	}
 }

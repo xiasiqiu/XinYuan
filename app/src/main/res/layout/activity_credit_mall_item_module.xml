@@ -7,16 +7,17 @@
 
     <TextView
         android:id="@+id/tv_credit_module"
+        style="@style/NormalTextView"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
         android:background="@color/bg_white"
         android:gravity="center"
+        android:padding="10dp"
         android:text="积分兑换礼品"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_credit_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"/>
+        android:layout_marginTop="1px"/>
 
 </LinearLayout>

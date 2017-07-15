@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="45dp"
     android:background="@color/bg_white"
+    android:elevation="3dp"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp">
 
@@ -43,8 +44,8 @@
                 app:tl_divider_width="1px"
                 app:tl_indicator_color="@color/colorPrimaryDark"
                 app:tl_indicator_height="4dp"
-                app:tl_indicator_width_equal_title="true"
-                app:tl_tab_padding="10dp"
+                app:tl_indicator_width_equal_title="false"
+                app:tl_tab_padding="15dp"
                 app:tl_textSelectColor="@color/colorPrimaryDark"
                 app:tl_textUnselectColor="@color/tv_name"
                 app:tl_textsize="15dp"

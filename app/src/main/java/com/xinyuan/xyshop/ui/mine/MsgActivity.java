@@ -36,8 +36,7 @@ public class MsgActivity extends BaseActivity {
 	@BindView(R.id.msg_toolbar)
 	Toolbar msg_toolbar;
 
-	@BindView(R.id.tv_mgs_edit)
-	TextView tv_mgs_edit;
+
 	private StoreMsgFragment storeMsgFragment;
 	private MallMsgFragment mallMsgFragment;
 
@@ -95,6 +94,11 @@ public class MsgActivity extends BaseActivity {
 
 		viewPager.setOffscreenPageLimit(2);
 
+	}
+
+	@OnClick(R.id.brand_btn_back)
+	public void onBack() {
+		finish();
 	}
 
 }

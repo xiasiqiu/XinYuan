@@ -11,8 +11,10 @@ import android.os.Environment;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
@@ -28,6 +30,7 @@ import android.widget.TextView;
 
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.common.Constants;
+import com.xinyuan.xyshop.ui.mine.MsgActivity;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -174,6 +177,51 @@ public class CommUtil {
 				break;
 		}
 		return drawable;
+
+	}
+
+
+	public static void initToolBar(final Activity activity, ImageView iv_header_left, ImageView iv_header_right) {
+
+		if (iv_header_left != null) {
+			iv_header_left.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					activity.finish();
+				}
+			});
+		}
+
+		if (iv_header_right != null) {
+			iv_header_right.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					CommUtil.gotoActivity(activity, MsgActivity.class, false, null);
+				}
+			});
+		}
+
+
+	}
+
+	public static void initToolBar(final FragmentActivity activity, final Context context, ImageView iv_header_left, ImageView iv_header_right) {
+		if (iv_header_left != null) {
+			iv_header_left.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					activity.onBackPressed();
+				}
+			});
+		}
+
+		if (iv_header_right != null) {
+			iv_header_right.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					CommUtil.gotoActivity(context, MsgActivity.class, false, null);
+				}
+			});
+		}
 
 	}
 }

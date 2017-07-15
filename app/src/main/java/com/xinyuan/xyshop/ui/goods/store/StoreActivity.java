@@ -226,6 +226,7 @@ public class StoreActivity extends BaseActivity {
 					AddViewHolder addView = new AddViewHolder(this, R.layout.view_store_sign);
 					ImageView iv = addView.getView(R.id.ivImg);
 					GlideImageLoader.setImage(this, type, iv);
+
 					XLog.v("Sign;---" + type);
 					flexBoxLayout.addView(addView.getCustomView());
 				}

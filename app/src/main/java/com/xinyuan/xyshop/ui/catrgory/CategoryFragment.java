@@ -1,5 +1,6 @@
 package com.xinyuan.xyshop.ui.catrgory;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -17,7 +18,12 @@ import com.xinyuan.xyshop.common.AddViewHolder;
 import com.xinyuan.xyshop.even.TabSelectedEvent;
 import com.xinyuan.xyshop.mvp.contract.CategoryContract;
 import com.xinyuan.xyshop.mvp.presenter.CategoryPresenterImpl;
+import com.xinyuan.xyshop.mvp.presenter.HomePresenterImpl;
+import com.xinyuan.xyshop.ui.goods.SearchGoodsActivity;
 import com.xinyuan.xyshop.ui.home.HomeFragment;
+import com.xinyuan.xyshop.ui.home.ScanActivity;
+import com.xinyuan.xyshop.ui.mine.MsgActivity;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.util.SystemBarHelper;
 import com.youth.xframe.utils.log.XLog;
@@ -27,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 import com.xinyuan.xyshop.model.CategoryModel.CategoryData;
 
@@ -75,9 +82,32 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 		return fragment;
 	}
 
+
+	@OnClick({R.id.category_btn_scan, R.id.category_et_search, R.id.category_btn_msg})
+	public void ToolBarOnClick(View view) {
+		switch (view.getId()) {
+			case R.id.category_btn_scan:
+				CommUtil.gotoActivity(context, ScanActivity.class, false, null);
+				break;
+			case R.id.category_et_search:
+				CommUtil.gotoActivity(context, SearchGoodsActivity.class, false, null);
+				break;
+			case R.id.category_btn_msg:
+				CommUtil.gotoActivity(context, MsgActivity.class, false, null);
+				break;
+
+		}
+	}
+
+
 	@Override
 	public int getLayoutId() {
 		return R.layout.fragment_category;
+	}
+
+	@Override
+	public void initData(Bundle savedInstanceState) {
+
 	}
 
 	@Override
@@ -92,12 +122,16 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 
 
 	@Override
-	public void initData(@Nullable Bundle savedInstanceState) {
-		if (VIEW_INIT) {
-			new CategoryPresenterImpl(this, context);
-			presenter.initData();
-		}
-
+	public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+		new CategoryPresenterImpl(this, context);
+		presenter.initData();   //加载数据
+		//加载失败，点击重试
+		xLoadingView.setOnRetryClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				presenter.initData();
+			}
+		});
 
 	}
 
@@ -115,14 +149,11 @@ public class CategoryFragment extends BaseFragment implements CategoryContract.C
 				xLoadingView.showLoading();
 				break;
 			case 1:
-
 				xLoadingView.showContent();
 				break;
 			case 2:
-
 				xLoadingView.showError();
 				break;
-
 		}
 	}
 

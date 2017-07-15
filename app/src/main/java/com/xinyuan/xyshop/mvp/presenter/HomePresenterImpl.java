@@ -81,6 +81,7 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 						moduleList = homeModel.getModuleList();
 						goodModule = homeModel.getGoodModule();
 						showModule(moduleList);
+
 					}
 				}, new Action1<Throwable>() {
 
@@ -152,7 +153,6 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 		view.showList();
 		getkeyWord();
 
-
 	}
 
 	@Override
@@ -164,7 +164,6 @@ public class HomePresenterImpl implements HomeContract.HomePresenter {
 						KeyWord keyWords = JsonUtil.toBean(s, KeyWord.class);
 						KeyWord.Key key = keyWords.getKey();
 						view.setKeyWord(key.getKeywordValue(), key.getKeywordName());
-
 
 					}
 				});

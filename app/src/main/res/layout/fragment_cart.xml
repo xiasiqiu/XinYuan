@@ -26,6 +26,7 @@
             android:textColor="@color/tv_hint"/>
 
         <Button
+            android:id="@+id/bt_cart_login"
             android:layout_width="45dp"
             android:layout_height="20dp"
             android:layout_centerVertical="true"
@@ -85,10 +86,12 @@
                 android:id="@+id/rl_bottom"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_alignParentBottom="true"
                 android:background="@color/bg_white"
                 android:elevation="3dp"
-                android:padding="5dp">
+                android:padding="5dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true">
 
                 <CheckBox
                     android:id="@+id/all_chekbox"

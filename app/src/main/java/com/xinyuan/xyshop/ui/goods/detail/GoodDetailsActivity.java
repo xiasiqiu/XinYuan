@@ -3,6 +3,7 @@ package com.xinyuan.xyshop.ui.goods.detail;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.CallSuper;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
+import com.trello.rxlifecycle.android.ActivityEvent;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.ItemTitlePagerAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
@@ -100,7 +102,7 @@ public class GoodDetailsActivity extends BaseActivity {
 		this.preGoodsMap = new HashMap();
 		Intent intent = getIntent();
 		goodType = intent.getStringExtra("GoodType");
-		if(!XEmptyUtils.isEmpty(goodType)){
+		if (!XEmptyUtils.isEmpty(goodType)) {
 			String[] s = goodType.split(":");
 			GOODTYPE = Integer.parseInt(s[0]);
 			GOODACTIVE = Integer.parseInt(s[1]);
@@ -111,7 +113,7 @@ public class GoodDetailsActivity extends BaseActivity {
 
 	@Override
 	public void initView() {
-
+		EventBus.getDefault().register(this);
 		for (int i = 0; i < mTitles.length; i++) {
 			mTabEntities.add(new TabEntity(mTitles[i]));
 		}
@@ -162,7 +164,6 @@ public class GoodDetailsActivity extends BaseActivity {
 		v.getId();
 		switch (v.getId()) {
 			case R.id.bt_store:
-
 				Map<String, String> params = new HashMap();
 				params.put("storeId", storeId);
 				CommUtil.gotoActivity(this, StoreActivity.class, false, params);
@@ -170,13 +171,18 @@ public class GoodDetailsActivity extends BaseActivity {
 			case R.id.bt_service:
 				break;
 			case R.id.bt_goos_buy:
-
 				CommUtil.gotoActivity(this, ConfirmOrderActivity.class, false, null);
 				break;
 			case R.id.bt_add_car:
 				EventBus.getDefault().post(new GoodBusBean(GoodBusBean.SelectedSpec));
 		}
 
+	}
 
+	@Override
+	@CallSuper
+	protected void onStop() {
+		EventBus.getDefault().unregister(this);
+		super.onStop();
 	}
 }

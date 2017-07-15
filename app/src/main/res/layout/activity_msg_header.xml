@@ -5,14 +5,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/msg_toolbar"
     android:layout_width="match_parent"
-    android:layout_height="?android:actionBarSize"
+    android:layout_height="50dp"
     android:background="@color/colorPrimary"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="?android:actionBarSize"
+        android:layout_height="50dp"
         android:background="@color/bg_white"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -22,20 +22,20 @@
         <ImageView
             android:id="@+id/brand_btn_back"
             android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
             android:src="@drawable/icon_back"/>
 
 
         <com.flyco.tablayout.SegmentTabLayout
             android:id="@+id/stab_msg"
-            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
             android:layout_marginBottom="10dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="6"
             app:tl_bar_color="#ffffff"
             app:tl_indicator_anim_enable="true"
@@ -43,14 +43,6 @@
             app:tl_indicator_corner_radius="2dp"
             app:tl_textBold="SELECT"/>
 
-        <TextView
-            android:id="@+id/tv_mgs_edit"
-            style="@style/RegularTextView"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:text="编辑"/>
 
     </LinearLayout>
 

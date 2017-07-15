@@ -88,6 +88,8 @@ public class AddressAdapter extends BaseQuickAdapter<AddressBean, BaseViewHolder
 					datas.get(helper.getLayoutPosition()).setDefault(true);
 					setDefault(datas.get(helper.getLayoutPosition()));
 					notifyDataSetChanged();
+				} else {
+					checkBox.setChecked(true);
 				}
 			}
 		});

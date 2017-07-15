@@ -2,13 +2,13 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_height="240dp"
     android:layout_margin="1px"
     android:background="@color/bg_white">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="240dp"
         android:layout_marginBottom="1px"
         android:layout_marginLeft="1px"
         android:layout_marginRight="1px"
@@ -19,7 +19,8 @@
             android:id="@+id/ivGoodPic"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:scaleType="fitXY"/>
+            android:layout_margin="5dp"
+            />
 
 
         <TextView
@@ -35,46 +36,22 @@
 
 
         <TextView
-            android:id="@+id/tv_goods_sellnum"
-            style="@style/SmallHintTextView"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="5dp"
-            android:text="12312"
-            />
-
-        <TextView
-            android:id="@+id/tv_goods_talk"
-            style="@style/SmallHintTextView"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="5dp"
-            android:text="123123"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@id/tv_goods_sellnum"
-
-            />
-
-        <TextView
             android:id="@+id/tv_goods_price"
             style="@style/GoodsPriceTextView"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:text="123123"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="25dp"/>
+            android:layout_marginBottom="5dp"
+            />
 
         <TextView
-            android:id="@+id/tv_good_active"
-            style="@style/Small_V_TextView"
+            android:id="@+id/tv_goods_sellnum"
+            style="@style/SmallHintTextView"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="25dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="15dp"
             android:layout_toRightOf="@id/tv_goods_price"
-            android:background="@drawable/button_bg"
-            android:padding="5dp"
-            android:text="虚拟兑换"
-            android:textColor="@color/bg_white"
-            android:visibility="visible"/>
 
+            />
 
     </RelativeLayout>
 

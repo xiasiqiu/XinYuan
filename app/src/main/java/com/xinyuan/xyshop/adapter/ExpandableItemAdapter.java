@@ -10,7 +10,7 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.bean.ExpandItem;
 import com.xinyuan.xyshop.entity.Menu;
-import com.xinyuan.xyshop.even.StartBrotherEvent;
+import com.xinyuan.xyshop.even.MainFragmentStartEvent;
 import com.xinyuan.xyshop.model.HomeModel;
 import com.xinyuan.xyshop.ui.goods.groupbuy.GroupBuyActivity;
 import com.xinyuan.xyshop.ui.home.BrandFragment;
@@ -96,7 +96,7 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
 
 		} else if (data.getType().equals("native")) {
 			if (data.getText().equals(mContext.getResources().getString(R.string.brandtitle))) {
-				EventBus.getDefault().post(new StartBrotherEvent(BrandFragment.newInstance()));
+				EventBus.getDefault().post(new MainFragmentStartEvent(BrandFragment.newInstance()));
 			} else if (data.getText().equals("积分中心")) {
 				CommUtil.gotoActivity(mContext, CreditMallActivity.class, false, null);
 			} else if (data.getText().equals("团购商城")) {

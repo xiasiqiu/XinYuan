@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.flexbox.FlexboxLayout;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.base.BaseActivity;
@@ -126,7 +127,7 @@ public class StoreIntroduceActivity extends BaseActivity {
 
 				AddViewHolder addViewHolder = new AddViewHolder(this, R.layout.view_store_sign);
 				ImageView iv = addViewHolder.getView(R.id.ivImg);
-				GlideImageLoader.setImage(StoreIntroduceActivity.this, bean.getStoresign().get(i), iv);
+				Glide.with(this).load(bean.getStoresign().get(i)).into(iv);
 				fl_store_sign.addView(addViewHolder.getCustomView());
 
 			}

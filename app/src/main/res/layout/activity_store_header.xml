@@ -6,14 +6,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/store_toolbar"
     android:layout_width="match_parent"
-    android:layout_height="?android:actionBarSize"
+    android:layout_height="50dp"
     android:background="@color/colorTransparency"
     app:contentInsetLeft="0dp"
-    app:contentInsetStart="0dp">
+    app:contentInsetStart="0dp"
+    app:layout_collapseMode="pin"
+    app:popupTheme="@style/AppTheme.PopupOverlay">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?android:actionBarSize"
+        android:layout_height="50dp"
         android:background="@color/colorTransparency"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -24,42 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="50px"
+            android:layout_marginLeft="20dp"
             android:src="@drawable/icon_back_w"/>
-
-        <LinearLayout
-            android:layout_width="770px"
-            android:layout_height="90px"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/btn_bg_normal"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/goodshow_et_search"
-                android:layout_width="690px"
-                android:layout_height="90px"
-                android:layout_centerInParent="true"
-                android:layout_centerVertical="true"
-                android:background="@null"
-                android:focusableInTouchMode="false"
-                android:hint="@string/search_search_hint"
-                android:padding="20px"
-                android:paddingLeft="10px"
-                android:singleLine="true"
-                android:textColor="@color/tv_name"
-                android:textColorHint="@color/tv_hint"
-                android:textSize="@dimen/tv_Normal"/>
-
-            <ImageView
-                android:layout_width="80px"
-                android:layout_height="90px"
-                android:background="@drawable/btn_bg_gray"
-                android:src="@drawable/act_home_search_de"
-                />
-
-
-        </LinearLayout>
 
 
         <ImageView
@@ -72,13 +40,42 @@
             android:scaleType="fitXY"
             android:src="@drawable/act_home_msg"/>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="25px"
-            android:layout_height="25px"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10px"
-            android:layout_marginTop="25px"
-            android:src="@color/tv_price"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_toLeftOf="@id/goodshow_btn_msg"
+            android:layout_toRightOf="@id/goodshow_btn_back"
+            android:background="@drawable/btn_bg_normal">
+
+            <EditText
+                android:id="@+id/goodshow_et_search"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginRight="35dp"
+                android:background="@null"
+                android:focusableInTouchMode="false"
+                android:hint="@string/search_search_hint"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                android:textColor="@color/tv_name"
+                android:textColorHint="@color/tv_hint"
+                android:textSize="@dimen/tv_Normal"/>
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/btn_bg_gray"
+                android:padding="10dp"
+                android:src="@drawable/act_home_search_de"
+                />
+
+
+        </RelativeLayout>
+
 
     </RelativeLayout>
 </android.support.v7.widget.Toolbar>

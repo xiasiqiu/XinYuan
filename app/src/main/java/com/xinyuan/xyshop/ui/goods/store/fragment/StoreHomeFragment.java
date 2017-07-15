@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.HomeGoodsAdapter;
@@ -25,7 +26,9 @@ import com.xinyuan.xyshop.even.LoginPageEvent;
 import com.xinyuan.xyshop.model.StoreHomeModel;
 import com.xinyuan.xyshop.mvp.contract.StoreHomeContract;
 import com.xinyuan.xyshop.mvp.presenter.StoreHomePresenterImpl;
+import com.xinyuan.xyshop.ui.goods.detail.GoodDetailsActivity;
 import com.xinyuan.xyshop.ui.goods.store.StoreActivity;
+import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.GlideImageLoader;
 import com.xinyuan.xyshop.widget.NoScrollViewPager;
 import com.youth.xframe.utils.log.XLog;
@@ -133,6 +136,13 @@ public class StoreHomeFragment extends BaseFragment implements StoreHomeContract
 		this.rv_store_home.setLayoutManager(layoutManager2);
 		this.adapter = new HomeGoodsAdapter(R.layout.item_good_grid, recomList);
 		this.rv_store_home.setAdapter(adapter);
+		adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+			@Override
+			public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+				CommUtil.gotoActivity(getActivity(), GoodDetailsActivity.class, false, null);
+			}
+		});
+		EventBus.getDefault().post(recomList);
 	}
 
 	@Override

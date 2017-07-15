@@ -51,6 +51,7 @@ import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.xframe.utils.XEmptyUtils;
 import com.youth.xframe.utils.log.XLog;
+import com.youth.xframe.widget.XToast;
 import com.youth.xframe.widget.loadingview.XLoadingView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -541,6 +542,8 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 
 				break;
 			case R.id.ll_comment:
+
+
 				EventBus.getDefault().post(new GoodBusBean(GoodBusBean.SelectedEvaluate));
 				break;
 			case R.id.bt_good_store:
@@ -576,7 +579,6 @@ public class GoodsInfoFragment extends BaseFragment implements SlideDetailsLayou
 		if (goodBusBean.getFlag().equals(GoodBusBean.addShopCar)) {
 			boolean isAdd = false;
 			isAdd = (boolean) goodBusBean.getObj();
-			XLog.v("加入购物车");
 			if (isAdd) {
 				new PromptDialog(getContext())
 						.setDialogType(PromptDialog.DIALOG_TYPE_SUCCESS)

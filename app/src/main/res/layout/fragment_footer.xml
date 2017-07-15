@@ -7,14 +7,17 @@
 
     <include layout="@layout/view_header_tv_tv"/>
 
-    <View
-        style="@style/XYLine"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_footer"
+    <com.youth.xframe.widget.loadingview.XLoadingView
+        android:id="@+id/lodingView"
         android:layout_width="match_parent"
-        android:background="@color/bg_gray"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_footer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_gray"/>
+    </com.youth.xframe.widget.loadingview.XLoadingView>
 
 </LinearLayout>
