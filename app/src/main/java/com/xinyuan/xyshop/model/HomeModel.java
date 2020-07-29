@@ -1,13 +1,14 @@
 package com.xinyuan.xyshop.model;
 
-import com.xinyuan.xyshop.entity.GoodListItem;
+import com.xinyuan.xyshop.bean.GoodListItemBean;
+import com.xinyuan.xyshop.entity.ItemData;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/6/5.
+ * Created by fx on 2017/6/5.
+ * 首页数据
  */
 
 public class HomeModel implements Serializable {
@@ -15,16 +16,23 @@ public class HomeModel implements Serializable {
 	private static final long serialVersionUID = -2595183988797509119L;
 
 	private List<HomeModule> moduleList;
-	private GoodModule goodModule;
+
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public List<HomeModule> getModuleList() {
+		return moduleList;
+	}
 
 
 	public class HomeModule implements Serializable {
 		private static final long serialVersionUID = -116615636885253895L;
-		private int itemId;
 		private int itemSort;
 		private String itemType;
 		private String itemTypeText;
-		private List<HomeModuleData> dataList;
+		private List<ItemData> dataList;
 		private String itemtitleImage;
 		private String itemtitleCN;
 		private String itemtitleEN;
@@ -44,60 +52,6 @@ public class HomeModel implements Serializable {
 
 		public String getItemtitleColor() {
 			return itemtitleColor;
-		}
-
-		public class HomeModuleData implements Serializable {
-			private static final long serialVersionUID = -2099631985121828983L;
-			private String type;
-			private String imageUrl;
-			private String data;
-			private String text;
-
-
-			public String getText() {
-				return text;
-			}
-
-			public String getType() {
-				return type;
-			}
-
-			public void setType(String type) {
-				this.type = type;
-			}
-
-			public String getImageUrl() {
-				return imageUrl;
-			}
-
-			public void setImageUrl(String imageUrl) {
-				this.imageUrl = imageUrl;
-			}
-
-			public String getData() {
-				return data;
-			}
-
-			public void setData(String data) {
-				this.data = data;
-			}
-
-			@Override
-			public String toString() {
-				return "HomeModuleData{" +
-						"type='" + type + '\'' +
-						", imageUrl='" + imageUrl + '\'' +
-						", data='" + data + '\'' +
-						'}';
-			}
-		}
-
-		public int getItemId() {
-			return itemId;
-		}
-
-		public void setItemId(int itemId) {
-			this.itemId = itemId;
 		}
 
 		public int getItemSort() {
@@ -124,18 +78,17 @@ public class HomeModel implements Serializable {
 			this.itemTypeText = itemTypeText;
 		}
 
-		public List<HomeModuleData> getDataList() {
+		public List<ItemData> getDataList() {
 			return dataList;
 		}
 
-		public void setDataList(List<HomeModuleData> dataList) {
+		public void setDataList(List<ItemData> dataList) {
 			this.dataList = dataList;
 		}
 
 		@Override
 		public String toString() {
 			return "HomeModule{" +
-					"itemId=" + itemId +
 					", itemSort=" + itemSort +
 					", itemType='" + itemType + '\'' +
 					", itemTypeText='" + itemTypeText + '\'' +
@@ -148,63 +101,10 @@ public class HomeModel implements Serializable {
 		}
 	}
 
-
-	public class GoodModule implements Serializable {
-
-		private static final long serialVersionUID = -8688200587140878181L;
-		private GoodInfo goodInfo;
-		private List<GoodListItem> goodList;
-
-
-		public class GoodInfo implements Serializable {
-
-			private static final long serialVersionUID = 3238275922626907479L;
-			private String itemtitleImage;
-			private String itemtitleCN;
-			private String itemtitleEN;
-			private String itemtitleColor;
-
-
-			public String getItemtitleImage() {
-				return itemtitleImage;
-			}
-
-			public String getItemtitleCN() {
-				return itemtitleCN;
-			}
-
-			public String getItemtitleEN() {
-				return itemtitleEN;
-			}
-
-			public String getItemtitleColor() {
-				return itemtitleColor;
-			}
-		}
-
-		public GoodInfo getGoodInfo() {
-			return goodInfo;
-		}
-
-		public List<GoodListItem> getGoodList() {
-			return goodList;
-		}
-	}
-
-
-	public List<HomeModule> getModuleList() {
-		return moduleList;
-	}
-
-	public GoodModule getGoodModule() {
-		return goodModule;
-	}
-
 	@Override
 	public String toString() {
 		return "HomeModel{" +
 				"moduleList=" + moduleList +
-				", goodModule=" + goodModule +
 				'}';
 	}
 }

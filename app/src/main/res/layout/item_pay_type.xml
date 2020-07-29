@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/rl"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/bg_white"
+                android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/iv_pay_img"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_Pay_type"
+        style="@style/NormalTextView"
+        android:layout_marginLeft="60dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_Pay_hint"
+        style="@style/LightHintTextView"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="20dp"
+        />
+
+</RelativeLayout>
+

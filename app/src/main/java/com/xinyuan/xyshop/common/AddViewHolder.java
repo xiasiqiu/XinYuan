@@ -30,7 +30,6 @@ import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.util.GlideImageLoader;
 
 
 public class AddViewHolder {
@@ -76,7 +75,7 @@ public class AddViewHolder {
     }
 
     public AddViewHolder setImage(int viewId, String url) {
-        GlideImageLoader.setImage(this.context, url, (ImageView) getView(viewId));
+        GlideImageLoader.setUrlImg(this.context, url, (ImageView) getView(viewId));
         return this;
     }
 
@@ -131,7 +130,7 @@ public class AddViewHolder {
     }
 
     public void setImage(ImageView view, String url) {
-        GlideImageLoader.setImage(this.context, url, view);
+        GlideImageLoader.setUrlImg(this.context, url, view);
     }
 
     public void setImageLocal(ImageView view, String url) {

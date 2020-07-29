@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rg_search_sort"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorTransparency_H"
+    android:orientation="vertical">
+
+    <View
+        style="@style/LightLine"/>
+
+    <Button
+        android:id="@+id/rb_SortDefault"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:button="@null"
+        android:clickable="true"
+        android:drawableLeft="@drawable/banner_shape"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="@string/com_sort"
+        android:textColor="@drawable/text_btn_color"
+        android:textSize="@dimen/tv_Normal"/>
+
+    <View
+        style="@style/LightLine"/>
+
+    <Button
+        android:id="@+id/rb_SortHon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:button="@null"
+        android:drawableLeft="@drawable/banner_shape"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="@string/hon_sort"
+
+        android:textColor="@drawable/text_btn_color"
+        android:textSize="@dimen/tv_Normal"/>
+
+    <View
+        style="@style/LightLine"/>
+
+    <Button
+        android:id="@+id/rb_SortPriceL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:button="@null"
+        android:drawableLeft="@drawable/banner_shape"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="@string/price_up"
+        android:textColor="@drawable/text_btn_color"
+        android:textSize="@dimen/tv_Normal"/>
+
+    <View
+        style="@style/LightLine"/>
+
+    <Button
+        android:id="@+id/btnSortPriceU"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:button="@null"
+        android:drawableLeft="@drawable/banner_shape"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="@string/price_down"
+        android:textColor="@drawable/text_btn_color"
+        android:textSize="@dimen/tv_Normal"/>
+
+</LinearLayout>
+

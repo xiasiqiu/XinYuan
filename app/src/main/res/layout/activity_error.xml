@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:id="@+id/iv_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/xloading_error"/>
+
+    <TextView
+        android:id="@+id/tv_error"
+
+        style="@style/RegularTextView"
+        android:layout_below="@id/iv_error"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="抱歉，APP断开连接，请稍后重启"/>
+
+
+    <Button
+        android:id="@+id/bt_error"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="105dp"
+        android:layout_height="35dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="150dp"
+        android:background="@drawable/button_light_green"
+        android:button="@null"
+        android:text="关闭鑫圆商城"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/tv_Regular"
+        android:visibility="visible"/>
+
+</RelativeLayout>

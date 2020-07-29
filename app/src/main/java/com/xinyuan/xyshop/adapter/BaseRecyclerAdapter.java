@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * RecyclerView万能适配器
+ * 规格选择Adapter基类
  *
  * @author 胡逸枫
  * @time 2016/9/8 9:19
@@ -39,7 +39,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 			holder.itemView.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					mClickListener.onItemClick(holder.itemView, holder.getPosition());
+					mClickListener.onItemClick(holder.itemView, holder.getLayoutPosition());
 				}
 			});
 		}
@@ -47,7 +47,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
 			holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
 				@Override
 				public boolean onLongClick(View v) {
-					mLongClickListener.onItemLongClick(holder.itemView, holder.getPosition());
+					mLongClickListener.onItemLongClick(holder.itemView, holder.getLayoutPosition());
 					return true;
 				}
 			});

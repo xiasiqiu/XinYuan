@@ -1,42 +1,36 @@
 package com.xinyuan.xyshop.model;
 
 
-import com.xinyuan.xyshop.entity.BrandBean;
+import com.xinyuan.xyshop.bean.BrandBean;
 
 import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/6/19.
+ * Created by fx on 2017/6/19.
+ * 品牌店铺数据
  */
 
 public class BrandModel implements Serializable {
 	private static final long serialVersionUID = 6605855787372291346L;
-	List<BrandBean> AdList;
-	private List<Brand> BrandList;
+	private List<BrandBean> storeRecommendList;
+	private List<Brand> storeSortList;
 
-	public List<BrandBean> getAdList() {
-		return AdList;
+
+	public List<BrandBean> getStoreRecommendList() {
+		return storeRecommendList;
 	}
 
-	public List<Brand> getAllBrandList() {
-		return BrandList;
-	}
-
-	@Override
-	public String toString() {
-		return "BrandModel{" +
-				"AdList=" + AdList +
-				", AllBrandList=" + BrandList +
-				'}';
+	public List<Brand> getStoreSortList() {
+		return storeSortList;
 	}
 
 	public class Brand implements Serializable {
 		private static final long serialVersionUID = 5023762104615955276L;
 		private int brandSord;
 		private String brandInitial;
+		private List<BrandBean> list;
 
-		private List<BrandBean> List;
 
 		public int getBrandSord() {
 			return brandSord;
@@ -46,19 +40,8 @@ public class BrandModel implements Serializable {
 			return brandInitial;
 		}
 
-		public List<BrandBean> getBrandBeanList() {
-			return List;
+		public List<BrandBean> getList() {
+			return list;
 		}
-
-		@Override
-		public String toString() {
-			return "Brand{" +
-					"brandSord=" + brandSord +
-					", brandInitial='" + brandInitial + '\'' +
-					", brandBeanList=" + List +
-					'}';
-		}
-
-
 	}
 }

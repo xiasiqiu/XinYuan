@@ -24,20 +24,16 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="15dp"
-                android:src="@drawable/touxiang"/>
+                />
 
             <TextView
+                android:id="@+id/tv_user_name"
                 style="@style/RegularTextView"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/customer_image"
-                android:text="用户名：id_54545454"/>
+                />
 
         </RelativeLayout>
-
-        <View
-            style="@style/LightLine"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"/>
 
         <Button
             android:id="@+id/bt_setting_address"
@@ -72,7 +68,7 @@
             android:id="@+id/bt_setting_cache"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="3dp"
             android:background="@color/bg_white"
             android:drawableRight="@drawable/ic_right_row"
             android:gravity="left|center_vertical"
@@ -87,8 +83,8 @@
             android:id="@+id/bt_setting_sugges"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="1px"
             android:background="@color/bg_white"
+            android:layout_marginTop="1px"
             android:drawableRight="@drawable/ic_right_row"
             android:gravity="left|center_vertical"
             android:paddingLeft="10dp"
@@ -97,10 +93,30 @@
             android:textColor="@color/tv_name"
             android:textSize="@dimen/tv_Regular"/>
 
+        <Button
+            android:id="@+id/bt_setting_about"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/bg_white"
+            android:layout_marginTop="1px"
+            android:drawableRight="@drawable/ic_right_row"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="关于我们"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_Regular"/>
+
     </LinearLayout>
 
-    <View
+    <Button
+        android:id="@+id/bt_logout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bg_gray"/>
+        android:layout_height="40dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/bt_selected_fang"
+        android:text="退出登录"
+        android:textColor="@color/bg_white"
+        android:textSize="@dimen/tv_Normal"/>
+
 </LinearLayout>

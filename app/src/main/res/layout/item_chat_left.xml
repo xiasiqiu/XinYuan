@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:padding="10dp">
+
+
+    <TextView
+        android:id="@+id/chat_item_date"
+        style="@style/BlodTextView"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/chat_item_header"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentLeft="true"/>
+
+        <com.xinyuan.xyshop.widget.BubbleImageView
+            android:id="@+id/chat_item_content_image"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/chat_item_header"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            app:angle="6dp"
+            app:arrowHeight="8dp"
+            app:arrowLocation="left"
+            app:arrowPosition="15dp"
+            app:arrowWidth="10dp"/>
+
+        <com.xinyuan.xyshop.widget.BubbleLinearLayout
+            android:id="@+id/chat_item_layout_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="100dp"
+            android:layout_toRightOf="@id/chat_item_header"
+            android:gravity="left|center_vertical"
+            android:minHeight="48dp"
+            android:minWidth="120dp"
+            android:orientation="horizontal"
+            app:angle="4dp"
+            app:arrowHeight="10dp"
+            app:arrowLocation="left"
+            app:arrowPosition="10dp"
+            app:arrowWidth="8dp"
+            app:bubbleColor="@color/bg_white">
+
+            <com.xinyuan.xyshop.widget.GifTextView
+                android:id="@+id/chat_item_content_text"
+                style="@style/text_subhead_black"
+                android:layout_marginLeft="10dp"
+                android:padding="10dp"/>
+
+        </com.xinyuan.xyshop.widget.BubbleLinearLayout>
+
+        <TextView
+            android:id="@+id/chat_item_voice_time"
+            style="@style/BlodTextView"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/chat_item_layout_content"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+</LinearLayout>

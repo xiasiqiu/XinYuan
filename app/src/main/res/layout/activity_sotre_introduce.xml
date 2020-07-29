@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <include layout="@layout/view_header_tv_msg"/>
+    <include layout="@layout/view_header_tv_msg" />
 
 
     <RelativeLayout
@@ -13,81 +13,88 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginTop="5dp"
-
         android:background="@color/bg_white"
         android:padding="10dp">
 
 
         <ImageView
             android:id="@+id/iv_store_logo"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            />
-
-
-        <View
-            android:layout_width="1px"
-            android:layout_height="50dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="30dp"
-            android:layout_toLeftOf="@+id/tv_store_fans"
-            android:background="@color/colorLine"/>
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
 
         <TextView
             android:id="@+id/tv_store_name"
-            style="@style/LightTextView"
-            android:layout_marginLeft="80dp"
+            style="@style/RegularTextView"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_store_logo" />
 
-            />
+
+        <TextView
+            android:id="@+id/tv_store_level"
+            style="@style/LightTextView"
+            android:layout_below="@id/tv_store_name"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/iv_store_credit" />
+
+        <ImageView
+            android:id="@+id/iv_store_credit"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_below="@id/tv_store_name"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/iv_store_logo" />
 
         <TextView
             android:id="@+id/tv_store_type"
-            style="@style/LightTextView"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="40dp"
-            />
-
-        <com.google.android.flexbox.FlexboxLayout
-            android:id="@+id/fl_store_sign"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_store_name"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="130dp"
-            android:layout_marginTop="5dp"
-            android:layout_toRightOf="@id/iv_store_logo"
-            app:alignContent="flex_start"
-            app:flexWrap="wrap"/>
-
-        <TextView
-            android:id="@+id/tv_store_fans"
-            style="@style/LightTextView"
-
-            android:layout_alignEnd="@+id/textView7"
-            android:layout_alignRight="@+id/textView7"
-            android:layout_alignTop="@+id/bt_store_fav"
-            android:textColor="@color/tv_hint"/>
-
-        <TextView
-
-            android:id="@+id/textView7"
-            style="@style/LightTextView"
+            style="@style/LightHintTextView"
             android:layout_alignParentBottom="true"
-            android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/bt_store_fav"
-            android:text="粉丝数"
-            android:textColor="@color/tv_hint"/>
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_store_logo" />
 
-        <Button
-            android:id="@+id/bt_store_fav"
-            android:layout_width="70dp"
+        <RelativeLayout
+            android:layout_width="120dp"
             android:layout_height="30dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/bg_flow_selected"
-            android:text="+ 关注"
-            android:textColor="@color/bg_white"/>
+            android:layout_marginRight="5dp">
+
+            <CheckBox
+                android:id="@+id/bt_store_fav"
+                android:layout_width="60dp"
+                android:layout_height="28dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/button_bg_dark"
+                android:button="@null"
+                android:gravity="center"
+                android:text="+ 关注"
+                android:textColor="@color/bg_white"
+                android:textSize="@dimen/tv_light" />
+
+            <TextView
+                android:id="@+id/tv_store_fans"
+                style="@style/SmallHintTextView"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/bt_store_fav" />
+
+
+            <TextView
+                style="@style/SmallHintTextView"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/bt_store_fav"
+                android:text="粉丝数" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="50dp"
+                android:layout_toLeftOf="@id/bt_store_fav"
+                android:background="@color/colorLine" />
+        </RelativeLayout>
     </RelativeLayout>
 
 
@@ -100,14 +107,14 @@
 
         <TextView
             style="@style/RegularTextView"
-            android:text="描述相符"/>
+            android:text="描述相符" />
 
         <TextView
             android:id="@+id/tv_store_score"
             style="@style/RegularTextView"
             android:layout_marginLeft="50dp"
 
-            android:textColor="@color/tv_price"/>
+            android:textColor="@color/tv_price" />
     </LinearLayout>
 
     <View
@@ -115,7 +122,7 @@
         android:layout_height="1px"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@color/colorLine"/>
+        android:background="@color/colorLine" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -126,14 +133,14 @@
         <TextView
             style="@style/RegularTextView"
 
-            android:text="服务态度"/>
+            android:text="服务态度" />
 
         <TextView
             android:id="@+id/tv_store_service_score"
             style="@style/RegularTextView"
             android:layout_marginLeft="50dp"
 
-            android:textColor="@color/tv_price"/>
+            android:textColor="@color/tv_price" />
     </LinearLayout>
 
     <View
@@ -141,7 +148,7 @@
         android:layout_height="1px"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@color/colorLine"/>
+        android:background="@color/colorLine" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -152,14 +159,14 @@
         <TextView
             style="@style/RegularTextView"
 
-            android:text="物流服务"/>
+            android:text="物流服务" />
 
         <TextView
             android:id="@+id/tv_store_express_score"
             style="@style/RegularTextView"
             android:layout_marginLeft="50dp"
 
-            android:textColor="@color/tv_price"/>
+            android:textColor="@color/tv_price" />
     </LinearLayout>
 
 
@@ -172,14 +179,13 @@
 
         <TextView
             style="@style/RegularTextView"
-            android:text="店铺名称"
-            />
+            android:text="店铺名称" />
 
         <TextView
             android:id="@+id/tv_store_name2"
             style="@style/RegularTextView"
             android:layout_marginLeft="50dp"
-            android:textColor="@color/tv_hint"/>
+            android:textColor="@color/tv_hint" />
     </LinearLayout>
 
     <View
@@ -187,7 +193,7 @@
         android:layout_height="1px"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@color/colorLine"/>
+        android:background="@color/colorLine" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -197,15 +203,14 @@
 
         <TextView
             style="@style/RegularTextView"
-            android:text="店铺地址"
-            />
+            android:text="店铺地址" />
 
         <TextView
             android:id="@+id/tv_store_location"
             style="@style/RegularTextView"
             android:layout_marginLeft="50dp"
 
-            android:textColor="@color/tv_hint"/>
+            android:textColor="@color/tv_hint" />
     </LinearLayout>
 
     <View
@@ -213,7 +218,7 @@
         android:layout_height="1px"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@color/colorLine"/>
+        android:background="@color/colorLine" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -223,15 +228,14 @@
 
         <TextView
             style="@style/RegularTextView"
-            android:text="开店时间"
-            />
+            android:text="开店时间" />
 
         <TextView
             android:id="@+id/tv_store_createTime"
             style="@style/RegularTextView"
             android:layout_marginLeft="50dp"
 
-            android:textColor="@color/tv_hint"/>
+            android:textColor="@color/tv_hint" />
     </LinearLayout>
 
     <LinearLayout
@@ -243,40 +247,15 @@
 
         <TextView
             style="@style/RegularTextView"
-            android:text="联系电话"
-            />
+            android:text="联系电话" />
 
         <TextView
             android:id="@+id/tv_store_phone"
             style="@style/RegularTextView"
             android:layout_marginLeft="50dp"
 
-            android:textColor="@color/tv_hint"/>
+            android:textColor="@color/tv_hint" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@color/colorLine"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bg_white"
-        android:padding="10dp">
-
-        <TextView
-            style="@style/RegularTextView"
-            android:text="营业时间"
-            />
-
-        <TextView
-            android:id="@+id/tv_store_workTime"
-            style="@style/RegularTextView"
-            android:layout_marginLeft="50dp"
-            android:textColor="@color/tv_hint"/>
-    </LinearLayout>
 
 </LinearLayout>

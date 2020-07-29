@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_store_head"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/class_default" />
+
+        <TextView
+            android:id="@+id/tv_store_name"
+            style="@style/LightTextView"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/iv_store_head" />
+
+        <TextView
+            android:id="@+id/tv_store_sell"
+            style="@style/SmallHintTextView"
+            android:layout_below="@id/tv_store_name"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/iv_store_head" />
+
+        <TextView
+            android:id="@+id/tv_store_goods"
+            style="@style/SmallHintTextView"
+            android:layout_below="@id/tv_store_name"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/tv_store_sell" />
+
+        <Button
+            android:id="@+id/bt_store"
+            android:layout_width="60dp"
+            android:layout_height="23dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/button__n_bg"
+            android:text="进店"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/tv_Normal" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_store_good"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@color/bg_white"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_store_good1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_store_good1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_store_good1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/colorTransparency_B"
+                android:padding="5dp"
+                android:textColor="@color/bg_white"
+                android:textSize="@dimen/tv_small" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_store_good2"
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_store_good2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_store_good2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/colorTransparency_B"
+                android:padding="5dp"
+                android:textColor="@color/bg_white"
+                android:textSize="@dimen/tv_small" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_store_good3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_store_good3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/tv_store_good3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/colorTransparency_B"
+                android:padding="5dp"
+                android:textColor="@color/bg_white"
+                android:textSize="@dimen/tv_small" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

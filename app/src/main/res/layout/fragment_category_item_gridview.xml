@@ -4,7 +4,6 @@
               android:layout_height="wrap_content"
               android:layout_margin="5dp"
               android:layout_marginTop="10dp"
-              android:background="@color/bg_white"
               android:gravity="center"
               android:orientation="vertical"
               android:padding="5.0dip">
@@ -15,7 +14,7 @@
         android:id="@+id/tvGoodsClassImage"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:scaleType="fitXY"/>
+       />
 
     <TextView
         android:id="@+id/tvGoodsClassName"

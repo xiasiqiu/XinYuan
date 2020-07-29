@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="价格区间"/>
+
+        <EditText
+            android:id="@+id/etPriceFrom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/bg_gray"
+            android:gravity="center_vertical"
+            android:hint="最低价"
+            android:inputType="number"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_Normal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="35dp"
+            android:layout_toRightOf="@+id/etPriceFrom"
+            android:text="───"/>
+
+        <EditText
+            android:id="@+id/etPriceTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/etPriceFrom"
+            android:background="@color/bg_gray"
+            android:gravity="center_vertical"
+            android:hint="最高价"
+            android:inputType="number"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_Normal"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:layout_marginTop="5dp"
+            android:text="店铺类型"/>
+
+        <RadioGroup
+            android:id="@+id/rg_good_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:checkedButton="@+id/rb_select_normal"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_select_normal"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/spec_btn_select"
+                android:button="@null"
+                android:gravity="center_horizontal"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:text="不限"
+                android:textColor="@drawable/spec_btn_select_text"
+                android:textSize="@dimen/tv_light"/>
+
+            <RadioButton
+                android:id="@+id/rb_select_self"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/spec_btn_select"
+                android:button="@null"
+                android:gravity="center"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:text="官方自营"
+                android:textColor="@drawable/spec_btn_select_text"
+                android:textSize="@dimen/tv_light"/>
+
+
+        </RadioGroup>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llBrand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
+</LinearLayout>
+
+

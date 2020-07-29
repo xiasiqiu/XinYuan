@@ -3,13 +3,15 @@ package com.xinyuan.xyshop.even;
 import me.yokeyword.fragmentation.SupportFragment;
 
 /**
- * Created by Administrator on 2017/6/26.
+ * Created by fx on 2017/6/26.
+ * 启动同级fragment消息
  */
 
 public class StartBrotherEvent {
 	public SupportFragment targetFragment;
 	public boolean isResult = false;
 	public int requestCode;
+
 	public StartBrotherEvent() {
 
 	}

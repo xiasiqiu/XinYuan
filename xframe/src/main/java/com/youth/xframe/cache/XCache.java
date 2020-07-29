@@ -29,6 +29,7 @@ import java.util.Map;
 public class XCache {
     public static final int TIME_HOUR = 60 * 60;
     public static final int TIME_DAY = TIME_HOUR * 24;
+    public static final int TIME_WEEK = TIME_DAY * 7;
     public static final int TIME_MONTH = TIME_DAY * 30;
     private static final int maxSize = 1000 * 1000 * 50; // 50 mb
     private static final int maxCount = Integer.MAX_VALUE; // 不限制存放数据的数量

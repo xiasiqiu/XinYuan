@@ -1,59 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="240dp"
-    android:layout_margin="1px"
-    android:background="@color/bg_white">
+    android:layout_marginBottom="1px"
+    android:layout_marginLeft="1px"
+    android:layout_marginRight="1px"
+    android:layout_marginTop="1px"
+    android:background="@color/bg_white"
+    android:padding="5dp">
 
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/ivGoodPic"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:layout_marginBottom="1px"
-        android:layout_marginLeft="1px"
-        android:layout_marginRight="1px"
-        android:layout_marginTop="1px"
-        android:padding="5dp">
-
-        <ImageView
-            android:id="@+id/ivGoodPic"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_margin="5dp"
-            />
+        android:layout_height="150dp"
+        android:layout_margin="5dp"
+        />
 
 
-        <TextView
-            android:id="@+id/tv_goods_name"
-            style="@style/GoodsNameTextView"
-            android:layout_below="@id/ivGoodPic"
-            android:layout_marginTop="5dp"
-            android:ellipsize="end"
-            android:letterSpacing="0.01"
-            android:lineSpacingExtra="3dp"
-            android:maxLines="2"
-            />
+    <TextView
+        android:id="@+id/tv_goods_name"
+        style="@style/GoodsNameTextView"
+        android:layout_below="@id/ivGoodPic"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="3dp"
+        android:maxLines="2"
+        />
 
 
-        <TextView
-            android:id="@+id/tv_goods_price"
-            style="@style/GoodsPriceTextView"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginBottom="5dp"
-            />
+    <TextView
+        android:id="@+id/tv_goods_price"
+        style="@style/GoodsPriceTextView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="5dp"
+        />
 
-        <TextView
-            android:id="@+id/tv_goods_sellnum"
-            style="@style/SmallHintTextView"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="7dp"
-            android:layout_marginLeft="15dp"
-            android:layout_toRightOf="@id/tv_goods_price"
+    <TextView
+        android:id="@+id/tv_goods_sellnum"
+        style="@style/LightHintTextView"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/tv_goods_price"
 
-            />
+        />
 
-    </RelativeLayout>
+</RelativeLayout>
 
 
-</FrameLayout>

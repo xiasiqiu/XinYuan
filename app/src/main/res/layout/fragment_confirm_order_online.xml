@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_gray"
+              android:orientation="vertical">
+
+    <include layout="@layout/view_header_tv_msg"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_good_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+
+        <TextView
+            android:id="@+id/tv_good_name"
+            style="@style/NormalTextView"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_good_img"
+            android:ellipsize="end"
+            android:maxLines="2"
+            />
+
+        <TextView
+            android:id="@+id/tv_good_spec"
+            style="@style/LightTextView"
+            android:layout_below="@id/tv_good_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/iv_good_img"
+            android:ellipsize="end"
+            android:maxLines="1"
+
+            android:textColor="@color/tv_hint"/>
+
+        <TextView
+            android:id="@+id/tv_good_price"
+            style="@style/NormalTextView"
+            android:layout_below="@id/tv_good_spec"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@id/iv_good_img"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text=""
+            android:textColor="@color/tv_price"/>
+
+        <TextView
+            android:id="@+id/tv_good_num"
+            style="@style/NormalHintTextView"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tv_good_spec"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:text=""/>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/bg_white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="15dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="15dp">
+
+
+        <TextView
+            style="@style/BlodTextView"
+            android:text="手机号："/>
+
+        <com.xinyuan.xyshop.widget.EditTextWithDel
+            android:id="@+id/ed_user_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:hint="请输入手机号码"
+            android:inputType="number"
+            android:textColor="@color/tv_name"
+            android:textColorHint="@color/tv_hint"
+            android:textSize="@dimen/tv_Regular"/>
+
+    </LinearLayout>
+
+    <TextView
+        style="@style/SmallHintTextView"
+        android:layout_below="@id/ed_username"
+        android:layout_gravity="left"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="2"
+        android:text="虚拟兑换码将发送至该手机，请注意检查号码是否正确"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="bottom"
+        android:background="@color/bg_white"
+        android:elevation="3dp">
+
+        <TextView
+            android:id="@+id/tv_order_price"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:gravity="right|center_vertical"
+            android:paddingRight="10dp"
+            android:text="实付款：￥123.00"
+            android:textColor="@color/tv_price"
+            android:textSize="@dimen/tv_Regular"/>
+
+        <TextView
+            android:id="@+id/tv_order_post"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:text="提交订单"
+            android:textColor="@color/bg_white"
+            android:textSize="@dimen/tv_Blod"/>
+    </LinearLayout>
+
+</LinearLayout>

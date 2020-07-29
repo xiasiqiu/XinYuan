@@ -1,203 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/bg_gray"
-              android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="3dp"
-        android:background="@color/bg_white"
-        android:padding="10dp">
+    <include layout="@layout/view_header_tv_msg" />
 
-        <ImageView
-            android:id="@+id/iv_good_img"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/test_good_img"/>
-
-
-        <TextView
-            android:id="@+id/tv_good_name"
-            style="@style/NormalTextView"
-            android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@id/iv_good_img"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:text="奥术大师大所"/>
-
-        <TextView
-            android:id="@+id/tv_good_spec"
-            style="@style/LightTextView"
-            android:layout_below="@id/tv_good_name"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="15dp"
-            android:layout_toRightOf="@id/iv_good_img"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="已经选啊实打实大"
-            android:textColor="@color/tv_hint"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_goods_status"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:background="@color/bg_white"
-        android:padding="10dp">
-
-        <TextView
-            android:id="@+id/tv_good_status"
-            style="@style/NormalTextView"
-            android:text="货物状态"/>
-
-        <TextView
-            style="@style/NormalTextView"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:text="请选择"
-            android:textColor="@color/tv_hint"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="3dp"
-            android:background="@drawable/ic_right_row"/>
-
-
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/rl_goods_reason"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bg_white"
-        android:paddingBottom="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
-
-        <View
-            style="@style/LightLine"/>
-
-        <TextView
-            android:id="@+id/tv_good_reason"
-            style="@style/NormalTextView"
-            android:layout_marginTop="10dp"
-            android:text="退款原因"/>
-
-        <TextView
-            style="@style/NormalTextView"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:text="请选择"
-            android:textColor="@color/tv_hint"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="13dp"
-            android:background="@drawable/ic_right_row"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:background="@color/bg_white"
-        android:padding="10dp">
-
-        <TextView
-            android:id="@+id/tv_goods_price"
-            style="@style/NormalTextView"
-            android:text="退款金额"/>
-
-        <TextView
-            style="@style/NormalTextView"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/tv_goods_price"
-            android:text="$12333"
-            android:textColor="@color/tv_price"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="3dp"
-        android:background="@color/bg_white"
-        android:padding="10dp">
-
-        <TextView
-            android:id="@+id/tv_service_info"
-            style="@style/NormalTextView"
-            android:text="退款说明"/>
-
-        <EditText
-            android:id="@+id/ed_eva"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@id/tv_service_info"
-            android:background="@drawable/bg_border"
-            android:gravity="top"
-            android:padding="5dp"
-            android:textSize="@dimen/tv_Normal"/>
-    </RelativeLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:background="@color/bg_white"
-        android:orientation="horizontal">
-
-
-        <RelativeLayout
-            android:id="@+id/rl_eva_pic_pull"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:background="@drawable/bg_border"
-            android:padding="10dp">
-
-            <ImageView
-                android:id="@+id/iv_eva_pullpic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:background="@drawable/ic_mine_pic"/>
-
-            <TextView
-                style="@style/NormalTextView"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@id/iv_eva_pullpic"
-                android:text="晒美图"/>
-        </RelativeLayout>
-
-    </LinearLayout>
-
-    <RelativeLayout
+    <com.youth.xframe.widget.loadingview.XLoadingView
+        android:id="@+id/loadingView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/button"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_alignParentBottom="true"
-            android:background="@color/colorPrimaryDark"
-            android:text="提交"
-            android:textColor="@color/bg_white"
-            android:textSize="@dimen/tv_Regular"/>
-    </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/bg_gray">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/bg_white"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/iv_good_img"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_good_name"
+                        style="@style/NormalTextView"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@id/iv_good_img"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="" />
+
+                    <TextView
+                        android:id="@+id/tv_good_spec"
+                        style="@style/LightTextView"
+                        android:layout_below="@id/tv_good_name"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_toRightOf="@id/iv_good_img"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text=""
+                        android:textColor="@color/tv_hint" />
+
+                </RelativeLayout>
+
+
+                <View style="@style/LightLine" />
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_goods_reason"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/bg_white"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_good_reason"
+                        style="@style/NormalTextView"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:text="售后原因" />
+
+                    <Spinner
+                        android:id="@+id/spinner_reason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/tv_good_reason"
+                        android:spinnerMode="dialog" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/bg_white"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_goods_price"
+                        style="@style/NormalTextView"
+                        android:layout_centerVertical="true"
+                        android:text="退款金额" />
+
+                    <com.xinyuan.xyshop.widget.EditTextWithDel
+                        android:id="@+id/ed_price"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@id/tv_goods_price"
+                        android:background="@drawable/bg_border"
+                        android:gravity="top"
+                        android:inputType="number"
+                        android:maxLength="20"
+                        android:padding="5dp"
+                        android:textSize="@dimen/tv_Normal"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_good_price"
+                        style="@style/NormalTextView"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/ed_price"
+                        android:textColor="@color/tv_price" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/bg_white"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_service_info"
+                        style="@style/NormalTextView"
+                        android:text="退款说明:" />
+
+                    <com.xinyuan.xyshop.widget.EditTextWithDel
+                        android:id="@+id/ed_eva"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_below="@id/tv_service_info"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/bg_border"
+                        android:gravity="top"
+                        android:maxLength="150"
+                        android:padding="5dp"
+                        android:textSize="@dimen/tv_Normal" />
+
+                    <TextView
+                        style="@style/LightHintTextView"
+                        android:layout_gravity="right"
+                        android:text="最多输入120个字符" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:background="@color/bg_white"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_good_pic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:background="@color/bg_white"
+                        android:choiceMode="singleChoice"
+                        android:divider="@null"
+                        android:fadingEdge="none"
+                        android:listSelector="@android:color/transparent"
+                        android:padding="5dp"
+                        android:scrollbarStyle="outsideOverlay"
+                        app:layoutManager="android.support.v7.widget.GridLayoutManager"
+                        app:spanCount="3"
+                        tools:listitem="@layout/view_eva__item_image" />
+
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/bt_post"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="提交"
+                    android:textColor="@color/bg_white"
+                    android:textSize="@dimen/tv_Regular" />
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+    </com.youth.xframe.widget.loadingview.XLoadingView>
+
+
 </LinearLayout>

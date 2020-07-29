@@ -1,72 +1,52 @@
 package com.xinyuan.xyshop.ui.buy;
 
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-
-import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.xinyuan.xyshop.MainFragment;
 import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.adapter.OrderConfirmAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
-import com.xinyuan.xyshop.entity.GoodsVo;
+import com.xinyuan.xyshop.base.BasePresenter;
+import com.xinyuan.xyshop.common.Constants;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import butterknife.BindView;
+import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
 
 /**
- * Created by Administrator on 2017/6/19.
+ * Created by fx on 2017/6/19.
+ * 确认订单Activity
  */
 
-public class ConfirmOrderActivity extends BaseActivity {
+public class ConfirmOrderActivity extends BaseActivity<BasePresenter> {
+    private static boolean isOnlineOrder = false;
+    private int type;
 
-	@BindView(R.id.rv_confirm_order)
-	RecyclerView rv_order;
-	private OrderConfirmAdapter adapter;
-	@BindView(R.id.tv_header_center)
-	TextView tv_header_center;
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
+    }
 
-	@Override
-	public int getLayoutId() {
-		return R.layout.activity_confirm_order;
-	}
+    @Override
+    protected int provideContentViewId() {
+        return R.layout.activity_confirm_order;
+    }
 
-	@Override
-	public void initData(Bundle savedInstanceState) {
+    @Override
+    public void initView() {
+        String goodtype = getIntent().getStringExtra(Constants.GOODTYPE);
+        //fragmentation框架里加载主Fragment
+        if (goodtype.equals(Constants.GOOD_NORMAL)) { //实物订单结算
+            loadRootFragment(R.id.main_content, ConfirmOrderFragment.newInstance());
+        } else if (goodtype.equals(Constants.GOOD_ONLINE)) { //虚拟商品订单结算
+            loadRootFragment(R.id.main_content, ConfirmOrderOnFragment.newInstance());
 
-	}
+        } else if (goodtype.equals(Constants.CREDIT_RED)) { //积分兑换红包订单
+            loadRootFragment(R.id.main_content, ConfirmOrderExFragment.newInstance("兑换红包"));
 
-	@Override
-	public void initView() {
-		tv_header_center.setText("确认订单");
-		List<GoodsVo> list = new ArrayList<>();
-		for (int i = 0; i < 3; i++) {
-			list.add(new GoodsVo());
-		}
+        } else if (goodtype.equals(Constants.CREDIT_COUPON)) { //积分兑换优惠券订单
+            loadRootFragment(R.id.main_content, ConfirmOrderExFragment.newInstance("兑换优惠券"));
+        }
+        setFragmentAnimator(new DefaultHorizontalAnimator());
+    }
 
+    @Override
+    public void initData() {
 
-		LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-		layoutManager.setOrientation(1);
-		this.rv_order.setLayoutManager(layoutManager);
-		this.adapter = new OrderConfirmAdapter(R.layout.activity_confirm_order_item, list);
-		this.adapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
-		this.rv_order.setAdapter(adapter);
-		getTop();
-		getBottom();
-	}
-
-
-	private void getTop() {
-		View view = this.getLayoutInflater().inflate(R.layout.activity_confirm_order_top, (ViewGroup) rv_order.getParent(), false);
-		adapter.setHeaderView(view);
-	}
-
-	private void getBottom() {
-		View view = this.getLayoutInflater().inflate(R.layout.activity_confirm_order_bottom, (ViewGroup) rv_order.getParent(), false);
-		adapter.setFooterView(view);
-	}
+    }
 }

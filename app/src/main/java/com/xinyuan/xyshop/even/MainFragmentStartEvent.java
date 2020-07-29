@@ -3,7 +3,8 @@ package com.xinyuan.xyshop.even;
 import me.yokeyword.fragmentation.SupportFragment;
 
 /**
- * Created by Administrator on 2017/6/26.
+ * Created by fx on 2017/6/26.
+ * 主页消息
  */
 
 public class MainFragmentStartEvent {

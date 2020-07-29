@@ -8,12 +8,11 @@
 
     <TextView
         android:id="@+id/tv_search_item"
-        android:layout_width="280px"
-        android:layout_height="80px"
-        android:layout_margin="15px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_flow"
         android:gravity="center"
-        android:padding="5px"
+        android:padding="10dp"
         android:textSize="@dimen/tv_small"/>
 
 </LinearLayout>

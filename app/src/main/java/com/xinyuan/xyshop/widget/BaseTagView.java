@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 
 /**
- * 作者：ZhouYou
- * 日期：2017/3/25.
+ *
+ * 日期：2017/6/25.
  */
 public class BaseTagView<T> extends FrameLayout implements View.OnClickListener {
 

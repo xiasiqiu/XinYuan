@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.youth.xframe.widget.loadingview.XLoadingView
         android:id="@+id/lodingView"
@@ -12,7 +12,8 @@
 
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
             <com.xinyuan.xyshop.widget.SlideDetailsLayout
                 android:id="@+id/sv_switch"
@@ -23,7 +24,9 @@
                 <ScrollView
                     android:id="@+id/sv_goods_info"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@color/bg_gray"
+                    android:scrollbars="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -37,20 +40,21 @@
                             <com.youth.banner.Banner
                                 android:id="@+id/goodinfo_banner"
                                 android:layout_width="match_parent"
-                                android:layout_height="315dp"
+                                android:layout_height="350dp"
+                                app:image_scale_type="fit_xy"
                                 app:indicator_drawable_selected="@drawable/banner_shape"
                                 app:indicator_height="8dp"
                                 app:indicator_margin="8dp"
-                                app:indicator_width="8dp"/>
+                                app:indicator_width="8dp" />
 
                             <ImageView
                                 android:id="@+id/goodinfo_share"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_alignParentRight="true"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginTop="285dp"
-                                android:src="@drawable/icon_share"/>
+                                android:layout_marginRight="15dp"
+                                android:layout_marginTop="320dp"
+                                android:src="@drawable/icon_share" />
 
                         </RelativeLayout>
 
@@ -67,9 +71,13 @@
                             android:visibility="gone">
 
                             <TextView
-                                style="@style/RegularTextView"
+                                android:id="@+id/tv_group_name"
+                                style="@style/NormalTextView"
+                                android:layout_width="180dp"
                                 android:layout_centerVertical="true"
-                                android:text="团购精选"/>
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="团购精选" />
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -84,12 +92,12 @@
                                     android:background="@color/colorBackground"
                                     android:padding="5dp"
                                     android:text="0"
-                                    android:textColor="@color/tv_price"/>
+                                    android:textColor="@color/tv_price" />
 
                                 <TextView
                                     style="@style/LightTextView"
                                     android:layout_marginRight="5dp"
-                                    android:text="天"/>
+                                    android:text="天" />
 
                                 <TextView
                                     android:id="@+id/tv_good_hour"
@@ -98,12 +106,12 @@
                                     android:background="@color/colorBackground"
                                     android:padding="5dp"
                                     android:text="0"
-                                    android:textColor="@color/tv_price"/>
+                                    android:textColor="@color/tv_price" />
 
                                 <TextView
                                     style="@style/LightTextView"
                                     android:layout_marginRight="5dp"
-                                    android:text="时"/>
+                                    android:text="时" />
 
                                 <TextView
                                     android:id="@+id/tv_good_min"
@@ -112,12 +120,12 @@
                                     android:background="@color/colorBackground"
                                     android:padding="5dp"
                                     android:text="0"
-                                    android:textColor="@color/tv_price"/>
+                                    android:textColor="@color/tv_price" />
 
                                 <TextView
                                     style="@style/LightTextView"
                                     android:layout_marginRight="5dp"
-                                    android:text="分"/>
+                                    android:text="分" />
 
                                 <TextView
                                     android:id="@+id/tv_good_second"
@@ -126,11 +134,11 @@
                                     android:background="@color/colorBackground"
                                     android:padding="5dp"
                                     android:text="0"
-                                    android:textColor="@color/tv_price"/>
+                                    android:textColor="@color/tv_price" />
 
                                 <TextView
                                     style="@style/LightTextView"
-                                    android:text="秒"/>
+                                    android:text="秒" />
                             </LinearLayout>
                         </RelativeLayout>
 
@@ -152,7 +160,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
                                     android:textColor="@color/tv_price"
-                                    android:textSize="@dimen/tv_Blod"/>
+                                    android:textSize="@dimen/tv_Blod" />
 
                                 <TextView
                                     android:id="@+id/tv_old_price"
@@ -165,7 +173,7 @@
                                     android:layout_toRightOf="@id/tv_new_price"
                                     android:button="@null"
                                     android:textColor="@color/tv_name"
-                                    android:textSize="@dimen/tv_light"/>
+                                    android:textSize="@dimen/tv_light" />
 
                                 <TextView
                                     android:id="@+id/tv_good_active"
@@ -177,7 +185,7 @@
                                     android:padding="5dp"
                                     android:text="虚拟兑换"
                                     android:textColor="@color/bg_white"
-                                    android:visibility="gone"/>
+                                    android:visibility="gone" />
 
 
                             </RelativeLayout>
@@ -192,9 +200,9 @@
                                     android:id="@+id/tv_goods_postage"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textColor="@color/tv_hint"
                                     android:layout_marginRight="10dp"
-                                    android:textSize="@dimen/tv_light"/>
+                                    android:textColor="@color/tv_hint"
+                                    android:textSize="@dimen/tv_light" />
 
                                 <TextView
                                     android:id="@+id/tv_goods_sellnum"
@@ -203,7 +211,7 @@
                                     android:layout_toRightOf="@+id/tv_goods_postage"
                                     android:gravity="center_vertical"
                                     android:textColor="@color/tv_hint"
-                                    android:textSize="@dimen/tv_Normal"/>
+                                    android:textSize="@dimen/tv_light" />
 
                                 <TextView
                                     android:id="@+id/tv_goods_talk"
@@ -213,7 +221,7 @@
                                     android:layout_toRightOf="@+id/tv_goods_sellnum"
                                     android:gravity="center_vertical"
                                     android:textColor="@color/tv_hint"
-                                    android:textSize="@dimen/tv_Normal"/>
+                                    android:textSize="@dimen/tv_light" />
 
                                 <TextView
                                     android:id="@+id/tv_goods_location"
@@ -223,10 +231,11 @@
                                     android:layout_marginRight="10dp"
                                     android:gravity="center_vertical"
                                     android:textColor="@color/tv_hint"
-                                    android:textSize="@dimen/tv_Normal"/>
+                                    android:textSize="@dimen/tv_light" />
                             </RelativeLayout>
                             <!-- 商品保障图 -->
                             <LinearLayout
+                                android:id="@+id/ll_store_sign"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp">
@@ -236,7 +245,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     app:alignContent="flex_start"
-                                    app:flexWrap="wrap"/>
+                                    app:flexWrap="wrap" />
 
                             </LinearLayout>
                         </LinearLayout>
@@ -254,27 +263,26 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
                                 android:text="@string/good_choses"
                                 android:textColor="@color/tv_name"
-                                android:textSize="@dimen/tv_Normal"/>
+                                android:textSize="@dimen/tv_Normal" />
 
                             <TextView
                                 android:id="@+id/tv_current_goods"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                style="@style/LightTextView"
+                                android:layout_centerVertical="true"
                                 android:layout_marginLeft="42dp"
                                 android:ellipsize="end"
                                 android:maxLines="1"
-                                android:text="@string/good_spec"
-                                android:textColor="@color/tv_name"
-                                android:textSize="@dimen/tv_Normal"/>
+                                android:text="@string/good_spec" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
-                                android:src="@drawable/icon_right_more"/>
+                                android:src="@drawable/icon_right_more" />
                         </RelativeLayout>
 
 
@@ -297,7 +305,7 @@
                                 android:layout_margin="10dp"
                                 android:text="@string/good_eva"
                                 android:textColor="#222222"
-                                android:textSize="13dp"/>
+                                android:textSize="13dp" />
 
 
                             <ImageView
@@ -307,7 +315,7 @@
                                 android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
                                 android:layout_margin="10dp"
-                                android:src="@drawable/right_img"/>
+                                android:src="@drawable/right_img" />
 
                             <View
                                 android:layout_width="match_parent"
@@ -315,7 +323,7 @@
                                 android:layout_alignParentBottom="true"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginRight="10dp"
-                                android:background="@color/colorLine"/>
+                                android:background="@color/colorLine" />
 
                         </RelativeLayout>
 
@@ -327,7 +335,7 @@
                             <android.support.v7.widget.RecyclerView
                                 android:id="@+id/rvEvaluate"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -340,42 +348,54 @@
                                 android:id="@+id/iv_good_store_img"
                                 android:layout_width="60dp"
                                 android:layout_height="60dp"
-                                android:layout_centerVertical="true"
-                                android:src="@drawable/test_good_store"/>
+                                android:layout_centerVertical="true" />
 
                             <TextView
                                 android:id="@+id/tv_good_store_name"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignLeft="@+id/bt_good_store"
-                                android:layout_alignParentTop="true"
-                                android:layout_alignStart="@+id/bt_good_store"
+                                android:layout_marginLeft="10dp"
+                                android:layout_toRightOf="@id/iv_good_store_img"
                                 android:textColor="@color/tv_name"
-                                android:textSize="@dimen/tv_light"/>
+                                android:textSize="@dimen/tv_light" />
 
+                            <TextView
+                                android:id="@+id/tv_store_level"
+                                style="@style/SmallHintTextView"
+                                android:layout_below="@id/tv_good_store_name"
+                                android:layout_marginLeft="9dp"
+                                android:layout_toRightOf="@id/iv_good_store_img" />
+
+                            <ImageView
+                                android:id="@+id/iv_store_grade"
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:layout_below="@id/tv_good_store_name"
+                                android:layout_marginLeft="3dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_toRightOf="@id/tv_store_level" />
 
                             <Button
                                 android:id="@+id/bt_good_store"
                                 style="?android:attr/borderlessButtonStyle"
                                 android:layout_width="68dp"
-                                android:layout_height="25dp"
+                                android:layout_height="23dp"
                                 android:layout_alignParentBottom="true"
                                 android:layout_marginLeft="10dp"
-                                android:layout_marginStart="10dp"
                                 android:layout_toEndOf="@+id/iv_good_store_img"
                                 android:layout_toRightOf="@+id/iv_good_store_img"
                                 android:background="@drawable/good_bt_store"
                                 android:button="@null"
                                 android:text="@string/good_gostore"
                                 android:textColor="@color/tv_price"
-                                android:textSize="@dimen/tv_small"/>
+                                android:textSize="@dimen/tv_small" />
 
                             <View
                                 android:layout_width="1px"
                                 android:layout_height="60dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_toLeftOf="@+id/good_store_point"
-                                android:background="@color/colorLine"/>
+                                android:background="@color/colorLine" />
 
                             <RelativeLayout
                                 android:id="@+id/good_store_point"
@@ -390,7 +410,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="@string/good_info_point"
                                     android:textColor="@color/tv_hint"
-                                    android:textSize="@dimen/tv_small"/>
+                                    android:textSize="@dimen/tv_small" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -398,7 +418,7 @@
                                     android:layout_centerVertical="true"
                                     android:text="@string/good_store_point"
                                     android:textColor="@color/tv_hint"
-                                    android:textSize="@dimen/tv_small"/>
+                                    android:textSize="@dimen/tv_small" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -406,7 +426,7 @@
                                     android:layout_alignParentBottom="true"
                                     android:text="@string/good_express_point"
                                     android:textColor="@color/tv_hint"
-                                    android:textSize="@dimen/tv_small"/>
+                                    android:textSize="@dimen/tv_small" />
 
                                 <TextView
                                     android:id="@+id/tvStoreDescPoint"
@@ -414,7 +434,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentRight="true"
                                     android:textColor="@color/tv_price"
-                                    android:textSize="@dimen/tv_small"/>
+                                    android:textSize="@dimen/tv_small" />
 
                                 <TextView
                                     android:id="@+id/tvStoreServicePoint"
@@ -423,7 +443,7 @@
                                     android:layout_alignParentRight="true"
                                     android:layout_centerVertical="true"
                                     android:textColor="@color/tv_price"
-                                    android:textSize="@dimen/tv_small"/>
+                                    android:textSize="@dimen/tv_small" />
 
                                 <TextView
                                     android:id="@+id/tvStoreDeliveryPoint"
@@ -432,7 +452,7 @@
                                     android:layout_alignParentBottom="true"
                                     android:layout_alignParentRight="true"
                                     android:textColor="@color/tv_price"
-                                    android:textSize="@dimen/tv_small"/>
+                                    android:textSize="@dimen/tv_small" />
 
                             </RelativeLayout>
                         </RelativeLayout>
@@ -450,8 +470,7 @@
                             <ImageView
                                 android:layout_width="14dp"
                                 android:layout_height="9dp"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/good_show_up"/>
+                                android:src="@drawable/good_show_up" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -459,15 +478,14 @@
                                 android:layout_marginLeft="7dp"
                                 android:text="上拉查看图文详情"
                                 android:textColor="@color/tv_hint"
-                                android:textSize="@dimen/tv_light"/>
+                                android:textSize="@dimen/tv_light" />
                         </LinearLayout>
 
 
                     </LinearLayout>
                 </ScrollView>
 
-
-                <include layout="@layout/fragment_good_itemtab"/>
+                <include layout="@layout/fragment_good_itemtab" />
             </com.xinyuan.xyshop.widget.SlideDetailsLayout>
 
 
@@ -482,9 +500,9 @@
                 app:backgroundTint="#ffffff"
                 app:borderWidth="0dp"
                 app:fabSize="mini"
-                app:rippleColor="#ffffff"/>
+                app:rippleColor="#ffffff" />
 
         </android.support.design.widget.CoordinatorLayout>
-
     </com.youth.xframe.widget.loadingview.XLoadingView>
+
 </LinearLayout>

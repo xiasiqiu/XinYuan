@@ -20,9 +20,10 @@
             android:id="@+id/home_tab2_img1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:scaleType="fitXY"
             android:layout_marginRight="1px"
             android:layout_weight="1"
-            android:scaleType="fitXY"/>
+            />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -34,18 +35,20 @@
             <ImageView
                 android:id="@+id/home_tab2_img2"
                 android:layout_width="match_parent"
+                android:scaleType="fitXY"
                 android:layout_height="0dp"
                 android:layout_marginBottom="1px"
                 android:layout_weight="1"
-                android:scaleType="fitXY"/>
+                />
 
             <ImageView
                 android:id="@+id/home_tab2_img3"
                 android:layout_width="match_parent"
+                android:scaleType="fitXY"
                 android:layout_height="0dp"
                 android:layout_marginTop="1px"
                 android:layout_weight="1"
-                android:scaleType="fitXY"/>
+                />
 
 
         </LinearLayout>

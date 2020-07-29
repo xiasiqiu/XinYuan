@@ -5,54 +5,57 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/new_toolbar"
     android:layout_width="match_parent"
-    android:layout_height="45dp"
+    android:layout_height="?attr/actionBarSize"
     android:background="@color/colorPrimary"
     android:elevation="3dp"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="match_parent"
         android:background="@color/bg_white"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/brand_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
+            android:padding="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/icon_back"/>
 
 
         <com.flyco.tablayout.SegmentTabLayout
             android:id="@+id/stab_msg"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="6"
+            android:layout_width="150dp"
+            android:layout_height="35dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             app:tl_bar_color="#ffffff"
             app:tl_indicator_anim_enable="true"
             app:tl_indicator_color="@color/colorPrimary"
             app:tl_indicator_corner_radius="2dp"
             app:tl_textBold="SELECT"/>
 
-        <ImageView
-            android:id="@+id/brand_btn_msg"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+        <cn.bingoogolapple.badgeview.BGABadgeImageView
+            android:id="@+id/iv_header_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="40px"
-            android:background="@drawable/act_home_msg_de"/>
-    </LinearLayout>
+            android:layout_marginRight="20dp"
+            android:padding="3dp"
+            android:src="@drawable/act_home_msg"
+            app:badge_gravity="rightTop"
+            app:badge_horizontalMargin="0dp"/>
+
+
+    </RelativeLayout>
 
 
 </android.support.v7.widget.Toolbar>

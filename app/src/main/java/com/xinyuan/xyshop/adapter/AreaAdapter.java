@@ -7,12 +7,13 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.entity.AreaBean;
+import com.xinyuan.xyshop.bean.AreaBean;
 
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/7/10.
+ * Created by fx on 2017/7/10
+ * 收货地址地区Adapter
  */
 
 public class AreaAdapter extends BaseQuickAdapter<AreaBean, BaseViewHolder> {

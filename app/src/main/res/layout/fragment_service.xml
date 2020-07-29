@@ -2,7 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="@color/bg_gray"
               android:orientation="vertical">
+
+    <include layout="@layout/view_header_tv_msg"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,7 +18,7 @@
             android:id="@+id/iv_good_img"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/test_good_img" />
+            />
 
 
         <TextView
@@ -25,7 +28,7 @@
             android:layout_toRightOf="@id/iv_good_img"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="奥术大师大所"/>
+            />
 
         <TextView
             android:id="@+id/tv_good_spec"
@@ -36,7 +39,6 @@
             android:layout_toRightOf="@id/iv_good_img"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="已经选啊实打实大"
             android:textColor="@color/tv_hint"/>
 
     </RelativeLayout>

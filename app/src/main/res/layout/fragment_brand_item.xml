@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/llBrandItem"
-              android:layout_width="wrap_content"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:orientation="vertical">
+              android:layout_margin="1px"
+              android:background="@color/bg_white"
+              android:gravity="center_horizontal"
+              android:orientation="vertical"
+              android:padding="10dp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/bg_white"
-        android:padding="3dp">
 
-        <ImageView
-            android:id="@+id/ivBrandPic"
-            android:layout_width="85dp"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"
-            android:adjustViewBounds="true"
-            android:clickable="false"
-            android:focusable="false"
-            android:scaleType="fitXY"/>
+    <ImageView
+        android:id="@+id/iv_store_img"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        />
 
-    </RelativeLayout>
 
+    <TextView
+        android:id="@+id/store_name"
+        style="@style/LightTextView"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"/>
 </LinearLayout>
+
+

@@ -4,9 +4,11 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:baselineAligned="false"
     android:background="@color/bg_gray">
 
     <RelativeLayout
+        android:id="@+id/rl_good1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="1px"
@@ -19,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
 
-            android:scaleType="fitXY"/>
+           />
 
 
         <RelativeLayout
@@ -59,6 +61,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_good2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="1px"
@@ -71,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
 
-            android:scaleType="fitXY"/>
+           />
 
 
         <RelativeLayout

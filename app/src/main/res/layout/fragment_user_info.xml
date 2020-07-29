@@ -19,7 +19,7 @@
         <RelativeLayout
             android:id="@+id/rl_user_head"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="55dp"
             android:layout_marginTop="3dp"
             android:background="@color/bg_white"
             android:padding="10dp">
@@ -32,12 +32,11 @@
                 android:text="个人头像"/>
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/customer_image"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:id="@+id/iv_user_head"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"
-                android:src="@drawable/touxiang"/>
+                android:layout_marginRight="15dp"/>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -70,7 +69,7 @@
                 style="@style/NormalTextView"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:text="id2312312"/>
+                android:text=""/>
 
         </RelativeLayout>
 
@@ -97,7 +96,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="15dp"
-                android:text="女"/>
+                android:text=""/>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -132,7 +131,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="15dp"
-                android:text="1994-08-24"/>
+                android:text=""/>
 
             <ImageView
                 android:layout_width="wrap_content"

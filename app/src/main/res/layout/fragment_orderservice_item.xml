@@ -26,7 +26,6 @@
             android:drawableLeft="@drawable/ic_store"
             android:drawablePadding="10dp"
             android:drawableRight="@drawable/ic_right_row"
-            android:text="萨达所大所多"
             android:textColor="@color/tv_name"
             android:textSize="@dimen/tv_Regular"/>
 
@@ -34,7 +33,7 @@
     </RelativeLayout>
 
     <View
-        style="@style/XYLine"
+        style="@style/LightLine"
         android:layout_marginTop="10dp"/>
 
     <com.google.android.flexbox.FlexboxLayout
@@ -44,26 +43,5 @@
         android:layout_below="@+id/evaluateText"
         app:alignContent="flex_start"
         app:flexWrap="wrap"/>
-
-
-    <LinearLayout
-        android:id="@+id/ll_order_bt_finish"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="10dp">
-
-
-        <Button
-            android:id="@+id/bt_order_eva_later"
-            android:layout_width="75dp"
-            android:layout_height="25dp"
-            android:background="@drawable/bt_unselect_red"
-            android:text="查看详细"
-            android:textColor="@color/tv_price"
-            android:textSize="@dimen/tv_light"/>
-    </LinearLayout>
-
 
 </LinearLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_gray"
+              android:orientation="vertical">
+
+    <include layout="@layout/view_header_tv_tv"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_white"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/RegularTextView"
+            android:text="订单信息"/>
+
+        <TextView
+            style="@style/NormalTextView"
+            android:layout_marginTop="30dp"
+            android:text="订单编号："
+            android:textColor="@color/tv_hint"/>
+
+        <TextView
+            style="@style/NormalTextView"
+            android:layout_marginTop="60dp"
+            android:text="订单付款："
+            android:textColor="@color/tv_hint"/>
+
+        <TextView
+            style="@style/NormalTextView"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="30dp"
+            android:text="545874512121545"
+            android:textColor="@color/tv_hint"/>
+
+        <TextView
+            android:id="@+id/tv_price"
+            style="@style/RegularTextView"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="60dp"
+            android:textColor="@color/tv_price"/>
+
+    </RelativeLayout>
+
+    <TextView
+        style="@style/NormalTextView"
+        android:layout_margin="10dp"
+        android:text="请选择支付方式"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_pay_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

@@ -2,9 +2,11 @@ package com.xinyuan.xyshop.entity;
 
 
 import com.chad.library.adapter.base.entity.SectionEntity;
+import com.xinyuan.xyshop.bean.BrandBean;
 
 /**
- * Created by Administrator on 2017/5/22.
+ * Created by fx on 2017/5/22.
+ * 品牌店铺头部
  */
 
 public class MySection extends SectionEntity<BrandBean> {

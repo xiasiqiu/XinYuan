@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:background="@color/bg_white"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="15dp">
 
         <TextView
             style="@style/RegularTextView"
@@ -38,7 +38,7 @@
         android:layout_marginTop="1dp"
         android:background="@color/bg_white"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="15dp">
 
         <TextView
             style="@style/RegularTextView"
@@ -65,7 +65,7 @@
         android:layout_marginTop="1dp"
         android:background="@color/bg_white"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="15dp">
 
         <TextView
             style="@style/RegularTextView"
@@ -93,39 +93,6 @@
             android:background="@drawable/ic_right_row"/>
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/rl_area_street"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:background="@color/bg_white"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <TextView
-            style="@style/RegularTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:gravity="center_vertical"
-            android:text="街道"/>
-
-        <TextView
-            android:id="@+id/tv_street"
-            style="@style/NormalTextView"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:textColor="@color/tv_hint"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/ic_right_row"/>
-    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -133,7 +100,7 @@
         android:layout_marginTop="1dp"
         android:background="@color/bg_white"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="15dp">
 
 
         <com.xinyuan.xyshop.widget.EditTextWithDel
@@ -152,7 +119,7 @@
         android:layout_marginTop="5dp"
         android:background="@color/bg_white"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="15dp">
 
         <TextView
             style="@style/RegularTextView"
@@ -180,8 +147,8 @@
         android:layout_height="40dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="25dp"
-        android:background="@drawable/button_bg"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_bg_dark"
         android:text="提交地址"
         android:textColor="@color/bg_white"
         android:textSize="@dimen/tv_Blod"/>

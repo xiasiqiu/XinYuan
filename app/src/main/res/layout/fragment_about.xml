@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_header_tv_tv" />
+
+    <View style="@style/NoramLine" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/BlodTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:text="关于鑫圆"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_about"
+            style="@style/NormalTextView"
+            android:layout_below="@id/tv_title"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="25dp"
+            android:lineSpacingExtra="4sp"
+            android:text="	    鑫圆共享电子商务股份有限公司前身为四川兴鑫圆电子商务有限公司，该公司成立于2016年8月，公司位于四川省成都市国家高新技术产业开发区——高新南区，地理位置优越，交通便利，主要从事B2B2C+O2O的电子商务平台的运营、销售及服务等业务；由于业务的快速发展，于2017年3月成立鑫圆共享电子商务股份有限公司，注册资金5000万元人民币。
+	    鑫圆共享电子商务有限公司，通过线下的实体网络和线上数据与用户，打造S2S（即线下支撑与线上服务）产业电子商务与大数据平台，公司秉承“数据创造价值，惠国惠民惠天下”的经营理念，为客户提供数据流、商流、供应流、资金流四位一体的新商业模式，实现物流F2F、现货B2B、供应链B2C、C2C和地面O2O、跨境电商平台等线上线下服务的对接。通过共商、共建、共享，最终实现资源共享、人才共享、智慧共享、财富共享、幸福共享，为实现习近平主席提出的伟大中国梦努力奋斗！
+" />
+
+        <TextView
+            style="@style/LightHintTextView"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:gravity="center_horizontal"
+            android:text="Copyright@2017
+鑫圆共享电子商务股份有限公司" />
+    </RelativeLayout>
+</LinearLayout>

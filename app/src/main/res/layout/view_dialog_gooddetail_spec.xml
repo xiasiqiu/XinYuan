@@ -18,14 +18,16 @@
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_margin="10dp"
-            android:scaleType="fitXY"/>
+            />
 
         <TextView
             android:id="@+id/tvGoodsName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="20dp"
             android:layout_toRightOf="@+id/ivSelectedGoodsImg"
+            android:ellipsize="end"
             android:maxLines="2"
             android:textColor="@color/tv_name"
             android:textSize="@dimen/tv_Regular"/>
@@ -34,7 +36,7 @@
             android:id="@+id/tvSelectedPrice"
             style="@style/NormalTextView"
             android:layout_below="@+id/tvGoodsName"
-            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/ivSelectedGoodsImg"
             android:textColor="@color/tv_price"/>
 
@@ -42,9 +44,8 @@
             android:id="@+id/tvSkuName"
             style="@style/LightTextView"
             android:layout_below="@+id/tvSelectedPrice"
-            android:layout_marginLeft="10.0dip"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/ivSelectedGoodsImg"
             android:ellipsize="end"
             android:maxLines="2"
@@ -55,7 +56,7 @@
             style="@style/SmallTextView"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/tvGoodsName"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="10dp"
             android:textColor="@color/tv_hint"/>
 
         <ImageView
@@ -63,8 +64,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="12.0dip"
-            android:layout_marginTop="10.0dip"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/icon_close"
             android:gravity="center_horizontal"
             android:paddingBottom="10.0dip"/>
@@ -81,7 +82,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_sku"
         android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_height="250dp"
         android:layout_below="@+id/good_info_line"
         android:layout_marginTop="5dp"
         android:focusable="false"
@@ -98,12 +99,9 @@
     <RelativeLayout
         android:id="@+id/ll_good_num"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:layout_below="@+id/rv_sku"
-        android:padding="5dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="5dp">
+        android:padding="10dp">
 
 
         <TextView
@@ -114,13 +112,12 @@
             android:text="购买数量"
             android:textSize="@dimen/tv_Normal"/>
 
-        <include
-            android:id="@+id/llNum"
-            layout="@layout/view_add_and_minus"
+        <com.xinyuan.xyshop.widget.AddSubView
+            android:id="@+id/addSubView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"/>
+            android:layout_marginRight="10dp"/>
     </RelativeLayout>
 
 
@@ -132,18 +129,22 @@
 
         <Button
             android:id="@+id/btnAddCart"
+            style="?android:attr/buttonStyle"
             android:layout_width="0.0dip"
             android:layout_height="fill_parent"
             android:layout_weight="1.0"
             android:background="@color/colorPrimary"
+
             android:text="加入购物车"
             android:textColor="@color/bg_white"/>
 
         <Button
             android:id="@+id/btnBuy"
+            style="?android:attr/buttonStyle"
             android:layout_width="0.0dip"
             android:layout_height="fill_parent"
             android:layout_weight="1.0"
+
             android:background="@color/colorPrimaryDark"
             android:text="立即购买"
             android:textColor="#fffefefe"/>

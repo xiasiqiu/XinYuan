@@ -1,19 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <include
-        layout="@layout/fragment_home_item_tab_title"
+
+    <LinearLayout
+        android:id="@+id/ll_good"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="3dp"/>
+        android:layout_centerHorizontal="true"
+        android:background="@color/bg_white"
+        android:gravity="center_horizontal|center_vertical">
+
+
+        <ImageView
+            android:id="@+id/iv_tab_title"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/img_tab_title6"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_tab_title_cn"
+            style="@style/RegularTextView"
+            android:text="推荐商品"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_tab_title_en"
+            style="@style/RegularTextView"
+            android:layout_marginLeft="10dp"
+            android:text="recommendation"/>
+    </LinearLayout>
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_home_goods"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/ll_good"
         android:paddingBottom="10dp"/>
 
-</LinearLayout>
+</RelativeLayout>

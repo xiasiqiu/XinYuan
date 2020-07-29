@@ -1,13 +1,13 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
-
+apply plugin: 'com.getkeepsafe.dexcount'
 version = "1.0.2"
 
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         minSdkVersion 14

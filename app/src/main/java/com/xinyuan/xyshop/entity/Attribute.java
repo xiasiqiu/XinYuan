@@ -1,7 +1,10 @@
 package com.xinyuan.xyshop.entity;
 
 import java.util.List;
-
+/**
+ * Created by fx on 2017/6/10.
+ * 分类元素
+ */
 public class Attribute {
 	private int attributeId;
 	private String attributeName;

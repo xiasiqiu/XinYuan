@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -7,16 +7,17 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/rl_good_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.youth.banner.Banner
             android:id="@+id/banner"
             android:layout_width="match_parent"
-            android:layout_height="228dp"
-            app:image_scale_type="fit_xy"
+            android:layout_height="240dp"
             app:indicator_drawable_selected="@drawable/banner_shape"
             app:indicator_height="8dp"
+            app:image_scale_type="fit_xy"
             app:indicator_margin="6dp"
             app:indicator_width="8dp"/>
 
@@ -24,7 +25,7 @@
             android:id="@+id/menu_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="220dp"
+            android:layout_marginTop="235dp"
             android:background="@drawable/bt_rabg_up"/>
 
 
@@ -32,12 +33,15 @@
 
 
     <View
-        style="@style/XYLine"/>
+        style="@style/XYLine"
+        android:layout_below="@id/rl_good_top"/>
 
     <RelativeLayout
         android:id="@+id/rl_home_news"
         android:layout_width="match_parent"
         android:layout_height="35dp"
+        android:layout_below="@id/rl_good_top"
+        android:layout_marginTop="2px"
         android:background="@color/bg_white"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
@@ -50,8 +54,8 @@
 
 
         <View
-            android:layout_width="3px"
-            android:layout_height="10dp"
+            android:layout_width="1dp"
+            android:layout_height="13dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -79,4 +83,4 @@
     </RelativeLayout>
 
 
-</LinearLayout>
+</RelativeLayout>

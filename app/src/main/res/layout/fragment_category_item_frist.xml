@@ -2,34 +2,30 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/llView"
-    android:layout_width="wrap_content"
+    android:layout_width="80dp"
     android:layout_height="wrap_content"
     android:background="@color/bg_white"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="80dp"
-        android:layout_height="50dp">
 
-        <TextView
-            android:id="@+id/tvGoodsClassId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:visibility="gone"/>
+    <TextView
+        android:id="@+id/tvGoodsClassId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"/>
 
-        <TextView
-            android:id="@+id/tv_category_first"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textColor="@color/tv_name"
-            android:textSize="@dimen/tv_Regular"/>
+    <TextView
+        android:id="@+id/tv_category_first"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
+        android:textColor="@color/tv_name"
+        android:textSize="@dimen/tv_Regular"/>
 
-        <View
-            style="@style/LightLine"/>
-
-    </RelativeLayout>
-
+    <View
+        style="@style/XYLine"
+        android:layout_marginTop="44dp"/>
 
 </RelativeLayout>

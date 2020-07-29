@@ -3,18 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval"
     android:useLevel="false">
-    <solid android:color="@color/bg_gray"/>
+    <solid android:color="@color/colorPrimary_Half"/>
     <padding
         android:bottom="1dp"
         android:left="1dp"
         android:right="1dp"
         android:top="1dp"/>
     <solid
-        android:color="@color/bg_gray"/>
+        android:color="@color/colorPrimary_Half"/>
     <stroke
         android:width="1dp"
-        android:color="@color/bg_gray"/>
+        android:color="@color/colorPrimary_Half"/>
     <size
-        android:width="8dp"
-        android:height="8dp"/>
+        android:width="5dp"
+        android:height="5dp"/>
 </shape>

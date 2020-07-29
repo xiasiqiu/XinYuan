@@ -1,7 +1,8 @@
 package com.xinyuan.xyshop.entity;
 
 /**
- * Created by Administrator on 2017/5/31.
+ * Created by fx on 2017/5/31.
+ * 购物车店铺操作
  */
 
 public class StoreInfo {

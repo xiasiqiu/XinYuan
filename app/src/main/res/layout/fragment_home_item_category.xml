@@ -15,7 +15,7 @@
     <ImageView
         android:id="@+id/home_catrgory_img"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="200dp"
         android:scaleType="fitXY"/>
 
 

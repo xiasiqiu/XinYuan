@@ -7,14 +7,15 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Button;
 
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.VoucherAdapter;
-import com.xinyuan.xyshop.entity.GoodsEvaluate;
+import com.xinyuan.xyshop.bean.CouponBean;
+import com.xinyuan.xyshop.bean.StoreCouponBean;
+import com.xinyuan.xyshop.widget.RecycleViewDivider;
 import com.youth.xframe.utils.log.XLog;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -26,41 +27,38 @@ import butterknife.ButterKnife;
 
 public class StoreVoucherDialog extends Dialog {
 
-	@BindView(R.id.rv_store_voucher)
-	RecyclerView rv_store_voucher;
-	@BindView(R.id.iv_close)
-	ImageView iv_close;
-	VoucherAdapter voucherAdapter;
+    @BindView(R.id.rv_store_voucher)
+    RecyclerView rv_store_voucher;
+    @BindView(R.id.bt_close)
+    Button bt_close;
 
-	public StoreVoucherDialog(@NonNull Context context) {
-		super(context, R.style.CommonDialog);
+    VoucherAdapter voucherAdapter;
+    private List<StoreCouponBean> couponList;
 
-	}
+    public StoreVoucherDialog(@NonNull Context context, List<StoreCouponBean> couponList) {
+        super(context, R.style.CommonDialog);
+        this.couponList = couponList;
+    }
 
 
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.fragment_shopcar_dialog_store_voucher);
-		ButterKnife.bind((Dialog) this);
-
-		List<GoodsEvaluate> data = new ArrayList<>();
-		for (int i = 0; i < 3; i++) {
-			data.add(new GoodsEvaluate());
-		}
-		XLog.list(data);
-
-		voucherAdapter = new VoucherAdapter(R.layout.item_store_voucher, data);
-		LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-		linearLayoutManager.setOrientation(1);
-		//设置布局管理器
-		rv_store_voucher.setLayoutManager(linearLayoutManager);
-		this.rv_store_voucher.setAdapter(this.voucherAdapter);
-		this.voucherAdapter.notifyDataSetChanged();
-		iv_close.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				dismiss();
-			}
-		});
-	}
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_shopcar_dialog_store_voucher);
+        ButterKnife.bind((Dialog) this);
+        XLog.list(couponList);
+        voucherAdapter = new VoucherAdapter(R.layout.item_store_voucher, couponList);
+        rv_store_voucher.addItemDecoration(new RecycleViewDivider(getContext(), LinearLayoutManager.VERTICAL));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(1);
+        //设置布局管理器
+        rv_store_voucher.setLayoutManager(linearLayoutManager);
+        this.rv_store_voucher.setAdapter(this.voucherAdapter);
+        this.voucherAdapter.notifyDataSetChanged();
+        bt_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
+            }
+        });
+    }
 }

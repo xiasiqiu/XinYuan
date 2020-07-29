@@ -9,7 +9,6 @@
 
     <include layout="@layout/activity_search_header"></include>
 
-    <TextView style="@style/Line"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -76,7 +75,7 @@
             android:background="@drawable/btn_bg_normal"
             android:button="@null"
             android:text="@string/search_clear_history"
-            android:textColor="@color/tv_name"
+            android:textColor="@color/tv_hint"
             android:textSize="@dimen/tv_Normal"/>
     </LinearLayout>
 </LinearLayout>

@@ -5,8 +5,9 @@
 
     <ImageView
         android:id="@+id/ivImg"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_margin="3dp"
-        android:scaleType="fitXY"/>
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:scaleType="centerCrop"
+       />
 </FrameLayout>

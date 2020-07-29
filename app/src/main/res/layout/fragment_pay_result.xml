@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_gray"
+              android:orientation="vertical">
+    <include layout="@layout/view_header_tv_tv"/>
+
+    <LinearLayout
+        android:id="@+id/ll_pay_success"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/pay_sucess_bg"/>
+
+        <TextView
+            style="@style/BlodTextView"
+            android:layout_marginTop="30dp"
+            android:text="您已成功支付"
+            android:textSize="22sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/pay_sucess_logo"/>
+
+        <Button
+            android:id="@+id/bt_pay_showorder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/button_bg_dark"
+            android:text="查看订单"
+            android:textColor="@color/bg_white"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_pay_failed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/pay_failed_bg"/>
+
+        <TextView
+            style="@style/BlodTextView"
+            android:layout_marginTop="20dp"
+            android:text="您支付失败了"
+            android:textSize="22sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/pay_failed_logo"/>
+
+        <Button
+            android:id="@+id/bt_pay_rest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_bg_dark"
+            android:text="重新支付"
+            android:textColor="@color/bg_white"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/bt_pay_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_bg_dark"
+            android:text="查看订单"
+            android:textColor="@color/bg_white"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+</LinearLayout>

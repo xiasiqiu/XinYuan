@@ -27,6 +27,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.xinyuan.xyshop.R;
+import com.xinyuan.xyshop.common.GlideImageLoader;
 
 /**
  * Title:
@@ -121,7 +122,7 @@ public class ViewHolder {
     }
 
     public ViewHolder setImage(int viewId, String url) {
-        GlideImageLoader.setImage(this.mContext, url, (ImageView) getView(viewId));
+        GlideImageLoader.setUrlImg(this.mContext, url, (ImageView) getView(viewId));
         return this;
     }
 

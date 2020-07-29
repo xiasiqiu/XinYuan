@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="act_top_font">38px</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="tv_line">2dp</dimen>
 
-    <dimen name="tv_buttom_size">36px</dimen>
     <dimen name="tv_name_size">2dp</dimen>
-    <dimen name="tv_hint_size">2dp</dimen>
 
     <dimen name="textSize_sidebar">10sp</dimen>
     <dimen name="large_textSize_sidebar">32sp</dimen>
-    <dimen name="textSize_sidebar_choose">12sp</dimen>
     <dimen name="textSize_sidebar_padding">20sp</dimen>
     <dimen name="radius_sidebar">20dp</dimen>
     <dimen name="ball_radius_sidebar">24dp</dimen>
 
-
-    <dimen name="tv_heavy">16sp</dimen>
+    <dimen name="tv_Heva">23sp</dimen>
     <dimen name="tv_Blod">15sp</dimen>
     <dimen name="tv_Regular">14sp</dimen>
     <dimen name="tv_Normal">13sp</dimen>
@@ -24,7 +17,11 @@
     <dimen name="tv_small">11sp</dimen>
     <dimen name="tv_v_small">8sp</dimen>
 
+    <dimen name="lineSpacingExtra">5sp</dimen>
 
+    <dimen name="margin_left">45dp</dimen>
+    <dimen name="margin_right">45dp</dimen>
+    <dimen name="input_hight">45dp</dimen>
 
 
 
@@ -32,11 +29,11 @@
 
     <dimen name="paper_button_corner_radius">2dp</dimen>
     <dimen name="item_height">60dp</dimen>
-    <dimen name="bottom">150px</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="header_height">140dp</dimen>
 
-
+    <dimen name="addsubview_btn_width" >22dp</dimen>
+    <dimen name="addsubview_btn_padding">5dp</dimen>
+    <dimen name="addsubview_textsize" >15sp</dimen>
+    <dimen name="addsubview_et_minwidth" >28dp</dimen>
 </resources>

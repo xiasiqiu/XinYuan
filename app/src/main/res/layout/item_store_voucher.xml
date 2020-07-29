@@ -1,24 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:padding="15dp">
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp">
 
     <TextView
+        android:id="@+id/tv_coupontype"
         style="@style/RegularTextView"
         android:layout_centerVertical="true"
-        android:text="满199元减10元；满299元减20元"
+        android:textColor="@color/tv_price"
+        />
+
+    <TextView
+        android:id="@+id/tv_coupon_name"
+        style="@style/NormalTextView"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/tv_coupontype"
         android:textColor="@color/tv_hint"
         />
 
-    <Button
-        android:layout_width="60dp"
+    <CheckBox
+        android:id="@+id/bt_store_fav"
+        android:layout_width="65dip"
         android:layout_height="25dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/bg_flow_selected"
+        android:background="@color/colorPrimaryDark"
+        android:button="@null"
+        android:gravity="center_horizontal"
+        android:paddingTop="3dp"
         android:text="领取"
         android:textColor="@color/bg_white"
-        />
+        android:textSize="@dimen/tv_light"/>
 
 </RelativeLayout>

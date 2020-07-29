@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    <TextView
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <com.youth.xframe.widget.loadingview.XLoadingView
+        android:id="@+id/loadingView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="@dimen/tv_Regular"
-        android:layout_gravity="center_horizontal"
-        android:text="店铺活动"/>
+        app:emptyView="@layout/view_empty_store_active">
+
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_activity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+    </com.youth.xframe.widget.loadingview.XLoadingView>
 </LinearLayout>

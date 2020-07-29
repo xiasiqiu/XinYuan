@@ -11,14 +11,12 @@
     <TextView
         android:id="@+id/tv_log_date"
         style="@style/SmallTextView"
-        android:text="2017-03-22"
         android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:id="@+id/tv_log_time"
         style="@style/SmallTextView"
         android:layout_marginTop="10dp"
-        android:text="10:38:12"
         android:textColor="@color/colorPrimaryDark"/>
 
     <ImageView

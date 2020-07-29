@@ -6,6 +6,7 @@
               android:background="@color/bg_white"
               android:gravity="center_horizontal"
               android:orientation="vertical">
+
     <include layout="@layout/view_header_tv_tv"/>
 
     <View style="@style/NoramLine"/>
@@ -30,7 +31,7 @@
         <LinearLayout
             android:id="@+id/ll_login_pass"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="45dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/button__n_bg"
             android:orientation="horizontal">
@@ -54,11 +55,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
                 android:background="@null"
                 android:hint="请输入新密码"
-                android:inputType="number"
+                android:inputType="textPassword"
                 android:textColor="@color/tv_name"
                 android:textColorHint="@color/tv_hint"
                 android:textSize="13sp"/>
@@ -69,10 +70,9 @@
         <LinearLayout
             android:id="@+id/ll_login_pass_re"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="45dp"
             android:layout_gravity="center_horizontal"
-
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/button__n_bg"
             android:orientation="horizontal">
 
@@ -95,8 +95,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
                 android:background="@null"
                 android:hint="请重复密码"
                 android:inputType="textPassword"
@@ -120,7 +120,7 @@
         <LinearLayout
             android:id="@+id/ll_login_phone"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/button__n_bg"
             android:orientation="horizontal">
@@ -145,8 +145,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="20dp"
                 android:background="@null"
                 android:hint="请输入手机号"
                 android:inputType="number"
@@ -156,69 +156,77 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/button__n_bg"
-            android:orientation="horizontal">
+            android:layout_height="45dp"
+            android:layout_marginTop="30dp">
 
-            <ImageView
-                android:id="@+id/iv_login_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="15dp"
-                android:background="@drawable/ic_login_code"/>
-
-            <com.xinyuan.xyshop.widget.EditTextWithDel
-                android:id="@+id/ed_code"
+            <LinearLayout
+                android:id="@+id/ll_login_code"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:background="@null"
-                android:hint="请输入验证码"
-                android:inputType="number"
-                android:textColor="@color/tv_name"
-                android:textColorHint="@color/tv_hint"
-                android:textSize="13sp"/>
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="100dp"
+                android:background="@drawable/button__n_bg"
+                android:orientation="horizontal">
 
-            <View
-                android:layout_width="2px"
-                android:layout_height="20dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:background="@color/colorPrimary"/>
+                <ImageView
+                    android:id="@+id/iv_login_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/ic_login_code"/>
+
+                <View
+                    android:layout_width="2px"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/colorPrimary"/>
+
+                <com.xinyuan.xyshop.widget.EditTextWithDel
+                    android:id="@+id/ed_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="请输入验证码"
+                    android:inputType="text"
+                    android:textColor="@color/tv_name"
+                    android:textColorHint="@color/tv_hint"
+                    android:textSize="13sp"/>
+
+            </LinearLayout>
 
             <com.xinyuan.xyshop.widget.PaperButton
                 android:id="@+id/pb_code"
-                android:layout_width="match_parent"
+                android:layout_width="120dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
+                android:layout_alignParentRight="true"
                 android:background="@drawable/bt_rabg_right"
                 widget:paper_corner_radius="16dip"
                 widget:paper_text="发送验证码"
                 widget:paper_text_color="@color/bg_white"
                 widget:paper_text_size="13sp"
                 />
-        </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 
 
     <Button
         android:id="@+id/bt_login"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/button_bg"
-        android:text="@string/bt_login"
+        android:text="@string/bt_reg_next"
         android:textColor="@color/bg_white"
         android:textSize="@dimen/tv_Blod"/>
 

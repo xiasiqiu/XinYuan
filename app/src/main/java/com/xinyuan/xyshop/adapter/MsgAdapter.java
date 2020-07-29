@@ -2,21 +2,17 @@ package com.xinyuan.xyshop.adapter;
 
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.entity.GoodsEvaluate;
-import com.xinyuan.xyshop.entity.MsgBean;
+import com.xinyuan.xyshop.bean.MsgBean;
 
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/6/5.
+ * Created by fx on 2017/6/5.
+ * 系统通知消息列表Adapter
  */
 
 public class MsgAdapter extends BaseQuickAdapter<MsgBean, BaseViewHolder> {
@@ -30,11 +26,10 @@ public class MsgAdapter extends BaseQuickAdapter<MsgBean, BaseViewHolder> {
 
 	@Override
 	protected void convert(BaseViewHolder helper, MsgBean item) {
-		TextView tv_name = helper.getView(R.id.tv_store_name);
-		TextView tv_msg_content = helper.getView(R.id.tv_msg_content);
-		tv_name.setText(item.getName());
+		helper.setText(R.id.tv_msg_time,item.getMessageTime());
+		helper.setText(R.id.tv_store_name,item.getFromUser());
+		helper.setText(R.id.tv_msg_content,item.getMessageContent());
 
-		tv_msg_content.setText(item.getContent());
 
 	}
 }

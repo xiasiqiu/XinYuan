@@ -1,22 +1,19 @@
 package com.xinyuan.xyshop.adapter;
 
 import android.content.Context;
-import android.os.SystemClock;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.util.SimpleArrayMap;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xinyuan.xyshop.R;
+import com.xinyuan.xyshop.bean.AttributesBean;
 import com.xinyuan.xyshop.callback.SKUInterface;
-import com.xinyuan.xyshop.entity.Attribute;
-import com.xinyuan.xyshop.entity.BookBean;
 import com.xinyuan.xyshop.model.GoodsAttrsBean;
 import com.xinyuan.xyshop.widget.SKUViewGroup;
 import com.youth.xframe.utils.log.XLog;
@@ -25,10 +22,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by 胡逸枫 on 2017/1/16.
+ * Created by fx on 2017/6/16.
+ * 商品规格参数列表Adapter
  */
 
-public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.AttributesBean> {
+public class GoodsAttrsAdapter extends BaseRecyclerAdapter<AttributesBean> {
 
 	private SKUInterface myInterface;
 
@@ -43,23 +41,23 @@ public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.Attrib
 	private static GoodsAttrsBean.StockGoodsBean selecGood;
 
 
-	private List<GoodsAttrsBean.AttributesBean> list;
+	private List<AttributesBean> list;
 
-	public GoodsAttrsAdapter(Context ctx, List<GoodsAttrsBean.AttributesBean> list, List<GoodsAttrsBean.StockGoodsBean> stockGoodsList, GoodsAttrsBean.StockGoodsBean selecGood) {
+	public GoodsAttrsAdapter(Context ctx, List<AttributesBean> list, List<GoodsAttrsBean.StockGoodsBean> stockGoodsList, GoodsAttrsBean.StockGoodsBean selecGood) {
 		super(ctx, list);
 		this.stockGoodsList = stockGoodsList;
 		saveClick = new SimpleArrayMap<>();
 		childrenViews = new TextView[list.size()][0];
 		childrenGoods = new GoodsAttrsBean.StockGoodsBean[list.size()][0];
 		selectedValue = new String[list.size()];
-
-
 		for (int i = 0; i < selecGood.getGoodsInfo().size(); i++) {
-			selectedValue[i] = selecGood.getGoodsInfo().get(i).getTabValue();
-			XLog.v("选中的默认："+selecGood.getGoodsInfo().get(i).getTabValue());
+			selectedValue[i] = selecGood.getGoodsInfo().get(i).getGspValue();
 		}
 
 	}
+
+
+
 
 	public void setSKUInterface(SKUInterface myInterface) {
 		this.myInterface = myInterface;
@@ -71,7 +69,7 @@ public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.Attrib
 	}
 
 	@Override
-	public void bindData(RecyclerViewHolder holder, int position, GoodsAttrsBean.AttributesBean item) {
+	public void bindData(RecyclerViewHolder holder, int position, AttributesBean item) {
 
 		TextView tv_ItemName = holder.getTextView(R.id.tv_ItemName);
 		SKUViewGroup vg_skuItem = (SKUViewGroup) holder.getView(R.id.vg_skuItem);
@@ -80,7 +78,7 @@ public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.Attrib
 
 		List<String> childrens = new ArrayList<>();
 
-		for (GoodsAttrsBean.AttributesBean.AttributeBean attributeBean : item.getAttributesItem()) {
+		for (AttributesBean.AttributeBean attributeBean : item.getAttributesItem()) {
 
 			childrens.add(attributeBean.getValueName());
 
@@ -92,7 +90,7 @@ public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.Attrib
 
 		for (int i = 0; i < childrenSize; i++) {
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-			params.setMargins(0, 0, 15, 0);
+			params.setMargins(0, 20, 20, 0);
 			TextView textView = new TextView(mContext);
 			textView.setGravity(Gravity.CENTER);
 			textView.setPadding(10, 0, 10, 0);
@@ -224,23 +222,29 @@ public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.Attrib
 		for (int i = 0; i < childrenViews.length; i++) {
 			for (int j = 0; j < stockGoodsList.size(); j++) {
 				boolean filter = false;
-				List<GoodsAttrsBean.StockGoodsBean.GoodsInfoBean> goodsInfo = stockGoodsList.get(j).getGoodsInfo();
+				List<GoodsAttrsBean.GoodsInfoBean> goodsInfo = stockGoodsList.get(j).getGoodsInfo();
 				for (int k = 0; k < selectedValue.length; k++) {
 					if (i == k || TextUtils.isEmpty(selectedValue[k])) {
 						continue;
 					}
 					if (!selectedValue[k].equals(goodsInfo
-							.get(k).getTabValue())) {
+							.get(k).getGspValue())) {
 						filter = true;
 						break;
 					}
 				}
+
 				if (!filter) {
 					for (int n = 0; n < childrenViews[i].length; n++) {
 						TextView textView = childrenViews[i][n];//拿到所有属性TextView
+
 						String name = textView.getText().toString();
+
 						//拿到属性名称
-						if (goodsInfo.get(i).getTabValue().equals(name)) {
+
+
+
+						if (goodsInfo.get(i).getGspValue().equals(name)) {
 							textView.setEnabled(true);//符合就变成可点击
 							textView.setFocusable(true); //设置可以获取焦点
 							//不要让焦点乱跑
@@ -265,7 +269,7 @@ public class GoodsAttrsAdapter extends BaseRecyclerAdapter<GoodsAttrsBean.Attrib
 
 
 	/**
-	 * 找到已经选中的选项，让其变红
+	 * 找到已经选中的选项，让其变色
 	 */
 	private void getSelected() {
 		String str = "";

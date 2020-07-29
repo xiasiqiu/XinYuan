@@ -16,6 +16,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.xinyuan.xyshop.R;
@@ -48,7 +49,7 @@ public class ColorDialog extends Dialog implements View.OnClickListener {
 
 	private OnNegativeListener mNegativeListener;
 
-	private CharSequence mTitleText, mContentText, mPositiveText, mNegativeText;
+	private CharSequence mContentText, mPositiveText, mNegativeText;
 
 	private boolean mIsShowAnim;
 
@@ -71,15 +72,7 @@ public class ColorDialog extends Dialog implements View.OnClickListener {
 		initAnimListener();
 	}
 
-	@Override
-	public void setTitle(CharSequence title) {
-		mTitleText = title;
-	}
 
-	@Override
-	public void setTitle(int titleId) {
-		setTitle(getContext().getText(titleId));
-	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +95,6 @@ public class ColorDialog extends Dialog implements View.OnClickListener {
 		mPositiveBtn.setOnClickListener(this);
 		mNegativeBtn.setOnClickListener(this);
 
-		mTitleTv.setText(mTitleText);
 		mContentTv.setText(mContentText);
 		mPositiveBtn.setText(mPositiveText);
 		mNegativeBtn.setText(mNegativeText);
@@ -116,7 +108,8 @@ public class ColorDialog extends Dialog implements View.OnClickListener {
 		} else if (null != mPositiveListener && null == mNegativeListener) {
 			mNegativeBtn.setVisibility(View.GONE);
 			mDividerView.setVisibility(View.GONE);
-			mPositiveBtn.setBackgroundDrawable(getContext().getResources().getDrawable(R.drawable.sel_def_gray));
+			mPositiveBtn.setBackgroundDrawable(getContext().getResources().getDrawable(R.color.colorPrimaryDark));
+			mPositiveBtn.setTextColor(getContext().getResources().getColor(R.color.bg_white));
 		}
 
 		if (null != mDrawable) {
@@ -217,10 +210,9 @@ public class ColorDialog extends Dialog implements View.OnClickListener {
 		boolean isTextMode = (!TextUtils.isEmpty(mContentText));
 
 		if (isImageMode && isTextMode) {
-			FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mContentTv.getLayoutParams();
-			params.gravity = Gravity.BOTTOM;
+			RelativeLayout.LayoutParams  params = (RelativeLayout.LayoutParams) mContentTv.getLayoutParams();
 			mContentTv.setLayoutParams(params);
-			mContentTv.setBackgroundColor(Color.BLACK);
+			mContentTv.setBackgroundColor(Color.WHITE);
 			mContentTv.getBackground().setAlpha(0x28);
 			mContentTv.setVisibility(View.VISIBLE);
 			mContentIv.setVisibility(View.VISIBLE);
@@ -228,8 +220,7 @@ public class ColorDialog extends Dialog implements View.OnClickListener {
 		}
 
 		if (isTextMode) {
-			FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mContentTv.getLayoutParams();
-			params.gravity = Gravity.NO_GRAVITY;
+			RelativeLayout.LayoutParams  params = (RelativeLayout.LayoutParams) mContentTv.getLayoutParams();
 			mContentTv.setLayoutParams(params);
 			mContentIv.setVisibility(View.GONE);
 			mContentTv.setVisibility(View.VISIBLE);
@@ -363,9 +354,7 @@ public class ColorDialog extends Dialog implements View.OnClickListener {
 		return mContentText;
 	}
 
-	public CharSequence getTitleText() {
-		return mTitleText;
-	}
+
 
 	public CharSequence getPositiveText() {
 		return mPositiveText;

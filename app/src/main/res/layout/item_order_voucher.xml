@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+    <TextView
+        android:id="@+id/tv_coupon_type"
+        style="@style/NormalTextView"
+        android:layout_centerVertical="true"
+        android:textColor="@color/tv_price"
+        />
+
+    <CheckBox
+        android:id="@+id/cb_order_chekbox"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@id/tv_coupon_type"
+        android:button="@null"
+        android:drawablePadding="100dp"
+        android:drawableRight="@drawable/checkbox_selector"
+        android:textColor="@color/tv_hint"
+        android:textSize="@dimen/tv_light"/>
+
+    <View
+        style="@style/XYLine"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

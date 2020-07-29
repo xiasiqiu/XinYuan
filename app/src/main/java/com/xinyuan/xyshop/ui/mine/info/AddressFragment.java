@@ -1,29 +1,30 @@
 package com.xinyuan.xyshop.ui.mine.info;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.xinyuan.xyshop.MainFragment;
+import com.lzy.okgo.OkGo;
 import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.AddressAdapter;
-import com.xinyuan.xyshop.adapter.GoodsGridAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
-import com.xinyuan.xyshop.entity.AddressBean;
-import com.xinyuan.xyshop.entity.GoodsVo;
-import com.xinyuan.xyshop.even.TabSelectedEvent;
-import com.xinyuan.xyshop.ui.mine.login.LoginActivity;
+import com.xinyuan.xyshop.base.BasePresenter;
+import com.xinyuan.xyshop.entity.LzyResponse;
+import com.xinyuan.xyshop.callback.JsonCallback;
+import com.xinyuan.xyshop.bean.AddressBean;
+import com.xinyuan.xyshop.http.HttpUtil;
+import com.xinyuan.xyshop.http.Urls;
+import com.xinyuan.xyshop.model.AddressModel;
+import com.xinyuan.xyshop.ui.mine.info.address.AddAddressFragment;
+import com.xinyuan.xyshop.even.AddressEven;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.SystemBarHelper;
-import com.xinyuan.xyshop.widget.dialog.color.ColorDialog;
+import com.youth.xframe.utils.XEmptyUtils;
+import com.youth.xframe.widget.loadingview.XLoadingView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -33,9 +34,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import cn.bingoogolapple.badgeview.BGABadgeImageView;
 
 /**
- * Created by Administrator on 2017/6/27.
+ * Created by fx on 2017/6/27.
+ * 收货地址列表fragment
  */
 
 public class AddressFragment extends BaseFragment {
@@ -45,80 +48,74 @@ public class AddressFragment extends BaseFragment {
 	TextView tv_header_center;
 	@BindView(R.id.rv_address)
 	RecyclerView rv_address;
-	AddressAdapter adapter;
+
 	@BindView(R.id.iv_header_left)
 	ImageView iv_header_left;
 	@BindView(R.id.iv_header_right)
-	ImageView iv_header_right;
+	BGABadgeImageView iv_header_right;
+	@BindView(R.id.loadingView)
+	XLoadingView loadingView;
+	AddressAdapter adapter;
+	public static List<AddressBean> Addresslist = new ArrayList<>();
+	private AddressModel model = new AddressModel();
 
 	public static AddressFragment newInstance() {
 		AddressFragment fragment = new AddressFragment();
 		return fragment;
 	}
 
-	@Override
-	public int getLayoutId() {
-		return R.layout.fragment_address;
-	}
 
 	@Override
-	public void initData(Bundle savedInstanceState) {
-
-	}
-
-	@Override
-	public void initView() {
-		if (msg_toolbar != null) {
-			SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
-			SystemBarHelper.setHeightAndPadding(getActivity(), msg_toolbar);
-			tv_header_center.setText("收货地址");
-		}
-
-		CommUtil.initToolBar(_mActivity, context, iv_header_left, iv_header_right);
-	}
-
-	List<AddressBean> list = new ArrayList<>();
-
-	@Override
-	public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+	public void initView(View rootView) {
+		SystemBarHelper.immersiveStatusBar(getActivity(), 0); //设置状态栏透明
+		SystemBarHelper.setHeightAndPadding(getActivity(), msg_toolbar);
+		tv_header_center.setText("收货地址");
+		CommUtil.initToolBar(_mActivity, mContext, iv_header_left, iv_header_right);
 		LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
 		layoutManager.setOrientation(1);
 		this.rv_address.setLayoutManager(layoutManager);
 
-		list.add(new AddressBean(1, "冯熙", "15708446531", true, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
-		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
-		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
-		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
-		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
-		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
-		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
-		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
-		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
-		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
-		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
-		list.add(new AddressBean(1, "冯熙", "15708446531", false, 51011, "四川省成都市天府新区", " 华阳镇滨河路二段"));
+	}
 
-		adapter = new AddressAdapter(R.layout.fragment_address_item, list);
-		this.rv_address.setAdapter(adapter);
+	@Override
+	public void initData() {
+		getAddress();
+	}
+
+	private void showAddress(AddressModel addressModel) {
+
+		if (!XEmptyUtils.isEmpty(addressModel)) {
+			if (XEmptyUtils.isEmpty(adapter)) {
+
+				this.Addresslist = addressModel.getAddressList();
+				adapter = new AddressAdapter(R.layout.fragment_address_item, Addresslist);
+				this.rv_address.setAdapter(adapter);
+				loadingView.showContent();
+			} else {
+				this.Addresslist = addressModel.getAddressList();
+				adapter.setNewData(addressModel.getAddressList());
+				loadingView.showContent();
+			}
+		} else {
+			loadingView.showEmpty();
+		}
 
 	}
 
 
 	@Subscribe
-	public void onAddressClick(AddressEven event) {
-		start(AddAddressFragment.newInstance(list.get(event.position)));
+	public void onAddressEven(AddressEven event) {
+		if (event.isUpdate()) { //新增加了地址，需要更新
+			getAddress();
+		} else {            //点击了编辑按钮，需要编辑
+			start(AddAddressFragment.newInstance(Addresslist.get(event.position)));
+		}
+
 	}
 
 	@Subscribe
 	public void addAddress(AddressBean bean) {
-
-		if (bean.isDefault()) {
-			for (AddressBean bean1 : list) {
-				bean1.setDefault(false);
-			}
-		}
-		list.add(0, bean);
-		adapter.notifyDataSetChanged();
+		getAddress();
 	}
 
 
@@ -126,6 +123,43 @@ public class AddressFragment extends BaseFragment {
 	public void onClick() {
 		start(AddAddressFragment.newInstance(null));
 	}
+
+	@Override
+	protected BasePresenter createPresenter() {
+		return null;
+	}
+
+	@Override
+	protected int provideContentViewId() {
+		return R.layout.fragment_address;
+	}
+
+	/**
+	 * 获取地址列表
+	 */
+	private void getAddress() {
+		loadingView.showLoading();
+		OkGo.<LzyResponse<AddressModel>>post(Urls.URL_USER_ADDRESS)
+				.tag(this)
+				.headers("token", MyShopApplication.Token)
+				.params("id", MyShopApplication.userId)
+				.params("ship", 1)
+				.params("limit", 20)
+				.execute(new JsonCallback<LzyResponse<AddressModel>>() {
+					@Override
+					public void onSuccess(com.lzy.okgo.model.Response<LzyResponse<AddressModel>> response) {
+						if (HttpUtil.handleResponse(mContext, response.body())) {
+							showAddress(response.body().datas);
+						}
+					}
+
+					@Override
+					public void onError(com.lzy.okgo.model.Response<LzyResponse<AddressModel>> response) {
+						HttpUtil.handleError(mContext, response);
+					}
+				});
+	}
+
 
 	@Override
 	public void onStart() {
@@ -136,7 +170,10 @@ public class AddressFragment extends BaseFragment {
 
 	@Override
 	public void onStop() {
+		model.setGoodsList(this.Addresslist);
+		EventBus.getDefault().post(this.model);
 		EventBus.getDefault().unregister(this);
 		super.onStop();
 	}
+
 }

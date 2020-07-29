@@ -10,6 +10,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.xinyuan.xyshop.R;
+import com.xinyuan.xyshop.ui.goods.search.SearchActivity;
 
 /**
  * Created by Administrator on 2017/7/13.
@@ -47,12 +48,15 @@ public class SearchSortDialog extends PopupWindow {
 			public void onClick(View v) {
 				SearchSortDialog.this.tvShowSort.setText("商品");
 				SearchSortDialog.this.popupWindow.dismiss();
+				SearchActivity.searchGood = true;
+
 			}
 		});
 		tvStore.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				SearchSortDialog.this.tvShowSort.setText("店铺");
 				SearchSortDialog.this.popupWindow.dismiss();
+				SearchActivity.searchGood = false;
 			}
 		});
 	}

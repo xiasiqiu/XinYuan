@@ -3,7 +3,8 @@ package com.xinyuan.xyshop.entity;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 
 /**
- * Created by Administrator on 2017/7/1.
+ * Created by fx on 2017/7/1.
+ * 售后多布局实体类
  */
 
 public class ServiceMultipleItem implements MultiItemEntity {
@@ -14,14 +15,24 @@ public class ServiceMultipleItem implements MultiItemEntity {
 
 	public int itemType;
 	public int spanSize;
+	private Object obj;
 
 
-	public ServiceMultipleItem(int itemType, int spanSize) {
+	public ServiceMultipleItem(int itemType, int spanSize,Object obj) {
 		this.itemType = itemType;
 		this.spanSize = spanSize;
+		this.obj=obj;
 
 	}
 
+
+	public Object getObj() {
+		return obj;
+	}
+
+	public void setObj(Object obj) {
+		this.obj = obj;
+	}
 
 	@Override
 	public int getItemType() {

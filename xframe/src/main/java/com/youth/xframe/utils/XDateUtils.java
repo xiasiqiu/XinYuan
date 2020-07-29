@@ -308,7 +308,7 @@ public class XDateUtils {
         difference.setSecond(millis/SEC);
         difference.setMinute(millis/MIN);
         difference.setHour(millis/HOUR);
-        difference.setHour(millis/DAY);
+        difference.setDay(millis/DAY);
         return difference;
     }
 

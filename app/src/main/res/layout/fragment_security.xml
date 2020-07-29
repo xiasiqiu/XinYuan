@@ -27,10 +27,10 @@
                 android:text="会员名"/>
 
             <TextView
+                android:id="@+id/tv_user_name"
                 style="@style/NormalTextView"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:text="id_46545656"
                 android:textColor="@color/tv_hint"/>
 
         </RelativeLayout>
@@ -49,16 +49,18 @@
             android:padding="15dp">
 
             <TextView
+                android:id="@+id/tv_user_phone_title"
                 style="@style/RegularTextView"
                 android:layout_centerVertical="true"
                 android:text="修改手机号"/>
 
             <TextView
+                android:id="@+id/tv_user_phone"
                 style="@style/NormalTextView"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
-                android:text="185****5652"
+                android:text="未绑定手机号"
                 android:textColor="@color/tv_hint"/>
 
             <ImageView
@@ -84,6 +86,7 @@
             android:padding="15dp">
 
             <TextView
+                android:id="@+id/tv_pass"
                 style="@style/RegularTextView"
                 android:text="修改登录密码"/>
 
@@ -104,6 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
+            android:visibility="gone"
             android:background="@color/bg_white"
             android:padding="15dp">
 
@@ -113,6 +117,7 @@
 
 
             <TextView
+                android:id="@+id/tv_bank_bind"
                 style="@style/NormalTextView"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
@@ -147,6 +152,7 @@
 
 
             <TextView
+                android:id="@+id/tv_qq_bind"
                 style="@style/NormalTextView"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
@@ -181,6 +187,7 @@
 
 
             <TextView
+                android:id="@+id/tv_wx_bind"
                 style="@style/NormalTextView"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
@@ -215,6 +222,7 @@
 
 
             <TextView
+                android:id="@+id/tv_email_bind"
                 style="@style/NormalTextView"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
@@ -241,7 +249,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:background="@color/bg_white"
-            android:padding="15dp">
+            android:padding="15dp"
+            android:visibility="gone">
 
             <TextView
                 style="@style/RegularTextView"
@@ -265,8 +274,5 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bg_gray"/>
+
 </LinearLayout>

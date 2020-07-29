@@ -1,67 +1,183 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
+apply plugin: 'com.getkeepsafe.dexcount'
+def keystoreFilepath = ''
+def keystorePSW = ''
+def keystoreAlias = ''
+def keystoreAliasPSW = ''
+// default keystore file, PLZ config file path in local.properties
+def keyfile = file('s.keystore.temp')
+Properties properties = new Properties()
+// local.properties file in the root director
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+keystoreFilepath = properties.getProperty("keystore.path")
+if (keystoreFilepath) {
+    keystorePSW = properties.getProperty("keystore.password")
+    keystoreAlias = properties.getProperty("keystore.alias")
+    keystoreAliasPSW = properties.getProperty("keystore.alias_password")
+    keyfile = file(keystoreFilepath)
+}
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.xinyuan.xyshop"
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
-        versionName "1.0"
+        versionName "0.9.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
     }
-    buildTypes {
-        release {
-            shrinkResources false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+    // 这个是解决lint报错的代码
+    lintOptions {
+        abortOnError false
+    }
+
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "4g"
+        //关闭预编译
+        preDexLibraries = false
+    }
+
+
+    flavorDimensions "default"
+    productFlavors {
+        GuanWang {
+            manifestPlaceholders = [UMC: "GuanWang"]
+        }
+
+        Tencent {
+            manifestPlaceholders = [UMC: "Tencent"]
+        }
+        BaiDu {
+            manifestPlaceholders = [UMC: "BaiDu"]
+        }
+        MI {
+            manifestPlaceholders = [UMC: "MI"]
         }
     }
+    signingConfigs {
+
+        myConfig {
+            storeFile keyfile
+            storePassword keystorePSW
+            keyAlias keystoreAlias
+            keyPassword keystoreAliasPSW
+            println("====== signingConfigs.release ======")
+        }
+
+    }
+    buildTypes {
+        debug {
+            minifyEnabled true
+            shrinkResources false
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (keyfile.exists()) {
+                println("WITH -> buildTypes -> release: using jks key")
+                signingConfig signingConfigs.myConfig
+            } else {
+                println("WITH -> buildTypes -> release: using default key")
+            }
+
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "${variant.name}-${variant.versionName}.apk"
+                }
+            }
+        }
+
+    }
+
     configurations.all {
         resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
     }
-}
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
 
-dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':xframe')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile files('lib/badgeview.jar')
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:cardview-v7:25.3.1'
-    compile 'com.lzy.net:okgo:2.1.4'
-    compile 'com.lzy.net:okrx:0.1.2'
-    compile 'com.lzy.net:okserver:1.1.3'
-    compile 'com.jakewharton:butterknife:8.4.0'
-    compile 'com.google.code.gson:gson:2.5'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.15'
-    compile 'com.youth.banner:banner:1.4.9'
-    compile 'com.sunfusheng:marqueeview:1.2.0'
-    compile 'com.trello:rxlifecycle:1.0'
-    compile 'com.trello:rxlifecycle-components:1.0'
-    compile 'com.github.paolorotolo:appintro:1.1.0'
-    compile 'com.google.android:flexbox:0.2.6'
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'de.hdodenhof:circleimageview:2.1.0'
-    compile 'org.greenrobot:eventbus:3.0.0'
-    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
-    compile 'com.contrarywind:Android-PickerView:3.2.5'
-    compile 'com.github.YancyYe:GalleryPick:1.2.1'
-    testCompile 'junit:junit:4.12'
-    apt 'com.jakewharton:butterknife-compiler:8.4.0'
-    compile 'com.google.zxing:core:3.2.1'
-    compile 'me.yokeyword:fragmentation:1.0.0'
-    compile 'com.yanzhenjie:recyclerview-swipe:1.0.4'
-    compile 'com.tamic:browse:1.0.0'
-    compile 'com.google.zxing:core:3.2.1'
-    compile 'cn.bingoogolapple:bga-qrcodecore:1.1.7@aar'
-    compile 'cn.bingoogolapple:bga-zxing:1.1.7@aar'
-    compile 'com.android.support:multidex:1.0.1'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    dependencies {
+        compile fileTree(include: ['*.jar'], dir: 'libs')
+        compile project(':xframe')
+        androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+            exclude group: 'com.android.support', module: 'support-annotations'
+        })
+        //noinspection GradleCompatible
+        compile 'com.android.support:appcompat-v7:25.3.1'
+        compile 'com.android.support.constraint:constraint-layout:1.0.2'
+        compile 'com.android.support:design:25.3.1'
+        compile 'com.android.support:cardview-v7:25.3.1'
+        testCompile 'junit:junit:4.12'
+        compile 'com.android.support:support-v4:25.3.1'
+        //OKGo网络框架
+        compile 'com.lzy.net:okgo:3.0.4'
+        compile 'com.lzy.net:okrx2:2.0.2'
+        //RX2
+        compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+        //Even Bus +Butterknife
+        compile 'org.greenrobot:eventbus:3.0.0'
+        compile 'com.jakewharton:butterknife:8.4.0'
+        annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+        //RX Life
+        compile 'com.trello.rxlifecycle2:rxlifecycle:2.1.0'
+        compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
+        //GSON+GLIDE
+        compile 'com.google.code.gson:gson:2.5'
+        compile 'com.github.bumptech.glide:glide:3.7.0'
+        //recyclerView
+        compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.15'
+        //widgetView第三方View
+        compile 'com.google.android:flexbox:0.2.6'
+        compile 'de.hdodenhof:circleimageview:2.1.0'
+        compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+        compile 'com.contrarywind:Android-PickerView:3.2.5'
+        compile 'cn.bingoogolapple:bga-refreshlayout:1.1.7'
+        compile 'cn.bingoogolapple:bga-badgeview:1.1.3'
+        compile 'com.youth.banner:banner:1.4.9'
+        compile 'com.sunfusheng:marqueeview:1.2.0'
+        compile 'com.lzy.widget:imagepicker:0.5.5'
+        compile 'me.relex:circleindicator:1.2.2@aar'
+        //fragment框架
+        compile 'me.yokeyword:fragmentation:1.1.3'
+        //ANR
+        compile 'cat.ereza:customactivityoncrash:1.5.0'
+        //二维码框架
+        compile 'com.google.zxing:core:3.2.1'
+        compile 'cn.bingoogolapple:bga-qrcodecore:1.1.7@aar'
+        compile 'cn.bingoogolapple:bga-zxing:1.1.7@aar'
+        //友盟统计
+        compile 'com.umeng.analytics:analytics:latest.integration'
+        //更新
+        compile 'com.qianwen:update-app:3.3.6'
+        //本地JAR
+        implementation files('lib/SocialSDK_QQ_Simplify.jar')
+        implementation files('lib/umeng_shareboard_widget.jar')
+        implementation files('lib/umeng_social_shareboard.jar')
+        implementation files('lib/wechat-sdk-android-with-mta-1.1.6.jar')
+        implementation files('lib/umeng_social_api.jar')
+        implementation files('lib/umeng_social_net.jar')
+        implementation files('lib/umeng_social_tool.jar')
+        implementation files('lib/SocialSDK_WeChat_Simplify.jar')
+        implementation files('lib/alipaySdk-20170922.jar')
+
+    }
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+    }
 }

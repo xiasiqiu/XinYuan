@@ -1,10 +1,14 @@
 package com.xinyuan.xyshop.common;
 
+import android.content.Context;
+import android.util.DisplayMetrics;
+
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 /**
- * Created by Administrator on 2017/5/26.
+ * Created by fx on 2017/5/26.
+ * 商城辅助类
  */
 
 public class ShopHelper {
@@ -29,4 +33,13 @@ public class ShopHelper {
 	public static void setSignStatus(Boolean b) {
 		SignStatus = b;
 	}
+
+	public static int getScreenWeight(Context context) {
+		if (context == null) {
+			return 0;
+		}
+		DisplayMetrics dm = new DisplayMetrics();
+		return context.getApplicationContext().getResources().getDisplayMetrics().widthPixels;
+	}
+
 }

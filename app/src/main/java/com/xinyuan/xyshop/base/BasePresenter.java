@@ -1,19 +1,28 @@
 package com.xinyuan.xyshop.base;
 
+
+import android.content.Context;
+
 /**
- * Created by fx on 2017/5/2 0002.
+ * Created by fx on 2017/7/31.
+ * Presenter基类
  */
 
-public interface BasePresenter<T extends BaseView> {
+public abstract class BasePresenter<V> {
+	protected V mView;
+	private Context context;
 
-	
+	public BasePresenter(V view) {
+		attachView(view);
+	}
 
-	/**
-	 * 初始化操作
-	 */
-	void initData();
+	public void attachView(V view) {
+		mView = view;
+	}
+
+	public void detachView() {
+		mView = null;
+	}
+
 
 }
-
-
-

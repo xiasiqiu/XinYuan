@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:background="@color/bg_gray"
-              android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginTop="3dp"
         android:background="@color/bg_white"
-        android:paddingBottom="6dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="6dp">
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
         <CheckBox
             android:id="@+id/determine_chekbox"
@@ -23,19 +19,29 @@
             android:background="@drawable/checkbox_selector"
             android:button="@null"/>
 
-        <TextView
-            android:id="@+id/tv_source_name"
+
+        <Button
+            android:id="@+id/bt_store_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="15dp"
             android:layout_toRightOf="@id/determine_chekbox"
-            android:background="@android:color/white"
-            android:drawablePadding="10dp"
-            android:drawableRight="@drawable/ic_right_row"
-            android:text="第八号当铺"
+            android:background="@null"
+            android:drawablePadding="15dp"
+            android:drawableRight="@drawable/right_img"
             android:textColor="@color/tv_name"
             android:textSize="@dimen/tv_Regular"/>
-    </RelativeLayout>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tv_store_active"
+            style="@style/NormalTextView"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="免运费"/>
+    </RelativeLayout>
+</RelativeLayout>
+
+
+

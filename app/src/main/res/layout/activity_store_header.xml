@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/store_toolbar"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="?attr/actionBarSize"
     android:background="@color/colorTransparency"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp"
@@ -15,7 +15,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="match_parent"
         android:background="@color/colorTransparency"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -26,55 +26,68 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
+            android:padding="10dp"
             android:src="@drawable/icon_back_w"/>
 
 
-        <ImageView
-            android:id="@+id/goodshow_btn_msg"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+        <cn.bingoogolapple.badgeview.BGABadgeImageView
+            android:id="@+id/iv_header_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="20px"
-            android:scaleType="fitXY"
-            android:src="@drawable/act_home_msg"/>
+            android:layout_marginRight="20dp"
+            android:padding="3dp"
+            android:src="@drawable/act_home_msg"
+            app:badge_gravity="rightTop"
+            app:badge_horizontalMargin="0dp"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
+        <TextView
+            android:id="@+id/tv_store_name_title"
+            style="@style/RegularTextView"
             android:layout_centerInParent="true"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_toLeftOf="@id/goodshow_btn_msg"
-            android:layout_toRightOf="@id/goodshow_btn_back"
-            android:background="@drawable/btn_bg_normal">
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:ellipsize="end"
+            android:textColor="@color/bg_white"
+            android:singleLine="true"
+            android:visibility="gone"/>
+        <!--<RelativeLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="35dp"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:layout_marginLeft="50dp"-->
+        <!--android:layout_marginRight="50dp"-->
+        <!--android:layout_toLeftOf="@id/iv_header_right"-->
+        <!--android:layout_toRightOf="@id/goodshow_btn_back"-->
+        <!--android:background="@drawable/btn_bg_normal">-->
 
-            <EditText
-                android:id="@+id/goodshow_et_search"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginRight="35dp"
-                android:background="@null"
-                android:focusableInTouchMode="false"
-                android:hint="@string/search_search_hint"
-                android:paddingLeft="10dp"
-                android:singleLine="true"
-                android:textColor="@color/tv_name"
-                android:textColorHint="@color/tv_hint"
-                android:textSize="@dimen/tv_Normal"/>
+        <!--<EditText-->
+        <!--android:id="@+id/goodshow_et_search"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="35dp"-->
+        <!--android:layout_marginRight="35dp"-->
+        <!--android:background="@null"-->
+        <!--android:focusableInTouchMode="false"-->
+        <!--android:hint="@string/search_search_hint"-->
+        <!--android:paddingLeft="10dp"-->
+        <!--android:singleLine="true"-->
+        <!--android:textColor="@color/tv_name"-->
+        <!--android:textColorHint="@color/tv_hint"-->
+        <!--android:textSize="@dimen/tv_Normal"/>-->
 
-            <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/btn_bg_gray"
-                android:padding="10dp"
-                android:src="@drawable/act_home_search_de"
-                />
+        <!--<ImageView-->
+        <!--android:layout_width="35dp"-->
+        <!--android:layout_height="35dp"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:background="@drawable/btn_bg_gray"-->
+        <!--android:padding="10dp"-->
+        <!--android:src="@drawable/act_home_search_de"-->
+        <!--/>-->
 
 
-        </RelativeLayout>
+        <!--</RelativeLayout>-->
 
 
     </RelativeLayout>

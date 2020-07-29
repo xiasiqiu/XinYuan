@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:widget="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/view_header_tv_tv"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_input_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:padding="30dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/ll_bind_email"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/button__n_bg"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_bind_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="15dp"
+                    android:background="@drawable/ic_login_phone"/>
+
+                <View
+                    android:layout_width="2px"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:background="@color/colorPrimary"/>
+
+                <com.xinyuan.xyshop.widget.EditTextWithDel
+                    android:id="@+id/ed_bind_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@null"
+                    android:hint="请输入邮箱地址"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/tv_name"
+                    android:textColorHint="@color/tv_hint"
+                    android:textSize="13sp"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="30dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_bind_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginRight="100dp"
+                    android:background="@drawable/button__n_bg"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_login_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/ic_login_code"/>
+
+                    <View
+                        android:layout_width="2px"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/colorPrimary"/>
+
+                    <com.xinyuan.xyshop.widget.EditTextWithDel
+                        android:id="@+id/ed_bind_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入验证码"
+                        android:inputType="phone"
+                        android:textColor="@color/tv_name"
+                        android:textColorHint="@color/tv_hint"
+                        android:textSize="13sp"/>
+                </LinearLayout>
+
+                <com.xinyuan.xyshop.widget.PaperButton
+                    android:id="@+id/pb_bind_code"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/bt_rabg_right"
+                    widget:paper_corner_radius="15dp"
+                    widget:paper_text="发送验证码"
+                    widget:paper_text_color="@color/bg_white"
+                    widget:paper_text_size="13sp"
+                    />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/SmallHintTextView"
+                android:layout_below="@id/ll_input_email"
+                android:layout_marginTop="20dp"
+                android:text="点击发送验证码后，请登录您的邮箱查看鑫圆共享发送给您的一封验证邮件，然后输入该邮件内的验证码完成绑定"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_unbind_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_unbind_notice"
+                style="@style/LightHintTextView"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="30dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_unbind_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginRight="100dp"
+                    android:background="@drawable/button__n_bg"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_unbind_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="15dp"
+                        android:background="@drawable/ic_login_code"/>
+
+                    <View
+                        android:layout_width="2px"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/colorPrimary"/>
+
+                    <com.xinyuan.xyshop.widget.EditTextWithDel
+                        android:id="@+id/ed_unbind_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入验证码"
+                        android:inputType="number"
+                        android:textColor="@color/tv_name"
+                        android:textColorHint="@color/tv_hint"
+                        android:textSize="13sp"/>
+                </LinearLayout>
+
+                <com.xinyuan.xyshop.widget.PaperButton
+                    android:id="@+id/pb_unbind_code"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/bt_rabg_right"
+                    widget:paper_corner_radius="15dp"
+                    widget:paper_text="发送验证码"
+                    widget:paper_text_color="@color/bg_white"
+                    widget:paper_text_size="13sp"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/bt_bind"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_bg"
+            android:text="提交绑定"
+            android:textColor="@color/bg_white"
+            android:textSize="@dimen/tv_Regular"/>
+    </LinearLayout>
+
+</LinearLayout>

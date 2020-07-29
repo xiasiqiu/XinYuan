@@ -1,31 +1,13 @@
 package com.xinyuan.xyshop.http;
 
-import android.app.Activity;
-import android.content.Context;
-import android.support.constraint.solver.Cache;
+import com.lzy.okgo.model.HttpHeaders;
+import com.lzy.okgo.model.HttpMethod;
+import com.lzy.okgo.model.HttpParams;
 
-import com.lzy.okgo.OkGo;
-import com.lzy.okgo.cache.CacheMode;
-import com.lzy.okrx.RxAdapter;
-import com.xinyuan.xyshop.bean.CatrgoryResponse;
-import com.xinyuan.xyshop.bean.LzyResponse;
-import com.xinyuan.xyshop.callback.DialogCallback;
-import com.xinyuan.xyshop.callback.JsonConvert;
+import java.lang.reflect.Type;
 
-import com.xinyuan.xyshop.entity.ApiSpecialItem;
-import com.xinyuan.xyshop.entity.GoodCategory;
-import com.xinyuan.xyshop.model.CategoryModel;
-import com.xinyuan.xyshop.model.GoodDetailModel;
-import com.xinyuan.xyshop.model.GoodsDetailModel;
-import com.xinyuan.xyshop.model.HomeModel;
-import com.xinyuan.xyshop.model.OrderModel;
-import com.xinyuan.xyshop.model.StoreHomeModel;
+import io.reactivex.Observable;
 
-import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Response;
-import rx.Observable;
 
 /**
  * Created by fx on 2017/5/9 0009.
@@ -34,67 +16,62 @@ import rx.Observable;
 public class ApiServer {
 
 	/**
-	 * 首页数据
+	 * 获取数据
 	 *
 	 * @param url
 	 * @return
 	 */
-	public static Observable<LzyResponse<HomeModel>> getHomeIndex(String url) {
-		return OkGo.get(url)
-				.getCall(new JsonConvert<LzyResponse<HomeModel>>() {
-				}, RxAdapter.<LzyResponse<HomeModel>>create());
+	public static <T> Observable<T> getData(Type type, String url) {
+		return RxUtils.request(HttpMethod.GET, url, type);
+	}
 
+	public static <T> Observable<T> getData(Type type, String url, HttpParams param, HttpHeaders header) {
+		return RxUtils.request(HttpMethod.POST, url, type, param, header);
+	}
+
+	public static<T>Observable<T>searchGood(Type type,String url,HttpParams keyword,HttpParams sorts,HttpParams currentPage,HttpParams pageSize,HttpParams price,HttpParams brandId,HttpParams brandName,HttpParams xyself,HttpParams property){
+		return RxUtils.request(HttpMethod.POST,url,type,keyword,sorts,currentPage,pageSize,price,brandId,brandName,xyself,property);
+	}
+
+
+	/**
+	 * 商品搜索数据
+	 *
+	 * @param url
+	 * @return
+	 */
+	public static <T> Observable<T> getSearchList(Type type, String url, String header, int brandId, String priceLimit,
+	                                              int storeType, String sort, String keyword, int page, int limit, String spec) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.put("token", header);
+		HttpParams params = new HttpParams();
+		params.put("brandId", brandId);
+		params.put("priceLimit", priceLimit);
+		params.put("storeType", storeType);
+		params.put("sort", "priec_desc");
+		params.put("keyword", keyword);
+		params.put("page", page);
+		params.put("limit", limit);
+		params.put("spec", spec);
+		return RxUtils.request(HttpMethod.POST, url, type, params, headers);
 	}
 
 	/**
-	 * 分类数据
+	 * 获取数据
 	 *
-	 * @param url
+	 * @param url   地址
+	 * @param param 参数名
+	 * @param id    参数ID
 	 * @return
 	 */
-	public static Observable<LzyResponse<CategoryModel>> getCategory(String url) {
-		return OkGo.get(url)
-				.getCall(new JsonConvert<LzyResponse<CategoryModel>>() {
-				}, RxAdapter.<LzyResponse<CategoryModel>>create());
-
-
-	}
-
-	/**
-	 * 商品详情数据
-	 *
-	 * @param url
-	 * @return
-	 */
-	public static Observable<LzyResponse<GoodDetailModel>> getGoodsDetail(String url) {
-		return OkGo.get(url)
-				//.params("goodId", goodId)
-				.getCall(new JsonConvert<LzyResponse<GoodDetailModel>>() {
-				}, RxAdapter.<LzyResponse<GoodDetailModel>>create());
-
-
-	}
-
-	public static Observable<LzyResponse<StoreHomeModel>> getStoreHome(String url) {
-		return OkGo.get(url)
-				//.params("goodId", goodId)
-				.getCall(new JsonConvert<LzyResponse<StoreHomeModel>>() {
-				}, RxAdapter.<LzyResponse<StoreHomeModel>>create());
-
-
-	}
-
-	/**
-	 * 订单数据
-	 *
-	 * @param url
-	 * @return
-	 */
-	public static Observable<LzyResponse<OrderModel>> getOrderList(String url) {
-		return OkGo.get(url)
-				.getCall(new JsonConvert<LzyResponse<OrderModel>>() {
-				}, RxAdapter.<LzyResponse<OrderModel>>create());
+	public static <T> Observable<T> getData(Type type, String url, String header, String param, long id) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.put("aaa", header);
+		HttpParams params = new HttpParams();
+		params.put(param, id);
+		return RxUtils.request(HttpMethod.GET, url, type, params, headers);
 	}
 
 
 }
+

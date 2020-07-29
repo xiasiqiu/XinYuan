@@ -5,39 +5,28 @@ import android.support.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.google.android.flexbox.FlexboxLayout;
-import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.common.AddViewHolder;
-import com.xinyuan.xyshop.entity.GoodsVo;
+import com.xinyuan.xyshop.bean.StoreInfoBean;
+import com.xinyuan.xyshop.bean.TokenBean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/6/5.
+ * Created by fx on 2017/6/5.
+ * 确认订单列表Adapter
  */
 
-public class OrderConfirmAdapter extends BaseQuickAdapter<GoodsVo, BaseViewHolder> {
+public class OrderConfirmAdapter extends BaseQuickAdapter<StoreInfoBean, BaseViewHolder> {
 
 
-	public OrderConfirmAdapter(@LayoutRes int layoutResId, @Nullable List<GoodsVo> data) {
+	public OrderConfirmAdapter(@LayoutRes int layoutResId, @Nullable List<StoreInfoBean> data) {
 		super(layoutResId, data);
 
 	}
 
 	@Override
-	protected void convert(BaseViewHolder helper, GoodsVo item) {
-		List<GoodsVo> list = new ArrayList<>();
-		for (int i = 0; i < 2; i++) {
-			list.add(new GoodsVo());
-		}
+	protected void convert(BaseViewHolder helper, StoreInfoBean item) {
 
-		FlexboxLayout fl_order_goods = helper.getView(R.id.fl_goods);
-		for (GoodsVo goodsVo : list) {
-			AddViewHolder addViewHolder = new AddViewHolder(mContext, R.layout.activity_confirm_order_item_good);
-			fl_order_goods.addView(addViewHolder.getCustomView());
 
-		}
 	}
 
 

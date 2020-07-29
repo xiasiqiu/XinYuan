@@ -3,7 +3,7 @@ package com.xinyuan.xyshop.entity;
 import com.flyco.tablayout.listener.CustomTabEntity;
 
 /**
- * Created by Administrator on 2017/6/6.
+ * Created by fx on 2017/6/6.
  */
 
 public class TabEntity implements CustomTabEntity {

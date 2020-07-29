@@ -1,90 +1,106 @@
 package com.xinyuan.xyshop.base;
 
-
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
-import android.view.Window;
+import android.util.Log;
 
-import com.trello.rxlifecycle.LifecycleTransformer;
-import com.trello.rxlifecycle.RxLifecycle;
-import com.trello.rxlifecycle.android.ActivityEvent;
-import com.trello.rxlifecycle.android.RxLifecycleAndroid;
+import com.trello.rxlifecycle2.LifecycleProvider;
+import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle2.RxLifecycle;
+import com.trello.rxlifecycle2.android.ActivityEvent;
+import com.trello.rxlifecycle2.android.RxLifecycleAndroid;
+import com.umeng.analytics.MobclickAgent;
 import com.xinyuan.xyshop.MyShopApplication;
-import com.xinyuan.xyshop.R;
-import com.youth.xframe.base.ICallback;
-import com.youth.xframe.base.XActivity;
 import com.youth.xframe.common.XActivityStack;
-import com.youth.xframe.utils.log.XLog;
 import com.youth.xframe.utils.permission.XPermission;
-import com.youth.xframe.utils.statusbar.XStatusBar;
-
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-import me.yokeyword.fragmentation.SupportActivity;
-import rx.Observable;
-import rx.subjects.BehaviorSubject;
-
-import com.trello.rxlifecycle.LifecycleProvider;
 
 import org.greenrobot.eventbus.EventBus;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+import io.reactivex.Observable;
+import io.reactivex.subjects.BehaviorSubject;
+import me.yokeyword.fragmentation.SupportActivity;
+
 /**
- * Created by fx on 2017/5/2 0002.
+ * Created by fx on 2017/7/31.
+ * Activity基类
  */
 
-public abstract class BaseActivity extends SupportActivity implements ICallback, LifecycleProvider<ActivityEvent> {
-
-
-	private final BehaviorSubject<ActivityEvent> lifecycleSubject = BehaviorSubject.create();
-
-	protected MyShopApplication application;
+public abstract class BaseActivity<T extends BasePresenter> extends SupportActivity implements LifecycleProvider<ActivityEvent> {
+	public static final String TAG = "LIFE:";
+	protected Bundle savedInstanceState;
+	protected T mPresenter;
 	Unbinder mUnbinder;
-	private static String TAG = "";
-
+	private final BehaviorSubject<ActivityEvent> lifecycleSubject = BehaviorSubject.create();
+	protected MyShopApplication mApp;
 	@Override
 	@CallSuper
 	protected void onCreate(Bundle savedInstanceState) {
-		XLog.v("Activity:---onCreate:创建！");
+		Log.e(TAG + "OnCreate", getClass().getSimpleName());
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		lifecycleSubject.onNext(ActivityEvent.CREATE);
 		XActivityStack.getInstance().addActivity(this);
+
 		super.onCreate(savedInstanceState);
-		if (getLayoutId() > 0) {
-			setContentView(getLayoutId());
-		}
-		this.application = MyShopApplication.getInstance();
+		this.savedInstanceState = savedInstanceState;
+		mApp = MyShopApplication.getInstance();
+		mPresenter = createPresenter();
+		//子类不再需要设置布局ID，也不再需要使用ButterKnife.bind()
+		setContentView(provideContentViewId());
 		ButterKnife.bind(this);
 		mUnbinder = ButterKnife.bind(this);
-		initData(savedInstanceState);
 		initView();
-		lifecycleSubject.onNext(ActivityEvent.CREATE);
+		initData();
+		initListener();
+
+	}
+
+	//用于创建Presenter和判断是否使用MVP模式(由子类实现)
+	protected abstract T createPresenter();
+
+	//得到当前界面的布局文件id(由子类实现)
+	protected abstract int provideContentViewId();
+
+	public abstract void initView();
+
+	public abstract void initData();
+
+	public void initListener() {
+	}
+
+	@Override
+	protected void onDestroy() {
+		Log.e(TAG + "OnDestroy", getClass().getSimpleName());
+		super.onDestroy();
+		lifecycleSubject.onNext(ActivityEvent.DESTROY);
+		mUnbinder.unbind();
+		XActivityStack.getInstance().finishActivity();
 
 	}
 
 	@Override
-	public void setContentView(int layoutResID) {
-		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		super.setContentView(layoutResID);
-
-		//setStatusBar();
-	}
-
-
-	protected void setStatusBar() {
-		XStatusBar.setColor(this, getResources().getColor(R.color.colorTransparency), 0);
+	@NonNull
+	@CheckResult
+	public final Observable<ActivityEvent> lifecycle() {
+		return lifecycleSubject.hide();
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if (item.getItemId() == android.R.id.home) {
-			finish();
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
+	@NonNull
+	@CheckResult
+	public final <T> LifecycleTransformer<T> bindUntilEvent(@NonNull ActivityEvent event) {
+		return RxLifecycle.bindUntilEvent(lifecycleSubject, event);
+	}
+
+	@Override
+	@NonNull
+	@CheckResult
+	public final <T> LifecycleTransformer<T> bindToLifecycle() {
+		return RxLifecycleAndroid.bindActivity(lifecycleSubject);
 	}
 
 	/**
@@ -101,78 +117,27 @@ public abstract class BaseActivity extends SupportActivity implements ICallback,
 		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 	}
 
-	@Override
-	protected void onDestroy() {
-		XLog.v("Activity:---onDestroy：销毁！");
-		super.onDestroy();
-		lifecycleSubject.onNext(ActivityEvent.DESTROY);
-		mUnbinder.unbind();
-		EventBus.getDefault().unregister(this);//反注册
-		XActivityStack.getInstance().finishActivity();
-
-
+	public boolean isEventBusRegisted(Object subscribe) {
+		return EventBus.getDefault().isRegistered(subscribe);
 	}
 
-	@Override
-	@CallSuper
-	protected void onResume() {
+	public void registerEventBus(Object subscribe) {
+		if (!isEventBusRegisted(subscribe)) {
+			EventBus.getDefault().register(subscribe);
+		}
+	}
+	public void onResume() {
 		super.onResume();
-		XLog.v("Activity:---onResume：可见！");
-
-		lifecycleSubject.onNext(ActivityEvent.RESUME);
-
+		MobclickAgent.onResume(this);
 	}
-
-	@Override
-	@CallSuper
-	protected void onPause() {
-		XLog.v("Activity:---onPause：屏蔽！");
-
-		lifecycleSubject.onNext(ActivityEvent.PAUSE);
+	public void onPause() {
 		super.onPause();
+		MobclickAgent.onPause(this);
 	}
 
-	@Override
-	@CallSuper
-	protected void onStop() {
-		XLog.v("Activity:---onStop：停止 ！");
-
-		lifecycleSubject.onNext(ActivityEvent.STOP);
-		super.onStop();
+	public void unregisterEventBus(Object subscribe) {
+		if (isEventBusRegisted(subscribe)) {
+			EventBus.getDefault().unregister(subscribe);
+		}
 	}
-
-
-	@Override
-	@CallSuper
-	protected void onStart() {
-		XLog.v("Activity:---onStop：启动 ！");
-		super.onStart();
-		lifecycleSubject.onNext(ActivityEvent.START);
-
-	}
-
-
-	@Override
-	@NonNull
-	@CheckResult
-	public final Observable<ActivityEvent> lifecycle() {
-		return lifecycleSubject.asObservable();
-	}
-
-
-	@Override
-	@NonNull
-	@CheckResult
-	public final <T> LifecycleTransformer<T> bindUntilEvent(@NonNull ActivityEvent event) {
-		return RxLifecycle.bindUntilEvent(lifecycleSubject, event);
-	}
-
-	@Override
-	@NonNull
-	@CheckResult
-	public final <T> LifecycleTransformer<T> bindToLifecycle() {
-		return RxLifecycleAndroid.bindActivity(lifecycleSubject);
-	}
-
-
 }

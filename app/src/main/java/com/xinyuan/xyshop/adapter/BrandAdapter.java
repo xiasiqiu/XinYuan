@@ -1,22 +1,28 @@
 package com.xinyuan.xyshop.adapter;
 
 
+import android.view.View;
 import android.widget.ImageView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseSectionQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.entity.BrandBean;
+import com.xinyuan.xyshop.bean.BrandBean;
+import com.xinyuan.xyshop.common.Constants;
+import com.xinyuan.xyshop.common.GlideImageLoader;
 import com.xinyuan.xyshop.entity.MySection;
-import com.xinyuan.xyshop.model.BrandModel;
-import com.xinyuan.xyshop.util.GlideImageLoader;
-import com.youth.xframe.utils.log.XLog;
+import com.xinyuan.xyshop.ui.goods.store.StoreActivity;
+import com.xinyuan.xyshop.util.CommUtil;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
  * Created by Administrator on 2017/5/18.
+ * 品牌店铺列表Adapter
  */
 
 public class BrandAdapter extends BaseSectionQuickAdapter<MySection, BaseViewHolder> {
@@ -42,7 +48,17 @@ public class BrandAdapter extends BaseSectionQuickAdapter<MySection, BaseViewHol
 	@Override
 	protected void convert(BaseViewHolder helper, MySection item) {
 		BrandBean bean = (BrandBean) item.t;
-		GlideImageLoader.setImage(mContext, bean.getBrandImage(), (ImageView) helper.getView(R.id.ivBrandPic));
+		GlideImageLoader.setImg(mContext, R.drawable.mine_logo, (ImageView) helper.getView(R.id.iv_store_img));
+		helper.setText(R.id.store_name, bean.getStoreName());
+		helper.setOnClickListener(R.id.iv_store_img, new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Map<String, String> params = new HashMap();
+				params.put(Constants.STOREID, String.valueOf(bean.getStoreId()));
+				CommUtil.gotoActivity(mContext, StoreActivity.class, false, params);
+			}
+		});
+
 	}
 
 	public int getLetterPosition(String letter) {

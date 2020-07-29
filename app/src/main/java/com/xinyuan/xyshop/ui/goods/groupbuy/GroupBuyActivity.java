@@ -2,7 +2,6 @@ package com.xinyuan.xyshop.ui.goods.groupbuy;
 
 import android.animation.LayoutTransition;
 import android.animation.ObjectAnimator;
-import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -12,48 +11,49 @@ import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.flyco.tablayout.SlidingTabLayout;
+import com.xinyuan.xyshop.MyShopApplication;
 import com.xinyuan.xyshop.R;
 import com.xinyuan.xyshop.adapter.CommonPagerAdapter;
 import com.xinyuan.xyshop.base.BaseActivity;
+import com.xinyuan.xyshop.base.BasePresenter;
 import com.xinyuan.xyshop.ui.goods.groupbuy.fragment.GroupGoodsFragment;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.util.SystemBarHelper;
-import com.youth.xframe.utils.log.XLog;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.bingoogolapple.badgeview.BGABadgeImageView;
 
 /**
- * Created by Administrator on 2017/6/21.
+ * Created by fx on 2017/6/21.
+ * 团购Activity
  */
 
 public class GroupBuyActivity extends BaseActivity {
+	@BindView(R.id.toolbar_iv)
+	Toolbar toolbar_iv;
+	@BindView(R.id.collapsing_toolbar)
+	CollapsingToolbarLayout collapsing_toolbar;
+	@BindView(R.id.appbar)
+	AppBarLayout mAppbar;
 	@BindView(R.id.group__tabs)
 	public SlidingTabLayout psts_group;
 	@BindView(R.id.vp_content)
 	public ViewPager vp_content;
 	private ArrayList<Fragment> mFragments = new ArrayList<>();
-	@BindView(R.id.toolbar_iv)
-	Toolbar toolbar_iv;
-	@BindView(R.id.collapsing_toolbar)
-	CollapsingToolbarLayout collapsing_toolbar;
 	private CommonPagerAdapter adapter;
-	@BindView(R.id.appbar)
-	AppBarLayout mAppbar;
-	private GroupGoodsFragment newGoodsFragment;
 	private final String[] mTitles = {
 			"热门团购", "最新团购", "全部团购"
 	};
 	@BindView(R.id.ll_header_layout)
 	ImageView headerLayout;
 	@BindView(R.id.iv_header_right)
-	ImageView iv_header_right;
+	BGABadgeImageView iv_header_right;
 	@BindView(R.id.iv_header_left)
 	ImageView iv_header_left;
 	@BindView(R.id.tv_header_center)
@@ -63,14 +63,15 @@ public class GroupBuyActivity extends BaseActivity {
 	//是否隐藏了头部
 	private boolean isHideHeaderLayout = false;
 
+
 	@Override
-	public int getLayoutId() {
-		return R.layout.activity_group_buy;
+	protected BasePresenter createPresenter() {
+		return null;
 	}
 
 	@Override
-	public void initData(Bundle savedInstanceState) {
-
+	protected int provideContentViewId() {
+		return R.layout.activity_group_buy;
 	}
 
 	@Override
@@ -83,16 +84,24 @@ public class GroupBuyActivity extends BaseActivity {
 		SystemBarHelper.setHeightAndPadding(this, toolbar_iv);
 		CommUtil.initToolBar(this, iv_header_left, iv_header_right);
 		tv_header_center.setText("团购商城");
-		for (String title : mTitles) {
-			mFragments.add(newGoodsFragment.getInstance(title));
-		}
+
+		mFragments.add(new GroupGoodsFragment().getInstance("goods_salenum"));
+		mFragments.add(new GroupGoodsFragment().getInstance("new"));
+		mFragments.add(new GroupGoodsFragment().getInstance(""));
+
 		adapter = new CommonPagerAdapter(getSupportFragmentManager(), mFragments, mTitles);
 		vp_content.setAdapter(adapter);
 		psts_group.setViewPager(vp_content);
 		vp_content.setCurrentItem(0);
-		vp_content.setOffscreenPageLimit(3);
+		vp_content.setOffscreenPageLimit(1);
 		headerLayout.setImageResource(R.drawable.group_buy);
 		initAppBarLayout();
+	}
+
+
+	@Override
+	public void initData() {
+
 	}
 
 
@@ -114,8 +123,6 @@ public class GroupBuyActivity extends BaseActivity {
 			@Override
 			public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
 				verticalOffset = Math.abs(verticalOffset);
-
-				XLog.v("移动:" + verticalOffset);
 				if (verticalOffset >= 250) {
 
 					isHideHeaderLayout = true;
@@ -132,6 +139,17 @@ public class GroupBuyActivity extends BaseActivity {
 				}
 			}
 		});
+	}
+
+	@Override
+	public void onResume() {
+		if (MyShopApplication.IsNewMsg) {
+			iv_header_right.showCirclePointBadge();
+		} else {
+			iv_header_right.hiddenBadge();
+		}
+
+		super.onResume();
 	}
 
 	@Override
@@ -160,5 +178,6 @@ public class GroupBuyActivity extends BaseActivity {
 		}
 		return super.onKeyDown(keyCode, event);
 	}
+
 
 }

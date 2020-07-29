@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@drawable/addsubview_add_sub_bg"
+              android:divider="@drawable/divider_horizontal"
+              android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/ic_minus"
+        android:layout_width="@dimen/addsubview_btn_width"
+        android:layout_height="match_parent"
+        android:background="@drawable/addsubview_left_selector"
+        android:clickable="true"
+        android:padding="@dimen/addsubview_btn_padding"
+        android:scaleType="centerInside"
+        android:src="@drawable/addsubview_ic_minus"/>
+
+    <EditText
+        android:id="@+id/et_input"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null"
+        android:cursorVisible="true"
+        android:digits="0123456789"
+        android:gravity="center"
+        android:inputType="number"
+        android:minWidth="@dimen/addsubview_et_minwidth"
+        android:singleLine="true"
+        android:text="1"
+        android:textColor="@color/tv_name"
+        android:textCursorDrawable="@null"
+        android:textSize="@dimen/addsubview_textsize"/>
+
+
+    <ImageView
+        android:id="@+id/ic_plus"
+        android:layout_width="@dimen/addsubview_btn_width"
+        android:layout_height="match_parent"
+        android:background="@drawable/addsubview_right_selector"
+        android:clickable="true"
+        android:padding="@dimen/addsubview_btn_padding"
+        android:scaleType="centerInside"
+        android:src="@drawable/addsubview_ic_plus"/>
+</LinearLayout>

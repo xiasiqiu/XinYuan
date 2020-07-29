@@ -1,47 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/bg_gray"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
 
-    <include layout="@layout/view_header_tv_tv"/>
+    <include layout="@layout/view_header_tv_tv" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_service_good"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9"/>
+        android:layout_weight="9" />
 
-    <View
-        style="@style/XYLine"/>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/bg_white"
-        android:padding="10dp">
+        android:elevation="3dp"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:padding="5dp">
 
 
         <Button
-            android:id="@+id/bt_order_eva_later"
+            android:id="@+id/bt_service_cancel"
             android:layout_width="65dp"
             android:layout_height="25dp"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/bt_unselect_red"
-            android:text="填单号"
-            android:textColor="@color/tv_price"
-            android:textSize="@dimen/tv_small"/>
-
-        <Button
-            android:id="@+id/bt_order_finish_logistical"
-            android:layout_width="65dp"
-            android:layout_height="25dp"
-            android:layout_marginRight="20dp"
-            android:layout_toLeftOf="@id/bt_order_eva_later"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
             android:background="@drawable/bt_unselect_normal"
             android:text="撤销申请"
             android:textColor="@color/tv_name"
-            android:textSize="@dimen/tv_small"/>
-    </RelativeLayout>
+            android:textSize="@dimen/tv_small"
+            android:visibility="gone" />
+
+
+        <Button
+            android:id="@+id/bt_service_express"
+            android:layout_width="65dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bt_unselect_red"
+            android:text="填单号"
+            android:textColor="@color/tv_price"
+            android:textSize="@dimen/tv_small"
+            android:visibility="gone" />
+
+    </LinearLayout>
 </LinearLayout>

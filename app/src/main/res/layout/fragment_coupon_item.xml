@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:background="@color/bg_white">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@color/bg_white">
 
     <ImageView
         android:id="@+id/iv_coupon_img"
@@ -11,57 +11,66 @@
         android:layout_height="60dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/tv_store_name"
+        style="@style/RegularTextView"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/test_good_store"/>
+        android:layout_toRightOf="@id/iv_coupon_img"
+        android:ellipsize="end"
+        android:maxLength="15" />
+
+    <TextView
+        android:id="@+id/tv_store_level"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_below="@id/tv_store_name"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/iv_coupon_img"
+        android:textSize="@dimen/tv_light" />
+
+    <ImageView
+        android:id="@+id/iv_store_credits"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="12dp"
+        android:layout_toRightOf="@id/tv_store_name" />
 
     <TextView
         android:id="@+id/tv_coupon_name"
-        style="@style/RegularTextView"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
-        android:layout_toRightOf="@id/iv_coupon_img"
-        android:text="梅子熟了"/>
-
-    <com.google.android.flexbox.FlexboxLayout
-        android:id="@+id/fl_coupon_level"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="20dp"
-        android:layout_toRightOf="@id/tv_coupon_name"
-        app:alignContent="flex_start"
-        app:flexWrap="wrap"/>
-
-    <TextView
         style="@style/NormalTextView"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_toRightOf="@id/fl_coupon_level"
-        android:text="5元代金券"
-        android:textColor="@color/tv_price"/>
+        android:layout_below="@id/tv_store_name"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/iv_coupon_img"
+        android:textColor="@color/tv_price" />
 
     <TextView
+        android:id="@+id/tv_coupon_time"
         style="@style/LightTextView"
-        android:layout_below="@id/tv_coupon_name"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_toRightOf="@id/iv_coupon_img"
-        android:text="使用期限：2017-04-04至2017-10-01"
-        android:textColor="@color/tv_hint"/>
+        android:textColor="@color/tv_hint" />
 
     <Button
-        android:layout_width="60dp"
-        android:layout_height="18dp"
+        android:id="@+id/bt_go_store"
+        android:layout_width="65dp"
+        android:layout_height="22dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="15dp"
         android:background="@drawable/bt_unselect_red"
         android:text="去使用"
         android:textColor="@color/tv_price"
-        android:textSize="@dimen/tv_light"/>
+        android:textSize="@dimen/tv_light" />
 
-    <View
-        style="@style/XYLine"
-        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

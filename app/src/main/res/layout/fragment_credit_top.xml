@@ -3,17 +3,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:background="@drawable/ic_account_bg"
-                android:padding="15dp">
+                android:padding="10dp">
 
 
     <TextView
         style="@style/RegularTextView"
-        android:text="我的积分（元）"
+        android:text="我的积分（分）"
         android:textColor="@color/bg_white"/>
 
     <TextView
+        android:id="@+id/tv_credite_num"
         style="@style/RegularTextView"
         android:layout_alignParentBottom="true"
-        android:text="22555"
+        android:textSize="20sp"
         android:textColor="@color/bg_white"/>
 </RelativeLayout>

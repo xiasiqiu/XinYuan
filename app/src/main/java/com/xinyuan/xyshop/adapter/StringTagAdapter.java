@@ -5,31 +5,36 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.ui.goods.SearchGoodsActivity;
-import com.xinyuan.xyshop.ui.goods.SearchGoodsShowActivity;
+import com.xinyuan.xyshop.ui.goods.search.SearchActivity;
+import com.xinyuan.xyshop.ui.goods.search.SearchGoodShowActivity;
+import com.xinyuan.xyshop.ui.goods.search.SearchStoreShowActivity;
 import com.xinyuan.xyshop.util.CommUtil;
 import com.xinyuan.xyshop.widget.StringTagView;
+import com.youth.xframe.cache.XCache;
+import com.youth.xframe.utils.XEmptyUtils;
+import com.youth.xframe.utils.log.XLog;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 
 /**
- * 作者：ZhouYou
- * 日期：3017/3/27
+ * 作者：fx
+ * 日期：2017/5/27
  */
 public class StringTagAdapter extends SearchTagAdapter<StringTagView, String> {
 
 	private Context context;
+	private XCache xCache;
 
 	public StringTagAdapter(Context context, List<String> data) {
 		this(context, data, null);
 		this.context = context;
+		xCache = XCache.get(context);
 	}
 
 	public StringTagAdapter(Context context, List<String> data, List<String> selectItems) {
@@ -68,9 +73,9 @@ public class StringTagAdapter extends SearchTagAdapter<StringTagView, String> {
 	@Override
 	protected StringTagView addTag(final String item) {
 		StringTagView tagView = new StringTagView(getContext());
-		tagView.setPadding(30, 20, 30, 20);
+		tagView.setPadding(35, 20, 35, 20);
 		final TextView textView = tagView.getTextView();
-		textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 14);
+		textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
 		textView.setGravity(Gravity.CENTER);
 		tagView.setItemDefaultDrawable(itemDefaultDrawable);
 		tagView.setItemSelectDrawable(itemSelectDrawable);
@@ -81,25 +86,26 @@ public class StringTagAdapter extends SearchTagAdapter<StringTagView, String> {
 			@Override
 			public void onClick(View view) {
 
-				HashMap<String, String> params;
-				if (item.equals("")) {
+				if (!XEmptyUtils.isSpace(item)) {
+					SearchActivity.searchBean.getHistoryList().add(0, item);
+					SearchActivity.searchBean.setHistoryList(CommUtil.distinctList(SearchActivity.searchBean.getHistoryList()));
+					xCache.put("Search", SearchActivity.searchBean, xCache.TIME_DAY);
+					HashMap<String, String> params;
 					params = new HashMap();
-					params.put("keyword", SearchGoodsActivity.keyWord);
+					params.put("KEYWORD", item);
+					if (SearchActivity.searchGood) {
+						CommUtil.gotoActivity(context, SearchGoodShowActivity.class, false, params);
+					} else {
+						CommUtil.gotoActivity(context, SearchStoreShowActivity.class, false, params);
 
-					SearchGoodsActivity.saveKeyword(SearchGoodsActivity.keyWord);
-				} else {
-					params = new HashMap();
-					params.put("keyword", item);
-					SearchGoodsActivity.saveKeyword(item);
+					}
+
+
 				}
 
 
-				Intent intent = new Intent(context, SearchGoodsShowActivity.class);
-				intent.putExtra("keyword", (String) params.get("keyword"));
-				context.startActivity(intent);
 			}
 		});
-
 
 
 		return tagView;

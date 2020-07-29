@@ -20,7 +20,7 @@ import com.xinyuan.xyshop.R;
 
 
 /**
- * Created by YoKeyword on 16/6/3.
+ * Created by YoKeyword on 17/6/3.
  */
 public class BottomBarTab extends FrameLayout {
 	private ImageView mIcon;
@@ -47,7 +47,7 @@ public class BottomBarTab extends FrameLayout {
 		mContext = context;
 		TypedArray typedArray = context.obtainStyledAttributes(new int[]{R.attr.selectableItemBackgroundBorderless});
 		Drawable drawable = typedArray.getDrawable(0);
-		setBackgroundDrawable(drawable);
+		setBackground(drawable);
 		typedArray.recycle();
 
 		LinearLayout lLContainer = new LinearLayout(context);
@@ -58,7 +58,7 @@ public class BottomBarTab extends FrameLayout {
 		lLContainer.setLayoutParams(paramsContainer);
 
 		mIcon = new ImageView(context);
-		int size = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 27, getResources().getDisplayMetrics());
+		int size = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics());
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(size, size);
 		mIcon.setImageResource(icon);
 		mIcon.setLayoutParams(params);

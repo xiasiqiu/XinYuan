@@ -4,130 +4,27 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <LinearLayout
+
+    <com.youth.xframe.widget.loadingview.XLoadingView
+        android:id="@+id/search_loadingView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeLayout"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/bg_white"
-            android:elevation="1dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
 
-            <LinearLayout
-                android:id="@+id/llSort"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/btnSort"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/com_sort"
-                    android:textColor="@drawable/text_btn_color"
-                    android:textSize="@dimen/tv_Normal"/>
-
-                <ImageView
-                    android:id="@+id/ivSort"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:background="@drawable/goodshow_down_bg"/>
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/btnSale"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:button="@null"
-                android:gravity="center"
-                android:text="@string/sell_sort"
-                android:textColor="@drawable/text_btn_color"
-                android:textSize="@dimen/tv_Normal"/>
-
-
-            <LinearLayout
-                android:id="@+id/llScreen"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/btnScreen"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="产品分类"
-                    android:textColor="@drawable/text_btn_color"
-                    android:textSize="@dimen/tv_Normal"/>
-
-                <ImageView
-                    android:id="@+id/ivScreen"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:background="@drawable/goodshow_down_bg"/>
-            </LinearLayout>
-
-            <FrameLayout
-                android:id="@+id/flListType"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_weight="2">
-
-                <ImageView
-                    android:id="@+id/btnListType"
-                    android:layout_width="50px"
-                    android:layout_height="50px"
-                    android:layout_gravity="center"
-                    android:background="@color/bg_white"
-                    android:src="@drawable/btn_goods_list_type"/>
-            </FrameLayout>
-        </LinearLayout>
-
-
-        <com.youth.xframe.widget.loadingview.XLoadingView
-            android:id="@+id/search_loadingView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <android.support.v4.widget.DrawerLayout
-                android:id="@+id/search_drawer"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvGoodList"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
 
-                <android.support.v4.widget.SwipeRefreshLayout
-                    android:id="@+id/swipeLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    >
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/rvGoodList"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
-                </android.support.v4.widget.SwipeRefreshLayout>
+    </com.youth.xframe.widget.loadingview.XLoadingView>
 
-                <LinearLayout
-                    android:id="@+id/nav_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="end"
-                    android:fitsSystemWindows="true"
-                    android:orientation="vertical"/>
-            </android.support.v4.widget.DrawerLayout>
-
-        </com.youth.xframe.widget.loadingview.XLoadingView>
-
-    </LinearLayout>
 </LinearLayout>

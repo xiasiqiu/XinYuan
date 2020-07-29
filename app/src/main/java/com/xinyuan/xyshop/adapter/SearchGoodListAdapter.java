@@ -3,110 +3,113 @@ package com.xinyuan.xyshop.adapter;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.entity.GoodsVo;
-import com.xinyuan.xyshop.ui.goods.detail.GoodDetailsActivity;
+import com.xinyuan.xyshop.common.Constants;
+import com.xinyuan.xyshop.common.ShopHelper;
+import com.xinyuan.xyshop.bean.GoodListItemBean;
+import com.xinyuan.xyshop.ui.goods.detail.GoodDetailActivity;
 import com.xinyuan.xyshop.util.CommUtil;
-import com.xinyuan.xyshop.util.GlideImageLoader;
-import com.xinyuan.xyshop.widget.PaperButton;
-import com.youth.xframe.utils.log.XLog;
+import com.xinyuan.xyshop.common.GlideImageLoader;
+import com.youth.xframe.utils.XEmptyUtils;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 /**
- * Created by Administrator on 2017/5/17.
+ * Created by fx on 2017/5/17.
+ * 搜索商品列表Adapter
  */
 
-public class SearchGoodListAdapter extends BaseQuickAdapter<GoodsVo, BaseViewHolder> {
-	private boolean isList;
+public class SearchGoodListAdapter extends BaseQuickAdapter<GoodListItemBean, BaseViewHolder> {
+    private boolean isList;
 
-	public SearchGoodListAdapter(@LayoutRes int layoutResId, @Nullable List<GoodsVo> data, Boolean isList) {
-		super(layoutResId, data);
-		this.isList = isList;
-	}
+    public SearchGoodListAdapter(@LayoutRes int layoutResId, @Nullable List<GoodListItemBean> data, Boolean isList) {
+        super(layoutResId, data);
+        this.isList = isList;
+    }
 
-	@Override
-	protected void convert(BaseViewHolder helper, GoodsVo item) {
+    @Override
+    protected void convert(BaseViewHolder helper, GoodListItemBean item) {
 
-		if (isList) {
-			ImageView goodsImg = helper.getView(R.id.ivGoodPic);
-			TextView tv_goods_name = helper.getView(R.id.tv_goods_name);
-			TextView tv_good_active = helper.getView(R.id.tv_good_active);
-			TextView tv_goods_price = helper.getView(R.id.tv_goods_price);
-			TextView tv_goods_sellnum = helper.getView(R.id.tv_goods_sellnum);
-			TextView tv_goods_talk = helper.getView(R.id.tv_goods_talk);
+        if (isList) {
+            if (item.getGoodsType() == Constants.GOOD_ONLINE) {    //是否是虚拟商品
+                helper.setVisible(R.id.tv_good_type, true);
+                helper.setVisible(R.id.tv_good_active, false);
 
-			GlideImageLoader.setImage(mContext, item.getImageSrc(), goodsImg);
-			tv_goods_name.setText(item.getGoodsName());
-			tv_goods_price.setText("￥" + String.valueOf(item.getAppPriceMin()));
-			tv_goods_sellnum.setText("月销量:" + item.getGoodsSaleNum() + "件");
-			tv_goods_talk.setText("评论:" + item.getEvaluateNum());
-			int num = (int) (Math.random() * 10 + 1);
-			String type = "";
-			if (num % 2 == 0) {
-				tv_good_active.setText("包邮");
-				tv_good_active.setBackground(mContext.getResources().getDrawable(R.color.bg_white));
-				tv_good_active.setTextColor(mContext.getResources().getColor(R.color.tv_price));
-				type = "1:0";
-			} else {
-				tv_good_active.setVisibility(View.VISIBLE);
-				type = "2:0";
-			}
+            } else {
+                helper.setVisible(R.id.tv_good_type, false);
 
-			final String finalType = type;
-			goodsImg.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					HashMap<String, String> params;
-					params = new HashMap();
-					params.put("GoodType", finalType);
-					CommUtil.gotoActivity(mContext, GoodDetailsActivity.class, false, params);
-				}
-			});
+                if (!XEmptyUtils.isEmpty(item.getGoodsActive())) {
+                    helper.setVisible(R.id.tv_good_active, true);
+                    helper.setText(R.id.tv_good_active, item.getGoodsActive());
+                } else {
+                    helper.setVisible(R.id.tv_good_active, false);
 
-		} else {
-			TextView tv_good_active = helper.getView(R.id.tv_good_active);
-			ImageView goodsImg = helper.getView(R.id.ivGoodPic);
-			GlideImageLoader.setImage(mContext, item.getImageSrc(), goodsImg);
-			TextView tv_goods_name = helper.getView(R.id.tv_goods_name);
-			tv_goods_name.setText(item.getGoodsName());
-			TextView tv_goods_price = helper.getView(R.id.tv_goods_price);
-			tv_goods_price.setText("￥" + String.valueOf(item.getAppPriceMin()));
-			TextView tv_goods_sellnum = helper.getView(R.id.tv_goods_sellnum);
-			tv_goods_sellnum.setText("月销量:" + item.getGoodsSaleNum() + "件");
-			int num = (int) (Math.random() * 10 + 1);
-			String type = "";
-			if (num % 2 == 0) {
-				tv_good_active.setText("包邮");
-				tv_good_active.setBackground(mContext.getResources().getDrawable(R.color.bg_white));
-				tv_good_active.setTextColor(mContext.getResources().getColor(R.color.tv_price));
-				type = "1:0";
-			} else {
-				tv_good_active.setVisibility(View.VISIBLE);
-				type = "2:0";
-			}
-			final String finalType = type;
-			goodsImg.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					HashMap<String, String> params;
-					params = new HashMap();
-					params.put("GoodType", finalType);
-					CommUtil.gotoActivity(mContext, GoodDetailsActivity.class, false, params);
-				}
-			});
-		}
+                }
+            }
+            ImageView goodsImg = helper.getView(R.id.ivGoodPic);
+            GlideImageLoader.setUrlImg(mContext, item.getImageUrl(), goodsImg);
+
+            helper.setText(R.id.tv_goods_name, item.getGoodsName());
+            helper.setText(R.id.tv_goods_price, mContext.getString(R.string.money_rmb) + ShopHelper.getPriceString(item.getGoodsPrice()));
+            helper.setText(R.id.tv_goods_sellnum, mContext.getString(R.string.month_sell_num) + item.getConsumeNum() + "件");
+            helper.setText(R.id.tv_goods_talk, mContext.getString(R.string.text_eva) + item.getGoodsEvaNum());
 
 
-	}
+            goodsImg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    HashMap<String, String> params;
+                    params = new HashMap();
+                    params.put(Constants.GOODID, item.getGoodsId());
+                    params.put(Constants.GOODTYPE, item.getGoodsType());
+                    CommUtil.gotoActivity(mContext, GoodDetailActivity.class, false, params);
+                }
+            });
+
+        } else {
+            if (item.getGoodsType() == Constants.GOOD_ONLINE) {
+                helper.setVisible(R.id.tv_good_type, true);
+                helper.setVisible(R.id.tv_good_active, false);
+
+            } else {
+                helper.setVisible(R.id.tv_good_type, false);
+
+                if (!XEmptyUtils.isEmpty(item.getGoodsActive())) {
+                    helper.setVisible(R.id.tv_good_active, true);
+                    helper.setText(R.id.tv_good_active, item.getGoodsActive());
+                } else {
+                    helper.setVisible(R.id.tv_good_active, false);
+
+                }
+            }
+            ImageView goodsImg = helper.getView(R.id.ivGoodPic);
+            GlideImageLoader.setUrlImg(mContext, item.getImageUrl(), goodsImg);
+
+            helper.setText(R.id.tv_goods_name, item.getGoodsName());
+            helper.setText(R.id.tv_goods_price, mContext.getString(R.string.money_rmb) + ShopHelper.getPriceString(item.getGoodsPrice()));
+            helper.setText(R.id.tv_goods_sellnum, mContext.getString(R.string.month_sell_num) + item.getConsumeNum() + "件");
+            helper.setText(R.id.tv_goods_talk, mContext.getString(R.string.text_eva) + item.getGoodsEvaNum());
+
+
+            goodsImg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    HashMap<String, String> params;
+                    params = new HashMap();
+                    params.put(Constants.GOODID, item.getGoodsId());
+                    params.put(Constants.GOODTYPE, item.getGoodsType());
+                    CommUtil.gotoActivity(mContext, GoodDetailActivity.class, false, params);
+                }
+            });
+        }
+
+
+    }
 
 
 }

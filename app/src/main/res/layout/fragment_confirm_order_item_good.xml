@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bg_white">
+
+
+    <View
+        style="@style/XYLine"/>
+
+    <ImageView
+        android:id="@+id/iv_good_img"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/test_good_img"/>
+
+
+    <TextView
+        android:id="@+id/tv_good_name"
+        style="@style/NormalTextView"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/iv_good_img"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="雅诗兰黛 红石榴泡沫洁面乳125ml清洁补水保湿 "/>
+
+    <TextView
+        android:id="@+id/tv_good_spec"
+        style="@style/LightTextView"
+        android:layout_below="@id/tv_good_name"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/iv_good_img"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="已选：“120ml”"
+        android:textColor="@color/tv_hint"/>
+
+
+    <TextView
+        android:id="@+id/tv_good_price"
+        style="@style/NormalTextView"
+        android:layout_below="@id/tv_good_spec"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/iv_good_img"
+        android:ellipsize="end"
+
+        android:maxLines="1"
+        android:text="￥199.00"
+        android:textColor="@color/tv_price"/>
+
+    <TextView
+        android:id="@+id/tv_good_num"
+        style="@style/NormalTextView"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv_good_spec"
+        android:layout_marginRight="30dp"
+        android:text="X3"
+        android:textColor="@color/tv_hint"/>
+
+</RelativeLayout>

@@ -7,6 +7,19 @@
 
     <include layout="@layout/view_header_tv_tv"/>
 
+    <Button
+        android:id="@+id/bt_rescan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/button_bg_dark"
+        android:text="重新扫码"
+        android:textColor="@color/bg_white"
+        android:textSize="@dimen/tv_Regular"
+        android:visibility="gone"/>
+
     <cn.bingoogolapple.qrcode.zxing.ZXingView
         android:id="@+id/zxingview"
         android:layout_width="match_parent"

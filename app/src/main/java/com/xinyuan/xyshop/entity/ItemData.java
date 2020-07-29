@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 /**
  * Created by fx on 2017/5/4 0004.
+ * 广告类数据
  */
 
 public class ItemData implements Serializable {
@@ -12,6 +13,22 @@ public class ItemData implements Serializable {
 	private String imageUrl;
 	private String type;
 	private String text;
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
 
 	@Override
 	public String toString() {

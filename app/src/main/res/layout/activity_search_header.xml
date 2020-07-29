@@ -5,14 +5,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/category_toolbar"
     android:layout_width="match_parent"
-    android:layout_height="45dp"
+    android:layout_height="?attr/actionBarSize"
     android:background="@color/colorPrimary"
+    android:elevation="3dp"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="match_parent"
         android:background="@color/bg_white"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -21,26 +22,28 @@
         <ImageView
             android:id="@+id/search_btn_back"
             android:layout_width="wrap_content"
+            android:padding="10dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/icon_back"/>
 
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_centerInParent="true"
+            android:layout_height="35dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="50dp"
             android:layout_toRightOf="@id/search_btn_back"
             android:background="@drawable/btn_bg_normal"
+            android:minWidth="250dp"
             android:orientation="horizontal">
 
             <RelativeLayout
                 android:id="@+id/ll_store_good"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="35dp"
                 android:layout_centerVertical="true">
 
                 <TextView
@@ -67,53 +70,31 @@
                     android:layout_toRightOf="@id/ivsort"/>
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="55dp">
+            <com.xinyuan.xyshop.widget.EditTextWithDel
+                android:id="@+id/search_et"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/ll_store_good"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="@string/search_search_hint"
+                android:padding="4dp"
+                android:singleLine="true"
+                android:textColor="@color/tv_name"
+                android:textColorHint="@color/tv_hint"
+                android:textSize="@dimen/tv_light"/>
 
-
-                <EditText
-                    android:id="@+id/search_et"
-                    android:layout_width="220dp"
-                    android:layout_height="30dp"
-                    android:layout_centerInParent="true"
-                    android:layout_centerVertical="true"
-
-                    android:background="@null"
-                    android:hint="@string/search_search_hint"
-                    android:padding="4dp"
-                    android:paddingLeft="5dp"
-                    android:singleLine="true"
-                    android:textColor="@color/tv_name"
-                    android:textColorHint="@color/tv_hint"
-                    android:textSize="@dimen/tv_light"/>
-
-
-                <ImageView
-                    android:id="@+id/seach_btn_delete"
-                    android:layout_width="27dp"
-                    android:layout_height="27dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="4dp"
-                    android:padding="4dp"
-                    android:src="@drawable/icon_close"
-                    android:visibility="gone"/>
-            </RelativeLayout>
 
             <ImageView
                 android:id="@+id/search_btn_search"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_toRightOf="@id/search_et"
                 android:background="@drawable/btn_bg_gray"
-                android:padding="8dp"
+                android:padding="10dp"
                 android:src="@drawable/act_home_search_de"/>
-        </RelativeLayout>
+        </LinearLayout>
 
 
     </RelativeLayout>

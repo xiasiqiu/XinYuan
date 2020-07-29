@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:wheel="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/loading"
-    android:layout_width="300dp"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="10dp">
+              android:id="@+id/loading"
+              android:layout_width="250dp"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:padding="10dp">
 
     <LinearLayout
         android:id="@+id/llBkg"
@@ -16,56 +15,50 @@
         android:background="@drawable/shape_top"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:padding="5dp"
-            android:singleLine="true"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
-
         <LinearLayout
             android:id="@+id/llContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
             android:gravity="center_vertical"
-            android:background="@color/bg_white"
-            android:minHeight="60dp"
+            android:minHeight="80dp"
             android:orientation="vertical">
 
-            <FrameLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:minWidth="250dp">
+                android:layout_marginTop="1dp"
+                android:minWidth="200dp">
 
                 <ImageView
                     android:id="@+id/ivContent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:scaleType="fitCenter"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
+                 
                     android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/tvContent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:paddingBottom="10dp"
+                    android:layout_below="@id/ivContent"
+                    android:gravity="center"
+                    android:paddingBottom="20dp"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:paddingTop="5dp"
+                    android:paddingTop="15dp"
                     android:textColor="@color/tv_name"
                     android:visibility="visible"/>
 
-            </FrameLayout>
+            </RelativeLayout>
 
         </LinearLayout>
     </LinearLayout>
 
+    <View
+        style="@style/XYLine"/>
 
     <LinearLayout
         android:id="@+id/llBtnGroup"
@@ -81,8 +74,8 @@
             android:background="@drawable/sel_def_gray_left"
             android:clickable="true"
             android:gravity="center"
-            android:minHeight="40dp"
-            android:textColor="#676767" />
+            android:minHeight="45dp"
+            android:textColor="@color/colorPrimaryDark"/>
 
 
         <LinearLayout
@@ -94,10 +87,10 @@
 
             <View
                 android:id="@+id/divider"
-                android:layout_width="1px"
-                android:layout_height="20dp"
+                android:layout_width="2px"
+                android:layout_height="35dp"
                 android:layout_gravity="center_vertical"
-                android:background="#929292" />
+                android:background="@color/colorLine"/>
         </LinearLayout>
 
         <TextView
@@ -108,8 +101,8 @@
             android:background="@drawable/sel_def_gray_right"
             android:clickable="true"
             android:gravity="center"
-            android:minHeight="40dp"
-            android:textColor="#676767" />
+            android:minHeight="45dp"
+            android:textColor="@color/tv_hint"/>
 
     </LinearLayout>
 

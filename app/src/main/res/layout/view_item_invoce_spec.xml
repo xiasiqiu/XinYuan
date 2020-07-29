@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingLeft="5dp"
+              android:paddingRight="20dp"
+              android:paddingTop="5dp"
+              android:paddingBottom="10dp"
+              android:orientation="vertical">
+
+    <CheckBox
+        android:id="@+id/cb_spec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/invoice_btn_select"
+        android:button="@null"
+        android:padding="5dp"
+        android:textColor="@drawable/invoice_btn_select_text"
+        android:textSize="@dimen/tv_Normal"/>
+
+</LinearLayout>

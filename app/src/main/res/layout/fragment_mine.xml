@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/bg_gray"
@@ -11,75 +12,81 @@
         android:layout_height="175dp"
         android:background="@drawable/mine_bg"
         android:paddingLeft="15dp"
-        android:paddingTop="30dp">
+        android:paddingTop="20dp">
 
 
         <ImageView
             android:id="@+id/iv_mine_setting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="@drawable/ic_mine_setting"/>
 
-        <ImageView
+
+        <cn.bingoogolapple.badgeview.BGABadgeImageView
             android:id="@+id/iv_mine_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="15dp"
-            android:src="@drawable/act_home_msg"/>
+            android:layout_marginTop="10dp"
+            android:padding="3dp"
+            android:src="@drawable/act_home_msg"
+            app:badge_gravity="rightTop"
+            app:badge_horizontalMargin="0dp"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="45dp">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/customer_image"
-                android:layout_width="70dp"
-                android:layout_height="70dp"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/customer_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_below="@id/iv_mine_setting"
+            android:layout_marginTop="15dp"
+           />
 
-            <TextView
-                android:id="@+id/tv_user_name"
-                style="@style/RegularTextView"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
-                android:layout_toRightOf="@id/customer_image"
+        <TextView
+            android:id="@+id/tv_user_name"
+            style="@style/RegularTextView"
+            android:layout_below="@id/iv_mine_setting"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@id/customer_image"
+            android:textColor="@color/bg_white"/>
 
-                android:textColor="@color/bg_white"/>
+        <TextView
+            android:id="@+id/tv_mine_perfect"
+            android:layout_width="62dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/tv_user_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/customer_image"
+            android:background="@drawable/tv_bg_white"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/mine_improve_info"
+            android:textColor="@color/bg_white"
+            android:textSize="@dimen/tv_Normal"/>
 
-            <TextView
-                android:id="@+id/tv_mine_perfect"
-                android:layout_width="62dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="40dp"
-                android:layout_toRightOf="@id/customer_image"
-                android:background="@drawable/tv_bg_white"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="完善信息"
-                android:textColor="@color/bg_white"
-                android:textSize="@dimen/tv_Normal"/>
-
-            <Button
-                android:id="@+id/bt_mine_credit"
-                android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/bt_rabg"
-                android:drawableLeft="@drawable/mine_point"
-                android:drawablePadding="5dp"
-                android:paddingLeft="15dp"
-
-                android:paddingRight="15dp"
-                android:text="我的积分"
-                android:textColor="@color/tv_name"
-                android:textSize="@dimen/tv_Normal"/>
-        </RelativeLayout>
+        <Button
+            android:id="@+id/bt_mine_credit"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/iv_mine_msg"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bt_rabg"
+            android:drawableLeft="@drawable/mine_point"
+            android:drawablePadding="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/mine_credit"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_Normal"/>
     </RelativeLayout>
 
-    <LinearLayout
 
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:background="@color/bg_white"
@@ -105,7 +112,7 @@
                 style="@style/NormalTextView"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
-                android:text="收藏夹"/>
+                android:text="@string/mine_collect"/>
 
 
         </LinearLayout>
@@ -133,7 +140,7 @@
                 style="@style/NormalTextView"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
-                android:text="关注店铺"/>
+                android:text="@string/mine_fav_store"/>
 
 
         </LinearLayout>
@@ -161,7 +168,7 @@
                 style="@style/NormalTextView"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
-                android:text="足迹"/>
+                android:text="@string/mine_history"/>
 
 
         </LinearLayout>
@@ -186,7 +193,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="2dp"
             android:layout_toRightOf="@id/iv_mine_myorder"
-            android:text="我的订单"/>
+            android:text="@string/mine_order"/>
 
         <Button
             android:id="@+id/bt_more_order"
@@ -196,7 +203,7 @@
             android:background="@null"
             android:button="@null"
             android:drawableRight="@drawable/ic_right_row"
-            android:text="查看更多订单"
+            android:text="@string/show_more_order"
             android:textColor="@color/tv_hint"
             android:textSize="@dimen/tv_Normal"/>
 
@@ -213,61 +220,70 @@
 
             <Button
                 android:id="@+id/bt_mine_order1"
+                style="?android:attr/buttonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_weight="1"
                 android:background="@null"
                 android:drawablePadding="7dp"
                 android:drawableTop="@drawable/ic_mine_order1"
-                android:text="待付款"
+                android:text="@string/order_pay"
                 android:textColor="@color/tv_name"
                 android:textSize="@dimen/tv_light"/>
 
             <Button
                 android:id="@+id/bt_mine_order2"
+                style="?android:attr/buttonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+
                 android:background="@null"
                 android:drawablePadding="7dp"
                 android:drawableTop="@drawable/ic_mine_order2"
-                android:text="待发货"
+                android:text="@string/order_send"
                 android:textColor="@color/tv_name"
                 android:textSize="@dimen/tv_light"/>
 
             <Button
                 android:id="@+id/bt_mine_order3"
+                style="?android:attr/buttonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_weight="1"
                 android:background="@null"
                 android:drawablePadding="7dp"
                 android:drawableTop="@drawable/ic_mine_order3"
-                android:text="待收货"
+                android:text="@string/order_get"
                 android:textColor="@color/tv_name"
                 android:textSize="@dimen/tv_light"/>
 
             <Button
                 android:id="@+id/bt_mine_order4"
+                style="?android:attr/buttonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
+
                 android:drawablePadding="7dp"
                 android:drawableTop="@drawable/ic_mine_order4"
-                android:text="待评价"
+                android:text="@string/order_eva"
                 android:textColor="@color/tv_name"
                 android:textSize="@dimen/tv_light"/>
 
             <Button
                 android:id="@+id/bt_mine_order5"
+                style="?android:attr/buttonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
                 android:drawablePadding="7dp"
                 android:drawableTop="@drawable/ic_mine_order5"
-                android:text="退款/售后"
+                android:text="@string/order_service"
                 android:textColor="@color/tv_name"
                 android:textSize="@dimen/tv_light"/>
         </LinearLayout>
@@ -292,17 +308,18 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="3dp"
             android:layout_toRightOf="@id/iv_mine_band"
-            android:text="我的资产"/>
+            android:text="@string/mine_property"/>
 
         <Button
             android:id="@+id/bt_more_band"
+            style="?android:attr/buttonStyle"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:background="@null"
             android:button="@null"
             android:drawableRight="@drawable/ic_right_row"
-            android:text="查看全部财产"
+            android:text="@string/mine_all_property"
             android:textColor="@color/tv_hint"
             android:textSize="@dimen/tv_Normal"/>
 
@@ -319,59 +336,69 @@
 
             <Button
                 android:id="@+id/bt_mine_money1"
+                style="?android:attr/buttonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
                 android:drawablePadding="7dp"
+
                 android:drawableTop="@drawable/ic_mine_money1"
-                android:text="预存款"
+                android:text="@string/mine_acount"
                 android:textColor="@color/tv_name"
                 android:textSize="@dimen/tv_Normal"/>
 
             <Button
                 android:id="@+id/bt_mine_money2"
+                style="?android:attr/buttonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
                 android:drawablePadding="7dp"
                 android:drawableTop="@drawable/ic_mine_money2"
-                android:text="代金券"
+
+                android:text="@string/mine_coupon"
                 android:textColor="@color/tv_name"
                 android:textSize="@dimen/tv_light"/>
 
             <Button
                 android:id="@+id/bt_mine_money3"
+                style="?android:attr/buttonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
+
                 android:drawablePadding="7dp"
                 android:drawableTop="@drawable/ic_mine_money3"
-                android:text="红包"
+                android:text="@string/mine_red"
                 android:textColor="@color/tv_name"
                 android:textSize="@dimen/tv_light"/>
 
             <Button
                 android:id="@+id/bt_mine_money4"
+                style="?android:attr/buttonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
                 android:drawablePadding="7dp"
+
                 android:drawableTop="@drawable/ic_mine_money1"
-                android:text="积分"
+                android:text="@string/credit"
                 android:textColor="@color/tv_name"
                 android:textSize="@dimen/tv_light"/>
 
             <Button
                 android:id="@+id/bt_mine_money5"
+                style="?android:attr/buttonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
                 android:textColor="@color/tv_name"
+
                 android:textSize="@dimen/tv_Normal"/>
         </LinearLayout>
     </RelativeLayout>
@@ -386,7 +413,7 @@
         android:drawablePadding="10dp"
         android:gravity="left|center_vertical"
         android:padding="10dp"
-        android:text="用户设置"
+        android:text="@string/user_setting"
         android:textColor="@color/tv_name"
         android:textSize="@dimen/tv_Normal"/>
 </LinearLayout>

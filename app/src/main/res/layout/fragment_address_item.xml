@@ -12,9 +12,9 @@
 
     <TextView
         android:id="@+id/tv_user_phone"
-        style="@style/SmallTextView"
+        style="@style/LightTextView"
         android:layout_alignParentRight="true"
-       />
+        />
 
     <TextView
         android:id="@+id/tv_address"

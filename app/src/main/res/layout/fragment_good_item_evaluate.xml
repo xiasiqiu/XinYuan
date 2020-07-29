@@ -22,7 +22,7 @@
         android:layout_alignLeft="@+id/evaluateText"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/evaluateText"
-        android:src="@drawable/touxiang"/>
+        />
 
     <TextView
         android:id="@+id/customerName"
@@ -67,43 +67,76 @@
         android:ellipsize="end"
         android:letterSpacing="0.01"
         android:lineSpacingExtra="5dp"
-        android:maxLines="2"
+        android:maxLines="3"
         android:textColor="@color/tv_name"
-        android:textSize="@dimen/tv_light"/>
+        android:textSize="@dimen/tv_Normal"/>
 
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/evaluateImages"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/evaluateText"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         app:alignContent="flex_start"
         app:flexWrap="wrap"/>
 
-    <View
+    <LinearLayout
+        android:id="@+id/ll_evaluate_store"
         android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_below="@+id/evaluateImages"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/evaluateImages"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:background="@color/colorLine"/>
+        android:orientation="vertical"
+        android:paddingRight="10dp"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorLine"/>
+
+        <TextView
+
+            style="@style/LightTextView"
+            android:layout_marginTop="5dp"
+            android:text="商家回复"
+            android:textColor="@color/tv_price"/>
+
+        <TextView
+            android:id="@+id/tv_eva_store_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:letterSpacing="0.01"
+            android:lineSpacingExtra="5dp"
+            android:maxLines="2"
+            android:textColor="@color/tv_name"
+            android:textSize="@dimen/tv_light"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_evaluate_late"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/evaluateImages"
-        android:layout_marginTop="20dp"
+        android:layout_below="@id/ll_evaluate_store"
+        android:layout_marginTop="10dp"
         android:orientation="vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:visibility="gone">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorLine"/>
+
         <TextView
             android:id="@+id/tv_eva_late_time"
             style="@style/LightTextView"
-            android:text=""
+            android:layout_marginTop="5dp"
             android:textColor="@color/tv_price"/>
 
         <TextView
@@ -111,7 +144,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/customerName"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="5dp"
             android:ellipsize="end"
             android:letterSpacing="0.01"
             android:lineSpacingExtra="5dp"
@@ -127,37 +160,32 @@
             android:layout_marginTop="10dp"
             app:alignContent="flex_start"
             app:flexWrap="wrap"/>
-
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_below="@+id/ll_evaluate_late"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorLine"/>
 
     <LinearLayout
-        android:id="@+id/ll_evaluate_store"
+        android:id="@+id/ll_evaluate_store_later"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ll_evaluate_late"
-        android:layout_marginTop="20dp"
         android:orientation="vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:visibility="visible">
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorLine"/>
 
         <TextView
-
             style="@style/LightTextView"
+            android:layout_marginTop="5dp"
             android:text="商家回复"
             android:textColor="@color/tv_price"/>
 
         <TextView
-            android:id="@+id/tv_eva_store_content"
+            android:id="@+id/tv_eva_store_content_later"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/customerName"
@@ -166,61 +194,15 @@
             android:letterSpacing="0.01"
             android:lineSpacingExtra="5dp"
             android:maxLines="2"
-            android:text="谢谢亲"
             android:textColor="@color/tv_name"
             android:textSize="@dimen/tv_light"/>
 
-
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_evaluate_show"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/ll_evaluate_store"
-        android:layout_marginTop="9dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="15dp"
-            android:background="@drawable/test_good_eva_eye_de"/>
-
-        <TextView
-            android:id="@+id/tv_goods_eva_lookcount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:textColor="@color/tv_hint"
-            android:textSize="@dimen/tv_light"
-            />
-
-        <CheckBox
-            android:id="@+id/cb_eva_like"
-            android:layout_width="20dp"
-            android:layout_height="15dp"
-            android:layout_marginLeft="200px"
-            android:background="@drawable/test_good_eva_dianz_de"
-            android:button="@null"/>
-
-        <TextView
-            android:id="@+id/tv_goods_eva_praisecount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:textColor="@color/tv_hint"
-            android:textSize="@dimen/tv_light"
-            />
-    </LinearLayout>
 
     <View
         style="@style/NoramLine"
-        android:layout_below="@+id/ll_evaluate_show"
-        android:layout_marginTop="10dp"/>
+        android:layout_below="@+id/ll_evaluate_store_later"
+        android:layout_marginTop="5dp"/>
 
 </RelativeLayout>

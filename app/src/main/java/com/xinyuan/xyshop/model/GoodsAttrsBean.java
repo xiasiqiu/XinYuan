@@ -1,12 +1,14 @@
 package com.xinyuan.xyshop.model;
 
-import com.xinyuan.xyshop.entity.Attribute;
+import com.xinyuan.xyshop.bean.AttributesBean;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/6/13.
+ * Created by fx on 2017/6/13.
+ * 商品规格属性数据
  */
 
 public class GoodsAttrsBean implements Serializable {
@@ -14,8 +16,12 @@ public class GoodsAttrsBean implements Serializable {
 
 	private static final long serialVersionUID = -255343424355613161L;
 	private List<AttributesBean> attributes;
-	private List<StockGoodsBean> stockGoods;
+	private List<StockGoodsBean> goodsInfo;
 	private StockGoodsBean defaultGood;
+
+	public void setDefaultGood(StockGoodsBean defaultGood) {
+		this.defaultGood = defaultGood;
+	}
 
 	public StockGoodsBean getDefaultGood() {
 		return defaultGood;
@@ -30,166 +36,120 @@ public class GoodsAttrsBean implements Serializable {
 	}
 
 	public List<StockGoodsBean> getStockGoods() {
-		return stockGoods;
+		return goodsInfo;
 	}
 
 	public void setStockGoods(List<StockGoodsBean> stockGoods) {
-		this.stockGoods = stockGoods;
+		this.goodsInfo = stockGoods;
 	}
 
-	public static class AttributesBean implements Serializable {
-		private static final long serialVersionUID = 5351984957505524721L;
-		/**
-		 * tabID : 0
-		 * tabName : 颜色
-		 * attributesItem : ["白","蓝","黑"]
-		 */
 
-		private int specId;
-		private String specName;
-		private List<AttributeBean> attributesItem;
-
-		public int getTabID() {
-			return specId;
-		}
-
-		public void setTabID(int tabID) {
-			this.specId = tabID;
-		}
-
-		public String getTabName() {
-			return specName;
-		}
-
-		public void setTabName(String tabName) {
-			this.specName = tabName;
-		}
-
-		public List<AttributeBean> getAttributesItem() {
-			return attributesItem;
-		}
-
-		public void setAttributesItem(List<AttributeBean> attributesItem) {
-			this.attributesItem = attributesItem;
-		}
-
-		public class AttributeBean implements Serializable {
-			private static final long serialVersionUID = 3002630256461811622L;
-			private String valueName;
-			private String valueImage;
-
-			public String getValueName() {
-				return valueName;
-			}
-
-			public String getValueImage() {
-				return valueImage;
-			}
-		}
-	}
-
-	public static class StockGoodsBean implements Serializable {
+	public class StockGoodsBean implements Serializable {
 		private static final long serialVersionUID = 6439389975197126548L;
 
 		public String toString() {
-			return goodsSpec.toString();
+			return goodSpecText.toString();
 		}
 
 		public List<GoodsInfoBean> getGoodsSpec() {
-			return goodsSpec;
+			return goodsSpecPropertys;
 		}
 
-
-		public String getGoodsName() {
-			return goodsName;
-		}
 
 		/**
 		 * goodsID : 1
 		 * goodsInfo : [{"tabID":0,"tabName":"颜色","tabValue":"白"},{"tabID":1,"tabName":"型号","tabValue":"X"},{"tabID":2,"tabName":"衣服","tabValue":"羽绒服"},{"tabID":3,"tabName":"大小","tabValue":"中"}]
 		 */
 
-		private int goodsID;
-		private List<GoodsInfoBean> goodsSpec;
-		private int stock;
-		private String specText;
-		private String goodsName;
-		private double goodsPrice;
+		private String goodSpecText;
+		private List<GoodsInfoBean> goodsSpecPropertys;
+		private long goodsInventory;
+		private long goodsSpecInfoId;
+		private BigDecimal goodsPrice;
+		private String valueImage;
 
 
 		public String getSpecText() {
-			return specText;
+			return goodSpecText;
 		}
 
-		public double getGoodsPrice() {
+		public BigDecimal getGoodsPrice() {
 			return goodsPrice;
 		}
 
-		public int getStock() {
-			return stock;
+		public long getStock() {
+			return goodsInventory;
 		}
 
-		public double getPrice() {
+		public BigDecimal getPrice() {
 			return goodsPrice;
 		}
 
-		public int getGoodsID() {
-			return goodsID;
+
+		public String getGoodSpecText() {
+			return goodSpecText;
 		}
 
-		public void setGoodsID(int goodsID) {
-			this.goodsID = goodsID;
+		public List<GoodsInfoBean> getGoodsSpecPropertys() {
+			return goodsSpecPropertys;
+		}
+
+		public long getGoodsInventory() {
+			return goodsInventory;
+		}
+
+		public long getGoodsSpecInfoId() {
+			return goodsSpecInfoId;
+		}
+
+		public String getValueImage() {
+			return valueImage;
 		}
 
 		public List<GoodsInfoBean> getGoodsInfo() {
-			return goodsSpec;
+			return goodsSpecPropertys;
 		}
 
 		public void setGoodsInfo(List<GoodsInfoBean> goodsInfo) {
-			this.goodsSpec = goodsInfo;
+			this.goodsSpecPropertys = goodsInfo;
 		}
 
-		public class GoodsInfoBean implements Serializable {
-			private static final long serialVersionUID = 4766493430148462012L;
 
-			@Override
-			public String toString() {
-				return specName + ":" + specValue;
-			}
+	}
 
-			/**
-			 * tabID : 0
-			 * tabName : 颜色
-			 * tabValue : 白
-			 */
+	public class GoodsInfoBean implements Serializable {
+		private static final long serialVersionUID = 4766493430148462012L;
 
-			private int specId;
-			private String specName;
-			private String specValue;
+		/**
+		 * tabID : 0
+		 * tabName : 颜色
+		 * tabValue : 白
+		 */
 
-			public int getTabID() {
-				return specId;
-			}
+		private int gspId;
+		private String specName;
+		private String gspValue;
 
-			public void setTabID(int tabID) {
-				this.specId = tabID;
-			}
 
-			public String getTabName() {
-				return specName;
-			}
+		public int getGspId() {
+			return gspId;
+		}
 
-			public void setTabName(String tabName) {
-				this.specName = tabName;
-			}
+		public String getSpecName() {
+			return specName;
+		}
 
-			public String getTabValue() {
-				return specValue;
-			}
+		public String getGspValue() {
+			return gspValue;
+		}
 
-			public void setTabValue(String tabValue) {
-				this.specValue = tabValue;
-			}
+		@Override
+		public String toString() {
+			return "GoodsInfoBean{" +
+					"gspId=" + gspId +
+					", specName='" + specName + '\'' +
+					", gspValue='" + gspValue + '\'' +
+					'}';
 		}
 	}
 }

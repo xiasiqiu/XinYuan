@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="vertical">
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_store_ad"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="125dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
+
         />
 
     <LinearLayout
@@ -24,7 +26,7 @@
         <TextView
             style="@style/RegularTextView"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:text="店铺排行榜"/>
 
 
@@ -32,6 +34,8 @@
             android:id="@+id/store__home_tabs"
             android:layout_width="match_parent"
             android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="3dp"
             android:background="@color/bg_white"
             app:tl_indicator_color="@color/colorPrimaryDark"
@@ -40,7 +44,7 @@
             app:tl_tab_space_equal="true"
             app:tl_textSelectColor="@color/colorPrimaryDark"
             app:tl_textUnselectColor="@color/tv_name"
-            app:tl_textsize="@dimen/tv_Normal"
+            app:tl_textsize="@dimen/tv_light"
             app:tl_underline_color="@color/colorLine"
             app:tl_underline_gravity="BOTTOM"
             app:tl_underline_height="2px"/>
@@ -49,11 +53,12 @@
     </LinearLayout>
 
     <com.xinyuan.xyshop.widget.NoScrollViewPager
-        android:id="@+id/vp_content"
+        android:id="@+id/viewpage_store"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="250dp"
         android:layout_below="@id/store__tabs"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        tools:ignore="InefficientWeight"/>
 
     <TextView
         style="@style/NormalTextView"

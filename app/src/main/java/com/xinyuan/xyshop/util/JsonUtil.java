@@ -1,7 +1,6 @@
 package com.xinyuan.xyshop.util;
 
 import com.google.gson.Gson;
-import com.xinyuan.xyshop.bean.LzyResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;

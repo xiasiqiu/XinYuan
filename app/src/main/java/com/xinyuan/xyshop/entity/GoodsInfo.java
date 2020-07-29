@@ -1,7 +1,10 @@
 package com.xinyuan.xyshop.entity;
 
+import java.math.BigDecimal;
+
 /**
- * Created by Administrator on 2017/5/31.
+ * Created by fx on 2017/5/31.
+ * 商品数据
  */
 
 public class GoodsInfo {
@@ -10,7 +13,7 @@ public class GoodsInfo {
 	protected boolean isChoosed;
 	private String imageUrl;
 	private String desc;
-	private double price;
+	private BigDecimal price;
 	private int count;
 	private int position;
 	private String color;
@@ -18,7 +21,7 @@ public class GoodsInfo {
 	private int goodsImg;
 	private double discountPrice;
 
-	public GoodsInfo(String id, String name, String desc, double price, int count, String color,
+	public GoodsInfo(String id, String name, String desc, BigDecimal price, int count, String color,
 	                 String size, int goodsImg, double discountPrice) {
 		Id = id;
 		this.name = name;
@@ -71,11 +74,11 @@ public class GoodsInfo {
 		this.desc = desc;
 	}
 
-	public double getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
 

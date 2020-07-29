@@ -16,7 +16,7 @@
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:layout_margin="10dp"
-            android:scaleType="fitXY"/>
+           />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -35,17 +35,26 @@
 
 
             <TextView
-                android:id="@+id/tv_good_active"
+                android:id="@+id/tv_good_type"
                 style="@style/SmallTextView"
                 android:layout_below="@id/tv_goods_name"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/button_bg"
                 android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
+                android:paddingLeft="11dp"
+                android:paddingRight="11dp"
                 android:paddingTop="5dp"
                 android:text="虚拟兑换"
-                android:textColor="@color/bg_white"/>
+                android:textColor="@color/bg_white"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/tv_good_active"
+                style="@style/RegularTextView"
+                android:layout_below="@id/tv_goods_name"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/tv_price"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:id="@+id/ll_tv_sell"
@@ -58,19 +67,22 @@
 
                 <TextView
                     android:id="@+id/tv_goods_sellnum"
-                    style="@style/SmallHintTextView"/>
+                    style="@style/SmallHintTextView"
+                    />
 
                 <TextView
                     android:id="@+id/tv_goods_talk"
                     style="@style/SmallHintTextView"
-                    android:layout_marginLeft="15dp"/>
+                    android:layout_marginLeft="15dp"
+                    />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_goods_price"
                 style="@style/GoodsPriceTextView"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="20dp"
+                />
 
         </RelativeLayout>
     </LinearLayout>

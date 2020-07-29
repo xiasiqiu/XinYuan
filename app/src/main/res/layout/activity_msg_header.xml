@@ -5,14 +5,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/msg_toolbar"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="?attr/actionBarSize"
     android:background="@color/colorPrimary"
+    android:elevation="3dp"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="match_parent"
         android:background="@color/bg_white"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -23,15 +24,15 @@
             android:id="@+id/brand_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:padding="10dp"
             android:src="@drawable/icon_back"/>
 
 
         <com.flyco.tablayout.SegmentTabLayout
             android:id="@+id/stab_msg"
+            android:layout_width="0dp"
             android:layout_height="30dp"
-            android:layout_width="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="100dp"
             android:layout_marginRight="100dp"

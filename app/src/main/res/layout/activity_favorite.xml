@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_gray"
@@ -10,13 +8,63 @@
 
     <include layout="@layout/view_header_tv_tv"/>
 
-    <View
-        style="@style/XYLine"/>
-
-    <com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView
-        android:id="@+id/recycler_view"
+    <com.youth.xframe.widget.loadingview.XLoadingView
+        android:id="@+id/lodingView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_bg"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </com.youth.xframe.widget.loadingview.XLoadingView>
+
+    <RelativeLayout
+        android:id="@+id/rl_edit"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/bg_white"
+        android:elevation="3dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:textColor="@color/bg_white"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/bt_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_bg"
+            android:text="分享"
+            android:visibility="gone"
+            android:textColor="@color/bg_white"/>
+
+        <Button
+            android:id="@+id/bt_detelte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_bg_dark"
+            android:text="删除"
+            android:textColor="@color/bg_white"/>
+
+    </RelativeLayout>
 </LinearLayout>

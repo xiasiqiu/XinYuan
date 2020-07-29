@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/rootview"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:clickable="true"
+              android:orientation="vertical">
+
+    <include layout="@layout/view_header_chatting"/>
+
+
+    <cn.bingoogolapple.refreshlayout.BGARefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/chat_content">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_msg_detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                />
+
+    </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
+
+    <include
+        layout="@layout/item_reply_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

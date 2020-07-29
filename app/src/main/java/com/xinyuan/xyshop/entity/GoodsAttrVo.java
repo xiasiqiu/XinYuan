@@ -1,7 +1,8 @@
 package com.xinyuan.xyshop.entity;
 
 /**
- * Created by Administrator on 2017/5/25.
+ * Created by fx on 2017/5/25.
+ * 商品属性数据
  */
 
 public class GoodsAttrVo {

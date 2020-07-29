@@ -5,47 +5,52 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar_iv"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:elevation="3dp"
+    android:layout_height="?attr/actionBarSize"
     android:background="@color/colorPrimaryDark"
-    app:layout_collapseMode="pin"
-    app:popupTheme="@style/AppTheme.PopupOverlay"
+    android:elevation="3dp"
     app:contentInsetLeft="0dp"
-    app:contentInsetStart="0dp">
+    app:contentInsetStart="0dp"
+    app:layout_collapseMode="pin"
+    app:popupTheme="@style/AppTheme.PopupOverlay">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="match_parent"
         android:background="@color/bg_white"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/iv_header_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:padding="10dp"
             android:src="@drawable/icon_back"/>
 
         <TextView
             android:id="@+id/tv_header_center"
             style="@style/BlodTextView"
             android:layout_centerInParent="true"
+            android:maxWidth="150dp"
+            android:singleLine="true"
             />
 
-        <ImageView
+        <cn.bingoogolapple.badgeview.BGABadgeImageView
             android:id="@+id/iv_header_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/act_home_msg_de"/>
+            android:layout_marginRight="20dp"
+            android:padding="3dp"
+            android:src="@drawable/act_home_msg_de"
+            app:badge_gravity="rightTop"
+            app:badge_horizontalMargin="0dp"/>
 
 
     </RelativeLayout>

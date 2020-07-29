@@ -1,12 +1,14 @@
 package com.xinyuan.xyshop.even;
 
 /**
- * Created by Administrator on 2017/6/30.
+ * Created by fx on 2017/6/30.
+ * 登录消息
  */
 
 public class LoginPageEvent {
 	public String type;
 	public boolean loginStatus;
+	public String Token;
 
 	public LoginPageEvent(String type) {
 		this.type = type;
@@ -15,6 +17,12 @@ public class LoginPageEvent {
 	public LoginPageEvent(String type, boolean loginStatus) {
 		this.type = type;
 		this.loginStatus = loginStatus;
+	}
+
+	public LoginPageEvent(String type, boolean loginStatus, String token) {
+		this.type = type;
+		this.loginStatus = loginStatus;
+		this.Token = token;
 	}
 
 	public String getType() {
@@ -33,11 +41,17 @@ public class LoginPageEvent {
 		this.loginStatus = loginStatus;
 	}
 
+
+	public String getToken() {
+		return Token;
+	}
+
 	@Override
 	public String toString() {
 		return "LoginPageEvent{" +
 				"type='" + type + '\'' +
 				", loginStatus=" + loginStatus +
+				", Token='" + Token + '\'' +
 				'}';
 	}
 }

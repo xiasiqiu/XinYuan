@@ -19,9 +19,9 @@
             android:textColor="@color/bg_white"/>
 
         <TextView
+            android:id="@+id/tv_money"
             style="@style/RegularTextView"
             android:layout_alignParentBottom="true"
-            android:text="128.00"
             android:textColor="@color/bg_white"/>
 
     </RelativeLayout>

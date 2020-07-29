@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cart_toolbar"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="?attr/actionBarSize"
     android:elevation="3dp"
     android:background="@color/colorPrimaryDark"
     app:contentInsetLeft="0dp"
@@ -13,7 +13,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="match_parent"
         android:background="@color/bg_white"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -24,8 +24,9 @@
             android:id="@+id/car_btn_scan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/act_home_scan_de"/>
 
         <TextView

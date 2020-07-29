@@ -1,95 +1,96 @@
 package com.xinyuan.xyshop.model;
 
 
-import com.xinyuan.xyshop.entity.CouponBean;
-import com.xinyuan.xyshop.entity.GoodListItem;
+import com.xinyuan.xyshop.bean.GoodListItemBean;
+import com.xinyuan.xyshop.bean.StoreBean;
+import com.xinyuan.xyshop.bean.StoreCouponBean;
 import com.xinyuan.xyshop.entity.ItemData;
-import com.xinyuan.xyshop.entity.StoreInfo;
-import com.xinyuan.xyshop.entity.StoreInfoBean;
 
 import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/7/12.
+ * Created by fx on 2017/7/12.
+ * 店铺首页数据
  */
 
 public class StoreHomeModel implements Serializable {
 
 	private static final long serialVersionUID = -620387687838371096L;
 	private ItemData ad;
-	private List<CollGood> favList;
-	private List<CollGood> sellList;
-	private List<GoodListItem> recomList;
-	private List<CouponBean> couponList;
-	private StoreInfoBean storeInfo;
-
-
-
-
-	@Override
-	public String toString() {
-		return "StoreHomeModel{" +
-				"ad=" + ad +
-				", sellList=" + sellList +
-				", favList=" + favList +
-				", recomList=" + recomList +
-				", couponBeanList=" + couponList +
-				", storeInfo=" + storeInfo +
-				'}';
-	}
-
-	public StoreInfoBean getStoreInfo() {
-		return storeInfo;
-	}
+	private List<CollGood> favoriteGoodsList;
+	private List<CollGood> sellGoodsList;
+	private List<GoodListItemBean> recommendedGoodsList;
+	private List<StoreCouponBean> couponList;
+	private StoreBean storeInfo;
 
 	public ItemData getAd() {
 		return ad;
 	}
 
-	public List<CollGood> getColList() {
-		return sellList;
+	public List<CollGood> getFavoriteGoodsList() {
+		return favoriteGoodsList;
 	}
 
-	public List<CollGood> getFavList() {
-		return favList;
+	public List<CollGood> getSellGoodsList() {
+		return sellGoodsList;
 	}
 
-	public List<GoodListItem> getRecomList() {
-		return recomList;
+	public List<GoodListItemBean> getRecommendedGoodsList() {
+		return recommendedGoodsList;
 	}
 
-	public List<CouponBean> getCouponBeanList() {
+	public List<StoreCouponBean> getCouponList() {
 		return couponList;
 	}
 
+	public StoreBean getStoreInfo() {
+		return storeInfo;
+	}
+
 	public class CollGood implements Serializable {
+		private static final long serialVersionUID = -1730631178968044282L;
+		private long goodsId;
+		private String goodsImg;
+		private long goodsSum;
+		private int goodsType;
 
-		private static final long serialVersionUID = -1192150772330990270L;
-		private int goodId;
-		private String goodImg;
-		private int goodSellNum;
-
-		public int getGoodId() {
-			return goodId;
+		public long getGoodsId() {
+			return goodsId;
 		}
 
-		public String getGoodImg() {
-			return goodImg;
+		public String getGoodsImg() {
+			return goodsImg;
 		}
 
-		public int getGoodSellNum() {
-			return goodSellNum;
+		public long getGoodsSum() {
+			return goodsSum;
+		}
+
+		public int getGoodsType() {
+			return goodsType;
 		}
 
 		@Override
 		public String toString() {
 			return "CollGood{" +
-					"goodId=" + goodId +
-					", goodImg='" + goodImg + '\'' +
-					", goodSellNum=" + goodSellNum +
+					"goodsId=" + goodsId +
+					", goodsImg='" + goodsImg + '\'' +
+					", goodsSum=" + goodsSum +
+					", goodsType=" + goodsType +
 					'}';
 		}
 	}
 
+	@Override
+	public String toString() {
+		return "StoreHomeModel{" +
+				"ad=" + ad +
+				", favoriteGoodsList=" + favoriteGoodsList +
+				", sellGoodsList=" + sellGoodsList +
+				", recommendedGoodsList=" + recommendedGoodsList +
+				", couponList=" + couponList +
+				", storeInfo=" + storeInfo +
+				'}';
+	}
 }

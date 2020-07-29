@@ -6,9 +6,8 @@
     <FrameLayout
         android:id="@+id/main_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"/>
 
-    <!--&lt;!&ndash;底部区域&ndash;&gt;-->
-    <!--<include layout="@layout/activity_main_bottom"/>-->
 </LinearLayout>
 

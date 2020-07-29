@@ -17,18 +17,19 @@
 
         <Button
             android:id="@+id/bt_order_item_store"
+            style="?android:attr/buttonStyle"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:background="@null"
             android:drawableLeft="@drawable/ic_store"
             android:drawablePadding="10dp"
             android:drawableRight="@drawable/ic_right_row"
             android:text=""
-            android:textSize="@dimen/tv_light"
             android:textColor="@color/tv_name"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
+            android:textSize="@dimen/tv_Normal"/>
 
         <TextView
             android:id="@+id/tv_order_item_status"
@@ -50,20 +51,20 @@
         app:flexWrap="wrap"/>
 
     <View
-        style="@style/XYLine"
-        android:layout_marginTop="10dp"/>
+        style="@style/XYLine"/>
 
     <TextView
         android:id="@+id/tv_order_good_price"
         style="@style/LightTextView"
         android:layout_gravity="right"
         android:layout_marginTop="10dp"
-        android:text=""
+        android:layout_marginBottom="10dp"
         android:textColor="@color/tv_hint"/>
 
     <View
+        android:id="@+id/view_bottom"
         style="@style/XYLine"
-        android:layout_marginTop="10dp"/>
+        android:visibility="gone"/>
 
     <LinearLayout
         android:id="@+id/ll_order_bt_close"
@@ -73,7 +74,6 @@
         android:layout_marginBottom="5dp"
         android:layout_marginTop="10dp"
         android:visibility="gone">
-
 
         <Button
             android:id="@+id/bt_order_close_detele"
@@ -96,6 +96,7 @@
 
         <Button
             android:id="@+id/bt_order_detele"
+            style="?android:attr/buttonStyle"
             android:layout_width="70dp"
             android:layout_height="26dp"
             android:layout_marginRight="10dp"
@@ -106,21 +107,12 @@
 
         <Button
             android:id="@+id/bt_order_finish_logistical"
+            style="?android:attr/buttonStyle"
             android:layout_width="70dp"
             android:layout_height="26dp"
-            android:layout_marginRight="10dp"
             android:background="@drawable/bt_unselect_normal"
             android:text="查看物流"
             android:textColor="@color/tv_name"
-            android:textSize="@dimen/tv_small"/>
-
-        <Button
-            android:id="@+id/bt_order_eva_later"
-            android:layout_width="70dp"
-            android:layout_height="26dp"
-            android:background="@drawable/bt_unselect_red"
-            android:text="追加评论"
-            android:textColor="@color/tv_price"
             android:textSize="@dimen/tv_small"/>
     </LinearLayout>
 
@@ -136,21 +128,12 @@
 
         <Button
             android:id="@+id/bt_order_dpj_logistical"
+            style="?android:attr/buttonStyle"
             android:layout_width="70dp"
             android:layout_height="26dp"
-            android:layout_marginRight="10dp"
             android:background="@drawable/bt_unselect_normal"
             android:text="查看物流"
             android:textColor="@color/tv_name"
-            android:textSize="@dimen/tv_small"/>
-
-        <Button
-            android:id="@+id/bt_order_eva"
-            android:layout_width="70dp"
-            android:layout_height="26dp"
-            android:background="@drawable/bt_unselect_red"
-            android:text="评价"
-            android:textColor="@color/tv_price"
             android:textSize="@dimen/tv_small"/>
     </LinearLayout>
 
@@ -165,6 +148,7 @@
 
         <Button
             android:id="@+id/bt_order_contatct"
+            style="?android:attr/buttonStyle"
             android:layout_width="70dp"
             android:layout_height="26dp"
             android:layout_marginRight="10dp"
@@ -175,6 +159,7 @@
 
         <Button
             android:id="@+id/bt_order_cancel"
+            style="?android:attr/buttonStyle"
             android:layout_width="70dp"
             android:layout_height="26dp"
             android:layout_marginRight="10dp"
@@ -185,6 +170,7 @@
 
         <Button
             android:id="@+id/bt_order_pay"
+            style="?android:attr/buttonStyle"
             android:layout_width="70dp"
             android:layout_height="26dp"
             android:background="@drawable/bt_unselect_red"
@@ -204,6 +190,7 @@
 
         <Button
             android:id="@+id/bt_order_logistical"
+            style="?android:attr/buttonStyle"
             android:layout_width="70dp"
             android:layout_height="26dp"
             android:layout_marginRight="10dp"
@@ -214,6 +201,7 @@
 
         <Button
             android:id="@+id/bt_order_suertake"
+            style="?android:attr/buttonStyle"
             android:layout_width="70dp"
             android:layout_height="26dp"
             android:background="@drawable/bt_unselect_red"
@@ -221,4 +209,5 @@
             android:textColor="@color/tv_price"
             android:textSize="@dimen/tv_small"/>
     </LinearLayout>
+
 </LinearLayout>

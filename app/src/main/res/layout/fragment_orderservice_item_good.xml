@@ -1,67 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="90dp"
-              android:background="@color/bg_white"
-              android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_white"
+                android:orientation="vertical"
+                android:paddingBottom="10dp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="10dp">
+    <View
+        style="@style/LightLine"/>
 
-        <ImageView
-            android:id="@+id/iv_good_img"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@drawable/test_good_img"
-            />
+    <ImageView
+        android:id="@+id/iv_good_img"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        />
 
+    <TextView
+        android:id="@+id/tv_good_name"
+        style="@style/NormalTextView"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/iv_good_img"
+        android:ellipsize="end"
+        android:maxLines="2"
+        />
 
-        <TextView
-            android:id="@+id/tv_good_name"
-            style="@style/NormalTextView"
-            android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@id/iv_good_img"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:text="雅诗兰黛 红石榴泡沫洁面乳125ml清洁补水保湿 "/>
+    <TextView
+        android:id="@+id/tv_good_spec"
+        style="@style/LightTextView"
+        android:layout_below="@id/tv_good_name"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/iv_good_img"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/tv_hint"/>
 
-        <TextView
-            android:id="@+id/tv_good_spec"
-            style="@style/LightTextView"
-            android:layout_below="@id/tv_good_name"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_toRightOf="@id/iv_good_img"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="已选：“90ml”"
-            android:textColor="@color/tv_hint"/>
+    <TextView
+        android:id="@+id/tv_good_pice"
+        style="@style/LightTextView"
+        android:layout_below="@id/tv_good_spec"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/iv_good_img"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/tv_price"/>
 
-        <TextView
-            android:id="@+id/tv_good_status"
-            style="@style/LightTextView"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@id/iv_good_img"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="退款成功 退货成功"
-            android:textColor="@color/tv_price"/>
-
-        <TextView
-            android:id="@+id/tv_good_pice"
-            style="@style/NormalTextView"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="退款金额￥123"
-            android:textColor="@color/tv_price"/>
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/tv_good_status"
+        style="@style/LightTextView"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv_good_spec"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/tv_price"/>
 
     <View
         style="@style/LightLine"
+        android:layout_below="@id/tv_good_status"
         android:layout_marginTop="10dp"/>
-</LinearLayout>
+
+    <Button
+        android:id="@+id/bt_service_detail"
+        android:layout_width="70dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv_good_status"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bt_unselect_red"
+        android:text="查看详细"
+        android:textColor="@color/tv_price"
+        android:textSize="@dimen/tv_small"/>
+</RelativeLayout>
+
+

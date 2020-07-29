@@ -13,7 +13,7 @@ import android.widget.EditText;
 import com.xinyuan.xyshop.R;
 
 
-public class EditTextWithDel extends EditText {
+public class EditTextWithDel extends android.support.v7.widget.AppCompatEditText {
 	private final static String TAG = "EditTextWithDel";
 	private Drawable imgInable;
 

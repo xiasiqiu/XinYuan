@@ -7,9 +7,6 @@
 
     <include layout="@layout/view_header_tv_msg"/>
 
-    <View
-        style="@style/NoramLine"/>
-
     <RelativeLayout
         android:id="@+id/rl_pro_account"
         android:layout_width="match_parent"
@@ -22,23 +19,21 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/ic_mine_count"/>
+            android:background="@drawable/ic_mine_money1"/>
 
         <TextView
             android:id="@+id/tv_pro_account"
             style="@style/RegularTextView"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_toRightOf="@id/iv_pro_account"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="10dp"
             android:text="账户余额"/>
 
         <TextView
             android:id="@+id/tv_pro_count_hint"
             style="@style/NormalHintTextView"
             android:layout_below="@id/tv_pro_account"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="55dp"
             android:layout_marginTop="5dp"
-            android:layout_toRightOf="@id/iv_pro_account"
             android:text="预存款账户余额，充值及提现明细"/>
 
         <TextView
@@ -47,7 +42,6 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="25dp"
-            android:text="138.00元"
             android:textColor="@color/tv_hint"/>
 
         <ImageView
@@ -83,19 +77,17 @@
         <TextView
             android:id="@+id/tv_mine_coupon"
             style="@style/RegularTextView"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="55dp"
             android:layout_marginTop="15dp"
-            android:layout_toRightOf="@id/iv_mine_coupon"
-            android:text="店铺代金券"/>
+            android:text="优惠券"/>
 
         <TextView
             android:id="@+id/tv_mine_coupon_hint"
             style="@style/NormalHintTextView"
             android:layout_below="@id/tv_mine_coupon"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="55dp"
             android:layout_marginTop="5dp"
-            android:layout_toRightOf="@id/iv_mine_coupon"
-            android:text="店铺代金券使用情况"/>
+            android:text="优惠券使用情况"/>
 
         <TextView
             android:id="@+id/tv_mine_coupon_num"
@@ -103,7 +95,6 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="25dp"
-            android:text="10张"
             android:textColor="@color/tv_hint"/>
 
         <ImageView
@@ -139,19 +130,17 @@
         <TextView
             android:id="@+id/tv_mine_redpacke"
             style="@style/RegularTextView"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_toRightOf="@id/iv_mine_redpacke"
-            android:text="平台红包"/>
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="10dp"
+            android:text="红包"/>
 
         <TextView
             android:id="@+id/tv_mine_redpacke_hint"
             style="@style/NormalHintTextView"
             android:layout_below="@id/tv_mine_redpacke"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="55dp"
             android:layout_marginTop="5dp"
-            android:layout_toRightOf="@id/iv_mine_redpacke"
-            android:text="平台红包使用情况"/>
+            android:text="红包使用情况"/>
 
         <TextView
             android:id="@+id/tv_mine_redpacke_num"
@@ -159,7 +148,6 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="25dp"
-            android:text="5张"
             android:textColor="@color/tv_hint"/>
 
         <ImageView
@@ -192,22 +180,21 @@
             android:layout_marginLeft="10dp"
             android:background="@drawable/ic_mine_credit"/>
 
+
         <TextView
             android:id="@+id/tv_mine_credit"
             style="@style/RegularTextView"
-            android:text="会员积分"
-            android:layout_alignTop="@+id/iv_mine_credit"
-            android:layout_alignLeft="@+id/tv_mine_credit_hint"
-            android:layout_alignStart="@+id/tv_mine_credit_hint"/>
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="10dp"
+            android:text="会员积分"/>
 
         <TextView
             android:id="@+id/tv_mine_credit_hint"
+            style="@style/NormalHintTextView"
             android:layout_below="@id/tv_mine_credit"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="55dp"
             android:layout_marginTop="5dp"
-            android:layout_toRightOf="@id/iv_mine_credit"
-            android:text="会员积分获取及消费日志"
-            style="@style/NormalHintTextView"/>
+            android:text="会员积分获取及消费日志"/>
 
         <TextView
             android:id="@+id/tv_mine_credit_num"
@@ -215,7 +202,6 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="25dp"
-            android:text="25565分"
             android:textColor="@color/tv_hint"/>
 
         <ImageView

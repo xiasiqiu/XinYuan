@@ -8,9 +8,6 @@
 
     <include layout="@layout/view_header_tv_msg"/>
 
-    <View
-        style="@style/LightLine"/>
-
     <com.youth.xframe.widget.loadingview.XLoadingView
         android:id="@+id/brand_loadingView"
         android:layout_width="match_parent"
@@ -24,6 +21,7 @@
                 android:id="@+id/rv_brand"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="30dp"
                 />
 

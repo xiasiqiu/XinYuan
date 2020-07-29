@@ -3,21 +3,15 @@ package com.xinyuan.xyshop.widget.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.entity.GoodsEvaluate;
-import com.xinyuan.xyshop.util.GlideImageLoader;
-import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
-import com.youth.banner.Transformer;
-import com.youth.xframe.utils.log.XLog;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.xinyuan.xyshop.common.GlideImageLoader;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,39 +23,44 @@ import butterknife.OnClick;
 
 public class ClickBigImageDialog extends Dialog {
 
-	@BindView(R.id.bigimage_banner)
-	Banner banner;
-	private int position;
-	@BindView(R.id.ll_close)
-	LinearLayout tv_close;
+
+	@BindView(R.id.iv_header_left)
+	ImageView iv_header_left;
+	@BindView(R.id.iv_big_img)
+	ImageView iv_big_img;
+	@BindView(R.id.tv_eva)
+	TextView tv_eva;
 	@BindView(R.id.iv_close)
 	ImageView iv_close;
+	private String position;
+	private String evaInfo;
 
+	public ClickBigImageDialog(Context mContext, String evaInfo, String url) {
+		super(mContext, R.style.CommonDialog);
+		this.position = url;
+		this.evaInfo = evaInfo;
 
-	public ClickBigImageDialog(Context context, int position) {
-		super(context, R.style.CommonDialog);
-		this.position = position;
-		XLog.v("position"+position);
 	}
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView((int) R.layout.click_bigimage_list_show);
+		getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 		ButterKnife.bind((Dialog) this);
-		List<String> imgs = new ArrayList<>();
-		imgs.add("http://img30.360buyimg.com/shaidan/s616x405_jfs/t4699/49/2088711895/79151/7cdba7ce/58eb1a90Na939fc6b.jpg");
-		imgs.add("http://img30.360buyimg.com/shaidan/s616x405_jfs/t4426/42/2095712931/81237/4fe8af98/58eb1a90Nf9a70b96.jpg");
-		imgs.add("http://img30.360buyimg.com/shaidan/s616x405_jfs/t4699/49/2088711895/79151/7cdba7ce/58eb1a90Na939fc6b.jpg");
-
-		String s = imgs.get(position);
-		imgs.remove(position);
-		imgs.add(0, s);
-		banner.setBannerStyle(BannerConfig.NOT_INDICATOR)
-				.setImageLoader(new GlideImageLoader())
-				.setImages(imgs)
-				.setBannerAnimation(Transformer.Default)
-				.setIndicatorGravity(BannerConfig.CENTER)
-				.start();
+		iv_header_left.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				dismiss();
+			}
+		});
+		GlideImageLoader.setUrlImg(getContext(), position, iv_big_img);
+		iv_big_img.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				dismiss();
+			}
+		});
+		tv_eva.setText(evaInfo);
 	}
 
 	@OnClick(R.id.tv_close)
@@ -70,5 +69,9 @@ public class ClickBigImageDialog extends Dialog {
 		dismiss();
 	}
 
+	@Override
+	public void cancel() {
+		super.cancel();
+	}
 
 }

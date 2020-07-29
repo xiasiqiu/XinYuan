@@ -1,7 +1,8 @@
 package com.xinyuan.xyshop.even;
 
 /**
- * Created by Administrator on 2017/6/26.
+ * Created by fx on 2017/6/26.
+ * 主页四页面切换消息
  */
 
 public class TabSelectedEvent {

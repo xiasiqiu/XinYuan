@@ -4,7 +4,83 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <include layout="@layout/fragment_good_itemtab"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/bg_white"
+        android:elevation="1dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_goods_detail"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_goods_detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/good_detail"
+                android:textColor="@color/tv_hint"
+                android:textSize="@dimen/tv_Normal"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/colorLine"/>
+
+        <LinearLayout
+            android:id="@+id/ll_goods_config"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_goods_config"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/good_detail_config"
+                android:textColor="@color/tv_hint"
+                android:textSize="@dimen/tv_Normal"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/colorLine"/>
+
+        <LinearLayout
+            android:id="@+id/ll_goods_service"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_goods_service"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/good_detail_service"
+                android:textColor="@color/tv_hint"
+                android:textSize="@dimen/tv_Normal"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"/>
 
 
 </LinearLayout>

@@ -47,16 +47,86 @@
         <attr name="starFill" format="reference"/>
     </declare-styleable>
 
-    -<declare-styleable name="PaperButton">
-    <attr name="paper_text" format="string"/>
-    <attr name="paper_text_size" format="dimension"/>
-    <attr name="paper_text_color" format="color"/>
-    <attr name="paper_font" format="string"/>
-    <attr name="paper_color" format="color"/>
-    <attr name="paper_corner_radius" format="dimension"/>
-    <attr name="paper_shadow_radius" format="float"/>
-    <attr name="paper_shadow_offset_x" format="float"/>
-    <attr name="paper_shadow_offset_y" format="float"/>
-    <attr name="paper_shadow_color" format="color"/>
-</declare-styleable>
+    -
+    <declare-styleable name="PaperButton">
+        <attr name="paper_text" format="string"/>
+        <attr name="paper_text_size" format="dimension"/>
+        <attr name="paper_text_color" format="color"/>
+        <attr name="paper_font" format="string"/>
+        <attr name="paper_color" format="color"/>
+        <attr name="paper_corner_radius" format="dimension"/>
+        <attr name="paper_shadow_radius" format="float"/>
+        <attr name="paper_shadow_offset_x" format="float"/>
+        <attr name="paper_shadow_offset_y" format="float"/>
+        <attr name="paper_shadow_color" format="color"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="StateButton">
+        <!--text color-->
+        <attr name="normalTextColor" format="color|reference"/>
+        <attr name="pressedTextColor" format="color|reference"/>
+        <attr name="unableTextColor" format="color|reference"/>
+
+        <!--stroke width and color, dash width, dash gap-->
+        <attr name="strokeDashWidth" format="dimension|reference"/>
+        <attr name="strokeDashGap" format="dimension|reference"/>
+        <attr name="normalStrokeWidth" format="dimension|reference"/>
+        <attr name="pressedStrokeWidth" format="dimension|reference"/>
+        <attr name="unableStrokeWidth" format="dimension|reference"/>
+        <attr name="normalStrokeColor" format="color|reference"/>
+        <attr name="pressedStrokeColor" format="color|reference"/>
+        <attr name="unableStrokeColor" format="color|reference"/>
+
+        <!--background color-->
+        <attr name="normalBackgroundColor" format="color|reference"/>
+        <attr name="pressedBackgroundColor" format="color|reference"/>
+        <attr name="unableBackgroundColor" format="color|reference"/>
+
+        <!--background radius-->
+        <attr name="radius" format="dimension|reference"/>
+        <attr name="round" format="boolean|reference"/>
+
+        <!--animation duration-->
+        <attr name="animationDuration" format="integer|reference"/>
+    </declare-styleable>
+    <declare-styleable name="BubbleView">
+        <attr name="arrowWidth" format="dimension"/>
+        <attr name="angle" format="dimension"/>
+        <attr name="arrowHeight" format="dimension"/>
+        <attr name="arrowPosition" format="dimension"/>
+        <attr name="bubbleColor" format="color"/>
+        <attr name="arrowLocation" format="enum">
+            <enum name="left" value="0x00"/>
+            <enum name="right" value="0x01"/>
+            <enum name="top" value="0x02"/>
+            <enum name="bottom" value="0x03"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="AddSubView">
+        <!--是否可以手动输入-->
+        <attr name="editable" format="boolean"></attr>
+        <!--输入框的位置-->
+        <attr name="location" format="string"></attr>
+        <!-- 左右2边+-按钮的宽度 -->
+        <attr name="ImageWidth" format="dimension"/>
+        <!-- 中间EditText的宽度 -->
+        <attr name="contentWidth" format="dimension"/>
+        <!--中间TextView的大小-->
+        <attr name="contentTextSize" format="dimension"/>
+        <!--中间字体的颜色-->
+        <attr name="contentTextColor" format="color"/>
+        <!--整个控件的background-->
+        <attr name="all_background" format="color|reference"/>
+        <!--左面控件的背景-->
+        <attr name="leftBackground" format="color|reference"/>
+        <!--右面控件的背景-->
+        <attr name="rightBackground" format="color|reference"/>
+        <!--中间控件的背景-->
+        <attr name="contentBackground" format="color|reference"/>
+        <!--左面控件的资源-->
+        <attr name="leftResources" format="color|reference"/>
+        <!--右面控件的资源-->
+        <attr name="rightResources" format="color|reference"/>
+    </declare-styleable>
 </resources>

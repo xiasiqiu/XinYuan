@@ -1,7 +1,8 @@
 package com.xinyuan.xyshop.entity;
 
 /**
- * Created by Administrator on 2017/5/25.
+ * Created by fx on 2017/5/25.
+ * 产品购买数据
  */
 
 public class PreGoods {

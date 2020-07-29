@@ -9,14 +9,19 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.xinyuan.xyshop.R;
+import com.xinyuan.xyshop.bean.ServiceGoodBean;
+import com.xinyuan.xyshop.bean.ServiceGoodDetailBean;
 import com.xinyuan.xyshop.entity.HomeMultipleItem;
 import com.xinyuan.xyshop.entity.ServiceMultipleItem;
 import com.xinyuan.xyshop.model.HomeModel;
+import com.xinyuan.xyshop.model.ServiceGoodDetailModel;
+import com.youth.xframe.utils.log.XLog;
 
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/7/1.
+ * Created by fx on 2017/7/1.
+ * 退货详情列表Adapter
  */
 
 public class ServiceGoodsAdapter extends BaseMultiItemQuickAdapter<ServiceMultipleItem, BaseViewHolder> {
@@ -36,46 +41,83 @@ public class ServiceGoodsAdapter extends BaseMultiItemQuickAdapter<ServiceMultip
 
 	@Override
 	protected void convert(BaseViewHolder helper, ServiceMultipleItem item) {
+		ServiceGoodDetailBean goodBean = (ServiceGoodDetailBean) item.getObj();
+
 		switch (item.getItemType()) {
 			case ServiceMultipleItem.User:
-				if (helper.getLayoutPosition() == 0) {
+				RelativeLayout rl_goods_info = helper.getView(R.id.rl_goods_info);
+				View user_line = helper.getView(R.id.service_line);
+				switch (goodBean.getStep()) {
+					case 1: //发起退货
 
-				} else if (helper.getLayoutPosition() == 2) {
-					RelativeLayout rl_order_status = helper.getView(R.id.rl_order_status);
-					rl_order_status.setVisibility(View.GONE);
-					RelativeLayout rl_service_reason = helper.getView(R.id.rl_service_reason);
-					rl_service_reason.setVisibility(View.GONE);
-					RelativeLayout rl_service_price = helper.getView(R.id.rl_service_price);
-					rl_service_price.setVisibility(View.GONE);
-					TextView tv_status_title = helper.getView(R.id.tv_status_title);
-					tv_status_title.setText("买家已退货");
-					TextView tv_status_hint = helper.getView(R.id.tv_status_hint);
-					tv_status_hint.setVisibility(View.GONE);
-					TextView tv_goods_name_title = helper.getView(R.id.tv_goods_name_title);
-					tv_goods_name_title.setText("物流公司");
-					TextView tv_goods_name = helper.getView(R.id.tv_goods_name);
-					tv_goods_name.setText("顺丰快递");
-					TextView tv_good_orderId_title = helper.getView(R.id.tv_good_orderId_title);
-					tv_good_orderId_title.setText("物流单号");
-					TextView tv_good_orderId = helper.getView(R.id.tv_good_orderId);
-					tv_good_orderId.setText("78787987878787");
+						helper.setText(R.id.tv_info_time, goodBean.getHandlingTime());
+						helper.setText(R.id.tv_status_title, goodBean.getLog());
+						helper.setText(R.id.tv_status_hint, goodBean.getCountdown());
+
+						rl_goods_info.setVisibility(View.VISIBLE);
+						user_line.setVisibility(View.VISIBLE);
+
+						String info = goodBean.getInfo();
+
+
+						String goodName = info.substring(info.indexOf("商品名称:") + 5, info.indexOf("|订单编号"));
+						String orderNum = info.substring(info.indexOf("订单编号:") + 5, info.indexOf("|订单状态"));
+						String orderStatus = info.substring(info.indexOf("订单状态:") + 5, info.indexOf("|退货原因"));
+						String reason = info.substring(info.indexOf("退货原因:") + 5, info.indexOf("|金额"));
+						String money = info.substring(info.indexOf("金额") + 2, info.length());
+						helper.setText(R.id.tv_goods_name, goodName);
+						helper.setText(R.id.tv_good_orderId, orderNum);
+						helper.setText(R.id.tv_order_status, orderStatus);
+						helper.setText(R.id.tv_order_reason, reason);
+						helper.setText(R.id.tv_service_price, mContext.getString(R.string.money_rmb) + money);
+
+						break;
+					case 0: //买家已撤销
+						rl_goods_info.setVisibility(View.GONE);
+						user_line.setVisibility(View.GONE);
+						helper.setText(R.id.tv_status_title, goodBean.getLog());
+						break;
+
+					case 5: //买家已发货
+						rl_goods_info.setVisibility(View.GONE);
+						user_line.setVisibility(View.GONE);
+						helper.setText(R.id.tv_info_time, goodBean.getHandlingTime());
+						helper.setText(R.id.tv_status_title, goodBean.getLog());
+
+						break;
+
+
 				}
 				break;
 			case ServiceMultipleItem.Store:
-				if (helper.getLayoutPosition() == 1) {
-
-				} else if (helper.getLayoutPosition() == 3) {
-					TextView tv_status_title = helper.getView(R.id.tv_status_title);
-					tv_status_title.setText("卖家确认收货");
-					TextView tv_status_hint = helper.getView(R.id.tv_status_hint);
-					tv_status_hint.setVisibility(View.GONE);
-					LinearLayout ll_service_content = helper.getView(R.id.ll_service_content);
-					ll_service_content.setVisibility(View.GONE);
-					View service_line=helper.getView(R.id.service_line);
-					service_line.setVisibility(View.GONE);
-				} else if (helper.getLayoutPosition() == 4) {
-
+				View store_line = helper.getView(R.id.service_line);
+				switch (goodBean.getStep()) {
+					case 2: //卖家同意退货
+						store_line.setVisibility(View.VISIBLE);
+						helper.setVisible(R.id.tv_store_content, true);
+						helper.setText(R.id.tv_status_title, goodBean.getLog());
+						helper.setText(R.id.tv_status_hint, goodBean.getCountdown());
+						helper.setText(R.id.tv_service_time, goodBean.getHandlingTime());
+						helper.setText(R.id.tv_store_content, goodBean.getInfo());
+						break;
+					case 3: //卖家拒绝退货
+						helper.setText(R.id.tv_status_title, goodBean.getLog());
+						helper.setText(R.id.tv_service_time, goodBean.getHandlingTime());
+						break;
+					case 6: //卖家已收到退货
+						helper.setText(R.id.tv_status_title, goodBean.getLog());
+						helper.setText(R.id.tv_service_time, goodBean.getHandlingTime());
+						break;
+					case 7: //卖家同意退款
+						helper.setText(R.id.tv_status_title, goodBean.getLog());
+						helper.setText(R.id.tv_service_time, goodBean.getHandlingTime());
+						break;
+					case 8: //卖家拒绝退款
+						helper.setText(R.id.tv_status_title, goodBean.getLog());
+						helper.setText(R.id.tv_service_time, goodBean.getHandlingTime());
+						break;
 				}
+
 				break;
 		}
 	}

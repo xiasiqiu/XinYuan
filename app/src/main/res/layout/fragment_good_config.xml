@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="@color/bg_white"
               android:orientation="vertical">
 
-    <ImageView
+    <com.youth.xframe.widget.loadingview.XLoadingView
+        android:id="@+id/loadingView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/test_good_config"/>
+        app:emptyView="@layout/view_empty_good_config">
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_good_config"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"/>
+    </com.youth.xframe.widget.loadingview.XLoadingView>
 </LinearLayout>

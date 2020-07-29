@@ -3,7 +3,7 @@
        android:shape="rectangle">
 
     <!-- android:radius 弧形的半径 -->
-    <corners android:radius="3dip"/>
+    <corners android:radius="5dip"/>
     <!-- padding：Button里面的文字与Button边界的间隔 -->
     />
     <!-- 边框的宽度和颜色颜色 -->

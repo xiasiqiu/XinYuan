@@ -5,14 +5,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/msg_toolbar"
     android:layout_width="match_parent"
-    android:layout_height="45dp"
-    android:background="@color/colorPrimary"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimaryDark"
+    android:elevation="3dp"
     app:contentInsetLeft="0dp"
     app:contentInsetStart="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="match_parent"
         android:background="@color/bg_white"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -23,8 +24,9 @@
             android:id="@+id/brand_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
             android:gravity="center"
+            android:padding="10dp"
             android:src="@drawable/icon_back"/>
 
 
@@ -39,18 +41,21 @@
             android:layout_weight="6"
             app:tl_bar_color="#ffffff"
             app:tl_indicator_anim_enable="true"
-            app:tl_indicator_color="@color/colorPrimary"
+            app:tl_indicator_color="@color/colorPrimaryDark"
             app:tl_indicator_corner_radius="2dp"
             app:tl_textBold="SELECT"/>
 
-        <ImageView
-            android:id="@+id/brand_btn_msg"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+        <cn.bingoogolapple.badgeview.BGABadgeImageView
+            android:id="@+id/iv_order_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="40px"
-            android:background="@drawable/act_home_msg_de"/>
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:padding="3dp"
+            android:src="@drawable/act_home_msg_de"
+            app:badge_gravity="rightTop"
+            app:badge_horizontalMargin="0dp"/>
 
 
     </LinearLayout>

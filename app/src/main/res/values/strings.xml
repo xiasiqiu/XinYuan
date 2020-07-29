@@ -1,14 +1,7 @@
 <resources>
-    <string name="app_name">XYShop</string>
-    <string name="act_home_bottom_index">首页</string>
-    <string name="act_home_bottom_category">分类</string>
-    <string name="act_home_bottom_cart">购物车</string>
-    <string name="act_home_bottom_mine">个人中心</string>
+    <string name="app_name">共享经济商城</string>
 
 
-    <string name="act_home_top_scan">扫一扫</string>
-    <string name="act_home_top_msg">消息</string>
-    <string name="act_search_search">搜索</string>
     <string name="search_search_hint">搜索关键字</string>
     <string name="hot_search">热门搜索</string>
     <string name="search_history">搜索历史</string>
@@ -17,65 +10,50 @@
 
     <string name="new_notice">最新动态:</string>
     <string name="more">更多</string>
-    <string name="recom_brand">精选品牌</string>
     <string name="shop_car">购物车</string>
     <string name="shop_car_notice">登陆后可同步电脑与手机购物车中的商品</string>
 
 
     <string name="com_sort">综合排序</string>
-    <string name="hon_sort">信用排序</string>
+    <string name="hon_sort">评论数排序</string>
     <string name="price_up">价格从低到高</string>
     <string name="price_down">价格从高到低</string>
     <string name="sell_sort">销量优先</string>
     <string name="select_sort">筛选</string>
     <string name="bt_rest">重置</string>
     <string name="bt_ok">确定</string>
+    <string name="bt_cancel">取消</string>
 
 
     <string name="good_detail_title">图文详情</string>
     <string name="good_detail">商品详情</string>
-    <string name="goods">商品</string>
     <string name="packup">收起</string>
     <string name="all_ave">全部评论</string>
+    <string name="text_eva">评论:</string>
     <string name="good_ave">好评</string>
     <string name="med_ave">中评</string>
     <string name="bad_ave">差评</string>
     <string name="pic_ave">晒图</string>
     <string name="good_detail_config">规格参数</string>
     <string name="good_detail_service">售后服务</string>
-    <string name="press_again_exit">再按一次退出</string>
 
 
-    <string name="mine_input_name">手机/会员名/邮箱</string>
-    <string name="mine_input_pass">请输入密码</string>
     <string name="login_fast">快捷登录</string>
     <string name="forget_pass">忘记密码</string>
     <string name="bt_login">登录</string>
+    <string name="bt_reg">注册</string>
+    <string name="bt_reg_next">下一步</string>
     <string name="login_fast_hint">用以下账号登录</string>
-    <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
     <string name="money_rmb">¥</string>
 
-    <string name="permission_rationale">"Contacts permissions are needed for
-        providing email completions."
-    </string>
     <string name="brandrecomm">品牌推荐#</string>
     <string name="brandtitle">品牌店铺</string>
     <string name="user_recomm">为您推荐</string>
     <string name="take_pic">拍照</string>
     <string name="chose_pic">选择相册</string>
-    <string name="login_inputname">输入用户名</string>
     <string name="search_hint">请输入关键字</string>
-    <string name="dicount">促销:</string>
     <string name="good_choses">选择</string>
     <string name="good_spec">请选择产品规格</string>
     <string name="good_eva">评价</string>
@@ -86,6 +64,73 @@
     <string name="store_introduce">店铺介绍</string>
     <string name="store_voucher">免费领券</string>
     <string name="store_service">联系客服</string>
+
+    <string name="net_error_msg">网络错误</string>
+    <string name="input_phone">请输入手机号</string>
+    <string name="mine_credit">我的积分  </string>
+    <string name="show_more_order">查看更多订单</string>
+    <string name="mine_order">我的订单</string>
+    <string name="mine_history">足迹</string>
+    <string name="mine_fav_store">关注店铺</string>
+    <string name="mine_collect">收藏夹</string>
+    <string name="mine_improve_info">完善信息</string>
+    <string name="order_pay">待付款</string>
+    <string name="order_send">待发货</string>
+    <string name="order_get">待收货</string>
+    <string name="order_eva">待评价</string>
+    <string name="order_service">退款/售后</string>
+    <string name="mine_property">我的资产</string>
+    <string name="mine_all_property">查看全部财产</string>
+    <string name="mine_acount">预存款</string>
+    <string name="mine_coupon">优惠券</string>
+    <string name="mine_red">红包</string>
+    <string name="credit">积分</string>
+    <string name="user_setting">用户设置</string>
+    <string name="phone_not">您还未绑定手机号</string>
+    <string name="menu_home">首页</string>
+    <string name="menu_catrgory">分类</string>
+    <string name="menu_mine">我的</string>
+    <string name="noitce_exit">请再按一次返回即可退出</string>
+    <string name="good_detele_success">商品已删除</string>
+    <string name="good_detele_error">删除不成功，请重试？</string>
+    <string name="good_selle_num">销量:</string>
+    <string name="menu_more">查看更多</string>
+    <string name="credit_mall">积分中心</string>
+    <string name="group_mall">团购商城</string>
+    <string name="sign_day">今日签到</string>
+    <string name="address_detele_success">该地址已删除</string>
+    <string name="coupon_usetime">使用期限：</string>
+    <string name="text_to">至</string>
+    <string name="month_sell_num">月销量:</string>
+    <string name="order_dfk">等待买家付款</string>
+    <string name="order_dfh">等待卖家发货</string>
+    <string name="order_ygq">已过期</string>
+    <string name="order_dsy">待使用</string>
+    <string name="order_yfh">卖家已发货</string>
+    <string name="order_dpj">等待评价</string>
+    <string name="order_success">交易成功</string>
+    <string name="order_finish">订单完成</string>
+    <string name="order_close">交易关闭</string>
+    <string name="text_chosed">已选:</string>
+    <string name="order_notice_recvie">请您收到货后再点击确定，否则可能钱货两空！</string>
+    <string name="order_notice_close">确定要取消订单吗？</string>
+    <string name="order_notice_detele">确定要删除订单吗？</string>
+    <string name="coupon_mall">【平台优惠券】</string>
+    <string name="coupon_store">【店铺优惠券】</string>
+    <string name="red_mall">【平台红包】</string>
+    <string name="red_store">【店铺红包】</string>
+    <string name="text_notice_filter">筛选个数不能超过3个！</string>
+    <string name="order_eva_later_day">用户当天追评</string>
+    <string name="text_choesed">已领取</string>
+    <string name="buy_good_low_stock">对不起，您购买商品库存不足</string>
+    <string name="buy_good_up_stock">对不起，您购买商品数量超过上限</string>
+    <string name="buy_good_undercarriage">商品已下架！</string>
+    <string name="buy_recvice_null">收货人：无</string>
+    <string name="buy_revice_address_null">还未添加收货地址，请立即添加</string>
+    <string name="text_revicer">收货人：</string>
+    <string name="text_total_express">最终邮费：</string>
+    <string name="text_total_coupon">优惠券优惠券金额：</string>
+    <string name="text_total_red">红包优惠金额：</string>
 
 
 </resources>

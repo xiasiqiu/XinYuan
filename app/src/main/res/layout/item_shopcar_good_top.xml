@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/bg_white"
+              android:gravity="center_horizontal"
+              android:layout_marginTop="5dp"
+              android:orientation="horizontal"
+              android:padding="10dp">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="猜你喜欢"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/tv_Regular"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="recommendation"
+        android:textColor="@color/tv_hint"
+        android:textSize="@dimen/tv_Regular"/>
+
+</LinearLayout>

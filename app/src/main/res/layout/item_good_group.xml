@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="255dp"
+    android:layout_margin="1px"
+    android:background="@color/bg_white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="255dp"
+        android:layout_marginBottom="1px"
+        android:layout_marginLeft="1px"
+        android:layout_marginRight="1px"
+        android:layout_marginTop="1px">
+
+        <ImageView
+            android:id="@+id/ivGoodPic"
+            android:layout_width="match_parent"
+            android:layout_height="185dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_goods_time"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="155dp"
+            android:background="@color/colorTransparency_B"
+            android:padding="5dp"
+            android:textColor="@color/bg_white"
+            android:textSize="@dimen/tv_Regular"
+            />
+
+        <TextView
+            android:id="@+id/tv_goods_name"
+            style="@style/GoodsNameTextView"
+            android:layout_below="@id/ivGoodPic"
+            android:ellipsize="end"
+            android:letterSpacing="0.01"
+            android:textSize="@dimen/tv_Regular"
+            android:lineSpacingExtra="3dp"
+            android:maxLines="2"
+            android:padding="5dp"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_goods_price"
+            style="@style/GoodsPriceTextView"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:padding="5dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_goods_sellnum"
+            style="@style/NormalHintTextView"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:padding="5dp"
+            />
+
+
+    </RelativeLayout>
+
+
+</FrameLayout>

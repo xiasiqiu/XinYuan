@@ -9,20 +9,33 @@
     <ImageView
         android:id="@+id/iv_good_img"
         android:layout_width="match_parent"
-        android:scaleType="fitXY"
-        android:layout_height="115dp"/>
+        android:layout_height="120dp"/>
 
 
-    <Button
-        android:id="@+id/bt_footer"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@null"
-        android:drawableRight="@drawable/icon_right_more"
-        android:gravity="left|center_vertical"
+        android:paddingBottom="5dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:text="￥123.00"
-        android:textColor="@color/tv_price"
-        />
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/tv_good_name"
+            style="@style/NormalTextView"
+            android:ellipsize="end"
+            android:layout_centerVertical="true"
+            android:maxLines="1"
+            android:textColor="@color/tv_price"
+            />
+
+        <ImageView
+            android:id="@+id/iv_detele"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:src="@drawable/ic_address_delte"/>
+    </RelativeLayout>
 </LinearLayout>

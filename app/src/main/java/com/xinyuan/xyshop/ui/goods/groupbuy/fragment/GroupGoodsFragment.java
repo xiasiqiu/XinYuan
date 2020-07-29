@@ -1,114 +1,185 @@
 package com.xinyuan.xyshop.ui.goods.groupbuy.fragment;
 
-import android.os.Bundle;
+import android.graphics.Color;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.lzy.okgo.OkGo;
-import com.lzy.okgo.callback.StringCallback;
+import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle2.android.FragmentEvent;
 import com.xinyuan.xyshop.R;
-import com.xinyuan.xyshop.adapter.GoodsGridAdapter;
-import com.xinyuan.xyshop.adapter.SearchGoodListAdapter;
+import com.xinyuan.xyshop.adapter.GroupGoodsAdapter;
 import com.xinyuan.xyshop.base.BaseFragment;
-import com.xinyuan.xyshop.entity.GoodsVo;
-import com.xinyuan.xyshop.entity.SearchGoodsList;
-import com.xinyuan.xyshop.model.GoodDetail;
-import com.xinyuan.xyshop.ui.goods.detail.GoodDetailsActivity;
-import com.xinyuan.xyshop.ui.mine.order.fragment.MyOrderContentFragment;
+import com.xinyuan.xyshop.common.Constants;
+import com.xinyuan.xyshop.model.GoodListModel;
+import com.xinyuan.xyshop.mvp.contract.GroupGoodView;
+import com.xinyuan.xyshop.mvp.presenter.GroupGoodPresenter;
+import com.xinyuan.xyshop.ui.goods.detail.GoodDetailActivity;
 import com.xinyuan.xyshop.util.CommUtil;
-import com.xinyuan.xyshop.util.JsonUtil;
-import com.youth.xframe.utils.log.XLog;
+import com.youth.xframe.utils.XEmptyUtils;
+import com.youth.xframe.widget.loadingview.XLoadingView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import butterknife.BindView;
-import okhttp3.Call;
-import okhttp3.Response;
 
 /**
- * Created by Administrator on 2017/6/21.
+ * Created by fx on 2017/6/21.
+ * 团购商城列表页
  */
 
-public class GroupGoodsFragment extends BaseFragment {
-
-	private String mTitle;
-
+public class GroupGoodsFragment extends BaseFragment<GroupGoodPresenter> implements GroupGoodView, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
+	@BindView(R.id.swipeLayout)
+	SwipeRefreshLayout swipeLayout;
 	@BindView(R.id.rv_group)
 	RecyclerView rv_group;
-	@BindView(R.id.ll_group_select)
-	LinearLayout ll_group_select;
-	private GoodsGridAdapter adapter;
-	private LinearLayoutManager manager;
-	private List<GoodsVo> goodses = new ArrayList();
-	private SearchGoodsList searchGoodsList;
+	@BindView(R.id.loadingView)
+	XLoadingView loadingView;
 
+	private GroupGoodsAdapter groupGoodsAdapter;
+	private int page;
+	private static final int limit = 10;
+	private String type;
 
-	public static GroupGoodsFragment getInstance(String title) {
+	public static GroupGoodsFragment getInstance(String type) {
 		GroupGoodsFragment sf = new GroupGoodsFragment();
-		sf.mTitle = title;
+		sf.type = type;
 		return sf;
 	}
 
-
 	@Override
-	public int getLayoutId() {
+	protected int provideContentViewId() {
 		return R.layout.fragment_group_buy_goods;
 	}
 
 	@Override
-	public void initData(Bundle savedInstanceState) {
-
-		String url = "https://java.bizpower.com/api/search?page=1&pageSize=10&keyword=手机";
-		OkGo.get(url)
-				.execute(new StringCallback() {
-					@Override
-					public void onSuccess(String s, Call call, Response response) {
-
-						searchGoodsList = JsonUtil.toBean(s, SearchGoodsList.class);
-						XLog.v("datas" + searchGoodsList);
-						SearchGoodsList.SearchGoodsData data = searchGoodsList.getDatas();
-						goodses = data.getGoodsList();
-						initlIST(goodses);
-
-					}
-				});
+	public void initView(View rootView) {
+		swipeLayout.setOnRefreshListener(this);
+		swipeLayout.setColorSchemeColors(Color.rgb(47, 223, 189));
+		GridLayoutManager layoutManager2 = new GridLayoutManager(mContext, 2, 1, false);
+		this.rv_group.setLayoutManager(layoutManager2);
 	}
 
 	@Override
-	public void initView() {
-		if (mTitle.equals("全部团购")) {
-			ll_group_select.setVisibility(View.VISIBLE);
-		}
+	public void initData() {
+		mPresenter.getGoodList(type, page, limit);
+	}
 
-		GridLayoutManager layoutManager2 = new GridLayoutManager(this.context, 2, 1, false);
-		this.rv_group.setLayoutManager(layoutManager2);
-		this.manager = layoutManager2;
+	@Override
+	protected GroupGoodPresenter createPresenter() {
+		return new GroupGoodPresenter(getActivity(), this);
 	}
 
 
-	private void initlIST(List<GoodsVo> goodses) {
-		adapter = new GoodsGridAdapter(R.layout.activity_group_item_grid, goodses);
-		rv_group.setAdapter(adapter);
-		adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-			@Override
-			public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-				String Type = "1:1";
-				HashMap<String, String> params;
-				params = new HashMap();
-				params.put("GoodType", Type);
-				CommUtil.gotoActivity(getActivity(), GoodDetailsActivity.class, false, params);
+	@Override
+	public void showGoodList(GoodListModel goodList) {
+		if (XEmptyUtils.isEmpty(groupGoodsAdapter)) {
+			if (XEmptyUtils.isEmpty(goodList)) {
+				showState(3);
+			} else {
+				groupGoodsAdapter = new GroupGoodsAdapter(R.layout.item_good_group, goodList.getGoodsList());
+				groupGoodsAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
+				rv_group.setAdapter(groupGoodsAdapter);
+				groupGoodsAdapter.setOnLoadMoreListener(this);
+				showState(1);
+				page++;
+				groupGoodsAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+					@Override
+					public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+						HashMap<String, String> params;
+						params = new HashMap();
+						params.put(Constants.GOODID, groupGoodsAdapter.getData().get(position).getGoodsId());
+						params.put(Constants.GOODTYPE, groupGoodsAdapter.getData().get(position).getGoodsType());
+						CommUtil.gotoActivity(mContext, GoodDetailActivity.class, false, params);
+					}
+				});
 			}
-		});
+
+		} else {
+			if (XEmptyUtils.isEmpty(goodList)) {
+				if (page == 1) {
+					showState(3);
+				} else {
+					groupGoodsAdapter.loadMoreEnd();
+
+				}
+			} else {
+				if (page == 1) {
+					groupGoodsAdapter.setNewData(goodList.getGoodsList());
+					swipeLayout.setRefreshing(false);
+					groupGoodsAdapter.notifyDataSetChanged();
+					groupGoodsAdapter.setEnableLoadMore(true);
+				} else {
+					groupGoodsAdapter.addData(goodList.getGoodsList());
+					groupGoodsAdapter.loadMoreComplete();
+					swipeLayout.setRefreshing(false);
+					groupGoodsAdapter.notifyDataSetChanged();
+
+				}
+				page++;
+
+			}
+
+		}
 
 	}
 
 	public RecyclerView getRvList() {
 		return rv_group;
+	}
+
+	@Override
+	public void onRefresh() {
+		groupGoodsAdapter.setEnableLoadMore(false);
+		new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				page = 1;
+				mPresenter.getGoodList(type, page, limit);
+			}
+		}, 500);
+	}
+
+	@Override
+	public void onLoadMoreRequested() {
+		rv_group.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				if (!XEmptyUtils.isEmpty(mPresenter)) {
+					mPresenter.getGoodList(type, page, limit);
+
+				}
+			}
+
+		}, 500);
+	}
+
+
+	@Override
+	public void showState(int state) {
+		switch (state) {
+			case 0:
+				loadingView.showLoading();
+				break;
+			case 1:
+				loadingView.showContent();
+				break;
+			case 2:
+				loadingView.showError();
+				break;
+			case 3:
+				loadingView.showEmpty();
+				break;
+
+		}
+
+	}
+
+
+	public LifecycleTransformer<GoodListModel> bindLife() {
+		return this.<GoodListModel>bindUntilEvent(FragmentEvent.DESTROY_VIEW);
 	}
 }

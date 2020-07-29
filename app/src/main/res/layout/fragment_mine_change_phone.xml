@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:widget="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_gray"
+              android:orientation="vertical">
+
+    <include layout="@layout/view_header_tv_msg"/>
+
+    <LinearLayout
+        android:id="@+id/ll_input_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        >
+
+        <TextView
+            style="@style/NormalTextView"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/input_phone"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_white"
+            android:padding="10dp"
+            >
+
+            <TextView
+                style="@style/NormalTextView"
+                android:text="手机号"/>
+
+            <com.xinyuan.xyshop.widget.EditTextWithDel
+                android:id="@+id/ed_phone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:hint="请输入新手机号"
+                android:inputType="number"
+                android:textColor="@color/tv_name"
+                android:textColorHint="@color/tv_hint"
+                android:textSize="@dimen/tv_Normal"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_next"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_bg"
+            android:text="@string/bt_reg_next"
+            android:textColor="@color/bg_white"
+            android:textSize="@dimen/tv_Blod"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_phone_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/LightTextView"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:text="请点击发送验证码，我们将发送一个验证码至以下号码"/>
+
+        <TextView
+            android:id="@+id/tv_phone"
+            style="@style/BlodTextView"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@color/bg_white"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp">
+
+            <TextView
+                style="@style/NormalTextView"
+                android:layout_gravity="center_vertical"
+                android:text="验证码"/>
+
+            <com.xinyuan.xyshop.widget.EditTextWithDel
+                android:id="@+id/ed_code"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="2"
+                android:background="@null"
+                android:hint="请输入验证码"
+                android:inputType="text"
+                android:textColor="@color/tv_name"
+                android:textColorHint="@color/tv_hint"
+                android:textSize="@dimen/tv_Normal"/>
+
+            <View
+                style="@style/XYVLine"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"/>
+
+            <com.xinyuan.xyshop.widget.PaperButton
+                android:id="@+id/pb_code"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                widget:paper_color="@color/bg_white"
+                widget:paper_corner_radius="0dip"
+                widget:paper_text="发送验证码"
+                widget:paper_text_color="@color/colorPrimaryDark"
+                widget:paper_text_size="@dimen/tv_Regular"
+                />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_login"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_bg"
+            android:text="@string/bt_reg_next"
+            android:textColor="@color/bg_white"
+            android:textSize="@dimen/tv_Blod"/>
+    </LinearLayout>
+</LinearLayout>

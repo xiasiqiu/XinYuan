@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/bg_gray"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
 
-    <include layout="@layout/view_header_tv_msg"/>
+    <include layout="@layout/view_header_tv_msg" />
 
-    <View
-        style="@style/LightLine"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_service"
+    <com.youth.xframe.widget.loadingview.XLoadingView
+        android:id="@+id/loadingView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="1dp"/>
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_service"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="1dp" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </com.youth.xframe.widget.loadingview.XLoadingView>
 </LinearLayout>

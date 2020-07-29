@@ -7,20 +7,21 @@
               android:padding="10dp">
 
     <TextView
+        android:id="@+id/tv_info_time"
         style="@style/LightTextView"
-        android:layout_gravity="center_horizontal"
-        android:text="2017-03-02 22:12"/>
+        android:layout_gravity="center_horizontal"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/service_bg"
         android:orientation="vertical"
         android:paddingBottom="15dp"
         android:paddingLeft="10dp"
         android:paddingRight="25dp"
-        android:paddingTop="10dp">
+        android:paddingTop="15dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -29,140 +30,106 @@
             <TextView
                 android:id="@+id/tv_status_title"
                 style="@style/RegularTextView"
-                android:text="买家发起退货退款申请"/>
+                android:layout_centerVertical="true"/>
 
             <TextView
                 android:id="@+id/tv_status_hint"
                 style="@style/LightTextView"
                 android:layout_alignParentRight="true"
-                android:text="买家发起退货退款申请"
+                android:layout_centerVertical="true"
                 android:textColor="@color/tv_hint"/>
         </RelativeLayout>
 
         <View
             android:id="@+id/service_line"
             style="@style/Line"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:visibility="gone"/>
 
-        <LinearLayout
-            android:id="@+id/ll_service_content"
+
+        <RelativeLayout
+            android:id="@+id/rl_goods_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="10dp"
+            android:visibility="gone">
 
-            <RelativeLayout
-                android:id="@+id/rl_goods_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13dp">
+            <TextView
+                style="@style/NormalTextView"
+                android:text="商品名称"/>
 
-                <TextView
-                    android:id="@+id/tv_goods_name_title"
-                    style="@style/NormalTextView"
-                    android:layout_centerVertical="true"
-                    android:text="商品名称"/>
+            <TextView
+                android:id="@+id/tv_goods_name"
+                style="@style/NormalTextView"
+                android:layout_marginLeft="65dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/tv_hint"/>
 
-                <TextView
-                    android:id="@+id/tv_goods_name"
-                    style="@style/NormalTextView"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/tv_goods_name_title"
-                    android:ellipsize="end"
-                    android:maxLines="2"
-                    android:text="雅诗兰黛 红石榴泡沫洁面乳125ml清洁补水"
-                    android:textColor="@color/tv_hint"/>
-            </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/rl_order_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13dp">
+            <TextView
+                style="@style/NormalTextView"
+                android:layout_below="@id/tv_goods_name"
+                android:layout_marginTop="5dp"
+                android:text="订单编号"/>
 
-                <TextView
-                    android:id="@+id/tv_good_orderId_title"
-                    style="@style/NormalTextView"
-                    android:layout_centerVertical="true"
-                    android:text="订单编号"/>
+            <TextView
+                android:id="@+id/tv_good_orderId"
+                style="@style/NormalTextView"
+                android:layout_below="@id/tv_goods_name"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/tv_hint"/>
 
-                <TextView
-                    android:id="@+id/tv_good_orderId"
-                    style="@style/NormalTextView"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/tv_good_orderId_title"
-                    android:ellipsize="end"
-                    android:maxLines="2"
-                    android:text="17273202869058630"
-                    android:textColor="@color/tv_hint"/>
-            </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/rl_order_status"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13dp">
+            <TextView
+                style="@style/NormalTextView"
+                android:layout_below="@id/tv_good_orderId"
+                android:layout_marginTop="5dp"
+                android:text="订单状态"/>
 
-                <TextView
-                    android:id="@+id/tv_goods_status"
-                    style="@style/NormalTextView"
-                    android:layout_centerVertical="true"
-                    android:text="订单状态"/>
+            <TextView
+                android:id="@+id/tv_order_status"
+                style="@style/NormalTextView"
+                android:layout_below="@id/tv_good_orderId"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/tv_hint"/>
 
-                <TextView
-                    style="@style/NormalTextView"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/tv_goods_status"
-                    android:ellipsize="end"
-                    android:maxLines="2"
-                    android:text="已收到"
-                    android:textColor="@color/tv_hint"/>
-            </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/rl_service_reason"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13dp">
+            <TextView
+                style="@style/NormalTextView"
+                android:layout_below="@id/tv_order_status"
+                android:layout_marginTop="5dp"
+                android:text="退货原因"/>
 
-                <TextView
-                    android:id="@+id/tv_service_reason"
-                    style="@style/NormalTextView"
-                    android:layout_centerVertical="true"
-                    android:text="退货原因"/>
+            <TextView
+                android:id="@+id/tv_order_reason"
+                style="@style/NormalTextView"
+                android:layout_below="@id/tv_order_status"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/tv_hint"/>
 
-                <TextView
-                    style="@style/NormalTextView"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/tv_service_reason"
-                    android:text="尺码拍错/不喜欢/效果差"
-                    android:textColor="@color/tv_hint"/>
-            </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/rl_service_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13dp">
+            <TextView
+                style="@style/NormalTextView"
+                android:layout_below="@id/tv_order_reason"
+                android:layout_marginTop="5dp"
+                android:text="售后金额"/>
 
-                <TextView
-                    android:id="@+id/tv_good_price"
-                    style="@style/NormalTextView"
-                    android:layout_centerVertical="true"
-                    android:text="金额"/>
-
-                <TextView
-                    style="@style/NormalTextView"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@+id/tv_good_price"
-                    android:text="￥123"
-                    android:textColor="@color/tv_hint"/>
-            </RelativeLayout>
-        </LinearLayout>
+            <TextView
+                android:id="@+id/tv_service_price"
+                style="@style/NormalTextView"
+                android:layout_below="@id/tv_order_reason"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/tv_hint"/>
+        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>

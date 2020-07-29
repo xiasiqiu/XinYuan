@@ -1,68 +1,73 @@
 package com.xinyuan.xyshop.model;
 
-import com.xinyuan.xyshop.entity.GoodCategory;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/6/5.
+ * Created by fx on 2017/6/5.
+ * 分类数据
  */
 
 public class CategoryModel implements Serializable {
-	private static final long serialVersionUID = 2935275813642114270L;
+    private static final long serialVersionUID = 2935275813642114270L;
 
-	private List<CategoryData> categoryList;
+    private List<CategoryData> categoryList;
 
 
-	public class CategoryData implements Serializable {
-		private static final long serialVersionUID = 6718425111073342645L;
-		private int categoryId;
-		private String categoryName;
-		private int categorySort;
-		private String categoryImageUrl;
-		private int parentId = 0;
-		private List<CategoryData> categoryList = new ArrayList();
+    public List<CategoryData> getDatas() {
+        return categoryList;
+    }
 
-		public int getCategoryId() {
-			return categoryId;
-		}
+    public class CategoryData implements Serializable {
+        private static final long serialVersionUID = 6718425111073342645L;
+        private int categoryId;
+        private String categoryName;
+        private int categorySort;
+        private int parentId = 0;
+        private String categoryImageUrl;
+        private String ad;
 
-		public String getCategoryName() {
-			return categoryName;
-		}
+        public String getAd() {
+            return ad;
+        }
 
-		public int getCategorySort() {
-			return categorySort;
-		}
+        private List<CategoryData> categoryList = new ArrayList();
 
-		public String getCategoryImageUrl() {
-			return categoryImageUrl;
-		}
+        public int getCategoryId() {
+            return categoryId;
+        }
 
-		public int getParentId() {
-			return parentId;
-		}
+        public String getCategoryName() {
+            return categoryName;
+        }
 
-		public List<CategoryData> getCategoryList() {
-			return categoryList;
-		}
+        public int getCategorySort() {
+            return categorySort;
+        }
 
-		@Override
-		public String toString() {
-			return "CategoryData{" +
-					"categoryId=" + categoryId +
-					", categoryName='" + categoryName + '\'' +
-					", categorySort=" + categorySort +
-					", categoryImageUrl='" + categoryImageUrl + '\'' +
-					", parentId=" + parentId +
-					", categoryList=" + categoryList +
-					'}';
-		}
-	}
+        public String getCategoryImageUrl() {
+            return categoryImageUrl;
+        }
 
-	public List<CategoryData> getDatas() {
-		return categoryList;
-	}
+        public int getParentId() {
+            return parentId;
+        }
+
+        public List<CategoryData> getCategoryList() {
+            return categoryList;
+        }
+
+        @Override
+        public String toString() {
+            return "CategoryData{" +
+                    "categoryId=" + categoryId +
+                    ", categoryName='" + categoryName + '\'' +
+                    ", categorySort=" + categorySort +
+                    ", ad='" + ad + '\'' +
+                    ", parentId=" + parentId +
+                    ", categoryList=" + categoryList +
+                    '}';
+        }
+    }
 }

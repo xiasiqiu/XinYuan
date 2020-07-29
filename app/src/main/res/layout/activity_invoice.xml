@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bg_gray"
+              android:orientation="vertical">
+    <include layout="@layout/view_header_tv_tv"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:background="@color/bg_white"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    style="@style/NormalTextView"
+                    android:text="发票类型"/>
+
+                <RadioGroup
+                    android:id="@+id/rg_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_invoice_paper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/invoice_btn_select"
+                        android:button="@null"
+                        android:checked="true"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="5dp"
+                        android:text="纸质发票"
+                        android:textColor="@drawable/invoice_btn_select_text"
+                        android:textSize="@dimen/tv_light"/>
+
+
+                    <RadioButton
+                        android:id="@+id/rb_invoice_online"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/invoice_btn_select"
+                        android:button="@null"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="5dp"
+                        android:text="电子发票"
+                        android:textColor="@drawable/invoice_btn_select_text"
+                        android:textSize="@dimen/tv_light"/>
+
+
+                    <RadioButton
+                        android:id="@+id/rb_invoice_spec"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/invoice_btn_select"
+                        android:button="@null"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="5dp"
+                        android:text="增值税发票"
+                        android:textColor="@drawable/invoice_btn_select_text"
+                        android:textSize="@dimen/tv_light"/>
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_invoice_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/bg_white"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    style="@style/NormalTextView"
+                    android:text="发票抬头"/>
+
+                <RadioGroup
+                    android:id="@+id/rg_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_user_person"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:button="@null"
+                        android:checked="true"
+                        android:drawableLeft="@drawable/checkbox_selector"
+                        android:drawablePadding="10dp"
+                        android:text="个人"
+                        android:textColor="@color/tv_name"
+                        android:textSize="@dimen/tv_light"/>
+
+
+                    <RadioButton
+                        android:id="@+id/rb_user_company"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:button="@null"
+                        android:drawableLeft="@drawable/checkbox_selector"
+                        android:drawablePadding="10dp"
+                        android:text="单位"
+                        android:textColor="@color/tv_name"
+                        android:textSize="@dimen/tv_light"/>
+
+
+                </RadioGroup>
+
+                <com.xinyuan.xyshop.widget.EditTextWithDel
+                    android:id="@+id/et_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="5dp"
+                    android:inputType="text"
+                    android:background="@color/normal_bg"
+                    android:hint="请输入单位全称"
+                    android:padding="10dp"
+                    android:textSize="@dimen/tv_light"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_spec_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/bg_white"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/NormalTextView"
+                    android:text="发票抬头"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_spec_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_person_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/bg_white"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/NormalTextView"
+                    android:text="收票人信息"/>
+
+                <View
+                    style="@style/XYLine"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        style="@style/LightTextView"
+                        android:text="收票人手机"/>
+
+                    <com.xinyuan.xyshop.widget.EditTextWithDel
+                        android:id="@+id/ed_person_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:hint="请输入收票人手机号码"
+                        android:inputType="number"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/tv_name"
+                        android:textColorHint="@color/tv_hint"
+                        android:textSize="@dimen/tv_light"/>
+                </LinearLayout>
+
+                <View
+                    style="@style/LightLine"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        style="@style/LightTextView"
+                        android:text="收票人邮箱"/>
+
+                    <com.xinyuan.xyshop.widget.EditTextWithDel
+                        android:id="@+id/ed_person_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@null"
+                        android:hint="请输入收票人邮箱地址"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/tv_name"
+                        android:textColorHint="@color/tv_hint"
+                        android:textSize="@dimen/tv_light"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_spec_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/bg_white"
+                android:orientation="vertical"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/NormalTextView"
+                    android:text="收票人信息"/>
+
+                <View
+                    style="@style/XYLine"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        style="@style/LightTextView"
+                        android:text="收票人姓名"/>
+
+                    <com.xinyuan.xyshop.widget.EditTextWithDel
+                        android:id="@+id/ed_spec_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:background="@null"
+                        android:hint="请输入收票人姓名"
+                        android:inputType="text"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/tv_name"
+                        android:textColorHint="@color/tv_hint"
+                        android:textSize="@dimen/tv_light"/>
+                </LinearLayout>
+
+                <View
+                    style="@style/LightLine"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        style="@style/LightTextView"
+                        android:text="收票人手机"/>
+
+                    <com.xinyuan.xyshop.widget.EditTextWithDel
+                        android:id="@+id/ed_spec_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@null"
+                        android:hint="请输入收票人手机号码"
+                        android:inputType="number"
+                        android:textColor="@color/tv_name"
+                        android:textColorHint="@color/tv_hint"
+                        android:textSize="@dimen/tv_light"/>
+                </LinearLayout>
+
+                <View
+                    style="@style/LightLine"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        style="@style/LightTextView"
+                        android:text="收票人地址"/>
+
+                    <com.xinyuan.xyshop.widget.EditTextWithDel
+                        android:id="@+id/ed_spec_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@null"
+                        android:hint="请输入收票人详细地址"
+                        android:inputType="text"
+                        android:textColor="@color/tv_name"
+                        android:textColorHint="@color/tv_hint"
+                        android:textSize="@dimen/tv_light"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/ll_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/bg_white"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:visibility="visible">
+
+                <TextView
+                    style="@style/NormalTextView"
+                    android:text="发票内容"/>
+
+                <View
+                    style="@style/Line"
+                    android:layout_marginTop="25dp"/>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_invoice_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp"/>
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/ll_more_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/bg_white"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    >
+
+                    <TextView
+                        style="@style/NormalTextView"
+                        android:text="对不起，您是首次开具增值税专用发票"/>
+
+                    <TextView
+                        style="@style/LightHintTextView"
+                        android:text="请您填写纳税人识别号等开票信息，并上传加盖公章的营业执照副本、税务登记证副本、一般纳税人资格证书及银行开户许可证扫描件，收到您的开票资料后，我们会尽快审核。
+"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_more_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/bg_white"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        style="@style/NormalTextView"
+                        android:text="资质上传及审核结果查询地址"/>
+
+                    <TextView
+                        style="@style/LightHintTextView"
+                        android:layout_marginTop="10dp"
+                        android:text="个人中心 - 客户服务 - 我的发票 - 开票信息 - 专票资质"/>
+
+                    <TextView
+                        style="@style/LightHintTextView"
+                        android:layout_marginTop="10dp"
+                        android:text="注意：只能在电脑PC端操作"
+                        android:textColor="@color/colorPrimaryDark"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/bt_ok"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/button_bg_dark"
+                android:text="@string/bt_ok"
+                android:textColor="@color/bg_white"
+                android:textSize="@dimen/tv_Blod"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

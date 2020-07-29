@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v7.widget.Toolbar
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/category_toolbar"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="?attr/actionBarSize"
     android:background="@color/colorPrimaryDark"
     android:elevation="3dp"
     app:contentInsetLeft="0dp"
@@ -13,7 +12,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="match_parent"
         android:background="@color/bg_white"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -25,19 +24,24 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="20dp"
-            android:src="@drawable/act_home_scan_de"/>
+            android:layout_marginLeft="10dp"
+            android:padding="10dp"
+            android:src="@drawable/act_home_scan_de" />
 
-        <ImageView
+        <cn.bingoogolapple.badgeview.BGABadgeImageView
             android:id="@+id/category_btn_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
-            android:src="@drawable/act_home_msg_de"/>
+            android:padding="3dp"
+            android:src="@drawable/act_home_msg_de"
+            app:badge_gravity="rightTop"
+            app:badge_horizontalMargin="0dp" />
 
         <RelativeLayout
+            android:id="@+id/rl_search"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_centerInParent="true"
@@ -48,7 +52,7 @@
             android:background="@drawable/btn_bg_normal"
             android:orientation="horizontal">
 
-            <EditText
+            <com.xinyuan.xyshop.widget.EditTextWithDel
                 android:id="@+id/category_et_search"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
@@ -62,16 +66,16 @@
                 android:singleLine="true"
                 android:textColor="@color/tv_name"
                 android:textColorHint="@color/tv_hint"
-                android:textSize="@dimen/tv_light"/>
+                android:textSize="@dimen/tv_light" />
 
             <ImageView
+                android:id="@+id/iv_search"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_alignParentRight="true"
                 android:background="@drawable/btn_bg_gray"
                 android:padding="10dp"
-                android:src="@drawable/act_home_search_de"/>
-
+                android:src="@drawable/act_home_search_de" />
 
         </RelativeLayout>
     </RelativeLayout>

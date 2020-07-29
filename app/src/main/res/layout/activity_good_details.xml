@@ -6,10 +6,6 @@
 
     <include layout="@layout/activity_good_detail_header"/>
 
-
-    <View
-        style="@style/LightLine"/>
-
     <com.xinyuan.xyshop.widget.NoScrollViewPager
         android:id="@+id/vp_content"
         android:layout_width="match_parent"
@@ -33,7 +29,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:background="@color/bg_white"
-            android:drawablePadding="5dp"
+            android:drawablePadding="3dp"
             android:drawableTop="@drawable/ic_store_service"
             android:padding="5dp"
             android:text="客服"
@@ -52,9 +48,9 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:background="@color/bg_white"
-            android:drawablePadding="5dp"
+            android:drawablePadding="3dp"
             android:drawableTop="@drawable/ic_store"
-            android:padding="5dp"
+            android:padding="4dp"
             android:text="店铺"
             android:textColor="@color/tv_hint"
             android:textSize="@dimen/tv_small"/>
@@ -65,18 +61,18 @@
             android:background="@color/colorLine"/>
 
         <CheckBox
-            android:id="@+id/cb_store_fv"
+            android:id="@+id/cb_good_fv"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:button="@null"
-            android:drawablePadding="5dp"
+            android:drawablePadding="3dp"
             android:drawableTop="@drawable/fav_selector"
             android:gravity="center_horizontal"
             android:paddingTop="4dp"
             android:text="收藏"
-            android:textColor="@color/tv_hint"
+            android:textColor="@drawable/invoice_btn_select_text"
             android:textSize="@dimen/tv_small"/>
 
         <View

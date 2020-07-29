@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:background="@color/bg_white"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="10dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@color/bg_white"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="8dp">
 
 
-    <ImageView
-        android:id="@+id/store_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <cn.bingoogolapple.badgeview.BGABadgeImageView
+        android:id="@+id/iv_head_img"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_centerVertical="true"
-        android:src="@drawable/test_good_store"/>
+        android:padding="3dp"
+        android:scaleType="fitXY"
+        app:badge_gravity="rightTop"
+        app:badge_horizontalMargin="0dp" />
+
 
     <TextView
         android:id="@+id/tv_store_name"
         style="@style/RegularTextView"
         android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/store_img"
-        android:text="梅子熟了"/>
+        android:layout_toRightOf="@id/iv_head_img" />
 
     <TextView
         android:id="@+id/tv_msg_content"
@@ -29,19 +34,14 @@
         android:layout_below="@id/tv_store_name"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/store_img"
-        android:text="亲，我们这边已经发货了哦，你那边注意查···"
-        android:textColor="@color/tv_hint"/>
+        android:layout_toRightOf="@id/iv_head_img"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/tv_hint" />
 
     <TextView
-        style="@style/LightTextView"
+        android:id="@+id/tv_msg_time"
+        style="@style/SmallHintTextView"
         android:layout_alignParentRight="true"
-        android:text="2017/03/24"
-        android:textColor="@color/tv_hint"/>
-
-    <View
-        style="@style/XYLine"
-        android:layout_alignParentBottom="true"
-        />
-
+        android:textColor="@color/tv_hint" />
 </RelativeLayout>

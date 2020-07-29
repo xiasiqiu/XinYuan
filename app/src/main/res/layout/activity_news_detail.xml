@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/view_header_tv_msg"/>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/tv_new_title"
+                style="@style/BlodTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_new_time"
+                style="@style/LightHintTextView"
+                android:layout_below="@id/tv_new_title"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="10dp"
+                />
+
+            <FrameLayout
+                android:id="@+id/fragmenlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tv_new_time"
+                android:background="@color/bg_white"
+                android:paddingTop="10dp"/>
+        </RelativeLayout>
+
+    </ScrollView>
+</LinearLayout>

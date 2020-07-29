@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:background="@color/bg_white">
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:background="@color/bg_white">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -12,76 +12,61 @@
         <ImageView
             android:id="@+id/iv_good_img"
             android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/test_good_img"/>
+            android:layout_height="80dp" />
 
         <TextView
             style="@style/RegularTextView"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/iv_good_img"
-            android:text="物流状态:"/>
+            android:text="物流状态:" />
 
         <TextView
             style="@style/RegularTextView"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="21dp"
+            android:layout_marginTop="25dp"
             android:layout_toRightOf="@id/iv_good_img"
-            android:text="物流公司:"/>
-
-        <TextView
-            style="@style/RegularTextView"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="21dp"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/iv_good_img"
-            android:text="运单编号:"/>
+            android:text="物流公司:" />
 
         <TextView
             style="@style/RegularTextView"
             android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/iv_good_img"
-            android:text="官方电话:"/>
+            android:text="运单编号:" />
+
 
         <TextView
             android:id="@+id/tv_express_status"
             style="@style/NormalTextView"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="80dp"
             android:layout_toRightOf="@id/iv_good_img"
             android:text="运输中"
-            android:textColor="@color/tv_hint"/>
+            android:textColor="@color/tv_hint" />
 
         <TextView
             android:id="@+id/tv_express_name"
             style="@style/NormalTextView"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="21dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="25dp"
             android:layout_toRightOf="@id/iv_good_img"
-            android:text="韵达快递"
-            android:textColor="@color/tv_hint"/>
+            android:text=""
+            android:textColor="@color/tv_hint" />
 
         <TextView
             android:id="@+id/tv_order_id"
             style="@style/NormalTextView"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="21dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="80dp"
             android:layout_toRightOf="@id/iv_good_img"
-            android:text="39086777545"
-            android:textColor="@color/tv_hint"/>
+            android:text=""
+            android:textColor="@color/tv_hint" />
 
-        <TextView
-            android:id="@+id/tv_express_phone"
-            style="@style/NormalTextView"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="70dp"
-            android:layout_toRightOf="@id/iv_good_img"
-            android:text="95546"
-            android:textColor="@color/tv_hint"/>
     </RelativeLayout>
 
     <View
         style="@style/Line"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp" />
 </RelativeLayout>

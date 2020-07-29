@@ -6,11 +6,16 @@
 
     <include layout="@layout/view_header_tv_msg"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_logis"
+    <com.youth.xframe.widget.loadingview.XLoadingView
+        android:id="@+id/loadingView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/bg_gray"
-        android:paddingTop="3dp"/>
+        android:layout_height="match_parent">
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_logis"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_gray"
+            android:paddingTop="3dp"/>
+    </com.youth.xframe.widget.loadingview.XLoadingView>
 </LinearLayout>

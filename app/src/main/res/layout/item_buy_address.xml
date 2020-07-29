@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginBottom="3dp"
+                android:background="@color/bg_white"
+                android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        style="@style/RegularTextView"
+        android:text="分析"/>
+
+    <TextView
+        android:id="@+id/tv_user_phone"
+        style="@style/LightTextView"
+        android:layout_alignParentRight="true"
+        android:text="1570846531"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_a"
+        style="@style/LightTextView"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="10dp"
+        android:text="[默认地址]"
+        android:textColor="@color/colorPrimaryDark"/>
+
+    <TextView
+        android:id="@+id/tv_address"
+        style="@style/LightHintTextView"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@id/tv_a"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="四川省成都市武侯区"/>
+
+</RelativeLayout>

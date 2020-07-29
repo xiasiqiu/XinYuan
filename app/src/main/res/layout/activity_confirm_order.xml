@@ -4,45 +4,10 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <include layout="@layout/view_header_tv_msg"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_confirm_order"
+    <FrameLayout
+        android:id="@+id/main_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_gravity="bottom"
-        android:layout_marginTop="3dp"
-
-        android:background="@color/bg_white">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="6"
-            android:gravity="right|center_vertical"
-            android:paddingRight="10dp"
-            android:text="实付款：￥123.00"
-            android:textColor="@color/tv_price"
-            android:textSize="@dimen/tv_Regular"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:background="@color/colorPrimaryDark"
-            android:gravity="center"
-            android:text="提交订单"
-            android:textColor="@color/bg_white"
-            android:textSize="@dimen/tv_Blod"/>
-
-
-    </LinearLayout>
+        android:layout_height="match_parent"/>
 
 
 </LinearLayout>
